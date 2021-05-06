@@ -51,3 +51,10 @@ The github repo is used by all of you to have write access and contribute to the
 You will get out of this as much as you put in. Thus it is important to set several dedicated hours  aside (ideally each week)  and contribute your work to others.
 
 It is difficult to asses how long the above task takes as we just get started and we need to learn first how we work together as a team. If I were to do this alone it may take a week, but as you are less experienced it would likely take longer. However to decrease the time needed we can split up work and each of you will work on a dedicated topic (but you can still work in smaller teams if you desire). We will start assigning tasks in github once this is all set up.
+
+Idea:
+
+* tutorial about hackmd.io <https://hackmd.io/t9SkKiSLR5qW9RUUA_CT-A>
+* Github vs hackmd
+
+We will use initially hackmd so we avoid issues with github and we can learn github once we do more coding.
