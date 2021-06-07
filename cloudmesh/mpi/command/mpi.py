@@ -18,6 +18,7 @@ class MpiCommand(PluginCommand):
           Usage:
                 mpi --file=FILE
                 mpi list
+                mpi cooper --file=FILE
 
           This command does some useful things.
 
@@ -33,14 +34,16 @@ class MpiCommand(PluginCommand):
         VERBOSE(arguments)
 
         m = Manager()
-
-        if arguments.FILE:
+        if arguments.cooper:
+            print(arguments.FILE)
+            print('hello cooper')
+        elif arguments.FILE:
             print("option a")
             m.list(path_expand(arguments.FILE))
 
         elif arguments.list:
             print("option b")
             m.list("just calling list without parameter")
-
-        Console.error("This is just a sample")
+    #random comment
+        #Console.error("This is just a sample")
         return ""

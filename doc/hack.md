@@ -6,6 +6,7 @@ Shannon Kerr,
 Erin Seliger,
 Cooper Young,
 Agness Lungu
+Santa Claus
 
 ## Hardware of current students
 
