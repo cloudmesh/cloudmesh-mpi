@@ -1,3 +1,13 @@
+# Towards Python MPI for Artificial Intelligence and Deep Learning Research
+
+Gregor von Laszewski, Fidel Leal, Shannon Kerr, Erin Seliger, Cooper
+Young, Agness Lungua
+
+For more information, please contact: <laszewski@gmail.com>
+
+> **Note:** Do not modify the report.md file, instead modify only files
+> in in the chapters dir
+
 ## Preface
 
 Add a preface
@@ -813,15 +823,16 @@ Executing `mpiexec -n 4 python npgather.py` yields:
 >     Buffer in process 3 before gathering:  [3 3 3 3 3 3 3 3 3 3]
 >     Buffer in process 0 before gathering:  [0 0 0 0 0 0 0 0 0 0]
 >     Buffer in process 1 before gathering:  [1 1 1 1 1 1 1 1 1 1]
->     recvbuf in process 0 before gathering:  [[0 0 0 0 0 0 0 0 0 0]
->      [0 0 0 0 0 0 0 0 0 0]
->      [0 0 0 0 0 0 0 0 0 0]
->      [0 0 0 0 0 0 0 0 0 0]]
+>     recvbuf in process 0 before gathering:
+>      [[0 0 0 0 0 0 0 0 0 0]
+>       [0 0 0 0 0 0 0 0 0 0]
+>       [0 0 0 0 0 0 0 0 0 0]
+>       [0 0 0 0 0 0 0 0 0 0]]
 >     recvbuf in process 0 after gathering: 
 >      [[0 0 0 0 0 0 0 0 0 0]
->      [1 1 1 1 1 1 1 1 1 1]
->      [2 2 2 2 2 2 2 2 2 2]
->      [3 3 3 3 3 3 3 3 3 3]]
+>       [1 1 1 1 1 1 1 1 1 1]
+>       [2 2 2 2 2 2 2 2 2 2]
+>       [3 3 3 3 3 3 3 3 3 3]]
 
 The values contained in the buffers from the different processes in the
 group have been gathered in the 2-D array in process with rank 0.
