@@ -1,4 +1,4 @@
-## Preface
+# Preface
 
 Add a preface
 

@@ -8,7 +8,7 @@ For more information, please contact: <laszewski@gmail.com>
 > **Note:** Do not modify the report.md file, instead modify only files
 > in in the chapters dir
 
-## Preface
+# Preface
 
 Add a preface
 
@@ -26,7 +26,7 @@ Add a preface
         -   hyperlinks
         -   citation
 
-## Overview
+# Overview
 
 TODO: Gregor improves this section
 
@@ -398,14 +398,14 @@ All: add tasks in github so we can assign todos and monitor progress
 
 Gregor: Describe In detail how this is done
 
-## Introduction to MPI
+# Introduction to MPI
 
 -   What is MPI and why do you want to use it
 
 -   What are some example MPI functionalities and usage patterns (send
     receive, embarrassing parallel
 
-### Installation of mpi4py on Windows
+## Installation of mpi4py on Windows
 
 1.  Look up msmpi and click the second link to download and install
     `msmpisetup.exe` and `msmpisdk.msi`
@@ -429,7 +429,7 @@ Gregor: Describe In detail how this is done
 9.  In order to verify that the installation worked type
     `mpiexec -n 4 python mpi4py.bench helloworld`
 
-### Installing mpi4py in a Raspberry Pi
+## Installing mpi4py in a Raspberry Pi
 
 1.  Activate our virtual environment: `source ~/ENV3/bin/activate`
 
@@ -453,7 +453,7 @@ Gregor: Describe In detail how this is done
     >     Hello, World! I am process 2 of 4 on red.
     >     Hello, World! I am process 3 of 4 on red.
 
-### Installing mpi4py in MacOS
+## Installing mpi4py in MacOS
 
 A similar process can be followed to install mpi4py in MacOS. In this
 case, we can use Homebrew to get Open MPI by entering:
@@ -516,9 +516,9 @@ TODO: learn about and evaluate and test if we can do
 
 ## MPI Functionality examples
 
-### MPI Collective Communication functionality examples
+## MPI Collective Communication functionality examples
 
-#### Broadcast `comm.bcast()`
+### Broadcast `comm.bcast()`
 
 In this example, we broadcast a two-entry Python dictionary from a root
 process to the rest of the processes in our communicator group.
@@ -939,9 +939,9 @@ CODE
 We will use initially hackmd so we avoid issues with github and we can
 learn github once we do more coding.
 
-## Appendix
+# Appendix
 
-### Hardware of current students
+## Hardware of current students
 
 -   Fidel Leal,
     -   Equipment

@@ -7,6 +7,6 @@
 
 !include chapters/mpi.md
 
-## Appendix
+# Appendix
 
 !include chapters/hardware.md

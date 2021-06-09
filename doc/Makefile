@@ -9,10 +9,10 @@ md:
 	pandoc ${OPTIONS} chapters/report.md -o tmp-1.md
 	pandoc ${OPTIONS} tmp-1.md  -o tmp-2.md
 	pandoc ${OPTIONS} tmp-2.md  -o tmp-3.md
-	pandoc chapters/title.md tmp-3.md -o report.md
+	pandoc --number-sections chapters/title.md tmp-3.md -o report.md
 
 pdf: 
-	pandoc -s -t latex -V geometry:margin=1in --toc chapters/metadata.yaml tmp-3.md -o report.pdf
+	pandoc -s -t latex -V geometry:margin=1in --number-sections --toc chapters/metadata.yaml tmp-3.md -o report.pdf
 
 clean:
 	@rm -f *.toc *.aux *.log rm tmp-?.md

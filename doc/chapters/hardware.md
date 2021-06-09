@@ -1,4 +1,4 @@
-### Hardware of current students
+## Hardware of current students
 
 * Fidel Leal, 
   * Equipment
