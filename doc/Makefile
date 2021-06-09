@@ -1,12 +1,18 @@
-OPTIONS=--from markdown --to markdown --filter pandoc-include
+OPTIONS=--filter pandoc-include
 PANDOC=docker run --rm --volume "`pwd`:/data" --user `id -u`:`id -g` # pandoc/latex:2.6
 
 .PHONY: report.md
 
-all:
-	pandoc ${OPTIONS} -o tmp-1.md chapters/report.md 
-	pandoc ${OPTIONS} -o report.md tmp-1.md 
-	rm tmp-1.md
+all:md pdf
+
+md:
+	pandoc ${OPTIONS} chapters/report.md -o tmp-1.md
+	pandoc ${OPTIONS} tmp-1.md  -o tmp-2.md
+	pandoc ${OPTIONS} tmp-2.md  -o report.md
+	rm tmp-?.md
+
+pdf:
+	pandoc -s -t latex -V geometry:margin=1in --toc chapters/metadata.yaml report.md -o report.pdf
 
 docker:
 	${PANDOC} -o tmp-1.md chapters/report.md
@@ -15,3 +21,5 @@ docker:
 image:
 	docker build --label=pandoc --tag=pandoc .
 
+#pdf:
+#	docker run --rm --volume "`pwd`:/data" --user `id -u`:`id -g` pandoc/latex report.md -o report.pdf

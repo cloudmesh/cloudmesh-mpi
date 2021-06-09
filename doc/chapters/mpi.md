@@ -7,14 +7,24 @@
 
 ### Installation of mpi4py on Windows
 
-1. Look up msmpi and click the second link to download and install msmpisetup.exe and msmpisdk.msi
+1. Look up msmpi and click the second link to download and install
+`msmpisetup.exe` and `msmpisdk.msi`
+
 3. Open the system control panel
+
 4. Click on Advanced system settings and then Environment Variables
+
 5. Under the user variables box click on Path
-6. Click New in order to add C:\Program Files (x86)\Microsoft SDKs\MPI and C:\Program Files\Microsoft MPI\Bin to Path
+
+6. Click New in order to add `C:\Program Files (x86)\Microsoft SDKs\MPI` and
+`C:\Program Files\Microsoft MPI\Bin` to Path
+
 7. Close any open bash windows and then open a new one
+
 8. Type the command `which mpiexec`
+
 9. Install mpi4py with `pip install mpi4py`
+
 10. In order to verify that the installation worked type  `mpiexec -n 4 python mpi4py.bench helloworld`
 
 ### Installing mpi4py in a Raspberry Pi
@@ -36,13 +46,13 @@
    copies that follow the -n option) In a PI4, the above test
    returned:
    
-   ```
-   (ENV3) pi@red:~ $ mpiexec -n 4 python -m mpi4py.bench helloworld
-   Hello, World! I am process 0 of 4 on red.
-   Hello, World! I am process 1 of 4 on red.
-   Hello, World! I am process 2 of 4 on red.
-   Hello, World! I am process 3 of 4 on red.
-   ```
+   > ```
+   > (ENV3) pi@red:~ $ mpiexec -n 4 python -m mpi4py.bench helloworld
+   > Hello, World! I am process 0 of 4 on red.
+   > Hello, World! I am process 1 of 4 on red.
+   > Hello, World! I am process 2 of 4 on red.
+   > Hello, World! I am process 3 of 4 on red.
+   > ```
    
 ### Installing mpi4py in MacOS
    
@@ -60,13 +70,13 @@ To test if it works a build in test program is available.
 To run it on on a single host with n cores (lest assume you have 2
 cores), you can use:
 
-```
-mpiexec -n 4 python -m mpi4py.bench helloworld
-Hello, World! I am process 0 of 5 on localhost.
-Hello, World! I am process 1 of 5 on localhost.
-Hello, World! I am process 2 of 5 on localhost.
-Hello, World! I am process 3 of 5 on localhost.
-```
+> ```
+> mpiexec -n 4 python -m mpi4py.bench helloworld
+> Hello, World! I am process 0 of 5 on localhost.
+> Hello, World! I am process 1 of 5 on localhost.
+> Hello, World! I am process 2 of 5 on localhost.
+> Hello, World! I am process 3 of 5 on localhost.
+> ```
 
 Note that the messages can be in different order.
 
@@ -94,30 +104,31 @@ FIRTS TEST BY HAND
 
 TODO: VERIFY 
 
-```
-mpirun.openmpi -np 2 \
-               -machinefile /home/pi/mpi_testing/machinefile \
-               python helloworld.py
-```
-
+> ```
+> mpirun.openmpi \
+>   -np 2 \
+>   -machinefile /home/pi/mpi_testing/machinefile \
+>   python helloworld.py
+> ```
+ 
 The machinefile contains the ipaddresses
 
-```
-pi@192. ....
-yout add teh ip addresses
-```
+> ```
+> pi@192. ....
+> yout add teh ip addresses
+> ```
 
 TODO: learn about and evaluate and test if we can do 
 
-```
-mpirun -r my_rankfile --report-bindings ... 
-
-Where the rankfile contains:
-rank 0=compute17 slot=1:0
-rank 1=compute17 slot=1:1
-rank 2=compute18 slot=1:0
-rank 3=compute18 slot=1:1
-```
+> ```
+> mpirun -r my_rankfile --report-bindings ... 
+> 
+> Where the rankfile contains:
+> rank 0=compute17 slot=1:0
+> rank 1=compute17 slot=1:1
+> rank 2=compute18 slot=1:0
+> rank 3=compute18 slot=1:1
+> ```
 
 ## MPI Functionality examples
 
@@ -128,22 +139,27 @@ rank 3=compute18 slot=1:1
 In this example, we broadcast a two-entry Python dictionary from a
 root process to the rest of the processes in our communicator group.
 
-``` python
-!include ../examples/broadcast.py
-```
+> ``` python
+> !include ../examples/broadcast.py
+> ```
 
 After running `mpiexec -n 4 python bcast.py` we get the following:
 
-```
-before broadcast, data on rank 0 is  {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-before broadcast, data on rank 1 is  None
-before broadcast, data on rank 2 is  None
-before broadcast, data on rank 3 is  None
-after broadcast, data on rank 0 is  {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-after broadcast, data on rank 1 is  {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-after broadcast, data on rank 2 is  {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-after broadcast, data on rank 3 is  {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-```
+> ```
+> before broadcast, data on rank 0 is
+>   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+> before broadcast, data on rank 1 is  None
+> before broadcast, data on rank 2 is  None
+> before broadcast, data on rank 3 is  None
+> after broadcast, data on rank 0 is
+>   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+> after broadcast, data on rank 1 is
+>   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+> after broadcast, data on rank 2 is
+>   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+> after broadcast, data on rank 3 is
+>   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+> ```
 As we can see, the process with rank 1, received the data broadcast from rank 0.
 
 
@@ -152,23 +168,23 @@ As we can see, the process with rank 1, received the data broadcast from rank 0.
 In this example, with scatter the members of a list among the
 processes in the communicator group.
 
-``` python
-!include ../examples/scatter.py
-```
+> ``` python
+> !include ../examples/scatter.py
+> ```
 
 Executing `mpiexec -n 4 python scatter.py` yields:
 
-```
-before scattering, data on rank 2 is  None
-before scattering, data on rank 3 is  None
-before scattering, data on rank 0 is  [1, 4, 9, 16]
-before scattering, data on rank 1 is  None
-data for rank 2 is  9
-data for rank 1 is  4
-data for rank 3 is  16
-data for rank 0 is  1
-```
-
+> ```
+> before scattering, data on rank 2 is  None
+> before scattering, data on rank 3 is  None
+> before scattering, data on rank 0 is  [1, 4, 9, 16]
+> before scattering, data on rank 1 is  None
+> data for rank 2 is  9
+> data for rank 1 is  4
+> data for rank 3 is  16
+> data for rank 0 is  1
+> ```
+ 
 The members of the list from process 0 have been successfully
 scattered among the rest of the processes in the communicator group.
 
@@ -179,22 +195,22 @@ In this example, data from each process in the communicator group is
 gathered in the process with rank 0.
 
 
-``` python
-!include ../examples/gather.py
-```
+> ``` python
+> !include ../examples/gather.py
+> ```
 
 Executing `mpiexec -n 4 python gather.py` yields:
 
-```
-before gathering, data on rank 2 is  9
-before gathering, data on rank 3 is  16
-before gathering, data on rank 0 is  1
-before gathering, data on rank 1 is  4
-after gathering, data in rank 2 is  None
-after gathering, data in rank 1 is  None
-after gathering, data in rank 3 is  None
-after gathering, process 0's data is  [1, 4, 9, 16]
-```
+> ```
+> before gathering, data on rank 2 is  9
+> before gathering, data on rank 3 is  16
+> before gathering, data on rank 0 is  1
+> before gathering, data on rank 1 is  4
+> after gathering, data in rank 2 is  None
+> after gathering, data in rank 1 is  None
+> after gathering, data in rank 3 is  None
+> after gathering, process 0's data is  [1, 4, 9, 16]
+> ```
 
 The data from processes with rank `1` to `size - 1` have been
 successfully gathered in process 0.
@@ -205,23 +221,23 @@ successfully gathered in process 0.
 In this example, we broadcast a NumPy array from process 0 to the rest
 of the processes in the communicator group.
 
-``` python
-!include ../examples/broadcast_buffer.py
-```
+> ``` python
+> !include ../examples/broadcast_buffer.py
+> ```
 
 Executing `mpiexec -n 4 python npbcast.py` yields:
 
-```
-before broadcasting, data for rank 1 is:  [0 0 0 0 0 0 0 0 0 0]
-before broadcasting, data for rank 2 is:  [0 0 0 0 0 0 0 0 0 0]
-before broadcasting, data for rank 3 is:  [0 0 0 0 0 0 0 0 0 0]
-before broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
-after broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
-after broadcasting, data for rank 2 is:  [0 1 2 3 4 5 6 7 8 9]
-after broadcasting, data for rank 3 is:  [0 1 2 3 4 5 6 7 8 9]
-after broadcasting, data for rank 1 is:  [0 1 2 3 4 5 6 7 8 9]
-```
-
+> ```
+> before broadcasting, data for rank 1 is:  [0 0 0 0 0 0 0 0 0 0]
+> before broadcasting, data for rank 2 is:  [0 0 0 0 0 0 0 0 0 0]
+> before broadcasting, data for rank 3 is:  [0 0 0 0 0 0 0 0 0 0]
+> before broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
+> after broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
+> after broadcasting, data for rank 2 is:  [0 1 2 3 4 5 6 7 8 9]
+> after broadcasting, data for rank 3 is:  [0 1 2 3 4 5 6 7 8 9]
+> after broadcasting, data for rank 1 is:  [0 1 2 3 4 5 6 7 8 9]
+> ```
+ 
 As we can see, the values in the array at process with rank 0 have
 been broadcast to the rest of the processes in the communicator group.
 
@@ -231,26 +247,26 @@ been broadcast to the rest of the processes in the communicator group.
 In this example, we scatter a NumPy array among the processes in the
 communicator group.
 
-``` python
-!include ../examples/scatter_buffer.py
-```
+> ``` python
+> !include ../examples/scatter_buffer.py
+> ```
 
 Executing `mpiexec -n 4 python npscatter.py` yields:
 
-```
-recvbuf in  1:  [0 0 0 0 0 0 0 0 0 0]
-recvbuf in  2:  [0 0 0 0 0 0 0 0 0 0]
-recvbuf in  3:  [0 0 0 0 0 0 0 0 0 0]
-sendbuf in 0:  [[0 0 0 0 0 0 0 0 0 0]
- [1 1 1 1 1 1 1 1 1 1]
- [2 2 2 2 2 2 2 2 2 2]
- [3 3 3 3 3 3 3 3 3 3]]
-recvbuf in  0:  [0 0 0 0 0 0 0 0 0 0]
-Buffer in process 2 contains:  [2 2 2 2 2 2 2 2 2 2]
-Buffer in process 0 contains:  [0 0 0 0 0 0 0 0 0 0]
-Buffer in process 3 contains:  [3 3 3 3 3 3 3 3 3 3]
-Buffer in process 1 contains:  [1 1 1 1 1 1 1 1 1 1]
-```
+> ```
+> recvbuf in  1:  [0 0 0 0 0 0 0 0 0 0]
+> recvbuf in  2:  [0 0 0 0 0 0 0 0 0 0]
+> recvbuf in  3:  [0 0 0 0 0 0 0 0 0 0]
+> sendbuf in 0:  [[0 0 0 0 0 0 0 0 0 0]
+>                 [1 1 1 1 1 1 1 1 1 1]
+>                 [2 2 2 2 2 2 2 2 2 2]
+>                 [3 3 3 3 3 3 3 3 3 3]]
+> recvbuf in  0:  [0 0 0 0 0 0 0 0 0 0]
+> Buffer in process 2 contains:  [2 2 2 2 2 2 2 2 2 2]
+> Buffer in process 0 contains:  [0 0 0 0 0 0 0 0 0 0]
+> Buffer in process 3 contains:  [3 3 3 3 3 3 3 3 3 3]
+> Buffer in process 1 contains:  [1 1 1 1 1 1 1 1 1 1]
+> ```
 
 As we can see, the values in the 2-D array at process with rank 0,
 have been scattered among all our processes in the communicator group,
@@ -262,27 +278,28 @@ based on their rank value.
 In this example, we gather a NumPy array from the processes in the
 communicator group into a 2-D array in process with rank 0.
 
-``` python
-!include ../examples/gather_buffer.py
-```
+> ``` python
+> !include ../examples/gather_buffer.py
+> ```
        
 Executing `mpiexec -n 4 python npgather.py` yields:
 
-```
-Buffer in process 2 before gathering:  [2 2 2 2 2 2 2 2 2 2]
-Buffer in process 3 before gathering:  [3 3 3 3 3 3 3 3 3 3]
-Buffer in process 0 before gathering:  [0 0 0 0 0 0 0 0 0 0]
-Buffer in process 1 before gathering:  [1 1 1 1 1 1 1 1 1 1]
-recvbuf in process 0 before gathering:  [[0 0 0 0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0 0 0 0]]
-recvbuf in process 0 after gathering: 
- [[0 0 0 0 0 0 0 0 0 0]
- [1 1 1 1 1 1 1 1 1 1]
- [2 2 2 2 2 2 2 2 2 2]
- [3 3 3 3 3 3 3 3 3 3]]
-```
+> ```
+> Buffer in process 2 before gathering:  [2 2 2 2 2 2 2 2 2 2]
+> Buffer in process 3 before gathering:  [3 3 3 3 3 3 3 3 3 3]
+> Buffer in process 0 before gathering:  [0 0 0 0 0 0 0 0 0 0]
+> Buffer in process 1 before gathering:  [1 1 1 1 1 1 1 1 1 1]
+> recvbuf in process 0 before gathering:
+>  [[0 0 0 0 0 0 0 0 0 0]
+>   [0 0 0 0 0 0 0 0 0 0]
+>   [0 0 0 0 0 0 0 0 0 0]
+>   [0 0 0 0 0 0 0 0 0 0]]
+> recvbuf in process 0 after gathering: 
+>  [[0 0 0 0 0 0 0 0 0 0]
+>   [1 1 1 1 1 1 1 1 1 1]
+>   [2 2 2 2 2 2 2 2 2 2]
+>   [3 3 3 3 3 3 3 3 3 3]]
+> ```
 
 The values contained in the buffers from the different processes in
 the group have been gathered in the 2-D array in process with rank 0.

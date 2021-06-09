@@ -1,8 +1,5 @@
-!include chapters/title.md
 
 !include chapters/preface.md
-
-!include chapters/hardware.md
 
 !include chapters/introduction.md
 
@@ -10,5 +7,6 @@
 
 !include chapters/mpi.md
 
+## Appendix
 
-
+!include chapters/hardware.md
