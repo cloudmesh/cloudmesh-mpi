@@ -9,7 +9,7 @@ PANDOC=docker run --rm --volume "${PWD}:/data" --user ${USER_ID}:${GROUP_ID}
 all:md pdf clean
 
 md:
-	${PANDOC} cloudmesh/pandoc ${OPTIONS} chapters/report.md -o tmp-1.md
+	${PANDOC} cloudmesh/pandoc ${OPTIONS} ./chapters/report.md -o tmp-1.md
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} tmp-1.md  -o tmp-2.md
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} tmp-2.md  -o tmp-3.md
 	${PANDOC} cloudmesh/pandoc --number-sections chapters/title.md tmp-3.md -o report.md

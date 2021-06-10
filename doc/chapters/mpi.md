@@ -307,7 +307,26 @@ TODO
 
 #### Dynamic Process Management
 
-TODO
+In this example, we have two python programs, the first one being the manager and the second
+being the worker. 
+
+> ``` python
+> !include ../examples/dynamicProcess/manager.py
+> ```
+
+> ``` python
+> !include ../examples/dynamicProcess/worker.py
+> ```
+
+Please cd into examples/dynamicProcess
+Executing `mpiexec -n 4 python dynamicProcess.py` yields:
+
+> ```
+>
+> ```
+
+The values contained in the buffers from the different processes in
+the group have been gathered in the 2-D array in process with rank 0.
 
 #### task processing (spwan, pull, …)
 
