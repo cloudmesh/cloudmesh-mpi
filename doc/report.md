@@ -524,29 +524,7 @@ In this example, we broadcast a two-entry Python dictionary from a root
 process to the rest of the processes in our communicator group.
 
 > ``` python
-> from mpi4py import MPI
->
-> # Set up the MPI Communicator
-> comm = MPI.COMM_WORLD
->
-> # Get the rank of the current process in the communicator group
-> rank = comm.Get_rank()
->
-> if rank == 0:  # Process with rank 0 gets the data to be broadcast
->     data = {'size' : [1,3,8],
->             'name' : ['disk1', 'disk2', 'disk3']}
-> else:  # Other processes' data is empty
->     data = None
->
-> # Print data in each process
-> print("before broadcast, data on rank %d is "%comm.rank, data)
->
-> # Data from process with rank 0 is broadcast to other processes in our
-> # communicator group
-> data = comm.bcast(data, root=0)
->
-> # Print data in each process after broadcast
-> print("after broadcast, data on rank %d is "%comm.rank, data)
+> !include ../examples/broadcast.py
 > ```
 
 After running `mpiexec -n 4 python bcast.py` we get the following:
@@ -574,31 +552,7 @@ In this example, with scatter the members of a list among the processes
 in the communicator group.
 
 > ``` python
-> from mpi4py import MPI
->
-> # Communicator
-> comm = MPI.COMM_WORLD
->
-> # Number of processes in the communicator group
-> size = comm.Get_size()
->
-> # Get the rank of the current process in the communicator group
-> rank = comm.Get_rank()
->
-> # Process with rank 0 gets a list with the data to be scattered
-> if rank == 0:
->     data = [(i+1)**2 for i in range(size)]
-> else:
->     data = None
->
-> # Print data in each process
-> print("before scattering, data on rank %d is "%comm.rank, data)
->
-> # Scattering occurs
-> data = comm.scatter(data, root=0)
->
-> # Print data in each process after scattering
-> print("data for rank %d is "%comm.rank, data)
+> !include ../examples/scatter.py
 > ```
 
 Executing `mpiexec -n 4 python scatter.py` yields:
@@ -621,32 +575,7 @@ In this example, data from each process in the communicator group is
 gathered in the process with rank 0.
 
 > ``` python
-> from mpi4py import MPI
->
-> # Communicator
-> comm = MPI.COMM_WORLD
->
-> # Number of processes in the communicator group
-> size = comm.Get_size()
->
-> # Get the rank of the current process in the communicator group
-> rank = comm.Get_rank()
->
-> # Each process gets different data, depending on its rank number
-> data = (rank+1)**2
->
-> # Print data in each process
-> print("before gathering, data on rank %d is "%comm.rank, data)
->
-> # Gathering occurs
-> data = comm.gather(data, root=0)
->
-> # Process 0 prints out the gathered data, rest of the processes
-> # print their data as well
-> if rank == 0:
->     print("after gathering, process 0's data is ", data)
-> else:
->     print("after gathering, data in rank %d is "%comm.rank, data)
+> !include ../examples/gather.py
 > ```
 
 Executing `mpiexec -n 4 python gather.py` yields:
@@ -669,31 +598,7 @@ In this example, we broadcast a NumPy array from process 0 to the rest
 of the processes in the communicator group.
 
 > ``` python
-> from mpi4py import MPI
-> import numpy as np
->
-> # Communicator
-> comm = MPI.COMM_WORLD
->
-> # Get the rank of the current process in the communicator group
-> rank = comm.Get_rank()
->
-> # Rank 0 gets a NumPy array containing values from 0 to 9
-> if rank == 0:
->     data = np.arange(0,10,1, dtype='i')
->
-> # Rest of the processes get an empty buffer
-> else:
->     data = np.zeros(10, dtype='i')
->
-> # Print data in each process
-> print("before broadcasting, data for rank %d is: "%comm.rank, data)
->
-> # Broadcast occurs
-> comm.Bcast(data, root=0)
->
-> # Print data in each process after broadcast
-> print("after broadcasting, data for rank %d is: "%comm.rank, data)
+> !include ../examples/broadcast_buffer.py
 > ```
 
 Executing `mpiexec -n 4 python npbcast.py` yields:
@@ -716,42 +621,7 @@ In this example, we scatter a NumPy array among the processes in the
 communicator group.
 
 > ``` python
-> from mpi4py import MPI
-> import numpy as np
->
-> # Communicator
-> comm = MPI.COMM_WORLD
->
-> # Number of processes in the communicator group
-> size = comm.Get_size()
->
-> # Get the rank of the current process in the communicator group
-> rank = comm.Get_rank()
->
-> # Data to be sent
-> sendbuf = None
->
-> # Process with rank 0 populates sendbuf with a 2-D array,
-> # based on the number of processes in our communicator group
-> if rank == 0:
->     sendbuf = np.zeros([size, 10], dtype='i')
->     sendbuf.T[:,:] = range(size)
->     
->     # Print the content of sendbuf before scattering
->     print('sendbuf in 0: ', sendbuf)
->
-> # Each process getd a buffer (initially containing just zeros) 
-> # to store scattered data.
-> recvbuf = np.zeros(10, dtype='i')
->
-> # Print the content of recvbuf in each process before scattering
-> print('recvbuf in  %d: '%rank, recvbuf)
->
-> # Scattering occurs
-> comm.Scatter(sendbuf, recvbuf, root=0)
->
-> # Print the content of sendbuf in each process after scattering
-> print('Buffer in process %d contains: '%rank, recvbuf)
+> !include ../examples/scatter_buffer.py
 > ```
 
 Executing `mpiexec -n 4 python npscatter.py` yields:
@@ -779,42 +649,7 @@ In this example, we gather a NumPy array from the processes in the
 communicator group into a 2-D array in process with rank 0.
 
 > ``` python
-> from mpi4py import MPI
-> import numpy as np
->
-> # Communicator group
-> comm = MPI.COMM_WORLD
->
-> # Number of processes in the communicator group
-> size = comm.Get_size()
->
-> # Get the rank of the current process in the communicator group
-> rank = comm.Get_rank()
->
-> # Each process gets an array with data based on its rank.
-> sendbuf = np.zeros(10, dtype='i') + rank
->
-> # Print the data in sendbuf before gathering 
-> print('Buffer in process %d before gathering: '%rank, sendbuf)
->
-> # Variable to store gathered data
-> recvbuf = None
->
-> # Process with rank 0 initializes recvbuf to a 2-D array conatining
-> # only zeros. The size of the array is determined by the number of
-> # processes in the communicator group
-> if rank == 0:
->     recvbuf = np.zeros([size,10], dtype='i')
->
->     # Print recvbuf
->     print('recvbuf in process 0 before gathering: ', recvbuf) 
->
-> # Gathering occurs
-> comm.Gather(sendbuf, recvbuf, root=0)
->
-> # Print recvbuf in process with rank 0 after gathering
-> if rank == 0:
->         print('recvbuf in process 0 after gathering: \n', recvbuf)
+> !include ../examples/gather_buffer.py
 > ```
 
 Executing `mpiexec -n 4 python npgather.py` yields:
