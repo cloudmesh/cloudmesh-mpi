@@ -44,20 +44,20 @@ together and share each others ideas and thoughts openly as well as ask
 questions. We will do the following structured tasks (you will need to
 know what plagiarism is and when and how you need to cite):
 
-## 1. Organizing Collaborative Research Teams
+## Organizing Collaborative Research Teams
 
-### 1.1 Communication (Gregor)
+### Communication (Gregor)
 
 TODO Intro paragraph
 
-#### 1.1.1 Video Conferencing (Shannon, Fidel)
+#### Video Conferencing (Shannon, Fidel)
 
 Due to COVID restrictions and the summer semester, maintaing a virtual
 environment is esential to the lab group. Because of this, the team has
 resorted to video conferencing to keep group meetings intimate and
 proactive.
 
-##### 1.1.2 Google Meet (Shannon, Gregor)
+##### Google Meet (Shannon, Gregor)
 
 -   What is Google Meet?
 
@@ -90,7 +90,7 @@ proactive.
     google meets reducing the number of systems one uses for
     communication in a team.
 
-##### 1.1.3 Zoom (Fidel, Gregor)
+##### Zoom (Fidel, Gregor)
 
 -   What is zoom?
 
@@ -135,7 +135,7 @@ proactive.
     refer to the [Zoom support
     pages](https://support.zoom.us/hc/en-us/articles/201362673-Requesting-or-giving-remote-control).
 
-##### 1.1.4 Others (Agness)
+##### Others (Agness)
 
 -   What do you find useful and a reserach team may consider? The answer
     could be nothing ;-)
@@ -143,7 +143,7 @@ proactive.
     out. A shared database of information
 -   A dash board of weekly takes
 
-#### 1.2 Chat (Erin, Cooper)
+#### Chat (Erin, Cooper)
 
 The main way in which our research team stays in touch over the course
 of the week is through Slack. We have a couple of different channels
@@ -152,7 +152,7 @@ everyone in the group to contribute to and benefit from the answers to
 specific questions/problems that others may have already run in to along
 the way.
 
-##### 1.2.1 Slack (Cooper)
+##### Slack (Cooper)
 
 -   What is ...?
 
@@ -266,9 +266,9 @@ IDEs: \* Pycharm \* Pro: best Python editor \* Cons: needs lots of
 resources, steep learning curve \* Code (MS) \* Pro: ofetn used on
 Raspberry \* Cons: Pycharm seems to have more features from the start
 
-### 1.1 Documentation Development with Markdown ()
+### Documentation Development with Markdown ()
 
-#### 1.1.2 Markdown ()
+#### Markdown ()
 
 TODO
 
@@ -278,7 +278,7 @@ TODO
 -   Pointer to Gregor book
 -   Collaborative editing with HackMD.io
 
-### 1.1 TODO
+### TODO
 
 It is important to communicate quickly some tasks in the document that
 we write as a team. In order to do this we wuse the keyword TODO,
@@ -293,7 +293,7 @@ simple put his name behwind it, as well as the data and time so others
 know you work on it. You can aslo communicate on slack about the task
 you do if you run into issues or have questions.
 
-### 1.2 Git and GitHub
+### Git and GitHub
 
 Git is a distributed version control system to support working on
 project in teams while allowing different team members to contribute and
@@ -332,7 +332,7 @@ interfaces are useful. Several such interfaces are available at:
 
 -   <https://git-scm.com/downloads/guis>
 
-#### 1.2.2 GitHub Commands
+#### GitHub Commands
 
 -   What are the most important commands?
 
@@ -361,7 +361,7 @@ files and you could have files that you do not want to commit. instead
 **always** use `git add FILENAME`, where FILENAME is the file you like
 to add
 
-#### 1.2.1 Task Management
+#### Task Management
 
 -   [Our tasks in
     Github](https://github.com/cloudmesh/cloudmesh-mpi/projects/1) TODO
@@ -369,7 +369,7 @@ to add
 -   [Our issues in
     GitHub](https://github.com/cloudmesh/cloudmesh-mpi/issues) TODO
 
-#### 1.2.2 Code Management
+#### Code Management
 
 Our cod is managed as opens ource code in github.
 
@@ -383,13 +383,13 @@ Our cod is managed as opens ource code in github.
 
     `git clone https://github.com/cloudmesh/cloudmesh-mpi.git`
 
-#### 1.2.3 Github Actions
+#### Github Actions
 
 We have not yet used them
 
 TODO: provide description what they are
 
-All: if yo see a TODO, and want to do it (e.g. have 1-2 hours time, put
+All: if you see a TODO, and want to do it (e.g. have 1-2 hours time, put
 your name to it so others know you will work on it. Do not assign a TODO
 to you if you do not have time and will do it in a month from now,
 Research tasks need to be done immediately. HOwever we will also assign
@@ -711,21 +711,26 @@ group have been gathered in the 2-D array in process with rank 0.
 
 TODO
 
-#### Dynamic Process Management
+#### Dynamic Process Management with `spawn`
 
 In this example, we have two python programs, the first one being the
 manager and the second being the worker.
 
 > ``` {.python}
-> !include ../examples/dynamicProcess/manager.py
+> !include ../examples/spawn/manager.py
 > ```
 
 > ``` {.python}
-> !include ../examples/dynamicProcess/worker.py
+> !include ../examples/spawn/worker.py
 > ```
 
-Please cd into examples/dynamicProcess Executing
-`mpiexec -n 4 python dynamicProcess.py` yields:
+To execute the example please go to the examples directoy and run the
+manager program
+
+>     $ cd examples/spawn
+>     $ mpiexec -n 4 python manager.py
+
+This will result in:
 
 >     N: 100 rank: 4
 >     N: 100 rank: 1
@@ -749,8 +754,10 @@ Please cd into examples/dynamicProcess Executing
 >     N: 100 rank: 0
 
 This output depends on which child process is received first. The output
-can vary. WARNING: There is uncertainty as to why the program does not
-exit out. To kill the program make sure to Ctrl-C after executing.
+can vary.
+
+> > WARNING: There is uncertainty as to why the program does not exit
+> > out. To kill the program make sure to Ctrl-C after executing.
 
 #### task processing (spawn, pull, ...)
 

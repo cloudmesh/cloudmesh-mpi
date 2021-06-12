@@ -1,15 +1,15 @@
-## 1. Organizing Collaborative Research Teams
+## Organizing Collaborative Research Teams
 
-### 1.1 Communication (Gregor)
+### Communication (Gregor)
 
 TODO Intro paragraph
 
 
-#### 1.1.1 Video Conferencing (Shannon, Fidel)
+#### Video Conferencing (Shannon, Fidel)
 
 Due to COVID restrictions and the summer semester, maintaing a virtual environment is esential to the lab group.  Because of this, the team has resorted to video conferencing to keep group meetings intimate and proactive. 
 
-##### 1.1.2 Google Meet (Shannon, Gregor)
+##### Google Meet (Shannon, Gregor)
 
 * What is Google Meet?
 
@@ -45,7 +45,7 @@ Due to COVID restrictions and the summer semester, maintaing a virtual environme
   meets reducing the number of systems one uses for 
   communication in a team. 
 
-##### 1.1.3 Zoom (Fidel, Gregor)
+##### Zoom (Fidel, Gregor)
 
 * What is zoom?
   
@@ -100,18 +100,18 @@ Due to COVID restrictions and the summer semester, maintaing a virtual environme
   [Zoom support pages](https://support.zoom.us/hc/en-us/articles/201362673-Requesting-or-giving-remote-control).
 
 
-##### 1.1.4 Others (Agness)
+##### Others (Agness)
 
 * What do you find useful and a reserach team may consider? The answer could be nothing ;-)
 * A shared google doc for documented steps we take when figuring stuff out. A shared database of information
 * A dash board of weekly takes 
 
 
-#### 1.2 Chat (Erin, Cooper)
+#### Chat (Erin, Cooper)
 
 The main way in which our research team stays in touch over the course of the week is through Slack.  We have a couple of different channels (general, python, random, etc.) we use to communicate.  This allows everyone in the group to contribute to and benefit from the answers to specific questions/problems that others may have already run in to along the way.
 
-##### 1.2.1 Slack (Cooper)
+##### Slack (Cooper)
 
  
 
@@ -189,9 +189,9 @@ IDEs:
     * Pro: ofetn used on Raspberry
     * Cons: Pycharm seems to have more features from the start
 
-### 1.1 Documentation Development with Markdown ()
+### Documentation Development with Markdown ()
 
-#### 1.1.2 Markdown ()
+#### Markdown ()
 
 TODO
 
@@ -201,13 +201,13 @@ TODO
 * Pointer to Gregor book
 * Collaborative editing with HackMD.io
 
-### 1.1 TODO
+### TODO
 
 It is important to communicate quickly some tasks in the document that we write as a team. In order to do this we wuse the keyword TODO, followed usually by an explanation if needed. As a TODO can be hopefully resolved quickly it shoudl be able yp complete them in 1-2 hours. Any TODO that may take longer we also add to our GitHub project in order for it to be recorded and if we identify  or delays in its execution we can assign additional team members to help on this tasks.
 
 Once a team member has identified a TODO item, the team member can simple put his name behwind it, as well as the data and time so others know you work on it. You can aslo communicate on slack about the task you do if you run into issues or have questions.
 
-### 1.2 Git and GitHub
+### Git and GitHub
 
 Git is a distributed version control system to support working on project in teams while allowing different team members to contribute and to currate the contribution through reviews.
 
@@ -234,7 +234,7 @@ Some may fancy using a Graphical user interface to interact with GitHub. However
 
 * <https://git-scm.com/downloads/guis>
 
-#### 1.2.2 GitHub Commands
+#### GitHub Commands
 
 * What are the most important commands?
 
@@ -264,7 +264,7 @@ THis will take hours to fix, so be careful. So make sure you code does not conta
 
 Also do never ever use the git command `git add .` as that adds all files and you could have files that you do not want to commit. instead **always** use `git add FILENAME`, where FILENAME is the file you like to add
 
-#### 1.2.1 Task Management
+#### Task Management
 
 * [Our tasks in Github](https://github.com/cloudmesh/cloudmesh-mpi/projects/1)
   TODO
@@ -272,7 +272,7 @@ Also do never ever use the git command `git add .` as that adds all files and yo
 * [Our issues in GitHub](https://github.com/cloudmesh/cloudmesh-mpi/issues) 
   TODO
 
-#### 1.2.2 Code Management
+#### Code Management
 
 Our cod is managed as opens ource code in github. 
 
@@ -286,14 +286,14 @@ Our cod is managed as opens ource code in github.
   
   `git clone https://github.com/cloudmesh/cloudmesh-mpi.git`
 
-#### 1.2.3 Github Actions
+#### Github Actions
 
 We have not yet used them
 
 TODO: provide description what they are
 
 
-All: if yo see a TODO, and want to do it (e.g. have 1-2 hours time, put your name to it so others know you will work on it. Do not assign a TODO to you if you do not have time and will do it in a month from now, Research tasks need to be done immediately. HOwever we will also assign some longer term tasks to you so you can work ahead and in parallel, if your task is not done it will be assigned to some one else to mitigate that the time delay does not block the project.)
+All: if you see a TODO, and want to do it (e.g. have 1-2 hours time, put your name to it so others know you will work on it. Do not assign a TODO to you if you do not have time and will do it in a month from now, Research tasks need to be done immediately. HOwever we will also assign some longer term tasks to you so you can work ahead and in parallel, if your task is not done it will be assigned to some one else to mitigate that the time delay does not block the project.)
 
 All: add tasks in github so we can assign todos and monitor progress
 

@@ -350,21 +350,28 @@ the group have been gathered in the 2-D array in process with rank 0.
 
 TODO
 
-#### Dynamic Process Management
+#### Dynamic Process Management with `spawn`
 
 In this example, we have two python programs, the first one being the manager and the second
 being the worker.
 
 > ``` python
-> !include ../examples/dynamicProcess/manager.py
+> !include ../examples/spawn/manager.py
 > ```
 
 > ``` python
-> !include ../examples/dynamicProcess/worker.py
+> !include ../examples/spawn/worker.py
 > ```
 
-Please cd into examples/dynamicProcess
-Executing `mpiexec -n 4 python dynamicProcess.py` yields:
+To execute the example please go to the examples directoy and run the manager
+program
+
+> ```
+> $ cd examples/spawn
+> $ mpiexec -n 4 python manager.py
+> ```
+
+This will result in:
 
 > ```
 > N: 100 rank: 4
@@ -390,7 +397,8 @@ N: 100 rank: 0
 > ```
 
 This output depends on which child process is received first. The output can vary.
-WARNING: There is uncertainty as to why the program does not exit out. To kill the program make sure to Ctrl-C after executing.
+
+>> WARNING: There is uncertainty as to why the program does not exit out. To kill the program make sure to Ctrl-C after executing.
 
 
 
