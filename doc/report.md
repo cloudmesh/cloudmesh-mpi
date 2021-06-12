@@ -51,7 +51,7 @@ Add a preface
     <https://github.com/cloudmesh/cloudmesh-mpi/tree/main/examples>
 
 -   This document:
-    <https://github.com/cloudmesh/cloudmesh-mpi/blob/main/doc/report.pdf>
+    <https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/report.pdf>
 
 # Overview
 
