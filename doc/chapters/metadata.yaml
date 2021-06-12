@@ -1,0 +1,16 @@
+---
+title: Towards Python MPI for Artificial Intelligence and Deep Learning Research 
+author: Gregor von Laszewski, Fidel Leal, Shannon Kerr, Erin Seliger, Cooper Young, Agness Lungu
+header-includes: |
+    \usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \fancyhead[CO,CE]{This is fancy}
+    \fancyfoot[CO,CE]{So is this}
+    \fancyfoot[LE,RO]{\thepage}
+    \usepackage{tcolorbox}
+    \newtcolorbox{myquote}{colback=gray!5!white, colframe=gray!75!black}
+    \renewenvironment{quote}{\begin{myquote}}{\end{myquote}}
+abstract: |
+   This is a pandoc test.
+   For more information, please contact: <laszewski@gmail.com>
+---
