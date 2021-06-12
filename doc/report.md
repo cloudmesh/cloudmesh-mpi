@@ -1,17 +1,6 @@
 # Towards Python MPI for Artificial Intelligence and Deep Learning Research
 
 Gregor von Laszewski, Fidel Leal, Shannon Kerr, Erin Seliger, Cooper
-<<<<<<< HEAD
-Young, Agness Lungu
-
-> **Note:** Do not edit this document, only edit the documents in the
-> chapters directory
-
-## Preface
-
-Add a preface
-
-=======
 Young, Agness Lungua
 
 For more information, please contact: <laszewski@gmail.com>
@@ -19,11 +8,13 @@ For more information, please contact: <laszewski@gmail.com>
 > **Note:** Do not modify the report.md file, instead modify only files
 > in in the chapters dir
 
+> **Note:** Do not edit this document, only edit the documents in the
+> chapters directory
+
 # Preface
 
 Add a preface
 
->>>>>>> de1262524383405a1ef21015f917cd767b21df0e
 -   Who we are and how this activity came about.
 
 -   Notation. We can copy what I have done in other books, but keep it
@@ -38,43 +29,7 @@ Add a preface
         -   hyperlinks
         -   citation
 
-<<<<<<< HEAD
-## Hardware of current students
-
--   Fidel Leal,
-    -   Equipment
-        -   MacBook Pro 2015, 16GB RAM i7, SSD 512GB
-        -   PC, 64-bit, 8GB RAM, i5, SSD \<240GB, speed\>
-            -   Windows 10 Education
-        -   Editor: Pycharm, vim
--   Shannon Kerr,
-    -   Equipment
-        -   Dell Inspiron, i5, 8GB, 1.6GHz 5482,
-        -   HDD 1TB 5.4K 6GB/s
-        -   Windows 64bit Home
-        -   Editor: Vim
--   Erin Seliger
-    -   Equipment
-        -   Windows hp 2020, 16GB RAM, i7, 64-bit operating system
-        -   Windows Pro 64bit
-        -   Editor: Vim
--   Cooper Young
-    -   Equipment
-        -   Dell Inspiron 7000, i7 2 Ghz, 16GB RAM, Intel Optane 512GB
-            SSD
-        -   Windows 10 Education 64bit
-        -   Vim, Pycharm, Pico
--   Agness Lungu
-    -   Equipment
-        -   Lenovo V570, 16GB RAM, intel(R) core(TM) i5-2430M, 64-bit
-            operating system,
-        -   Windows 10 Education
-        -   editor: Vim, Pycharm
-
-## Overview
-=======
 # Overview
->>>>>>> de1262524383405a1ef21015f917cd767b21df0e
 
 TODO: Gregor improves this section
 
@@ -235,11 +190,7 @@ satisfied with their accuracy. Examples include:
 -   [Windows 10 Voice
     Recognition](https://support.microsoft.com/en-us/windows/use-voice-recognition-in-windows-10-83ff75bd-63eb-0b6c-18d4-6fae94050571)
     (free for Windows users). You can directly record into MS Word so
-<<<<<<< HEAD
     you get a free grammar checcker \> Agnes: I tried windows voice
-=======
-    you get a free grammar checcker > Agnes: I tried windows voice
->>>>>>> de1262524383405a1ef21015f917cd767b21df0e
     recognition and it did not work on my computer
 
 -   [Google Docs](https://support.google.com/docs/answer/4492226?hl=en)
@@ -450,40 +401,36 @@ All: add tasks in github so we can assign todos and monitor progress
 
 Gregor: Describe In detail how this is done
 
-<<<<<<< HEAD
-## Introduction to MPI
-=======
 # Introduction to MPI
->>>>>>> de1262524383405a1ef21015f917cd767b21df0e
 
 -   What is MPI and why do you want to use it
 
 -   What are some example MPI functionalities and usage patterns (send
     receive, embarrassing parallel
 
-<<<<<<< HEAD
+### Resources
+
+-   <https://research.computing.yale.edu/sites/default/files/files/mpi4py.pdf>
+-   <https://www.nesi.org.nz/sites/default/files/mpi-in-python.pdf>
+-   <https://www.kth.se/blogs/pdc/2019/08/parallel-programming-in-python-mpi4py-part-1/>
+-   <http://education.molssi.org/parallel-programming/03-distributed-examples-mpi4py/index.html>
+-   <http://www.ceci-hpc.be/assets/training/mpi4py.pdf>
+-   <https://www.csc.fi/documents/200270/224366/mpi4py.pdf/825c582a-9d6d-4d18-a4ad-6cb6c43fefd8>
+
+### Todo {#todo}
+
+-   what is mpi
+-   Ring
+-   kmeans
+-   calculation of pi
+-   find number count of 8 in randome numbers between 1-10
+
 ### Installation of mpi4py on Windows
 
 1.  Look up msmpi and click the second link to download and install
-    msmpisetup.exe and msmpisdk.msi
-2.  Open the system control panel
-3.  Click on Advanced system settings and then Environment Variables
-4.  Under the user variables box click on Path
-5.  Click New in order to add C:`\Program`{=tex}Files
-    (x86)`\Microsoft`{=tex}SDKs`\MPI`{=tex}and
-    C:`\Program`{=tex}Files`\Microsoft`{=tex}MPI`\Bin`{=tex}to Path
-6.  Close any open bash windows and then open a new one
-7.  Type the command `which mpiexec`
-8.  Install mpi4py with `pip install mpi4py`
-9.  In order to verify that the installation worked type
-    `mpiexec -n 4 python mpi4py.bench helloworld`
 
-### Installing mpi4py in a Raspberry Pi
-=======
-## Installation of mpi4py on Windows
-
-1.  Look up msmpi and click the second link to download and install
-    `msmpisetup.exe` and `msmpisdk.msi`
+    >     msmpisetup.exe
+    >     msmpisdk.msi`
 
 2.  Open the system control panel
 
@@ -505,33 +452,35 @@ Gregor: Describe In detail how this is done
     `mpiexec -n 4 python mpi4py.bench helloworld`
 
 ## Installing mpi4py in a Raspberry Pi
->>>>>>> de1262524383405a1ef21015f917cd767b21df0e
 
-1.  Activate our virtual environment: `source ~/ENV3/bin/activate`
+1.  Activate our virtual environment:
+
+    > ``` {.bash}
+    > $ python -m venv ~/ENV3
+    > $ source ~/ENV3/bin/activate
+    > ```
 
 2.  Install Open MPI in your pi by entering the following command:
-    `sudo apt-get install openmpi-bin`.
+
+    >     sudo apt-get install openmpi-bin
 
     After installation is complete you can check if it was successful by
-    using `mpicc --showme:version`.
+    using
 
-3.  Enter `pip install mpi4py` to download and install mpi4py.
+    >     mpicc --showme:version
+
+3.  Enter
+
+    >     pip install mpi4py
+
+    to download and install mpi4py.
 
 4.  The installation can be tested with
     `mpiexec -n 4 python -m    mpi4py.bench helloworld` (depending on
     the number of cores/nodes available to you, it may be necessary to
     reduce the number of copies that follow the -n option) In a PI4, the
-    above test returned:
+    previous test returned:
 
-<<<<<<< HEAD
-        (ENV3) pi@red:~ $ mpiexec -n 4 python -m mpi4py.bench helloworld
-        Hello, World! I am process 0 of 4 on red.
-        Hello, World! I am process 1 of 4 on red.
-        Hello, World! I am process 2 of 4 on red.
-        Hello, World! I am process 3 of 4 on red.
-
-### Installing mpi4py in MacOS
-=======
     >     (ENV3) pi@red:~ $ mpiexec -n 4 python -m mpi4py.bench helloworld
     >     Hello, World! I am process 0 of 4 on red.
     >     Hello, World! I am process 1 of 4 on red.
@@ -539,14 +488,14 @@ Gregor: Describe In detail how this is done
     >     Hello, World! I am process 3 of 4 on red.
 
 ## Installing mpi4py in MacOS
->>>>>>> de1262524383405a1ef21015f917cd767b21df0e
 
 A similar process can be followed to install mpi4py in MacOS. In this
 case, we can use Homebrew to get Open MPI by entering:
-`brew install open-mpi`.
 
-Once Open MPI is working, steps 3 and 4 from the above pi4 installation
-can be followed in order to download and install mpi4py.
+    $ brew install open-mpi
+
+Once Open MPI is working, steps 3 and 4 from the PI4 installation can be
+followed in order to download and install mpi4py.
 
 ## Hello World
 
@@ -555,19 +504,11 @@ To test if it works a build in test program is available.
 To run it on on a single host with n cores (lest assume you have 2
 cores), you can use:
 
-<<<<<<< HEAD
-    mpiexec -n 4 python -m mpi4py.bench helloworld
-    Hello, World! I am process 0 of 5 on localhost.
-    Hello, World! I am process 1 of 5 on localhost.
-    Hello, World! I am process 2 of 5 on localhost.
-    Hello, World! I am process 3 of 5 on localhost.
-=======
 >     mpiexec -n 4 python -m mpi4py.bench helloworld
 >     Hello, World! I am process 0 of 5 on localhost.
 >     Hello, World! I am process 1 of 5 on localhost.
 >     Hello, World! I am process 2 of 5 on localhost.
 >     Hello, World! I am process 3 of 5 on localhost.
->>>>>>> de1262524383405a1ef21015f917cd767b21df0e
 
 Note that the messages can be in different order.
 
@@ -588,32 +529,6 @@ FIRTS TEST BY HAND
 
 TODO: VERIFY
 
-<<<<<<< HEAD
-    mpirun.openmpi -np 2 \
-                   -machinefile /home/pi/mpi_testing/machinefile \
-                   python helloworld.py
-
-The machinefile contains the ipaddresses
-
-    pi@192. ....
-    yout add teh ip addresses
-
-TODO: learn about and evaluate and test if we can do
-
-    mpirun -r my_rankfile --report-bindings ... 
-
-    Where the rankfile contains:
-    rank 0=compute17 slot=1:0
-    rank 1=compute17 slot=1:1
-    rank 2=compute18 slot=1:0
-    rank 3=compute18 slot=1:1
-
-## MPI Functionality examples
-
-### MPI Collective Communication functionality examples
-
-#### Broadcast `comm.bcast()`
-=======
 >     mpirun.openmpi \
 >       -np 2 \
 >       -machinefile /home/pi/mpi_testing/machinefile \
@@ -639,54 +554,11 @@ TODO: learn about and evaluate and test if we can do
 ## MPI Collective Communication functionality examples
 
 ### Broadcast `comm.bcast()`
->>>>>>> de1262524383405a1ef21015f917cd767b21df0e
 
 In this example, we broadcast a two-entry Python dictionary from a root
 process to the rest of the processes in our communicator group.
 
-<<<<<<< HEAD
-``` {.python}
-from mpi4py import MPI
-
-# Set up the MPI Communicator
-comm = MPI.COMM_WORLD
-
-# Get the rank of the current process in the communicator group
-rank = comm.Get_rank()
-
-if rank == 0:  # Process with rank 0 gets the data to be broadcast
-    data = {'size' : [1,3,8],
-            'name' : ['disk1', 'disk2', 'disk3']}
-else:  # Other processes' data is empty
-    data = None
-
-# Print data in each process
-print("before broadcast, data on rank %d is "%comm.rank, data)
-
-# Data from process with rank 0 is broadcast to other processes in our
-# communicator group
-data = comm.bcast(data, root=0)
-
-# Print data in each process after broadcast
-print("after broadcast, data on rank %d is "%comm.rank, data)
-
-```
-
-After running `mpiexec -n 4 python bcast.py` we get the following:
-
-    before broadcast, data on rank 0 is  {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-    before broadcast, data on rank 1 is  None
-    before broadcast, data on rank 2 is  None
-    before broadcast, data on rank 3 is  None
-    after broadcast, data on rank 0 is  {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-    after broadcast, data on rank 1 is  {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-    after broadcast, data on rank 2 is  {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-    after broadcast, data on rank 3 is  {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-
-As we can see, the process with rank 1, received the data broadcast from
-rank 0.
-=======
-> ``` python
+> ``` {.python}
 > !include ../examples/broadcast.py
 > ```
 
@@ -708,54 +580,13 @@ After running `mpiexec -n 4 python bcast.py` we get the following:
 >
 > As we can see, the process with rank 1, received the data broadcast
 > from rank 0.
->>>>>>> de1262524383405a1ef21015f917cd767b21df0e
 
 #### Scatter `comm.scatter()`
 
 In this example, with scatter the members of a list among the processes
 in the communicator group.
 
-<<<<<<< HEAD
-``` {.python}
-from mpi4py import MPI
-
-# Communicator
-comm = MPI.COMM_WORLD
-
-# Number of processes in the communicator group
-size = comm.Get_size()
-
-# Get the rank of the current process in the communicator group
-rank = comm.Get_rank()
-
-# Process with rank 0 gets a list with the data to be scattered
-if rank == 0:
-    data = [(i+1)**2 for i in range(size)]
-else:
-    data = None
-
-# Print data in each process
-print("before scattering, data on rank %d is "%comm.rank, data)
-
-# Scattering occurs
-data = comm.scatter(data, root=0)
-
-# Print data in each process after scattering
-print("data for rank %d is "%comm.rank, data)
-```
-
-Executing `mpiexec -n 4 python scatter.py` yields:
-
-    before scattering, data on rank 2 is  None
-    before scattering, data on rank 3 is  None
-    before scattering, data on rank 0 is  [1, 4, 9, 16]
-    before scattering, data on rank 1 is  None
-    data for rank 2 is  9
-    data for rank 1 is  4
-    data for rank 3 is  16
-    data for rank 0 is  1
-=======
-> ``` python
+> ``` {.python}
 > !include ../examples/scatter.py
 > ```
 
@@ -769,7 +600,6 @@ Executing `mpiexec -n 4 python scatter.py` yields:
 >     data for rank 1 is  4
 >     data for rank 3 is  16
 >     data for rank 0 is  1
->>>>>>> de1262524383405a1ef21015f917cd767b21df0e
 
 The members of the list from process 0 have been successfully scattered
 among the rest of the processes in the communicator group.
@@ -779,48 +609,7 @@ among the rest of the processes in the communicator group.
 In this example, data from each process in the communicator group is
 gathered in the process with rank 0.
 
-<<<<<<< HEAD
-``` {.python}
-from mpi4py import MPI
-
-# Communicator
-comm = MPI.COMM_WORLD
-
-# Number of processes in the communicator group
-size = comm.Get_size()
-
-# Get the rank of the current process in the communicator group
-rank = comm.Get_rank()
-
-# Each process gets different data, depending on its rank number
-data = (rank+1)**2
-
-# Print data in each process
-print("before gathering, data on rank %d is "%comm.rank, data)
-
-# Gathering occurs
-data = comm.gather(data, root=0)
-
-# Process 0 prints out the gathered data, rest of the processes
-# print their data as well
-if rank == 0:
-    print("after gathering, process 0's data is ", data)
-else:
-    print("after gathering, data in rank %d is "%comm.rank, data)
-```
-
-Executing `mpiexec -n 4 python gather.py` yields:
-
-    before gathering, data on rank 2 is  9
-    before gathering, data on rank 3 is  16
-    before gathering, data on rank 0 is  1
-    before gathering, data on rank 1 is  4
-    after gathering, data in rank 2 is  None
-    after gathering, data in rank 1 is  None
-    after gathering, data in rank 3 is  None
-    after gathering, process 0's data is  [1, 4, 9, 16]
-=======
-> ``` python
+> ``` {.python}
 > !include ../examples/gather.py
 > ```
 
@@ -834,7 +623,6 @@ Executing `mpiexec -n 4 python gather.py` yields:
 >     after gathering, data in rank 1 is  None
 >     after gathering, data in rank 3 is  None
 >     after gathering, process 0's data is  [1, 4, 9, 16]
->>>>>>> de1262524383405a1ef21015f917cd767b21df0e
 
 The data from processes with rank `1` to `size - 1` have been
 successfully gathered in process 0.
@@ -844,47 +632,7 @@ successfully gathered in process 0.
 In this example, we broadcast a NumPy array from process 0 to the rest
 of the processes in the communicator group.
 
-<<<<<<< HEAD
-``` {.python}
-from mpi4py import MPI
-import numpy as np
-
-# Communicator
-comm = MPI.COMM_WORLD
-
-# Get the rank of the current process in the communicator group
-rank = comm.Get_rank()
-
-# Rank 0 gets a NumPy array containing values from 0 to 9
-if rank == 0:
-    data = np.arange(0,10,1, dtype='i')
-
-# Rest of the processes get an empty buffer
-else:
-    data = np.zeros(10, dtype='i')
-
-# Print data in each process
-print("before broadcasting, data for rank %d is: "%comm.rank, data)
-
-# Broadcast occurs
-comm.Bcast(data, root=0)
-
-# Print data in each process after broadcast
-print("after broadcasting, data for rank %d is: "%comm.rank, data)
-```
-
-Executing `mpiexec -n 4 python npbcast.py` yields:
-
-    before broadcasting, data for rank 1 is:  [0 0 0 0 0 0 0 0 0 0]
-    before broadcasting, data for rank 2 is:  [0 0 0 0 0 0 0 0 0 0]
-    before broadcasting, data for rank 3 is:  [0 0 0 0 0 0 0 0 0 0]
-    before broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
-    after broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
-    after broadcasting, data for rank 2 is:  [0 1 2 3 4 5 6 7 8 9]
-    after broadcasting, data for rank 3 is:  [0 1 2 3 4 5 6 7 8 9]
-    after broadcasting, data for rank 1 is:  [0 1 2 3 4 5 6 7 8 9]
-=======
-> ``` python
+> ``` {.python}
 > !include ../examples/broadcast_buffer.py
 > ```
 
@@ -898,7 +646,6 @@ Executing `mpiexec -n 4 python npbcast.py` yields:
 >     after broadcasting, data for rank 2 is:  [0 1 2 3 4 5 6 7 8 9]
 >     after broadcasting, data for rank 3 is:  [0 1 2 3 4 5 6 7 8 9]
 >     after broadcasting, data for rank 1 is:  [0 1 2 3 4 5 6 7 8 9]
->>>>>>> de1262524383405a1ef21015f917cd767b21df0e
 
 As we can see, the values in the array at process with rank 0 have been
 broadcast to the rest of the processes in the communicator group.
@@ -908,62 +655,7 @@ broadcast to the rest of the processes in the communicator group.
 In this example, we scatter a NumPy array among the processes in the
 communicator group.
 
-<<<<<<< HEAD
-``` {.python}
-from mpi4py import MPI
-import numpy as np
-
-# Communicator
-comm = MPI.COMM_WORLD
-
-# Number of processes in the communicator group
-size = comm.Get_size()
-
-# Get the rank of the current process in the communicator group
-rank = comm.Get_rank()
-
-# Data to be sent
-sendbuf = None
-
-# Process with rank 0 populates sendbuf with a 2-D array,
-# based on the number of processes in our communicator group
-if rank == 0:
-    sendbuf = np.zeros([size, 10], dtype='i')
-    sendbuf.T[:,:] = range(size)
-    
-    # Print the content of sendbuf before scattering
-    print('sendbuf in 0: ', sendbuf)
-
-# Each process getd a buffer (initially containing just zeros) 
-# to store scattered data.
-recvbuf = np.zeros(10, dtype='i')
-
-# Print the content of recvbuf in each process before scattering
-print('recvbuf in  %d: '%rank, recvbuf)
-
-# Scattering occurs
-comm.Scatter(sendbuf, recvbuf, root=0)
-
-# Print the content of sendbuf in each process after scattering
-print('Buffer in process %d contains: '%rank, recvbuf)
-```
-
-Executing `mpiexec -n 4 python npscatter.py` yields:
-
-    recvbuf in  1:  [0 0 0 0 0 0 0 0 0 0]
-    recvbuf in  2:  [0 0 0 0 0 0 0 0 0 0]
-    recvbuf in  3:  [0 0 0 0 0 0 0 0 0 0]
-    sendbuf in 0:  [[0 0 0 0 0 0 0 0 0 0]
-     [1 1 1 1 1 1 1 1 1 1]
-     [2 2 2 2 2 2 2 2 2 2]
-     [3 3 3 3 3 3 3 3 3 3]]
-    recvbuf in  0:  [0 0 0 0 0 0 0 0 0 0]
-    Buffer in process 2 contains:  [2 2 2 2 2 2 2 2 2 2]
-    Buffer in process 0 contains:  [0 0 0 0 0 0 0 0 0 0]
-    Buffer in process 3 contains:  [3 3 3 3 3 3 3 3 3 3]
-    Buffer in process 1 contains:  [1 1 1 1 1 1 1 1 1 1]
-=======
-> ``` python
+> ``` {.python}
 > !include ../examples/scatter_buffer.py
 > ```
 
@@ -981,7 +673,6 @@ Executing `mpiexec -n 4 python npscatter.py` yields:
 >     Buffer in process 0 contains:  [0 0 0 0 0 0 0 0 0 0]
 >     Buffer in process 3 contains:  [3 3 3 3 3 3 3 3 3 3]
 >     Buffer in process 1 contains:  [1 1 1 1 1 1 1 1 1 1]
->>>>>>> de1262524383405a1ef21015f917cd767b21df0e
 
 As we can see, the values in the 2-D array at process with rank 0, have
 been scattered among all our processes in the communicator group, based
@@ -992,63 +683,7 @@ on their rank value.
 In this example, we gather a NumPy array from the processes in the
 communicator group into a 2-D array in process with rank 0.
 
-<<<<<<< HEAD
-``` {.python}
-from mpi4py import MPI
-import numpy as np
-
-# Communicator group
-comm = MPI.COMM_WORLD
-
-# Number of processes in the communicator group
-size = comm.Get_size()
-
-# Get the rank of the current process in the communicator group
-rank = comm.Get_rank()
-
-# Each process gets an array with data based on its rank.
-sendbuf = np.zeros(10, dtype='i') + rank
-
-# Print the data in sendbuf before gathering 
-print('Buffer in process %d before gathering: '%rank, sendbuf)
-
-# Variable to store gathered data
-recvbuf = None
-
-# Process with rank 0 initializes recvbuf to a 2-D array conatining
-# only zeros. The size of the array is determined by the number of
-# processes in the communicator group
-if rank == 0:
-    recvbuf = np.zeros([size,10], dtype='i')
-
-    # Print recvbuf
-    print('recvbuf in process 0 before gathering: ', recvbuf) 
-
-# Gathering occurs
-comm.Gather(sendbuf, recvbuf, root=0)
-
-# Print recvbuf in process with rank 0 after gathering
-if rank == 0:
-        print('recvbuf in process 0 after gathering: \n', recvbuf)
-```
-
-Executing `mpiexec -n 4 python npgather.py` yields:
-
-    Buffer in process 2 before gathering:  [2 2 2 2 2 2 2 2 2 2]
-    Buffer in process 3 before gathering:  [3 3 3 3 3 3 3 3 3 3]
-    Buffer in process 0 before gathering:  [0 0 0 0 0 0 0 0 0 0]
-    Buffer in process 1 before gathering:  [1 1 1 1 1 1 1 1 1 1]
-    recvbuf in process 0 before gathering:  [[0 0 0 0 0 0 0 0 0 0]
-     [0 0 0 0 0 0 0 0 0 0]
-     [0 0 0 0 0 0 0 0 0 0]
-     [0 0 0 0 0 0 0 0 0 0]]
-    recvbuf in process 0 after gathering: 
-     [[0 0 0 0 0 0 0 0 0 0]
-     [1 1 1 1 1 1 1 1 1 1]
-     [2 2 2 2 2 2 2 2 2 2]
-     [3 3 3 3 3 3 3 3 3 3]]
-=======
-> ``` python
+> ``` {.python}
 > !include ../examples/gather_buffer.py
 > ```
 
@@ -1068,7 +703,6 @@ Executing `mpiexec -n 4 python npgather.py` yields:
 >       [1 1 1 1 1 1 1 1 1 1]
 >       [2 2 2 2 2 2 2 2 2 2]
 >       [3 3 3 3 3 3 3 3 3 3]]
->>>>>>> de1262524383405a1ef21015f917cd767b21df0e
 
 The values contained in the buffers from the different processes in the
 group have been gathered in the 2-D array in process with rank 0.
@@ -1079,9 +713,46 @@ TODO
 
 #### Dynamic Process Management
 
-TODO
+In this example, we have two python programs, the first one being the
+manager and the second being the worker.
 
-#### task processing (spwan, pull, ...)
+> ``` {.python}
+> !include ../examples/dynamicProcess/manager.py
+> ```
+
+> ``` {.python}
+> !include ../examples/dynamicProcess/worker.py
+> ```
+
+Please cd into examples/dynamicProcess Executing
+`mpiexec -n 4 python dynamicProcess.py` yields:
+
+>     N: 100 rank: 4
+>     N: 100 rank: 1
+>     N: 100 rank: 3
+>     N: 100 rank: 2
+>     Hello
+>     b and rank: 0
+>     c
+>     d
+>     3.1416009869231245
+>     N: 100 rank: 0
+>     N: 100 rank: 1
+>     N: 100 rank: 4
+>     N: 100 rank: 3
+>     N: 100 rank: 2
+>     Hello
+>     b and rank: 0
+>     c
+>     d
+>     3.1416009869231245
+>     N: 100 rank: 0
+
+This output depends on which child process is received first. The output
+can vary. WARNING: There is uncertainty as to why the program does not
+exit out. To kill the program make sure to Ctrl-C after executing.
+
+#### task processing (spawn, pull, ...)
 
 TODO: Cooper
 
@@ -1156,7 +827,7 @@ out of this as much as you put in. Thus it is important to set several
 dedicated hours aside (ideally each week) and contribute your work to
 others.
 
-It is difficult to asses how long the above task takes as we just get
+It is difficult to asses how long the previous task takes as we just get
 started and we need to learn first how we work together as a team. If I
 were to do this alone it may take a week, but as you are less
 experienced it would likely take longer. However to decrease the time
@@ -1174,8 +845,6 @@ CODE
 
 We will use initially hackmd so we avoid issues with github and we can
 learn github once we do more coding.
-<<<<<<< HEAD
-=======
 
 # Appendix
 
@@ -1184,7 +853,7 @@ learn github once we do more coding.
 -   Fidel Leal,
     -   Equipment
         -   MacBook Pro 2015, 16GB RAM i7, SSD 512GB
-        -   PC, 64-bit, 8GB RAM, i5, SSD \<240GB, speed>
+        -   PC, 64-bit, 8GB RAM, i5, SSD \<240GB, speed\>
             -   Windows 10 Education
         -   Editor: Pycharm, vim
 -   Shannon Kerr,
@@ -1210,4 +879,3 @@ learn github once we do more coding.
             operating system,
         -   Windows 10 Education
         -   editor: Vim, Pycharm
->>>>>>> de1262524383405a1ef21015f917cd767b21df0e

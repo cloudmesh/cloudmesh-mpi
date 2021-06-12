@@ -28,8 +28,12 @@
 ### Installation of mpi4py on Windows
 
 1. Look up msmpi and click the second link to download and install
-`msmpisetup.exe` and `msmpisdk.msi`
 
+   > ```
+   > msmpisetup.exe
+   > msmpisdk.msi`
+   > ```
+   > 
 3. Open the system control panel
 
 4. Click on Advanced system settings and then Environment Variables
@@ -50,20 +54,38 @@
 ## Installing mpi4py in a Raspberry Pi
 
 
-1. Activate our virtual environment: `source ~/ENV3/bin/activate`
+1. Activate our virtual environment: 
+   
+    > ```bash
+    > $ python -m venv ~/ENV3
+    > $ source ~/ENV3/bin/activate
+    > ```
    
 2. Install Open MPI in your pi by entering the following command:
-   `sudo apt-get install openmpi-bin`.
+   
+   > ```
+   > sudo apt-get install openmpi-bin
+   > ```
 
    After installation is complete you can check if it was successful
-   by using `mpicc --showme:version`.
+   by using 
+   
+   > ```
+   > mpicc --showme:version
+   > ```
 
-3. Enter `pip install mpi4py` to download and install mpi4py.
+3. Enter 
+   
+   > ```
+   > pip install mpi4py
+   > ``` 
+    
+   to download and install mpi4py.
 
 4. The installation can be tested with `mpiexec -n 4 python -m
    mpi4py.bench helloworld` (depending on the number of cores/nodes
    available to you, it may be necessary to reduce the number of
-   copies that follow the -n option) In a PI4, the above test
+   copies that follow the -n option) In a PI4, the previous test
    returned:
    
    > ```
@@ -77,10 +99,13 @@
 ## Installing mpi4py in MacOS
    
 A similar process can be followed to install mpi4py in MacOS. In this
-case, we can use Homebrew to get Open MPI by entering: `brew install
-open-mpi`.
+case, we can use Homebrew to get Open MPI by entering: 
+
+```
+$ brew install open-mpi
+```
    
-Once Open MPI is working, steps 3 and 4 from the above pi4
+Once Open MPI is working, steps 3 and 4 from the  PI4
 installation can be followed in order to download and install mpi4py.
 
 ## Hello World
@@ -443,7 +468,7 @@ get out of this as much as you put in. Thus it is important to set
 several dedicated hours aside (ideally each week) and contribute your
 work to others.
 
-It is difficult to asses how long the above task takes as we just get
+It is difficult to asses how long the previous task takes as we just get
 started and we need to learn first how we work together as a team. If
 I were to do this alone it may take a week, but as you are less
 experienced it would likely take longer. However to decrease the time
