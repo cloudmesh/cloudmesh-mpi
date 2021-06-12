@@ -1,43 +1,69 @@
-FROM pandoc/latex:latest
+FROM ubuntu:21.04
 
 # Install bash
-RUN apk update
-RUN apk upgrade
-RUN apk add bash
+RUN apt-get update
+RUN apt-get -y upgrade
+RUN apt-get install -y wget
 
-# Install python/pip
-ENV PYTHONUNBUFFERED=1
-RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
-RUN python3 -m ensurepip
-RUN pip3 install --no-cache --upgrade pip setuptools
+
+# Install LaTeX
+
+RUN apt-get -y install texlive
+RUN ln -snf /usr/share/zoneinfo/Etc/UTC /etc/localtime \
+    && echo "Etc/UTC" > /etc/timezone
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get -y install texlive-latex-extra
+RUN unset DEBIAN_FRONTEND
+RUN apt-get -y install biber
+
 
 # Install pandoc-include
 
-RUN pip install pandoc-include
+RUN wget https://github.com/jgm/pandoc/releases/download/2.14.0.1/pandoc-2.14.0.1-1-amd64.deb
+RUN dpkg -i ./pandoc-2.14.0.1-1-amd64.deb
 
-RUN apk add texmf-dist texlive-full
-RUN wget http://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh
-RUN sh update-tlmgr-latest.sh
+RUN apt install -y python3
+RUN apt install -y python3.9-venv
+RUN apt install -y python3-pip
+
+# RUN python3 -m venv /ENV3
+# CMD ["source /ENV3/bin/activate"]
+
+RUN pip3 install pandoc-include
+
+ENTRYPOINT ["pandoc"]
+
+#RUN wget http://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh
+#RUN sh update-tlmgr-latest.sh
 
 
 #RUN apk add texlive-bibtexextra
-RUN apk add biber
+
+WORKDIR /data/doc
 
 
-RUN tlmgr update --all --self
-RUN tlmgr install tcolorbox
-RUN tlmgr install pgf
-RUN tlmgr install xcolor
-RUN tlmgr install environ
-RUN tlmgr install trimspaces
-RUN tlmgr install mathpazo
-RUN tlmgr install parskip
-RUN tlmgr install adjustbox
-RUN tlmgr install collectbox
-RUN tlmgr install eurosym
-RUN tlmgr install ucs
-RUN tlmgr install enumitem
-RUN tlmgr install ulem
-RUN tlmgr install jknapltx rsfs
-RUN tlmgr install collection-fontsrecommended
-RUN tlmgr install titling
+#RUN tlmgr update --all --self
+#RUN tlmgr install tcolorbox
+#RUN tlmgr install pgf
+#RUN tlmgr install xcolor
+#RUN tlmgr install environ
+#RUN tlmgr install trimspaces
+#RUN tlmgr install mathpazo
+#RUN tlmgr install parskip
+#RUN tlmgr install adjustbox
+#RUN tlmgr install collectbox
+#RUN tlmgr install eurosym
+#RUN tlmgr install ucs
+#RUN tlmgr install enumitem
+#RUN tlmgr install jknapltx rsfs
+#RUN tlmgr install collection-fontsrecommended
+#RUN tlmgr install titling
+
+#RUN apk add make
+#RUN apk add git
+#RUN apk add ghc
+# RUN pip install --upgrade --force --no-cache git+https://github.com/DCsunset/pandoc-include
+##RUN apk add cabal
+#RUN cabal update
+#RUN cabal install pandoc-include-code

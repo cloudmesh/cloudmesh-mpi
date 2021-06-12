@@ -3,10 +3,10 @@
 * What is MPI and why do you want to use it
 
 * What are some example MPI functionalities and usage patterns (send
-  receive, embarrassing parallel
+  receive, embarrassing parallel)
 
 
-### Resources
+## Resources
 
 * <https://research.computing.yale.edu/sites/default/files/files/mpi4py.pdf>
 * <https://www.nesi.org.nz/sites/default/files/mpi-in-python.pdf>
@@ -15,7 +15,7 @@
 * <http://www.ceci-hpc.be/assets/training/mpi4py.pdf>
 * <https://www.csc.fi/documents/200270/224366/mpi4py.pdf/825c582a-9d6d-4d18-a4ad-6cb6c43fefd8>
 
-### Todo
+## MPI Todo
 
 * what is mpi
 * Ring
@@ -23,35 +23,78 @@
 * calculation of pi
 * find number count of 8 in randome numbers between 1-10
 
+## Installation
 
+TODO: how to find te number of cores in linux and gitbash so we can
+use this t define the -n core parameter
+
+Linux: nproc
+
+osx: sysctl hw.physicalcpu hw.logicalcpu
+
+* which one can we use?
+
+windows: ??? we want command in gitbash that gives it
 
 ### Installation of mpi4py on Windows
 
-1. Look up msmpi and click the second link to download and install
+
+1. First you need to download msmpi from
+
+   *
+   <https://docs.microsoft.com/en-us/message-passing-interface/microsoft-mpi#ms-mpi-downloads>
+   
+   Go to the download link and download and install it. Select the two
+   packages and click Next. When downloaded clock on them to complete
+   the setup
+
+   TODO: COOPER this seems incomplete is this correct. I changed it as
+   previous install instructions were also incomplete.
 
    > ```
    > msmpisetup.exe
    > msmpisdk.msi`
    > ```
-   > 
-3. Open the system control panel
 
-4. Click on Advanced system settings and then Environment Variables
+2. Open the system control panel and click on `Advanced system settings`
+   and then `Environment Variables`
 
-5. Under the user variables box click on Path
+3. Under the user variables box click on `Path`
 
-6. Click New in order to add `C:\Program Files (x86)\Microsoft SDKs\MPI` and
-`C:\Program Files\Microsoft MPI\Bin` to Path
+4. Click New in order to add `C:\Program Files (x86)\Microsoft SDKs\MPI` and
+   `C:\Program Files\Microsoft MPI\Bin` to the Path
 
-7. Close any open bash windows and then open a new one
+5. Close any open bash windows and then open a new one
 
-8. Type the command `which mpiexec`
+6. Type the command
 
-9. Install mpi4py with `pip install mpi4py`
+> ```bash
+> $ which mpiexec
+> ```
 
-10. In order to verify that the installation worked type  `mpiexec -n 4 python mpi4py.bench helloworld`
+to verify if it works.
 
-## Installing mpi4py in a Raspberry Pi
+7. After you verified it is available, install mpi4py with
+
+> $ ```bash
+> $ pip install mpi4py
+> $ ```
+
+
+8. The installation can be tested with `mpiexec -n 4 python -m
+   mpi4py.bench helloworld` (depending on the number of cores/nodes
+   available to you, it may be necessary to reduce the number of
+   copies that follow the -n option):
+   
+   > ```
+   > (ENV3) pi@red:~ $ mpiexec -n 4 python -m mpi4py.bench helloworld
+   > Hello, World! I am process 0 of 4 on red.
+   > Hello, World! I am process 1 of 4 on red.
+   > Hello, World! I am process 2 of 4 on red.
+   > Hello, World! I am process 3 of 4 on red.
+   > ```
+   
+### Installing mpi4py in a Raspberry Pi
 
 
 1. Activate our virtual environment: 
@@ -96,8 +139,10 @@
    > Hello, World! I am process 3 of 4 on red.
    > ```
    
-## Installing mpi4py in MacOS
-   
+### Installing mpi4py in MacOS
+
+TODO: incomplete
+
 A similar process can be followed to install mpi4py in MacOS. In this
 case, we can use Homebrew to get Open MPI by entering: 
 
@@ -201,7 +246,9 @@ After running `mpiexec -n 4 python bcast.py` we get the following:
 > after broadcast, data on rank 3 is
 >   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
 > ```
-As we can see, the process with rank 1, received the data broadcast from rank 0.
+
+As we can see, the process with rank 1, received the data broadcast
+from rank 0.
 
 
 #### Scatter `comm.scatter()`
@@ -341,7 +388,6 @@ Executing `mpiexec -n 4 python npgather.py` yields:
 >   [2 2 2 2 2 2 2 2 2 2]
 >   [3 3 3 3 3 3 3 3 3 3]]
 > ```
-
 The values contained in the buffers from the different processes in
 the group have been gathered in the 2-D array in process with rank 0.
 
@@ -352,8 +398,8 @@ TODO
 
 #### Dynamic Process Management with `spawn`
 
-In this example, we have two python programs, the first one being the manager and the second
-being the worker.
+In this example, we have two python programs, the first one being the
+manager and the second being the worker.
 
 > ``` python
 > !include ../examples/spawn/manager.py
@@ -398,11 +444,12 @@ N: 100 rank: 0
 
 This output depends on which child process is received first. The output can vary.
 
->> WARNING: There is uncertainty as to why the program does not exit out. To kill the program make sure to Ctrl-C after executing.
+>> `WARNING:` When running this program it may not terminate. To
+>terminate use for now `CTRL-C`.
 
 
 
-#### task processing (spawn, pull, …)
+#### task processing (spawn, pull, ...)
 
 
 TODO: Cooper

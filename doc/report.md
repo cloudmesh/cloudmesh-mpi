@@ -44,20 +44,20 @@ together and share each others ideas and thoughts openly as well as ask
 questions. We will do the following structured tasks (you will need to
 know what plagiarism is and when and how you need to cite):
 
-## Organizing Collaborative Research Teams
+# Organizing Collaborative Research Teams
 
-### Communication (Gregor)
+## Communication (Gregor)
 
 TODO Intro paragraph
 
-#### Video Conferencing (Shannon, Fidel)
+### Video Conferencing (Shannon, Fidel)
 
 Due to COVID restrictions and the summer semester, maintaing a virtual
 environment is esential to the lab group. Because of this, the team has
 resorted to video conferencing to keep group meetings intimate and
 proactive.
 
-##### Google Meet (Shannon, Gregor)
+#### Google Meet (Shannon, Gregor)
 
 -   What is Google Meet?
 
@@ -90,7 +90,7 @@ proactive.
     google meets reducing the number of systems one uses for
     communication in a team.
 
-##### Zoom (Fidel, Gregor)
+#### Zoom (Fidel, Gregor)
 
 -   What is zoom?
 
@@ -135,7 +135,7 @@ proactive.
     refer to the [Zoom support
     pages](https://support.zoom.us/hc/en-us/articles/201362673-Requesting-or-giving-remote-control).
 
-##### Others (Agness)
+#### Others (Agness)
 
 -   What do you find useful and a reserach team may consider? The answer
     could be nothing ;-)
@@ -143,7 +143,7 @@ proactive.
     out. A shared database of information
 -   A dash board of weekly takes
 
-#### Chat (Erin, Cooper)
+### Chat (Erin, Cooper)
 
 The main way in which our research team stays in touch over the course
 of the week is through Slack. We have a couple of different channels
@@ -152,7 +152,7 @@ everyone in the group to contribute to and benefit from the answers to
 specific questions/problems that others may have already run in to along
 the way.
 
-##### Slack (Cooper)
+#### Slack (Cooper)
 
 -   What is ...?
 
@@ -167,11 +167,11 @@ It offers a pleasant GUI Quality connection rate Easy to send photos
 Difficult to see all notifications If involved in a lot of group works,
 hard to manage all the workspaces.
 
-### Creating Text (Gregor)
+## Creating Text (Gregor)
 
 TODO Introduction
 
-#### Dictation (Windows 10 try out, Agness)
+### Dictation (Windows 10 try out, Agness)
 
 Sometimes it is conveneinet to directly dictate the text for a manual or
 tutorial into an editor. On MacOS and Windows you will find useful tools
@@ -190,7 +190,7 @@ satisfied with their accuracy. Examples include:
 -   [Windows 10 Voice
     Recognition](https://support.microsoft.com/en-us/windows/use-voice-recognition-in-windows-10-83ff75bd-63eb-0b6c-18d4-6fae94050571)
     (free for Windows users). You can directly record into MS Word so
-    you get a free grammar checcker \> Agnes: I tried windows voice
+    you get a free grammar checcker > Agnes: I tried windows voice
     recognition and it did not work on my computer
 
 -   [Google Docs](https://support.google.com/docs/answer/4492226?hl=en)
@@ -201,7 +201,7 @@ satisfied with their accuracy. Examples include:
 
 -   TODO: can we dictate into MS word?
 
-#### Grammar Checkers (Gregor, review Erin)
+### Grammar Checkers (Gregor, review Erin)
 
 When developing content for tutorials and documentation it is important
 to check their correctness with a grammar checcker. We have made the
@@ -224,7 +224,7 @@ the original one, while overwriting the old text.
 
 Recommendation: use Grammarly
 
-#### Editors
+### Editors
 
 You will need likely multiple two editors as part of your research
 activities. This is motivated by the fact that we do lots of development
@@ -266,9 +266,9 @@ IDEs: \* Pycharm \* Pro: best Python editor \* Cons: needs lots of
 resources, steep learning curve \* Code (MS) \* Pro: ofetn used on
 Raspberry \* Cons: Pycharm seems to have more features from the start
 
-### Documentation Development with Markdown ()
+## Documentation Development with Markdown ()
 
-#### Markdown ()
+### Markdown ()
 
 TODO
 
@@ -278,7 +278,7 @@ TODO
 -   Pointer to Gregor book
 -   Collaborative editing with HackMD.io
 
-### TODO
+## TODO
 
 It is important to communicate quickly some tasks in the document that
 we write as a team. In order to do this we wuse the keyword TODO,
@@ -293,7 +293,7 @@ simple put his name behwind it, as well as the data and time so others
 know you work on it. You can aslo communicate on slack about the task
 you do if you run into issues or have questions.
 
-### Git and GitHub
+## Git and GitHub
 
 Git is a distributed version control system to support working on
 project in teams while allowing different team members to contribute and
@@ -305,7 +305,7 @@ be smaller then 200MB. Github is very popular for OpenSource projects
 and through its free offering allows community building around
 OpenSource Projects.
 
-#### Git from the commandline
+### Git from the commandline
 
 Git can easily be installed on all platforms including
 
@@ -317,13 +317,13 @@ Git can easily be installed on all platforms including
     read carefully the available options. We recommend you install a
     desktop shortcut.
 
-### Git form IDEs
+## Git form IDEs
 
 Pycharm is one of the best editors for Python. It does provide build in
 support to interact with GitHub. This document here and I already went
 to some of your contributions and made improvements or two then OK
 
-### GitHub from a GUI
+## GitHub from a GUI
 
 Some may fancy using a Graphical user interface to interact with GitHub.
 However, in many cases, the terminal access is simpler. However, if you
@@ -332,7 +332,7 @@ interfaces are useful. Several such interfaces are available at:
 
 -   <https://git-scm.com/downloads/guis>
 
-#### GitHub Commands
+### GitHub Commands
 
 -   What are the most important commands?
 
@@ -361,7 +361,7 @@ files and you could have files that you do not want to commit. instead
 **always** use `git add FILENAME`, where FILENAME is the file you like
 to add
 
-#### Task Management
+### Task Management
 
 -   [Our tasks in
     Github](https://github.com/cloudmesh/cloudmesh-mpi/projects/1) TODO
@@ -369,7 +369,7 @@ to add
 -   [Our issues in
     GitHub](https://github.com/cloudmesh/cloudmesh-mpi/issues) TODO
 
-#### Code Management
+### Code Management
 
 Our cod is managed as opens ource code in github.
 
@@ -383,7 +383,7 @@ Our cod is managed as opens ource code in github.
 
     `git clone https://github.com/cloudmesh/cloudmesh-mpi.git`
 
-#### Github Actions
+### Github Actions
 
 We have not yet used them
 
@@ -406,9 +406,9 @@ Gregor: Describe In detail how this is done
 -   What is MPI and why do you want to use it
 
 -   What are some example MPI functionalities and usage patterns (send
-    receive, embarrassing parallel
+    receive, embarrassing parallel)
 
-### Resources
+## Resources
 
 -   <https://research.computing.yale.edu/sites/default/files/files/mpi4py.pdf>
 -   <https://www.nesi.org.nz/sites/default/files/mpi-in-python.pdf>
@@ -417,7 +417,7 @@ Gregor: Describe In detail how this is done
 -   <http://www.ceci-hpc.be/assets/training/mpi4py.pdf>
 -   <https://www.csc.fi/documents/200270/224366/mpi4py.pdf/825c582a-9d6d-4d18-a4ad-6cb6c43fefd8>
 
-### Todo {#todo}
+## MPI Todo
 
 -   what is mpi
 -   Ring
@@ -425,37 +425,74 @@ Gregor: Describe In detail how this is done
 -   calculation of pi
 -   find number count of 8 in randome numbers between 1-10
 
+## Installation
+
+TODO: how to find te number of cores in linux and gitbash so we can use
+this t define the -n core parameter
+
+Linux: nproc
+
+osx: sysctl hw.physicalcpu hw.logicalcpu
+
+-   which one can we use?
+
+windows: ??? we want command in gitbash that gives it
+
 ### Installation of mpi4py on Windows
 
-1.  Look up msmpi and click the second link to download and install
+1.  First you need to download msmpi from
+
+    -   <https://docs.microsoft.com/en-us/message-passing-interface/microsoft-mpi#ms-mpi-downloads>
+
+    Go to the download link and download and install it. Select the two
+    packages and click Next. When downloaded clock on them to complete
+    the setup
+
+    TODO: COOPER this seems incomplete is this correct. I changed it as
+    previous install instructions were also incomplete.
 
     >     msmpisetup.exe
     >     msmpisdk.msi`
 
-2.  Open the system control panel
+2.  Open the system control panel and click on
+    `Advanced system settings` and then `Environment Variables`
 
-3.  Click on Advanced system settings and then Environment Variables
+3.  Under the user variables box click on `Path`
 
-4.  Under the user variables box click on Path
-
-5.  Click New in order to add
+4.  Click New in order to add
     `C:\Program Files (x86)\Microsoft SDKs\MPI` and
-    `C:\Program Files\Microsoft MPI\Bin` to Path
+    `C:\Program Files\Microsoft MPI\Bin` to the Path
 
-6.  Close any open bash windows and then open a new one
+5.  Close any open bash windows and then open a new one
 
-7.  Type the command `which mpiexec`
+6.  Type the command
 
-8.  Install mpi4py with `pip install mpi4py`
+> ``` bash
+> $ which mpiexec
+> ```
 
-9.  In order to verify that the installation worked type
-    `mpiexec -n 4 python mpi4py.bench helloworld`
+to verify if it works.
 
-## Installing mpi4py in a Raspberry Pi
+7.  After you verified it is available, install mpi4py with
+
+> \$ `bash $ pip install mpi4py $`
+
+8.  The installation can be tested with
+    `mpiexec -n 4 python -m    mpi4py.bench helloworld` (depending on
+    the number of cores/nodes available to you, it may be necessary to
+    reduce the number of copies that follow the -n option):
+
+    >     (ENV3) pi@red:~ $ mpiexec -n 4 python -m mpi4py.bench helloworld
+    >     Hello, World! I am process 0 of 4 on red.
+    >     Hello, World! I am process 1 of 4 on red.
+    >     Hello, World! I am process 2 of 4 on red.
+    >     Hello, World! I am process 3 of 4 on red.
+
+### Installing mpi4py in a Raspberry Pi
 
 1.  Activate our virtual environment:
 
-    > ``` {.bash}
+    > ``` bash
     > $ python -m venv ~/ENV3
     > $ source ~/ENV3/bin/activate
     > ```
@@ -487,7 +524,9 @@ Gregor: Describe In detail how this is done
     >     Hello, World! I am process 2 of 4 on red.
     >     Hello, World! I am process 3 of 4 on red.
 
-## Installing mpi4py in MacOS
+### Installing mpi4py in MacOS
+
+TODO: incomplete
 
 A similar process can be followed to install mpi4py in MacOS. In this
 case, we can use Homebrew to get Open MPI by entering:
@@ -558,8 +597,30 @@ TODO: learn about and evaluate and test if we can do
 In this example, we broadcast a two-entry Python dictionary from a root
 process to the rest of the processes in our communicator group.
 
-> ``` {.python}
-> !include ../examples/broadcast.py
+> ``` python
+> from mpi4py import MPI
+>
+> # Set up the MPI Communicator
+> comm = MPI.COMM_WORLD
+>
+> # Get the rank of the current process in the communicator group
+> rank = comm.Get_rank()
+>
+> if rank == 0:  # Process with rank 0 gets the data to be broadcast
+>     data = {'size' : [1,3,8],
+>             'name' : ['disk1', 'disk2', 'disk3']}
+> else:  # Other processes' data is empty
+>     data = None
+>
+> # Print data in each process
+> print("before broadcast, data on rank %d is "%comm.rank, data)
+>
+> # Data from process with rank 0 is broadcast to other processes in our
+> # communicator group
+> data = comm.bcast(data, root=0)
+>
+> # Print data in each process after broadcast
+> print("after broadcast, data on rank %d is "%comm.rank, data)
 > ```
 
 After running `mpiexec -n 4 python bcast.py` we get the following:
@@ -577,17 +638,41 @@ After running `mpiexec -n 4 python bcast.py` we get the following:
 >       {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
 >     after broadcast, data on rank 3 is
 >       {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
->
-> As we can see, the process with rank 1, received the data broadcast
-> from rank 0.
+
+As we can see, the process with rank 1, received the data broadcast from
+rank 0.
 
 #### Scatter `comm.scatter()`
 
 In this example, with scatter the members of a list among the processes
 in the communicator group.
 
-> ``` {.python}
-> !include ../examples/scatter.py
+> ``` python
+> from mpi4py import MPI
+>
+> # Communicator
+> comm = MPI.COMM_WORLD
+>
+> # Number of processes in the communicator group
+> size = comm.Get_size()
+>
+> # Get the rank of the current process in the communicator group
+> rank = comm.Get_rank()
+>
+> # Process with rank 0 gets a list with the data to be scattered
+> if rank == 0:
+>     data = [(i+1)**2 for i in range(size)]
+> else:
+>     data = None
+>
+> # Print data in each process
+> print("before scattering, data on rank %d is "%comm.rank, data)
+>
+> # Scattering occurs
+> data = comm.scatter(data, root=0)
+>
+> # Print data in each process after scattering
+> print("data for rank %d is "%comm.rank, data)
 > ```
 
 Executing `mpiexec -n 4 python scatter.py` yields:
@@ -609,8 +694,33 @@ among the rest of the processes in the communicator group.
 In this example, data from each process in the communicator group is
 gathered in the process with rank 0.
 
-> ``` {.python}
-> !include ../examples/gather.py
+> ``` python
+> from mpi4py import MPI
+>
+> # Communicator
+> comm = MPI.COMM_WORLD
+>
+> # Number of processes in the communicator group
+> size = comm.Get_size()
+>
+> # Get the rank of the current process in the communicator group
+> rank = comm.Get_rank()
+>
+> # Each process gets different data, depending on its rank number
+> data = (rank+1)**2
+>
+> # Print data in each process
+> print("before gathering, data on rank %d is "%comm.rank, data)
+>
+> # Gathering occurs
+> data = comm.gather(data, root=0)
+>
+> # Process 0 prints out the gathered data, rest of the processes
+> # print their data as well
+> if rank == 0:
+>     print("after gathering, process 0's data is ", data)
+> else:
+>     print("after gathering, data in rank %d is "%comm.rank, data)
 > ```
 
 Executing `mpiexec -n 4 python gather.py` yields:
@@ -632,8 +742,32 @@ successfully gathered in process 0.
 In this example, we broadcast a NumPy array from process 0 to the rest
 of the processes in the communicator group.
 
-> ``` {.python}
-> !include ../examples/broadcast_buffer.py
+> ``` python
+> from mpi4py import MPI
+> import numpy as np
+>
+> # Communicator
+> comm = MPI.COMM_WORLD
+>
+> # Get the rank of the current process in the communicator group
+> rank = comm.Get_rank()
+>
+> # Rank 0 gets a NumPy array containing values from 0 to 9
+> if rank == 0:
+>     data = np.arange(0,10,1, dtype='i')
+>
+> # Rest of the processes get an empty buffer
+> else:
+>     data = np.zeros(10, dtype='i')
+>
+> # Print data in each process
+> print("before broadcasting, data for rank %d is: "%comm.rank, data)
+>
+> # Broadcast occurs
+> comm.Bcast(data, root=0)
+>
+> # Print data in each process after broadcast
+> print("after broadcasting, data for rank %d is: "%comm.rank, data)
 > ```
 
 Executing `mpiexec -n 4 python npbcast.py` yields:
@@ -655,8 +789,43 @@ broadcast to the rest of the processes in the communicator group.
 In this example, we scatter a NumPy array among the processes in the
 communicator group.
 
-> ``` {.python}
-> !include ../examples/scatter_buffer.py
+> ``` python
+> from mpi4py import MPI
+> import numpy as np
+>
+> # Communicator
+> comm = MPI.COMM_WORLD
+>
+> # Number of processes in the communicator group
+> size = comm.Get_size()
+>
+> # Get the rank of the current process in the communicator group
+> rank = comm.Get_rank()
+>
+> # Data to be sent
+> sendbuf = None
+>
+> # Process with rank 0 populates sendbuf with a 2-D array,
+> # based on the number of processes in our communicator group
+> if rank == 0:
+>     sendbuf = np.zeros([size, 10], dtype='i')
+>     sendbuf.T[:,:] = range(size)
+>     
+>     # Print the content of sendbuf before scattering
+>     print('sendbuf in 0: ', sendbuf)
+>
+> # Each process getd a buffer (initially containing just zeros) 
+> # to store scattered data.
+> recvbuf = np.zeros(10, dtype='i')
+>
+> # Print the content of recvbuf in each process before scattering
+> print('recvbuf in  %d: '%rank, recvbuf)
+>
+> # Scattering occurs
+> comm.Scatter(sendbuf, recvbuf, root=0)
+>
+> # Print the content of sendbuf in each process after scattering
+> print('Buffer in process %d contains: '%rank, recvbuf)
 > ```
 
 Executing `mpiexec -n 4 python npscatter.py` yields:
@@ -683,8 +852,43 @@ on their rank value.
 In this example, we gather a NumPy array from the processes in the
 communicator group into a 2-D array in process with rank 0.
 
-> ``` {.python}
-> !include ../examples/gather_buffer.py
+> ``` python
+> from mpi4py import MPI
+> import numpy as np
+>
+> # Communicator group
+> comm = MPI.COMM_WORLD
+>
+> # Number of processes in the communicator group
+> size = comm.Get_size()
+>
+> # Get the rank of the current process in the communicator group
+> rank = comm.Get_rank()
+>
+> # Each process gets an array with data based on its rank.
+> sendbuf = np.zeros(10, dtype='i') + rank
+>
+> # Print the data in sendbuf before gathering 
+> print('Buffer in process %d before gathering: '%rank, sendbuf)
+>
+> # Variable to store gathered data
+> recvbuf = None
+>
+> # Process with rank 0 initializes recvbuf to a 2-D array conatining
+> # only zeros. The size of the array is determined by the number of
+> # processes in the communicator group
+> if rank == 0:
+>     recvbuf = np.zeros([size,10], dtype='i')
+>
+>     # Print recvbuf
+>     print('recvbuf in process 0 before gathering: ', recvbuf) 
+>
+> # Gathering occurs
+> comm.Gather(sendbuf, recvbuf, root=0)
+>
+> # Print recvbuf in process with rank 0 after gathering
+> if rank == 0:
+>         print('recvbuf in process 0 after gathering: \n', recvbuf)
 > ```
 
 Executing `mpiexec -n 4 python npgather.py` yields:
@@ -703,9 +907,9 @@ Executing `mpiexec -n 4 python npgather.py` yields:
 >       [1 1 1 1 1 1 1 1 1 1]
 >       [2 2 2 2 2 2 2 2 2 2]
 >       [3 3 3 3 3 3 3 3 3 3]]
-
-The values contained in the buffers from the different processes in the
-group have been gathered in the 2-D array in process with rank 0.
+>
+> The values contained in the buffers from the different processes in
+> the group have been gathered in the 2-D array in process with rank 0.
 
 #### send receive
 
@@ -716,12 +920,62 @@ TODO
 In this example, we have two python programs, the first one being the
 manager and the second being the worker.
 
-> ``` {.python}
-> !include ../examples/spawn/manager.py
+> ``` python
+> #!/usr/bin/env python
+> from mpi4py import MPI
+> import numpy
+> import sys
+> import time
+> print("Hello")
+> comm = MPI.COMM_SELF.Spawn(sys.executable,
+>                            args=['worker.py'],
+>                            maxprocs=5)
+> rank = comm.Get_rank()
+> print(f"b and rank: {rank}")
+>
+> N = numpy.array(100, 'i')
+> comm.Bcast([N, MPI.INT], root=MPI.ROOT)
+> #print(f"ROOT: {MPI.ROOT}")
+> print('c')
+> PI = numpy.array(0.0, 'd')
+>
+> print('d')
+> comm.Reduce(None, [PI, MPI.DOUBLE],
+>             op=MPI.SUM, root=MPI.ROOT)
+> print(PI)
+>
+> comm.Disconnect()
 > ```
 
-> ``` {.python}
-> !include ../examples/spawn/worker.py
+> ``` python
+> #!/usr/bin/env python
+> from mpi4py import MPI
+> import numpy
+> import time
+> import sys
+> comm = MPI.Comm.Get_parent()
+> size = comm.Get_size()
+> rank = comm.Get_rank()
+>
+> N = numpy.array(0, dtype='i')
+> comm.Bcast([N, MPI.INT], root=0)
+> print(f"N: {N} rank: {rank}")
+>
+> h = 1.0 / N
+> s = 0.0
+> for i in range(rank, N, size):
+>     x = h * (i + 0.5)
+>     s += 4.0 / (1.0 + x**2)
+> PI = numpy.array(s * h, dtype='d')
+> comm.Reduce([PI, MPI.DOUBLE], None,
+>             op=MPI.SUM, root=0)
+>
+> #time.sleep(60)
+> comm.Disconnect()
+> #MPI.Finalize()
+> #sys.exit()
+> #MPI.Unpublish_name()
+> #MPI.Close_port()
 > ```
 
 To execute the example please go to the examples directoy and run the
@@ -756,8 +1010,8 @@ This will result in:
 This output depends on which child process is received first. The output
 can vary.
 
-> > WARNING: There is uncertainty as to why the program does not exit
-> > out. To kill the program make sure to Ctrl-C after executing.
+> > `WARNING:` When running this program it may not terminate. To
+> > terminate use for now `CTRL-C`.
 
 #### task processing (spawn, pull, ...)
 
@@ -860,7 +1114,7 @@ learn github once we do more coding.
 -   Fidel Leal,
     -   Equipment
         -   MacBook Pro 2015, 16GB RAM i7, SSD 512GB
-        -   PC, 64-bit, 8GB RAM, i5, SSD \<240GB, speed\>
+        -   PC, 64-bit, 8GB RAM, i5, SSD \<240GB, speed>
             -   Windows 10 Education
         -   Editor: Pycharm, vim
 -   Shannon Kerr,

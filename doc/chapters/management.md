@@ -1,15 +1,15 @@
-## Organizing Collaborative Research Teams
+# Organizing Collaborative Research Teams
 
-### Communication (Gregor)
+## Communication (Gregor)
 
 TODO Intro paragraph
 
 
-#### Video Conferencing (Shannon, Fidel)
+### Video Conferencing (Shannon, Fidel)
 
 Due to COVID restrictions and the summer semester, maintaing a virtual environment is esential to the lab group.  Because of this, the team has resorted to video conferencing to keep group meetings intimate and proactive. 
 
-##### Google Meet (Shannon, Gregor)
+#### Google Meet (Shannon, Gregor)
 
 * What is Google Meet?
 
@@ -45,7 +45,7 @@ Due to COVID restrictions and the summer semester, maintaing a virtual environme
   meets reducing the number of systems one uses for 
   communication in a team. 
 
-##### Zoom (Fidel, Gregor)
+#### Zoom (Fidel, Gregor)
 
 * What is zoom?
   
@@ -100,18 +100,18 @@ Due to COVID restrictions and the summer semester, maintaing a virtual environme
   [Zoom support pages](https://support.zoom.us/hc/en-us/articles/201362673-Requesting-or-giving-remote-control).
 
 
-##### Others (Agness)
+#### Others (Agness)
 
 * What do you find useful and a reserach team may consider? The answer could be nothing ;-)
 * A shared google doc for documented steps we take when figuring stuff out. A shared database of information
 * A dash board of weekly takes 
 
 
-#### Chat (Erin, Cooper)
+### Chat (Erin, Cooper)
 
 The main way in which our research team stays in touch over the course of the week is through Slack.  We have a couple of different channels (general, python, random, etc.) we use to communicate.  This allows everyone in the group to contribute to and benefit from the answers to specific questions/problems that others may have already run in to along the way.
 
-##### Slack (Cooper)
+#### Slack (Cooper)
 
  
 
@@ -129,11 +129,11 @@ Easy to send photos
 Difficult to see all notifications
 If involved in a lot of group works, hard to manage all the workspaces. 
 
-### Creating Text (Gregor)
+## Creating Text (Gregor)
 
 TODO Introduction
 
-#### Dictation (Windows 10 try out, Agness)
+### Dictation (Windows 10 try out, Agness)
 
 Sometimes it is conveneinet to directly dictate the text for a manual or tutorial into an editor. On MacOS and Windows you will find useful tools for this.  A Voice to text recorder may also help you in case you have a recoded video of yourself to generate transcripts. Disadvantag for a lot of non Native english speakers is that the accuraccy may be limited and that not using them leads to unacceptable results. Some of them can be trained. Try it out and let us know if they work for you and if you are satisfied with their accuracy. Examples include:
 
@@ -146,7 +146,7 @@ You can directly dictate into various applicatipns that help you improving your 
   
 * TODO: can we dictate into MS word?
 
-#### Grammar Checkers (Gregor, review Erin)
+### Grammar Checkers (Gregor, review Erin)
 
 When developing content for tutorials and documentation it is important to check their correctness with a grammar checcker. We have made the best experience with Grammarly followed by MS word. The best way to use them is to copy and paste small sections into them from your document and then check them. After you are satisfied copy the contents back to the original one, while overwriting the old text.
 
@@ -159,7 +159,7 @@ When developing content for tutorials and documentation it is important to check
 
 Recommendation: use Grammarly
 
-#### Editors
+### Editors
 
 You will need likely multiple two editors as part of your research activities. This is motivated by the fact that we do lots of development on yourl local machine, but also do remote development via terminal access to a remote computer that does not have a GUI. In case you only want t learn one editor to do all of this, just use emacs. We have listed bellow some editors and youmay want to chose 
 
@@ -189,9 +189,9 @@ IDEs:
     * Pro: ofetn used on Raspberry
     * Cons: Pycharm seems to have more features from the start
 
-### Documentation Development with Markdown ()
+## Documentation Development with Markdown ()
 
-#### Markdown ()
+### Markdown ()
 
 TODO
 
@@ -201,19 +201,19 @@ TODO
 * Pointer to Gregor book
 * Collaborative editing with HackMD.io
 
-### TODO
+## TODO
 
 It is important to communicate quickly some tasks in the document that we write as a team. In order to do this we wuse the keyword TODO, followed usually by an explanation if needed. As a TODO can be hopefully resolved quickly it shoudl be able yp complete them in 1-2 hours. Any TODO that may take longer we also add to our GitHub project in order for it to be recorded and if we identify  or delays in its execution we can assign additional team members to help on this tasks.
 
 Once a team member has identified a TODO item, the team member can simple put his name behwind it, as well as the data and time so others know you work on it. You can aslo communicate on slack about the task you do if you run into issues or have questions.
 
-### Git and GitHub
+## Git and GitHub
 
 Git is a distributed version control system to support working on project in teams while allowing different team members to contribute and to currate the contribution through reviews.
 
 GitHub is a service offered for free with the limitation that the repositories shoudl not be larger than 1GB and the individual files must be smaller then 200MB. Github is very popular for OpenSource projects and through its free offering allows community building around OpenSource Projects.
 
-#### Git from the commandline
+### Git from the commandline
 
 Git can easily be installed on all platforms including 
 
@@ -224,17 +224,17 @@ Git can easily be installed on all platforms including
   installing read carefully the available options. We 
   recommend you install a desktop shortcut.
 
-### Git form IDEs
+## Git form IDEs
 
 Pycharm is one of the best editors for Python. It does provide build in support to interact with GitHub. This document here and I already went to some of your contributions and made improvements or two then OK
 
-### GitHub from a GUI 
+## GitHub from a GUI 
 
 Some may fancy using a Graphical user interface to interact with GitHub. However, in many cases, the terminal access is simpler. However, if you like to browse the repositories and see the commit tree, these GUI interfaces are useful. Several such interfaces are available at:
 
 * <https://git-scm.com/downloads/guis>
 
-#### GitHub Commands
+### GitHub Commands
 
 * What are the most important commands?
 
@@ -264,7 +264,7 @@ THis will take hours to fix, so be careful. So make sure you code does not conta
 
 Also do never ever use the git command `git add .` as that adds all files and you could have files that you do not want to commit. instead **always** use `git add FILENAME`, where FILENAME is the file you like to add
 
-#### Task Management
+### Task Management
 
 * [Our tasks in Github](https://github.com/cloudmesh/cloudmesh-mpi/projects/1)
   TODO
@@ -272,7 +272,7 @@ Also do never ever use the git command `git add .` as that adds all files and yo
 * [Our issues in GitHub](https://github.com/cloudmesh/cloudmesh-mpi/issues) 
   TODO
 
-#### Code Management
+### Code Management
 
 Our cod is managed as opens ource code in github. 
 
@@ -286,7 +286,7 @@ Our cod is managed as opens ource code in github.
   
   `git clone https://github.com/cloudmesh/cloudmesh-mpi.git`
 
-#### Github Actions
+### Github Actions
 
 We have not yet used them
 

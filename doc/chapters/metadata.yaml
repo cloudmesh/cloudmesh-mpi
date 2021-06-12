@@ -4,8 +4,6 @@ author: Gregor von Laszewski, Fidel Leal, Shannon Kerr, Erin Seliger, Cooper You
 header-includes: |
     \usepackage{fancyhdr}
     \pagestyle{fancy}
-    \fancyhead[CO,CE]{This is fancy}
-    \fancyfoot[CO,CE]{So is this}
     \fancyfoot[LE,RO]{\thepage}
     \usepackage{tcolorbox}
     \newtcolorbox{myquote}{colback=gray!5!white, colframe=gray!75!black}
