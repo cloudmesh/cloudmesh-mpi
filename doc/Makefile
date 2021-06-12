@@ -6,7 +6,7 @@ PANDOC=docker run --rm --volume "${PWD}:/data" --user ${USER_ID}:${GROUP_ID}
 
 .PHONY: report.md
 
-all:md pdf clean
+all: image md pdf clean
 
 md:
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} ./chapters/report.md -o tmp-1.md

@@ -9,6 +9,11 @@ define banner
 	@echo "###################################"
 endef
 
+.PHONY: doc
+
+doc:
+	cd doc; make
+
 all: install
 
 install:
@@ -45,7 +50,7 @@ manual:
 	cms man --kind=rst mpi > docs-source/source/manual/admin.rst
 	cms man --kind=rst foo > docs-source/source/manual/banner.rst
 
-doc:
+docs:
 	rm -rf docs
 	mkdir -p dest
 	cd docs-source; make html
