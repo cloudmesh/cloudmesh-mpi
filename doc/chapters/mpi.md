@@ -308,7 +308,7 @@ TODO
 #### Dynamic Process Management
 
 In this example, we have two python programs, the first one being the manager and the second
-being the worker. 
+being the worker.
 
 > ``` python
 > !include ../examples/dynamicProcess/manager.py
@@ -322,13 +322,34 @@ Please cd into examples/dynamicProcess
 Executing `mpiexec -n 4 python dynamicProcess.py` yields:
 
 > ```
->
+> N: 100 rank: 4
+N: 100 rank: 1
+N: 100 rank: 3
+N: 100 rank: 2
+Hello
+b and rank: 0
+c
+d
+3.1416009869231245
+N: 100 rank: 0
+N: 100 rank: 1
+N: 100 rank: 4
+N: 100 rank: 3
+N: 100 rank: 2
+Hello
+b and rank: 0
+c
+d
+3.1416009869231245
+N: 100 rank: 0
 > ```
 
-The values contained in the buffers from the different processes in
-the group have been gathered in the 2-D array in process with rank 0.
+This output depends on which child process is received first. The output can vary.
+WARNING: There is uncertainty as to why the program does not exit out. To kill the program make sure to Ctrl-C after executing.
 
-#### task processing (spwan, pull, …)
+
+
+#### task processing (spawn, pull, …)
 
 
 TODO: Cooper
