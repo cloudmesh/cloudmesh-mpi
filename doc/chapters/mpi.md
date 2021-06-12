@@ -5,6 +5,25 @@
 * What are some example MPI functionalities and usage patterns (send
   receive, embarrassing parallel
 
+### Resources
+
+* <https://research.computing.yale.edu/sites/default/files/files/mpi4py.pdf>
+* <https://www.nesi.org.nz/sites/default/files/mpi-in-python.pdf>
+* <https://www.kth.se/blogs/pdc/2019/08/parallel-programming-in-python-mpi4py-part-1/>
+* <http://education.molssi.org/parallel-programming/03-distributed-examples-mpi4py/index.html>
+* <http://www.ceci-hpc.be/assets/training/mpi4py.pdf>
+* <https://www.csc.fi/documents/200270/224366/mpi4py.pdf/825c582a-9d6d-4d18-a4ad-6cb6c43fefd8>
+
+### Todo
+
+* what is mpi
+* Ring
+* kmeans
+* calculation of pi
+* find number count of 8 in randome numbers between 1-10
+
+
+
 ### Installation of mpi4py on Windows
 
 1. Look up msmpi and click the second link to download and install msmpisetup.exe and msmpisdk.msi
