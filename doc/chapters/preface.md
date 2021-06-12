@@ -15,3 +15,16 @@ Add a preface
     * hyperlinks
     * citation
 
+## Resources
+
+* Github Actions: <https://github.com/cloudmesh/cloudmesh-mpi/projects/1>
+
+  * [-> Fidel](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Aflealc)
+  * [-> Erin](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Aeselige)
+  * [-> Shanon](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Ashankerr) 
+  * [-> Cooper](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Acoopyoung) 
+  * [-> Agnes](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Ashekinah-lungu)
+
+* Repository: <https://github.com/cloudmesh/cloudmesh-mpi>
+* Examples: <https://github.com/cloudmesh/cloudmesh-mpi/tree/main/examples>
+* This document: <https://github.com/cloudmesh/cloudmesh-mpi/blob/main/doc/report.pdf>

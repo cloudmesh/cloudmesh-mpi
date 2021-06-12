@@ -29,6 +29,30 @@ Add a preface
         -   hyperlinks
         -   citation
 
+## Resources
+
+-   Github Actions:
+    <https://github.com/cloudmesh/cloudmesh-mpi/projects/1>
+
+    -   [-\>
+        Fidel](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Aflealc)
+    -   [-\>
+        Erin](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Aeselige)
+    -   [-\>
+        Shanon](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Ashankerr)
+    -   [-\>
+        Cooper](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Acoopyoung)
+    -   [-\>
+        Agnes](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Ashekinah-lungu)
+
+-   Repository: <https://github.com/cloudmesh/cloudmesh-mpi>
+
+-   Examples:
+    <https://github.com/cloudmesh/cloudmesh-mpi/tree/main/examples>
+
+-   This document:
+    <https://github.com/cloudmesh/cloudmesh-mpi/blob/main/doc/report.pdf>
+
 # Overview
 
 TODO: Gregor improves this section
@@ -408,7 +432,7 @@ Gregor: Describe In detail how this is done
 -   What are some example MPI functionalities and usage patterns (send
     receive, embarrassing parallel)
 
-## Resources
+## Resources {#resources}
 
 -   <https://research.computing.yale.edu/sites/default/files/files/mpi4py.pdf>
 -   <https://www.nesi.org.nz/sites/default/files/mpi-in-python.pdf>
@@ -452,7 +476,7 @@ windows: ??? we want command in gitbash that gives it
     previous install instructions were also incomplete.
 
     >     msmpisetup.exe
-    >     msmpisdk.msi`
+    >     msmpisdk.msi
 
 2.  Open the system control panel and click on
     `Advanced system settings` and then `Environment Variables`
