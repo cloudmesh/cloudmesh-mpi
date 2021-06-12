@@ -53,7 +53,7 @@ windows: ??? we want command in gitbash that gives it
 
    > ```
    > msmpisetup.exe
-   > msmpisdk.msi`
+   > msmpisdk.msi
    > ```
 
 2. Open the system control panel and click on `Advanced system settings`
