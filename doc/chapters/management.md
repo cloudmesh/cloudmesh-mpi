@@ -116,7 +116,7 @@ one of the most popular video-conferencing tools.
   [Zoom support pages](https://support.zoom.us/hc/en-us/articles/201362673-Requesting-or-giving-remote-control).
 
 
-### Realtime nad Offline Text Messaging (Erin, Cooper)
+### Realtime nad Offline Text Messaging (Gregor)
 
 In many research projects participants may be in different timezones
 or have schedules that do not provide ovelapping times for
