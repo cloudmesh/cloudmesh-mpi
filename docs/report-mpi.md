@@ -1187,6 +1187,10 @@ build on ubunto and rasperry os are slightly different
 
 -   <https://www.hackster.io/news/benchmarking-tensorflow-lite-on-the-new-raspberry-pi-4-model-b-3fd859d05b98>
 
+## Horovod mpi4pi
+
+-   <https://github.com/horovod/horovod#mpi4py>
+
 ## Applications
 
 ### Object tetection
