@@ -27,4 +27,6 @@ Add a preface
 
 * Repository: <https://github.com/cloudmesh/cloudmesh-mpi>
 * Examples: <https://github.com/cloudmesh/cloudmesh-mpi/tree/main/examples>
-* This document: <https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/report.pdf>
+* documents: 
+  * <https://cloudmesh.github.io/cloudmesh-mpi/report-mpi.pdf>
+  * <https://cloudmesh.github.io/cloudmesh-mpi/report-group.pdf>
