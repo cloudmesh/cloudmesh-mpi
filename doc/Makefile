@@ -6,16 +6,25 @@ PANDOC=docker run --rm --volume "${PWD}/..:/data" --user ${USER_ID}:${GROUP_ID}
 
 .PHONY: report.md
 
-all: md pdf clean
+all: pdf-mpi pdf-group clean
 
-md:
-	${PANDOC} cloudmesh/pandoc ${OPTIONS} ./chapters/report.md -o tmp-1.md
+md-mpi:
+	${PANDOC} cloudmesh/pandoc ${OPTIONS} ./chapters/report-mpi.md -o tmp-1.md
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} tmp-1.md -o tmp-2.md
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} tmp-2.md -o tmp-3.md
-	${PANDOC} cloudmesh/pandoc --number-sections ./chapters/title.md tmp-3.md -o report.md
+	${PANDOC} cloudmesh/pandoc --number-sections ./chapters/title-mpi.md tmp-3.md -o ../docs/report-mpi.md
 
-pdf:
-	${PANDOC} cloudmesh/pandoc -s -t latex -V geometry:margin=1in --number-sections --toc chapters/metadata.yaml tmp-3.md -o report.pdf
+pdf-mpi: md-mpi
+	${PANDOC} cloudmesh/pandoc -s -t latex -V geometry:margin=1in --number-sections --toc chapters/metadata-mpi.yaml tmp-3.md -o ../docs/report-mpi.pdf
+
+md-group:
+	${PANDOC} cloudmesh/pandoc ${OPTIONS} ./chapters/report-group.md -o tmp-1.md
+	${PANDOC} cloudmesh/pandoc ${OPTIONS} tmp-1.md -o tmp-2.md
+	${PANDOC} cloudmesh/pandoc ${OPTIONS} tmp-2.md -o tmp-3.md
+	${PANDOC} cloudmesh/pandoc --number-sections ./chapters/title-group.md tmp-3.md -o ../docs/report-group.md
+
+pdf-group: md-group
+	${PANDOC} cloudmesh/pandoc -s -t latex -V geometry:margin=1in --number-sections --toc chapters/metadata-mpi.yaml tmp-3.md -o ../docs/report-group.pdf
 
 shell:
 	${PANDOC} -it -u root --entrypoint bash cloudmesh/pandoc:latest

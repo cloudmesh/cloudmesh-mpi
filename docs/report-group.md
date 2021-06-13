@@ -1,4 +1,4 @@
-# Towards Python MPI for Artificial Intelligence and Deep Learning Research
+# Organizing Collaboration in Open Source Teams
 
 Gregor von Laszewski, Fidel Leal, Shannon Kerr, Erin Seliger, Cooper
 Young, Agness Lungua
@@ -10,63 +10,6 @@ For more information, please contact: <laszewski@gmail.com>
 
 > **Note:** Do not edit this document, only edit the documents in the
 > chapters directory
-
-# Preface
-
-Add a preface
-
--   Who we are and how this activity came about.
-
--   Notation. We can copy what I have done in other books, but keep it
-    simple e.g. we do not have to worry about epub
-
-    -   code
-    -   use of `verbatim` inline and in block
-    -   use of LaTex formulas
-    -   use of markdown
-        -   spaces before and after headline, itemize lists, e.g. online
-            editors do that not correctly
-        -   hyperlinks
-        -   citation
-
-## Resources
-
--   Github Actions:
-    <https://github.com/cloudmesh/cloudmesh-mpi/projects/1>
-
-    -   [-\>
-        Fidel](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Aflealc)
-    -   [-\>
-        Erin](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Aeselige)
-    -   [-\>
-        Shanon](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Ashankerr)
-    -   [-\>
-        Cooper](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Acoopyoung)
-    -   [-\>
-        Agnes](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Ashekinah-lungu)
-
--   Repository: <https://github.com/cloudmesh/cloudmesh-mpi>
-
--   Examples:
-    <https://github.com/cloudmesh/cloudmesh-mpi/tree/main/examples>
-
--   This document:
-    <https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/report.pdf>
-
-# Overview
-
-TODO: Gregor improves this section
-
-After reflecting on the meeting I decided that in order to increase your
-python knowledge and to also lead you towards research we will be
-developing initially a tutorial that teaches students how to use MPI
-(Message Passing Interface). We do this with something that is called
-mpi4py. (later on we will use this to coordinate AI algorithms) We will
-develop multiple sections to this tutorial and each of you will each
-week work on a chapter so it can be redone by others. You can also work
-together and share each others ideas and thoughts openly as well as ask
-questions. We will do the following structured tasks (you will need to
-know what plagiarism is and when and how you need to cite):
 
 # Organizing Collaborative Research Teams
 
@@ -179,7 +122,7 @@ the most popular video-conferencing tools.
     to the [Zoom support
     pages](https://support.zoom.us/hc/en-us/articles/201362673-Requesting-or-giving-remote-control).
 
-### Realtime nad Offline Text Messaging (Erin, Cooper)
+### Realtime nad Offline Text Messaging (Gregor)
 
 In many research projects participants may be in different timezones or
 have schedules that do not provide ovelapping times for
@@ -454,6 +397,8 @@ that the time delay does not block the project.)
 All: add tasks in github so we can assign todos and monitor progress
 
 Gregor: Describe In detail how this is done
+
+# Appendix
 
 ## Hardware of current students
 

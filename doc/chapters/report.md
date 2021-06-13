@@ -9,7 +9,9 @@
 !include chapters/management.md
 
 !include chapters/mpi.md
-q
+
+!include chapters/dl.md
+
 # Appendix
 
 !include chapters/hardware.md
