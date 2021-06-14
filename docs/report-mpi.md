@@ -57,7 +57,7 @@ Add a preface
 
 # Overview
 
-TODO: Gregor improves this section
+-   [ ] TODO: Gregor, improves this section
 
 After reflecting on the meeting I decided that in order to increase your
 python knowledge and to also lead you towards research we will be
@@ -223,11 +223,11 @@ channels such as "general" or a chanel for a particular topic. However
 it is also important to limit the number of channels so it does not
 become too confusing
 
--   TODO: can slack configured to send e-mail?
+-   [ ] TODO: Open, can slack configured to send e-mail?
 
 ## Creating Text (Gregor)
 
-TODO Introduction
+-   [ ] TODO: Gregor, Introduction
 
 ### Dictation (Windows 10 try out, Agness)
 
@@ -245,17 +245,21 @@ satisfied with their accuracy. Examples include:
     applicatipns that help you improving your text such as Grammarly and
     MS Word if you have installed them
 
-*c[Windows 10 Voice
+\*c[Windows 10 Voice
 Recognition](https://support.microsoft.com/en-us/windows/use-voice-recognition-in-windows-10-83ff75bd-63eb-0b6c-18d4-6fae94050571)
 (free for Windows users). You can directly record into MS Word so you
-get a free grammar checcker \> Agnes: I tried windows voice recognition
-and it did not work on my computer * [Google
-Docs](https://support.google.com/docs/answer/4492226?hl=en) offers buidl
-in voice typing for dictating Google voice has a very good recognition
-success rate it is fast but has at times difficultis recognizing names.
-In case it makes mistakes, you will have to clean it up after dictation.
+get a free grammar checcker
 
--   TODO: can we dictate into MS word?
+> Agnes: I tried windows voice recognition and it did not work on my
+> computer \* [Google
+> Docs](https://support.google.com/docs/answer/4492226?hl=en) offers
+> buidl in voice typing for dictating Google voice has a very good
+> recognition success rate it is fast but has at times difficultis
+> recognizing names. In case it makes mistakes, you will have to clean
+> it up after dictation.
+
+-   -   [ ] TODO: Agnes, can we dictate into MS word? ... leran how to
+        write in third person
 
 ### Grammar Checkers (Gregor, review Erin)
 
@@ -326,18 +330,24 @@ Raspberry \* Cons: Pycharm seems to have more features from the start
 
 ### Markdown ()
 
-TODO
+-   [ ] TODO: Gregor, Open, point to book
 
 -   What is markdown?
+
 -   Why do we use it?
+
 -   What a re good editors for markdon?
+
 -   Pointer to Gregor book
+
 -   Collaborative editing with HackMD.io
 
 ## ToDo Lists
 
+-   [ ] TODO: Gregor, improve TODO section
+
 It is important to communicate quickly some tasks in the document that
-we write as a team. In order to do this we wuse the keyword TODO,
+we write as a team. In order to do this we wuse the keyword TODO ,
 followed usually by an explanation if needed. As a TODO can be hopefully
 resolved quickly it shoudl be able yp complete them in 1-2 hours. Any
 TODO that may take longer we also add to our GitHub project in order for
@@ -348,6 +358,18 @@ Once a team member has identified a TODO item, the team member can
 simple put his name behwind it, as well as the data and time so others
 know you work on it. You can aslo communicate on slack about the task
 you do if you run into issues or have questions.
+
+All: if you see a TODO , and want to do it (e.g. have 1-2 hours time,
+put your name to it so others know you will work on it. Do not assign a
+TODO to you if you do not have time and will do it in a month from now,
+Research tasks need to be done immediately. HOwever we will also assign
+some longer term tasks to you so you can work ahead and in parallel, if
+your task is not done it will be assigned to some one else to mitigate
+that the time delay does not block the project.)
+
+All: add tasks in github so we can assign todos and monitor progress
+
+Gregor: Describe In detail how this is done
 
 ## Git and GitHub
 
@@ -392,19 +414,20 @@ interfaces are useful. Several such interfaces are available at:
 
 -   What are the most important commands?
 
-    -   pull TODO
-
-    -   git add FILENAME TODO
-
-    -   commit -a TODO
-
-    -   push TODO
-
-    -   checkout branchanme TODO
+    -   pull
+        -   [ ] TODO: Shannon, git pull
+    -   git add FILENAME
+        -   [ ] TODO: Agnes, git add
+    -   commit -a
+        -   [ ] TODO: Agnes, git commit
+    -   push
+        -   [ ] TODO: Erin, git push
+    -   checkout branchanme
+        -   [ ] TODO: Shannon, git branch
 
 -   What is a branch and how do we use it form the commandline?
 
-    TODO
+    -   [ ] TODO: Shannon, git branch
 
 -   What if you committed something you did not want to and pushed it?
 
@@ -420,10 +443,11 @@ to add
 ### Task Management
 
 -   [Our tasks in
-    Github](https://github.com/cloudmesh/cloudmesh-mpi/projects/1) TODO
-
+    Github](https://github.com/cloudmesh/cloudmesh-mpi/projects/1)
+    -   [ ] TODO: Gregor, generalize
 -   [Our issues in
-    GitHub](https://github.com/cloudmesh/cloudmesh-mpi/issues) TODO
+    GitHub](https://github.com/cloudmesh/cloudmesh-mpi/issues)
+    -   [ ] TODO: Gregor generalize
 
 ### Code Management
 
@@ -443,19 +467,7 @@ Our cod is managed as opens ource code in github.
 
 We have not yet used them
 
-TODO: provide description what they are
-
-All: if you see a TODO, and want to do it (e.g. have 1-2 hours time, put
-your name to it so others know you will work on it. Do not assign a TODO
-to you if you do not have time and will do it in a month from now,
-Research tasks need to be done immediately. HOwever we will also assign
-some longer term tasks to you so you can work ahead and in parallel, if
-your task is not done it will be assigned to some one else to mitigate
-that the time delay does not block the project.)
-
-All: add tasks in github so we can assign todos and monitor progress
-
-Gregor: Describe In detail how this is done
+-   [ ] TODO: Gregor, provide description what they are
 
 # Introduction to MPI
 
@@ -473,18 +485,19 @@ Gregor: Describe In detail how this is done
 -   <http://www.ceci-hpc.be/assets/training/mpi4py.pdf>
 -   <https://www.csc.fi/documents/200270/224366/mpi4py.pdf/825c582a-9d6d-4d18-a4ad-6cb6c43fefd8>
 
-## MPI Todo
+## MPI
 
--   what is mpi
--   Ring
--   kmeans
--   calculation of pi
--   find number count of 8 in randome numbers between 1-10
+-   [ ] TODO: Open, what is mpi
+-   [ ] TODO: Open, Ring
+-   [ ] TODO: Open kmeans
+-   [ ] TODO: Who?, calculation of pi
+-   [ ] TODO: Who?, find number count of 8 in randome numbers between
+    1-10
 
 ## Installation
 
-TODO: how to find te number of cores in linux and gitbash so we can use
-this t define the -n core parameter
+-   [ ] TODO: Cooper, how to find te number of cores in linux and
+    gitbash so we can use this t define the -n core parameter
 
 Linux: nproc
 
@@ -504,8 +517,9 @@ windows: ??? we want command in gitbash that gives it
     packages and click Next. When downloaded clock on them to complete
     the setup
 
-    TODO: COOPER this seems incomplete is this correct. I changed it as
-    previous install instructions were also incomplete.
+    -   [ ] TODO: Cooper, this seems incomplete is this correct. I
+        changed it as previous install instructions were also
+        incomplete.
 
     >     msmpisetup.exe
     >     msmpisdk.msi
@@ -582,7 +596,7 @@ to verify if it works.
 
 ### Installing mpi4py in MacOS
 
-TODO: incomplete
+-   [ ] TODO: Agnes, incomplete
 
 A similar process can be followed to install mpi4py in MacOS. In this
 case, we can use Homebrew to get Open MPI by entering:
@@ -610,7 +624,7 @@ Note that the messages can be in different order.
 To run it on mulitple hosts with each having n cores please create a
 hostfile as follows:
 
-TODO:
+-   [ ] TODO: Open, how to run it on multiple hosts on the PI
 
 ## Machine file, hostfile, rankfile
 
@@ -622,7 +636,7 @@ THIS CAN BE DONE BEST WITH CLOUDMESH
 
 FIRTS TEST BY HAND
 
-TODO: VERIFY
+-   [ ] TODO: Open, VERIFY
 
 >     mpirun.openmpi \
 >       -np 2 \
@@ -632,9 +646,9 @@ TODO: VERIFY
 The machinefile contains the ipaddresses
 
 >     pi@192. ....
->     yout add teh ip addresses
+>     yout add the ip addresses
 
-TODO: learn about and evaluate and test if we can do
+-   [ ] TODO: Open, learn about and evaluate and test if we can do
 
 >     mpirun -r my_rankfile --report-bindings ... 
 >
@@ -969,7 +983,7 @@ Executing `mpiexec -n 4 python npgather.py` yields:
 
 #### send receive
 
-TODO
+-   [ ] TODO, Fidel send recieve
 
 #### Dynamic Process Management with `spawn`
 
@@ -1071,63 +1085,59 @@ can vary.
 
 #### task processing (spawn, pull, ...)
 
-TODO: Cooper
+-   [ ] TODO: Cooper, spawn, pull
 
 ##### Futures
 
+-   [ ] TODO: Open, futures
+
 <https://mpi4py.readthedocs.io/en/stable/mpi4py.futures.html>
 
-#### examples for other collective communication methods
+#### Examples for other collective communication methods
 
-TODO
+-   [ ] TODO: Agnes, introduction
 
 ## MPI-IO
 
-TODO: Agnes
+-   [ ] TODO: Agnes, MPI-IO
 
 ### Collective I/O with NumPy arrays
 
-TODO: Agnes
+-   [ ] TODO: Agnes - IO and Numpy
 
 ### Non-contiguous Collective I/O with NumPy arrays and datatypes
 
-TODO: Agnes
+-   [ ] TODO: Agnes, noncontigious IO
 
 ## Monte Carlo calculation of Pi
 
-TODO: Shannon, improve
+-   [ ] TODO: Shannon, improve
 
-TODO WHAT IS THE PROBLEM GOAL
+-   [ ] TODO: Shannon WHAT IS THE PROBLEM GOAL
 
 We start with the Mathematical formulation of the Monte Carlo calulation
 of pi. For each quadrant of the unit square, the area is pi. Therefore,
 the ratio of the area outside of the circle is pi over four. With this
 in mind, we can use the Monte Carlo Method for the calculation of pi.
 
-TODO: Drawing
+-   [ ] TODO: SHannon, Drawing
 
-TODO: HOW AND WHY DO WE NEED MULTIPLE COMPUTERS
+-   [ ] TODO: Open, HOW AND WHY DO WE NEED MULTIPLE COMPUTERS
 
 ### Program
 
-TODO: Shannon
+-   [ ] TODO: Shannon, PI montecarlo
 
--   Example program to run Montecarlo on multiple hosts
+-   [ ] TODO: Shannon, Example program to run Montecarlo on multiple
+    hosts
 
--   Benchmarking of the code
+-   [ ] TODO: Shannon, Benchmarking of the code
 
-    -   cloudmesh.common (not thread safe, but still can be used,
-        research how to use it in multiple threads)
-    -   other strategies to benchmark, you research (only if really
-        needed
-
--   Use numba to speed up the code
-
-    -   describe how to install
-
--   showcase basic usage on our monte carlo function
-
--   display results with matplotlib
+Use for benchmarking \* cloudmesh.common (not thread safe, but still can
+be used, research how to use it in multiple threads) \* other strategies
+to benchmark, you research (only if really needed \* Use numba to speed
+up the code \* describe how to install \* showcase basic usage on our
+monte carlo function \* display results with matplotlib
 
 ## GPU Programming with MPI
 
@@ -1164,6 +1174,9 @@ We will use initially hackmd so we avoid issues with github and we can
 learn github once we do more coding.
 
 # Deep Lerning on the PI
+
+-   [ ] TODO : Open, Install and use tensorflow
+-   [ ] TODO : Open, Install and use horovod
 
 ## Tensorflow
 
