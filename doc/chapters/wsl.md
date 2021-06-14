@@ -28,10 +28,6 @@ Next, Download Ubuntu 20.04 LTS from the Microsoft store
 
 Run Ubuntu and create a username and passphrase.
 
-<<<<<<< HEAD
-In Powershell, run wsl --set-default-version 2. We will be using WSL 2.
-=======
 Make sur enot to just give an empty passphrase but chose a secure one.
->>>>>>> ef299e69feb2367ce5a2adf2839750134348b99b
 
 - [ ] TODO: Cooper, how to start it the next time
