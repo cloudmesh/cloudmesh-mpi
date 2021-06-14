@@ -257,6 +257,10 @@ from rank 0.
 In this example, with scatter the members of a list among the
 processes in the communicator group.
 
+- [ ] TODO: All, add images
+
+![aaa](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/scatter.png)
+
 > ``` python
 > !include ../examples/scatter.py
 > ```
