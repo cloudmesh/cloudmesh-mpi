@@ -414,6 +414,39 @@ Executing `mpiexec -n 4 python npgather.py` yields:
 The values contained in the buffers from the different processes in
 the group have been gathered in the 2-D array in process with rank 0.
 
+#### Gathering buffer-like objects in all processes `comm.Allgather()`
+
+In this example, each process in the communicator group computes and
+stores values in a NumPy array (row). For each process, these values
+correspond to the multiples of the process' rank and the integers in
+the range of the communicator group's size. After values have been
+computed in each process, the different arrays are gathered into a 2D
+array (table) and distributed to ALL the members of the communicator group
+(as opposed to a single member, which is the case when `comm.Gather()` is
+used instead).
+
+> ```python
+> !include ../examples/allgather_buffer.py
+> ```
+
+Executing `mpiexec -n 4 python allgather_buffer.py` yields:
+
+> ```
+> Process 1 table before Allgather:  [[0. 0.]
+>  [0. 0.]] 
+> 
+> Process 0 table before Allgather:  [[0. 0.]
+>  [0. 0.]] 
+>
+> Process 1 table after Allgather:  [[0. 0.]
+>  [0. 1.]] 
+> 
+> Process 0 table after Allgather:  [[0. 0.]
+>  [0. 1.]] 
+> ```
+
+As we see, after `comm.Allgather()` is called, every process gets a copy
+of the full multiplication table.
 
 #### send receive
 
