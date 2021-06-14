@@ -609,6 +609,72 @@ Executing `mpiexec -n 4 python npgather.py` yields:
 > The values contained in the buffers from the different processes in
 > the group have been gathered in the 2-D array in process with rank 0.
 
+#### Gathering buffer-like objects in all processes `comm.Allgather()`
+
+In this example, each process in the communicator group computes and
+stores values in a NumPy array (row). For each process, these values
+correspond to the multiples of the process' rank and the integers in the
+range of the communicator group's size. After values have been computed
+in each process, the different arrays are gathered into a 2D array
+(table) and distributed to ALL the members of the communicator group (as
+opposed to a single member, which is the case when `comm.Gather()` is
+used instead).
+
+![Example to gather the data from each process into ALL of the processes
+in the
+group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/allgather.png){width="50%"}
+
+> ``` python
+> from mpi4py import MPI
+> import numpy as np
+>
+>
+>
+> # Communicator group
+> comm = MPI.COMM_WORLD
+>
+> # Number of processes in the communicator group 
+> size = comm.Get_size()
+>
+> # Get the rank of the current process in the communicator group
+> rank = comm.Get_rank()
+>
+> # Initialize array and table
+> row  = np.zeros(size)
+> table = np.zeros((size, size))
+>
+> # Each process computes the local values and fills its array
+> for i in range(size):
+>     j = i * rank
+>     row[i] = j
+>
+> # Print array in each process
+> print("Process %d table before Allgather: "%rank, table, "\n")
+>
+> # Gathering occurs
+> comm.Allgather([row,  MPI.INT], [table, MPI.INT])
+>
+> # Print table in each process after gathering
+> print("Process %d table after Allgather: "%rank, table, "\n")
+> ```
+
+Executing `mpiexec -n 4 python allgather_buffer.py` yields:
+
+>     Process 1 table before Allgather:  [[0. 0.]
+>      [0. 0.]] 
+>
+>     Process 0 table before Allgather:  [[0. 0.]
+>      [0. 0.]] 
+>
+>     Process 1 table after Allgather:  [[0. 0.]
+>      [0. 1.]] 
+>
+>     Process 0 table after Allgather:  [[0. 0.]
+>      [0. 1.]] 
+
+As we see, after `comm.Allgather()` is called, every process gets a copy
+of the full multiplication table.
+
 #### send receive
 
 -   [ ] TODO, Fidel send recieve
