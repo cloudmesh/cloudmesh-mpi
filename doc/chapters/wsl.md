@@ -2,6 +2,13 @@
 
 TODO: what is wsl
 
+To install WSL2 your computer must have Hyper-V support enabled.
+THis doe snot work on Windows HOmew and you need to upgrade to Windows
+Pro, Edu or some other Windows 10 version that supports it. Windows
+Edu is typically free for educational institutions. The HYper-V must
+be enabled from your Bios and you need to change your settings if it
+is not enabled.
+
 More information about WSL is provided at
 
 * <https://docs.microsoft.com/en-us/windows/wsl/install-win10> for further detail
