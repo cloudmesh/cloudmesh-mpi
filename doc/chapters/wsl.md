@@ -1,6 +1,6 @@
 ## Installing WSL on Windows 10
 
-TODO: what is wsl
+TODO: Cooper, what is wsl
 
 To install WSL2 your computer must have Hyper-V support enabled.
 THis doe snot work on Windows HOmew and you need to upgrade to Windows
@@ -30,4 +30,4 @@ Run Ubuntu and create a username and passphrase.
 
 Make sur enot to just give an empty passphrase but chose a secure one.
 
-TODO: how to start it the next time
+- [ ] TODO: Cooper, how to start it the next time

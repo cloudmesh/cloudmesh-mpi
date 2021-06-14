@@ -15,17 +15,18 @@
 * <http://www.ceci-hpc.be/assets/training/mpi4py.pdf>
 * <https://www.csc.fi/documents/200270/224366/mpi4py.pdf/825c582a-9d6d-4d18-a4ad-6cb6c43fefd8>
 
-## MPI Todo
+## MPI
 
-* what is mpi
-* Ring
-* kmeans
-* calculation of pi
-* find number count of 8 in randome numbers between 1-10
+
+- [ ] TODO: Open, what is mpi
+- [ ] TODO: Open, Ring
+- [ ] TODO: Open kmeans
+- [ ] TODO: Who?, calculation of pi
+- [ ] TODO: Who?, find number count of 8 in randome numbers between 1-10
 
 ## Installation
 
-TODO: how to find te number of cores in linux and gitbash so we can
+- [ ] TODO: Cooper, how to find te number of cores in linux and gitbash so we can
 use this t define the -n core parameter
 
 Linux: nproc
@@ -48,7 +49,7 @@ windows: ??? we want command in gitbash that gives it
    packages and click Next. When downloaded clock on them to complete
    the setup
 
-   TODO: COOPER this seems incomplete is this correct. I changed it as
+   - [ ] TODO: Cooper, this seems incomplete is this correct. I changed it as
    previous install instructions were also incomplete.
 
    > ```
@@ -141,7 +142,7 @@ to verify if it works.
    
 ### Installing mpi4py in MacOS
 
-TODO: incomplete
+- [ ] TODO: Agnes, incomplete
 
 A similar process can be followed to install mpi4py in MacOS. In this
 case, we can use Homebrew to get Open MPI by entering: 
@@ -174,7 +175,7 @@ Note that the messages can be in different order.
 To run it on mulitple hosts with each having n cores please create a
 hostfile as follows:
 
-TODO:
+- [ ] TODO: Open, how to run it on multiple hosts on the PI
 
 
 ## Machine file, hostfile, rankfile
@@ -188,7 +189,7 @@ THIS CAN BE DONE BEST WITH CLOUDMESH
 
 FIRTS TEST BY HAND
 
-TODO: VERIFY 
+- [ ] TODO: Open, VERIFY 
 
 > ```
 > mpirun.openmpi \
@@ -201,10 +202,10 @@ The machinefile contains the ipaddresses
 
 > ```
 > pi@192. ....
-> yout add teh ip addresses
+> yout add the ip addresses
 > ```
 
-TODO: learn about and evaluate and test if we can do 
+- [ ] TODO: Open, learn about and evaluate and test if we can do 
 
 > ```
 > mpirun -r my_rankfile --report-bindings ... 
@@ -394,7 +395,7 @@ the group have been gathered in the 2-D array in process with rank 0.
 
 #### send receive
 
-TODO
+- [ ] TODO, Fidel send recieve
 
 #### Dynamic Process Management with `spawn`
 
@@ -452,34 +453,36 @@ This output depends on which child process is received first. The output can var
 #### task processing (spawn, pull, ...)
 
 
-TODO: Cooper
+- [ ] TODO: Cooper, spawn, pull
 
 ##### Futures
 
+- [ ] TODO: Open, futures
+
 <https://mpi4py.readthedocs.io/en/stable/mpi4py.futures.html>
 
-#### examples for other collective communication methods
+#### Examples for other collective communication methods
 
-TODO
+- [ ] TODO: Agnes, introduction
 
 ## MPI-IO
 
-TODO: Agnes
+- [ ] TODO: Agnes, MPI-IO
 
 ### Collective I/O with NumPy arrays
 
-TODO: Agnes
+- [ ] TODO: Agnes - IO and Numpy
 
 ### Non-contiguous Collective I/O with NumPy arrays and datatypes
 
-TODO: Agnes
+- [ ] TODO: Agnes, noncontigious IO
 
 
 ## Monte Carlo calculation of Pi
 
-TODO: Shannon, improve
+- [ ] TODO: Shannon, improve
 
-TODO WHAT IS THE PROBLEM GOAL
+- [ ] TODO: Shannon  WHAT IS THE PROBLEM GOAL
 
 We start with the Mathematical formulation of the Monte Carlo
 calulation of pi. For each quadrant of the unit square, the area is
@@ -487,20 +490,21 @@ pi.  Therefore, the ratio of the area outside of the circle is pi over
 four.  With this in mind, we can use the Monte Carlo Method for the
 calculation of pi.
 
-TODO: Drawing
+- [ ] TODO: SHannon, Drawing
 
-TODO: HOW AND WHY DO WE NEED MULTIPLE COMPUTERS
+- [ ] TODO: Open, HOW AND WHY DO WE NEED MULTIPLE COMPUTERS
 
 ### Program
 
-TODO: Shannon
+- [ ] TODO: Shannon, PI montecarlo
 
 
+- [ ] TODO: Shannon, Example program to run Montecarlo on multiple hosts
 
-* Example program to run Montecarlo on multiple hosts
+- [ ] TODO: Shannon, Benchmarking of the code
 
-* Benchmarking of the code
-  * cloudmesh.common (not thread safe, but still can be used, research how to use it in multiple threads)
+Use for benchmarking
+* cloudmesh.common (not thread safe, but still can be used, research how to use it in multiple threads)
   * other strategies to benchmark, you research (only if really needed
 * Use numba to speed up the code
   * describe how to install

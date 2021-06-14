@@ -14,6 +14,9 @@ endef
 doc:
 	cd doc; make
 
+todo:
+	sh bin/todo.sh
+
 all: install
 
 install:

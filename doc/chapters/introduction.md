@@ -1,6 +1,6 @@
 # Overview
 
-TODO: Gregor improves this section
+- [ ] TODO: Gregor, improves this section
 
 After reflecting on the meeting I decided that in order to increase
 your python knowledge and to also lead you towards research we will be

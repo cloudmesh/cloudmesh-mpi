@@ -7,3 +7,9 @@
 # Appendix 
 
 !include chapters/hardware.md 
+
+!include research.md
+
+!include chapters/mpi.md
+
+!include chapters/wsl.md
