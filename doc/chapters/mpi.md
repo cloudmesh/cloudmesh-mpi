@@ -425,6 +425,8 @@ array (table) and distributed to ALL the members of the communicator group
 (as opposed to a single member, which is the case when `comm.Gather()` is
 used instead).
 
+![Example to gather the data from each process into ALL of the processes in the group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/allgather.png){ width=50% } 
+
 > ```python
 > !include ../examples/allgather_buffer.py
 > ```
