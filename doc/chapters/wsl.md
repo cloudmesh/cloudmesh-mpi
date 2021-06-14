@@ -1,6 +1,6 @@
 ## Installing WSL on Windows 10
 
-TODO: Cooper, what is wsl
+WSL is a layer that allows the running of Linux executables on a Windows machine. This broadens the number of commands able to be run and creates more flexibility. 
 
 To install WSL2 your computer must have Hyper-V support enabled.
 THis doe snot work on Windows HOmew and you need to upgrade to Windows
