@@ -16,14 +16,17 @@ This can be done using gitbash as follows
 - [ ] TODO: Cooper, cp command incomplete
 
 ```bash
-$ unzip <filename>
-$ cp ???????
+$ unzip make-4.3-without-guile-w32-bin.zip
+$ cp make-4.3-without-guile-w32-bin.zip /
 ```
 
-NOw start a new terminal and type command
+Now start a new terminal and type command
 
 ```bash
 which make
+
 ```
+```bash
+/usr/bin/make
 
 to make sure it is properly installed and in the correct directory.
