@@ -639,8 +639,14 @@ The machinefile contains the ipaddresses
 
 ### Broadcast `comm.bcast()`
 
+-   [ ] TODO: Cooper, explenation is missing
+
 In this example, we broadcast a two-entry Python dictionary from a root
 process to the rest of the processes in our communicator group.
+
+![Example to broadcast data to different processors from the one with
+rank
+0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){width="25%"}
 
 > ``` python
 > from mpi4py import MPI
@@ -688,6 +694,8 @@ As we can see, the process with rank 1, received the data broadcast from
 rank 0.
 
 #### Scatter `comm.scatter()`
+
+-   [ ] TODO: Cooper, explenation is missing
 
 In this example, with scatter the members of a list among the processes
 in the communicator group.
@@ -741,8 +749,13 @@ among the rest of the processes in the communicator group.
 
 #### Gather `comm.gather()`
 
+-   [ ] TODO: Cooper, explenation is missing
+
 In this example, data from each process in the communicator group is
 gathered in the process with rank 0.
+
+![Example to gather data to different processors from the one with rank
+0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/gather.png){width="50%"}
 
 > ``` python
 > from mpi4py import MPI
@@ -788,6 +801,9 @@ The data from processes with rank `1` to `size - 1` have been
 successfully gathered in process 0.
 
 #### Broadcasting buffer-like objects `comm.Bcast()`
+
+-   [ ] TODO: is there any difference should it be moved to bcast
+    section?
 
 In this example, we broadcast a NumPy array from process 0 to the rest
 of the processes in the communicator group.
@@ -835,6 +851,9 @@ As we can see, the values in the array at process with rank 0 have been
 broadcast to the rest of the processes in the communicator group.
 
 #### Scattering buffer-like objects `comm.Scatter()`
+
+-   [ ] TODO: is there any difference should it be moved to scatter
+    section?
 
 In this example, we scatter a NumPy array among the processes in the
 communicator group.
@@ -898,6 +917,9 @@ been scattered among all our processes in the communicator group, based
 on their rank value.
 
 #### Gathering buffer-like objects `comm.Gather()`
+
+-   [ ] TODO: is there any difference should it be moved to gather
+    section?
 
 In this example, we gather a NumPy array from the processes in the
 communicator group into a 2-D array in process with rank 0.
@@ -967,8 +989,14 @@ Executing `mpiexec -n 4 python npgather.py` yields:
 
 #### Dynamic Process Management with `spawn`
 
+-   [ ] TODO: Cooper, explenation is missing
+
 In this example, we have two python programs, the first one being the
 manager and the second being the worker.
+
+![Example to spawn a program and start it on the different processors
+from the one with rank
+0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/spawn.png){width="50%"}
 
 > ``` python
 > #!/usr/bin/env python
@@ -1060,8 +1088,8 @@ This will result in:
 This output depends on which child process is received first. The output
 can vary.
 
-> > `WARNING:` When running this program it may not terminate. To
-> > terminate use for now `CTRL-C`.
+> `WARNING:` When running this program it may not terminate. To
+> terminate use for now `CTRL-C`.
 
 #### task processing (spawn, pull, ...)
 
@@ -1141,17 +1169,6 @@ experienced it would likely take longer. However to decrease the time
 needed we can split up work and each of you will work on a dedicated
 topic (but you can still work in smaller teams if you desire). We will
 start assigning tasks in github once this is all set up.
-
-Idea:
-
-WE WILL NO LONGER USE HACKMD AS GITHUB IS BETTER FOR INTEGRATION WITH
-CODE
-
--   tutorial about hackmd.io <https://hackmd.io/t9SkKiSLR5qW9RUUA_CT-A>
--   Github vs hackmd
-
-We will use initially hackmd so we avoid issues with github and we can
-learn github once we do more coding.
 
 ## Installing WSL on Windows 10
 

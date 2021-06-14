@@ -228,7 +228,7 @@ The machinefile contains the ipaddresses
 In this example, we broadcast a two-entry Python dictionary from a
 root process to the rest of the processes in our communicator group.
 
-![Example to broadcast data to different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){ width=50% }
+![Example to broadcast data to different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){ width=25% }
 
 
 > ``` python
@@ -472,7 +472,7 @@ N: 100 rank: 0
 
 This output depends on which child process is received first. The output can vary.
 
->> `WARNING:` When running this program it may not terminate. To
+> `WARNING:` When running this program it may not terminate. To
 >terminate use for now `CTRL-C`.
 
 
