@@ -6,8 +6,6 @@
 
 !include chapters/introduction.md
 
-!include chapters/management.md
-
 !include chapters/mpi.md
 
 !include chapters/dl.md

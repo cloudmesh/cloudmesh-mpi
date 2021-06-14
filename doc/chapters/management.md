@@ -164,12 +164,12 @@ it is also important to limit the number of channels so it does not
 become too confusing
 
 
-* TODO: can slack configured to send e-mail?
+- [ ] TODO: Open, can slack configured to send e-mail?
 
 
 ## Creating Text (Gregor)
 
-TODO Introduction
+- [ ] TODO: Gregor,  Introduction
 
 ### Dictation (Windows 10 try out, Agness)
 
@@ -190,14 +190,16 @@ accuracy. Examples include:
 
 *c[Windows 10 Voice Recognition](https://support.microsoft.com/en-us/windows/use-voice-recognition-in-windows-10-83ff75bd-63eb-0b6c-18d4-6fae94050571)
   (free for Windows users). You can directly record into MS Word so you
-  get a free grammar checcker > Agnes: I tried windows voice recognition
+  get a free grammar checcker
+
+  > Agnes: I tried windows voice recognition
   and it did not work on my computer
 * [Google Docs](https://support.google.com/docs/answer/4492226?hl=en) offers buidl in voice typing for dictating 
   Google voice has a very good recognition success rate it is fast but
   has at times difficultis recognizing names. In case
   it makes mistakes, you will have to clean it up after dictation. 
   
-* TODO: can we dictate into MS word?
+* - [ ] TODO: Agnes, can we dictate into MS word? ... leran how to write in third person 
 
 ### Grammar Checkers (Gregor, review Erin)
 
@@ -261,7 +263,7 @@ IDEs:
 
 ### Markdown ()
 
-TODO
+- [ ] TODO: Gregor, Open, point to book 
 
 * What is markdown?
 * Why do we use it?
@@ -271,18 +273,33 @@ TODO
 
 ## ToDo Lists
 
+- [ ] TODO: Gregor, improve TODO section 
+
 It is important to communicate quickly some tasks in the document that
-we write as a team. In order to do this we wuse the keyword TODO,
-followed usually by an explanation if needed. As a TODO can be
+we write as a team. In order to do this we wuse the keyword TODO ,
+followed usually by an explanation if needed. As a TODO  can be
 hopefully resolved quickly it shoudl be able yp complete them in 1-2
-hours. Any TODO that may take longer we also add to our GitHub project
+hours. Any TODO  that may take longer we also add to our GitHub project
 in order for it to be recorded and if we identify or delays in its
 execution we can assign additional team members to help on this tasks.
 
-Once a team member has identified a TODO item, the team member can
+Once a team member has identified a TODO  item, the team member can
 simple put his name behwind it, as well as the data and time so others
 know you work on it. You can aslo communicate on slack about the task
 you do if you run into issues or have questions.
+
+All: if you see a TODO , and want to do it (e.g. have 1-2 hours time,
+put your name to it so others know you will work on it. Do not assign
+a TODO  to you if you do not have time and will do it in a month from
+now, Research tasks need to be done immediately. HOwever we will also
+assign some longer term tasks to you so you can work ahead and in
+parallel, if your task is not done it will be assigned to some one
+else to mitigate that the time delay does not block the project.)
+
+All: add tasks in github so we can assign todos and monitor progress
+
+Gregor: Describe In detail how this is done
+
 
 ## Git and GitHub
 
@@ -329,23 +346,23 @@ are available at:
 * What are the most important commands?
 
   * pull
-    TODO
+    - [ ] TODO: Shannon, git pull
     
   * git add FILENAME
-    TODO
+    - [ ] TODO: Agnes, git add
     
   * commit -a
-    TODO
+    - [ ] TODO: Agnes, git commit 
     
   * push
-    TODO
+    - [ ] TODO: Erin, git push
     
   * checkout branchanme
-    TODO
+    - [ ] TODO: Shannon, git branch
 
 * What is a branch and how do we use it form the commandline?
 
-  TODO
+  - [ ] TODO: Shannon, git branch
   
 * What if you committed something you did not want to and pushed it?
 
@@ -357,10 +374,10 @@ Also do never ever use the git command `git add .` as that adds all files and yo
 ### Task Management
 
 * [Our tasks in Github](https://github.com/cloudmesh/cloudmesh-mpi/projects/1)
-  TODO
+  - [ ] TODO: Gregor, generalize 
   
 * [Our issues in GitHub](https://github.com/cloudmesh/cloudmesh-mpi/issues) 
-  TODO
+  - [ ] TODO: Gregor generalize
 
 ### Code Management
 
@@ -380,19 +397,8 @@ Our cod is managed as opens ource code in github.
 
 We have not yet used them
 
-TODO: provide description what they are
+- [ ] TODO: Gregor, provide description what they are
 
 
-All: if you see a TODO, and want to do it (e.g. have 1-2 hours time,
-put your name to it so others know you will work on it. Do not assign
-a TODO to you if you do not have time and will do it in a month from
-now, Research tasks need to be done immediately. HOwever we will also
-assign some longer term tasks to you so you can work ahead and in
-parallel, if your task is not done it will be assigned to some one
-else to mitigate that the time delay does not block the project.)
-
-All: add tasks in github so we can assign todos and monitor progress
-
-Gregor: Describe In detail how this is done
 
 

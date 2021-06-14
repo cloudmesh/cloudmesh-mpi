@@ -15,17 +15,18 @@
 * <http://www.ceci-hpc.be/assets/training/mpi4py.pdf>
 * <https://www.csc.fi/documents/200270/224366/mpi4py.pdf/825c582a-9d6d-4d18-a4ad-6cb6c43fefd8>
 
-## MPI Todo
+## MPI
 
-* what is mpi
-* Ring
-* kmeans
-* calculation of pi
-* find number count of 8 in randome numbers between 1-10
+
+- [ ] TODO: Open, what is mpi
+- [ ] TODO: Open, Ring
+- [ ] TODO: Open kmeans
+- [ ] TODO: Who?, calculation of pi
+- [ ] TODO: Who?, find number count of 8 in randome numbers between 1-10
 
 ## Installation
 
-TODO: how to find te number of cores in linux and gitbash so we can
+- [ ] TODO: Cooper, how to find te number of cores in linux and gitbash so we can
 use this t define the -n core parameter
 
 Linux: nproc
@@ -48,7 +49,7 @@ windows: ??? we want command in gitbash that gives it
    packages and click Next. When downloaded clock on them to complete
    the setup
 
-   TODO: COOPER this seems incomplete is this correct. I changed it as
+   - [ ] TODO: Cooper, this seems incomplete is this correct. I changed it as
    previous install instructions were also incomplete.
 
    > ```
@@ -141,7 +142,7 @@ to verify if it works.
    
 ### Installing mpi4py in MacOS
 
-TODO: incomplete
+- [ ] TODO: Agnes, incomplete
 
 A similar process can be followed to install mpi4py in MacOS. In this
 case, we can use Homebrew to get Open MPI by entering: 
@@ -174,7 +175,7 @@ Note that the messages can be in different order.
 To run it on mulitple hosts with each having n cores please create a
 hostfile as follows:
 
-TODO:
+- [ ] TODO: Open, how to run it on multiple hosts on the PI
 
 
 ## Machine file, hostfile, rankfile
@@ -188,7 +189,7 @@ THIS CAN BE DONE BEST WITH CLOUDMESH
 
 FIRTS TEST BY HAND
 
-TODO: VERIFY 
+- [ ] TODO: Open, VERIFY 
 
 > ```
 > mpirun.openmpi \
@@ -201,10 +202,10 @@ The machinefile contains the ipaddresses
 
 > ```
 > pi@192. ....
-> yout add teh ip addresses
+> yout add the ip addresses
 > ```
 
-TODO: learn about and evaluate and test if we can do 
+- [ ] TODO: Open, learn about and evaluate and test if we can do 
 
 > ```
 > mpirun -r my_rankfile --report-bindings ... 
@@ -222,8 +223,13 @@ TODO: learn about and evaluate and test if we can do
 
 ### Broadcast `comm.bcast()`
 
+- [ ] TODO: Cooper, explenation is missing
+
 In this example, we broadcast a two-entry Python dictionary from a
 root process to the rest of the processes in our communicator group.
+
+![Example to broadcast data to different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){ width=25% }
+
 
 > ``` python
 > !include ../examples/broadcast.py
@@ -253,8 +259,14 @@ from rank 0.
 
 #### Scatter `comm.scatter()`
 
+- [ ] TODO: Cooper, explenation is missing
+
 In this example, with scatter the members of a list among the
 processes in the communicator group.
+
+- [ ] TODO: All, add images
+
+![Example to scatter data to different processors from the one with Rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/scatter.png){ width=50% }
 
 > ``` python
 > !include ../examples/scatter.py
@@ -279,8 +291,13 @@ scattered among the rest of the processes in the communicator group.
 
 #### Gather `comm.gather()`
 
+- [ ] TODO: Cooper, explenation is missing
+
 In this example, data from each process in the communicator group is
 gathered in the process with rank 0.
+
+![Example to gather data to different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/gather.png){ width=50% }
+
 
 
 > ``` python
@@ -305,6 +322,8 @@ successfully gathered in process 0.
 
 
 #### Broadcasting buffer-like objects `comm.Bcast()`
+
+- [ ] TODO: is there any difference should it be moved to bcast section?
 
 In this example, we broadcast a NumPy array from process 0 to the rest
 of the processes in the communicator group.
@@ -331,6 +350,8 @@ been broadcast to the rest of the processes in the communicator group.
 
 
 #### Scattering buffer-like objects `comm.Scatter()`
+
+- [ ] TODO: is there any difference should it be moved to scatter section?
 
 In this example, we scatter a NumPy array among the processes in the
 communicator group.
@@ -363,6 +384,8 @@ based on their rank value.
 
 #### Gathering buffer-like objects `comm.Gather()`
 
+- [ ] TODO: is there any difference should it be moved to gather section?
+
 In this example, we gather a NumPy array from the processes in the
 communicator group into a 2-D array in process with rank 0.
 
@@ -394,12 +417,17 @@ the group have been gathered in the 2-D array in process with rank 0.
 
 #### send receive
 
-TODO
+- [ ] TODO, Fidel send recieve
 
 #### Dynamic Process Management with `spawn`
 
+- [ ] TODO: Cooper, explenation is missing
+
 In this example, we have two python programs, the first one being the
 manager and the second being the worker.
+
+![Example to spawn a program and start it on the different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/spawn.png){ width=50% }
+
 
 > ``` python
 > !include ../examples/spawn/manager.py
@@ -444,7 +472,7 @@ N: 100 rank: 0
 
 This output depends on which child process is received first. The output can vary.
 
->> `WARNING:` When running this program it may not terminate. To
+> `WARNING:` When running this program it may not terminate. To
 >terminate use for now `CTRL-C`.
 
 
@@ -452,34 +480,36 @@ This output depends on which child process is received first. The output can var
 #### task processing (spawn, pull, ...)
 
 
-TODO: Cooper
+- [ ] TODO: Cooper, spawn, pull
 
 ##### Futures
 
+- [ ] TODO: Open, futures
+
 <https://mpi4py.readthedocs.io/en/stable/mpi4py.futures.html>
 
-#### examples for other collective communication methods
+#### Examples for other collective communication methods
 
-TODO
+- [ ] TODO: Agnes, introduction
 
 ## MPI-IO
 
-TODO: Agnes
+- [ ] TODO: Agnes, MPI-IO
 
 ### Collective I/O with NumPy arrays
 
-TODO: Agnes
+- [ ] TODO: Agnes - IO and Numpy
 
 ### Non-contiguous Collective I/O with NumPy arrays and datatypes
 
-TODO: Agnes
+- [ ] TODO: Agnes, noncontigious IO
 
 
 ## Monte Carlo calculation of Pi
 
-TODO: Shannon, improve
+- [ ] TODO: Shannon, improve
 
-TODO WHAT IS THE PROBLEM GOAL
+- [ ] TODO: Shannon  WHAT IS THE PROBLEM GOAL
 
 We start with the Mathematical formulation of the Monte Carlo
 calulation of pi. For each quadrant of the unit square, the area is
@@ -487,20 +517,21 @@ pi.  Therefore, the ratio of the area outside of the circle is pi over
 four.  With this in mind, we can use the Monte Carlo Method for the
 calculation of pi.
 
-TODO: Drawing
+- [ ] TODO: SHannon, Drawing
 
-TODO: HOW AND WHY DO WE NEED MULTIPLE COMPUTERS
+- [ ] TODO: Open, HOW AND WHY DO WE NEED MULTIPLE COMPUTERS
 
 ### Program
 
-TODO: Shannon
+- [ ] TODO: Shannon, PI montecarlo
 
 
+- [ ] TODO: Shannon, Example program to run Montecarlo on multiple hosts
 
-* Example program to run Montecarlo on multiple hosts
+- [ ] TODO: Shannon, Benchmarking of the code
 
-* Benchmarking of the code
-  * cloudmesh.common (not thread safe, but still can be used, research how to use it in multiple threads)
+Use for benchmarking
+* cloudmesh.common (not thread safe, but still can be used, research how to use it in multiple threads)
   * other strategies to benchmark, you research (only if really needed
 * Use numba to speed up the code
   * describe how to install
@@ -531,13 +562,3 @@ needed we can split up work and each of you will work on a dedicated
 topic (but you can still work in smaller teams if you desire). We will
 start assigning tasks in github once this is all set up.
 
-Idea:
-
-WE WILL NO LONGER USE HACKMD AS GITHUB IS BETTER FOR INTEGRATION WITH
-CODE
-
-* tutorial about hackmd.io <https://hackmd.io/t9SkKiSLR5qW9RUUA_CT-A>
-* Github vs hackmd
-
-We will use initially hackmd so we avoid issues with github and we can
-learn github once we do more coding.

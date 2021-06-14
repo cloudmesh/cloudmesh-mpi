@@ -1,5 +1,8 @@
 # Deep Lerning on the PI
 
+- [ ] TODO : Open, Install and use tensorflow
+- [ ] TODO : Open, Install and use horovod
+
 ## Tensorflow
 
 * tensorflow 2.3

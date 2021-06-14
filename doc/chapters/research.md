@@ -40,7 +40,7 @@ Examples:
 
 ### Bare metal on your Computer
 
-TODO
+- [ ] TODO, All see other todos 
 
 Recommendations
 
@@ -60,25 +60,37 @@ Recommendations
 
 ### Using Raspberry PIs
 
-TODO
+- [ ] TODO, Open,  Using Raspberry PIs
 
 ### Laptops and Desktops
 
-TODO
+- [ ] TODO, Open, Laptops and Desktops
 
 ### Virtual Machines
 
-TODO requires >=16 GB on laptop/desktop
+- [ ] TODO, Open, using vms
+
+requires >=16 GB on laptop/desktop
 
 #### Multipass
 
+- [ ] TODO: Erin, Using multipass
+
 #### WSL2
+
+- [ ] TODO: Cooper, using wsl2
+
+#### Make
+
+- [ ] TODO: Cooper, using make
 
 #### VMs on your local computer
 
 #### Cloud Virtual Machines
 
 #### Campus Resources
+
+- [ ] TODO: Erin, campus resoources
 
 ##### Indiana University
 
@@ -87,7 +99,7 @@ Raspberry PI cluster, but Cluster will teach you other things that you
 will not experience if you use the campus cluster. You have more
 access, please keep that in mind.
 
-TODO: list resources hera nad how to get access
+- [ ] TODO: Erin, list resources hera nad how to get access
 
 ## Other resoources
 
@@ -106,7 +118,8 @@ TODO: list resources hera nad how to get access
 
 ## Installation 
 
-In this section we will quickly summarize hwo you install of python on your hardware This includes 
+In this section we will quickly summarize how you install of python on
+your hardware This includes
 
 * Windows 10
 * MacOs
@@ -116,18 +129,19 @@ Each installation documents the install from python.org
 
 ### Instalation on Windows 10
 
-TODO
+- [ ] TODO: Cooper, instalation on windows
 
 ### Instalation on MacOS
 
-TODO
+- [ ] TODO: Agnes, instalation on Mac
 
 ### Instalation on Raspberry OS
 
-TODO: using cms burn
+- [ ] TODO: Open, using cms burn
 
 ### Instalation on Raspberry Ubuntu
 
-TODO: using cms burn
+- [ ] TODO: Open, using cms burn
+
 
 
