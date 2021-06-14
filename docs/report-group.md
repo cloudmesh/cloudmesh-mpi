@@ -692,6 +692,11 @@ rank 0.
 In this example, with scatter the members of a list among the processes
 in the communicator group.
 
+-   [ ] TODO: All, add images
+
+![Example to scatter data to different processors from the one with Rank
+0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/scatter.png){width="50%"}
+
 > ``` python
 > from mpi4py import MPI
 >
