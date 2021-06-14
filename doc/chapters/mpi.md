@@ -573,6 +573,15 @@ Use for benchmarking
 * showcase basic usage on our monte carlo function
 * display results with matplotlib
 
+### Counting Numbers
+
+- [ ] TODO: Erin, Explain the program
+
+> ``` python
+> !include ../examples/count/count.py
+> ```
+
+More explanations
 
 ## GPU Programming with MPI
 
