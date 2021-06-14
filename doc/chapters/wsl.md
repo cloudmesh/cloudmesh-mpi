@@ -16,11 +16,11 @@ More information about WSL is provided at
 To install WSL2 you can follow these directions while using
 Powershell as an administrative user and run
 
-```
-dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-wsl --set-default-version 2
-```
+> ```
+> ps$ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+> ps$ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+> ps$ wsl --set-default-version 2
+> ```
 
 Next, Download Ubuntu 20.04 LTS from the Microsoft store 
 

@@ -10,6 +10,6 @@
 
 !include research.md
 
-!include chapters/mpi.md
+!include chapters/make.md
 
 !include chapters/wsl.md

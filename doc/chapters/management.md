@@ -37,15 +37,15 @@ recommended to jsut use one tool.
 Google Meet is an online platform that allows groups of people to host
 video and audio conference calls. It has evolved from google hangout.
 
-* What are good features? (Shannon)
+* **What are good features?** (Shannon)
 
-  Some good features of Google meet include that it has a button for
-  closed captioning or subtitles in the case that you're having
-  trouble hearing the speaker.  It is also compatible across devices
-  so it is very easy and accessible for all group members. The sound
-  quality is very good.
+  Some good features of Google
+  meet include that it has a button for closed captioning or subtitles
+  in the case that you're having trouble hearing the speaker.  It is
+  also compatible across devices so it is very easy and accessible for
+  all group members. The sound quality is very good.
 
-* What are not so good features? (Gregor)
+* **What are not so good features?** (Gregor)
 
   1. Goggle meet does not provide an easy way to have other take control
      of a remote desktop. However, it is possible to use Google Remote
@@ -55,7 +55,7 @@ video and audio conference calls. It has evolved from google hangout.
      desktops at tehe same time. This feature was available in hangout
      but is no longer available as far as we can tell.
 
-* Why do we use google meet and not zoom? (Gregor)
+* **Why do we use google meet and not zoom?** (Gregor)
 
   Google offers many services that are useful for collaboration. This
   includes Google drive, docs, presentations, mail, calendar, and
@@ -69,7 +69,7 @@ Zoom is a cloud-based communications platform that provides support
 for one-on-one, group meetings, and webinars and has recently become
 one of the most popular video-conferencing tools.
 
-* What are good features? (Fidel, Gregor)
+* **What are good features?** (Fidel, Gregor)
 
   Some of Zoom’s most popular features include live chat, screen
   sharing, a whiteboard, and virtual reactions for meeting
@@ -84,7 +84,7 @@ one of the most popular video-conferencing tools.
   meeting’s audio channel using dedicated telephone numbers.
 
   
-* What are not so good features? (Gregor, Fidel)
+* **What are not so good features?** (Gregor, Fidel)
 
   Free account holders can host unlimited one-on-one meetings (meeting
   durations up to 24 hrs). In contrast to Google meet, there is a
@@ -102,7 +102,7 @@ one of the most popular video-conferencing tools.
   while the other one is used for sound, or you use a cell phone for
   the later
 
-* How can someone take control of a remote desktop? (Fidel)
+* **How can someone take control of a remote desktop?** (Fidel)
 
   To take control of a remote desktop, the remote user must activate
   screen sharing. Once the screen sharing is activated, we need to
@@ -135,7 +135,7 @@ also allwing real time text messaging,
  send and receive text messages and access services that can be added
  to slack.
 
-* What are good features? (Gregor)
+* **What are good features?** (Gregor)
  
 Slack offers a GUI that is liked by many while focussing on a stream
 of messages. It can be used on any device.  It is easy to send photos,
@@ -143,7 +143,7 @@ which may be useful in case the device you need to discuss is not on
 the internet but you need to share the content for example of its
 screen.
 
-* What are not so good features? (Gregor)
+* **What are not so good features?** (Gregor)
 
 Slack is stream-based and does not provide a good mechanism for
 organizing messages. The thread feature is far inferior to that of
@@ -171,7 +171,7 @@ become too confusing
 
 - [ ] TODO: Gregor,  Introduction
 
-### Dictation (Windows 10 try out, Agness)
+### Dictation (Gregor, Windows 10 try out, Agness)
 
 Sometimes it is conveneinet to directly dictate the text for a manual
 or tutorial into an editor. On MacOS and Windows you will find useful
