@@ -5,7 +5,7 @@ assembling programs or documents to create an integrated document.
 Within makefiles defined targets that you can call and are executed.
 Through its mechanism, it can easily deal with complex workflows that
 require a multitude of actions to be executed. Makefiles are executed
-by the program make that is available on all platforms. 
+by the program make that is available on all platforms.
 
 On machines such as on machines that run Linux, it is likely to be
 pre-installed while on MacOS you can install it with Xcode. On
@@ -35,12 +35,14 @@ $ unzip make-4.3-without-guile-w32-bin.zip
 Now start a new terminal and type the command
 
 ```bash
-which make
+$ which make
 ```
+
 It will provide you the location if the installation was successful
 
-```bash
-/usr/bin/make
+> ```bash
+> /usr/bin/make
+> ```
 
 to make sure it is properly installed and in the correct directory.
 >

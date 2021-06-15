@@ -8,9 +8,6 @@ For more information, please contact: <laszewski@gmail.com>
 > **Note:** Do not modify the report.md file, instead modify only files
 > in in the chapters dir
 
-> **Note:** Do not edit this document, only edit the documents in the
-> chapters directory
-
 # Preface
 
 ## Project Link Collection
