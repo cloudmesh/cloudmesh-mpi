@@ -374,32 +374,32 @@ useful ones to get team members started
 
 What are the most important commands?
 
-`git pull`
-:   retrives the latest content from the shared remote repository
+* `git pull`
+  * retrives the latest content from the shared remote repository
     
-`git add FILENAME`
-:	adds a filename to the local repository. Also, do never use the
+* `git add FILENAME`
+  * adds a filename to the local repository. Also, do never use the
 	git command `git add .` as that adds all files and you could have
 	files that you do not want to commit. instead **always** use
 	`git add FILENAME`, where FILENAME is the file you like to add.
 
 
-`git commit -m "commit comment" FILENAME`
-:   commits the current content of the FILE to the local repository
+* `git commit -m "commit comment" FILENAME`
+  *  commits the current content of the FILE to the local repository
 
-`git push`
-:   pushes the content from the local repostory to the shared remote repository
+* `git push`
+  *  pushes the content from the local repostory to the shared remote repository
 
 More advanced feature off get is the use of branches. With branches we
 can coordinate individual contributions that I merged into the main
 remote repository. This is done With a branch name as well as a git
 pull request.
 
-`git checkout BRANCHANME`
-:   creates a new branch in your local repository
+* `git checkout BRANCHANME`
+  * creates a new branch in your local repository
 
-`git push -u origin BRANCHNAME`
-:   pushes the branch with the name BRANCHNAME to the remote
+* `git push -u origin BRANCHNAME`
+  * pushes the branch with the name BRANCHNAME to the remote
     repository for all to see
 
 After your branch may be reviewed by the team it may be decided to
@@ -407,7 +407,9 @@ merge it into the main branch. This has to be done carefully and
 multiple people should review such a merge before It is executed and
 pushed. You can try out a branch by checking it out with the command
 
-`git checkout BBRANCHNAME`
+> ```
+> $ git checkout BBRANCHNAME
+> ```
 
 
 After the check out you have the contents of the branch in your local
@@ -415,15 +417,15 @@ repository and you can verify if it works. Usually one person or team
 members are dedicated to merging branches. A branch can be merged with
 the commands
 
-```
-git checkout main
-git merge main BRANCHNAME
-```
+> ```
+> $ git checkout main
+> $ git merge main BRANCHNAME
+> ```
 
 To push the branch into the remote repository simply used to the push command.
 
-```
-git push
-```
+> ```
+> $ git push
+> ```
 
 
