@@ -12,6 +12,8 @@ GROUP=chapters/management.md chapters/hardware.md ../docs/report-group.pdf
 all: pdf-mpi pdf-group clean
 
 md-mpi: ${MPI}
+	echo "============="
+	echo ${MPI}
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} ./chapters/report-mpi.md -o tmp-1.md
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} tmp-1.md -o tmp-2.md
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} tmp-2.md -o tmp-3.md
