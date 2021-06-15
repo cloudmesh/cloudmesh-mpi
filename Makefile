@@ -14,6 +14,9 @@ endef
 doc:
 	cd doc; make
 
+image:
+	cd doc; make image
+
 todo:
 	sh bin/todo.sh
 
