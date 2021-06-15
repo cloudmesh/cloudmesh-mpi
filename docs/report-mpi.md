@@ -13,27 +13,11 @@ For more information, please contact: <laszewski@gmail.com>
 
 # Preface
 
-Add a preface
-
--   Who we are and how this activity came about.
-
--   Notation. We can copy what I have done in other books, but keep it
-    simple e.g. we do not have to worry about epub
-
-    -   code
-    -   use of `verbatim` inline and in block
-    -   use of LaTex formulas
-    -   use of markdown
-        -   spaces before and after headline, itemize lists, e.g. online
-            editors do that not correctly
-        -   hyperlinks
-        -   citation
-
-## Resources
+## Project Link Collection
 
 -   Github Actions:
-    <https://github.com/cloudmesh/cloudmesh-mpi/projects/1>
 
+    -   [-\> All](https://github.com/cloudmesh/cloudmesh-mpi/projects/1)
     -   [-\>
         Fidel](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Aflealc)
     -   [-\>
@@ -44,6 +28,8 @@ Add a preface
         Cooper](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Acoopyoung)
     -   [-\>
         Agnes](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Ashekinah-lungu)
+    -   [-\>
+        Gregor](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Alaszewsk)
 
 -   Repository: <https://github.com/cloudmesh/cloudmesh-mpi>
 
@@ -55,20 +41,51 @@ Add a preface
     -   <https://cloudmesh.github.io/cloudmesh-mpi/report-mpi.pdf>
     -   <https://cloudmesh.github.io/cloudmesh-mpi/report-group.pdf>
 
+To check out use
+
+>     $ git clone git@github.com:cloudmesh/cloudmesh-mpi.git
+
+or
+
+>     $ git clone https://github.com/cloudmesh/cloudmesh-mpi.git
+
+## Document Notation
+
+To keep things uniform we use the following document notations.
+
+1.  Empty lines are to be placed before and after a context change such
+    as a headline, paragraph, list, image inclusion.
+
+2.  All code is written in code blocks using the `>` and thre back
+    quotes. A rendered example looks as follows:
+
+    >     this is an example
+
+3.  Using code inclusion in a line is not allowed. Single quote
+    inclusion must be used for filenames, and other names as they are
+    refereed to in code blocks.
+
+4.  Formulas are written as LaTeX formulas
+
+5.  We use regular markdown
+
+6.  Inclusions are handled by pandoc-include
+
+7.  bibliography is managed via footnotes
+
 # Overview
 
--   [ ] TODO: Gregor, improves this section
-
-After reflecting on the meeting I decided that in order to increase your
-python knowledge and to also lead you towards research we will be
-developing initially a tutorial that teaches students how to use MPI
-(Message Passing Interface). We do this with something that is called
-mpi4py. (later on we will use this to coordinate AI algorithms) We will
-develop multiple sections to this tutorial and each of you will each
-week work on a chapter so it can be redone by others. You can also work
-together and share each others ideas and thoughts openly as well as ask
-questions. We will do the following structured tasks (you will need to
-know what plagiarism is and when and how you need to cite):
+Today state of science and tool kits python has become the predominantly
+programming language. However, previously existing parallel programming
+paradigms such as message passing in interface (MPI) have proven to be a
+useful asset when it comes to enhancing complex data flows while
+executing them on multiple computers including supercomputers. However
+many students do not have the time to learn C programming to utilize
+such advanced cyberinfrastructure. Hence, it is advantageous to access
+MPI from Python. We will be showcasing to you how you can easily deploy
+and use MPI via a tool called `mpi4pi`. We will also show you how to use
+`mpi4pi` in support of AI workflows. This is done by using TensorFlow
+with it, as well as the execution of parallel execution of TensorFlow.
 
 # Introduction to MPI
 

@@ -18,6 +18,21 @@
   * <https://cloudmesh.github.io/cloudmesh-mpi/report-mpi.pdf>
   * <https://cloudmesh.github.io/cloudmesh-mpi/report-group.pdf>
 
+To check out use 
+  
+> ```
+> $ git clone git@github.com:cloudmesh/cloudmesh-mpi.git
+> ```
+  
+or 
+  
+> ```
+> $ git clone https://github.com/cloudmesh/cloudmesh-mpi.git
+> ```
+
+
+
+
 ## Document Notation
 
 To keep things uniform we use the following document notations.
