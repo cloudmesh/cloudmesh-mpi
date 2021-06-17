@@ -28,6 +28,6 @@ Next, Download Ubuntu 20.04 LTS from the Microsoft store
 
 Run Ubuntu and create a username and passphrase.
 
-Make sur enot to just give an empty passphrase but chose a secure one.
+Make sure not to just give an empty passphrase but chose a secure one.
 
 - [ ] TODO: Cooper, how to start it the next time

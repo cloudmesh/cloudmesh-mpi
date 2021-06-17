@@ -105,10 +105,18 @@ with it, as well as the execution of parallel execution of TensorFlow.
 -   [ ] TODO: Cooper, how to find te number of cores in linux and
     gitbash so we can use this t define the -n core parameter
 
+
+
 Linux: nproc
 
 osx: sysctl hw.physicalcpu hw.logicalcpu
 
+Windows: In a powershell admin shell or gitbash window
+> ``` bash
+> $ msinfo32
+```
+ and it will pull up your system information.
+Type processor and it will show how many cores/ logical processors the machine has.
 -   which one can we use?
 
 windows: ??? we want command in gitbash that gives it
