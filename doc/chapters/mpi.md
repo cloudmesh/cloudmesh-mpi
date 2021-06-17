@@ -17,9 +17,6 @@
 
 ## Installation
 
-- [ ] TODO: Cooper, how to find te number of cores in linux and gitbash so we can
-use this t define the -n core parameter
-
 Linux: nproc
 
 osx: sysctl hw.physicalcpu hw.logicalcpu
@@ -37,11 +34,8 @@ windows: ??? we want command in gitbash that gives it
    <https://docs.microsoft.com/en-us/message-passing-interface/microsoft-mpi#ms-mpi-downloads>
    
    Go to the download link and download and install it. Select the two
-   packages and click Next. When downloaded clock on them to complete
+   packages and click Next. When downloaded click on them to complete
    the setup
-
-   - [ ] TODO: Cooper, this seems incomplete is this correct. I changed it as
-   previous install instructions were also incomplete.
 
    > ```
    > msmpisetup.exe
@@ -214,7 +208,7 @@ The machinefile contains the ipaddresses
 
 ### Broadcast `comm.bcast()`
 
-- [ ] TODO: Cooper, explenation is missing
+- [ ] TODO: Fidel, explenation is missing
 
 In this example, we broadcast a two-entry Python dictionary from a
 root process to the rest of the processes in our communicator group.
@@ -250,7 +244,7 @@ from rank 0.
 
 #### Scatter `comm.scatter()`
 
-- [ ] TODO: Cooper, explenation is missing
+- [ ] TODO: Fidel, explenation is missing
 
 In this example, with scatter the members of a list among the
 processes in the communicator group.
@@ -282,7 +276,7 @@ scattered among the rest of the processes in the communicator group.
 
 #### Gather `comm.gather()`
 
-- [ ] TODO: Cooper, explenation is missing
+- [ ] TODO: Fidel, explenation is missing
 
 In this example, data from each process in the communicator group is
 gathered in the process with rank 0.
