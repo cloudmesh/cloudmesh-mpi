@@ -37,5 +37,4 @@ count_data = comm.gather(count, root=0)
 if rank == 0:
     print(rank, count_data)
     b = sum(count_data)
-    print(b)
-    print("probability", (4*N)*(1/max_number))
+    print("Total number of 8's:", b)
