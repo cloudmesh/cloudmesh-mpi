@@ -8,32 +8,13 @@ For more information, please contact: <laszewski@gmail.com>
 > **Note:** Do not modify the report.md file, instead modify only files
 > in in the chapters dir
 
-> **Note:** Do not edit this document, only edit the documents in the
-> chapters directory
-
 # Preface
 
-Add a preface
-
--   Who we are and how this activity came about.
-
--   Notation. We can copy what I have done in other books, but keep it
-    simple e.g. we do not have to worry about epub
-
-    -   code
-    -   use of `verbatim` inline and in block
-    -   use of LaTex formulas
-    -   use of markdown
-        -   spaces before and after headline, itemize lists, e.g. online
-            editors do that not correctly
-        -   hyperlinks
-        -   citation
-
-## Resources
+## Project Link Collection
 
 -   Github Actions:
-    <https://github.com/cloudmesh/cloudmesh-mpi/projects/1>
 
+    -   [-\> All](https://github.com/cloudmesh/cloudmesh-mpi/projects/1)
     -   [-\>
         Fidel](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Aflealc)
     -   [-\>
@@ -44,6 +25,8 @@ Add a preface
         Cooper](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Acoopyoung)
     -   [-\>
         Agnes](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Ashekinah-lungu)
+    -   [-\>
+        Gregor](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Alaszewsk)
 
 -   Repository: <https://github.com/cloudmesh/cloudmesh-mpi>
 
@@ -55,20 +38,51 @@ Add a preface
     -   <https://cloudmesh.github.io/cloudmesh-mpi/report-mpi.pdf>
     -   <https://cloudmesh.github.io/cloudmesh-mpi/report-group.pdf>
 
+To check out use
+
+>     $ git clone git@github.com:cloudmesh/cloudmesh-mpi.git
+
+or
+
+>     $ git clone https://github.com/cloudmesh/cloudmesh-mpi.git
+
+## Document Notation
+
+To keep things uniform we use the following document notations.
+
+1.  Empty lines are to be placed before and after a context change such
+    as a headline, paragraph, list, image inclusion.
+
+2.  All code is written in code blocks using the `>` and thre back
+    quotes. A rendered example looks as follows:
+
+    >     this is an example
+
+3.  Using code inclusion in a line is not allowed. Single quote
+    inclusion must be used for filenames, and other names as they are
+    refereed to in code blocks.
+
+4.  Formulas are written as LaTeX formulas
+
+5.  We use regular markdown
+
+6.  Inclusions are handled by pandoc-include
+
+7.  bibliography is managed via footnotes
+
 # Overview
 
--   [ ] TODO: Gregor, improves this section
-
-After reflecting on the meeting I decided that in order to increase your
-python knowledge and to also lead you towards research we will be
-developing initially a tutorial that teaches students how to use MPI
-(Message Passing Interface). We do this with something that is called
-mpi4py. (later on we will use this to coordinate AI algorithms) We will
-develop multiple sections to this tutorial and each of you will each
-week work on a chapter so it can be redone by others. You can also work
-together and share each others ideas and thoughts openly as well as ask
-questions. We will do the following structured tasks (you will need to
-know what plagiarism is and when and how you need to cite):
+Today state of science and tool kits python has become the predominantly
+programming language. However, previously existing parallel programming
+paradigms such as message passing in interface (MPI) have proven to be a
+useful asset when it comes to enhancing complex data flows while
+executing them on multiple computers including supercomputers. However
+many students do not have the time to learn C programming to utilize
+such advanced cyberinfrastructure. Hence, it is advantageous to access
+MPI from Python. We will be showcasing to you how you can easily deploy
+and use MPI via a tool called `mpi4pi`. We will also show you how to use
+`mpi4pi` in support of AI workflows. This is done by using TensorFlow
+with it, as well as the execution of parallel execution of TensorFlow.
 
 # Introduction to MPI
 
@@ -76,15 +90,6 @@ know what plagiarism is and when and how you need to cite):
 
 -   What are some example MPI functionalities and usage patterns (send
     receive, embarrassing parallel)
-
-## Resources {#resources}
-
--   <https://research.computing.yale.edu/sites/default/files/files/mpi4py.pdf>
--   <https://www.nesi.org.nz/sites/default/files/mpi-in-python.pdf>
--   <https://www.kth.se/blogs/pdc/2019/08/parallel-programming-in-python-mpi4py-part-1/>
--   <http://education.molssi.org/parallel-programming/03-distributed-examples-mpi4py/index.html>
--   <http://www.ceci-hpc.be/assets/training/mpi4py.pdf>
--   <https://www.csc.fi/documents/200270/224366/mpi4py.pdf/825c582a-9d6d-4d18-a4ad-6cb6c43fefd8>
 
 ## MPI
 
@@ -100,10 +105,18 @@ know what plagiarism is and when and how you need to cite):
 -   [ ] TODO: Cooper, how to find te number of cores in linux and
     gitbash so we can use this t define the -n core parameter
 
+
+
 Linux: nproc
 
 osx: sysctl hw.physicalcpu hw.logicalcpu
 
+Windows: In a powershell admin shell or gitbash window
+> ``` bash
+> $ msinfo32
+```
+ and it will pull up your system information.
+Type processor and it will show how many cores/ logical processors the machine has.
 -   which one can we use?
 
 windows: ??? we want command in gitbash that gives it
@@ -820,6 +833,37 @@ of pi. For each quadrant of the unit square, the area is pi. Therefore,
 the ratio of the area outside of the circle is pi over four. With this
 in mind, we can use the Monte Carlo Method for the calculation of pi.
 
+> ``` python
+> import random as r
+> import math as m
+> import time
+>
+> start = time.time()
+> # Number of darts that land inside.
+> inside = 0
+> # Total number of darts to throw.
+> total = 100000
+>
+> # Iterate for the number of darts.
+> for i in range(0, total):
+>   # Generate random x, y in [0, 1].
+>     x2 = r.random()**2
+>     y2 = r.random()**2
+>     # Increment if inside unit circle.
+>     if m.sqrt(x2 + y2) < 1.0:
+>         inside += 1
+>
+> # inside / total = pi / 4
+> pi = (float(inside) / total) * 4
+> end = time.time()
+>
+> # It works!
+> print(pi)
+>
+> #Total time it takes to execute, this changes based off total
+> print(end - start)
+> ```
+
 -   [ ] TODO: SHannon, Drawing
 
 -   [ ] TODO: Open, HOW AND WHY DO WE NEED MULTIPLE COMPUTERS
@@ -838,6 +882,56 @@ be used, research how to use it in multiple threads) \* other strategies
 to benchmark, you research (only if really needed \* Use numba to speed
 up the code \* describe how to install \* showcase basic usage on our
 monte carlo function \* display results with matplotlib
+
+### Counting Numbers
+
+-   [ ] TODO: Erin, Explain the program
+
+> ``` python
+> #TODO
+> #how do you generate a random number
+> #how do you generate a list of random numbers
+> #how do you find the number 8 in a list
+> #how do you gather the number 8
+> import random
+> from mpi4py import MPI
+>
+> # Communicator
+> comm = MPI.COMM_WORLD
+>
+> N = 20
+> max_number = 10
+> find = 8
+>
+> # Number of processes in the communicator group
+> size = comm.Get_size()
+>
+> # Get the rank of the current process in the communicator group
+> rank = comm.Get_rank()
+>
+> # Each process gets different data, depending on its rank number
+> data = []
+> for i in range(N):
+>     r = random.randint(1,max_number)
+>     data.append(r)
+> count = data.count(find)
+>
+> # Print data in each process
+> print(rank,count,data)
+>
+> # Gathering occurs
+> count_data = comm.gather(count, root=0)
+>
+> # Process 0 prints out the gathered data, rest of the processes
+> # print their data as well
+> if rank == 0:
+>     print(rank, count_data)
+>     b = sum(count_data)
+>     print(b)
+>     print("probability", (4*N)*(1/max_number))
+> ```
+
+More explanations
 
 ## GPU Programming with MPI
 
@@ -861,6 +955,15 @@ experienced it would likely take longer. However to decrease the time
 needed we can split up work and each of you will work on a dedicated
 topic (but you can still work in smaller teams if you desire). We will
 start assigning tasks in github once this is all set up.
+
+## Resources MPI
+
+-   <https://research.computing.yale.edu/sites/default/files/files/mpi4py.pdf>
+-   <https://www.nesi.org.nz/sites/default/files/mpi-in-python.pdf>
+-   <https://www.kth.se/blogs/pdc/2019/08/parallel-programming-in-python-mpi4py-part-1/>
+-   <http://education.molssi.org/parallel-programming/03-distributed-examples-mpi4py/index.html>
+-   <http://www.ceci-hpc.be/assets/training/mpi4py.pdf>
+-   <https://www.csc.fi/documents/200270/224366/mpi4py.pdf/825c582a-9d6d-4d18-a4ad-6cb6c43fefd8>
 
 # Deep Lerning on the PI
 

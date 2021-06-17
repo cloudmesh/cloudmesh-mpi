@@ -6,15 +6,6 @@
   receive, embarrassing parallel)
 
 
-## Resources
-
-* <https://research.computing.yale.edu/sites/default/files/files/mpi4py.pdf>
-* <https://www.nesi.org.nz/sites/default/files/mpi-in-python.pdf>
-* <https://www.kth.se/blogs/pdc/2019/08/parallel-programming-in-python-mpi4py-part-1/>
-* <http://education.molssi.org/parallel-programming/03-distributed-examples-mpi4py/index.html>
-* <http://www.ceci-hpc.be/assets/training/mpi4py.pdf>
-* <https://www.csc.fi/documents/200270/224366/mpi4py.pdf/825c582a-9d6d-4d18-a4ad-6cb6c43fefd8>
-
 ## MPI
 
 
@@ -552,6 +543,10 @@ pi.  Therefore, the ratio of the area outside of the circle is pi over
 four.  With this in mind, we can use the Monte Carlo Method for the
 calculation of pi.
 
+> ``` python
+> !include ../examples/montecarlo.py
+> ```
+
 - [ ] TODO: SHannon, Drawing
 
 - [ ] TODO: Open, HOW AND WHY DO WE NEED MULTIPLE COMPUTERS
@@ -605,4 +600,14 @@ experienced it would likely take longer. However to decrease the time
 needed we can split up work and each of you will work on a dedicated
 topic (but you can still work in smaller teams if you desire). We will
 start assigning tasks in github once this is all set up.
+
+## Resources MPI
+
+* <https://research.computing.yale.edu/sites/default/files/files/mpi4py.pdf>
+* <https://www.nesi.org.nz/sites/default/files/mpi-in-python.pdf>
+* <https://www.kth.se/blogs/pdc/2019/08/parallel-programming-in-python-mpi4py-part-1/>
+* <http://education.molssi.org/parallel-programming/03-distributed-examples-mpi4py/index.html>
+* <http://www.ceci-hpc.be/assets/training/mpi4py.pdf>
+* <https://www.csc.fi/documents/200270/224366/mpi4py.pdf/825c582a-9d6d-4d18-a4ad-6cb6c43fefd8>
+
 
