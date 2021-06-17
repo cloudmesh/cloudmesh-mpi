@@ -102,11 +102,6 @@ with it, as well as the execution of parallel execution of TensorFlow.
 
 ## Installation
 
--   [ ] TODO: Cooper, how to find te number of cores in linux and
-    gitbash so we can use this t define the -n core parameter
-
-
-
 Linux: nproc
 
 osx: sysctl hw.physicalcpu hw.logicalcpu
@@ -151,9 +146,7 @@ windows: ??? we want command in gitbash that gives it
 
 6.  Type the command
 
-> ``` bash
-> $ which mpiexec
-> ```
+> `bash $ which mpiexec `
 
 to verify if it works.
 
@@ -278,7 +271,7 @@ The machinefile contains the ipaddresses
 
 ### Broadcast `comm.bcast()`
 
--   [ ] TODO: Cooper, explenation is missing
+-   [ ] TODO: Fidel, explenation is missing
 
 In this example, we broadcast a two-entry Python dictionary from a root
 process to the rest of the processes in our communicator group.
@@ -334,7 +327,7 @@ rank 0.
 
 #### Scatter `comm.scatter()`
 
--   [ ] TODO: Cooper, explenation is missing
+-   [ ] TODO: Fidel, explenation is missing
 
 In this example, with scatter the members of a list among the processes
 in the communicator group.
@@ -388,7 +381,7 @@ among the rest of the processes in the communicator group.
 
 #### Gather `comm.gather()`
 
--   [ ] TODO: Cooper, explenation is missing
+-   [ ] TODO: Fidel, explenation is missing
 
 In this example, data from each process in the communicator group is
 gathered in the process with rank 0.
@@ -693,9 +686,12 @@ of the full multiplication table.
 -   [ ] TODO, Fidel send recieve
 
 #### Dynamic Process Management with `spawn`
-
--   [ ] TODO: Cooper, explenation is missing
-
+Using
+>``` python
+> MPI.Comm_Self.Spawn
+> ```
+will create a child process that can communicate with the parent. In the spawn example, the manager broadcasts an array
+to the worker.
 In this example, we have two python programs, the first one being the
 manager and the second being the worker.
 

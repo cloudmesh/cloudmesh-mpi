@@ -441,7 +441,12 @@ of the full multiplication table.
 
 #### Dynamic Process Management with `spawn`
 
-- [ ] TODO: Cooper, explenation is missing
+Using
+>``` python
+> MPI.Comm_Self.Spawn
+> ```
+will create a child process that can communicate with the parent. In the spawn example, the manager broadcasts an array
+to the worker.
 
 In this example, we have two python programs, the first one being the
 manager and the second being the worker.
