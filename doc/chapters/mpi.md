@@ -204,42 +204,91 @@ The machinefile contains the ipaddresses
 
 ## MPI Functionality examples
 
-## MPI Collective Communication functionality examples
+## MPI Point-to-Point Communication Examples
+
+### Sending/Receiving `comm.send()` `comm.receive()
+
+The `send()` and `receive()` methods provide for functionality to transmit data between two
+specific processes in the communicator group.
+
+![Sending and receiving data between two processes ](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/send_receive.png){ width=25% }
+
+Here is the definition for the `send()` method:
+
+> ```
+> comm.send(buf, dest, tag)
+> ```
+
+`Buf` represents the data to be transmitted, `dest` and `tag` are integer values that specify
+the rank of the destination process, and a tag to identify the message being passed, respectively.
+`Tag` is particularly useful for cases when a process sends multiple kinds of messages to another
+process.
+
+In the other end is the `send()` method, with the following definition:
+
+> ```
+> comm.send(buf, source, tag, status)
+> ```    
+
+In this case, `buf` can specify the location for the recived data to be stored.Additionally,
+`source`and`tag` can specify the desired source and tag of the data to be received. They can also
+be set to `MPI.ANY_SOURCE` and `MPI.ANY_TAG`, or be left unspecified.
+
+In the following example, an integer is transmitted from process 0 to process 1.
+
+> ``` python
+> !include ../examples/send_receive.py
+> ```
+
+Executing `mpiexec -n 4 python send_receive.py` yields:
+
+> ```
+> After send/receive, the value in process 2 is None
+> After send/receive, the value in process 3 is None 
+> After send/receive, the value in process 0 is None
+> After send/receive, the value in process 1 is 42
+> ```
+
+As we can appreciate, transmission only occurred between processes 0 and 1, and no other process
+was affected.
+
+## MPI Collective Communication Examples
 
 ### Broadcast `comm.bcast()`
 
-- [ ] TODO: Fidel, explenation is missing
+The `bcast()`method and it's buffered version `Bcast()` broadcast a message from a specified "root"
+process to all other processes in the communicator group.
 
-In this example, we broadcast a two-entry Python dictionary from a
-root process to the rest of the processes in our communicator group.
+In terms of syntax, `bcast()` takes the object to be broadcast and the parameter `root`, that
+establishes the rank number of the process broadcasting the data. If no root parameter is
+specified, `bcast` will default to broadcasting from the process with rank 0.
 
-![Example to broadcast data to different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){ width=25% }
+In this example, we broadcast a two-entry Python dictionary from a root process to the rest of
+the processes in the communicator group.
 
+![Broadcasting data from a root process to the rest of the processes in th communicator group ](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){ width=25% }
+
+The following code snippet shows the creation of the dictionary in process with rank 0. Notice how
+the variable `data` remains empty in all the other processes.
 
 > ``` python
 > !include ../examples/broadcast.py
 > ```
 
-After running `mpiexec -n 4 python bcast.py` we get the following:
+After running `mpiexec -n 4 python broadcast.py` we get the following:
 
 > ```
-> before broadcast, data on rank 0 is
->   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-> before broadcast, data on rank 1 is  None
-> before broadcast, data on rank 2 is  None
-> before broadcast, data on rank 3 is  None
-> after broadcast, data on rank 0 is
->   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-> after broadcast, data on rank 1 is
->   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-> after broadcast, data on rank 2 is
->   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-> after broadcast, data on rank 3 is
->   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+> before broadcast, data on rank 3 is: None
+> before broadcast, data on rank 0 is: {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+> before broadcast, data on rank 1 is: None
+> before broadcast, data on rank 2 is: None
+> after broadcast, data on rank 3 is: {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+> after broadcast, data on rank 0 is: {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+> after broadcast, data on rank 1 is: {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+> after broadcast, data on rank 2 is: {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
 > ```
 
-As we can see, the process with rank 1, received the data broadcast
-from rank 0.
+As we can see, all other processes received the data broadcast from the root process.
 
 
 #### Scatter `comm.scatter()`
