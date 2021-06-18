@@ -8,7 +8,6 @@ comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 
 # Variable to receive the data
-
 data = None
 
 # Process with rank 0 sends data to process with rank 1
@@ -22,4 +21,4 @@ if rank == 1:
     data = receive.wait()
 
 # Each process in the communicator group prints its data
-print(f'After send/receive, the value in process {rank} is {data}')
+print(f'After isend/ireceive, the value in process {rank} is {data}')

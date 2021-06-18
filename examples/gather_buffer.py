@@ -1,5 +1,6 @@
-from mpi4py import MPI
+#!/usr/bin/env python
 import numpy as np
+from mpi4py import MPI
 
 # Communicator group
 comm = MPI.COMM_WORLD
@@ -14,7 +15,7 @@ rank = comm.Get_rank()
 sendbuf = np.zeros(10, dtype='i') + rank
 
 # Print the data in sendbuf before gathering 
-print('Buffer in process %d before gathering: '%rank, sendbuf)
+print(f'Buffer in process {rank} before gathering: {sendbuf}')
 
 # Variable to store gathered data
 recvbuf = None
@@ -23,14 +24,14 @@ recvbuf = None
 # only zeros. The size of the array is determined by the number of
 # processes in the communicator group
 if rank == 0:
-    recvbuf = np.zeros([size,10], dtype='i')
+    recvbuf = np.zeros([size, 10], dtype='i')
 
     # Print recvbuf
-    print('recvbuf in process 0 before gathering: ', recvbuf) 
+    print(f'recvbuf in process 0 before gathering: {recvbuf}')
 
 # Gathering occurs
 comm.Gather(sendbuf, recvbuf, root=0)
 
 # Print recvbuf in process with rank 0 after gathering
 if rank == 0:
-        print('recvbuf in process 0 after gathering: \n', recvbuf)
+    print(f'recvbuf in process 0 after gathering: \n{recvbuf}')

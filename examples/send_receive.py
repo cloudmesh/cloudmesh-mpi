@@ -8,7 +8,6 @@ comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 
 # Variable to receive the data
-
 data = None
 
 # Process with rank 0 sends data to process with rank 1
