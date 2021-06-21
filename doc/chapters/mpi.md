@@ -570,13 +570,31 @@ Use for benchmarking
 
 ### Counting Numbers
 
-- [ ] TODO: Erin, Explain the program
+The following program generates arrays of random numbers each 20 (N)
+  in length with the highest number possible being 10 (max_number).
+  It then uses a function called count() to count the number of 8's in
+  each data set.  The number of 8's in each list is stored count_data.
+Count_data is then summed and printed out as the total number of 8's.
 
 > ``` python
 > !include ../examples/count/count.py
 > ```
 
-More explanations
+Executing `mpiexec -n 4 python count.py` gives us:
+
+>
+> 1 1 [7, 5, 2, 1, 5, 5, 5, 4, 5, 2, 6, 5, 2, 1, 8, 7, 10, 9, 5, 6]
+> 
+> 3 3 [9, 2, 9, 8, 2, 7, 7, 2, 10, 1, 2, 5, 3, 5, 10, 8, 10, 10, 8, 10]
+> 
+> 2 3 [1, 3, 8, 5, 7, 8, 4, 2, 8, 5, 10, 7, 10, 1, 6, 5, 9, 6, 6, 7]
+> 
+> 0 3 [6, 9, 10, 2, 4, 8, 8, 9, 4, 1, 6, 8, 6, 9, 7, 5, 5, 6, 3, 4]
+> 
+> 0 [3, 1, 3, 3]
+> 
+> Total number of 8's: 10
+>
 
 ## GPU Programming with MPI
 
