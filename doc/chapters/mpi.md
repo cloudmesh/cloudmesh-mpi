@@ -87,17 +87,17 @@ Windows:
 
 6. Type the command
 
-> ```bash
-> $ which mpiexec
-> ```
+   > ```bash
+   > $ which mpiexec
+   > ```
 
-to verify if it works.
+   to verify if it works.
 
 7. After you verified it is available, install mpi4py with
 
-   > $ ```bash
+   > ```bash
    > $ pip install mpi4py
-   > $ ```
+   > ```
 
 8. The installation can be tested with `mpiexec -n 4 python -m
    mpi4py.bench helloworld` (depending on the number of cores/nodes
@@ -125,20 +125,20 @@ to verify if it works.
 2. Install Open MPI in your pi by entering the following command:
    
    > ```
-   > sudo apt-get install openmpi-bin
+   > $ sudo apt-get install openmpi-bin
    > ```
 
    After installation is complete you can check if it was successful
    by using 
    
    > ```
-   > mpicc --showme:version
+   > $ mpicc --showme:version
    > ```
 
 3. Enter 
    
    > ```
-   > pip install mpi4py
+   > $ pip install mpi4py
    > ``` 
     
    to download and install mpi4py.
@@ -326,13 +326,18 @@ After running `mpiexec -n 4 python broadcast.py` we get the following:
 
 > ```
 > before broadcast, data on rank 3 is: None
-> before broadcast, data on rank 0 is: {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+> before broadcast, data on rank 0 is: 
+>   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
 > before broadcast, data on rank 1 is: None
 > before broadcast, data on rank 2 is: None
-> after broadcast, data on rank 3 is: {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-> after broadcast, data on rank 0 is: {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-> after broadcast, data on rank 1 is: {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-> after broadcast, data on rank 2 is: {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+> after broadcast, data on rank 3 is: 
+>   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+> after broadcast, data on rank 0 is: 
+>   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+> after broadcast, data on rank 1 is: 
+>   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+> after broadcast, data on rank 2 is: 
+>   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
 > ```
 
 As we can see, all other processes received the data broadcast from the root process.
