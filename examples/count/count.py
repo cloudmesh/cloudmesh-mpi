@@ -1,12 +1,24 @@
+<<<<<<< HEAD
+=======
+# TODO
+# how do you generate a random number
+# how do you generate a list of random numbers
+# how do you find the number 8 in a list
+# how do you gather the number 8
+import os
+>>>>>>> 1d5dfa58120332ae873f4dc3232ca04f8d23ac15
 import random
+
 from mpi4py import MPI
+
+# Getting the input values or set them to a default
+
+n = os.environ.get("N") or 20
+max_number = os.environ.get("MAX") or 10
+find = os.environ.get("FIND") or 8
 
 # Communicator
 comm = MPI.COMM_WORLD
-
-N = 20
-max_number = 10
-find = 8
 
 # Number of processes in the communicator group
 size = comm.Get_size()
@@ -16,13 +28,13 @@ rank = comm.Get_rank()
 
 # Each process gets different data, depending on its rank number
 data = []
-for i in range(N):
-    r = random.randint(1,max_number)
+for i in range(n):
+    r = random.randint(1, max_number)
     data.append(r)
 count = data.count(find)
 
 # Print data in each process
-print(rank,count,data)
+print(rank, count, data)
 
 # Gathering occurs
 count_data = comm.gather(count, root=0)
@@ -31,5 +43,6 @@ count_data = comm.gather(count, root=0)
 # print their data as well
 if rank == 0:
     print(rank, count_data)
-    b = sum(count_data)
-    print("Total number of 8's:", b)
+    total = sum(count_data)
+    print(f"Total number of {find}'s:", total)
+

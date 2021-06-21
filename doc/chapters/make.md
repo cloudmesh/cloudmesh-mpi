@@ -26,17 +26,17 @@ and download the file
 
 After the download you have to extract and unzip the file as follows:
 
-```bash
-$ cp make-4.3-without-guile-w32-bin.zip /usr
-$ cd /usr
-$ unzip make-4.3-without-guile-w32-bin.zip
-```
+> ```bash
+> $ cp make-4.3-without-guile-w32-bin.zip /usr
+> $ cd /usr
+> $ unzip make-4.3-without-guile-w32-bin.zip
+> ```
 
 Now start a new terminal and type the command
 
-```bash
-$ which make
-```
+> ```bash
+> $ which make
+> ```
 
 It will provide you the location if the installation was successful
 

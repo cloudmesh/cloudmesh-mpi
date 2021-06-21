@@ -38,7 +38,7 @@ For more information, please contact: <laszewski@gmail.com>
     -   <https://cloudmesh.github.io/cloudmesh-mpi/report-mpi.pdf>
     -   <https://cloudmesh.github.io/cloudmesh-mpi/report-group.pdf>
 
-To check out use
+To check out the repository use
 
 >     $ git clone git@github.com:cloudmesh/cloudmesh-mpi.git
 
@@ -53,7 +53,7 @@ To keep things uniform we use the following document notations.
 1.  Empty lines are to be placed before and after a context change such
     as a headline, paragraph, list, image inclusion.
 
-2.  All code is written in code blocks using the `>` and thre back
+2.  All code is written in code blocks using the `>` and three back
     quotes. A rendered example looks as follows:
 
     >     this is an example
@@ -62,13 +62,19 @@ To keep things uniform we use the following document notations.
     inclusion must be used for filenames, and other names as they are
     refereed to in code blocks.
 
-4.  Formulas are written as LaTeX formulas
+4.  Do showcase command inclusion we use a block but preceed every
+    command with a `$` or other prefix indicating the computer on which
+    the command is executed.
 
-5.  We use regular markdown
+    >     $ ls 
 
-6.  Inclusions are handled by pandoc-include
+5.  Formulas are written as LaTeX formulas
 
-7.  bibliography is managed via footnotes
+6.  We use regular markdown
+
+7.  Inclusions are handled by pandoc-include
+
+8.  bibliography is managed via footnotes
 
 # Overview
 
@@ -97,29 +103,49 @@ with it, as well as the execution of parallel execution of TensorFlow.
 -   [ ] TODO: Open, Ring
 -   [ ] TODO: Open kmeans
 -   [ ] TODO: Who?, calculation of pi
--   [ ] TODO: Who?, find number count of 8 in randome numbers between
+-   [ ] TODO: Who?, find number count of 8 in random numbers between
     1-10
 
-## Installation
+## Prerequisite
 
--   [ ] TODO: Cooper, how to find te number of cores in linux and
-    gitbash so we can use this t define the -n core parameter
+For the examples listed in this document, it is important to know the
+number of cores in your computer. This can be found out through the
+command line or a python program.
 
+In Python, you can do it with
 
+> ``` python
+> import multiprocessing
+> multiprocessing.cpu_count()
+> ```
 
-Linux: nproc
+or as a command line
 
-osx: sysctl hw.physicalcpu hw.logicalcpu
-
-Windows: In a powershell admin shell or gitbash window
 > ``` bash
-> $ msinfo32
-```
- and it will pull up your system information.
-Type processor and it will show how many cores/ logical processors the machine has.
--   which one can we use?
+> $ python -c "import multiprocessing;  print(multiprocessing.cpu_count())"
+> ```
 
-windows: ??? we want command in gitbash that gives it
+Alternatively, you can use the following
+
+Linux:
+
+> ``` bash
+> $ nproc
+> ```
+
+macOS:
+
+> ``` bash
+> $ sysctl hw.physicalcpu hw.logicalcpu
+> ```
+
+Windows:
+
+> ``` bash
+> $ wmic CPU Get DeviceID,NumberOfCores,NumberOfLogicalProcessors
+> ```
+
+## Installation
 
 ### Installation of mpi4py on Windows
 
@@ -128,12 +154,8 @@ windows: ??? we want command in gitbash that gives it
     -   <https://docs.microsoft.com/en-us/message-passing-interface/microsoft-mpi#ms-mpi-downloads>
 
     Go to the download link and download and install it. Select the two
-    packages and click Next. When downloaded clock on them to complete
+    packages and click Next. When downloaded click on them to complete
     the setup
-
-    -   [ ] TODO: Cooper, this seems incomplete is this correct. I
-        changed it as previous install instructions were also
-        incomplete.
 
     >     msmpisetup.exe
     >     msmpisdk.msi
@@ -151,15 +173,17 @@ windows: ??? we want command in gitbash that gives it
 
 6.  Type the command
 
-> ``` bash
-> $ which mpiexec
-> ```
+    > ``` bash
+    > $ which mpiexec
+    > ```
 
-to verify if it works.
+    to verify if it works.
 
 7.  After you verified it is available, install mpi4py with
 
-> \$ `bash $ pip install mpi4py $`
+    > ``` bash
+    > $ pip install mpi4py
+    > ```
 
 8.  The installation can be tested with
     `mpiexec -n 4 python -m    mpi4py.bench helloworld` (depending on
@@ -183,16 +207,16 @@ to verify if it works.
 
 2.  Install Open MPI in your pi by entering the following command:
 
-    >     sudo apt-get install openmpi-bin
+    >     $ sudo apt-get install openmpi-bin
 
     After installation is complete you can check if it was successful by
     using
 
-    >     mpicc --showme:version
+    >     $ mpicc --showme:version
 
 3.  Enter
 
-    >     pip install mpi4py
+    >     $ pip install mpi4py
 
     to download and install mpi4py.
 
@@ -222,7 +246,7 @@ followed in order to download and install mpi4py.
 
 ## Hello World
 
-To test if it works a build in test program is available.
+To test if it works a build-in test program is available.
 
 To run it on on a single host with n cores (lest assume you have 2
 cores), you can use:
@@ -233,18 +257,26 @@ cores), you can use:
 >     Hello, World! I am process 2 of 5 on localhost.
 >     Hello, World! I am process 3 of 5 on localhost.
 
-Note that the messages can be in different order.
+Note that the messages can be in a different order.
 
-To run it on mulitple hosts with each having n cores please create a
-hostfile as follows:
+To run it on multiple hosts with each having n cores please create a
+`hostfile` as follows:
 
 -   [ ] TODO: Open, how to run it on multiple hosts on the PI
 
 ## Machine file, hostfile, rankfile
 
-Run sudo apt-get install -y python-mpi4py on all nodes.
+Run
 
-Test the installation: mpiexec -n 5 python -m mpi4py helloworld
+> ``` bash
+> $ sudo apt-get install -y python-mpi4py 
+> ```
+
+on all nodes.
+
+Test the installation:
+
+>     $ mpiexec -n 5 python -m mpi4py helloworld
 
 THIS CAN BE DONE BEST WITH CLOUDMESH
 
@@ -274,20 +306,99 @@ The machinefile contains the ipaddresses
 
 ## MPI Functionality examples
 
-## MPI Collective Communication functionality examples
+## MPI Point-to-Point Communication Examples
+
+### Sending/Receiving `comm.send()` \`comm.receive()
+
+The `send()` and `receive()` methods provide for functionality to
+transmit data between two specific processes in the communicator group.
+
+MISSING IMAGE [Sending and receiving data between two
+processes](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/send_receive.png){width="25%"}
+
+Here is the definition for the `send()` method:
+
+>     comm.send(buf, dest, tag)
+
+`Buf` represents the data to be transmitted, `dest` and `tag` are
+integer values that specify the rank of the destination process, and a
+tag to identify the message being passed, respectively. `Tag` is
+particularly useful for cases when a process sends multiple kinds of
+messages to another process.
+
+In the other end is the `send()` method, with the following definition:
+
+>     comm.send(buf, source, tag, status)
+
+In this case, `buf` can specify the location for the received data to be
+stored. Additionally, `source` and `tag` can specify the desired source
+and tag of the data to be received. They can also be set to
+`MPI.ANY_SOURCE` and `MPI.ANY_TAG`, or be left unspecified.
+
+In the following example, an integer is transmitted from process 0 to
+process 1.
+
+> ``` python
+> #!/usr/bin/env python
+> from mpi4py import MPI
+>
+> # Communicator
+> comm = MPI.COMM_WORLD
+>
+> # Get the rank of the current process in the communicator group
+> rank = comm.Get_rank()
+>
+> # Variable to receive the data
+> data = None
+>
+> # Process with rank 0 sends data to process with rank 1
+> if rank == 0:
+>     comm.send(42, dest=1)
+>
+> # Process with rank 1 receives and stores data
+> if rank == 1:
+>     data = comm.recv(source=0)
+>
+> # Each process in the communicator group prints its data
+> print(f'After send/receive, the value in process {rank} is {data}')
+> ```
+
+Executing `mpiexec -n 4 python send_receive.py` yields:
+
+>     After send/receive, the value in process 2 is None
+>     After send/receive, the value in process 3 is None 
+>     After send/receive, the value in process 0 is None
+>     After send/receive, the value in process 1 is 42
+
+As we can appreciate, transmission only occurred between processes 0 and
+1, and no other process was affected.
+
+## MPI Collective Communication Examples
 
 ### Broadcast `comm.bcast()`
 
--   [ ] TODO: Cooper, explenation is missing
+The `bcast()` method and it is buffered version `Bcast()` broadcast a
+message from a specified "root" process to all other processes in the
+communicator group.
+
+In terms of syntax, `bcast()` takes the object to be broadcast and the
+parameter `root`, which establishes the rank number of the process
+broadcasting the data. If no root parameter is specified, `bcast` will
+default to broadcasting from the process with rank 0.
 
 In this example, we broadcast a two-entry Python dictionary from a root
-process to the rest of the processes in our communicator group.
+process to the rest of the processes in the communicator group.
 
-![Example to broadcast data to different processors from the one with
-rank
-0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){width="25%"}
+![Broadcasting data from a root process to the rest of the processes in
+the communicator
+group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){width="25%"}
+
+The following code snippet shows the creation of the dictionary in
+process with rank 0. Notice how the variable `data` remains empty in all
+the other processes.
 
 > ``` python
+> #!/usr/bin/env python
 > from mpi4py import MPI
 >
 > # Set up the MPI Communicator
@@ -297,47 +408,47 @@ rank
 > rank = comm.Get_rank()
 >
 > if rank == 0:  # Process with rank 0 gets the data to be broadcast
->     data = {'size' : [1,3,8],
->             'name' : ['disk1', 'disk2', 'disk3']}
+>     data = {'size': [1, 3, 8],
+>             'name': ['disk1', 'disk2', 'disk3']}
 > else:  # Other processes' data is empty
 >     data = None
 >
 > # Print data in each process
-> print("before broadcast, data on rank %d is "%comm.rank, data)
+> print(f'before broadcast, data on rank {rank} is: {data}')
 >
 > # Data from process with rank 0 is broadcast to other processes in our
 > # communicator group
 > data = comm.bcast(data, root=0)
 >
 > # Print data in each process after broadcast
-> print("after broadcast, data on rank %d is "%comm.rank, data)
+> print(f'after broadcast, data on rank {rank} is: {data}')
 > ```
 
-After running `mpiexec -n 4 python bcast.py` we get the following:
+After running `mpiexec -n 4 python broadcast.py` we get the following:
 
->     before broadcast, data on rank 0 is
+>     before broadcast, data on rank 3 is: None
+>     before broadcast, data on rank 0 is: 
 >       {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
->     before broadcast, data on rank 1 is  None
->     before broadcast, data on rank 2 is  None
->     before broadcast, data on rank 3 is  None
->     after broadcast, data on rank 0 is
+>     before broadcast, data on rank 1 is: None
+>     before broadcast, data on rank 2 is: None
+>     after broadcast, data on rank 3 is: 
 >       {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
->     after broadcast, data on rank 1 is
+>     after broadcast, data on rank 0 is: 
 >       {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
->     after broadcast, data on rank 2 is
+>     after broadcast, data on rank 1 is: 
 >       {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
->     after broadcast, data on rank 3 is
+>     after broadcast, data on rank 2 is: 
 >       {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
 
-As we can see, the process with rank 1, received the data broadcast from
-rank 0.
+As we can see, all other processes received the data broadcast from the
+root process.
 
 #### Scatter `comm.scatter()`
 
--   [ ] TODO: Cooper, explenation is missing
+-   [ ] TODO: Fidel, explenation is missing
 
-In this example, with scatter the members of a list among the processes
-in the communicator group.
+In this example, with `scatter` the members of a list among the
+processes in the communicator group.
 
 -   [ ] TODO: All, add images
 
@@ -345,6 +456,7 @@ in the communicator group.
 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/scatter.png){width="50%"}
 
 > ``` python
+> #!/usr/bin/env python
 > from mpi4py import MPI
 >
 > # Communicator
@@ -358,18 +470,18 @@ in the communicator group.
 >
 > # Process with rank 0 gets a list with the data to be scattered
 > if rank == 0:
->     data = [(i+1)**2 for i in range(size)]
+>     data = [(i + 1) ** 2 for i in range(size)]
 > else:
 >     data = None
 >
-> # Print data in each process
-> print("before scattering, data on rank %d is "%comm.rank, data)
+> # Print data in each process before scattering
+> print(f'before scattering, data on rank {rank} is: {data}')
 >
 > # Scattering occurs
 > data = comm.scatter(data, root=0)
 >
 > # Print data in each process after scattering
-> print("data for rank %d is "%comm.rank, data)
+> print(f'after scattering, data on rank {rank} is: {data}')
 > ```
 
 Executing `mpiexec -n 4 python scatter.py` yields:
@@ -388,7 +500,7 @@ among the rest of the processes in the communicator group.
 
 #### Gather `comm.gather()`
 
--   [ ] TODO: Cooper, explenation is missing
+-   [ ] TODO: Fidel, explenation is missing
 
 In this example, data from each process in the communicator group is
 gathered in the process with rank 0.
@@ -397,6 +509,7 @@ gathered in the process with rank 0.
 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/gather.png){width="50%"}
 
 > ``` python
+> #!/usr/bin/env python
 > from mpi4py import MPI
 >
 > # Communicator
@@ -409,10 +522,10 @@ gathered in the process with rank 0.
 > rank = comm.Get_rank()
 >
 > # Each process gets different data, depending on its rank number
-> data = (rank+1)**2
+> data = (rank + 1) ** 2
 >
 > # Print data in each process
-> print("before gathering, data on rank %d is "%comm.rank, data)
+> print(f'before gathering, data on rank {rank} is: {data}')
 >
 > # Gathering occurs
 > data = comm.gather(data, root=0)
@@ -420,9 +533,9 @@ gathered in the process with rank 0.
 > # Process 0 prints out the gathered data, rest of the processes
 > # print their data as well
 > if rank == 0:
->     print("after gathering, process 0's data is ", data)
+>     print(f'after gathering, process 0\'s data is: {data}')
 > else:
->     print("after gathering, data in rank %d is "%comm.rank, data)
+>     print(f'after gathering, data in rank {rank} is: {data}')
 > ```
 
 Executing `mpiexec -n 4 python gather.py` yields:
@@ -448,8 +561,9 @@ In this example, we broadcast a NumPy array from process 0 to the rest
 of the processes in the communicator group.
 
 > ``` python
-> from mpi4py import MPI
+> #!/usr/bin/env python
 > import numpy as np
+> from mpi4py import MPI
 >
 > # Communicator
 > comm = MPI.COMM_WORLD
@@ -459,20 +573,20 @@ of the processes in the communicator group.
 >
 > # Rank 0 gets a NumPy array containing values from 0 to 9
 > if rank == 0:
->     data = np.arange(0,10,1, dtype='i')
+>     data = np.arange(0, 10, 1, dtype='i')
 >
 > # Rest of the processes get an empty buffer
 > else:
 >     data = np.zeros(10, dtype='i')
 >
-> # Print data in each process
-> print("before broadcasting, data for rank %d is: "%comm.rank, data)
+> # Print data in each process before broadcast
+> print(f'before broadcasting, data for rank {rank} is: {data}')
 >
 > # Broadcast occurs
 > comm.Bcast(data, root=0)
 >
 > # Print data in each process after broadcast
-> print("after broadcasting, data for rank %d is: "%comm.rank, data)
+> print(f'after broadcasting, data for rank {rank} is: {data}')
 > ```
 
 Executing `mpiexec -n 4 python npbcast.py` yields:
@@ -486,8 +600,8 @@ Executing `mpiexec -n 4 python npbcast.py` yields:
 >     after broadcasting, data for rank 3 is:  [0 1 2 3 4 5 6 7 8 9]
 >     after broadcasting, data for rank 1 is:  [0 1 2 3 4 5 6 7 8 9]
 
-As we can see, the values in the array at process with rank 0 have been
-broadcast to the rest of the processes in the communicator group.
+As we can see, the values in the array at the process with rank 0 have
+been broadcast to the rest of the processes in the communicator group.
 
 #### Scattering buffer-like objects `comm.Scatter()`
 
@@ -498,8 +612,9 @@ In this example, we scatter a NumPy array among the processes in the
 communicator group.
 
 > ``` python
-> from mpi4py import MPI
+> #!/usr/bin/env python
 > import numpy as np
+> from mpi4py import MPI
 >
 > # Communicator
 > comm = MPI.COMM_WORLD
@@ -517,23 +632,23 @@ communicator group.
 > # based on the number of processes in our communicator group
 > if rank == 0:
 >     sendbuf = np.zeros([size, 10], dtype='i')
->     sendbuf.T[:,:] = range(size)
->     
->     # Print the content of sendbuf before scattering
->     print('sendbuf in 0: ', sendbuf)
+>     sendbuf.T[:, :] = range(size)
 >
-> # Each process getd a buffer (initially containing just zeros) 
+>     # Print the content of sendbuf before scattering
+>     print(f'sendbuf in 0: {sendbuf}')
+>
+> # Each process gets a buffer (initially containing just zeros)
 > # to store scattered data.
 > recvbuf = np.zeros(10, dtype='i')
 >
 > # Print the content of recvbuf in each process before scattering
-> print('recvbuf in  %d: '%rank, recvbuf)
+> print(f'recvbuf in {rank}: {recvbuf}')
 >
 > # Scattering occurs
 > comm.Scatter(sendbuf, recvbuf, root=0)
 >
 > # Print the content of sendbuf in each process after scattering
-> print('Buffer in process %d contains: '%rank, recvbuf)
+> print(f'Buffer in process {rank} contains: {recvbuf}')
 > ```
 
 Executing `mpiexec -n 4 python npscatter.py` yields:
@@ -564,8 +679,9 @@ In this example, we gather a NumPy array from the processes in the
 communicator group into a 2-D array in process with rank 0.
 
 > ``` python
-> from mpi4py import MPI
+> #!/usr/bin/env python
 > import numpy as np
+> from mpi4py import MPI
 >
 > # Communicator group
 > comm = MPI.COMM_WORLD
@@ -580,7 +696,7 @@ communicator group into a 2-D array in process with rank 0.
 > sendbuf = np.zeros(10, dtype='i') + rank
 >
 > # Print the data in sendbuf before gathering 
-> print('Buffer in process %d before gathering: '%rank, sendbuf)
+> print(f'Buffer in process {rank} before gathering: {sendbuf}')
 >
 > # Variable to store gathered data
 > recvbuf = None
@@ -589,17 +705,17 @@ communicator group into a 2-D array in process with rank 0.
 > # only zeros. The size of the array is determined by the number of
 > # processes in the communicator group
 > if rank == 0:
->     recvbuf = np.zeros([size,10], dtype='i')
+>     recvbuf = np.zeros([size, 10], dtype='i')
 >
 >     # Print recvbuf
->     print('recvbuf in process 0 before gathering: ', recvbuf) 
+>     print(f'recvbuf in process 0 before gathering: {recvbuf}')
 >
 > # Gathering occurs
 > comm.Gather(sendbuf, recvbuf, root=0)
 >
 > # Print recvbuf in process with rank 0 after gathering
 > if rank == 0:
->         print('recvbuf in process 0 after gathering: \n', recvbuf)
+>     print(f'recvbuf in process 0 after gathering: \n{recvbuf}')
 > ```
 
 Executing `mpiexec -n 4 python npgather.py` yields:
@@ -638,10 +754,9 @@ in the
 group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/allgather.png){width="50%"}
 
 > ``` python
-> from mpi4py import MPI
+> #!/usr/bin/env python
 > import numpy as np
->
->
+> from mpi4py import MPI
 >
 > # Communicator group
 > comm = MPI.COMM_WORLD
@@ -653,7 +768,7 @@ group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/allgather.
 > rank = comm.Get_rank()
 >
 > # Initialize array and table
-> row  = np.zeros(size)
+> row = np.zeros(size)
 > table = np.zeros((size, size))
 >
 > # Each process computes the local values and fills its array
@@ -662,16 +777,20 @@ group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/allgather.
 >     row[i] = j
 >
 > # Print array in each process
-> print("Process %d table before Allgather: "%rank, table, "\n")
+> print(f'Process {rank} table before Allgather: {table}\n')
 >
 > # Gathering occurs
-> comm.Allgather([row,  MPI.INT], [table, MPI.INT])
+> comm.Allgather([row, MPI.INT], [table, MPI.INT])
 >
 > # Print table in each process after gathering
-> print("Process %d table after Allgather: "%rank, table, "\n")
+> print(f'Process {rank} table after Allgather: {table}\n')
 > ```
 
-Executing `mpiexec -n 4 python allgather_buffer.py` yields:
+Executing
+
+>     $ mpiexec -n 4 python allgather_buffer.py` 
+
+results in the output
 
 >     Process 1 table before Allgather:  [[0. 0.]
 >      [0. 0.]] 
@@ -694,7 +813,10 @@ of the full multiplication table.
 
 #### Dynamic Process Management with `spawn`
 
--   [ ] TODO: Cooper, explenation is missing
+Using \>`python > MPI.Comm_Self.Spawn >`
+
+will create a child process that can communicate with the parent. In the
+spawn code example, the manager broadcasts an array to the worker.
 
 In this example, we have two python programs, the first one being the
 manager and the second being the worker.
@@ -761,7 +883,7 @@ from the one with rank
 > #MPI.Close_port()
 > ```
 
-To execute the example please go to the examples directoy and run the
+To execute the example please go to the examples directory and run the
 manager program
 
 >     $ cd examples/spawn
@@ -828,10 +950,11 @@ can vary.
 
 -   [ ] TODO: Shannon WHAT IS THE PROBLEM GOAL
 
-We start with the Mathematical formulation of the Monte Carlo calulation
-of pi. For each quadrant of the unit square, the area is pi. Therefore,
-the ratio of the area outside of the circle is pi over four. With this
-in mind, we can use the Monte Carlo Method for the calculation of pi.
+We start with the Mathematical formulation of the Monte Carlo
+calculation of pi. For each quadrant of the unit square, the area is pi.
+Therefore, the ratio of the area outside of the circle is pi over four.
+With this in mind, we can use the Monte Carlo Method for the calculation
+of pi.
 
 > ``` python
 > import random as r
@@ -864,20 +987,20 @@ in mind, we can use the Monte Carlo Method for the calculation of pi.
 > print(end - start)
 > ```
 
--   [ ] TODO: SHannon, Drawing
+-   [ ] TODO: Shannon, Drawing
 
 -   [ ] TODO: Open, HOW AND WHY DO WE NEED MULTIPLE COMPUTERS
 
 ### Program
 
--   [ ] TODO: Shannon, PI montecarlo
+-   [ ] TODO: Shannon, PI Montecarlo
 
 -   [ ] TODO: Shannon, Example program to run Montecarlo on multiple
     hosts
 
 -   [ ] TODO: Shannon, Benchmarking of the code
 
-Use for benchmarking \* cloudmesh.common (not thread safe, but still can
+Use for benchmarking \* cloudmesh.common (not thread-safe, but still can
 be used, research how to use it in multiple threads) \* other strategies
 to benchmark, you research (only if really needed \* Use numba to speed
 up the code \* describe how to install \* showcase basic usage on our
@@ -927,8 +1050,7 @@ monte carlo function \* display results with matplotlib
 > if rank == 0:
 >     print(rank, count_data)
 >     b = sum(count_data)
->     print(b)
->     print("probability", (4*N)*(1/max_number))
+>     print("Total number of 8's:", b)
 > ```
 
 More explanations
@@ -937,24 +1059,24 @@ More explanations
 
 Only possibly for someone with GPU (contact me if you do) Once we are
 finished with MPI we will use and look at python dask and other
-frameworks as well as rest services to interface with the mpi programs.
+frameworks as well as rest services to interface with the MPI programs.
 This way we will be able to expose the cluster to anyone and they do not
 even know they use a cluster while exposing this as a single function
 ... (edited)
 
-The github repo is used by all of you to have write access and
+The Github repo is used by all of you to have write access and
 contribute to the research effort easily and in parallel. You will get
 out of this as much as you put in. Thus it is important to set several
 dedicated hours aside (ideally each week) and contribute your work to
 others.
 
-It is difficult to asses how long the previous task takes as we just get
-started and we need to learn first how we work together as a team. If I
-were to do this alone it may take a week, but as you are less
-experienced it would likely take longer. However to decrease the time
+It is difficult to assess how long the previous task takes as we just
+get started and we need to learn first how we work together as a team.
+If I were to do this alone it may take a week, but as you are less
+experienced it would likely take longer. However, to decrease the time
 needed we can split up work and each of you will work on a dedicated
 topic (but you can still work in smaller teams if you desire). We will
-start assigning tasks in github once this is all set up.
+start assigning tasks in GitHub once this is all set up.
 
 ## Resources MPI
 

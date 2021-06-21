@@ -13,20 +13,50 @@
 - [ ] TODO: Open, Ring
 - [ ] TODO: Open kmeans
 - [ ] TODO: Who?, calculation of pi
-- [ ] TODO: Who?, find number count of 8 in randome numbers between 1-10
+- [ ] TODO: Who?, find number count of 8 in random numbers between 1-10
+
+## Prerequisite
+
+For the examples listed in this document, it is important to know the number of
+cores in your computer. This can be found out through the command line or a python program.
+
+In Python, you can do it with 
+
+> ```python
+> import multiprocessing
+> multiprocessing.cpu_count()
+> ```
+
+or as a command line 
+
+> ```bash
+> $ python -c "import multiprocessing;  print(multiprocessing.cpu_count())"
+> ```
+
+Alternatively, you can  use the following
+
+Linux: 
+
+> ```bash
+> $ nproc
+> ```
+
+macOS: 
+
+> ```bash
+> $ sysctl hw.physicalcpu hw.logicalcpu
+> ```
+
+
+Windows: 
+
+> ```bash
+> $ wmic CPU Get DeviceID,NumberOfCores,NumberOfLogicalProcessors
+> ```
+
 
 ## Installation
 
-- [ ] TODO: Cooper, how to find te number of cores in linux and gitbash so we can
-use this t define the -n core parameter
-
-Linux: nproc
-
-osx: sysctl hw.physicalcpu hw.logicalcpu
-
-* which one can we use?
-
-windows: ??? we want command in gitbash that gives it
 
 ### Installation of mpi4py on Windows
 
@@ -37,11 +67,8 @@ windows: ??? we want command in gitbash that gives it
    <https://docs.microsoft.com/en-us/message-passing-interface/microsoft-mpi#ms-mpi-downloads>
    
    Go to the download link and download and install it. Select the two
-   packages and click Next. When downloaded clock on them to complete
+   packages and click Next. When downloaded click on them to complete
    the setup
-
-   - [ ] TODO: Cooper, this seems incomplete is this correct. I changed it as
-   previous install instructions were also incomplete.
 
    > ```
    > msmpisetup.exe
@@ -60,18 +87,17 @@ windows: ??? we want command in gitbash that gives it
 
 6. Type the command
 
-> ```bash
-> $ which mpiexec
-> ```
+   > ```bash
+   > $ which mpiexec
+   > ```
 
-to verify if it works.
+   to verify if it works.
 
 7. After you verified it is available, install mpi4py with
 
-> $ ```bash
-> $ pip install mpi4py
-> $ ```
-
+   > ```bash
+   > $ pip install mpi4py
+   > ```
 
 8. The installation can be tested with `mpiexec -n 4 python -m
    mpi4py.bench helloworld` (depending on the number of cores/nodes
@@ -99,20 +125,20 @@ to verify if it works.
 2. Install Open MPI in your pi by entering the following command:
    
    > ```
-   > sudo apt-get install openmpi-bin
+   > $ sudo apt-get install openmpi-bin
    > ```
 
    After installation is complete you can check if it was successful
    by using 
    
    > ```
-   > mpicc --showme:version
+   > $ mpicc --showme:version
    > ```
 
 3. Enter 
    
    > ```
-   > pip install mpi4py
+   > $ pip install mpi4py
    > ``` 
     
    to download and install mpi4py.
@@ -133,21 +159,21 @@ to verify if it works.
    
 ### Installing mpi4py in MacOS
 
-- [ ] TODO: Agnes, incomplete
-
-A similar process can be followed to install mpi4py in MacOS. In this
-case, we can use Homebrew to get Open MPI by entering: 
+A similar process can be followed to install mpi4py in macOS. In this
+case, we can use Homebrew to get Open MPI floowed by installing mpi4py 
+in your venv
 
 ```
 $ brew install open-mpi
+$ python3 -m venv ~/ENV3
+$ source ~/ENV3/bin/activate
+$ pip install mpi4py
 ```
-   
-Once Open MPI is working, steps 3 and 4 from the  PI4
-installation can be followed in order to download and install mpi4py.
+
 
 ## Hello World
 
-To test if it works a build in test program is available.
+To test if it works a build-in test program is available.
 
 To run it on on a single host with n cores (lest assume you have 2
 cores), you can use:
@@ -160,11 +186,11 @@ cores), you can use:
 > Hello, World! I am process 3 of 5 on localhost.
 > ```
 
-Note that the messages can be in different order.
+Note that the messages can be in a different order.
 
 
-To run it on mulitple hosts with each having n cores please create a
-hostfile as follows:
+To run it on multiple hosts with each having n cores please create a
+`hostfile` as follows:
 
 - [ ] TODO: Open, how to run it on multiple hosts on the PI
 
@@ -172,9 +198,19 @@ hostfile as follows:
 ## Machine file, hostfile, rankfile
 
 
-Run sudo apt-get install -y python-mpi4py on all nodes.
+Run 
 
-Test the installation: mpiexec -n 5 python -m mpi4py helloworld
+> ```bash 
+> $ sudo apt-get install -y python-mpi4py 
+> ```
+
+on all nodes.
+
+Test the installation: 
+
+> ```
+> $ mpiexec -n 5 python -m mpi4py helloworld
+>```
 
 THIS CAN BE DONE BEST WITH CLOUDMESH
 
@@ -210,49 +246,108 @@ The machinefile contains the ipaddresses
 
 ## MPI Functionality examples
 
-## MPI Collective Communication functionality examples
+## MPI Point-to-Point Communication Examples
+
+### Sending/Receiving `comm.send()` `comm.receive()
+
+The `send()` and `receive()` methods provide for functionality to transmit data
+between two specific processes in the communicator group.
+
+
+MISSING IMAGE [Sending and receiving data between two processes ](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/send_receive.png){ width=25% }
+
+Here is the definition for the `send()` method:
+
+> ```
+> comm.send(buf, dest, tag)
+> ```
+
+`Buf` represents the data to be transmitted, `dest` and `tag` are integer
+values that specify the rank of the destination process, and a tag to identify
+the message being passed, respectively. `Tag` is particularly useful for cases
+when a process sends multiple kinds of messages to another process.
+
+In the other end is the `send()` method, with the following definition:
+
+> ```
+> comm.send(buf, source, tag, status)
+> ```    
+
+In this case, `buf` can specify the location for the received data to be
+stored. Additionally, `source` and `tag` can specify the desired source and tag of
+the data to be received. They can also be set to `MPI.ANY_SOURCE` and
+`MPI.ANY_TAG`, or be left unspecified.
+
+In the following example, an integer is transmitted from process 0 to process 1.
+
+> ``` python
+> !include ../examples/send_receive.py
+> ```
+
+Executing `mpiexec -n 4 python send_receive.py` yields:
+
+> ```
+> After send/receive, the value in process 2 is None
+> After send/receive, the value in process 3 is None 
+> After send/receive, the value in process 0 is None
+> After send/receive, the value in process 1 is 42
+> ```
+
+As we can appreciate, transmission only occurred between processes 0 and 1, and
+no other process was affected.
+
+## MPI Collective Communication Examples
 
 ### Broadcast `comm.bcast()`
 
-- [ ] TODO: Cooper, explenation is missing
+The `bcast()` method and it is buffered version `Bcast()` broadcast a message
+from a specified "root" process to all other processes in the communicator
+group.
 
-In this example, we broadcast a two-entry Python dictionary from a
-root process to the rest of the processes in our communicator group.
+In terms of syntax, `bcast()` takes the object to be broadcast and the
+parameter `root`, which establishes the rank number of the process broadcasting
+the data. If no root parameter is specified, `bcast` will default to
+broadcasting from the process with rank 0.
 
-![Example to broadcast data to different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){ width=25% }
+In this example, we broadcast a two-entry Python dictionary from a root process
+to the rest of the processes in the communicator group.
 
+![Broadcasting data from a root process to the rest of the processes in the communicator group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){ width=25% }
+
+The following code snippet shows the creation of the dictionary in process with
+rank 0. Notice how the variable `data` remains empty in all the other
+processes.
 
 > ``` python
 > !include ../examples/broadcast.py
 > ```
 
-After running `mpiexec -n 4 python bcast.py` we get the following:
+After running `mpiexec -n 4 python broadcast.py` we get the following:
 
 > ```
-> before broadcast, data on rank 0 is
+> before broadcast, data on rank 3 is: None
+> before broadcast, data on rank 0 is: 
 >   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-> before broadcast, data on rank 1 is  None
-> before broadcast, data on rank 2 is  None
-> before broadcast, data on rank 3 is  None
-> after broadcast, data on rank 0 is
+> before broadcast, data on rank 1 is: None
+> before broadcast, data on rank 2 is: None
+> after broadcast, data on rank 3 is: 
 >   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-> after broadcast, data on rank 1 is
+> after broadcast, data on rank 0 is: 
 >   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-> after broadcast, data on rank 2 is
+> after broadcast, data on rank 1 is: 
 >   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-> after broadcast, data on rank 3 is
+> after broadcast, data on rank 2 is: 
 >   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
 > ```
 
-As we can see, the process with rank 1, received the data broadcast
-from rank 0.
+As we can see, all other processes received the data broadcast from the root process.
 
 
 #### Scatter `comm.scatter()`
 
-- [ ] TODO: Cooper, explenation is missing
+- [ ] TODO: Fidel, explenation is missing
 
-In this example, with scatter the members of a list among the
+In this example, with `scatter` the members of a list among the
 processes in the communicator group.
 
 - [ ] TODO: All, add images
@@ -282,7 +377,7 @@ scattered among the rest of the processes in the communicator group.
 
 #### Gather `comm.gather()`
 
-- [ ] TODO: Cooper, explenation is missing
+- [ ] TODO: Fidel, explenation is missing
 
 In this example, data from each process in the communicator group is
 gathered in the process with rank 0.
@@ -336,7 +431,7 @@ Executing `mpiexec -n 4 python npbcast.py` yields:
 > after broadcasting, data for rank 1 is:  [0 1 2 3 4 5 6 7 8 9]
 > ```
  
-As we can see, the values in the array at process with rank 0 have
+As we can see, the values in the array at the process with rank 0 have
 been broadcast to the rest of the processes in the communicator group.
 
 
@@ -422,7 +517,13 @@ used instead).
 > !include ../examples/allgather_buffer.py
 > ```
 
-Executing `mpiexec -n 4 python allgather_buffer.py` yields:
+Executing 
+
+> ```
+> $ mpiexec -n 4 python allgather_buffer.py` 
+> ```
+
+results in the output 
 
 > ```
 > Process 1 table before Allgather:  [[0. 0.]
@@ -447,7 +548,12 @@ of the full multiplication table.
 
 #### Dynamic Process Management with `spawn`
 
-- [ ] TODO: Cooper, explenation is missing
+Using
+>``` python
+> MPI.Comm_Self.Spawn
+> ```
+
+will create a child process that can communicate with the parent. In the spawn code example, the manager broadcasts an array to the worker.
 
 In this example, we have two python programs, the first one being the
 manager and the second being the worker.
@@ -463,7 +569,7 @@ manager and the second being the worker.
 > !include ../examples/spawn/worker.py
 > ```
 
-To execute the example please go to the examples directoy and run the manager
+To execute the example please go to the examples directory and run the manager
 program
 
 > ```
@@ -538,7 +644,7 @@ This output depends on which child process is received first. The output can var
 - [ ] TODO: Shannon  WHAT IS THE PROBLEM GOAL
 
 We start with the Mathematical formulation of the Monte Carlo
-calulation of pi. For each quadrant of the unit square, the area is
+calculation of pi. For each quadrant of the unit square, the area is
 pi.  Therefore, the ratio of the area outside of the circle is pi over
 four.  With this in mind, we can use the Monte Carlo Method for the
 calculation of pi.
@@ -547,13 +653,13 @@ calculation of pi.
 > !include ../examples/montecarlo.py
 > ```
 
-- [ ] TODO: SHannon, Drawing
+- [ ] TODO: Shannon, Drawing
 
 - [ ] TODO: Open, HOW AND WHY DO WE NEED MULTIPLE COMPUTERS
 
 ### Program
 
-- [ ] TODO: Shannon, PI montecarlo
+- [ ] TODO: Shannon, PI Montecarlo
 
 
 - [ ] TODO: Shannon, Example program to run Montecarlo on multiple hosts
@@ -561,7 +667,8 @@ calculation of pi.
 - [ ] TODO: Shannon, Benchmarking of the code
 
 Use for benchmarking
-* cloudmesh.common (not thread safe, but still can be used, research how to use it in multiple threads)
+* cloudmesh.common (not thread-safe, but still can be used, research how to 
+  use it in multiple threads)
   * other strategies to benchmark, you research (only if really needed
 * Use numba to speed up the code
   * describe how to install
@@ -570,7 +677,7 @@ Use for benchmarking
 
 ### Counting Numbers
 
-The following program generates arrays of random numbers each 20 (N)
+The following program generates arrays of random numbers each 20 (n)
   in length with the highest number possible being 10 (max_number).
   It then uses a function called count() to count the number of 8's in
   each data set.  The number of 8's in each list is stored count_data.
@@ -600,24 +707,24 @@ Executing `mpiexec -n 4 python count.py` gives us:
 
 Only possibly for someone with GPU (contact me if you do) Once we are
 finished with MPI we will use and look at python dask and other
-frameworks as well as rest services to interface with the mpi
+frameworks as well as rest services to interface with the MPI
 programs. This way we will be able to expose the cluster to anyone and
 they do not even know they use a cluster while exposing this as a
 single function … (edited)
 
-The github repo is used by all of you to have write access and
+The Github repo is used by all of you to have write access and
 contribute to the research effort easily and in parallel.  You will
 get out of this as much as you put in. Thus it is important to set
 several dedicated hours aside (ideally each week) and contribute your
 work to others.
 
-It is difficult to asses how long the previous task takes as we just get
+It is difficult to assess how long the previous task takes as we just get
 started and we need to learn first how we work together as a team. If
 I were to do this alone it may take a week, but as you are less
-experienced it would likely take longer. However to decrease the time
+experienced it would likely take longer. However, to decrease the time
 needed we can split up work and each of you will work on a dedicated
 topic (but you can still work in smaller teams if you desire). We will
-start assigning tasks in github once this is all set up.
+start assigning tasks in GitHub once this is all set up.
 
 ## Resources MPI
 

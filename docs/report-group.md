@@ -76,7 +76,7 @@ services to any research team.
 Zoom is a cloud-based communications platform that provides one-on-one,
 group meetings, and webinars.
 
-**What are good features?** (Fidel, Gregor)
+**What are good features?**
 
 Some of Zoom's features include live chat, screen sharing, a whiteboard,
 and virtual reactions for meeting participants. Additionally, it can
@@ -104,7 +104,7 @@ argument to get a new computer. In some cases, you may have a second
 computer and can use one for sharing your session, while the other one
 is used for sound, or you use a cell phone for the later
 
-**How can someone take control of a remote desktop?** (Fidel)
+**How can someone take control of a remote desktop?**
 
 To take control of a remote desktop, the remote user must activate
 screen sharing. Once the screen sharing is activated, we need to click
@@ -128,7 +128,7 @@ e-mail have filled this demand for quite some time. Recently additional
 tools such as Slack have appeared that enhance the e-mail activity while
 also allowing real-time text messaging,
 
-#### Slack (Gregor, Cooper)
+#### Slack
 
 Slack is a communication software that is used for groups to send and
 receive text messages. Additional 3rd party services that can be added
@@ -460,17 +460,17 @@ and download the file
 
 After the download you have to extract and unzip the file as follows:
 
-``` bash
-$ cp make-4.3-without-guile-w32-bin.zip /usr
-$ cd /usr
-$ unzip make-4.3-without-guile-w32-bin.zip
-```
+> ``` bash
+> $ cp make-4.3-without-guile-w32-bin.zip /usr
+> $ cd /usr
+> $ unzip make-4.3-without-guile-w32-bin.zip
+> ```
 
 Now start a new terminal and type the command
 
-``` bash
-$ which make
-```
+> ``` bash
+> $ which make
+> ```
 
 It will provide you the location if the installation was successful
 
@@ -511,6 +511,6 @@ Next, Download Ubuntu 20.04 LTS from the Microsoft store
 
 Run Ubuntu and create a username and passphrase.
 
-Make sur enot to just give an empty passphrase but chose a secure one.
+Make sure not to just give an empty passphrase but chose a secure one.
 
 -   [ ] TODO: Cooper, how to start it the next time
