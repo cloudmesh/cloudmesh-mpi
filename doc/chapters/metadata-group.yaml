@@ -4,8 +4,8 @@ author: Gregor von Laszewski, Fidel Leal, Shannon Kerr, Erin Seliger, Cooper You
 header-includes: |
     \usepackage{fancyhdr}
     \pagestyle{fancy}
-    \fancyfoot[LE,RO]{\thepage}
     \usepackage{tcolorbox}
+    \hypersetup{colorlinks,linkcolor=blue,urlcolor=blue}
     \newtcolorbox{myquote}{colback=gray!5!white, colframe=gray!75!black}
     \renewenvironment{quote}{\begin{myquote}}{\end{myquote}}
 abstract: |

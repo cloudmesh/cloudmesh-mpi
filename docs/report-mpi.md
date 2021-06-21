@@ -234,15 +234,14 @@ Windows:
 
 ### Installing mpi4py in MacOS
 
--   [ ] TODO: Agnes, incomplete
-
-A similar process can be followed to install mpi4py in MacOS. In this
-case, we can use Homebrew to get Open MPI by entering:
+A similar process can be followed to install mpi4py in macOS. In this
+case, we can use Homebrew to get Open MPI floowed by installing mpi4py
+in your venv
 
     $ brew install open-mpi
-
-Once Open MPI is working, steps 3 and 4 from the PI4 installation can be
-followed in order to download and install mpi4py.
+    $ python3 -m venv ~/ENV3
+    $ source ~/ENV3/bin/activate
+    $ pip install mpi4py
 
 ## Hello World
 
@@ -1008,23 +1007,43 @@ monte carlo function \* display results with matplotlib
 
 ### Counting Numbers
 
--   [ ] TODO: Erin, Explain the program
+The following program generates arrays of random numbers each 20 (n) in
+length with the highest number possible being 10 (max_number). It then
+uses a function called count() to count the number of 8's in each data
+set. The number of 8's in each list is stored count_data. Count_data is
+then summed and printed out as the total number of 8's.
 
 > ``` python
-> #TODO
-> #how do you generate a random number
-> #how do you generate a list of random numbers
-> #how do you find the number 8 in a list
-> #how do you gather the number 8
+> # Run with
+> #
+> # mpiexec -n 4 python count.py
+> #
+>
+> #
+> # To change the values set them on your terminal with
+> #
+> # export N=20
+> # export MAX=10
+> # export FIND=8
+>
+> # TODO
+> # how do you generate a random number
+> # how do you generate a list of random numbers
+> # how do you find the number 8 in a list
+> # how do you gather the number 8
+> import os
 > import random
+>
 > from mpi4py import MPI
+>
+> # Getting the input values or set them to a default
+>
+> n = os.environ.get("N") or 20
+> max_number = os.environ.get("MAX") or 10
+> find = os.environ.get("FIND") or 8
 >
 > # Communicator
 > comm = MPI.COMM_WORLD
->
-> N = 20
-> max_number = 10
-> find = 8
 >
 > # Number of processes in the communicator group
 > size = comm.Get_size()
@@ -1034,13 +1053,13 @@ monte carlo function \* display results with matplotlib
 >
 > # Each process gets different data, depending on its rank number
 > data = []
-> for i in range(N):
->     r = random.randint(1,max_number)
+> for i in range(n):
+>     r = random.randint(1, max_number)
 >     data.append(r)
 > count = data.count(find)
 >
 > # Print data in each process
-> print(rank,count,data)
+> print(rank, count, data)
 >
 > # Gathering occurs
 > count_data = comm.gather(count, root=0)
@@ -1049,11 +1068,24 @@ monte carlo function \* display results with matplotlib
 > # print their data as well
 > if rank == 0:
 >     print(rank, count_data)
->     b = sum(count_data)
->     print("Total number of 8's:", b)
+>     total = sum(count_data)
+>     print(f"Total number of {find}'s:", total)
 > ```
 
-More explanations
+Executing `mpiexec -n 4 python count.py` gives us:
+
+> 1 1 \[7, 5, 2, 1, 5, 5, 5, 4, 5, 2, 6, 5, 2, 1, 8, 7, 10, 9, 5, 6\]
+>
+> 3 3 \[9, 2, 9, 8, 2, 7, 7, 2, 10, 1, 2, 5, 3, 5, 10, 8, 10, 10, 8,
+> 10\]
+>
+> 2 3 \[1, 3, 8, 5, 7, 8, 4, 2, 8, 5, 10, 7, 10, 1, 6, 5, 9, 6, 6, 7\]
+>
+> 0 3 \[6, 9, 10, 2, 4, 8, 8, 9, 4, 1, 6, 8, 6, 9, 7, 5, 5, 6, 3, 4\]
+>
+> 0 \[3, 1, 3, 3\]
+>
+> Total number of 8's: 10
 
 ## GPU Programming with MPI
 
