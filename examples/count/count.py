@@ -1,12 +1,21 @@
-<<<<<<< HEAD
-=======
+# Run with
+#
+# mpiexec -n 4 python count.py
+#
+
+#
+# To change the values set them on your terminal with
+#
+# export N=20
+# export MAX=10
+# export FIND=8
+
 # TODO
 # how do you generate a random number
 # how do you generate a list of random numbers
 # how do you find the number 8 in a list
 # how do you gather the number 8
 import os
->>>>>>> 1d5dfa58120332ae873f4dc3232ca04f8d23ac15
 import random
 
 from mpi4py import MPI
