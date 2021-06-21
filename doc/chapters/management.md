@@ -69,7 +69,7 @@ valuable set of services to any research team.
 Zoom is a cloud-based communications platform that provides 
 one-on-one, group meetings, and webinars.
 
-**What are good features?** (Fidel, Gregor)
+**What are good features?**
 
 Some of Zoom’s features include live chat, screen sharing, a
 whiteboard, and virtual reactions for meeting
@@ -99,7 +99,7 @@ cases, you may have a second computer and can use one for sharing your
 session, while the other one is used for sound, or you use a cell
 phone for the later
 
-**How can someone take control of a remote desktop?** (Fidel)
+**How can someone take control of a remote desktop?**
 
 To take control of a remote desktop, the remote user must activate
 screen sharing. Once the screen sharing is activated, we need to click
@@ -125,7 +125,7 @@ also allowing real-time text messaging,
 
 
 
-#### Slack (Gregor, Cooper)
+#### Slack
 
 Slack is a communication software that is used for groups to
 send and receive text messages. Additional 3rd party services that can be added
