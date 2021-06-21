@@ -159,17 +159,17 @@ Windows:
    
 ### Installing mpi4py in MacOS
 
-- [ ] TODO: Agnes, incomplete
-
-A similar process can be followed to install mpi4py in MacOS. In this
-case, we can use Homebrew to get Open MPI by entering: 
+A similar process can be followed to install mpi4py in macOS. In this
+case, we can use Homebrew to get Open MPI floowed by installing mpi4py 
+in your venv
 
 ```
 $ brew install open-mpi
+$ python3 -m venv ~/ENV3
+$ source ~/ENV3/bin/activate
+$ pip install mpi4py
 ```
-   
-Once Open MPI is working, steps 3 and 4 from the  PI4
-installation can be followed in order to download and install mpi4py.
+
 
 ## Hello World
 

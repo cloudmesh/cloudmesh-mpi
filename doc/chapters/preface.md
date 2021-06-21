@@ -18,7 +18,7 @@
   * <https://cloudmesh.github.io/cloudmesh-mpi/report-mpi.pdf>
   * <https://cloudmesh.github.io/cloudmesh-mpi/report-group.pdf>
 
-To check out use 
+To check out the repository use 
   
 > ```
 > $ git clone git@github.com:cloudmesh/cloudmesh-mpi.git
@@ -40,7 +40,7 @@ To keep things uniform we use the following document notations.
 1. Empty lines are to be placed before and after a context change such
    as a headline, paragraph, list, image inclusion.
 
-2. All code is written in code blocks using the `>` and thre back
+2. All code is written in code blocks using the `>` and three back
    quotes. A rendered example looks as follows:
 
    > ```
@@ -51,11 +51,19 @@ To keep things uniform we use the following document notations.
    inclusion must be used for filenames, and other names as they are
    refereed to in code blocks.
 
-4. Formulas are written as LaTeX formulas
+4. Do showcase command inclusion we use a block but preceed every command 
+   with a `$` or other prefix indicating the computer on which the command 
+   is executed. 
+   
+   > ```
+   > $ ls 
+   > ```
+   
+5. Formulas are written as LaTeX formulas
 
-5. We use regular markdown
+6. We use regular markdown
 
-6. Inclusions are handled by pandoc-include
+7. Inclusions are handled by pandoc-include
 
-7. bibliography is managed via footnotes
+8. bibliography is managed via footnotes
 
