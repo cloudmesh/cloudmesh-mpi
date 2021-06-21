@@ -25,11 +25,16 @@ md-mpi: ${MPI}
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} ./chapters/report-mpi.md -o tmp-1.md
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} tmp-1.md -o tmp-2.md
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} tmp-2.md -o tmp-3.md
-	${PANDOC} cloudmesh/pandoc --number-sections ./chapters/title-mpi.md tmp-3.md -o ../docs/report-mpi.md
+	${PANDOC} cloudmesh/pandoc \
+		--number-sections ./chapters/title-mpi.md tmp-3.md \
+		-o ../docs/report-mpi.md
 
 pdf-mpi: ${MPI} md-mpi
 	$(call banner, "CREATE MPI PDF DOCUMENT")
-	${PANDOC} cloudmesh/pandoc -s -t latex -V geometry:margin=1in --number-sections --toc chapters/metadata-mpi.yaml tmp-3.md -o ../docs/report-mpi.pdf
+	${PANDOC} cloudmesh/pandoc -s \
+		-t latex -V geometry:margin=1in --number-sections \
+		--toc chapters/metadata-mpi.yaml tmp-3.md \
+		-o ../docs/report-mpi.pdf
 
 md-group: ${GROUP}
 	$(call banner, "CREATE GROUP MARKDOWN DOCUMENT")
@@ -54,15 +59,18 @@ clean:
 
 ##### TO GEBERATE NATIVELY
 
-all-native: md-native pdf-native
+native: md-native pdf-native
 
 md-native:
-	pandoc ${OPTIONS} chapters/report.md -o tmp-1.md
+	pandoc ${OPTIONS} chapters/report-mpi.md -o tmp-1.md
 	pandoc ${OPTIONS} tmp-1.md  -o tmp-2.md
 	pandoc ${OPTIONS} tmp-2.md  -o tmp-3.md
-	pandoc --number-sections chapters/title.md tmp-3.md -o report.md
+	pandoc --number-sections chapters/title-mpi.md tmp-3.md -o ../docs/report-mpi.md
 
 
 pdf-native: md-native
-	pandoc -s -t latex -V geometry:margin=1in --number-sections --toc chapters/metadata.yaml tmp-3.md -o report.pdf
+	pandoc -s \
+		-t latex -V geometry:margin=1in --number-sections \
+		--toc chapters/metadata-mpi.yaml \
+		../docs/report-mpi.md -o report-mpi.pdf
 

@@ -100,15 +100,46 @@ with it, as well as the execution of parallel execution of TensorFlow.
 -   [ ] TODO: Who?, find number count of 8 in randome numbers between
     1-10
 
+## Prerequisite
+
+For the examples listed in this document it is important to know the
+number of cores in your computer. This can be found out through the
+commandline or though a python program.
+
+In python you can do it with
+
+> ``` python
+> import multiprocessing
+> multiprocessing.cpu_count()
+> ```
+
+or as a commandline
+
+> ``` bash
+> $ python -c "import multiprocessing;  print(multiprocessing.cpu_count())"
+> ```
+
+Alternatively you can use the following
+
+Linux:
+
+> ``` bash
+> $ nproc
+> ```
+
+macOS:
+
+> ``` bash
+> $ sysctl hw.physicalcpu hw.logicalcpu
+> ```
+
+Windows:
+
+> ``` bash
+> $ wmic CPU Get DeviceID,NumberOfCores,NumberOfLogicalProcessors
+> ```
+
 ## Installation
-
-Linux: nproc
-
-osx: sysctl hw.physicalcpu hw.logicalcpu
-
--   which one can we use?
-
-windows: ??? we want command in gitbash that gives it
 
 ### Installation of mpi4py on Windows
 
@@ -144,7 +175,7 @@ to verify if it works.
 
 7.  After you verified it is available, install mpi4py with
 
-> \$ `bash $ pip install mpi4py $`
+    > \$ `bash $ pip install mpi4py $`
 
 8.  The installation can be tested with
     `mpiexec -n 4 python -m    mpi4py.bench helloworld` (depending on
@@ -266,7 +297,7 @@ The machinefile contains the ipaddresses
 The `send()` and `receive()` methods provide for functionality to
 transmit data between two specific processes in the communicator group.
 
-![Sending and receiving data between two
+MISSING IMAGE [Sending and receiving data between two
 processes](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/send_receive.png){width="25%"}
 
 Here is the definition for the `send()` method:
