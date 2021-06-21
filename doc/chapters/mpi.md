@@ -241,8 +241,8 @@ The machinefile contains the ipaddresses
 
 ### Sending/Receiving `comm.send()` `comm.receive()
 
-The `send()` and `receive()` methods provide for functionality to transmit data between two
-specific processes in the communicator group.
+The `send()` and `receive()` methods provide for functionality to transmit data
+between two specific processes in the communicator group.
 
 
 MISSING IMAGE [Sending and receiving data between two processes ](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/send_receive.png){ width=25% }
@@ -253,10 +253,10 @@ Here is the definition for the `send()` method:
 > comm.send(buf, dest, tag)
 > ```
 
-`Buf` represents the data to be transmitted, `dest` and `tag` are integer values that specify
-the rank of the destination process, and a tag to identify the message being passed, respectively.
-`Tag` is particularly useful for cases when a process sends multiple kinds of messages to another
-process.
+`Buf` represents the data to be transmitted, `dest` and `tag` are integer
+values that specify the rank of the destination process, and a tag to identify
+the message being passed, respectively. `Tag` is particularly useful for cases
+when a process sends multiple kinds of messages to another process.
 
 In the other end is the `send()` method, with the following definition:
 
@@ -264,9 +264,10 @@ In the other end is the `send()` method, with the following definition:
 > comm.send(buf, source, tag, status)
 > ```    
 
-In this case, `buf` can specify the location for the recived data to be stored.Additionally,
-`source`and`tag` can specify the desired source and tag of the data to be received. They can also
-be set to `MPI.ANY_SOURCE` and `MPI.ANY_TAG`, or be left unspecified.
+In this case, `buf` can specify the location for the recived data to be
+stored.Additionally, `source`and`tag` can specify the desired source and tag of
+the data to be received. They can also be set to `MPI.ANY_SOURCE` and
+`MPI.ANY_TAG`, or be left unspecified.
 
 In the following example, an integer is transmitted from process 0 to process 1.
 
@@ -283,27 +284,30 @@ Executing `mpiexec -n 4 python send_receive.py` yields:
 > After send/receive, the value in process 1 is 42
 > ```
 
-As we can appreciate, transmission only occurred between processes 0 and 1, and no other process
-was affected.
+As we can appreciate, transmission only occurred between processes 0 and 1, and
+no other process was affected.
 
 ## MPI Collective Communication Examples
 
 ### Broadcast `comm.bcast()`
 
-The `bcast()`method and it's buffered version `Bcast()` broadcast a message from a specified "root"
-process to all other processes in the communicator group.
+The `bcast()`method and it's buffered version `Bcast()` broadcast a message
+from a specified "root" process to all other processes in the communicator
+group.
 
-In terms of syntax, `bcast()` takes the object to be broadcast and the parameter `root`, that
-establishes the rank number of the process broadcasting the data. If no root parameter is
-specified, `bcast` will default to broadcasting from the process with rank 0.
+In terms of syntax, `bcast()` takes the object to be broadcast and the
+parameter `root`, that establishes the rank number of the process broadcasting
+the data. If no root parameter is specified, `bcast` will default to
+broadcasting from the process with rank 0.
 
-In this example, we broadcast a two-entry Python dictionary from a root process to the rest of
-the processes in the communicator group.
+In this example, we broadcast a two-entry Python dictionary from a root process
+to the rest of the processes in the communicator group.
 
 ![Broadcasting data from a root process to the rest of the processes in th communicator group ](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){ width=25% }
 
-The following code snippet shows the creation of the dictionary in process with rank 0. Notice how
-the variable `data` remains empty in all the other processes.
+The following code snippet shows the creation of the dictionary in process with
+rank 0. Notice how the variable `data` remains empty in all the other
+processes.
 
 > ``` python
 > !include ../examples/broadcast.py
@@ -528,8 +532,9 @@ Using
 >``` python
 > MPI.Comm_Self.Spawn
 > ```
-will create a child process that can communicate with the parent. In the spawn example, the manager broadcasts an array
-to the worker.
+
+will create a child process that can communicate with the parent. In the spawn
+example, the manager broadcasts an array to the worker.
 
 In this example, we have two python programs, the first one being the
 manager and the second being the worker.
@@ -643,7 +648,8 @@ calculation of pi.
 - [ ] TODO: Shannon, Benchmarking of the code
 
 Use for benchmarking
-* cloudmesh.common (not thread safe, but still can be used, research how to use it in multiple threads)
+* cloudmesh.common (not thread safe, but still can be used, research how to 
+  use it in multiple threads)
   * other strategies to benchmark, you research (only if really needed
 * Use numba to speed up the code
   * describe how to install
