@@ -111,7 +111,14 @@ Windows:
    > Hello, World! I am process 2 of 4 on red.
    > Hello, World! I am process 3 of 4 on red.
    > ```
-   
+
+### Installing mpi4pi on Ubuntu
+
+> ```bash
+> $ sudo apt-get install -y mpich-doc mpich 
+> $ pip install mpi4py -U
+> ```
+
 ### Installing mpi4py in a Raspberry Pi
 
 
