@@ -114,10 +114,19 @@ Windows:
 
 ### Installing mpi4pi on Ubuntu
 
+The instalation of mpi4py on ubuntu is relatively easy. Please follow these steps. We recommend that you create a 
+python `venv` so you do not by accident interfere with your system python. As usual you can activate it in your 
+`.bashrc file while adding the source line there. Lastly, make sure you check it out and adjust the `-n` parameters 
+to the number of cores of your machine.
+
 > ```bash
-> $ sudo apt-get install -y mpich-doc mpich 
-> $ pip install mpi4py -U
-> ```
+> $ sudo apt install python3.9 python3.9-dev
+> $ python3 -m venev ~/ENV3
+> $ source `/ENV3/bin/activate`
+> (ENV3) $ sudo apt-get install -y mpich-doc mpich 
+> (ENV3) $ pip install mpi4py -U
+> (ENV3) $ mpiexec -n 4 python -m mpi4py.bench helloworld
+> > ```
 
 ### Installing mpi4py in a Raspberry Pi
 
