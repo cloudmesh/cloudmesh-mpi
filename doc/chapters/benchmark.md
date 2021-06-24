@@ -1,5 +1,8 @@
 # Benchmarks
 
+This article is in more detail published at this [link](https://laszewski.medium.com/easy-benchmarking-of-long-running-programs-82059d9c67ce).
+If the link does not work use this [Link](https://laszewski.medium.com/easy-benchmarking-of-long-running-programs-82059d9c67ce?sk=7ed2ca2dacf7253c41e7ca4e180e2e1a).
+
 ## Introduction
 
 We explain how we can manage long-running benchmarks. There are many useful
@@ -72,7 +75,7 @@ derive these values while using the command. However, it only works if the
 number of processors on the same node is 1.
 
 ```
-pip install cloudmesh.cmd5
+pip install cloudmesh-cmd5
 cms help    # dont forget to call it after the install as it sets some defaults
 cms sysinfo 
 ```
@@ -80,36 +83,34 @@ cms sysinfo
 The output will be looking something like 
 
 ```
-+------------------+--------------------------------------------------------------------------------------------------+
-| Attribute        | Value                                                                                            |
-+------------------+--------------------------------------------------------------------------------------------------+
-| cpu              | Intel(R) Core(TM) i7-7920HQ CPU @ 3.10GHz                                                        |
-| cpu_cores        | 4                                                                                                |
-| cpu_count        | 8                                                                                                |
-| cpu_threads      | 8                                                                                                |
-| frequency        | scpufreq(current=3100, min=3100, max=3100)                                                       |
-| mem.active       | 5.7 GiB                                                                                          |
-| mem.available    | 5.8 GiB                                                                                          |
-| mem.free         | 96.7 MiB                                                                                         |
-| mem.inactive     | 5.6 GiB                                                                                          |
-| mem.percent      | 63.7 %                                                                                           |
-| mem.total        | 16.0 GiB                                                                                         |
-| mem.used         | 8.2 GiB                                                                                          |
-| mem.wired        | 2.4 GiB                                                                                          |
-| platform.version | 10.16                                                                                            |
-| python           | 3.9.5 (v3.9.5:0a7dcbdb13, May  3 2021, 13:17:02)                                                 |
-|                  | [Clang 6.0 (clang-600.0.57)]                                                                     |
-| python.pip       | 21.1.2                                                                                           |
-| python.version   | 3.9.5                                                                                            |
-| sys.platform     | darwin                                                                                           |
-| uname.machine    | x86_64                                                                                           |
-| uname.node       | mycomputer                                                                                           |
-| uname.processor  | i386                                                                                             |
-| uname.release    | 20.5.0                                                                                           |
-| uname.system     | Darwin                                                                                           |
-| uname.version    | Darwin Kernel Version 20.5.0: Sat May  8 05:10:33 PDT 2021; root:xnu-7195.121.3~9/RELEASE_X86_64 |
-| user             | gregor                                                                                             |
-+------------------+--------------------------------------------------------------------------------------------------+
++------------------+----------------------------------------------+
+| Attribute        | Value                                        |
++------------------+----------------------------------------------+
+| cpu              | Intel(R) Core(TM) i7-7920HQ CPU @ 3.10GHz    |
+| cpu_cores        | 4                                            |
+| cpu_count        | 8                                            |                                                    
+| cpu_threads      | 8                                            |                                                    
+| frequency        | scpufreq(current=3100, min=3100, max=3100)   |                                                    
+| mem.active       | 5.7 GiB                                      |                                                    
+| mem.available    | 5.8 GiB                                      |                                                    
+| mem.free         | 96.7 MiB                                     |                                                    
+| mem.inactive     | 5.6 GiB                                      |                                                    
+| mem.percent      | 63.7 %                                       |                                                    
+| mem.total        | 16.0 GiB                                     |                                                    
+| mem.used         | 8.2 GiB                                      |                                                    
+| mem.wired        | 2.4 GiB                                      |                                                    
+| platform.version | 10.16                                        |                                                    
+| python           | 3.9.5 (v3.9.5:0a7dcbdb13, ...)               |                                               
+| python.pip       | 21.1.2                                       |                                                    
+| python.version   | 3.9.5                                        |                                                   
+| sys.platform     | darwin                                       |                                                    
+| uname.machine    | x86_64                                       |                                                    
+| uname.node       | mycomputer                                   |                                                    
+| uname.processor  | i386                                         |                                                    | uname.release    | 20.5.0                                       |                                                    
+| uname.system     | Darwin                                       |                                                    
+| uname.version    | Darwin Kernel Version 20.5.0: ....           |
+| user             | gregor                                       |                                                      
++------------------+----------------------------------------------+
 ```
 
 To obtain the vectors you can say
@@ -120,7 +121,7 @@ cms sysinfo -t
 ```
 
 where `-v` specifies the vector and `-t` the totals.  Knowing these values will
-help you structuring your benchmarks.
+help you structure your benchmarks.
 
 ## Parameters
 
@@ -157,7 +158,7 @@ def f(x,y, print_benchmark=False, checkpoint=True):
     if print_benchmark:
         StopWatch.benchmark()
     if checkpoint:
-        pickle.dump(result, open("benchmark/f-{x}-{y}.pkl", "wb" ))  
+        pickle.dump(result, open(f"benchmark/f-{x}-{y}.pkl", "wb" ))  
     return result
 
 x_min = 0
@@ -170,7 +171,6 @@ for x in range(x_min, x_max, dx):
     for y in range(y_min, y_max, dy):
         # run the function with parameters
         result = f(x ,y, print_benchmark=True)
-        # checkpoit result to disk 
 ```
 
 ### Script solution
@@ -245,7 +245,7 @@ Now you can execute it with
 $ sh sweep.sh | tee result.log
 ```
 
-The tee command will redirect the output to the file result, while still
+The `tee` command will redirect the output to the file result, while still
 reporting its progress on the terminal. In case you want to run it without
 monitoring or tee is not supported properly you just run it as 
 
@@ -302,14 +302,14 @@ pip install papermill
 ```
 
 Then when you open up jupyter-lablab and import our code. Create a new cell. In this 
-the cell you place all parameters for your run that you like to modify such as
+cell you place all parameters for your run that you like to modify such as
 
 x = 0
 y = 0
 
 This cell can be augmented with a tag called "parameters". To do this open the 
 "cog" and enter in the tag name "parameters". Make sure you save the tag and the notebook.
-Now we can use papermill to run our notebook with parameters such as 
+Now we can use `papermill` to run our notebook with parameters such as 
 
 ```
 $ mkdir benchmark
@@ -318,7 +318,7 @@ $ papermill sweep.ipynb benchmark/sweep-0-0.ipynb --x 0 --y 0 | tee benchmark/re
 ```
 
 
-Naturally we can auto-generate this as follows
+Naturally, we can auto-generate this as follows
 
 ```python
 x_min = 0
