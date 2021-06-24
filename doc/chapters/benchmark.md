@@ -13,7 +13,7 @@ many hours of unneeded replication.
 We use and demonstrate how we achieve this with a simple StopWatch, creation of
 shell scripts and even the integration of Jupyter notebooks.
 
-## Rerequists
+## Prerequisites
 
 As usual, we recommend that you use a virtual env. dependent on where your python
 3 is installed, please adapt accordingly (python, or python3). Also, test out
@@ -46,7 +46,7 @@ Where
 * `N` = Number of computers or nodes
 * `p` = Number of processors per node
 * `c` = Number of cores per processor
-* `t` = Number of threds per processor
+* `t` = Number of threads per processor
 
 In some cases, it may be more convenient to specify the total values as
 
@@ -77,6 +77,41 @@ cms help    # dont forget to call it after the install as it sets some defaults
 cms sysinfo 
 ```
 
+The output will be looking something like 
+
+```python
++------------------+--------------------------------------------------------------------------------------------------+
+| Attribute        | Value                                                                                            |
++------------------+--------------------------------------------------------------------------------------------------+
+| cpu              | Intel(R) Core(TM) i7-7920HQ CPU @ 3.10GHz                                                        |
+| cpu_cores        | 4                                                                                                |
+| cpu_count        | 8                                                                                                |
+| cpu_threads      | 8                                                                                                |
+| frequency        | scpufreq(current=3100, min=3100, max=3100)                                                       |
+| mem.active       | 5.7 GiB                                                                                          |
+| mem.available    | 5.8 GiB                                                                                          |
+| mem.free         | 96.7 MiB                                                                                         |
+| mem.inactive     | 5.6 GiB                                                                                          |
+| mem.percent      | 63.7 %                                                                                           |
+| mem.total        | 16.0 GiB                                                                                         |
+| mem.used         | 8.2 GiB                                                                                          |
+| mem.wired        | 2.4 GiB                                                                                          |
+| platform.version | 10.16                                                                                            |
+| python           | 3.9.5 (v3.9.5:0a7dcbdb13, May  3 2021, 13:17:02)                                                 |
+|                  | [Clang 6.0 (clang-600.0.57)]                                                                     |
+| python.pip       | 21.1.2                                                                                           |
+| python.version   | 3.9.5                                                                                            |
+| sys.platform     | darwin                                                                                           |
+| uname.machine    | x86_64                                                                                           |
+| uname.node       | mycomputer                                                                                           |
+| uname.processor  | i386                                                                                             |
+| uname.release    | 20.5.0                                                                                           |
+| uname.system     | Darwin                                                                                           |
+| uname.version    | Darwin Kernel Version 20.5.0: Sat May  8 05:10:33 PDT 2021; root:xnu-7195.121.3~9/RELEASE_X86_64 |
+| user             | gregor                                                                                             |
++------------------+--------------------------------------------------------------------------------------------------+
+```
+
 To obtain the vectors you can say
 
 ```
@@ -84,7 +119,8 @@ cms sysinfo -v
 cms sysinfo -t
 ```
 
-where `-v` specifies the vector and `-t` the totals.
+where `-v` specifies the vector and `-t` the totals.  Knowing these values will
+help you structuring your benchmarks.
 
 ## Parameters
 
