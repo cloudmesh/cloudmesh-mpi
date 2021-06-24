@@ -1,7 +1,14 @@
 USER=gregor
 NODE=i5
 
-all:
+p1:
+	echo "SINGLE PROCESS"
+	papermill sweep.ipynb sweep-gregor-i5-1.ipynb -p user ${USER} -p node ${NODE} -p processors 1
+
+p2:
+	papermill sweep.ipynb sweep-gregor-i5-2.ipynb -p user ${USER} -p node ${NODE} -p processors 2
+
+rest:
 	papermill sweep.ipynb sweep-gregor-i5-2.ipynb -p user ${USER} -p node ${NODE} -p processors 2
 	papermill sweep.ipynb sweep-gregor-i5-3.ipynb -p user ${USER} -p node ${NODE} -p processors 3
 	papermill sweep.ipynb sweep-gregor-i5-4.ipynb -p user ${USER} -p node ${NODE} -p processors 4

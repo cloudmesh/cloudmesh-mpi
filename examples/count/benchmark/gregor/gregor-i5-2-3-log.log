@@ -1,0 +1,105 @@
+0 [1, 5]
+Total number of 8's: n=6 E=6 p=0.09375 t=0.0002s (gregor-i5-2
+
+
++------------------------+----------+--------+-------+---------------------+-------+-----------------------+--------+--------+-------+---------------------------------------------+
+| Name                   | Status   |   Time |   Sum | Start               | tag   | msg                   | Node   | User   | OS    | Version                                     |
+|------------------------+----------+--------+-------+---------------------+-------+-----------------------+--------+--------+-------+---------------------------------------------|
+| Result: gregor-i5-2-32 | ok       |      0 |     0 | 2021-06-24 00:29:01 |       | 6 64 32 8 gregor-i5-2 | i5     | gregor | Linux | #23-Ubuntu SMP Thu Jun 17 00:34:23 UTC 2021 |
++------------------------+----------+--------+-------+---------------------+-------+-----------------------+--------+--------+-------+---------------------------------------------+
+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,Result: gregor-i5-2-32,ok,0.0,0.0,2021-06-24 00:29:01,,6 64 32 8 gregor-i5-2,i5,gregor,Linux,#23-Ubuntu SMP Thu Jun 17 00:34:23 UTC 2021
+
+0 [511029, 512014]
+Total number of 8's: n=1023043 E=1024000 p=0.09990654296875 t=2.8467s (gregor-i5-2
+
+
++-----------------------------+----------+--------+-------+---------------------+-------+----------------------------------------+--------+--------+-------+---------------------------------------------+
+| Name                        | Status   |   Time |   Sum | Start               | tag   | msg                                    | Node   | User   | OS    | Version                                     |
+|-----------------------------+----------+--------+-------+---------------------+-------+----------------------------------------+--------+--------+-------+---------------------------------------------|
+| Result: gregor-i5-2-5120000 | ok       |  2.847 | 2.847 | 2021-06-24 00:29:02 |       | 1023043 10240000 5120000 8 gregor-i5-2 | i5     | gregor | Linux | #23-Ubuntu SMP Thu Jun 17 00:34:23 UTC 2021 |
++-----------------------------+----------+--------+-------+---------------------+-------+----------------------------------------+--------+--------+-------+---------------------------------------------+
+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,Result: gregor-i5-2-5120000,ok,2.847,2.847,2021-06-24 00:29:02,,1023043 10240000 5120000 8 gregor-i5-2,i5,gregor,Linux,#23-Ubuntu SMP Thu Jun 17 00:34:23 UTC 2021
+
+0 [1537023, 1537321]
+Total number of 8's: n=3074344 E=3072000 p=0.10007630208333333 t=8.4487s (gregor-i5-2
+
+
++------------------------------+----------+--------+-------+---------------------+-------+-----------------------------------------+--------+--------+-------+---------------------------------------------+
+| Name                         | Status   |   Time |   Sum | Start               | tag   | msg                                     | Node   | User   | OS    | Version                                     |
+|------------------------------+----------+--------+-------+---------------------+-------+-----------------------------------------+--------+--------+-------+---------------------------------------------|
+| Result: gregor-i5-2-15360000 | ok       |  8.449 | 8.449 | 2021-06-24 00:29:09 |       | 3074344 30720000 15360000 8 gregor-i5-2 | i5     | gregor | Linux | #23-Ubuntu SMP Thu Jun 17 00:34:23 UTC 2021 |
++------------------------------+----------+--------+-------+---------------------+-------+-----------------------------------------+--------+--------+-------+---------------------------------------------+
+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,Result: gregor-i5-2-15360000,ok,8.449,8.449,2021-06-24 00:29:09,,3074344 30720000 15360000 8 gregor-i5-2,i5,gregor,Linux,#23-Ubuntu SMP Thu Jun 17 00:34:23 UTC 2021
+
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 24738 RUNNING AT earth
+=   EXIT CODE: 15
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Terminated (signal 15)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 24745 RUNNING AT earth
+=   EXIT CODE: 15
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Terminated (signal 15)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 24752 RUNNING AT earth
+=   EXIT CODE: 15
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Terminated (signal 15)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 24762 RUNNING AT earth
+=   EXIT CODE: 15
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Terminated (signal 15)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 24769 RUNNING AT earth
+=   EXIT CODE: 15
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Terminated (signal 15)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 24777 RUNNING AT earth
+=   EXIT CODE: 15
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Terminated (signal 15)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions
