@@ -12,6 +12,7 @@ import random
 
 import click
 from mpi4py import MPI
+import numpy as np
 
 from cloudmesh.common.StopWatch import StopWatch
 
@@ -27,7 +28,8 @@ from cloudmesh.common.StopWatch import StopWatch
 @click.option('--label', default="result", help="a label")
 @click.option('--user', default=None, help="name of the user running the benchmark")
 @click.option('--node', default=None, help="name of the computer on which the benchmark is run")
-def run(n, max_number, find, verbose, sysinfo, label, node, user):
+@click.option('--alg', default='count', help='the algorithm: loop')
+def run(n, max_number, find, verbose, sysinfo, label, node, user, alg):
     # Communicator
     comm = MPI.COMM_WORLD
 
@@ -41,11 +43,15 @@ def run(n, max_number, find, verbose, sysinfo, label, node, user):
         StopWatch.start(f"Result: {label}-{n}")
 
     # Each process gets different data, depending on its rank number
-    data = []
-    for i in range(n):
-        r = random.randint(1, max_number)
-        data.append(r)
-    count = data.count(find)
+    if alg == 'count':
+        data = []
+        for i in range(n):
+            r = random.randint(1, max_number)
+            data.append(r)
+        count = data.count(find)
+    elif alg == 'numpy':
+        data = np.random.randint(max_number, size=n)
+        count = np.count_nonzero(data == find)
 
     # Print data in each process
     if verbose:
