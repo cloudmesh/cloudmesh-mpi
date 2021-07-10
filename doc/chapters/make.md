@@ -24,7 +24,7 @@ and download the file
 
 * ['make-4.3-without-guile-w32-bin.zip`](https://sourceforge.net/projects/ezwinports/files/make-4.3-without-guile-w32-bin.zip/download)
 
-After the download you have to extract and unzip the file as follows:
+After the download you have to extract and unzip the file as follows in a gitbash that you started as administartive user:
 
 > ```bash
 > $ cp make-4.3-without-guile-w32-bin.zip /usr
