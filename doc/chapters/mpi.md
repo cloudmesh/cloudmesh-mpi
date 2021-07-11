@@ -8,12 +8,15 @@
 
 ## MPI
 
+- [ ] TODO: Open, what is mpi <https://github.com/cloudmesh/cloudmesh-mpi/issues/19>
+- [ ] TODO: Open, Ring <https://github.com/cloudmesh/cloudmesh-mpi/issues/15>
+- [ ] TODO: Open, calculation of pi <https://cvw.cac.cornell.edu/python/exercise>
+  <https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=monte>
 
-- [ ] TODO: Open, what is mpi
-- [ ] TODO: Open, Ring
-- [ ] TODO: Open kmeans
-- [ ] TODO: Who?, calculation of pi
-- [ ] TODO: Who?, find number count of 8 in random numbers between 1-10
+Maybe to complex:
+
+- [ ] TODO: Open, k-means there may be others <https://medium.com/@hyeamykim/parallel-k-means-from-scratch-2b297466fdcd>
+
 
 ## Prerequisite
 
