@@ -20,8 +20,6 @@ For more information, please contact: <laszewski@gmail.com>
     -   [-\>
         Erin](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Aeselige)
     -   [-\>
-        Shanon](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Ashankerr)
-    -   [-\>
         Cooper](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Acoopyoung)
     -   [-\>
         Agnes](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Ashekinah-lungu)
@@ -100,11 +98,17 @@ with it, as well as the execution of parallel execution of TensorFlow.
 ## MPI
 
 -   [ ] TODO: Open, what is mpi
+    <https://github.com/cloudmesh/cloudmesh-mpi/issues/19>
 -   [ ] TODO: Open, Ring
--   [ ] TODO: Open kmeans
--   [ ] TODO: Who?, calculation of pi
--   [ ] TODO: Who?, find number count of 8 in random numbers between
-    1-10
+    <https://github.com/cloudmesh/cloudmesh-mpi/issues/15>
+-   [ ] TODO: Open, calculation of pi
+    <https://cvw.cac.cornell.edu/python/exercise>
+    <https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=monte>
+
+Maybe to complex:
+
+-   [ ] TODO: Open, k-means there may be others
+    <https://medium.com/@hyeamykim/parallel-k-means-from-scratch-2b297466fdcd>
 
 ## Prerequisite
 
@@ -1041,6 +1045,7 @@ then summed and printed out as the total number of 8's.
 > # how do you generate a list of random numbers
 > # how do you find the number 8 in a list
 > # how do you gather the number 8
+>
 > import os
 > import random
 >
