@@ -103,7 +103,7 @@ phone for the later
 
 To take control of a remote desktop, the remote user must activate
 screen sharing. Once the screen sharing is activated, we need to click
-the `View Options` dropdown menu (usually at the top of the screen)
+the `View Options` drop-down menu (usually at the top of the screen)
 and click on `Request remote control`. The remote user will then get a
 prompt to approve the remote control request.
 
@@ -113,7 +113,7 @@ the
 [Zoom support pages](https://support.zoom.us/hc/en-us/articles/201362673-Requesting-or-giving-remote-control).
 
 
-### Realtime nad Offline Text Messaging
+### Real-time and Offline Text Messaging
 
 In many research projects, participants may be in different timezones
 or have schedules that do not provide overlapping times for
@@ -230,7 +230,7 @@ accuracy.
 In practice, we observed that Grammarly performs better. Copying text
 back and forth can introduce errors when it comes to using quotes and
 other symbols. Thus you must check all symbols after you copy them into
-a markdown document. IN case you have the choice we currently
+a markdown document. In case you have the choice we currently
 recommend you use Grammarly.
 
 
