@@ -655,9 +655,9 @@ This output depends on which child process is received first. The output can var
 
 ## Monte Carlo calculation of Pi
 
-- [ ] TODO: Shannon, improve
+- [ ] TODO: Open, improve
 
-- [ ] TODO: Shannon  WHAT IS THE PROBLEM GOAL
+- [ ] TODO: Open  WHAT IS THE PROBLEM GOAL
 
 We start with the Mathematical formulation of the Monte Carlo
 calculation of pi. For each quadrant of the unit square, the area is
@@ -669,18 +669,18 @@ calculation of pi.
 > !include ../examples/montecarlo.py
 > ```
 
-- [ ] TODO: Shannon, Drawing
+- [ ] TODO: Open, Drawing
 
 - [ ] TODO: Open, HOW AND WHY DO WE NEED MULTIPLE COMPUTERS
 
 ### Program
 
-- [ ] TODO: Shannon, PI Montecarlo
+- [ ] TODO: Open, PI Montecarlo
 
 
-- [ ] TODO: Shannon, Example program to run Montecarlo on multiple hosts
+- [ ] TODO: Open, Example program to run Montecarlo on multiple hosts
 
-- [ ] TODO: Shannon, Benchmarking of the code
+- [ ] TODO: Open, Benchmarking of the code
 
 Use for benchmarking
 * cloudmesh.common (not thread-safe, but still can be used, research how to 
