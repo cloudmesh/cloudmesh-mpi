@@ -9,6 +9,27 @@
 ## MPI
 
 - [ ] TODO: Open, what is mpi <https://github.com/cloudmesh/cloudmesh-mpi/issues/19>
+
+Message Passing Interface (MPI) is a message-passing standard that allows for efficient
+communication of data between the address spaces of multiple processes. Work on the
+creation of the standard began in 1992 as a collective effort undertaken by several
+organizations, institutions, vendors and users. Since the presentation of the first draft
+in November of 1993, the standard has undergone several revisions and updates leading to its
+current version: MPI 4.0 (June 2021).
+
+MPI is a specification, meaning that there can be multiple implementations of the standard.
+Examples of popular implementations are MPICH and Open MPI, although many other free or
+commercial implementations exist.
+
+Additionally, MPI is a language-independent interface. Although support for C and Fortran is
+included as part of the standard, multiple libraries providing bindings fot other languages
+are available, including those for Java, Julia, R, Ruby and Python.
+
+Thanks to its standardized nature, the portability and scalability it provides, and to the
+many available implementations, MPI is a popular tool in the creation of high performance
+and parallel computing programs.
+
+
 - [ ] TODO: Open, Ring <https://github.com/cloudmesh/cloudmesh-mpi/issues/15>
 - [ ] TODO: Open, calculation of pi <https://cvw.cac.cornell.edu/python/exercise>
   <https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=monte>
@@ -267,9 +288,9 @@ The machinefile contains the ipaddresses
 
 ## MPI Point-to-Point Communication Examples
 
-### Sending/Receiving `comm.send()` `comm.receive()
+### Sending/Receiving `comm.send()` `comm.recv()`
 
-The `send()` and `receive()` methods provide for functionality to transmit data
+The `send()` and `recv()` methods provide for functionality to transmit data
 between two specific processes in the communicator group.
 
 
@@ -281,21 +302,23 @@ Here is the definition for the `send()` method:
 > comm.send(buf, dest, tag)
 > ```
 
-`Buf` represents the data to be transmitted, `dest` and `tag` are integer
+`buf` represents the data to be transmitted, `dest` and `tag` are integer
 values that specify the rank of the destination process, and a tag to identify
-the message being passed, respectively. `Tag` is particularly useful for cases
+the message being passed, respectively. `tag` is particularly useful for cases
 when a process sends multiple kinds of messages to another process.
 
-In the other end is the `send()` method, with the following definition:
+In the other end is the `recv()` method, with the following definition:
 
 > ```
-> comm.send(buf, source, tag, status)
+> comm.recv(buf, source, tag, status)
 > ```    
 
 In this case, `buf` can specify the location for the received data to be
-stored. Additionally, `source` and `tag` can specify the desired source and tag of
-the data to be received. They can also be set to `MPI.ANY_SOURCE` and
-`MPI.ANY_TAG`, or be left unspecified.
+stored. In more recent versions of MPI, 'buf' has been deprecated. In those cases,
+we can simply assign `comm.recv(source, tag, status)` as the value of our buffer
+variable in the receiving process. Additionally, `source` and `tag` can specify
+the desired source and tag of the data to be received. They can also be set to
+`MPI.ANY_SOURCE` and `MPI.ANY_TAG`, or be left unspecified.
 
 In the following example, an integer is transmitted from process 0 to process 1.
 
