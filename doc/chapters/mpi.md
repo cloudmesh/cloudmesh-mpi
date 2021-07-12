@@ -294,7 +294,7 @@ The `send()` and `recv()` methods provide for functionality to transmit data
 between two specific processes in the communicator group.
 
 
-[Sending and receiving data between two processes ](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/send_receive.png){ width=25% }
+[Sending and receiving data between two processes] (https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/send_receive.png) { width=50% }
 
 Here is the definition for the `send()` method:
 
@@ -354,7 +354,7 @@ broadcasting from the process with rank 0.
 In this example, we broadcast a two-entry Python dictionary from a root process
 to the rest of the processes in the communicator group.
 
-![Broadcasting data from a root process to the rest of the processes in the communicator group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){ width=25% }
+![Broadcasting data from a root process to the rest of the processes in the communicator group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){ width=50% }
 
 The following code snippet shows the creation of the dictionary in process with
 rank 0. Notice how the variable `data` remains empty in all the other
