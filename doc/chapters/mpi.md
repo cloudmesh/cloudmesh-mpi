@@ -294,7 +294,7 @@ The `send()` and `recv()` methods provide for functionality to transmit data
 between two specific processes in the communicator group.
 
 
-MISSING IMAGE [Sending and receiving data between two processes ](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/send_receive.png){ width=25% }
+[Sending and receiving data between two processes ](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/send_receive.png){ width=25% }
 
 Here is the definition for the `send()` method:
 
@@ -394,7 +394,7 @@ processes in the communicator group.
 
 - [ ] TODO: All, add images
 
-![Example to scatter data to different processors from the one with Rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/scatter.png){ width=50% }
+![Example to scatter data to different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/scatter.png){ width=50% }
 
 > ``` python
 > !include ../examples/scatter.py
