@@ -11,6 +11,7 @@
   * [-> Agnes](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Ashekinah-lungu)
   * [-> Gregor](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Alaszewsk)
   * [-> Jacques](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Astapmoshun)
+  * [-> Yohn J](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3AYohnjparra)
 
 * Repository: <https://github.com/cloudmesh/cloudmesh-mpi>
 * Examples: <https://github.com/cloudmesh/cloudmesh-mpi/tree/main/examples>
