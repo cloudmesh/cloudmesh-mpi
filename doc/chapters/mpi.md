@@ -638,19 +638,38 @@ This output depends on which child process is received first. The output can var
 
 #### Examples for other collective communication methods
 
-- [ ] TODO: Agnes, introduction
+- [ ] TODO: Agness, introduction
 
 ## MPI-IO
 
-- [ ] TODO: Agnes, MPI-IO
+- [ ] TODO: Agness, MPI-IO
 
 ### Collective I/O with NumPy arrays
+How to use Numpy with MPI
+1. Download Numpy with `pip install numpy` in a terminal
+2. `import numpy as np` to use numpy in the program
+3. Advantages of numpy over lists
+   - Numpy stores memory contiguously
+   - Uses a smaller number of bytes 
+   - Can multiply arrays by index
+   - It’s faster
+   - Can store different data types including images
+   - Contains random number generators
 
-- [ ] TODO: Agnes - IO and Numpy
+Numpy syntax
+1. To define an array type: `np.nameofarray([1,2,3])`
+2. To get the dimension of the array: `nameofarray.ndim`
+3. To get the shape of the array (the number of rows and columns): `nameofarray.shape`
+4. To get the type of the array: `nameofarray.dtype`
+5. To get the number of bytes: `nameofarray.itemsize`
+6. To get the number of elements in the array: `nameofarray.size`
+7. To get the total size: `nameofarray.size * nameofarray.itemsize`
+
+- [ ] TODO: Agness - IO and Numpy
 
 ### Non-contiguous Collective I/O with NumPy arrays and datatypes
 
-- [ ] TODO: Agnes, noncontigious IO
+- [ ] TODO: Agness, noncontigious IO
 
 
 ## Monte Carlo calculation of Pi
