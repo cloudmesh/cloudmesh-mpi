@@ -9,6 +9,27 @@
 ## MPI
 
 - [ ] TODO: Open, what is mpi <https://github.com/cloudmesh/cloudmesh-mpi/issues/19>
+
+Message Passing Interface (MPI) is a message-passing standard that allows for efficient
+communication of data between the address spaces of multiple processes. Work on the
+creation of the standard began in 1992 as a collective effort undertaken by several
+organizations, institutions, vendors and users. Since the presentation of the first draft
+in November of 1993, the standard has undergone several revisions and updates leading to its
+current version: MPI 4.0 (June 2021).
+
+MPI is a specification, meaning that there can be multiple implementations of the standard.
+Examples of popular implementations are MPICH and Open MPI, although many other free or
+commercial implementations exist.
+
+Additionally, MPI is a language-independent interface. Although support for C and Fortran is
+included as part of the standard, multiple libraries providing bindings fot other languages
+are available, including those for Java, Julia, R, Ruby and Python.
+
+Thanks to its standardized nature, the portability and scalability it provides, and to the
+many available implementations, MPI is a popular tool in the creation of high performance
+and parallel computing programs.
+
+
 - [ ] TODO: Open, Ring <https://github.com/cloudmesh/cloudmesh-mpi/issues/15>
 - [ ] TODO: Open, calculation of pi <https://cvw.cac.cornell.edu/python/exercise>
   <https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=monte>
@@ -267,13 +288,13 @@ The machinefile contains the ipaddresses
 
 ## MPI Point-to-Point Communication Examples
 
-### Sending/Receiving `comm.send()` `comm.receive()
+### Sending/Receiving `comm.send()` `comm.recv()`
 
-The `send()` and `receive()` methods provide for functionality to transmit data
+The `send()` and `recv()` methods provide for functionality to transmit data
 between two specific processes in the communicator group.
 
 
-MISSING IMAGE [Sending and receiving data between two processes ](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/send_receive.png){ width=25% }
+[Sending and receiving data between two processes] (https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/send_receive.png) { width=50% }
 
 Here is the definition for the `send()` method:
 
@@ -281,21 +302,23 @@ Here is the definition for the `send()` method:
 > comm.send(buf, dest, tag)
 > ```
 
-`Buf` represents the data to be transmitted, `dest` and `tag` are integer
+`buf` represents the data to be transmitted, `dest` and `tag` are integer
 values that specify the rank of the destination process, and a tag to identify
-the message being passed, respectively. `Tag` is particularly useful for cases
+the message being passed, respectively. `tag` is particularly useful for cases
 when a process sends multiple kinds of messages to another process.
 
-In the other end is the `send()` method, with the following definition:
+In the other end is the `recv()` method, with the following definition:
 
 > ```
-> comm.send(buf, source, tag, status)
+> comm.recv(buf, source, tag, status)
 > ```    
 
 In this case, `buf` can specify the location for the received data to be
-stored. Additionally, `source` and `tag` can specify the desired source and tag of
-the data to be received. They can also be set to `MPI.ANY_SOURCE` and
-`MPI.ANY_TAG`, or be left unspecified.
+stored. In more recent versions of MPI, 'buf' has been deprecated. In those cases,
+we can simply assign `comm.recv(source, tag, status)` as the value of our buffer
+variable in the receiving process. Additionally, `source` and `tag` can specify
+the desired source and tag of the data to be received. They can also be set to
+`MPI.ANY_SOURCE` and `MPI.ANY_TAG`, or be left unspecified.
 
 In the following example, an integer is transmitted from process 0 to process 1.
 
@@ -331,7 +354,7 @@ broadcasting from the process with rank 0.
 In this example, we broadcast a two-entry Python dictionary from a root process
 to the rest of the processes in the communicator group.
 
-![Broadcasting data from a root process to the rest of the processes in the communicator group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){ width=25% }
+![Broadcasting data from a root process to the rest of the processes in the communicator group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){ width=50% }
 
 The following code snippet shows the creation of the dictionary in process with
 rank 0. Notice how the variable `data` remains empty in all the other
@@ -371,7 +394,7 @@ processes in the communicator group.
 
 - [ ] TODO: All, add images
 
-![Example to scatter data to different processors from the one with Rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/scatter.png){ width=50% }
+![Example to scatter data to different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/scatter.png){ width=50% }
 
 > ``` python
 > !include ../examples/scatter.py
@@ -641,19 +664,38 @@ This output depends on which child process is received first. The output can var
 
 #### Examples for other collective communication methods
 
-- [ ] TODO: Agnes, introduction
+- [ ] TODO: Agness, introduction
 
 ## MPI-IO
 
-- [ ] TODO: Agnes, MPI-IO
+- [ ] TODO: Agness, MPI-IO
 
 ### Collective I/O with NumPy arrays
+How to use Numpy with MPI
+1. Download Numpy with `pip install numpy` in a terminal
+2. `import numpy as np` to use numpy in the program
+3. Advantages of numpy over lists
+   - Numpy stores memory contiguously
+   - Uses a smaller number of bytes 
+   - Can multiply arrays by index
+   - It’s faster
+   - Can store different data types including images
+   - Contains random number generators
 
-- [ ] TODO: Agnes - IO and Numpy
+Numpy syntax
+1. To define an array type: `np.nameofarray([1,2,3])`
+2. To get the dimension of the array: `nameofarray.ndim`
+3. To get the shape of the array (the number of rows and columns): `nameofarray.shape`
+4. To get the type of the array: `nameofarray.dtype`
+5. To get the number of bytes: `nameofarray.itemsize`
+6. To get the number of elements in the array: `nameofarray.size`
+7. To get the total size: `nameofarray.size * nameofarray.itemsize`
+
+- [ ] TODO: Agness - IO and Numpy
 
 ### Non-contiguous Collective I/O with NumPy arrays and datatypes
 
-- [ ] TODO: Agnes, noncontigious IO
+- [ ] TODO: Agness, noncontigious IO
 
 
 ## Monte Carlo calculation of Pi
