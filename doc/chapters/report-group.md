@@ -5,6 +5,3 @@
 
 !include research.md
 
-!include chapters/make.md
-
-!include chapters/wsl.md
