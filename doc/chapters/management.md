@@ -86,18 +86,18 @@ dedicated telephone numbers.
 **What are not so good features?**
   
 Free account holders can host unlimited one-on-one meetings (meeting
-durations up to 24 hrs). In contrast to Google meet, there is a
-duration limit of 40 mins for meetings with three or more
-participants. We observed that video quality can be unstable, and the
-overall platform performance can quickly deteriorate over limited
-bandwidth connections. In such cases, we recommend switching the
-camera from the participant that has issues.  Furthermore, if you do
-at the same time a lot of calculations on your machine it may affect
-the quality of the call. This applies to older machines and should
-allow you to give a beautiful argument to get a new computer. In some
-cases, you may have a second computer and can use one for sharing your
-session, while the other one is used for sound, or you use a cell
-phone for the later
+durations up to 24 hrs). In contrast to Google meet (which has a one
+hour meeting limit), there is a duration limit of 40 mins for meetings
+with three or more participants. We observed that video quality can be
+unstable, and the overall platform performance can quickly deteriorate
+over limited bandwidth connections. In such cases, we recommend
+switching the camera from the participant that has issues.
+Furthermore, if you do at the same time a lot of calculations on your
+machine it may affect the quality of the call. This applies to older
+machines and should allow you to give a beautiful argument to get a
+new computer. In some cases, you may have a second computer and can
+use one for sharing your session, while the other one is used for
+sound, or you use a cell phone for the later
 
 **How can someone take control of a remote desktop?**
 
