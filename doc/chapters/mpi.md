@@ -186,6 +186,14 @@ $ source ~/ENV3/bin/activate
 $ pip install mpi4py
 ```
 
+###Installing Homebrew on MacOS
+1. Download Xcode from appstore 
+2. Open Terminal from Applications
+3. Run:  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+4. Enter password
+5. Hit return
+6. Follow instructions on screen
+
 
 ## Hello World
 
@@ -361,7 +369,7 @@ As we can see, all other processes received the data broadcast from the root pro
 
 #### Scatter `comm.scatter()`
 
-- [ ] TODO: Fidel, explenation is missing
+- [ ] TODO: Fidel, explanation is missing
 
 In this example, with `scatter` the members of a list among the
 processes in the communicator group.
@@ -647,6 +655,7 @@ This output depends on which child process is received first. The output can var
 ### Collective I/O with NumPy arrays
 
 - [ ] TODO: Agnes - IO and Numpy
+
 
 ### Non-contiguous Collective I/O with NumPy arrays and datatypes
 
