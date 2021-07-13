@@ -1,7 +1,7 @@
 # Towards Python MPI for Artificial Intelligence and Deep Learning Research
 
-Gregor von Laszewski, Fidel Leal, Shannon Kerr, Erin Seliger, Cooper
-Young, Agness Lungua
+Gregor von Laszewski, Fidel Leal, Erin Seliger, Cooper Young, Agness
+Lungua
 
 For more information, please contact: <laszewski@gmail.com>
 
@@ -19,8 +19,6 @@ For more information, please contact: <laszewski@gmail.com>
         Fidel](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Aflealc)
     -   [-\>
         Erin](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Aeselige)
-    -   [-\>
-        Shanon](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Ashankerr)
     -   [-\>
         Cooper](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Acoopyoung)
     -   [-\>
@@ -100,11 +98,17 @@ with it, as well as the execution of parallel execution of TensorFlow.
 ## MPI
 
 -   [ ] TODO: Open, what is mpi
+    <https://github.com/cloudmesh/cloudmesh-mpi/issues/19>
 -   [ ] TODO: Open, Ring
--   [ ] TODO: Open kmeans
--   [ ] TODO: Who?, calculation of pi
--   [ ] TODO: Who?, find number count of 8 in random numbers between
-    1-10
+    <https://github.com/cloudmesh/cloudmesh-mpi/issues/15>
+-   [ ] TODO: Open, calculation of pi
+    <https://cvw.cac.cornell.edu/python/exercise>
+    <https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=monte>
+
+Maybe to complex:
+
+-   [ ] TODO: Open, k-means there may be others
+    <https://medium.com/@hyeamykim/parallel-k-means-from-scratch-2b297466fdcd>
 
 ## Prerequisite
 
@@ -195,6 +199,17 @@ Windows:
     >     Hello, World! I am process 1 of 4 on red.
     >     Hello, World! I am process 2 of 4 on red.
     >     Hello, World! I am process 3 of 4 on red.
+
+### Installing mpi4pi on Ubuntu
+
+The instalation of mpi4py on ubuntu is relatively easy. Please follow
+these steps. We recommend that you create a python `venv` so you do not
+by accident interfere with your system python. As usual you can activate
+it in your
+`.bashrc file while adding the source line there. Lastly, make sure you check it out and adjust the`-n\`
+parameters to the number of cores of your machine.
+
+> `` bash $ sudo apt install python3.9 python3.9-dev $ python3 -m venev ~/ENV3 $ source `/ENV3/bin/activate` (ENV3) $ sudo apt-get install -y mpich-doc mpich  (ENV3) $ pip install mpi4py -U (ENV3) $ mpiexec -n 4 python -m mpi4py.bench helloworld > ``
 
 ### Installing mpi4py in a Raspberry Pi
 
@@ -945,9 +960,9 @@ can vary.
 
 ## Monte Carlo calculation of Pi
 
--   [ ] TODO: Shannon, improve
+-   [ ] TODO: Open, improve
 
--   [ ] TODO: Shannon WHAT IS THE PROBLEM GOAL
+-   [ ] TODO: Open WHAT IS THE PROBLEM GOAL
 
 We start with the Mathematical formulation of the Monte Carlo
 calculation of pi. For each quadrant of the unit square, the area is pi.
@@ -986,18 +1001,17 @@ of pi.
 > print(end - start)
 > ```
 
--   [ ] TODO: Shannon, Drawing
+-   [ ] TODO: Open, Drawing
 
 -   [ ] TODO: Open, HOW AND WHY DO WE NEED MULTIPLE COMPUTERS
 
 ### Program
 
--   [ ] TODO: Shannon, PI Montecarlo
+-   [ ] TODO: Open, PI Montecarlo
 
--   [ ] TODO: Shannon, Example program to run Montecarlo on multiple
-    hosts
+-   [ ] TODO: Open, Example program to run Montecarlo on multiple hosts
 
--   [ ] TODO: Shannon, Benchmarking of the code
+-   [ ] TODO: Open, Benchmarking of the code
 
 Use for benchmarking \* cloudmesh.common (not thread-safe, but still can
 be used, research how to use it in multiple threads) \* other strategies
@@ -1031,6 +1045,7 @@ then summed and printed out as the total number of 8's.
 > # how do you generate a list of random numbers
 > # how do you find the number 8 in a list
 > # how do you gather the number 8
+>
 > import os
 > import random
 >
@@ -1166,12 +1181,6 @@ build on ubunto and rasperry os are slightly different
         -   PC, 64-bit, 8GB RAM, i5, SSD \<240GB, speed>
             -   Windows 10 Education
         -   Editor: Pycharm, vim
--   Shannon Kerr,
-    -   Equipment
-        -   Dell Inspiron, i5, 8GB, 1.6GHz 5482,
-        -   HDD 1TB 5.4K 6GB/s
-        -   Windows 64bit Home
-        -   Editor: Vim
 -   Erin Seliger
     -   Equipment
         -   Windows hp 2020, 16GB RAM, i7, 64-bit operating system

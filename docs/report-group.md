@@ -1,7 +1,7 @@
 # Organizing Collaboration in Open Source Teams
 
-Gregor von Laszewski, Fidel Leal, Shannon Kerr, Erin Seliger, Cooper
-Young, Agness Lungua
+Gregor von Laszewski, Fidel Leal, Erin Seliger, Cooper Young, Agness
+Lungua
 
 For more information, please contact: <laszewski@gmail.com>
 
@@ -108,7 +108,7 @@ is used for sound, or you use a cell phone for the later
 
 To take control of a remote desktop, the remote user must activate
 screen sharing. Once the screen sharing is activated, we need to click
-the `View Options` dropdown menu (usually at the top of the screen) and
+the `View Options` drop-down menu (usually at the top of the screen) and
 click on `Request remote control`. The remote user will then get a
 prompt to approve the remote control request.
 
@@ -117,7 +117,7 @@ disabled by their account administrator. For further details, refer to
 the [Zoom support
 pages](https://support.zoom.us/hc/en-us/articles/201362673-Requesting-or-giving-remote-control).
 
-### Realtime nad Offline Text Messaging
+### Real-time and Offline Text Messaging
 
 In many research projects, participants may be in different timezones or
 have schedules that do not provide overlapping times for
@@ -235,7 +235,7 @@ The word grammar checker is built into word and has a high accuracy.
 In practice, we observed that Grammarly performs better. Copying text
 back and forth can introduce errors when it comes to using quotes and
 other symbols. Thus you must check all symbols after you copy them into
-a markdown document. IN case you have the choice we currently recommend
+a markdown document. In case you have the choice we currently recommend
 you use Grammarly.
 
 ### Editors
@@ -434,18 +434,23 @@ command.
 
 # Make on Windows
 
-Make fires provide a good feature to organize workflow while assembling
-programs or documents to create an integrated document. Within makefiles
-defined targets that you can call and are executed. Through its
-mechanism, it can easily deal with complex workflows that require a
-multitude of actions to be executed. Makefiles are executed by the
-program make that is available on all platforms.
+Makefiles provide a good feature to organize workflows while assembling
+programs or documents to create an integrated document. Within
+`makefiles` you can define targets that you can call and are then
+executed. Preconditions can be used to execute rules conditionally. This
+mechanism can easily be used to define complex workflows that require a
+multitude of interdependent actions to be performed. Makefiles are
+executed by the program `make` that is available on all platforms.
 
-On machines such as on machines that run Linux, it is likely to be
-pre-installed while on MacOS you can install it with Xcode. On Windows,
-you have to explicitly install it and we recommend that you use get
-bashed the window so that you can call make from us and get bash. The
-following instructions will provide you with a guide to install make
+On Linux, it is likely to be pre-installed, while on macOS you can
+install it with Xcode. On Windows, you have to install it explicitly. We
+recommend that you install `gitbash` first. After you install `gitbash`,
+you can install `make` from an administrative `gitbash` terminal window.
+To start one, go to the search field next to the Windows icon on the
+bottom left and type in gitbash without a `RETURN`. You will then see a
+selection window that includes
+`Run as administrator. Click on it. As you run it as administrator, it will allow you to install`make\`.
+The following instructions will provide you with a guide to install make
 under windows.
 
 ## Installation
@@ -458,7 +463,8 @@ and download the file
 
 -   ['make-4.3-without-guile-w32-bin.zip\`](https://sourceforge.net/projects/ezwinports/files/make-4.3-without-guile-w32-bin.zip/download)
 
-After the download you have to extract and unzip the file as follows:
+After the download, you have to extract and unzip the file as follows in
+a gitbash that you started as administrative user:
 
 > ``` bash
 > $ cp make-4.3-without-guile-w32-bin.zip /usr
@@ -466,7 +472,8 @@ After the download you have to extract and unzip the file as follows:
 > $ unzip make-4.3-without-guile-w32-bin.zip
 > ```
 
-Now start a new terminal and type the command
+Now start a new terminal (a regular non-administrative one) and type the
+command
 
 > ``` bash
 > $ which make
@@ -478,7 +485,7 @@ It will provide you the location if the installation was successful
 > /usr/bin/make
 > ```
 
-to make sure it is properly installed and in the correct directory. \>
+to make sure it is properly installed and in the correct directory.
 
 ## Installing WSL on Windows 10
 

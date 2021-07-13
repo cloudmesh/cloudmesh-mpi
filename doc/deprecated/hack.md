@@ -2,7 +2,6 @@
 
 Gregor von Laszewski,
 Fidel Leal,
-Shannon Kerr,
 Erin Seliger,
 Cooper Young,
 Agness Lungu
@@ -601,7 +600,7 @@ TODO: Agnes
 
 ## Monte Carlo calculation of Pi
 
-TODO: Shannon, improve
+TODO: Open, improve
 
 TODO WHAT IS THE PROBLEM GOAL
 
@@ -613,7 +612,7 @@ TODO: HOW AND WHY DO WE NEED MULTIPLE COMPUTERS
 
 ### Program
 
-TODO: Shannon
+TODO: Open
 
 
 
