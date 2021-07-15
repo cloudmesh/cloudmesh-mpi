@@ -204,6 +204,9 @@ case, we can use Homebrew to get Open MPI floowed by installing mpi4py
 in your venv
 
 ```
+$ xcode-select --install
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+$ brew install wget
 $ brew install open-mpi
 $ python3 -m venv ~/ENV3
 $ source ~/ENV3/bin/activate
