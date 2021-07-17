@@ -90,22 +90,25 @@ Windows:
    *
    <https://docs.microsoft.com/en-us/message-passing-interface/microsoft-mpi#ms-mpi-downloads>
    
-   Go to the download link and download and install it. Select the two
-   packages and click Next. When downloaded click on them to complete
-   the setup
+   Go to the download link underneath the heading `MS-MPI Downloads`
+   and download and install it. Select the two packages and click 
+   Next. When downloaded, click on them and complete the setups.
 
    > ```
    > msmpisetup.exe
    > msmpisdk.msi
    > ```
 
-2. Open the system control panel and click on `Advanced system settings`
-   and then `Environment Variables`
+2. Open the system control panel and click on `Advanced system settings` (which
+   can be searched for with the search box in the top-right, and then click
+   `View advanced system settings`) and then click `Environment Variables...`
 
 3. Under the user variables box click on `Path`
 
 4. Click New in order to add `C:\Program Files (x86)\Microsoft SDKs\MPI` and
-   `C:\Program Files\Microsoft MPI\Bin` to the Path
+   `C:\Program Files\Microsoft MPI\Bin` to the Path. The `Browse Directory...`
+   button makes this easier and the `Variable name` can correspond to each
+   directory, e.g. "MPI" and "MPI Bin" respectively
 
 5. Close any open bash windows and then open a new one
 
@@ -122,6 +125,8 @@ Windows:
    > ```bash
    > $ pip install mpi4py
    > ```
+
+   ideally while bash is in venv
 
 8. The installation can be tested with `mpiexec -n 4 python -m
    mpi4py.bench helloworld` (depending on the number of cores/nodes
