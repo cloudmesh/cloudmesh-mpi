@@ -4,7 +4,9 @@
 
 Futures is a module of mpi4py which uses the threads of a processor, or separate processes, to run processes in parallel so that they can communicate with one another.
 
-We can test the mpi4py.futures module by running a Python script that computes a Julia set (data defined from a mathematical function):
+We can test the mpi4py.futures module by running a Python script that computes a Julia set (data defined from a mathematical function).
+
+Credit to Lisandro Dalcin for this script, taken from https://mpi4py.readthedocs.io/en/stable/mpi4py.futures.html
 
 ```
 from mpi4py.futures import MPIPoolExecutor
