@@ -218,10 +218,16 @@ $ source ~/ENV3/bin/activate
 $ pip install mpi4py
 ```
 
-###Installing Homebrew on MacOS
+### Installing Homebrew on MacOS
+
 1. Download Xcode from appstore 
 2. Open Terminal from Applications
-3. Run:  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+3. Run:
+ 
+   > ```bash
+   > $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+   > ```
+
 4. Enter password
 5. Hit return
 6. Follow instructions on screen
