@@ -31,6 +31,8 @@ and download the file
 After the download, you have to extract and unzip the file as follows in a
 gitbash that you started as administrative user:
 
+![img.png](img.png)
+
 > ```bash
 > $ cp make-4.3-without-guile-w32-bin.zip /usr
 > $ cd /usr
