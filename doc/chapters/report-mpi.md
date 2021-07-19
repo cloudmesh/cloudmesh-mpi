@@ -10,3 +10,7 @@
 # Appendix
 
 !include chapters/hardware.md
+
+!include chapters/make.md
+
+!include chapters/wsl.md

@@ -6,12 +6,6 @@
     * PC, 64-bit, 8GB RAM, i5, SSD <240GB, speed>
       * Windows 10 Education
     * Editor: Pycharm, vim
-* Shannon Kerr, 
-  * Equipment
-    * Dell Inspiron, i5, 8GB, 1.6GHz 5482, 
-    * HDD 1TB 5.4K 6GB/s
-    * Windows 64bit Home
-    * Editor: Vim
 * Erin Seliger
   * Equipment
     * Windows hp 2020, 16GB RAM, i7, 64-bit operating system

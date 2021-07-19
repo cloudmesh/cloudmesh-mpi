@@ -8,6 +8,7 @@
 # how do you generate a list of random numbers
 # how do you find the number 8 in a list
 # how do you gather the number 8
+
 import random
 
 import click

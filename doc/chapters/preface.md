@@ -7,10 +7,11 @@
   * [-> All](https://github.com/cloudmesh/cloudmesh-mpi/projects/1)
   * [-> Fidel](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Aflealc)
   * [-> Erin](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Aeselige)
-  * [-> Shanon](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Ashankerr) 
   * [-> Cooper](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Acoopyoung) 
   * [-> Agnes](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Ashekinah-lungu)
   * [-> Gregor](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Alaszewsk)
+  * [-> Jacques](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Astapmoshun)
+  * [-> Yohn J](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3AYohnjparra)
 
 * Repository: <https://github.com/cloudmesh/cloudmesh-mpi>
 * Examples: <https://github.com/cloudmesh/cloudmesh-mpi/tree/main/examples>
