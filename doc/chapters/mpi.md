@@ -90,22 +90,25 @@ Windows:
    *
    <https://docs.microsoft.com/en-us/message-passing-interface/microsoft-mpi#ms-mpi-downloads>
    
-   Go to the download link and download and install it. Select the two
-   packages and click Next. When downloaded click on them to complete
-   the setup
+   Go to the download link underneath the heading `MS-MPI Downloads`
+   and download and install it. Select the two packages and click 
+   Next. When downloaded, click on them and complete the setups.
 
    > ```
    > msmpisetup.exe
    > msmpisdk.msi
    > ```
 
-2. Open the system control panel and click on `Advanced system settings`
-   and then `Environment Variables`
+2. Open the system control panel and click on `Advanced system settings` (which
+   can be searched for with the search box in the top-right, and then click
+   `View advanced system settings`) and then click `Environment Variables...`
 
 3. Under the user variables box click on `Path`
 
 4. Click New in order to add `C:\Program Files (x86)\Microsoft SDKs\MPI` and
-   `C:\Program Files\Microsoft MPI\Bin` to the Path
+   `C:\Program Files\Microsoft MPI\Bin` to the Path. The `Browse Directory...`
+   button makes this easier and the `Variable name` can correspond to each
+   directory, e.g. "MPI" and "MPI Bin" respectively
 
 5. Close any open bash windows and then open a new one
 
@@ -122,6 +125,8 @@ Windows:
    > ```bash
    > $ pip install mpi4py
    > ```
+
+   ideally while bash is in venv
 
 8. The installation can be tested with `mpiexec -n 4 python -m
    mpi4py.bench helloworld` (depending on the number of cores/nodes
@@ -204,11 +209,28 @@ case, we can use Homebrew to get Open MPI floowed by installing mpi4py
 in your venv
 
 ```
+$ xcode-select --install
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+$ brew install wget
 $ brew install open-mpi
 $ python3 -m venv ~/ENV3
 $ source ~/ENV3/bin/activate
 $ pip install mpi4py
 ```
+
+### Installing Homebrew on MacOS
+
+1. Download Xcode from appstore 
+2. Open Terminal from Applications
+3. Run:
+ 
+   > ```bash
+   > $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+   > ```
+
+4. Enter password
+5. Hit return
+6. Follow instructions on screen
 
 
 ## Hello World
@@ -387,7 +409,7 @@ As we can see, all other processes received the data broadcast from the root pro
 
 #### Scatter `comm.scatter()`
 
-- [ ] TODO: Fidel, explenation is missing
+- [ ] TODO: Fidel, explanation is missing
 
 In this example, with `scatter` the members of a list among the
 processes in the communicator group.
@@ -692,6 +714,7 @@ Numpy syntax
 7. To get the total size: `nameofarray.size * nameofarray.itemsize`
 
 - [ ] TODO: Agness - IO and Numpy
+
 
 ### Non-contiguous Collective I/O with NumPy arrays and datatypes
 

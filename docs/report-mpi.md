@@ -25,6 +25,10 @@ For more information, please contact: <laszewski@gmail.com>
         Agnes](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Ashekinah-lungu)
     -   [-\>
         Gregor](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Alaszewsk)
+    -   [-\>
+        Jacques](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Astapmoshun)
+    -   [-\> Yohn
+        J](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3AYohnjparra)
 
 -   Repository: <https://github.com/cloudmesh/cloudmesh-mpi>
 
@@ -99,6 +103,30 @@ with it, as well as the execution of parallel execution of TensorFlow.
 
 -   [ ] TODO: Open, what is mpi
     <https://github.com/cloudmesh/cloudmesh-mpi/issues/19>
+
+Message Passing Interface (MPI) is a message-passing standard that
+allows for efficient communication of data between the address spaces of
+multiple processes. Work on the creation of the standard began in 1992
+as a collective effort undertaken by several organizations,
+institutions, vendors and users. Since the presentation of the first
+draft in November of 1993, the standard has undergone several revisions
+and updates leading to its current version: MPI 4.0 (June 2021).
+
+MPI is a specification, meaning that there can be multiple
+implementations of the standard. Examples of popular implementations are
+MPICH and Open MPI, although many other free or commercial
+implementations exist.
+
+Additionally, MPI is a language-independent interface. Although support
+for C and Fortran is included as part of the standard, multiple
+libraries providing bindings fot other languages are available,
+including those for Java, Julia, R, Ruby and Python.
+
+Thanks to its standardized nature, the portability and scalability it
+provides, and to the many available implementations, MPI is a popular
+tool in the creation of high performance and parallel computing
+programs.
+
 -   [ ] TODO: Open, Ring
     <https://github.com/cloudmesh/cloudmesh-mpi/issues/15>
 -   [ ] TODO: Open, calculation of pi
@@ -322,32 +350,36 @@ The machinefile contains the ipaddresses
 
 ## MPI Point-to-Point Communication Examples
 
-### Sending/Receiving `comm.send()` \`comm.receive()
+### Sending/Receiving `comm.send()` `comm.recv()`
 
-The `send()` and `receive()` methods provide for functionality to
-transmit data between two specific processes in the communicator group.
+The `send()` and `recv()` methods provide for functionality to transmit
+data between two specific processes in the communicator group.
 
-MISSING IMAGE [Sending and receiving data between two
-processes](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/send_receive.png){width="25%"}
+\[Sending and receiving data between two processes\]
+(https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/send_receive.png)
+{ width=50% }
 
 Here is the definition for the `send()` method:
 
 >     comm.send(buf, dest, tag)
 
-`Buf` represents the data to be transmitted, `dest` and `tag` are
+`buf` represents the data to be transmitted, `dest` and `tag` are
 integer values that specify the rank of the destination process, and a
-tag to identify the message being passed, respectively. `Tag` is
+tag to identify the message being passed, respectively. `tag` is
 particularly useful for cases when a process sends multiple kinds of
 messages to another process.
 
-In the other end is the `send()` method, with the following definition:
+In the other end is the `recv()` method, with the following definition:
 
->     comm.send(buf, source, tag, status)
+>     comm.recv(buf, source, tag, status)
 
 In this case, `buf` can specify the location for the received data to be
-stored. Additionally, `source` and `tag` can specify the desired source
-and tag of the data to be received. They can also be set to
-`MPI.ANY_SOURCE` and `MPI.ANY_TAG`, or be left unspecified.
+stored. In more recent versions of MPI, 'buf' has been deprecated. In
+those cases, we can simply assign `comm.recv(source, tag, status)` as
+the value of our buffer variable in the receiving process. Additionally,
+`source` and `tag` can specify the desired source and tag of the data to
+be received. They can also be set to `MPI.ANY_SOURCE` and `MPI.ANY_TAG`,
+or be left unspecified.
 
 In the following example, an integer is transmitted from process 0 to
 process 1.
@@ -405,7 +437,7 @@ process to the rest of the processes in the communicator group.
 
 ![Broadcasting data from a root process to the rest of the processes in
 the communicator
-group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){width="25%"}
+group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){width="50%"}
 
 The following code snippet shows the creation of the dictionary in
 process with rank 0. Notice how the variable `data` remains empty in all
@@ -466,7 +498,7 @@ processes in the communicator group.
 
 -   [ ] TODO: All, add images
 
-![Example to scatter data to different processors from the one with Rank
+![Example to scatter data to different processors from the one with rank
 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/scatter.png){width="50%"}
 
 > ``` python
@@ -944,19 +976,34 @@ can vary.
 
 #### Examples for other collective communication methods
 
--   [ ] TODO: Agnes, introduction
+-   [ ] TODO: Agness, introduction
 
 ## MPI-IO
 
--   [ ] TODO: Agnes, MPI-IO
+-   [ ] TODO: Agness, MPI-IO
 
 ### Collective I/O with NumPy arrays
 
--   [ ] TODO: Agnes - IO and Numpy
+How to use Numpy with MPI 1. Download Numpy with `pip install numpy` in
+a terminal 2. `import numpy as np` to use numpy in the program 3.
+Advantages of numpy over lists - Numpy stores memory contiguously - Uses
+a smaller number of bytes - Can multiply arrays by index - It's faster -
+Can store different data types including images - Contains random number
+generators
+
+Numpy syntax 1. To define an array type: `np.nameofarray([1,2,3])` 2. To
+get the dimension of the array: `nameofarray.ndim` 3. To get the shape
+of the array (the number of rows and columns): `nameofarray.shape` 4. To
+get the type of the array: `nameofarray.dtype` 5. To get the number of
+bytes: `nameofarray.itemsize` 6. To get the number of elements in the
+array: `nameofarray.size` 7. To get the total size:
+`nameofarray.size * nameofarray.itemsize`
+
+-   [ ] TODO: Agness - IO and Numpy
 
 ### Non-contiguous Collective I/O with NumPy arrays and datatypes
 
--   [ ] TODO: Agnes, noncontigious IO
+-   [ ] TODO: Agness, noncontigious IO
 
 ## Monte Carlo calculation of Pi
 
@@ -1198,3 +1245,93 @@ build on ubunto and rasperry os are slightly different
             operating system,
         -   Windows 10 Education
         -   editor: Vim, Pycharm
+
+# Make on Windows
+
+Makefiles provide a good feature to organize workflows while assembling
+programs or documents to create an integrated document. Within
+`makefiles` you can define targets that you can call and are then
+executed. Preconditions can be used to execute rules conditionally. This
+mechanism can easily be used to define complex workflows that require a
+multitude of interdependent actions to be performed. Makefiles are
+executed by the program `make` that is available on all platforms.
+
+On Linux, it is likely to be pre-installed, while on macOS you can
+install it with Xcode. On Windows, you have to install it explicitly. We
+recommend that you install `gitbash` first. After you install `gitbash`,
+you can install `make` from an administrative `gitbash` terminal window.
+To start one, go to the search field next to the Windows icon on the
+bottom left and type in gitbash without a `RETURN`. You will then see a
+selection window that includes
+`Run as administrator. Click on it. As you run it as administrator, it will allow you to install`make\`.
+The following instructions will provide you with a guide to install make
+under windows.
+
+## Installation {#installation}
+
+Please visit
+
+-   <https://sourceforge.net/projects/ezwinports/files/>
+
+and download the file
+
+-   ['make-4.3-without-guile-w32-bin.zip\`](https://sourceforge.net/projects/ezwinports/files/make-4.3-without-guile-w32-bin.zip/download)
+
+After the download, you have to extract and unzip the file as follows in
+a gitbash that you started as administrative user:
+
+> ``` bash
+> $ cp make-4.3-without-guile-w32-bin.zip /usr
+> $ cd /usr
+> $ unzip make-4.3-without-guile-w32-bin.zip
+> ```
+
+Now start a new terminal (a regular non-administrative one) and type the
+command
+
+> ``` bash
+> $ which make
+> ```
+
+It will provide you the location if the installation was successful
+
+> ``` bash
+> /usr/bin/make
+> ```
+
+to make sure it is properly installed and in the correct directory.
+
+## Installing WSL on Windows 10
+
+WSL is a layer that allows the running of Linux executables on a Windows
+machine. This broadens the number of commands able to be run and creates
+more flexibility.
+
+To install WSL2 your computer must have Hyper-V support enabled. THis
+doe snot work on Windows HOmew and you need to upgrade to Windows Pro,
+Edu or some other Windows 10 version that supports it. Windows Edu is
+typically free for educational institutions. The HYper-V must be enabled
+from your Bios and you need to change your settings if it is not
+enabled.
+
+More information about WSL is provided at
+
+-   <https://docs.microsoft.com/en-us/windows/wsl/install-win10> for
+    further detail
+
+To install WSL2 you can follow these directions while using Powershell
+as an administrative user and run
+
+>     ps$ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+>     ps$ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+>     ps$ wsl --set-default-version 2
+
+Next, Download Ubuntu 20.04 LTS from the Microsoft store
+
+-   <https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab>
+
+Run Ubuntu and create a username and passphrase.
+
+Make sure not to just give an empty passphrase but chose a secure one.
+
+-   [ ] TODO: Cooper, how to start it the next time
