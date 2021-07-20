@@ -1,6 +1,13 @@
 # Futures
 
 - [ ] Jacques, Identify example to do
+- [ ] Convert to png
+- [ ] Copy the include statement and add .py to examples folder. examples/julia/julia-futures.py
+- [ ] examples/julia/julia-numba.py
+- [ ] numba and modin (modin works on dataframes) 
+- [ ] @jit(nopython=True) # Set "nopython" mode for best performance, equivalent to @njit
+- [ ] cloudmesh stopwatch to compare times with and without numba (jit)
+- [ ] if rank = 0 then stopwatch start, and same but with stop at end
 
 Futures is a module of mpi4py which uses the threads of a processor, or separate processes, to run processes in parallel so that they can communicate with one another.
 
