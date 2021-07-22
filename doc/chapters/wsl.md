@@ -1,9 +1,9 @@
 ## Installing WSL on Windows 10
 
-WSL is a layer that allows the running of Linux executables on a Windows machine. This broadens the number of commands able to be run and creates more flexibility. 
+WSL is a layer that allows the running of Linux executables on a Windows machine. 
 
 To install WSL2 your computer must have Hyper-V support enabled.
-THis doe snot work on Windows HOmew and you need to upgrade to Windows
+This does not work on Windows Home and you need to upgrade to Windows
 Pro, Edu or some other Windows 10 version that supports it. Windows
 Edu is typically free for educational institutions. The HYper-V must
 be enabled from your Bios and you need to change your settings if it
@@ -11,9 +11,9 @@ is not enabled.
 
 More information about WSL is provided at
 
-* <https://docs.microsoft.com/en-us/windows/wsl/install-win10> for further detail
+* <https://docs.microsoft.com/en-us/windows/wsl/install-win10>
 
-To install WSL2 you can follow these directions while using
+To install WSL2 you can follow these steps while using
 Powershell as an administrative user and run
 
 > ```
@@ -22,7 +22,7 @@ Powershell as an administrative user and run
 > ps$ wsl --set-default-version 2
 > ```
 
-Next, Download Ubuntu 20.04 LTS from the Microsoft store 
+Next, Download the Ubuntu 20.04 LTS image from the Microsoft store 
 
 * <https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab>
 
@@ -31,7 +31,9 @@ Run Ubuntu and create a username and passphrase.
 Make sure not to just give an empty passphrase but chose a secure one.
 
 Next run in Powershell
+
 > ```
 > ps$ wsl.exe --set-version Ubuntu20.04 2
+> ```
 
-Now you're able to use the Ubuntu distro freely. Application will be in your shortcut menu in start. 
+Now you are able to use the Ubuntu distro freely. The WSL2 application will be in your shortcut menu in `Start`. 
