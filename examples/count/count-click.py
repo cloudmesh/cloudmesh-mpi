@@ -8,10 +8,12 @@
 # how do you generate a list of random numbers
 # how do you find the number 8 in a list
 # how do you gather the number 8
+
 import random
 
 import click
 from mpi4py import MPI
+import numpy as np
 
 from cloudmesh.common.StopWatch import StopWatch
 
@@ -25,7 +27,10 @@ from cloudmesh.common.StopWatch import StopWatch
 @click.option('--verbose', default=False, help="print the values on the processor")
 @click.option('--sysinfo', default=False, help="print sysinfo")
 @click.option('--label', default="result", help="a label")
-def run(n, max_number, find, verbose, sysinfo, label):
+@click.option('--user', default=None, help="name of the user running the benchmark")
+@click.option('--node', default=None, help="name of the computer on which the benchmark is run")
+@click.option('--alg', default='count', help='the algorithm: loop')
+def run(n, max_number, find, verbose, sysinfo, label, node, user, alg):
     # Communicator
     comm = MPI.COMM_WORLD
 
@@ -39,11 +44,15 @@ def run(n, max_number, find, verbose, sysinfo, label):
         StopWatch.start(f"Result: {label}-{n}")
 
     # Each process gets different data, depending on its rank number
-    data = []
-    for i in range(n):
-        r = random.randint(1, max_number)
-        data.append(r)
-    count = data.count(find)
+    if alg == 'count':
+        data = []
+        for i in range(n):
+            r = random.randint(1, max_number)
+            data.append(r)
+        count = data.count(find)
+    elif alg == 'numpy':
+        data = np.random.randint(max_number, size=n)
+        count = np.count_nonzero(data == find)
 
     # Print data in each process
     if verbose:
@@ -68,8 +77,10 @@ def run(n, max_number, find, verbose, sysinfo, label):
         print(rank, count_data)
         print(f"Total number of {find}'s: n={total} E={e} p={p} t={t}s ({label}")
 
-        StopWatch.benchmark(sysinfo=sysinfo)
-
+        if node is None and user is None:
+            StopWatch.benchmark(sysinfo=sysinfo)
+        else:
+            StopWatch.benchmark(sysinfo=sysinfo, node=node, user=user)
 
 if __name__ == '__main__':
     run()

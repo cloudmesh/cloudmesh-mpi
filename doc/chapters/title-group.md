@@ -1,6 +1,6 @@
 # Organizing Collaboration in Open Source Teams
 
-Gregor von Laszewski, Fidel Leal, Shannon Kerr, Erin Seliger, Cooper Young, Agness Lungua
+Gregor von Laszewski, Fidel Leal, Erin Seliger, Cooper Young, Agness Lungua
 
 For more information, please contact: <laszewski@gmail.com>
 

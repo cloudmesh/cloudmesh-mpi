@@ -86,24 +86,24 @@ dedicated telephone numbers.
 **What are not so good features?**
   
 Free account holders can host unlimited one-on-one meetings (meeting
-durations up to 24 hrs). In contrast to Google meet, there is a
-duration limit of 40 mins for meetings with three or more
-participants. We observed that video quality can be unstable, and the
-overall platform performance can quickly deteriorate over limited
-bandwidth connections. In such cases, we recommend switching the
-camera from the participant that has issues.  Furthermore, if you do
-at the same time a lot of calculations on your machine it may affect
-the quality of the call. This applies to older machines and should
-allow you to give a beautiful argument to get a new computer. In some
-cases, you may have a second computer and can use one for sharing your
-session, while the other one is used for sound, or you use a cell
-phone for the later
+durations up to 24 hrs). In contrast to Google meet (which has a one
+hour meeting limit), there is a duration limit of 40 mins for meetings
+with three or more participants. We observed that video quality can be
+unstable, and the overall platform performance can quickly deteriorate
+over limited bandwidth connections. In such cases, we recommend
+switching the camera from the participant that has issues.
+Furthermore, if you do at the same time a lot of calculations on your
+machine it may affect the quality of the call. This applies to older
+machines and should allow you to give a beautiful argument to get a
+new computer. In some cases, you may have a second computer and can
+use one for sharing your session, while the other one is used for
+sound, or you use a cell phone for the later
 
 **How can someone take control of a remote desktop?**
 
 To take control of a remote desktop, the remote user must activate
 screen sharing. Once the screen sharing is activated, we need to click
-the `View Options` dropdown menu (usually at the top of the screen)
+the `View Options` drop-down menu (usually at the top of the screen)
 and click on `Request remote control`. The remote user will then get a
 prompt to approve the remote control request.
 
@@ -113,7 +113,7 @@ the
 [Zoom support pages](https://support.zoom.us/hc/en-us/articles/201362673-Requesting-or-giving-remote-control).
 
 
-### Realtime nad Offline Text Messaging
+### Real-time and Offline Text Messaging
 
 In many research projects, participants may be in different timezones
 or have schedules that do not provide overlapping times for
@@ -230,7 +230,7 @@ accuracy.
 In practice, we observed that Grammarly performs better. Copying text
 back and forth can introduce errors when it comes to using quotes and
 other symbols. Thus you must check all symbols after you copy them into
-a markdown document. IN case you have the choice we currently
+a markdown document. In case you have the choice we currently
 recommend you use Grammarly.
 
 

@@ -1,6 +1,6 @@
 ---
 title: Organizing Collaboration in Open Source Teams
-author: Gregor von Laszewski, Fidel Leal, Shannon Kerr, Erin Seliger, Cooper Young, Agness Lungu
+author: Gregor von Laszewski, Fidel Leal, Erin Seliger, Cooper Young, Agness Lungu
 header-includes: |
     \usepackage{fancyhdr}
     \pagestyle{fancy}
@@ -9,6 +9,8 @@ header-includes: |
     \newtcolorbox{myquote}{colback=gray!5!white, colframe=gray!75!black}
     \renewenvironment{quote}{\begin{myquote}}{\end{myquote}}
 abstract: |
+  An improved version is published [online](https://laszewski.medium.com/simple-collaboration-tools-for-open-source-teams-aead3a0c46ae?sk=255db950b5fb69dad717981f3f59115f)
+
   To organize a research team, we need to establish simple communication pathways.
   This includes ways to conduct text chat video conferencing, code sharing, editing,
   and task management. In the following sections, we will list some useful tools that
