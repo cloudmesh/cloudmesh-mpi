@@ -30,4 +30,8 @@ Run Ubuntu and create a username and passphrase.
 
 Make sure not to just give an empty passphrase but chose a secure one.
 
-- [ ] TODO: Cooper, how to start it the next time
+Next run in Powershell
+> ```
+> ps$ wsl.exe --set-version Ubuntu20.04 2
+
+Now you're able to use the Ubuntu distro freely. Application will be in your shortcut menu in start. 
