@@ -271,7 +271,7 @@ In the example, the user provides an integer that is transmitted from process wi
 
 Executing the code in the example by entering ```mpiexec -n 2 python ring.py``` in the terminal will produce the following result:
 
-```bash
+>```bash
 > Communicator group with 4 processes
 > Enter an integer to transmit: 6
 > Process 0 transmitted value 7 to process 1
@@ -279,7 +279,7 @@ Executing the code in the example by entering ```mpiexec -n 2 python ring.py``` 
 > Process 2 transmitted value 9 to process 3
 > Process 3 transmitted value 10 to process 0
 > Final data received in process 0 after ring is completed: 10
-```
+>```
 As we can see, the integer provided to process 0 (6 in this case) was successively incremented by each process in the communicator group to return a final value of 10 at the end of the ring.
  
 
