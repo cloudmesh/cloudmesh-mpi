@@ -30,7 +30,7 @@ def ring(count=1, debug=Fasle):
         # Data is sent to next process in the ring
 
     if rank == 0:
-        Stopwatch.start("ring")
+        Stopwatch.start(f"ring {size} {count}")
         
     for i in range(0, count):
 
@@ -67,7 +67,7 @@ def ring(count=1, debug=Fasle):
         assert data == count * size
 
     if rank == 0:
-        Stopwatch.stop("ring")
+        Stopwatch.stop(f"ring {size} {count}")
         Stopwatch.benchmark()
 
 
