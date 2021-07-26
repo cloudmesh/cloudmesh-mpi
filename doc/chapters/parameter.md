@@ -9,6 +9,8 @@ N=2; environment-parameter.py
 ```
 
 environment-parameter.py and click-parameter.py can be retrieved from examples/parameters.
+They must be in the same directory as the previously created run.sh file, and you must cd
+(change directory) into this directory in Git Bash.
 Input the following commands into Git Bash
 
 ```
