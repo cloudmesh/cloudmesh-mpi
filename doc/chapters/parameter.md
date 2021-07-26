@@ -12,8 +12,11 @@ environment-parameter.py and click-parameter.py can be retrieved from examples/p
 Input the following commands into Git Bash
 
 ```
+# This command creates an environment variable called N
 $ export N=10
+# This command prints the environment variable called N
 $ echo $N
+# This command launches a Python environment
 $ python -i
 >>> import os
 >>> os.environ["N"]
