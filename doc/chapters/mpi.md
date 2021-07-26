@@ -334,9 +334,22 @@ The machinefile contains the ipaddresses
 
 ## MPI Functionality examples
 
+There are some differences between mpi4py and the standard MPI implementations for C/Fortran worth noting.
+
+In mpi4py, the standard MPI_INIT() and MPI_FINALIZE() commonly used to initialize and terminate the MPI environment are automatically handled after importing the mpi4py module.
+Although not generally advised, mpi4py still provides MPI.Init() and MPI.Finalize() for users interested in manually controlling these operations. Additionally, the automatic
+initialization and termination can be deativated. For more information on this topic, please check the following links:
+
+ * [MPI.Init() and MPI.Finalize()](https://githubmemory.com/repo/mpi4py/mpi4py/issues/54)
+ * [Deactivating automatic initialization and termination on mpi4py](https://bitbucket.org/mpi4py/mpi4py/issues/85/manual-finalizing-and-initializing-mpi)
+
+Another characteristic feature of mpi4py is the availablitly of uppercase and lowercase communication methods. Lowercase methods like `comm.send()` use Python's `pickle`
+module to transmit objects in a serialized manner. In contrast, the uppercase versions of methods like `comm.Send()` enable transmission of data contained in a contiguous
+memory buffer, as featured in the MPI standard. For additional information on the topic, check (https://mpi4py.readthedocs.io/en/stable/overview.html?highlight=pickle#communicating-python-objects-and-array-data).
+
 ## MPI Point-to-Point Communication Examples
 
-### Sending/Receiving `comm.send()` `comm.recv()`
+### Sending/Receiving
 
 The `send()` and `recv()` methods provide for functionality to transmit data
 between two specific processes in the communicator group.
@@ -376,7 +389,7 @@ In the following example, an integer is transmitted from process 0 to process 1.
 
 Executing `mpiexec -n 4 python send_receive.py` yields:
 
-> ```
+> ```bash
 > After send/receive, the value in process 2 is None
 > After send/receive, the value in process 3 is None 
 > After send/receive, the value in process 0 is None
@@ -386,9 +399,47 @@ Executing `mpiexec -n 4 python send_receive.py` yields:
 As we can appreciate, transmission only occurred between processes 0 and 1, and
 no other process was affected.
 
+The following example illustrates the use of the uppercase versions of the methods
+`comm.Send()` and `comm.Recv()` to perform a buffered transmission of data between
+processes 0 and 1 in the communicator group.
+
+>```python
+> !include ../examples/send_receive_buffer.py
+> ```
+
+Executing `mpiexec -n 4 python send_receive_buffer.py` yields:
+
+> ```bash
+> After Send/Receive, the value in process 3 is [0 0 0 0 0]
+> After Send/Receive, the value in process 2 is [0 0 0 0 0]
+> After Send/Receive, the value in process 0 is [0 0 0 0 0]
+> After Send/Receive, the value in process 1 is [1 2 3 4 5]
+> ```
+
+Lastly, an example of the non-blocking send and receive methods `comm.isend()` and
+`comm.irecv()`. Non-blocking versions of these methods allow for the processes involved
+in transmission/reception of data to perform other operations in overlap with the
+communication. In contrast, the blocking versions of these methods previously
+exemplified do not allow data buffers involved in transmission or reception of data to
+be accessed until any ongoing communication involving the particular processes has been
+finalized.
+
+>```python
+> !include ../examples/isend_ireceive.py
+> ```
+
+Executing `mpiexec -n 4 python isend_ireceive.py` yields:
+
+> ```bash
+> After isend/ireceive, the value in process 2 is None
+> After isend/ireceive, the value in process 3 is None
+> After isend/ireceive, the value in process 0 is None
+> After isend/ireceive, the value in process 1 is 42
+> ```
+
 ## MPI Collective Communication Examples
 
-### Broadcast `comm.bcast()`
+### Broadcast
 
 The `bcast()` method and it is buffered version `Bcast()` broadcast a message
 from a specified "root" process to all other processes in the communicator
@@ -432,8 +483,31 @@ After running `mpiexec -n 4 python broadcast.py` we get the following:
 
 As we can see, all other processes received the data broadcast from the root process.
 
+In our next example, we broadcast a NumPy array from process 0 to the rest
+of the processes in the communicator group using the uppercase `comm.Bcast()` method.
 
-#### Scatter `comm.scatter()`
+> ``` python
+> !include ../examples/broadcast_buffer.py
+> ```
+
+Executing `mpiexec -n 4 python npbcast.py` yields:
+
+> ```
+> before broadcasting, data for rank 1 is:  [0 0 0 0 0 0 0 0 0 0]
+> before broadcasting, data for rank 2 is:  [0 0 0 0 0 0 0 0 0 0]
+> before broadcasting, data for rank 3 is:  [0 0 0 0 0 0 0 0 0 0]
+> before broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
+> after broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
+> after broadcasting, data for rank 2 is:  [0 1 2 3 4 5 6 7 8 9]
+> after broadcasting, data for rank 3 is:  [0 1 2 3 4 5 6 7 8 9]
+> after broadcasting, data for rank 1 is:  [0 1 2 3 4 5 6 7 8 9]
+> ```
+ 
+As we can see, the values in the array at the process with rank 0 have
+been broadcast to the rest of the processes in the communicator group.
+
+
+#### Scatter
 
 - [ ] TODO: Fidel, explanation is missing
 
@@ -464,8 +538,35 @@ Executing `mpiexec -n 4 python scatter.py` yields:
 The members of the list from process 0 have been successfully
 scattered among the rest of the processes in the communicator group.
 
+In the following example, we scatter a NumPy array among the processes in the
+communicator group by using the uppercase version of the method `comm.Scatter()`.
 
-#### Gather `comm.gather()`
+> ``` python
+> !include ../examples/scatter_buffer.py
+> ```
+
+Executing `mpiexec -n 4 python npscatter.py` yields:
+
+> ```
+> recvbuf in  1:  [0 0 0 0 0 0 0 0 0 0]
+> recvbuf in  2:  [0 0 0 0 0 0 0 0 0 0]
+> recvbuf in  3:  [0 0 0 0 0 0 0 0 0 0]
+> sendbuf in 0:  [[0 0 0 0 0 0 0 0 0 0]
+>                 [1 1 1 1 1 1 1 1 1 1]
+>                 [2 2 2 2 2 2 2 2 2 2]
+>                 [3 3 3 3 3 3 3 3 3 3]]
+> recvbuf in  0:  [0 0 0 0 0 0 0 0 0 0]
+> Buffer in process 2 contains:  [2 2 2 2 2 2 2 2 2 2]
+> Buffer in process 0 contains:  [0 0 0 0 0 0 0 0 0 0]
+> Buffer in process 3 contains:  [3 3 3 3 3 3 3 3 3 3]
+> Buffer in process 1 contains:  [1 1 1 1 1 1 1 1 1 1]
+> ```
+
+As we can see, the values in the 2-D array at process with rank 0,
+have been scattered among all our processes in the communicator group,
+based on their rank value.
+
+#### Gather
 
 - [ ] TODO: Fidel, explenation is missing
 
@@ -496,74 +597,9 @@ Executing `mpiexec -n 4 python gather.py` yields:
 The data from processes with rank `1` to `size - 1` have been
 successfully gathered in process 0.
 
-
-#### Broadcasting buffer-like objects `comm.Bcast()`
-
-- [ ] TODO: is there any difference should it be moved to bcast section?
-
-In this example, we broadcast a NumPy array from process 0 to the rest
-of the processes in the communicator group.
-
-> ``` python
-> !include ../examples/broadcast_buffer.py
-> ```
-
-Executing `mpiexec -n 4 python npbcast.py` yields:
-
-> ```
-> before broadcasting, data for rank 1 is:  [0 0 0 0 0 0 0 0 0 0]
-> before broadcasting, data for rank 2 is:  [0 0 0 0 0 0 0 0 0 0]
-> before broadcasting, data for rank 3 is:  [0 0 0 0 0 0 0 0 0 0]
-> before broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
-> after broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
-> after broadcasting, data for rank 2 is:  [0 1 2 3 4 5 6 7 8 9]
-> after broadcasting, data for rank 3 is:  [0 1 2 3 4 5 6 7 8 9]
-> after broadcasting, data for rank 1 is:  [0 1 2 3 4 5 6 7 8 9]
-> ```
- 
-As we can see, the values in the array at the process with rank 0 have
-been broadcast to the rest of the processes in the communicator group.
-
-
-#### Scattering buffer-like objects `comm.Scatter()`
-
-- [ ] TODO: is there any difference should it be moved to scatter section?
-
-In this example, we scatter a NumPy array among the processes in the
-communicator group.
-
-> ``` python
-> !include ../examples/scatter_buffer.py
-> ```
-
-Executing `mpiexec -n 4 python npscatter.py` yields:
-
-> ```
-> recvbuf in  1:  [0 0 0 0 0 0 0 0 0 0]
-> recvbuf in  2:  [0 0 0 0 0 0 0 0 0 0]
-> recvbuf in  3:  [0 0 0 0 0 0 0 0 0 0]
-> sendbuf in 0:  [[0 0 0 0 0 0 0 0 0 0]
->                 [1 1 1 1 1 1 1 1 1 1]
->                 [2 2 2 2 2 2 2 2 2 2]
->                 [3 3 3 3 3 3 3 3 3 3]]
-> recvbuf in  0:  [0 0 0 0 0 0 0 0 0 0]
-> Buffer in process 2 contains:  [2 2 2 2 2 2 2 2 2 2]
-> Buffer in process 0 contains:  [0 0 0 0 0 0 0 0 0 0]
-> Buffer in process 3 contains:  [3 3 3 3 3 3 3 3 3 3]
-> Buffer in process 1 contains:  [1 1 1 1 1 1 1 1 1 1]
-> ```
-
-As we can see, the values in the 2-D array at process with rank 0,
-have been scattered among all our processes in the communicator group,
-based on their rank value.
-
-
-#### Gathering buffer-like objects `comm.Gather()`
-
-- [ ] TODO: is there any difference should it be moved to gather section?
-
-In this example, we gather a NumPy array from the processes in the
-communicator group into a 2-D array in process with rank 0.
+The example showcases the use of the uppercase method `comm.Gather()`.
+NumPy arrays from the processes in the communicator group are gathered
+into a 2-D array in process with rank 0.
 
 > ``` python
 > !include ../examples/gather_buffer.py
@@ -590,7 +626,7 @@ Executing `mpiexec -n 4 python npgather.py` yields:
 The values contained in the buffers from the different processes in
 the group have been gathered in the 2-D array in process with rank 0.
 
-#### Gathering buffer-like objects in all processes `comm.Allgather()`
+#### Gathering buffer-like objects in all processes
 
 In this example, each process in the communicator group computes and
 stores values in a NumPy array (row). For each process, these values
@@ -632,9 +668,6 @@ results in the output
 As we see, after `comm.Allgather()` is called, every process gets a copy
 of the full multiplication table.
 
-#### send receive
-
-- [ ] TODO, Fidel send recieve
 
 #### Dynamic Process Management with `spawn`
 
