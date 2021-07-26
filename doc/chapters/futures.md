@@ -13,6 +13,10 @@ Futures is a module of mpi4py which uses the threads of a processor, or separate
 
 We can test the mpi4py.futures module by running a Python script that computes a Julia set (data defined from a mathematical function).
 
+> ``` python
+> !include ../examples/futures/julia-futures.py
+> ```
+
 Credit to Lisandro Dalcin for this script, taken from https://mpi4py.readthedocs.io/en/stable/mpi4py.futures.html
 
 ```
