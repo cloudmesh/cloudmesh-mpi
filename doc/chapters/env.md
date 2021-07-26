@@ -1,4 +1,13 @@
-This count.py program uses os.environ from the os library
+# Using Environment Variables to Pass Parameters
+
+MORE GENERAL ....
+
+
+## Example
+
+We demonstrate thsi on ana example.
+We developed a programm 
+count.py  (URL MISSING) program uses os.environ from the os library
 to optionally pass parameters to an mpi program.
 
 > ``` python
