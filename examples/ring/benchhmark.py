@@ -7,4 +7,12 @@ for n in ns:
     command =  f"mpieec -n {n} python ring.py --count {count}"
     os.system(command)
     
-# ring ....
+#csv,ring 4 10000 ....
+
+
+####
+#
+# $ python benchmark.py | fgrep "#csv,ring" > ring-benchmark.csv
+# analyze,ipynb .py ring-benchmark.csv
+# read in the csv and than produce the plot
+#
