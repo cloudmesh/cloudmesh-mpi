@@ -7,6 +7,7 @@
 #
 from mpi4py import MPI
 import click
+from cloudmesh.common.StopWatch import StopWatch
 
 @click.command()
 @click.option('--count', default=1, help='Number of messages send.')
@@ -28,6 +29,9 @@ def ring(count=1, debug=Fasle):
         data += 1
         # Data is sent to next process in the ring
 
+    if rank == 0:
+        Stopwatch.start("ring")
+        
     for i in range(0, count):
 
         if rank == 0:        
@@ -61,7 +65,11 @@ def ring(count=1, debug=Fasle):
         print(f'Final data received in process 0 after ring is completed: {data}')
         # verify
         assert data == count * size
-        
+
+    if rank == 0:
+        Stopwatch.stop("ring")
+        Stopwatch.benchmark()
+
 
       
 if __name__ == '__main__':
