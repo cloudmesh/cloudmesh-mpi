@@ -1,5 +1,16 @@
 # Parameters
 
+# Passing Parameters into Git Bash
+
+First create a run.sh shell file with the following contents
+```python
+N=1; environment-parameter.py
+N=2; environment-parameter.py
+```
+
+environment-parameter.py and click-parameter.py can be retrieved from examples/parameters.
+Input the following commands into Git Bash
+
 ```
 $ export N=10
 $ echo $N
@@ -7,17 +18,12 @@ $ python -i
 >>> import os
 >>> os.environ["N"]
 >>> exit()
-$ python a.py
+$ python environment-parameter.py
 $ sh run.sh
 $ sh run.sh | fgrep "csv,processors"
-$ python b.py
-$ python b.py --n=3
+$ python click-parameter.py
+$ python click-parameter.py --n=3
 ```
-
-- [x] Document the .py files in the parameters folder in examples
-- [x] Document click module
-- [ ] Add parameter passing section
-- [x] you can do !include which should be in the mpi documentation to refer to
 
 # click-parameter.py
 
