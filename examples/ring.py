@@ -11,7 +11,7 @@ size = comm.Get_size()
 
 if rank == 0:
     print(f'Communicator group with {size} processes')
-    # User provides data to transmit thorugh the ring
+    # User provides data to transmit through the ring
     data = int(input('Enter an integer to transmit: '))
     # Data is modified
     data += 1

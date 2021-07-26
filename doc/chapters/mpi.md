@@ -256,6 +256,32 @@ To run it on multiple hosts with each having n cores please create a
 
 - [ ] TODO: Open, how to run it on multiple hosts on the PI
 
+## Ring computation using mpi4py
+
+As an example of the use of mpi4py, we present an instance of communication between a group of processes organized in a ring. 
+
+[Processes organized in a ring perform a sum operation]
+   (https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/ring.png) { width=50% }
+
+In the example, the user provides an integer that is transmitted from process with rank 0, to process with rank 1 and so on until the data returns to process 0. Each process increments the integer by 1 before transmitting it to the next one, so the final value received by process 0 after the ring is complete is the sum of the original integer plus the number of processes in the communicator group.
+
+> ``` python
+> !include ../examples/ring.py
+> ```
+
+Executing the code in the example by entering ```mpiexec -n 2 python ring.py``` in the terminal will produce the following result:
+
+```bash
+> Communicator group with 4 processes
+> Enter an integer to transmit: 6
+> Process 0 transmitted value 7 to process 1
+> Process 1 transmitted value 8 to process 2
+> Process 2 transmitted value 9 to process 3
+> Process 3 transmitted value 10 to process 0
+> Final data received in process 0 after ring is completed: 10
+```
+As we can see, the integer provided to process 0 (6 in this case) was successively incremented by each process in the communicator group to return a final value of 10 at the end of the ring.
+ 
 
 ## Machine file, hostfile, rankfile
 
