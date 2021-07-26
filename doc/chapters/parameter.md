@@ -27,6 +27,7 @@ $ python environment-parameter.py
 $ sh run.sh
 $ sh run.sh | fgrep "csv,processors"
 $ python click-parameter.py
+# You can manually set the variable in git bash in the same line as you open the .py file
 $ python click-parameter.py --n=3
 ```
 
@@ -39,8 +40,9 @@ $ python click-parameter.py --n=3
 This Python program sets a variable n (default is 1) and runs a cloudmesh StopWatch
 based on the value of the variable n. If n is set to 1, the program waits for a
 period of time (0.1 times n), prints the value of n, and then outputs the cloudmesh
-benchmark for a number of processors. If n is set to 1, cloudmesh benchmark will only
-output 1 processor and the period of time the program waited.
+benchmark for a particular processor. If n is set to 1, cloudmesh benchmark will
+output processor 1 and the period of time the program waited. If n is set to 2,
+cloudmesh benchmark will output processor 2 and so on.
 
 This is meant to be a beginner's basic exploration into the click module.
 
