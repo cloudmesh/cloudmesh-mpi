@@ -9,8 +9,9 @@ from mpi4py import MPI
 import click
 
 @click.command()
-@click.option('--count', default=1, help='Number of messages sen.')
-def ring(count=1):
+@click.option('--count', default=1, help='Number of messages send.')
+@click.option('--debug', default=False, help='Set debug.')
+def ring(count=1, debug=Fasle):
     # Communicator
     comm = MPI.COMM_WORLD
 
@@ -34,7 +35,8 @@ def ring(count=1):
             # print(f'Process {0} transmitted value {data} to process {rank + 1}')
             # Data is received from last process in the ring
             data = comm.recv(data, source=size - 1)
-            #print(f'Final data received in process 0 after ring is completed: {data}')
+            if debug:
+                print(f'Final data received in process 0 after ring is completed: {data}')
 
         elif rank == size - 1:
           
