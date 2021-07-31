@@ -1,4 +1,6 @@
 from mpi4py.futures import MPIPoolExecutor
+import matplotlib.pyplot as plt
+import numpy as np
 
 x0, x1, w = -2.0, +2.0, 640*2
 y0, y1, h = -1.5, +1.5, 480*2
@@ -27,7 +29,5 @@ if __name__ == '__main__':
 
     with MPIPoolExecutor() as executor:
         image = executor.map(julia_line, range(h))
-        with open('julia.pgm', 'wb') as f:
-            f.write(b'P5 %d %d %d\n' % (w, h, 255))
-            for line in image:
-                f.write(line)
+        image = np.array([list(l) for l in image])
+        plt.imsave("julia.png", image)

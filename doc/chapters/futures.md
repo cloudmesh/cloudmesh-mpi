@@ -1,7 +1,7 @@
 # Futures
 
-- [ ] Jacques, Identify example to do
-- [ ] Convert to png
+- [x] Jacques, Identify example to do
+- [x] Convert to png
 - [ ] Copy the include statement and add .py to examples folder. examples/julia/julia-futures.py
 - [ ] examples/julia/julia-numba.py
 - [ ] numba and modin (modin works on dataframes) 
@@ -59,7 +59,7 @@ First, copy this code and save it as `julia.py` in a directory you can navigate 
 
 Then, open Git Bash, `cd` to the directory where `julia.py` is located, and then run this command in git bash:
 
-`mpiexec -n 1 python julia.py`
+`mpiexec -n 1 python julia-futures.py`
 
 Be sure to change the number after -n to the number of cores in your processor. To find the number of cores in your processor, press the Windows key, type
 `This PC`, click `Properties`, and then it should say the number of cores next to processor.
