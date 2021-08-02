@@ -1,6 +1,12 @@
 # Using Environment Variables to Pass Parameters
 
-MORE GENERAL ....
+
+
+#os.environ in Python is a mapping object that represents the user’s environmental variables. 
+It returns a dictionary having user’s environmental variable as key and their values as value.
+
+os.environ behaves like a python dictionary, so all the common dictionary operations like get and set can be performed.
+We can also modify os.environ but any changes will be effective only for the current process where it was assigned and it will not change the value permanently.
 
 
 ## Example
