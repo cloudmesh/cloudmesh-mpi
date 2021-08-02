@@ -869,6 +869,50 @@ needed we can split up work and each of you will work on a dedicated
 topic (but you can still work in smaller teams if you desire). We will
 start assigning tasks in GitHub once this is all set up.
 
+## Python Ecosystem
+
+It is possible to pass parameters from Git Bash into a Python environment
+using os.environ and a shell file.
+
+
+> ``` python
+> !include ../examples/parameters/environment-parameter.py
+> ```
+
+Ensure that this code is saved in a particular directory. Then create a
+shell file named run.sh with the following contents:
+
+```python
+$ N=1; python environment-parameter.py
+$ N=2; python environment-parameter.py
+```
+
+Save the following py file in the same directory as well:
+> ``` python
+> !include ../examples/parameters/click-parameter.py
+> ```
+
+You must cd (change directory) into the directory with all of these 
+files in Git Bash. Input the following commands into Git Bash:
+
+```
+# This command creates an environment variable called N
+$ export N=10
+# This command prints the environment variable called N
+$ echo $N
+# This command launches a Python environment
+$ python -i
+>>> import os
+>>> os.environ["N"]
+>>> exit()
+$ python environment-parameter.py
+$ sh run.sh
+$ sh run.sh | fgrep "csv,processors"
+$ python click-parameter.py
+# You can manually set the variable in git bash in the same line as you open the .py file
+$ python click-parameter.py --n=3
+```
+
 ## Resources MPI
 
 * <https://research.computing.yale.edu/sites/default/files/files/mpi4py.pdf>
