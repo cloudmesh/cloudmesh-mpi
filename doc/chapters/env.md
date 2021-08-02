@@ -2,7 +2,7 @@
 
 
 
-#os.environ in Python is a mapping object that represents the user’s environmental variables. 
+os.environ in Python is a mapping object that represents the user’s environmental variables. 
 It returns a dictionary having user’s environmental variable as key and their values as value.
 
 os.environ behaves like a python dictionary, so all the common dictionary operations like get and set can be performed.
@@ -11,9 +11,9 @@ We can also modify os.environ but any changes will be effective only for the cur
 
 ## Example
 
-We demonstrate thsi on ana example.
-We developed a programm 
-count.py  (URL MISSING) program uses os.environ from the os library
+We demonstrate this in an example.
+We developed a 
+count.py program that uses os.environ from the os library
 to optionally pass parameters to an mpi program.
 
 > ``` python
