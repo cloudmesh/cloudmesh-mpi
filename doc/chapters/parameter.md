@@ -1,6 +1,6 @@
 # Parameters
 
-# Passing Parameters into Git Bash
+# Passing Parameters from Git Bash into Python
 
 First create a run.sh shell file with the following contents
 ```python
