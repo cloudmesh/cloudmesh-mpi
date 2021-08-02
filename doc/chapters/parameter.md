@@ -4,8 +4,8 @@
 
 First create a run.sh shell file with the following contents
 ```python
-N=1; python environment-parameter.py
-N=2; python environment-parameter.py
+$ N=1; python environment-parameter.py
+$ N=2; python environment-parameter.py
 ```
 
 environment-parameter.py and click-parameter.py can be retrieved from examples/parameters.
