@@ -28,5 +28,9 @@ Then, open Git Bash, `cd` to the directory where `julia-futures.py` is located, 
 Be sure to change the number after -n to the number of cores in your processor. To find the number of cores in your processor, press the Windows key, type
 `This PC`, click `Properties`, and then it should say the number of cores next to processor.
 
+After running the command in Git Bash, it should output a visualization of a Julia data set as a png image.
+
+Furthermore, the numba version of the program can be run instead, which is slightly faster.
+
 
                 
