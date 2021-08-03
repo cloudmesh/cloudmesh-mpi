@@ -1,6 +1,9 @@
 # Futures
 
 - [ ] examples/julia/julia-numba.py
+- [ ] calculate size of image (pixels by pixels)
+- [ ] run on gpu
+- [ ] add benchmarks (with parameters, with or without jit, and # of processors)
 - [ ] numba and modin (modin works on dataframes) 
 - [ ] @jit(nopython=True) # Set "nopython" mode for best performance, equivalent to @njit
 - [ ] cloudmesh stopwatch to compare times with and without numba (jit)
