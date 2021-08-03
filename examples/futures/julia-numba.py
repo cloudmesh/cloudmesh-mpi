@@ -1,6 +1,7 @@
 from mpi4py.futures import MPIPoolExecutor
 import matplotlib.pyplot as plt
 import numpy as np
+from numba import jit
 from cloudmesh.common.StopWatch import StopWatch
 
 StopWatch.start("Overall time")
@@ -11,6 +12,7 @@ dy = (y1 - y0) / h
 
 c = complex(0, 0.65)
 
+@jit(nopython=True)
 def julia(x, y):
     z = complex(x, y)
     n = 255
