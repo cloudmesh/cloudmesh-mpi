@@ -453,7 +453,7 @@ broadcasting from the process with rank 0.
 In this example, we broadcast a two-entry Python dictionary from a root process
 to the rest of the processes in the communicator group.
 
-![Broadcasting data from a root process to the rest of the processes in the communicator group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){ width=50% }
+<img src="https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png" alt="Broadcasting data from a root process to the rest of the processes in the communicator group" width="35%">
 
 The following code snippet shows the creation of the dictionary in process with
 rank 0. Notice how the variable `data` remains empty in all the other
@@ -516,7 +516,7 @@ processes in the communicator group.
 
 - [ ] TODO: All, add images
 
-![Example to scatter data to different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/scatter.png){ width=50% }
+<img src="https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/scatter.png" alt="Example to scatter data to different processors from the one with rank 0" width="35%">
 
 > ``` python
 > !include ../examples/scatter.py
@@ -573,7 +573,7 @@ based on their rank value.
 In this example, data from each process in the communicator group is
 gathered in the process with rank 0.
 
-![Example to gather data to different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/gather.png){ width=50% }
+<img src="https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/gather.png" alt="Example to gather data to different processors from the one with rank 0" width="35%">
 
 
 
@@ -637,7 +637,7 @@ array (table) and distributed to ALL the members of the communicator group
 (as opposed to a single member, which is the case when `comm.Gather()` is
 used instead).
 
-![Example to gather the data from each process into ALL of the processes in the group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/allgather.png){ width=50% } 
+<img src="https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/allgather.png" alt="Example to gather the data from each process into ALL of the processes in the group" width="35%">
 
 > ```python
 > !include ../examples/allgather_buffer.py
@@ -646,7 +646,7 @@ used instead).
 Executing 
 
 > ```
-> $ mpiexec -n 4 python allgather_buffer.py` 
+> $ mpiexec -n 4 python allgather_buffer.py 
 > ```
 
 results in the output 
@@ -672,7 +672,7 @@ of the full multiplication table.
 #### Dynamic Process Management with `spawn`
 
 Using
->``` python
+> ``` python
 > MPI.Comm_Self.Spawn
 > ```
 
@@ -681,7 +681,7 @@ will create a child process that can communicate with the parent. In the spawn c
 In this example, we have two python programs, the first one being the
 manager and the second being the worker.
 
-![Example to spawn a program and start it on the different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/spawn.png){ width=50% }
+<img src="https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/spawn.png" alt="Example to spawn a program and start it on the different processors from the one with rank 0" width="35%">
 
 
 > ``` python
