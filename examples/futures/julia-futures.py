@@ -3,9 +3,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 from cloudmesh.common.StopWatch import StopWatch
 
+multiplier = int(input('Enter 1 for 640x480 pixels of Julia visualization image, 2 for 1280x960, and so on...'))
+
 StopWatch.start("Overall time")
-x0, x1, w = -2.0, +2.0, 640*2
-y0, y1, h = -1.5, +1.5, 480*2
+x0, x1, w = -2.0, +2.0, 640*multiplier
+y0, y1, h = -1.5, +1.5, 480*multiplier
 dx = (x1 - x0) / w
 dy = (y1 - y0) / h
 

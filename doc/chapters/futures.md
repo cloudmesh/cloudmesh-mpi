@@ -1,14 +1,5 @@
 # Futures
 
-- [ ] examples/julia/julia-numba.py
-- [ ] calculate size of image (pixels by pixels)
-- [ ] run on gpu
-- [ ] add benchmarks (with parameters, with or without jit, and # of processors)
-- [ ] numba and modin (modin works on dataframes) 
-- [ ] @jit(nopython=True) # Set "nopython" mode for best performance, equivalent to @njit
-- [ ] cloudmesh stopwatch to compare times with and without numba (jit)
-- [ ] if rank = 0 then stopwatch start, and same but with stop at end
-
 Futures is a module of mpi4py which uses the threads of a processor, or separate processes, to run processes in parallel so that they can communicate with one another.
 
 We can test the mpi4py.futures module by running a Python script that computes a Julia set (data defined from a mathematical function).
@@ -32,5 +23,17 @@ After running the command in Git Bash, it should output a visualization of a Jul
 
 Furthermore, the numba version of the program can be run instead, which is slightly faster.
 
+> ``` python
+> !include ../examples/futures/julia-numba.py
+> ```
+
+|         |   No Jit (1280x960)  |  Jit Enabled (1280x960) | No Jit (1920x1440) | Jit Enabled (1920x1440) |
+|---------|------------|---------------|-------------|------------|
+| 6 Cores | 45.134 s   | 44.402 s      |   68.437 s          |   67.637   |
+| 5 Cores | 43.223 s   | 42.825 s      |   68.226 s           |   68.443  |
+| 4 Cores | 44.746 s   | 44.552 s      |   73.606 s           |   70.257  |
+| 3 Cores | 43.026 s   | 44.521 s      |   68.785 s           |   69.487  |
+| 2 Cores | 45.578 s   | 45.714 s      |   67.718 s           |   69.326 |
+| 1 Core  | 44.898 s   | 45.800 s      |   68.489 s           |   68.610 |
 
                 
