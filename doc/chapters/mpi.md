@@ -737,7 +737,7 @@ This output depends on which child process is received first. The output can var
 
 - [ ] TODO: Cooper, spawn, pull
 
-#### Futures
+## Futures
 
 Futures is an mpi4py module that runs processes in parallel for intercommunication between
 such processes. The following Python program creates a visualization of a Julia set by
