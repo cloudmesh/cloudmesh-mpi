@@ -30,6 +30,12 @@ this program, it will generate visualizations of the pi value over time and how 
 becomes more exact to 3.14159, as well as the number of "darts" (points in the square)
 alongside standard deviation.
 
+Furthermore, the numba version of the program can be executed for faster runtimes:
+
+> ``` python
+> !include ../examples/monte-carlo/parallel_pi_numba.py
+> ```
+
 The following benchmark times were generated using a Ryzen 5 3600 CPU with 16 GB RAM
 on a Windows 10 computer.
 
