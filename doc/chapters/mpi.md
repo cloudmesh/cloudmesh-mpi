@@ -739,9 +739,23 @@ This output depends on which child process is received first. The output can var
 
 ##### Futures
 
-- [ ] TODO: Open, futures
+Futures is an mpi4py module that runs processes in parallel for intercommunication between
+such processes. The following Python program creates a visualization of a Julia set by
+utilizing this Futures modules, specifically via MPIPoolExecutor.
 
-<https://mpi4py.readthedocs.io/en/stable/mpi4py.futures.html>
+> ``` python
+> !include ../examples/futures/julia-futures.py
+> ```
+
+The program must be run through the terminal with the command:
+
+`mpiexec -n 1 python julia-futures.py`
+
+The number after `-n` can be changed to however many cores are in the computer's processor.
+For example, a dual-core processor can use `-n 2` so that more worker processes work to
+execute the same program.
+
+The program should output a png image of a Julia set upon successful execution.
 
 #### Examples for other collective communication methods
 
