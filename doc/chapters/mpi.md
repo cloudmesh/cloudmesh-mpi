@@ -704,25 +704,25 @@ This will result in:
 
 > ```
 > N: 100 rank: 4
-N: 100 rank: 1
-N: 100 rank: 3
-N: 100 rank: 2
-Hello
-b and rank: 0
-c
-d
-3.1416009869231245
-N: 100 rank: 0
-N: 100 rank: 1
-N: 100 rank: 4
-N: 100 rank: 3
-N: 100 rank: 2
-Hello
-b and rank: 0
-c
-d
-3.1416009869231245
-N: 100 rank: 0
+> N: 100 rank: 1
+> N: 100 rank: 3
+> N: 100 rank: 2
+> Hello
+> b and rank: 0
+> c
+> d
+> 3.1416009869231245
+> N: 100 rank: 0
+> N: 100 rank: 1
+> N: 100 rank: 4
+> N: 100 rank: 3
+> N: 100 rank: 2
+> Hello
+> b and rank: 0
+> c
+> d
+> 3.1416009869231245
+> N: 100 rank: 0
 > ```
 
 This output depends on which child process is received first. The output can vary.
