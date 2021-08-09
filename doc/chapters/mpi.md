@@ -810,6 +810,8 @@ calculation of pi.
 > !include ../examples/monte-carlo/montecarlo.py
 > ```
 
+!include ../doc/chapters/montecarlo.md
+
 - [ ] TODO: Open, Drawing
 
 - [ ] TODO: Open, HOW AND WHY DO WE NEED MULTIPLE COMPUTERS
