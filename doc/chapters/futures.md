@@ -36,4 +36,6 @@ Furthermore, the numba version of the program can be run instead, which is sligh
 | 2 Cores | 45.578 s   | 45.714 s      |   67.718 s           |   69.326 s |
 | 1 Core  | 44.898 s   | 45.800 s      |   68.489 s           |   68.610 s |
 
-                
+The improvement in shorter runtime with jit is not apparent likely because the
+computations required to run this program are not very complex; the same reason
+applies to why the increase in cores does not improve runtime.
