@@ -737,6 +737,10 @@ This output depends on which child process is received first. The output can var
 
 - [ ] TODO: Cooper, spawn, pull
 
+#### Examples for other collective communication methods
+
+- [ ] TODO: Agness, introduction
+
 ## Futures
 
 Futures is an mpi4py module that runs processes in parallel for intercommunication between
@@ -756,10 +760,6 @@ For example, a dual-core processor can use `-n 2` so that more worker processes 
 execute the same program.
 
 The program should output a png image of a Julia set upon successful execution.
-
-#### Examples for other collective communication methods
-
-- [ ] TODO: Agness, introduction
 
 ## MPI-IO
 
