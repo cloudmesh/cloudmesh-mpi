@@ -38,7 +38,7 @@ Furthermore, the numba version of the program can be run instead, which is sligh
 | 2 Cores | 45.578 s   | 45.714 s      |   67.718 s           |   69.326 s |
 | 1 Core  | 44.898 s   | 45.800 s      |   68.489 s           |   68.610 s |
 
-* The following benchmark times were generated using a Ryzen 5 3600 CPU with 16 GB RAM on a Windows 10 computer.
+* These benchmark times were generated using a Ryzen 5 3600 CPU with 16 GB RAM on a Windows 10 computer.
 
 The improvement in shorter runtime with jit is not apparent likely because the
 computations required to run this program are not very complex; the same reason
