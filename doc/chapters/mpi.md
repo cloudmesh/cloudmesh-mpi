@@ -794,32 +794,38 @@ Numpy syntax
 - [ ] TODO: Agness, noncontigious IO
 
 
-## Monte Carlo calculation of Pi
+## Monte Carlo Calculation of Pi
 
-- [ ] TODO: Open, improve
-
-- [ ] TODO: Open  WHAT IS THE PROBLEM GOAL
-
-We start with the Mathematical formulation of the Monte Carlo
+We start with the mathematical formulation of the Monte Carlo
 calculation of pi. For each quadrant of the unit square, the area is
-pi.  Therefore, the ratio of the area outside of the circle is pi over
-four.  With this in mind, we can use the Monte Carlo Method for the
+pi. Therefore, the ratio of the area outside of the circle is pi over
+four. With this in mind, we can use the Monte Carlo Method for the
 calculation of pi.
+
+The following is a visualization of the program's methodology to calculate pi:
+![montecarlographic](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/monte-carlo-visualization.png)
+
+The following montecarlo.py program generates a very rough estimation of pi using the methodology and
+equation shown above.
 
 > ``` python
 > !include ../examples/monte-carlo/montecarlo.py
 > ```
 
-!include ../doc/chapters/montecarlo.md
+However, if a more exact approximation of pi is needed, then the following program can be run instead,
+using multiple cores of the processor using mpiexec:
 
-- [ ] TODO: Open, Drawing
+> ``` python
+> !include ../examples/monte-carlo/parallel_pi.py
+> ```
+
+To run this program using git bash, change directory to the folder containing this program and issue the command:
+`$ mpiexec -n 2 python parallel_pi.py`
+The number after `-n` can be changed to however many cores one has on their processor.
 
 - [ ] TODO: Open, HOW AND WHY DO WE NEED MULTIPLE COMPUTERS
 
 ### Program
-
-- [ ] TODO: Open, PI Montecarlo
-
 
 - [ ] TODO: Open, Example program to run Montecarlo on multiple hosts
 
