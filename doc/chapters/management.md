@@ -27,6 +27,12 @@ traveling. Thus you can spend the time saved on travel. Also, it
 allows researchers to continue if unexpected events take place that
 does not allow in-person meetings such as the recent COVID epidemic.
 
+Sometimes videoconferencing will produce acoustic feedback: a very loud
+loop of sound within a call. Members of a call can prevent this phenomenon
+by wearing headphones; if not possible, keep speaker volume down. Acoustic feedback
+also occurs when more than one device, in close proximity to each other,
+is on the same call. Avoid this feedback by wearing headphones or earbuds.
+
 There are many conferencing tools available that can be used. You may
 even use multiple dependent on the particular meeting or preferences
 by the subgroup. To keep things simple it is however
@@ -35,39 +41,42 @@ recommended to just use one tool.
 #### Google Meet
 
 Google Meet is an online service that facilitates meetings as video
-and audio conference calls. It has evolved from google hangout.
+and audio conference calls. It has evolved from Google Hangouts.
 
 **What are good features?**
 
-Some good features of Google meet include the ability to use closed
+Some good features of Google Meet include the ability to use closed
 captions allowing the integration of participants having trouble
 hearing the speaker. It is compatible across devices and typically its
 sound quality is very good.
 
 **What are not so good features?** 
 
-1. Goggle meet does not provide an easy way to have others take
+1. Google Meet does not provide an easy way to have others take
    control of a remote desktop. However, it is possible to use Google
    Remote Desktop for it.
 
    * <https://remotedesktop.google.com/?pli=1>
 
-2. Google meet cannot share each other's desktops at the same
-   time. This feature was available in hangout but is no longer
+2. Google Meet cannot share each other's desktops at the same
+   time. This feature was available in Hangouts but is no longer
    available as far as we can tell.
+   
+3. Google Meet restricts call times to one hour. After one hour has
+   passed, a new call must be started.
 
 **Why you may consider choosing Google meet and not Zoom?** 
 
 Google offers many services that are useful for collaboration. This
-includes Google drive, docs, presentations, mail, calendar, and
-groups.  features such as google drive. As they can be accessed
-through a single account, it is obvious that Google meet provides a
-valuable set of services to any research team.
+includes Google Drive, Docs, Slides, Gmail, Calendar, and
+Groups. As they can be accessed through a single account, it is 
+obvious that Google Meet provides a valuable set of services to any 
+research team.
 
 #### Zoom
 
 Zoom is a cloud-based communications platform that provides 
-one-on-one, group meetings, and webinars.
+one-on-one's, group meetings, and webinars.
 
 **What are good features?**
 
@@ -75,7 +84,7 @@ Some of Zoom’s features include live chat, screen sharing, a
 whiteboard, and virtual reactions for meeting
 participants. Additionally, it can record meetings to the cloud or
 personal devices, create breakout rooms, and allows participants to
-seamlessly moving between them. A very important feature is that the
+seamlessly move between them. A very important feature is that the
 meeting owner can remotely control another participant’s screen. Zoom
 allows users to join a session through an established meeting
 URL. Participants do not need to be signed in or even have a Zoom
@@ -86,22 +95,22 @@ dedicated telephone numbers.
 **What are not so good features?**
   
 Free account holders can host unlimited one-on-one meetings (meeting
-durations up to 24 hrs). In contrast to Google meet (which has a one
+durations up to 24 hrs). In contrast to Google Meet (which has a one
 hour meeting limit), there is a duration limit of 40 mins for meetings
 with three or more participants. We observed that video quality can be
 unstable, and the overall platform performance can quickly deteriorate
 over limited bandwidth connections. In such cases, we recommend
-switching the camera from the participant that has issues.
-Furthermore, if you do at the same time a lot of calculations on your
-machine it may affect the quality of the call. This applies to older
+switching off the camera from the participant that has issues.
+Furthermore, if you do a lot of calculations at the same time on your
+machine, it may affect the quality of the call. This applies to older
 machines and should allow you to give a beautiful argument to get a
 new computer. In some cases, you may have a second computer and can
 use one for sharing your session, while the other one is used for
-sound, or you use a cell phone for the later
+sound, or you use a cell phone for the latter.
 
 **How can someone take control of a remote desktop?**
 
-To take control of a remote desktop, the remote user must activate
+To take control of a remote desktop, the host must activate
 screen sharing. Once the screen sharing is activated, we need to click
 the `View Options` drop-down menu (usually at the top of the screen)
 and click on `Request remote control`. The remote user will then get a
@@ -117,26 +126,25 @@ the
 
 In many research projects, participants may be in different timezones
 or have schedules that do not provide overlapping times for
-video-conferencing. For this reason, it is important to support a chat-like feature, that allows the researchers to catch up with activities
+video-conferencing. For this reason, it is important to support a chat-like 
+feature that allows the researchers to catch up with activities
 that took place they were not available for. Tools such as e-mail
 have filled this demand for quite some time. Recently additional tools
 such as Slack have appeared that enhance the e-mail activity while
-also allowing real-time text messaging,
-
-
+also allowing real-time text messaging.
 
 #### Slack
 
 Slack is a communication software that is used for groups to
-send and receive text messages. Additional 3rd party services that can be added
-to slack that can send messages to it even automatically.
+send and receive text messages. Additional 3rd party services 
+can be added to Slack that can even send messages to it automatically.
 
 **What are good features?**
  
 Slack offers a GUI that focuses on a real-time message stream. It can
 be used on computers, phones, and tablets.  It is easy to send photos,
 which may be useful in case the device you need to discuss is not on
-the internet but you need to share the content for example of its
+the Internet but you need to share the content for example of its
 screen.
 
 **What are not so good features?**
@@ -144,27 +152,44 @@ screen.
 Slack is stream-based and does not provide a good mechanism for
 organizing messages once they have been sent. The thread feature is
 far inferior to that of even a simple e-mail client. If one is
-involved in many slack workspaces, it becomes difficult to manage
-them. Most importantly Slack comes in its free version with only a
-limited number of free messages. This means you will have to pay once
-you exceed the limit.  Thus even the integration of useful services
-such as GitHub notifications is not recommended as you will too
-quickly exceed the limits. A posting policy needs to be established.
-Those that are not using slack frequently may be out of touch
+involved in many Slack workspaces, it becomes difficult to manage
+them. Most importantly, Slack comes with only a limited number of 
+free messages in its free version. This means you will have to pay once
+you exceed the limit. Thus, even the integration of useful services
+such as GitHub notifications is not recommended as you will exceed the limits
+too quickly. A posting policy needs to be established.
+Those that are not using Slack frequently may be out of touch
 quickly. Although there is an unread threads feature, it may be filled
-with messages if you do not use slack daily just to keep up.
+with messages if you do not use Slack daily just to keep up.
 
-To support the separation of topics it is advisable to create several
+To support the separation of topics, it is advisable to create several
 channels such as "general" or a channel for a particular topic. However,
 it is also important to limit the number of channels so it does not
-become too confusing
+become too confusing. Keep in mind that Slack users are not automatically
+added to new channels.
 
+**How does one add all Slack workspace users to a new channel?**
+
+By default, users must manually browse the list of channels and join them
+by clicking `Add channels` on the left side of the GUI. However, any user
+can add everyone to the channel by doing the following:
+
+1. Type `/who` in #general and then press `Enter` to send the message; 
+   you will see a message only you can see: a list of all the members 
+   in the channel.
+
+2. Copy this message from Slackbot. Ensure you are copying the names of
+   the users which all begin with `@`.
+   
+3. Paste the output in the new channels and press `Enter`. This will not actually 
+   mention everybody— it will only prompt a dialog box confirming to invite 
+   everyone. Click `Invite Them`.
 
 ## Creating Text
 
 As part of your project, you will need to develop documents such as
-manuals or reports hence you must have the means to easily add text to
-your project.  This includes the creation of text via editors but also
+manuals or reports; hence, you must have the means to easily add text to
+your project. This includes the creation of text via editors but also
 through dictation in case this is useful and works for you.
 
 ### Dictation
@@ -199,11 +224,11 @@ Examples include:
     
 ### Grammar Checkers
 
-When developing content for tutorials and documentation it is
+When developing content for tutorials and documentation, it is
 important to check their correctness with a grammar checker. We have
-made the best experience with Grammarly followed by MS word. The best
+made the best experience with Grammarly followed by MS Word. The best
 way to use them is to copy and paste small sections into them from
-your document and then check them. After you are satisfied copy the
+your document and then check them. After you are satisfied, copy the
 contents back to the original one while overwriting the old text.
 
 #### Grammarly
@@ -215,14 +240,14 @@ good enough for most.
 
 **What are not so good features?**
 
-As with any grammar checker, not everything is corrected properly. In some text, it shows false
-errors, but it's still very good.
+As with any grammar checker, not everything is corrected properly. In 
+some text, it shows false errors, but it's still very good.
 
 #### Word
 
 **What are good features?**
 
-The word grammar checker is built into word and has a high
+The word grammar checker is built into Word and has a high
 accuracy. 
 
 **What are not so good features?**
@@ -233,10 +258,9 @@ other symbols. Thus you must check all symbols after you copy them into
 a markdown document. In case you have the choice we currently
 recommend you use Grammarly.
 
-
 ### Editors
 
-You will need likely multiple two editors as part of your research
+You will likely need multiple editors as part of your research
 activities. This is motivated by the fact that we do lots of
 development on your local machine, but also do remote development via
 terminal access to a remote computer that does not have a GUI. In case
@@ -246,10 +270,10 @@ emacs. We have listed below some editors and you may want to choose
 * `emacs` vs vi/vim for terminal editing
 * `pycharm` vs MS code for fancyful python code development
 
-There is a third option that we will use and that is Jupiter which
-allows us to interactively develop python code. Jupyter is important as
+There is a third option that we will use and that is Jupyter which
+allows us to interactively develop Python code. Jupyter is important as
 it is used by many data scientists due to its ad hoc interactive mode
-while programming. However, also pyCharm and VScode provide options to
+while programming. However, PyCharm and VS Code also provide options to
 view and run Jupyter notebooks. However, not everything that works in
 Jupyter is working on these platforms.
 
@@ -311,20 +335,20 @@ the documents have to be split up into multiple documents due to their size.
 
 It is important to communicate quickly some tasks in documents that
 we write as a team. To do this we use the keyword TODO,
-followed usually by an explanation what needs to be done. As a TODO  can be
+followed usually by an explanation what needs to be done. As a TODO can be
 hopefully resolved quickly it should be able to complete them in 1-2
-hours. Any TODO  that may take longer we also add to our GitHub project
+hours. Any TODO that may take longer we also add to our GitHub project
 for it to be recorded and if we identify delays in its
 execution we can assign additional team members to help on these
 larger tasks.
 
-Once a team member has identified a TODO  item, the team member can
+Once a team member has identified a TODO item, the team member can
 simply put his name behind it, as well as the date and time of teh
 anticipated completion so others
 know you work on it. Also, it is recmmended to communicate on slack about the task
 you do if you run into issues or have questions.
 
-In case a TODO has not yet been assign, a team member can simply
+In case a TODO has not yet been assigned, a team member can simply
 tak it and complete it. In practivce we have seen in some groups that
 the project lead needs to assign tasks to speed up the development and
 avid length times of inactivity by team members.
@@ -353,7 +377,7 @@ Git can easily be installed on all platforms including
 
 Pycharm is one of the best editors for Python. It does provide
 build-in support to interact with GitHub. For beginners, we do
-recommend to get started with PyCharms github features.
+recommend to get started with PyCharm's GitHub features.
 
 ## GitHub from a GUI 
 
