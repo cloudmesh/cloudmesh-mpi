@@ -15,7 +15,7 @@ program, retrieved from https://cvw.cac.cornell.edu/python/exercise ):
 > ```
 
 The following is a visualization of the program's methodology to calculate pi:
-![montecarlographic](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/monte-carlo-graphic.png)
+![montecarlographic](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/monte-carlo-visualization.png)
 
 The parallel_pi program outputs the sample size of points used in the generation, then
 the estimation of pi, and finally the standard deviation of the estimates used for the
