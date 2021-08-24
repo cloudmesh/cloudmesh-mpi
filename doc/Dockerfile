@@ -1,4 +1,7 @@
-FROM ubuntu:21.04
+# FROM ubuntu:21.04
+FROM ubuntu:20.04
+
+ARG DEBIAN_FRONTEND=noninteractive
 
 # Install bash
 RUN apt-get update
@@ -31,6 +34,7 @@ RUN apt install -y python3-pip
 # CMD ["source /ENV3/bin/activate"]
 
 RUN pip3 install pandoc-include
+RUN pip3 install pandoc-xnos
 
 ENTRYPOINT ["pandoc"]
 

@@ -98,12 +98,12 @@ Thanks to its user focused abstractins, its standardization,
 portability, and scalability, and availability MPI is a popular tool
 in the creation of high performance and parallel computing programs.
 
-## Installation
+# Installation
 
 Next we discuss how to install mpi4p on various systems. We will focus on installing it in a single computer using multiple cores.
 
 
-### Getting the CPU Count
+## Getting the CPU Count
 
 For the examples listed in this document, it is important to know the number of
 cores in your computer. This can be found out through the command line or a python program.
@@ -123,7 +123,7 @@ or as a command line
 
 However, you can aslo use the commandline tools that we have included in our documentation.
 
-### Windows 10 EDU or PRO
+## Windows 10 EDU or PRO
 
 *Note:* We have not tested this on Windows home.
 
@@ -193,7 +193,7 @@ However, you can aslo use the commandline tools that we have included in our doc
 
    Alternatively, you can use a python program as discussed in the section "Getting the CPU Count"
 
-### macOS
+## macOS
 
 1. Find out how many processes you can run on your machine and remember that number. You can do this with
 
@@ -201,23 +201,23 @@ However, you can aslo use the commandline tools that we have included in our doc
    > $ sysctl hw.physicalcpu hw.logicalcpu
    > ```
 
-### Installing mpi4py in MacOS
+2. First, install python 3 from <https://www.python.org/downloads/>
 
-A similar process can be followed to install mpi4py in macOS. In this
-case, we can use Homebrew to get Open MPI floowed by installing mpi4py 
-in your venv
+3. Next, install homebrew and install the open-mpi version of MPI as well as mpi4py:
 
-```
-$ xcode-select --install
-$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-$ brew install wget
-$ brew install open-mpi
-$ python3 -m venv ~/ENV3
-$ source ~/ENV3/bin/activate
-$ pip install mpi4py
-```
+   > ```
+   > $ xcode-select --install
+   > $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   > $ brew install wget
+   > $ brew install open-mpi
+   > $ python3 -m venv ~/ENV3
+   > $ source ~/ENV3/bin/activate
+   > $ pip install mpi4py
+   > ```
 
-### Linux, Ubuntu 20.04 and 21.04
+## Ubuntu
+
+These instructions apply to 20.04 and 21.04. Please use 20.04 in case you like to use GPUs.
 
 1. First, find out how many processes you can run on your machine and remember that number. You can do this with
 
@@ -238,7 +238,7 @@ $ pip install mpi4py
    > (ENV3) $ pip install mpi4py -U
    ```
 
-### Installing mpi4py in a Raspberry Pi
+## Raspberry Pi
    
 1. Install Open MPI in your pi by entering the following command assuming a PI4, PI3B+ PI3, PI2:
    
@@ -252,7 +252,7 @@ $ pip install mpi4py
 
    If you have other Raspberry Pi's you may need to update the core cout according to the hardware specification. 
 
-### Testing the installation
+## Testing the Installation
 
 On all sytems the instalation is very easy. Just change in our example the number 4 to the numbers of cores in your system.
 
@@ -269,47 +269,37 @@ You will see an output similar to
    > Hello, World! I am process 3 of 4 on myhost.
    > ```
 
-where `myhost` is the name of your computer,
+where `myhost` is the name of your computer.
 
+***Note:** the messages can be in a different order*.
 
+# Quickstart Programs
 
-## Hello World
+## MPI Ring Example
 
-To test if it works a build-in test program is available.
+The MPI Ring example program is one of the classical programs every
+MPI programmer has seen. Here a message is send from the Manager to
+the workers while the processors are arranged in a ring and the last
+worker sends the message back to the manager. Instead of just doing
+this once our program does it multiple times and add every time a
+communication is done 1 do the integer send around. Figure 1 showcases
+the process graph of this application.
 
-To run it on on a single host with n cores (lest assume you have 2
-cores), you can use:
+![Processes organized in a ring perform a sum operation](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/ring.png){ width=40% }
 
-> ```
-> mpiexec -n 4 python -m mpi4py.bench helloworld
-> Hello, World! I am process 0 of 5 on localhost.
-> Hello, World! I am process 1 of 5 on localhost.
-> Hello, World! I am process 2 of 5 on localhost.
-> Hello, World! I am process 3 of 5 on localhost.
-> ```
-
-Note that the messages can be in a different order.
-
-
-To run it on multiple hosts with each having n cores please create a
-`hostfile` as follows:
-
-- [ ] TODO: Open, how to run it on multiple hosts on the PI
-
-## Ring computation using mpi4py
-
-As an example of the use of mpi4py, we present an instance of communication between a group of processes organized in a ring. 
-
-[Processes organized in a ring perform a sum operation]
-   (https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/ring.png)
-
-In the example, the user provides an integer that is transmitted from process with rank 0, to process with rank 1 and so on until the data returns to process 0. Each process increments the integer by 1 before transmitting it to the next one, so the final value received by process 0 after the ring is complete is the sum of the original integer plus the number of processes in the communicator group.
+In the example, the user provides an integer that is transmitted from
+process with rank 0, to process with rank 1 and so on until the data
+returns to process 0. Each process increments the integer by 1 before
+transmitting it to the next one, so the final value received by
+process 0 after the ring is complete is the sum of the original
+integer plus the number of processes in the communicator group.
 
 > ``` python
 > !include ../examples/ring.py
 > ```
 
-Executing the code in the example by entering ```mpiexec -n 2 python ring.py``` in the terminal will produce the following result:
+Executing the code in the example by entering ```mpiexec -n 2 python
+ring.py``` in the terminal will produce the following result:
 
 >```bash
 > Communicator group with 4 processes
@@ -320,31 +310,36 @@ Executing the code in the example by entering ```mpiexec -n 2 python ring.py``` 
 > Process 3 transmitted value 10 to process 0
 > Final data received in process 0 after ring is completed: 10
 >```
-As we can see, the integer provided to process 0 (6 in this case) was successively incremented by each process in the communicator group to return a final value of 10 at the end of the ring.
+
+As we can see, the integer provided to process 0 (6 in this case) was
+successively incremented by each process in the communicator group to
+return a final value of 10 at the end of the ring.
  
 
 ## Machine file, hostfile, rankfile
 
+**NOTE: THIS NEEDS TO BE VERIFIED**
 
-Run 
+On all machines on which you lke to run mpi4py. Please follos the
+instructions in the installation section. We assume that all hosts are
+of the same architecture. Again, we assume you have 4 machines
+configured in your host file. Let us assue that we have 5 rasperry pis
+with 1 manager manchine and 4 worker machines.
 
-> ```bash 
-> $ sudo apt-get install -y python-mpi4py 
-> ```
 
-on all nodes.
+To run it on multiple hosts with each having n cores please create a
+`hostfile` as follows:
 
-Test the installation: 
+- [ ] TODO: Open, how to run it on multiple hosts on the PI
+
+Then make sure you test the 
 
 > ```
 > $ mpiexec -n 5 python -m mpi4py helloworld
 >```
 
-THIS CAN BE DONE BEST WITH CLOUDMESH
-
-FIRTS TEST BY HAND
-
-- [ ] TODO: Open, VERIFY 
+The hostfile can be explicitly passed along as a parameter while
+placing it in the manager machine
 
 > ```
 > mpirun.openmpi \
@@ -356,21 +351,28 @@ FIRTS TEST BY HAND
 The machinefile contains the ipaddresses
 
 > ```
-> pi@192. ....
-> yout add the ip addresses
+> pi@192.168.0.10
+> pi@192.168.0.11
+> pi@192.168.0.12
+> pi@192.168.0.13
+> pi@192.168.0.14
 > ```
 
-- [ ] TODO: Open, learn about and evaluate and test if we can do 
+Please make sure to change the ipaddresses of your hosts according to your network.
+
+If you like to add multiple cores from a machine you can also use a rank file
 
 > ```
 > mpirun -r my_rankfile --report-bindings ... 
 > 
 > Where the rankfile contains:
-> rank 0=compute17 slot=1:0
-> rank 1=compute17 slot=1:1
-> rank 2=compute18 slot=1:0
-> rank 3=compute18 slot=1:1
+> rank 0=pi@192.168.0.10 slot=1:0
+> rank 1=pi@192.168.0.10 slot=1:1
+> rank 2=pi@192.168.0.11 slot=1:0
+> rank 3=pi@192.168.0.10 slot=1:1
 > ```
+
+In this configuration we only use 2 cores from two differnt PIs.
 
 ## Example Programs
 
@@ -388,16 +390,25 @@ Maybe to complex:
 
 There are some differences between mpi4py and the standard MPI implementations for C/Fortran worth noting.
 
-In mpi4py, the standard MPI_INIT() and MPI_FINALIZE() commonly used to initialize and terminate the MPI environment are automatically handled after importing the mpi4py module.
-Although not generally advised, mpi4py still provides MPI.Init() and MPI.Finalize() for users interested in manually controlling these operations. Additionally, the automatic
-initialization and termination can be deativated. For more information on this topic, please check the following links:
+In mpi4py, the standard MPI_INIT() and MPI_FINALIZE() commonly used to
+initialize and terminate the MPI environment are automatically handled
+after importing the mpi4py module.  Although not generally advised,
+mpi4py still provides MPI.Init() and MPI.Finalize() for users
+interested in manually controlling these operations. Additionally, the
+automatic initialization and termination can be deativated. For more
+information on this topic, please check the following links:
 
  * [MPI.Init() and MPI.Finalize()](https://githubmemory.com/repo/mpi4py/mpi4py/issues/54)
  * [Deactivating automatic initialization and termination on mpi4py](https://bitbucket.org/mpi4py/mpi4py/issues/85/manual-finalizing-and-initializing-mpi)
 
-Another characteristic feature of mpi4py is the availablitly of uppercase and lowercase communication methods. Lowercase methods like `comm.send()` use Python's `pickle`
-module to transmit objects in a serialized manner. In contrast, the uppercase versions of methods like `comm.Send()` enable transmission of data contained in a contiguous
-memory buffer, as featured in the MPI standard. For additional information on the topic, check (https://mpi4py.readthedocs.io/en/stable/overview.html?highlight=pickle#communicating-python-objects-and-array-data).
+Another characteristic feature of mpi4py is the availablitly of
+uppercase and lowercase communication methods. Lowercase methods like
+`comm.send()` use Python's `pickle` module to transmit objects in a
+serialized manner. In contrast, the uppercase versions of methods like
+`comm.Send()` enable transmission of data contained in a contiguous
+memory buffer, as featured in the MPI standard. For additional
+information on the topic, check
+(https://mpi4py.readthedocs.io/en/stable/overview.html?highlight=pickle#communicating-python-objects-and-array-data).
 
 ## MPI Point-to-Point Communication Examples
 
@@ -407,7 +418,7 @@ The `send()` and `recv()` methods provide for functionality to transmit data
 between two specific processes in the communicator group.
 
 
-[Sending and receiving data between two processes] (https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/send_receive.png)
+![Sending and receiving data between two processes](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/send_receive.png){ width=15% }
 
 Here is the definition for the `send()` method:
 
@@ -505,7 +516,7 @@ broadcasting from the process with rank 0.
 In this example, we broadcast a two-entry Python dictionary from a root process
 to the rest of the processes in the communicator group.
 
-![Broadcasting data from a root process to the rest of the processes in the communicator group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png)
+![Broadcasting data from a root process to the rest of the processes in the communicator group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){ width=25% }
 
 The following code snippet shows the creation of the dictionary in process with
 rank 0. Notice how the variable `data` remains empty in all the other
@@ -568,7 +579,7 @@ processes in the communicator group.
 
 - [ ] TODO: All, add images
 
-![Example to scatter data to different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/scatter.png)
+![Example to scatter data to different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/scatter.png){ width=25% }
 
 > ``` python
 > !include ../examples/scatter.py
@@ -625,7 +636,7 @@ based on their rank value.
 In this example, data from each process in the communicator group is
 gathered in the process with rank 0.
 
-![Example to gather data to different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/gather.png)
+![Example to gather data to different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/gather.png){ width=25% }
 
 
 
@@ -689,7 +700,7 @@ array (table) and distributed to ALL the members of the communicator group
 (as opposed to a single member, which is the case when `comm.Gather()` is
 used instead).
 
-![Example to gather the data from each process into ALL of the processes in the group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/allgather.png)
+![Example to gather the data from each process into ALL of the processes in the group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/allgather.png){ width=25% }
 
 > ```python
 > !include ../examples/allgather_buffer.py
@@ -728,12 +739,13 @@ Using
 > MPI.Comm_Self.Spawn
 > ```
 
-will create a child process that can communicate with the parent. In the spawn code example, the manager broadcasts an array to the worker.
+will create a child process that can communicate with the parent. In
+the spawn code example, the manager broadcasts an array to the worker.
 
 In this example, we have two python programs, the first one being the
 manager and the second being the worker.
 
-![Example to spawn a program and start it on the different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/spawn.png)
+![Example to spawn a program and start it on the different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/spawn.png){ width=25% }
 
 
 > ``` python
@@ -855,7 +867,7 @@ four. With this in mind, we can use the Monte Carlo Method for the
 calculation of pi.
 
 The following is a visualization of the program's methodology to calculate pi:
-![montecarlographic](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/monte-carlo-visualization.png)
+![montecarlographic](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/monte-carlo-visualization.png){ width=25% }
 
 The following montecarlo.py program generates a very rough estimation of pi using the methodology and
 equation shown above.
@@ -908,11 +920,8 @@ Executing `mpiexec -n 4 python count.py` gives us:
 
 >
 > 1 1 [7, 5, 2, 1, 5, 5, 5, 4, 5, 2, 6, 5, 2, 1, 8, 7, 10, 9, 5, 6]
-> 
 > 3 3 [9, 2, 9, 8, 2, 7, 7, 2, 10, 1, 2, 5, 3, 5, 10, 8, 10, 10, 8, 10]
-> 
 > 2 3 [1, 3, 8, 5, 7, 8, 4, 2, 8, 5, 10, 7, 10, 1, 6, 5, 9, 6, 6, 7]
-> 
 > 0 3 [6, 9, 10, 2, 4, 8, 8, 9, 4, 1, 6, 8, 6, 9, 7, 5, 5, 6, 3, 4]
 > 
 > 0 [3, 1, 3, 3]
@@ -1032,6 +1041,122 @@ build on ubunto and rasperry os are slightly different
 ### Time series analysis
 
 
+## Python Ecosystem
+
+#### Using Environment Variables to Pass Parameters
+
+
+os.environ in Python is a mapping object that represents the user’s
+environmental variables.  It returns a dictionary having user’s
+environmental variable as key and their values as value.
+
+os.environ behaves like a python dictionary, so all the common
+dictionary operations like get and set can be performed.  We can also
+modify os.environ but any changes will be effective only for the
+current process where it was assigned and it will not change the value
+permanently.
+
+
+##### Example
+
+We demonstrate this in an example.
+We developed a 
+count.py program that uses os.environ from the os library
+to optionally pass parameters to an mpi program.
+
+> ``` python
+> !include ../examples/count/count.py
+> ```
+
+If the user changed the value of N, MAX, or FIND in the
+terminal using, for example, `export FIND="5"` (shown below)
+os.environ.get("FIND") would set the find variable equal
+to 5.
+
+> ```
+> $ export FIND="5"
+> $ mpiexec -n 4 python count.py
+> 1 0 [9, 6, 8, 3, 4, 8, 5, 6, 6, 3, 5, 6, 10, 5, 5, 1, 1, 2, 1, 3]
+> 3 0 [3, 7, 2, 8, 4, 6, 5, 7, 4, 4, 7, 6, 1, 7, 10, 2, 1, 9, 2, 8]
+> 2 0 [10, 8, 10, 8, 7, 2, 2, 7, 4, 3, 3, 7, 10, 8, 1, 5, 1, 4, 6, 5]
+> 0 0 [5, 8, 9, 1, 2, 7, 1, 5, 5, 6, 3, 6, 10, 9, 7, 10, 5, 3, 6, 5]
+> 0 [0, 0, 0, 0]
+> Total number of 5's: 0
+> ```
+
+However, if the user does not define any evironment
+variables, find will default to 8.
+
+> ```
+> $ mpiexec -n 4 python count.py
+> 1 0 [5, 5, 2, 6, 6, 3, 5, 3, 3, 2, 3, 9, 7, 1, 3, 7, 1, 7, 1, 3]
+> 3 1 [7, 1, 5, 1, 2, 2, 10, 7, 2, 1, 2, 6, 4, 6, 10, 10, 5, 8, 10, 10]
+> 2 0 [5, 1, 4, 4, 9, 9, 5, 1, 1, 3, 9, 3, 5, 2, 5, 7, 9, 7, 10, 5]
+> 0 1 [6, 6, 5, 6, 4, 10, 3, 5, 5, 2, 5, 2, 7, 6, 7, 8, 5, 7, 6, 4]
+> 0 [1, 0, 0, 1]
+> Total number of 8's: 2
+> ```
+
+### Parameters
+
+### Passing Parameters from Git Bash into Python
+
+First create a run.sh shell file with the following contents
+```python
+$ N=1; python environment-parameter.py
+$ N=2; python environment-parameter.py
+```
+
+environment-parameter.py and click-parameter.py can be retrieved from examples/parameters.
+They must be in the same directory as the previously created run.sh file, and you must cd
+(change directory) into this directory in Git Bash.
+Input the following commands into Git Bash
+
+```
+# This command creates an environment variable called N
+$ export N=10
+# This command prints the environment variable called N
+$ echo $N
+# This command launches a Python environment
+$ python -i
+>>> import os
+>>> os.environ["N"]
+>>> exit()
+$ python environment-parameter.py
+$ sh run.sh
+$ sh run.sh | fgrep "csv,processors"
+$ python click-parameter.py
+# You can manually set the variable in git bash in the same line as you open the .py file
+$ python click-parameter.py --n=3
+```
+
+### click-parameter.py
+
+``` python
+!include ../examples/parameters/click-parameter.py
+```
+
+This Python program sets a variable n (default is 1) and runs a cloudmesh StopWatch
+based on the value of the variable n. If n is set to 1, the program waits for a
+period of time (0.1 times n), prints the value of n, and then outputs the cloudmesh
+benchmark for a particular processor. If n is set to 1, cloudmesh benchmark will
+output processor 1 and the period of time the program waited. If n is set to 2,
+cloudmesh benchmark will output processor 2 and so on.
+
+This is meant to be a beginner's basic exploration into the click module.
+
+### environment-parameter.py
+
+``` python
+!include ../examples/parameters/environment-parameter.py
+```
+
+This Python program does not set a variable N on its own. It refers to os.environ
+which should have previously set N as shown in the beginning of this document's
+git bash log. The program does the same procedures as the
+previous program once N is set and passed from os.environ.
+
+
 # Appendix
 
 !include chapters/hardware.md
@@ -1069,9 +1194,9 @@ and download the file
 After the download, you have to extract and unzip the file as follows in a
 gitbash that you started as administrative user:
 
-![administrativegitbash](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/gitbashadmin.png)
+![administrativegitbash](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/gitbashadmin.png){ width=25% }
 
-figure: screenshot of opening gitbash in admin shell 
+Figure: screenshot of opening gitbash in admin shell 
 
 > ```bash
 > $ cp make-4.3-without-guile-w32-bin.zip /usr
@@ -1133,6 +1258,64 @@ Next run in Powershell
 > ```
 
 Now you can use the Ubuntu distro freely. The WSL2 application will be in your shortcut menu in `Start`. 
+
+# Make on Windows
+
+Makefiles provide a good feature to organize workflows while assembling
+programs or documents to create an integrated document. Within `makefiles` you
+can define targets that you can call and are then executed. Preconditions can
+be used to execute rules conditionally. This mechanism can easily be used to
+define complex workflows that require a multitude of interdependent actions to
+be performed. Makefiles are executed by the program `make` that is available on
+all platforms.
+
+On Linux, it is likely to be pre-installed, while on macOS you can install it
+with Xcode. On Windows, you have to install it explicitly. We recommend that
+you install `gitbash` first. After you install `gitbash`, you can install
+`make` from an administrative `gitbash` terminal window. To start one, go to
+the search field next to the Windows icon on the bottom left and type in
+gitbash without a `RETURN`. You will then see a selection window that includes
+`Run as administrator. Click on it. As you run it as administrator, it will
+allow you to install `make`. The following instructions will provide you with a
+guide to install make under windows.
+
+## Installation
+
+Please visit
+
+* <https://sourceforge.net/projects/ezwinports/files/>
+
+and download the file 
+
+* ['make-4.3-without-guile-w32-bin.zip'](https://sourceforge.net/projects/ezwinports/files/make-4.3-without-guile-w32-bin.zip/download)
+
+After the download, you have to extract and unzip the file as follows in a
+gitbash that you started as administrative user:
+
+![administrativegitbash](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/gitbashadmin.png)
+
+figure: screenshot of opening gitbash in admin shell 
+
+> ```bash
+> $ cp make-4.3-without-guile-w32-bin.zip /usr
+> $ cd /usr
+> $ unzip make-4.3-without-guile-w32-bin.zip
+> ```
+
+Now start a new terminal (a regular non-administrative one) and type the
+command
+
+> ```bash
+> $ which make
+> ```
+
+It will provide you the location if the installation was successful
+
+> ```bash
+> /usr/bin/make
+> ```
+
+to make sure it is properly installed and in the correct directory.
 
 
 # Acknowledgements

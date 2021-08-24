@@ -1,4 +1,4 @@
-OPTIONS=--filter pandoc-include
+OPTIONS=--filter pandoc-include --filter pandoc-xnos
 USER_ID=$(shell id -u)
 GROUP_ID=$(shell id -g)
 PWD=$(shell pwd)
@@ -25,7 +25,7 @@ md-mpi: ${MPI}
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} ./chapters/report-mpi.md -o tmp-1.md
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} tmp-1.md -o tmp-2.md
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} tmp-2.md -o tmp-3.md
-	${PANDOC} cloudmesh/pandoc \
+	${PANDOC} cloudmesh/pandoc ${OPTIONS} \
 		--number-sections tmp-3.md \
 		-o ../docs/report-mpi.md
 
@@ -41,7 +41,7 @@ md-group: ${GROUP}
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} ./chapters/report-group.md -o tmp-1.md
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} tmp-1.md -o tmp-2.md
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} tmp-2.md -o tmp-3.md
-	${PANDOC} cloudmesh/pandoc --number-sections ./chapters/title-group.md tmp-3.md -o ../docs/report-group.md
+	${PANDOC} cloudmesh/pandoc ${OPTIONS} --number-sections ./chapters/title-group.md tmp-3.md -o ../docs/report-group.md
 
 pdf-group: ${GROUP} md-group
 	$(call banner, "CREATE GROUP PDF DOCUMENT")
