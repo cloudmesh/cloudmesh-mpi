@@ -1,6 +1,6 @@
 ---
-title: Towards Python MPI for Artificial Intelligence and Deep Learning Research 
-author: Gregor von Laszewski, Fidel Leal, Erin Seliger, Cooper Young, Agness Lungu
+title: Python MPI for AI and Deep Learning
+author: Gregor von Laszewski <laszewski@gmail.com>, Fidel Leal, Jacques Fleischer, Cooper Young 
 header-includes: |
     \usepackage{fancyhdr}
     \pagestyle{fancy}
@@ -9,16 +9,18 @@ header-includes: |
     \newtcolorbox{myquote}{colback=gray!5!white, colframe=gray!75!black}
     \renewenvironment{quote}{\begin{myquote}}{\end{myquote}}
 abstract: |
-   Today state of science and tool kits python has become the predominantly
-   programming language. However, previously existing parallel programming
-   paradigms such as message passing in interface (MPI) have proven to be a
-   useful asset when it comes to enhancing complex data flows while executing
-   them on multiple computers including supercomputers. However many students
-   do not have the time to learn C programming to utilize such advanced
-   cyberinfrastructure. Hence, it is advantageous to access MPI from Python.
-   We will be showcasing to you how you can easily deploy and use MPI via a tool called mpi4pi.
-   We will also show you how to use mpi4pi in support of AI workflows.
-   This is done by using TensorFlow with it, as well as the execution of
-   parallel execution of TensorFlow.
-   For more information, please contact: <laszewski@gmail.com>
+	  Today python has become the predominantly programming language to
+	  coordinate scientific applications especially machine and deep
+	  learning applications. However, previously existing parallel
+	  programming paradigms such as **Message Passing Interface (MPI)** have
+	  proven to be a useful asset when it comes to enhancing complex data
+	  flows while executing them on multiple computers including
+	  supercomputers. The framework is well known in the C-language
+	  community.  However many practitioners do not have the time to learn C
+	  to utilize such advanced cyberinfrastructure. Hence, it is
+	  advantageous to access MPI from Python. We showcase how you can easily
+	  deploy and use MPI from Python via a tool called `mpi4pi`.  We will also show you
+	  how to use `mpi4pi` in support of AI workflows such as 
+    	  TensorFlow.
+	  For more information, please contact: <laszewski@gmail.com>
 ---

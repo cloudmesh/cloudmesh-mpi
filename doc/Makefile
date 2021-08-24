@@ -4,7 +4,7 @@ GROUP_ID=$(shell id -g)
 PWD=$(shell pwd)
 PANDOC=docker run --rm --volume "${PWD}/..:/data" --user ${USER_ID}:${GROUP_ID}
 
-MPI=chapters/preface.md chapters/introduction.md chapters/mpi.md chapters/dl.md ../docs/report-mpi.pdf 
+MPI=chapters/report-mpi.md ../docs/report-mpi.pdf 
 GROUP=chapters/management.md chapters/hardware.md ../docs/report-group.pdf
 
 define banner
@@ -26,7 +26,7 @@ md-mpi: ${MPI}
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} tmp-1.md -o tmp-2.md
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} tmp-2.md -o tmp-3.md
 	${PANDOC} cloudmesh/pandoc \
-		--number-sections ./chapters/title-mpi.md tmp-3.md \
+		--number-sections tmp-3.md \
 		-o ../docs/report-mpi.md
 
 pdf-mpi: ${MPI} md-mpi
