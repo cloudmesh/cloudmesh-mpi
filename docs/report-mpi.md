@@ -291,11 +291,11 @@ programmer has seen. Here a message is send from the Manager to the
 workers while the processors are arranged in a ring and the last worker
 sends the message back to the manager. Instead of just doing this once
 our program does it multiple times and add every time a communication is
-done 1 do the integer send around. Figure @fig:1 showcases the process
-graph of this application.
+done 1 do the integer send around. Figure 1 showcases the process graph
+of this application.
 
 ![Processes organized in a ring perform a sum
-operation](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/ring.png){width="40%"}{#fig:1}
+operation](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/ring.png){width="40%"}
 
 In the example, the user provides an integer that is transmitted from
 process with rank 0, to process with rank 1 and so on until the data
@@ -304,14 +304,15 @@ transmitting it to the next one, so the final value received by process
 0 after the ring is complete is the sum of the original integer plus the
 number of processes in the communicator group.
 
+```{=tex}
+\pagebreak
+```
+```{=tex}
+\newpage
+```
 > ``` python
 > #!/usr/bin/env python
->
-> #
-> # mpieec -n 4 python ring.py --count 1000
-> #
-> #  .....
-> #
+> # USSAGE: mpieec -n 4 python ring.py --count 1000
 > from mpi4py import MPI
 > import click
 > from cloudmesh.common.StopWatch import StopWatch
@@ -320,65 +321,36 @@ number of processes in the communicator group.
 > @click.option('--count', default=1, help='Number of messages send.')
 > @click.option('--debug', default=False, help='Set debug.')
 > def ring(count=1, debug=Fasle):
->     # Communicator
->     comm = MPI.COMM_WORLD
->
->     # Get the rank of the current process in the communicator group
->     rank = comm.Get_rank()
->     # Get the size of the communicator group
->     size = comm.Get_size()
->
+>     comm = MPI.COMM_WORLD   # Communicator
+>     rank = comm.Get_rank()  # Get the rank of the current process 
+>     size = comm.Get_size()  # Get the size of the communicator group
 >     if rank == 0:
 >         print(f'Communicator group with {size} processes')
->         # User provides data to transmit through the ring
->         data = int(input('Enter an integer to transmit: '))
->         # Data is modified
->         data += 1
->         # Data is sent to next process in the ring
->
->     if rank == 0:
->         Stopwatch.start(f"ring {size} {count}")
->         
+>         data = int(input('Enter an integer to transmit: '))  # Input the data
+>         data += 1                                            # Data is modified
+>     if rank == 0:  # ONly processor 0 uses the stopwatch
+>         Stopwatch.start(f"ring {size} {count}")        
 >     for i in range(0, count):
->
 >         if rank == 0:        
->             comm.send(data, dest=rank + 1)
->             # print(f'Process {0} transmitted value {data} to process {rank + 1}')
->             # Data is received from last process in the ring
+>             comm.send(data, dest=rank + 1)  # send data to neighbor
 >             data = comm.recv(data, source=size - 1)
 >             if debug:
 >                 print(f'Final data received in process 0 after ring is completed: {data}')
->
->         elif rank == size - 1:
->           
->             # Data is received from previous process in the ring
->             data = comm.recv(source=rank - 1)
->             # Data is modified
->             data += 1
->             # Data is sent to process 0, closing the ring
->             comm.send(data, dest=0)
->             #print(f'Process {rank} transmitted value {data} to process 0')
->
+>         elif rank == size - 1:          
+>             data = comm.recv(source=rank - 1)  # recieve data from neighbor
+>             data += 1                          # Data is modified
+>             comm.send(data, dest=0)            # Sent to process 0, closing the ring
 >         elif 0 < rank < size -1:
->             # Data is received from previous process in the ring
->             data = comm.recv(source=rank - 1)
->             # Data is modified
->             data += 1
->             # Data is sent to next process in the ring
->             comm.send(data, dest=rank + 1)
->             # print(f'Process {rank} transmitted value {data} to process {rank + 1}')
->
+>             data = comm.recv(source=rank - 1)  # recieve data from neighbor            
+>             data += 1                          # Data is modified
+>             comm.send(data, dest=rank + 1)     # send to neighbor
 >     if rank == 0:
->         print(f'Final data received in process 0 after ring is completed: {data}')
->         # verify
->         assert data == count * size
->
+>         print(f'Final data received in process 0: {data}')
+>         assert data == count * size          # verify
 >     if rank == 0:
->         Stopwatch.stop(f"ring {size} {count}")
+>         Stopwatch.stop(f"ring {size} {count}")  #print the time
 >         Stopwatch.benchmark()
->
->
->       
+>         
 > if __name__ == '__main__':
 >     ring()
 > ```
@@ -1980,6 +1952,65 @@ Next run in Powershell
 
 Now you can use the Ubuntu distro freely. The WSL2 application will be
 in your shortcut menu in `Start`.
+
+# Make on Windows
+
+Makefiles provide a good feature to organize workflows while assembling
+programs or documents to create an integrated document. Within
+`makefiles` you can define targets that you can call and are then
+executed. Preconditions can be used to execute rules conditionally. This
+mechanism can easily be used to define complex workflows that require a
+multitude of interdependent actions to be performed. Makefiles are
+executed by the program `make` that is available on all platforms.
+
+On Linux, it is likely to be pre-installed, while on macOS you can
+install it with Xcode. On Windows, you have to install it explicitly. We
+recommend that you install `gitbash` first. After you install `gitbash`,
+you can install `make` from an administrative `gitbash` terminal window.
+To start one, go to the search field next to the Windows icon on the
+bottom left and type in gitbash without a `RETURN`. You will then see a
+selection window that includes
+`Run as administrator. Click on it. As you run it as administrator, it will allow you to install`make\`.
+The following instructions will provide you with a guide to install make
+under windows.
+
+## Installation
+
+Please visit
+
+-   <https://sourceforge.net/projects/ezwinports/files/>
+
+and download the file
+
+-   ['make-4.3-without-guile-w32-bin.zip'](https://sourceforge.net/projects/ezwinports/files/make-4.3-without-guile-w32-bin.zip/download)
+
+After the download, you have to extract and unzip the file as follows in
+a gitbash that you started as administrative user:
+
+![administrativegitbash](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/gitbashadmin.png)
+
+figure: screenshot of opening gitbash in admin shell
+
+> ``` bash
+> $ cp make-4.3-without-guile-w32-bin.zip /usr
+> $ cd /usr
+> $ unzip make-4.3-without-guile-w32-bin.zip
+> ```
+
+Now start a new terminal (a regular non-administrative one) and type the
+command
+
+> ``` bash
+> $ which make
+> ```
+
+It will provide you the location if the installation was successful
+
+> ``` bash
+> /usr/bin/make
+> ```
+
+to make sure it is properly installed and in the correct directory.
 
 # Acknowledgements
 

@@ -294,6 +294,10 @@ transmitting it to the next one, so the final value received by
 process 0 after the ring is complete is the sum of the original
 integer plus the number of processes in the communicator group.
 
+\pagebreak
+
+\newpage
+
 > ``` python
 > !include ../examples/ring.py
 > ```
