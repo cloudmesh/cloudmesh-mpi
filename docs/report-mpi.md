@@ -282,137 +282,120 @@ where `myhost` is the name of your computer.
 
 ***Note:** the messages can be in a different order*.
 
-# Quickstart Programs
+# Hosts, Machinefile, Rankfile
 
-## MPI Ring Example
+TODO: this section has to be tested.
 
-The MPI Ring example program is one of the classical programs every MPI
-programmer has seen. Here a message is send from the Manager to the
-workers while the processors are arranged in a ring and the last worker
-sends the message back to the manager. Instead of just doing this once
-our program does it multiple times and add every time a communication is
-done 1 do the integer send around. Figure 1 showcases the process graph
-of this application.
+## Running MPI on a Single Computer
 
-![Processes organized in a ring perform a sum
-operation](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/ring.png){width="40%"}
+In case you like to try out MPI nd just use it on a single computer with
+multiple cors, you can skip this section for now and revisit it, once
+you scale up and use multiple computers.
 
-In the example, the user provides an integer that is transmitted from
-process with rank 0, to process with rank 1 and so on until the data
-returns to process 0. Each process increments the integer by 1 before
-transmitting it to the next one, so the final value received by process
-0 after the ring is complete is the sum of the original integer plus the
-number of processes in the communicator group.
+## Running MPI on Multiple Computers
 
-```{=tex}
-\pagebreak
-```
-```{=tex}
-\newpage
-```
-> ``` python
-> #!/usr/bin/env python
-> # USSAGE: mpieec -n 4 python ring.py --count 1000
-> from mpi4py import MPI
-> import click
-> from cloudmesh.common.StopWatch import StopWatch
->
-> @click.command()
-> @click.option('--count', default=1, help='Number of messages send.')
-> @click.option('--debug', default=False, help='Set debug.')
-> def ring(count=1, debug=Fasle):
->     comm = MPI.COMM_WORLD   # Communicator
->     rank = comm.Get_rank()  # Get the rank of the current process 
->     size = comm.Get_size()  # Get the size of the communicator group
->     if rank == 0:
->         print(f'Communicator group with {size} processes')
->         data = int(input('Enter an integer to transmit: '))  # Input the data
->         data += 1                                            # Data is modified
->     if rank == 0:  # ONly processor 0 uses the stopwatch
->         Stopwatch.start(f"ring {size} {count}")        
->     for i in range(0, count):
->         if rank == 0:        
->             comm.send(data, dest=rank + 1)  # send data to neighbor
->             data = comm.recv(data, source=size - 1)
->             if debug:
->                 print(f'Final data received in process 0 after ring is completed: {data}')
->         elif rank == size - 1:          
->             data = comm.recv(source=rank - 1)  # recieve data from neighbor
->             data += 1                          # Data is modified
->             comm.send(data, dest=0)            # Sent to process 0, closing the ring
->         elif 0 < rank < size -1:
->             data = comm.recv(source=rank - 1)  # recieve data from neighbor            
->             data += 1                          # Data is modified
->             comm.send(data, dest=rank + 1)     # send to neighbor
->     if rank == 0:
->         print(f'Final data received in process 0: {data}')
->         assert data == count * size          # verify
->     if rank == 0:
->         Stopwatch.stop(f"ring {size} {count}")  #print the time
->         Stopwatch.benchmark()
->         
-> if __name__ == '__main__':
->     ring()
-> ```
+MPI is designed for running programs on multiple coomputers. One of
+these computers serves as manager and communicates to its workers. To
+define on which computer is running what, we need to have a
+configuration file that list a number of hosts to participate in our set
+of machines, the MPI cluster.
 
-Executing the code in the example by entering
-`mpiexec -n 2 python ring.py` in the terminal will produce the following
-result:
+The configurationfile specifying this is called a machinefile, hostfile
+or rankfile. We will explain the differences to them in this section.
+
+### Prerequisit
+
+Naturaly, the prequsit to use a cluster is that you
+
+1.  have MPI and mpi4py installed on each of the computers, and
+2.  have access via ssh on each of these computers
+
+If you use a raspberry PI cluster, we recommend that you use our
+cloudmesh-pi-burn program \[TODOREF\]. This will conveniently create you
+a Raspberry PI cluster with login features eastablished. YOu still need
+to install mpi4py however on each node.
+
+If you use another set of resources, you will often see the
+recommendation to use passwordless ssh key between the nodes. This we
+only recommend if you are an expert and have placed the cluster behind a
+firewall. If you experiement instead with your own cluster, we recommend
+that you use password protected SSH keys on your manager node and
+pouplate them with ssh-copy-id to the worker computers. To not always
+have to type in your password to the different machines, we recommend
+you use `ssh-agent`, and `ssh-add`.
+
+### Using Hosts
+
+In case of multiple computers you can simply specify the hosts as a
+paremeter to your mpi program tht you run on your manager node
 
 > ``` bash
-> Communicator group with 4 processes
-> Enter an integer to transmit: 6
-> Process 0 transmitted value 7 to process 1
-> Process 1 transmitted value 8 to process 2
-> Process 2 transmitted value 9 to process 3
-> Process 3 transmitted value 10 to process 0
-> Final data received in process 0 after ring is completed: 10
+> (ENV3) $ mpiexec -n 4 -host re0,red1,red2,red3 python -m mpi4py.bench helloworld   
 > ```
 
-As we can see, the integer provided to process 0 (6 in this case) was
-successively incremented by each process in the communicator group to
-return a final value of 10 at the end of the ring.
+To pescify how many processes you like to run on each of them you can
+use the option `-ppn` followed by the number.
 
-## Machine file, hostfile, rankfile
+> ``` bash
+> (ENV3) $ mpiexec -n 4 -pn 2 -host re0,red1,red2,red3 python -m mpi4py.bench helloworld   
+> ```
 
-**NOTE: THIS NEEDS TO BE VERIFIED**
+As today we usually have multiple cores on a processor you could be
+using that core count as the parameter
 
-On all machines on which you lke to run mpi4py. Please follos the
-instructions in the installation section. We assume that all hosts are
-of the same architecture. Again, we assume you have 4 machines
-configured in your host file. Let us assue that we have 5 rasperry pis
-with 1 manager manchine and 4 worker machines.
+### Machinefile Single Cores
 
-To run it on multiple hosts with each having n cores please create a
-`hostfile` as follows:
+To simplify the parameterpassing to MPI you can use machine files
+instead. This allows you also to define different numbers of processes
+for different hosts. Thus it is mor flexible. In factwe recommend that
+you use a machine file in most cases as you than also have record of how
+you configured your cluster.
 
--   [ ] TODO: Open, how to run it on multiple hosts on the PI
+The machine file is a simple text file that lista all the different
+computers participating in your cluster. As MPI was originally sesigned
+at a time whne there was only one core on a computer, the simplest
+machine file just lists the different computers. When starting a program
+with the machine file as option only one core of the computer is
+utilized.
 
-Then make sure you test the
-
->     $ mpiexec -n 5 python -m mpi4py helloworld
-
-The hostfile can be explicitly passed along as a parameter while placing
-it in the manager machine
+The machinefile can be explicitly passed along as a parameter while
+placing it in the manager machine
 
 >     mpirun.openmpi \
 >       -np 2 \
 >       -machinefile /home/pi/mpi_testing/machinefile \
 >       python helloworld.py
 
-The machinefile contains the ipaddresses
+An example fo a simple machinefile contains the ipaddresses. The
+username can be proceeded by the ip address.
 
->     pi@192.168.0.10
->     pi@192.168.0.11
->     pi@192.168.0.12
->     pi@192.168.0.13
->     pi@192.168.0.14
+>     pi@192.168.0.10:1
+>     pi@192.168.0.11:2
+>     pi@192.168.0.12:2
+>     pi@192.168.0.13:2
+>     pi@192.168.0.14:2
 
-Please make sure to change the ipaddresses of your hosts according to
-your network.
+In many cases your machine name may be available within your network and
+known to all hosts in the cluster. In that case it is more convenient To
+sue the machine names.
 
-If you like to add multiple cores from a machine you can also use a rank
-file
+>     pi@red0:1
+>     pi@red1:2
+>     pi@red2:2
+>     pi@red3:2
+>     pi@red4:2
+
+Please make sure to change the ipaddresses or name of your hosts
+according to your network.
+
+### Rankfiles for Multiple Cores
+
+In contrast to the host parameter you can fine tune the placement of
+processes to computers with a `rankfile`. This may be important if your
+hardware has for example specifig computers for data storage or GPUs.
+
+If you like to add multiple cores from a machine you can also use a
+`rankfile`
 
 >     mpirun -r my_rankfile --report-bindings ... 
 >
@@ -424,20 +407,7 @@ file
 
 In this configuration we only use 2 cores from two differnt PIs.
 
-## Example Programs
-
--   [ ] TODO: Open, Ring
-    <https://github.com/cloudmesh/cloudmesh-mpi/issues/15>
--   [ ] TODO: Open, calculation of pi
-    <https://cvw.cac.cornell.edu/python/exercise>
-    <https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=monte>
-
-Maybe to complex:
-
--   [ ] TODO: Open, k-means there may be others
-    <https://medium.com/@hyeamykim/parallel-k-means-from-scratch-2b297466fdcd>
-
-## MPI Functionality examples
+# MPI Functionality
 
 There are some differences between mpi4py and the standard MPI
 implementations for C/Fortran worth noting.
@@ -1241,11 +1211,177 @@ bytes: `nameofarray.itemsize` 6. To get the number of elements in the
 array: `nameofarray.size` 7. To get the total size:
 `nameofarray.size * nameofarray.itemsize`
 
--   [ ] TODO: Agness - IO and Numpy
+-   [ ] TODO: IO and Numpy
 
-### Non-contiguous Collective I/O with NumPy arrays and datatypes
+### TODO: Non-contiguous Collective I/O with NumPy arrays and datatypes
 
--   [ ] TODO: Agness, noncontigious IO
+TODO
+
+# Simple MPI Example Programs
+
+In this section we will showcase you some simple MPI example programs.
+
+## MPI Ring Example
+
+The MPI Ring example program is one of the classical programs every MPI
+programmer has seen. Here a message is send from the Manager to the
+workers while the processors are arranged in a ring and the last worker
+sends the message back to the manager. Instead of just doing this once
+our program does it multiple times and add every time a communication is
+done 1 do the integer send around. Figure 1 showcases the process graph
+of this application.
+
+![Processes organized in a ring perform a sum
+operation](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/ring.png){width="40%"}
+
+In the example, the user provides an integer that is transmitted from
+process with rank 0, to process with rank 1 and so on until the data
+returns to process 0. Each process increments the integer by 1 before
+transmitting it to the next one, so the final value received by process
+0 after the ring is complete is the sum of the original integer plus the
+number of processes in the communicator group.
+
+> ``` python
+> #!/usr/bin/env python
+> # USSAGE: mpieec -n 4 python ring.py --count 1000
+> from mpi4py import MPI
+> import click
+> from cloudmesh.common.StopWatch import StopWatch
+>
+> @click.command()
+> @click.option('--count', default=1, help='Number of messages send.')
+> @click.option('--debug', default=False, help='Set debug.')
+> def ring(count=1, debug=Fasle):
+>     comm = MPI.COMM_WORLD   # Communicator
+>     rank = comm.Get_rank()  # Get the rank of the current process 
+>     size = comm.Get_size()  # Get the size of the communicator group
+>     if rank == 0:
+>         print(f'Communicator group with {size} processes')
+>         data = int(input('Enter an integer to transmit: '))  # Input the data
+>         data += 1                                            # Data is modified
+>     if rank == 0:  # ONly processor 0 uses the stopwatch
+>         Stopwatch.start(f"ring {size} {count}")        
+>     for i in range(0, count):
+>         if rank == 0:        
+>             comm.send(data, dest=rank + 1)  # send data to neighbor
+>             data = comm.recv(data, source=size - 1)
+>             if debug:
+>                 print(f'Final data received in process 0 after ring is completed: {data}')
+>         elif rank == size - 1:          
+>             data = comm.recv(source=rank - 1)  # recieve data from neighbor
+>             data += 1                          # Data is modified
+>             comm.send(data, dest=0)            # Sent to process 0, closing the ring
+>         elif 0 < rank < size -1:
+>             data = comm.recv(source=rank - 1)  # recieve data from neighbor            
+>             data += 1                          # Data is modified
+>             comm.send(data, dest=rank + 1)     # send to neighbor
+>     if rank == 0:
+>         print(f'Final data received in process 0: {data}')
+>         assert data == count * size          # verify
+>     if rank == 0:
+>         Stopwatch.stop(f"ring {size} {count}")  #print the time
+>         Stopwatch.benchmark()
+>         
+> if __name__ == '__main__':
+>     ring()
+> ```
+
+Executing the code in the example by entering
+`mpiexec -n 2 python ring.py` in the terminal will produce the following
+result:
+
+> ``` bash
+> Communicator group with 4 processes
+> Enter an integer to transmit: 6
+> Process 0 transmitted value 7 to process 1
+> Process 1 transmitted value 8 to process 2
+> Process 2 transmitted value 9 to process 3
+> Process 3 transmitted value 10 to process 0
+> Final data received in process 0 after ring is completed: 10
+> ```
+
+As we can see, the integer provided to process 0 (6 in this case) was
+successively incremented by each process in the communicator group to
+return a final value of 10 at the end of the ring.
+
+## Counting Numbers
+
+The following program generates arrays of random numbers each 20 (n) in
+length with the highest number possible being 10 (max_number). It then
+uses a function called count() to count the number of 8's in each data
+set. The number of 8's in each list is stored count_data. Count_data is
+then summed and printed out as the total number of 8's.
+
+> ``` python
+> # Run with
+> #
+> # mpiexec -n 4 python count.py
+> #
+>
+> #
+> # To change the values set them on your terminal with
+> #
+> # export N=20
+> # export MAX=10
+> # export FIND=8
+>
+> # TODO
+> # how do you generate a random number
+> # how do you generate a list of random numbers
+> # how do you find the number 8 in a list
+> # how do you gather the number 8
+>
+> import os
+> import random
+>
+> from mpi4py import MPI
+>
+> # Getting the input values or set them to a default
+>
+> n = os.environ.get("N") or 20
+> max_number = os.environ.get("MAX") or 10
+> find = os.environ.get("FIND") or 8
+>
+> # Communicator
+> comm = MPI.COMM_WORLD
+>
+> # Number of processes in the communicator group
+> size = comm.Get_size()
+>
+> # Get the rank of the current process in the communicator group
+> rank = comm.Get_rank()
+>
+> # Each process gets different data, depending on its rank number
+> data = []
+> for i in range(n):
+>     r = random.randint(1, max_number)
+>     data.append(r)
+> count = data.count(find)
+>
+> # Print data in each process
+> print(rank, count, data)
+>
+> # Gathering occurs
+> count_data = comm.gather(count, root=0)
+>
+> # Process 0 prints out the gathered data, rest of the processes
+> # print their data as well
+> if rank == 0:
+>     print(rank, count_data)
+>     total = sum(count_data)
+>     print(f"Total number of {find}'s:", total)
+> ```
+
+Executing `mpiexec -n 4 python count.py` gives us:
+
+> 1 1 \[7, 5, 2, 1, 5, 5, 5, 4, 5, 2, 6, 5, 2, 1, 8, 7, 10, 9, 5, 6\] 3
+> 3 \[9, 2, 9, 8, 2, 7, 7, 2, 10, 1, 2, 5, 3, 5, 10, 8, 10, 10, 8, 10\]
+> 2 3 \[1, 3, 8, 5, 7, 8, 4, 2, 8, 5, 10, 7, 10, 1, 6, 5, 9, 6, 6, 7\] 0
+> 3 \[6, 9, 10, 2, 4, 8, 8, 9, 4, 1, 6, 8, 6, 9, 7, 5, 5, 6, 3, 4\]
+>
+> 0 \[3, 1, 3, 3\]
+>
+> Total number of 8's: 10
 
 ## Monte Carlo Calculation of Pi
 
@@ -1448,85 +1584,6 @@ to benchmark, you research (only if really needed \* Use numba to speed
 up the code \* describe how to install \* showcase basic usage on our
 monte carlo function \* display results with matplotlib
 
-### Counting Numbers
-
-The following program generates arrays of random numbers each 20 (n) in
-length with the highest number possible being 10 (max_number). It then
-uses a function called count() to count the number of 8's in each data
-set. The number of 8's in each list is stored count_data. Count_data is
-then summed and printed out as the total number of 8's.
-
-> ``` python
-> # Run with
-> #
-> # mpiexec -n 4 python count.py
-> #
->
-> #
-> # To change the values set them on your terminal with
-> #
-> # export N=20
-> # export MAX=10
-> # export FIND=8
->
-> # TODO
-> # how do you generate a random number
-> # how do you generate a list of random numbers
-> # how do you find the number 8 in a list
-> # how do you gather the number 8
->
-> import os
-> import random
->
-> from mpi4py import MPI
->
-> # Getting the input values or set them to a default
->
-> n = os.environ.get("N") or 20
-> max_number = os.environ.get("MAX") or 10
-> find = os.environ.get("FIND") or 8
->
-> # Communicator
-> comm = MPI.COMM_WORLD
->
-> # Number of processes in the communicator group
-> size = comm.Get_size()
->
-> # Get the rank of the current process in the communicator group
-> rank = comm.Get_rank()
->
-> # Each process gets different data, depending on its rank number
-> data = []
-> for i in range(n):
->     r = random.randint(1, max_number)
->     data.append(r)
-> count = data.count(find)
->
-> # Print data in each process
-> print(rank, count, data)
->
-> # Gathering occurs
-> count_data = comm.gather(count, root=0)
->
-> # Process 0 prints out the gathered data, rest of the processes
-> # print their data as well
-> if rank == 0:
->     print(rank, count_data)
->     total = sum(count_data)
->     print(f"Total number of {find}'s:", total)
-> ```
-
-Executing `mpiexec -n 4 python count.py` gives us:
-
-> 1 1 \[7, 5, 2, 1, 5, 5, 5, 4, 5, 2, 6, 5, 2, 1, 8, 7, 10, 9, 5, 6\] 3
-> 3 \[9, 2, 9, 8, 2, 7, 7, 2, 10, 1, 2, 5, 3, 5, 10, 8, 10, 10, 8, 10\]
-> 2 3 \[1, 3, 8, 5, 7, 8, 4, 2, 8, 5, 10, 7, 10, 1, 6, 5, 9, 6, 6, 7\] 0
-> 3 \[6, 9, 10, 2, 4, 8, 8, 9, 4, 1, 6, 8, 6, 9, 7, 5, 5, 6, 3, 4\]
->
-> 0 \[3, 1, 3, 3\]
->
-> Total number of 8's: 10
-
 ## GPU Programming with MPI
 
 Only possibly for someone with GPU (contact me if you do) Once we are
@@ -1549,6 +1606,23 @@ experienced it would likely take longer. However, to decrease the time
 needed we can split up work and each of you will work on a dedicated
 topic (but you can still work in smaller teams if you desire). We will
 start assigning tasks in GitHub once this is all set up.
+
+## Simple MPI Example Programs
+
+You will find lots of example programs on the internet when you search
+for it. Please let us know about such examples and we will add the here.
+YOu can also contribute to our repository and add example programs that
+we then include in this document. In return you will become a coauthor
+or get acknowledged.
+
+-   A program to calculate PI is provided at
+
+    -   <https://cvw.cac.cornell.edu/python/exercise>
+    -   <https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=monte>
+
+-   A program to calculate k-means is provided at
+
+    -   <https://medium.com/@hyeamykim/parallel-k-means-from-scratch-2b297466fdcd>
 
 ## Python Ecosystem
 
