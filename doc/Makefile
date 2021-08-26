@@ -41,11 +41,11 @@ md-group: ${GROUP}
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} ./chapters/report-group.md -o tmp-1.md
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} tmp-1.md -o tmp-2.md
 	${PANDOC} cloudmesh/pandoc ${OPTIONS} tmp-2.md -o tmp-3.md
-	${PANDOC} cloudmesh/pandoc ${OPTIONS} --toc-depth=10 --number-sections ./chapters/title-group.md tmp-3.md -o ../docs/report-group.md
+	${PANDOC} cloudmesh/pandoc ${OPTIONS} --toc-depth=6 --number-sections ./chapters/title-group.md tmp-3.md -o ../docs/report-group.md
 
 pdf-group: ${GROUP} md-group
 	$(call banner, "CREATE GROUP PDF DOCUMENT")
-	${PANDOC} cloudmesh/pandoc -s -t latex --toc-depth=10 -V geometry:margin=1in --number-sections --toc chapters/metadata-group.yaml tmp-3.md -o ../docs/report-group.pdf
+	${PANDOC} cloudmesh/pandoc -s -t latex --toc-depth=6 -V geometry:margin=1in --number-sections --toc chapters/metadata-group.yaml tmp-3.md -o ../docs/report-group.pdf
 
 shell:
 	${PANDOC} -it -u root --entrypoint bash cloudmesh/pandoc:latest
