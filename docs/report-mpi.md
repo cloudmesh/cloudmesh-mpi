@@ -282,7 +282,7 @@ where `myhost` is the name of your computer.
 
 ***Note:** the messages can be in a different order*.
 
-# Hosts, Machinefile, Rankfile
+# TODO: Hosts, Machinefile, Rankfile
 
 TODO: this section has to be tested.
 
@@ -409,8 +409,16 @@ In this configuration we only use 2 cores from two differnt PIs.
 
 # MPI Functionality
 
-There are some differences between mpi4py and the standard MPI
-implementations for C/Fortran worth noting.
+In this section we will discuss several useful MPI communication
+features.
+
+## Differences to the C Implementation of MPI
+
+Before we start with a detailed introduction, we like to make those that
+have experience with non Python versions of MPI aware of some
+differences.
+
+### Initialization
 
 In mpi4py, the standard MPI_INIT() and MPI_FINALIZE() commonly used to
 initialize and terminate the MPI environment are automatically handled
@@ -418,12 +426,14 @@ after importing the mpi4py module. Although not generally advised,
 mpi4py still provides MPI.Init() and MPI.Finalize() for users interested
 in manually controlling these operations. Additionally, the automatic
 initialization and termination can be deativated. For more information
-on this topic, please check the following links:
+on this topic, please check the original mpi4py documentation:
 
 -   [MPI.Init() and
     MPI.Finalize()](https://githubmemory.com/repo/mpi4py/mpi4py/issues/54)
 -   [Deactivating automatic initialization and termination on
     mpi4py](https://bitbucket.org/mpi4py/mpi4py/issues/85/manual-finalizing-and-initializing-mpi)
+
+### Capitalization for Pickle vs. Memory Messages
 
 Another characteristic feature of mpi4py is the availablitly of
 uppercase and lowercase communication methods. Lowercase methods like
@@ -431,18 +441,49 @@ uppercase and lowercase communication methods. Lowercase methods like
 serialized manner. In contrast, the uppercase versions of methods like
 `comm.Send()` enable transmission of data contained in a contiguous
 memory buffer, as featured in the MPI standard. For additional
-information on the topic, check
-(https://mpi4py.readthedocs.io/en/stable/overview.html?highlight=pickle#communicating-python-objects-and-array-data).
+information on the topic, the manual section [Communicating Python
+Objects and Array
+Data](https://mpi4py.readthedocs.io/en/stable/overview.html?highlight=pickle#communicating-python-objects-and-array-data).
 
-## MPI Point-to-Point Communication Examples
+## MPI Functionality
 
-### Sending/Receiving
+### Communicator
+
+All MPI processes need to be adressable and are grouped in a
+`communicator`. The default communicator is called `world` and assigns a
+rank to each process within the communicator.
+
+Thus all MPI programs we will discuss here start with
+
+``` python
+comm = MPI.COMM_WORLD
+```
+
+In the MPI program the function
+
+``` python
+rank = comm.Get_rank()
+```
+
+Returns the rank. This is useful to be able to write conditional
+programs that depend on the rank. Rank `0` is the rank of the manager
+process.
+
+### Point-to-Point Communication
+
+#### Send and Recieve Python Objects
 
 The `send()` and `recv()` methods provide for functionality to transmit
-data between two specific processes in the communicator group.
+data between two specific processes in the communicator group. It can be
+applied to any Python data object that can be pickles. The advantage is
+that the object is preserved, howevr it comes with the disadvantage that
+pickeling the data takes more time than a direct memory copy.
 
 ![Sending and receiving data between two
 processes](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/send_receive.png){width="15%"}
+
+-   [ ] **TODO: image is wrong needs to be between rank 0 and 1, remove
+    D0 D2**
 
 Here is the definition for the `send()` method:
 
@@ -503,13 +544,16 @@ Executing `mpiexec -n 4 python send_receive.py` yields:
 > After send/receive, the value in process 1 is 42
 > ```
 
-As we can appreciate, transmission only occurred between processes 0 and
-1, and no other process was affected.
+As we can see, the transmission only occurred between processes 0 and 1,
+and no other process was affected.
+
+#### Send and Recive Python Memory Objects
 
 The following example illustrates the use of the uppercase versions of
-the methods `comm.Send()` and `comm.Recv()` to perform a buffered
-transmission of data between processes 0 and 1 in the communicator
-group.
+the methods `comm.Send()` and `comm.Recv()` to perform a transmission of
+data between processes from memory to memory. In our example we will
+agian be sending a message between processors of rank 0 and 1 in the
+communicator group.
 
 > ``` python
 > #!/usr/bin/env python
@@ -547,14 +591,26 @@ Executing `mpiexec -n 4 python send_receive_buffer.py` yields:
 > After Send/Receive, the value in process 1 is [1 2 3 4 5]
 > ```
 
-Lastly, an example of the non-blocking send and receive methods
-`comm.isend()` and `comm.irecv()`. Non-blocking versions of these
-methods allow for the processes involved in transmission/reception of
-data to perform other operations in overlap with the communication. In
-contrast, the blocking versions of these methods previously exemplified
-do not allow data buffers involved in transmission or reception of data
-to be accessed until any ongoing communication involving the particular
-processes has been finalized.
+#### Non blocking send and Recieve
+
+MPI can also use non blocking communications. This allows the program to
+send te message without waiting for the completion of the submission.
+Thi sis useful for many parallel programs so we can overlap
+communication ond computation while both take place simultaneously. The
+same can be done with recieve, but if a message is not avalable and you
+do need the messgae you may have to probe or execute the recive message
+or even use a blocked recieve. To wait for a message to be send or
+recived we can also use the wait method effectivle converting the non
+blocking message to a blocking one.
+
+Next, we showcase an example of the non-blocking send and receive
+methods `comm.isend()` and `comm.irecv()`. Non-blocking versions of
+these methods allow for the processes involved in transmission/reception
+of data to perform other operations in overlap with the communication.
+In contrast, the blocking versions of these methods previously
+exemplified do not allow data buffers involved in transmission or
+reception of data to be accessed until any ongoing communication
+involving the particular processes has been finalized.
 
 > ``` python
 > #!/usr/bin/env python
@@ -592,25 +648,34 @@ Executing `mpiexec -n 4 python isend_ireceive.py` yields:
 > After isend/ireceive, the value in process 1 is 42
 > ```
 
-## MPI Collective Communication Examples
+## Broadcast
 
-### Broadcast
-
-The `bcast()` method and it is buffered version `Bcast()` broadcast a
-message from a specified "root" process to all other processes in the
+The `bcast()` method and it is memory version `Bcast()` broadcast a
+message from a specified *root* process to all other processes in the
 communicator group.
+
+### Broadcast of a Python Object
 
 In terms of syntax, `bcast()` takes the object to be broadcast and the
 parameter `root`, which establishes the rank number of the process
 broadcasting the data. If no root parameter is specified, `bcast` will
 default to broadcasting from the process with rank 0.
 
-In this example, we broadcast a two-entry Python dictionary from a root
-process to the rest of the processes in the communicator group.
+Thus, the two lineas are functionally equivalent
+
+``` python
+data = comm.bcast(data, root=0)
+data = comm.bcast(data)
+```
+
+In our next example, we broadcast a two-entry Python dictionary from a
+root process to the rest of the processes in the communicator group.
 
 ![Broadcasting data from a root process to the rest of the processes in
 the communicator
 group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){width="25%"}
+
+-   [ ] **TODO: in that image the rrot process does not send to itself**
 
 The following code snippet shows the creation of the dictionary in
 process with rank 0. Notice how the variable `data` remains empty in all
@@ -662,6 +727,8 @@ After running `mpiexec -n 4 python broadcast.py` we get the following:
 As we can see, all other processes received the data broadcast from the
 root process.
 
+### Broadcast of a Memory Object
+
 In our next example, we broadcast a NumPy array from process 0 to the
 rest of the processes in the communicator group using the uppercase
 `comm.Bcast()` method.
@@ -709,14 +776,15 @@ Executing `mpiexec -n 4 python npbcast.py` yields:
 As we can see, the values in the array at the process with rank 0 have
 been broadcast to the rest of the processes in the communicator group.
 
-#### Scatter
+### Scatter
 
--   [ ] TODO: Fidel, explanation is missing
+While bradcast send all data to all processes, scatter send chunks of
+data to each process.
 
-In this example, with `scatter` the members of a list among the
-processes in the communicator group.
-
--   [ ] TODO: All, add images
+In our next example, we will `scatter` the members of a list among the
+processes in the communicator group. We illustrate the concept in the
+next figure, where we indicate the data that is scattered to the rnaked
+processes with #D_i\$
 
 ![Example to scatter data to different processors from the one with rank
 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/scatter.png){width="25%"}
@@ -827,7 +895,7 @@ As we can see, the values in the 2-D array at process with rank 0, have
 been scattered among all our processes in the communicator group, based
 on their rank value.
 
-#### Gather
+### Gather
 
 -   [ ] TODO: Fidel, explenation is missing
 
@@ -945,7 +1013,7 @@ Executing `mpiexec -n 4 python npgather.py` yields:
 > The values contained in the buffers from the different processes in
 > the group have been gathered in the 2-D array in process with rank 0.
 
-#### Gathering buffer-like objects in all processes
+### Gathering buffer-like objects in all processes
 
 In this example, each process in the communicator group computes and
 stores values in a NumPy array (row). For each process, these values
@@ -1014,7 +1082,7 @@ results in the output
 As we see, after `comm.Allgather()` is called, every process gets a copy
 of the full multiplication table.
 
-#### Dynamic Process Management with `spawn`
+## Dynamic Process Management with `spawn`
 
 Using \> `python > MPI.Comm_Self.Spawn >`
 
@@ -1121,11 +1189,11 @@ can vary.
 > `WARNING:` When running this program it may not terminate. To
 > terminate use for now `CTRL-C`.
 
-#### task processing (spawn, pull, ...)
+### task processing (spawn, pull, ...)
 
 -   [ ] TODO: Cooper, spawn, pull
 
-#### Examples for other collective communication methods
+### Examples for other collective communication methods
 
 -   [ ] TODO: Agness, introduction
 
@@ -1196,20 +1264,28 @@ execution.
 
 ### Collective I/O with NumPy arrays
 
-How to use Numpy with MPI 1. Download Numpy with `pip install numpy` in
-a terminal 2. `import numpy as np` to use numpy in the program 3.
-Advantages of numpy over lists - Numpy stores memory contiguously - Uses
-a smaller number of bytes - Can multiply arrays by index - It's faster -
-Can store different data types including images - Contains random number
-generators
+How to use Numpy with MPI
 
-Numpy syntax 1. To define an array type: `np.nameofarray([1,2,3])` 2. To
-get the dimension of the array: `nameofarray.ndim` 3. To get the shape
-of the array (the number of rows and columns): `nameofarray.shape` 4. To
-get the type of the array: `nameofarray.dtype` 5. To get the number of
-bytes: `nameofarray.itemsize` 6. To get the number of elements in the
-array: `nameofarray.size` 7. To get the total size:
-`nameofarray.size * nameofarray.itemsize`
+1.  Download Numpy with `pip install numpy` in a terminal
+2.  `import numpy as np` to use numpy in the program
+3.  Advantages of numpy over lists
+    -   Numpy stores memory contiguously
+    -   Uses a smaller number of bytes
+    -   Can multiply arrays by index
+    -   It's faster
+    -   Can store different data types including images
+    -   Contains random number generators
+
+Numpy syntax
+
+1.  To define an array type: `np.nameofarray([1,2,3])`
+2.  To get the dimension of the array: `nameofarray.ndim`
+3.  To get the shape of the array (the number of rows and columns):
+    `nameofarray.shape`
+4.  To get the type of the array: `nameofarray.dtype`
+5.  To get the number of bytes: `nameofarray.itemsize`
+6.  To get the number of elements in the array: `nameofarray.size`
+7.  To get the total size: `nameofarray.size * nameofarray.itemsize`
 
 -   [ ] TODO: IO and Numpy
 
