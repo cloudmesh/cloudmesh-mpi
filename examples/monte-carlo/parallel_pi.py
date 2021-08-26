@@ -1,6 +1,5 @@
-# Credit to Cornell University for this script, retrieved from https://cvw.cac.cornell.edu/python/exercise
-
-from __future__ import print_function, division
+# Originaly from https://cvw.cac.cornell.edu/python/exercise
+# Modified by us
 """
 An estimate of the numerical value of pi via Monte Carlo integration.
 Computation is distributed across processors via MPI.

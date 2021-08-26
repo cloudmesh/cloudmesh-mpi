@@ -282,9 +282,7 @@ where `myhost` is the name of your computer.
 
 ***Note:** the messages can be in a different order*.
 
-# TODO: Hosts, Machinefile, Rankfile
-
-TODO: this section has to be tested.
+# Hosts, Machinefile, Rankfile
 
 ## Running MPI on a Single Computer
 
@@ -648,13 +646,15 @@ Executing `mpiexec -n 4 python isend_ireceive.py` yields:
 > After isend/ireceive, the value in process 1 is 42
 > ```
 
-## Broadcast
+## Collective COmmunication
+
+### Broadcast
 
 The `bcast()` method and it is memory version `Bcast()` broadcast a
 message from a specified *root* process to all other processes in the
 communicator group.
 
-### Broadcast of a Python Object
+#### Broadcast of a Python Object
 
 In terms of syntax, `bcast()` takes the object to be broadcast and the
 parameter `root`, which establishes the rank number of the process
@@ -727,7 +727,7 @@ After running `mpiexec -n 4 python broadcast.py` we get the following:
 As we can see, all other processes received the data broadcast from the
 root process.
 
-### Broadcast of a Memory Object
+#### Broadcast of a Memory Object
 
 In our next example, we broadcast a NumPy array from process 0 to the
 rest of the processes in the communicator group using the uppercase
@@ -789,6 +789,10 @@ processes with #D_i\$
 ![Example to scatter data to different processors from the one with rank
 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/scatter.png){width="25%"}
 
+#### Scatter Python Objects
+
+THe example program executing the sactter is showcased next
+
 > ``` python
 > #!/usr/bin/env python
 > from mpi4py import MPI
@@ -831,6 +835,8 @@ Executing `mpiexec -n 4 python scatter.py` yields:
 
 The members of the list from process 0 have been successfully scattered
 among the rest of the processes in the communicator group.
+
+#### Scatter from Python Memory
 
 In the following example, we scatter a NumPy array among the processes
 in the communicator group by using the uppercase version of the method
@@ -897,7 +903,11 @@ on their rank value.
 
 ### Gather
 
--   [ ] TODO: Fidel, explenation is missing
+The gather function is the inverse function to scatter. Data from each
+process is gathered in consecutive order based on the rank of the
+processor
+
+#### Gather a Python Objects
 
 In this example, data from each process in the communicator group is
 gathered in the process with rank 0.
@@ -948,6 +958,8 @@ Executing `mpiexec -n 4 python gather.py` yields:
 
 The data from processes with rank `1` to `size - 1` have been
 successfully gathered in process 0.
+
+#### Gather from Python Memory
 
 The example showcases the use of the uppercase method `comm.Gather()`.
 NumPy arrays from the processes in the communicator group are gathered
@@ -1013,16 +1025,29 @@ Executing `mpiexec -n 4 python npgather.py` yields:
 > The values contained in the buffers from the different processes in
 > the group have been gathered in the 2-D array in process with rank 0.
 
-### Gathering buffer-like objects in all processes
+### Allgather Memory Objects
 
-In this example, each process in the communicator group computes and
-stores values in a NumPy array (row). For each process, these values
-correspond to the multiples of the process' rank and the integers in the
-range of the communicator group's size. After values have been computed
-in each process, the different arrays are gathered into a 2D array
-(table) and distributed to ALL the members of the communicator group (as
-opposed to a single member, which is the case when `comm.Gather()` is
-used instead).
+This method is a many to many communication operation, where data from
+all processors is gatherd in a continious memory object on each of the
+processors. This is functionally equifalend to
+
+1.  A gather on rank 0
+2.  A Sactter from rank 0
+
+However this operation has naturally a perfomance bottleneck while all
+communication goes through rank0. Instead we can use parallel
+communication between all of the processes at once to improve the
+performance. The optimization is implicit and the user does not need to
+worry about it.
+
+We demonstarte its use on the following example. Each process in the
+communicator group computes and stores values in a NumPy array (row).
+For each process, these values correspond to the multiples of the
+process' rank and the integers in the range of the communicator group's
+size. After values have been computed in each process, the different
+arrays are gathered into a 2D array (table) and distributed to ALL the
+members of the communicator group (as opposed to a single member, which
+is the case when `comm.Gather()` is used instead).
 
 ![Example to gather the data from each process into ALL of the processes
 in the
@@ -1065,26 +1090,33 @@ Executing
 
 >     $ mpiexec -n 4 python allgather_buffer.py
 
-results in the output
+results in the output similar to
 
->     Process 1 table before Allgather:  [[0. 0.]
->      [0. 0.]] 
->
->     Process 0 table before Allgather:  [[0. 0.]
->      [0. 0.]] 
->
->     Process 1 table after Allgather:  [[0. 0.]
->      [0. 1.]] 
->
->     Process 0 table after Allgather:  [[0. 0.]
->      [0. 1.]] 
+>     Process 1 table before Allgather: [[0. 0.][0. 0.]] 
+>     Process 0 table before Allgather: [[0. 0.][0. 0.]] 
+>     Process 1 table after Allgather:  [[0. 0.][0. 1.]] 
+>     Process 0 table after Allgather:  [[0. 0.][0. 1.]] 
 
 As we see, after `comm.Allgather()` is called, every process gets a copy
 of the full multiplication table.
 
-## Dynamic Process Management with `spawn`
+We have not provided an example for the Python object version as it is
+essentially the same and can easily be developed as an excersise.
 
-Using \> `python > MPI.Comm_Self.Spawn >`
+## Process Management
+
+### Dynamic Process Management with `spawn`
+
+So far we have focussed on MPI used on a number of hosts that are
+automatically creating the process when mpirun is used. However, MPI
+also offers the ability to sawn a process in a communicator group. This
+can be achieved by using a spawn communicator and command.
+
+Using
+
+> ``` python
+> MPI.Comm_Self.Spawn
+> ```
 
 will create a child process that can communicate with the parent. In the
 spawn code example, the manager broadcasts an array to the worker.
@@ -1189,15 +1221,7 @@ can vary.
 > `WARNING:` When running this program it may not terminate. To
 > terminate use for now `CTRL-C`.
 
-### task processing (spawn, pull, ...)
-
--   [ ] TODO: Cooper, spawn, pull
-
-### Examples for other collective communication methods
-
--   [ ] TODO: Agness, introduction
-
-## Futures
+### Futures
 
 Futures is an mpi4py module that runs processes in parallel for
 intercommunication between such processes. The following Python program
@@ -1255,47 +1279,30 @@ The number after `-n` can be changed to however many cores are in the
 computer's processor. For example, a dual-core processor can use `-n 2`
 so that more worker processes work to execute the same program.
 
-The program should output a png image of a Julia set upon successful
+The program will output a png image of a Julia set upon successful
 execution.
 
-## MPI-IO
+You can modify your number of processors accordingly matching your
+hardware infrastructure.
 
--   [ ] TODO: Agness, MPI-IO
-
-### Collective I/O with NumPy arrays
-
-How to use Numpy with MPI
-
-1.  Download Numpy with `pip install numpy` in a terminal
-2.  `import numpy as np` to use numpy in the program
-3.  Advantages of numpy over lists
-    -   Numpy stores memory contiguously
-    -   Uses a smaller number of bytes
-    -   Can multiply arrays by index
-    -   It's faster
-    -   Can store different data types including images
-    -   Contains random number generators
-
-Numpy syntax
-
-1.  To define an array type: `np.nameofarray([1,2,3])`
-2.  To get the dimension of the array: `nameofarray.ndim`
-3.  To get the shape of the array (the number of rows and columns):
-    `nameofarray.shape`
-4.  To get the type of the array: `nameofarray.dtype`
-5.  To get the number of bytes: `nameofarray.itemsize`
-6.  To get the number of elements in the array: `nameofarray.size`
-7.  To get the total size: `nameofarray.size * nameofarray.itemsize`
-
--   [ ] TODO: IO and Numpy
-
-### TODO: Non-contiguous Collective I/O with NumPy arrays and datatypes
-
-TODO
+For example, entering the number `3` will produce a 1920x1440 photo
+because 640x480 times 3 is 1920x1440. Then, the program should output a
+visualization of a Julia data set as a png image.
 
 # Simple MPI Example Programs
 
 In this section we will showcase you some simple MPI example programs.
+
+## GPU Programming with MPI
+
+In case you have access to computers with GPUS you can naturally utilize
+them accordingly from python with the appropriate GPU drivers.
+
+In case not all have a GPU you can use rankfiles to controll the access
+and introduce through conditional programming based on rank access to
+the GPUs.
+
+# Examples
 
 ## MPI Ring Example
 
@@ -1388,44 +1395,38 @@ uses a function called count() to count the number of 8's in each data
 set. The number of 8's in each list is stored count_data. Count_data is
 then summed and printed out as the total number of 8's.
 
+The progam allows you to set the program parameters. Note thath the
+program has on purpuse a bug in it as it does not communicate the values
+m, max_number, or find with a broadcast from rank 0 to all workers. Your
+task is to modify and complete this program.
+
 > ``` python
 > # Run with
-> #
-> # mpiexec -n 4 python count.py
-> #
+> #     mpiexec -n 4 python count.py
 >
-> #
-> # To change the values set them on your terminal with
-> #
+> # To change the values set them on your terminal on the
+> # machine running rank 0 with 
+>
 > # export N=20
 > # export MAX=10
 > # export FIND=8
 >
-> # TODO
-> # how do you generate a random number
-> # how do you generate a list of random numbers
-> # how do you find the number 8 in a list
-> # how do you gather the number 8
+> # Assignment:
+> # Add to this code the bradcast of the 3 parameters to all workers
 >
 > import os
 > import random
->
 > from mpi4py import MPI
 >
-> # Getting the input values or set them to a default
->
+> # Get the input values or set them to a default
 > n = os.environ.get("N") or 20
 > max_number = os.environ.get("MAX") or 10
 > find = os.environ.get("FIND") or 8
 >
-> # Communicator
-> comm = MPI.COMM_WORLD
 >
-> # Number of processes in the communicator group
-> size = comm.Get_size()
->
-> # Get the rank of the current process in the communicator group
-> rank = comm.Get_rank()
+> comm = MPI.COMM_WORLD   # Communicator
+> size = comm.Get_size()  # Number of processes 
+> rank = comm.Get_rank()  # Rank of this process
 >
 > # Each process gets different data, depending on its rank number
 > data = []
@@ -1434,14 +1435,10 @@ then summed and printed out as the total number of 8's.
 >     data.append(r)
 > count = data.count(find)
 >
-> # Print data in each process
-> print(rank, count, data)
->
-> # Gathering occurs
-> count_data = comm.gather(count, root=0)
+> print(rank, count, data)  # Print data from each process
+> count_data = comm.gather(count, root=0) # Gather the data
 >
 > # Process 0 prints out the gathered data, rest of the processes
-> # print their data as well
 > if rank == 0:
 >     print(rank, count_data)
 >     total = sum(count_data)
@@ -1461,6 +1458,10 @@ Executing `mpiexec -n 4 python count.py` gives us:
 
 ## Monte Carlo Calculation of Pi
 
+A very nice example to showcase the potential for doing lots of
+parallele calculations is to calculate the number pi. THis is quite
+easily achieved while using a monte carlo method.
+
 We start with the mathematical formulation of the Monte Carlo
 calculation of pi. For each quadrant of the unit square, the area is pi.
 Therefore, the ratio of the area outside of the circle is pi over four.
@@ -1469,10 +1470,12 @@ of pi.
 
 The following is a visualization of the program's methodology to
 calculate pi:
-![montecarlographic](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/monte-carlo-visualization.png){width="25%"}
 
-The following montecarlo.py program generates a very rough estimation of
-pi using the methodology and equation shown above.
+![montecarlographic](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/monte-carlo-visualization.png){width="50%"}
+
+The following montecarlo.py program generates an estimation of pi using
+the methodology and equation shown above. Increasing the total number of
+itterations will increase the accuracy.
 
 > ``` python
 > import random as r
@@ -1480,210 +1483,272 @@ pi using the methodology and equation shown above.
 > import time
 >
 > start = time.time()
-> # Number of darts that land inside.
-> inside = 0
-> # Total number of darts to throw.
-> total = 100000
 >
-> # Iterate for the number of darts.
-> for i in range(0, total):
->   # Generate random x, y in [0, 1].
->     x2 = r.random()**2
+> inside = 0                        # Number of darts that land inside.
+> trials = 100000                   # Number of Trials.
+>
+> for i in range(0, trials):        # Iterate for the number of darts.
+>     x2 = r.random()**2            # Generate random x, y in [0, 1]
 >     y2 = r.random()**2
->     # Increment if inside unit circle.
->     if m.sqrt(x2 + y2) < 1.0:
+>
+>     if m.sqrt(x2 + y2) < 1.0:     # Increment if inside unit circle.
 >         inside += 1
 >
-> # inside / total = pi / 4
-> pi = (float(inside) / total) * 4
+> # inside / trials = pi / 4
+> pi = (float(inside) / trials) * 4
 > end = time.time()
 >
-> # It works!
-> print(pi)
->
-> #Total time it takes to execute, this changes based off total
-> print(end - start)
+> print(pi)                          # Value of pi found
+> print(end - start)                 # Execution time
 > ```
 
-However, if a more exact approximation of pi is needed, then the
-following program can be run instead, using multiple cores of the
-processor using mpiexec:
+Instead of running this on one processor we can run the calculation on
+many. Implicitly this increases the accuraccy while running more trials
+in the same time as we run them all in parallel. Overhead does exists by
+starting the mpi programm and gathering teh result. However if the trail
+number is large enough it is negeligable.
+
+The following program shows the MPI implementation of it:
+
+------------------------------------------------------------------------
+
+``` python
+# Originaly from https://cvw.cac.cornell.edu/python/exercise
+# Modified by us
+"""
+An estimate of the numerical value of pi via Monte Carlo integration.
+Computation is distributed across processors via MPI.
+"""
+
+import numpy as np
+from mpi4py import MPI
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import sys
+from cloudmesh.common.StopWatch import StopWatch
+
+StopWatch.start("Overall time")
+def throw_darts(n):
+    """
+    returns an array of n uniformly random (x,y) pairs lying within the
+    square that circumscribes the unit circle centered at the origin,
+    i.e., the square with corners at (-1,-1), (-1,1), (1,1), (1,-1)
+    """
+    darts = 2*np.random.random((n,2)) - 1
+    return darts
+
+def in_unit_circle(p):
+    """
+    returns a boolean array, whose elements are True if the corresponding
+    point in the array p is within the unit circle centered at the origin,
+    and False otherwise -- hint: use np.linalg.norm to find the length of a vector
+    """
+    return np.linalg.norm(p,axis=-1)<=1.0
+
+def estimate_pi(n, block=100000):
+    """
+    returns an estimate of pi by drawing n random numbers in the square
+    [[-1,1], [-1,1]] and calculating what fraction land within the unit circle;
+    in this version, draw random numbers in blocks of the specified size,
+    and keep a running total of the number of points within the unit circle;
+    by throwing darts in blocks, we are spared from having to allocate
+    very large arrays (and perhaps running out of memory), but still can get
+    good performance by processing large arrays of random numbers
+    """
+    total_number = 0
+    i = 0
+    while i < n:
+        if n-i < block:
+            block = n-i
+        darts = throw_darts(block)
+        number_in_circle = np.sum(in_unit_circle(darts))
+        total_number += number_in_circle
+        i += block
+    return (4.*total_number)/n
+
+def estimate_pi_in_parallel(comm, N):
+    """
+    on each of the available processes,
+    calculate an estimate of pi by drawing N random numbers;
+    the manager process will assemble all of the estimates
+    produced by all workers, and compute the mean and
+    standard deviation across the independent runs
+    """
+
+    if rank == 0:
+        data = [N for i in range(size)]
+    else:
+        data = None
+    data = comm.scatter(data, root=0)
+    #
+    pi_est = estimate_pi(N)
+    #
+    pi_estimates = comm.gather(pi_est, root=0)
+    if rank == 0:
+        return pi_estimates
+
+
+def estimate_pi_statistics(comm, Ndarts, Nruns_per_worker):
+    results = []
+    for i in range(Nruns_per_worker):
+        result = estimate_pi_in_parallel(comm, Ndarts)
+        if rank == 0:
+            results.append(result)
+    if rank == 0:
+        pi_est_mean = np.mean(results)
+        pi_est_std  = np.std(results)
+        return pi_est_mean, pi_est_std
+
+if __name__ == '__main__':
+    """
+    for N from 4**5 to 4**14 (integer powers of 4), 
+    compute mean and standard deviation of estimates of pi
+    by throwing N darts multiple times (Nruns_total times,
+    distributed across workers)
+    """
+    comm = MPI.COMM_WORLD
+    rank = comm.Get_rank()
+    size = comm.Get_size()
+    if rank == 0:
+        print("MPI size = {}".format(size))
+        sys.stdout.flush()
+    Nruns_total = 64
+    Nruns_per_worker = Nruns_total // size
+    #
+    estimates = []
+    for log4N in range(5,15):
+        N = int(4**log4N)
+        result = estimate_pi_statistics(comm, N, Nruns_per_worker)
+        if rank == 0:
+            pi_est_mean, pi_est_std = result
+            estimates.append((N, pi_est_mean, pi_est_std))
+            print(N, pi_est_mean, pi_est_std)
+            sys.stdout.flush()
+    if rank == 0:
+        estimates = np.array(estimates)
+        plt.figure()
+        plt.errorbar(np.log2(estimates[:,0]), estimates[:,1], yerr=estimates[:,2])
+        plt.ylabel('estimate of pi')
+        plt.xlabel('log2(number of darts N)')
+        plt.savefig('pi_vs_log2_N.png')
+        plt.figure()
+        plt.ylabel('log2(standard deviation)')
+        plt.xlabel('log2(number of darts N)')
+        plt.plot(np.log2(estimates[:,0]), np.log2(estimates[:,2]))
+        plt.savefig('log2_std_vs_log2_N.png')
+    MPI.Finalize()
+
+StopWatch.stop("Overall time")
+StopWatch.benchmark()
+```
+
+------------------------------------------------------------------------
+
+To run this program using git bash, change directory to the folder
+containing this program and issue the command:
+
+> ``` bash
+> $ mpiexec -n 4 python parallel_pi.py
+> ```
+
+The number after `-n` can be changed to however many cores one has on
+their processor.
+
+Note: Please be advised that we use Cloudmesh.StopWatch which is a
+convenient program to measure time and dicplay teh details fo the
+computer. HOwever it is not threadsafe and at this time only measures
+times in the second range. If your calculations for other programs are
+faster or the trial number is to slow, you can use other benchmarking
+methods. use it in multiple threads) \* other strategies to benchmark,
+you research (only if really needed
+
+Furthermore, the numba version of the program can be run instead, which
+is slightly faster.
 
 > ``` python
-> # Credit to Cornell University for this script, retrieved from https://cvw.cac.cornell.edu/python/exercise
->
-> from __future__ import print_function, division
-> """
-> An estimate of the numerical value of pi via Monte Carlo integration.
-> Computation is distributed across processors via MPI.
-> """
->
-> import numpy as np
-> from mpi4py import MPI
-> import matplotlib
-> matplotlib.use('Agg')
+> from mpi4py.futures import MPIPoolExecutor
 > import matplotlib.pyplot as plt
-> import sys
+> import numpy as np
+> from numba import jit
 > from cloudmesh.common.StopWatch import StopWatch
 >
+> multiplier = int(input('Enter 1 for 640x480 pixels of Julia visualization image, 2 for 1280x960, and so on...'))
+>
 > StopWatch.start("Overall time")
-> def throw_darts(n):
->     """
->     returns an array of n uniformly random (x,y) pairs lying within the
->     square that circumscribes the unit circle centered at the origin,
->     i.e., the square with corners at (-1,-1), (-1,1), (1,1), (1,-1)
->     """
->     darts = 2*np.random.random((n,2)) - 1
->     return darts
+> x0, x1, w = -2.0, +2.0, 640*multiplier
+> y0, y1, h = -1.5, +1.5, 480*multiplier
+> dx = (x1 - x0) / w
+> dy = (y1 - y0) / h
 >
-> def in_unit_circle(p):
->     """
->     returns a boolean array, whose elements are True if the corresponding
->     point in the array p is within the unit circle centered at the origin,
->     and False otherwise -- hint: use np.linalg.norm to find the length of a vector
->     """
->     return np.linalg.norm(p,axis=-1)<=1.0
+> c = complex(0, 0.65)
 >
-> def estimate_pi(n, block=100000):
->     """
->     returns an estimate of pi by drawing n random numbers in the square
->     [[-1,1], [-1,1]] and calculating what fraction land within the unit circle;
->     in this version, draw random numbers in blocks of the specified size,
->     and keep a running total of the number of points within the unit circle;
->     by throwing darts in blocks, we are spared from having to allocate
->     very large arrays (and perhaps running out of memory), but still can get
->     good performance by processing large arrays of random numbers
->     """
->     total_number = 0
->     i = 0
->     while i < n:
->         if n-i < block:
->             block = n-i
->         darts = throw_darts(block)
->         number_in_circle = np.sum(in_unit_circle(darts))
->         total_number += number_in_circle
->         i += block
->     return (4.*total_number)/n
+> @jit(nopython=True)
+> def julia(x, y):
+>     z = complex(x, y)
+>     n = 255
+>     while abs(z) < 3 and n > 1:
+>         z = z**2 + c
+>         n -= 1
+>     return n
 >
-> def estimate_pi_in_parallel(comm, N):
->     """
->     on each of the available processes,
->     calculate an estimate of pi by drawing N random numbers;
->     the manager process will assemble all of the estimates
->     produced by all workers, and compute the mean and
->     standard deviation across the independent runs
->     """
->
->     if rank == 0:
->         data = [N for i in range(size)]
->     else:
->         data = None
->     data = comm.scatter(data, root=0)
->     #
->     pi_est = estimate_pi(N)
->     #
->     pi_estimates = comm.gather(pi_est, root=0)
->     if rank == 0:
->         return pi_estimates
->
->
-> def estimate_pi_statistics(comm, Ndarts, Nruns_per_worker):
->     results = []
->     for i in range(Nruns_per_worker):
->         result = estimate_pi_in_parallel(comm, Ndarts)
->         if rank == 0:
->             results.append(result)
->     if rank == 0:
->         pi_est_mean = np.mean(results)
->         pi_est_std  = np.std(results)
->         return pi_est_mean, pi_est_std
+> def julia_line(k):
+>     line = bytearray(w)
+>     y = y1 - k * dy
+>     for j in range(w):
+>         x = x0 + j * dx
+>         line[j] = julia(x, y)
+>     return line
 >
 > if __name__ == '__main__':
->     """
->     for N from 4**5 to 4**14 (integer powers of 4), 
->     compute mean and standard deviation of estimates of pi
->     by throwing N darts multiple times (Nruns_total times,
->     distributed across workers)
->     """
->     comm = MPI.COMM_WORLD
->     rank = comm.Get_rank()
->     size = comm.Get_size()
->     if rank == 0:
->         print("MPI size = {}".format(size))
->         sys.stdout.flush()
->     Nruns_total = 64
->     Nruns_per_worker = Nruns_total // size
->     #
->     estimates = []
->     for log4N in range(5,15):
->         N = int(4**log4N)
->         result = estimate_pi_statistics(comm, N, Nruns_per_worker)
->         if rank == 0:
->             pi_est_mean, pi_est_std = result
->             estimates.append((N, pi_est_mean, pi_est_std))
->             print(N, pi_est_mean, pi_est_std)
->             sys.stdout.flush()
->     if rank == 0:
->         estimates = np.array(estimates)
->         plt.figure()
->         plt.errorbar(np.log2(estimates[:,0]), estimates[:,1], yerr=estimates[:,2])
->         plt.ylabel('estimate of pi')
->         plt.xlabel('log2(number of darts N)')
->         plt.savefig('pi_vs_log2_N.png')
->         plt.figure()
->         plt.ylabel('log2(standard deviation)')
->         plt.xlabel('log2(number of darts N)')
->         plt.plot(np.log2(estimates[:,0]), np.log2(estimates[:,2]))
->         plt.savefig('log2_std_vs_log2_N.png')
->     MPI.Finalize()
+>
+>     with MPIPoolExecutor() as executor:
+>         image = executor.map(julia_line, range(h))
+>         image = np.array([list(l) for l in image])
+>         plt.imsave("julia.png", image)
 >
 > StopWatch.stop("Overall time")
 > StopWatch.benchmark()
 > ```
 
-To run this program using git bash, change directory to the folder
-containing this program and issue the command:
-`$ mpiexec -n 2 python parallel_pi.py` The number after `-n` can be
-changed to however many cores one has on their processor.
+  ----------------------------------------------------------------------
+             No Jit       Jit Enabled      No Jit         Jit Enabled
+             (1280x960)   (1280x960)       (1920x1440)    (1920x1440)
+  ---------- ------------ ---------------- -------------- --------------
+  1 Core     44.898 s     45.800 s         68.489 s       68.610 s
 
--   [ ] TODO: Open, HOW AND WHY DO WE NEED MULTIPLE COMPUTERS
+  2 Cores    45.578 s     45.714 s         67.718 s       69.326 s
 
-### Program
+  3 Cores    43.026 s     44.521 s         68.785 s       69.487 s
 
--   [ ] TODO: Open, Example program to run Montecarlo on multiple hosts
+  4 Cores    44.746 s     44.552 s         73.606 s       70.257 s
 
--   [ ] TODO: Open, Benchmarking of the code
+  5 Cores    43.223 s     42.825 s         68.226 s       68.443 s
 
-Use for benchmarking \* cloudmesh.common (not thread-safe, but still can
-be used, research how to use it in multiple threads) \* other strategies
-to benchmark, you research (only if really needed \* Use numba to speed
-up the code \* describe how to install \* showcase basic usage on our
-monte carlo function \* display results with matplotlib
+  6 Cores    45.134 s     44.402 s         68.437 s       67.637 s
+  ----------------------------------------------------------------------
 
-## GPU Programming with MPI
+-   These benchmark times were generated using a Ryzen 5 3600 CPU with
+    16 GB RAM on a Windows 10 computer.
 
-Only possibly for someone with GPU (contact me if you do) Once we are
-finished with MPI we will use and look at python dask and other
-frameworks as well as rest services to interface with the MPI programs.
-This way we will be able to expose the cluster to anyone and they do not
-even know they use a cluster while exposing this as a single function
-... (edited)
+The improvement in shorter runtime with jit is not apparent likely
+because the computations required to run this program are not very
+complex; the same reason applies to why the increase in cores does not
+improve runtime.
 
-The Github repo is used by all of you to have write access and
-contribute to the research effort easily and in parallel. You will get
-out of this as much as you put in. Thus it is important to set several
-dedicated hours aside (ideally each week) and contribute your work to
-others.
+However this example showcases you how to run examples with a parameter
+to explore the behavior on multiple cores. Naturally you can use and
+explore other parameters once added to the program.
 
-It is difficult to assess how long the previous task takes as we just
-get started and we need to learn first how we work together as a team.
-If I were to do this alone it may take a week, but as you are less
-experienced it would likely take longer. However, to decrease the time
-needed we can split up work and each of you will work on a dedicated
-topic (but you can still work in smaller teams if you desire). We will
-start assigning tasks in GitHub once this is all set up.
+### Assignments
 
-## Simple MPI Example Programs
+1.  Use numba to speed up the code. Create a tutporial including
+    instalation instructions.
+2.  Display results with matplotlib as created by the picture
+3.  Modify cloudmesh.Stopwatch so we can use it for smaller time
+    measurments
+
+## Other MPI Example Programs
 
 You will find lots of example programs on the internet when you search
 for it. Please let us know about such examples and we will add the here.
@@ -1700,10 +1765,87 @@ or get acknowledged.
 
     -   <https://medium.com/@hyeamykim/parallel-k-means-from-scratch-2b297466fdcd>
 
-## Python Ecosystem
+# Parameter Management
 
-It is possible to pass parameters from Git Bash into a Python
-environment using os.environ and a shell file.
+Although this next topic is not directly related to MPI and mpi4py, it
+is very useful in general. Often we ask ourselfs the question, how do we
+pass parameters to a program includding MPI. There are multiple ways to
+achive this. Wth environment variables, command line arguments, and
+configuration files. We will expalin each of these methods and provide
+saimpel example.
+
+## Using the Shell Variables to Pass Parameters
+
+`os.environ` in Python allows us to easily access environment variables
+that are defined in a shell. It returns a dictionary having user's
+environmental variable as key and their values as value.
+
+To demonstrate its use, we have written a `count.py` program that uses
+`os.environ` to optionally pass parameters to an mpi program.
+
+This example is included in a previous Section `Counting Numbers` and we
+like you to look it over.
+
+If the user changed the value of N, MAX, or FIND in the terminal using,
+for example, `export FIND="5"` (shown below) os.environ.get("FIND")
+would set the find variable equal to 5.
+
+>     $ export FIND="5"
+>     $ mpiexec -n 4 python count.py
+>     1 0 [9, 6, 8, 3, 4, 8, 5, 6, 6, 3, 5, 6, 10, 5, 5, 1, 1, 2, 1, 3]
+>     3 0 [3, 7, 2, 8, 4, 6, 5, 7, 4, 4, 7, 6, 1, 7, 10, 2, 1, 9, 2, 8]
+>     2 0 [10, 8, 10, 8, 7, 2, 2, 7, 4, 3, 3, 7, 10, 8, 1, 5, 1, 4, 6, 5]
+>     0 0 [5, 8, 9, 1, 2, 7, 1, 5, 5, 6, 3, 6, 10, 9, 7, 10, 5, 3, 6, 5]
+>     0 [0, 0, 0, 0]
+>     Total number of 5's: 0
+
+However, if the user does not define any evironment variables, find will
+default to 8.
+
+>     $ mpiexec -n 4 python count.py
+>     1 0 [5, 5, 2, 6, 6, 3, 5, 3, 3, 2, 3, 9, 7, 1, 3, 7, 1, 7, 1, 3]
+>     3 1 [7, 1, 5, 1, 2, 2, 10, 7, 2, 1, 2, 6, 4, 6, 10, 10, 5, 8, 10, 10]
+>     2 0 [5, 1, 4, 4, 9, 9, 5, 1, 1, 3, 9, 3, 5, 2, 5, 7, 9, 7, 10, 5]
+>     0 1 [6, 6, 5, 6, 4, 10, 3, 5, 5, 2, 5, 2, 7, 6, 7, 8, 5, 7, 6, 4]
+>     0 [1, 0, 0, 1]
+>     Total number of 8's: 2
+
+Assignment:
+
+1.  One thing we did not do is use the bradcast method to properly
+    communicte the 3 environment variables. We like you to improve the
+    code and submit to us.
+
+Setting the parameter can either be done vi the export shell command
+such as
+
+> ``` bash
+> $ export N=8
+> ```
+
+or while passing the parameter in the same line as a a command such as
+demonstrated next
+
+> ``` bash
+> $ N=1; python environment-parameter.py
+> ```
+
+This can be generalized while using a file with many different
+parameters and commands. For example placing this in a file called
+`run.sh`
+
+> ``` python
+> $ N=1; python environment-parameter.py
+> $ N=2; python environment-parameter.py
+> ```
+
+It Allows us to execute the programs sequentially in the file with
+
+> ``` bash
+> $ sh run.sh
+> ```
+
+Let us assume we use the python program
 
 > ``` python
 > from cloudmesh.common.StopWatch import StopWatch
@@ -1718,49 +1860,68 @@ environment using os.environ and a shell file.
 > StopWatch.benchmark()
 > ```
 
-Ensure that this code is saved in a particular directory. Then create a
-shell file named run.sh with the following contents:
+This Python program does not set a variable N on its own. It refers to
+os.environ which should have previously set N as shown in the beginning
+of this document's git bash log. The program does the same procedures as
+the previous program once N is set and passed from os.environ.
 
-``` python
-$ N=1; python environment-parameter.py
-$ N=2; python environment-parameter.py
-```
+Using in our case also the cloudmesh.StopWatch allows us easily to fgrep
+for the results we may be interested in to conduct benchmarks. Here is
+an example workflow to achive this
 
-Save the following py file in the same directory as well: \>
-`python > !include ../examples/parameters/click-parameter.py >`
+>     # This command creates an environment variable called N
+>     $ export N=10
+>     # This command prints the environment variable called N
+>     $ echo $N
+>     # This command launches a Python environment
+>     $ python -i
+>     >>> import os
+>     >>> os.environ["N"]
+>     >>> exit()
+>     $ python environment-parameter.py
+>     $ sh run.sh
+>     $ sh run.sh | fgrep "csv,processors"
 
-You must cd (change directory) into the directory with all of these
-files in Git Bash. Input the following commands into Git Bash:
+### Using click to pass parameters
 
-    # This command creates an environment variable called N
-    $ export N=10
-    # This command prints the environment variable called N
-    $ echo $N
-    # This command launches a Python environment
-    $ python -i
-    >>> import os
-    >>> os.environ["N"]
-    >>> exit()
-    $ python environment-parameter.py
-    $ sh run.sh
-    $ sh run.sh | fgrep "csv,processors"
-    $ python click-parameter.py
-    # You can manually set the variable in git bash in the same line as you open the .py file
-    $ python click-parameter.py --n=3
+Click is a convenient mechnaism to define parameters that can be passed
+via options to python programs. To show case its use please inspect tthe
+follwoing program
 
-## Resources MPI
+> ``` python
+> import click
+> from cloudmesh.common.StopWatch import StopWatch
+> from time import sleep
+> import os
+>
+> @click.command()
+> @click.option('--n', default=1, help='Number of processors.')
+> def work(n):
+>     n=int(n)
+>     StopWatch.start(f"processors {n}")
+>     sleep(0.1*n)
+>     print(n)
+>     StopWatch.stop(f"processors {n}")
+>     StopWatch.benchmark()
+>
+> if __name__ == '__main__':
+>     work()
+> ```
 
--   <https://research.computing.yale.edu/sites/default/files/files/mpi4py.pdf>
--   <https://www.nesi.org.nz/sites/default/files/mpi-in-python.pdf>
--   <https://www.kth.se/blogs/pdc/2019/08/parallel-programming-in-python-mpi4py-part-1/>
--   <http://education.molssi.org/parallel-programming/03-distributed-examples-mpi4py/index.html>
--   <http://www.ceci-hpc.be/assets/training/mpi4py.pdf>
--   <https://www.csc.fi/documents/200270/224366/mpi4py.pdf/825c582a-9d6d-4d18-a4ad-6cb6c43fefd8>
+You can manually set the variable in git bash in the same line as you
+open the .py file
+
+> ``` bash
+> $ python click-parameter.py --n=3
+> ```
 
 # Deep Lerning on the PI
 
--   [ ] TODO : Open, Install and use tensorflow
--   [ ] TODO : Open, Install and use horovod
+Assignment
+
+1.  Create a tutorial to install use tensorflow from an MPI program
+2.  Create a tutorial to install and use horovod. Explain relationship
+    and differences to MPI
 
 ## Tensorflow
 
@@ -1788,223 +1949,75 @@ build on ubunto and rasperry os are slightly different
 
 -   <https://github.com/horovod/horovod#mpi4py>
 
-## Applications
+## Resources
 
-### Object tetection
+Here are a couple of links that may be useful. We have not yet looked
+over them but include them.
 
-### Time series analysis
+-   <https://research.computing.yale.edu/sites/default/files/files/mpi4py.pdf>
+-   <https://www.nesi.org.nz/sites/default/files/mpi-in-python.pdf>
+-   <https://www.kth.se/blogs/pdc/2019/08/parallel-programming-in-python-mpi4py-part-1/>
+-   <http://education.molssi.org/parallel-programming/03-distributed-examples-mpi4py/index.html>
+-   <http://www.ceci-hpc.be/assets/training/mpi4py.pdf>
+-   <https://www.csc.fi/documents/200270/224366/mpi4py.pdf/825c582a-9d6d-4d18-a4ad-6cb6c43fefd8>
 
-## Python Ecosystem
+### Assignment
 
-#### Using Environment Variables to Pass Parameters
-
-os.environ in Python is a mapping object that represents the user's
-environmental variables. It returns a dictionary having user's
-environmental variable as key and their values as value.
-
-os.environ behaves like a python dictionary, so all the common
-dictionary operations like get and set can be performed. We can also
-modify os.environ but any changes will be effective only for the current
-process where it was assigned and it will not change the value
-permanently.
-
-##### Example
-
-We demonstrate this in an example. We developed a count.py program that
-uses os.environ from the os library to optionally pass parameters to an
-mpi program.
-
-> ``` python
-> # Run with
-> #
-> # mpiexec -n 4 python count.py
-> #
->
-> #
-> # To change the values set them on your terminal with
-> #
-> # export N=20
-> # export MAX=10
-> # export FIND=8
->
-> # TODO
-> # how do you generate a random number
-> # how do you generate a list of random numbers
-> # how do you find the number 8 in a list
-> # how do you gather the number 8
->
-> import os
-> import random
->
-> from mpi4py import MPI
->
-> # Getting the input values or set them to a default
->
-> n = os.environ.get("N") or 20
-> max_number = os.environ.get("MAX") or 10
-> find = os.environ.get("FIND") or 8
->
-> # Communicator
-> comm = MPI.COMM_WORLD
->
-> # Number of processes in the communicator group
-> size = comm.Get_size()
->
-> # Get the rank of the current process in the communicator group
-> rank = comm.Get_rank()
->
-> # Each process gets different data, depending on its rank number
-> data = []
-> for i in range(n):
->     r = random.randint(1, max_number)
->     data.append(r)
-> count = data.count(find)
->
-> # Print data in each process
-> print(rank, count, data)
->
-> # Gathering occurs
-> count_data = comm.gather(count, root=0)
->
-> # Process 0 prints out the gathered data, rest of the processes
-> # print their data as well
-> if rank == 0:
->     print(rank, count_data)
->     total = sum(count_data)
->     print(f"Total number of {find}'s:", total)
-> ```
-
-If the user changed the value of N, MAX, or FIND in the terminal using,
-for example, `export FIND="5"` (shown below) os.environ.get("FIND")
-would set the find variable equal to 5.
-
->     $ export FIND="5"
->     $ mpiexec -n 4 python count.py
->     1 0 [9, 6, 8, 3, 4, 8, 5, 6, 6, 3, 5, 6, 10, 5, 5, 1, 1, 2, 1, 3]
->     3 0 [3, 7, 2, 8, 4, 6, 5, 7, 4, 4, 7, 6, 1, 7, 10, 2, 1, 9, 2, 8]
->     2 0 [10, 8, 10, 8, 7, 2, 2, 7, 4, 3, 3, 7, 10, 8, 1, 5, 1, 4, 6, 5]
->     0 0 [5, 8, 9, 1, 2, 7, 1, 5, 5, 6, 3, 6, 10, 9, 7, 10, 5, 3, 6, 5]
->     0 [0, 0, 0, 0]
->     Total number of 5's: 0
-
-However, if the user does not define any evironment variables, find will
-default to 8.
-
->     $ mpiexec -n 4 python count.py
->     1 0 [5, 5, 2, 6, 6, 3, 5, 3, 3, 2, 3, 9, 7, 1, 3, 7, 1, 7, 1, 3]
->     3 1 [7, 1, 5, 1, 2, 2, 10, 7, 2, 1, 2, 6, 4, 6, 10, 10, 5, 8, 10, 10]
->     2 0 [5, 1, 4, 4, 9, 9, 5, 1, 1, 3, 9, 3, 5, 2, 5, 7, 9, 7, 10, 5]
->     0 1 [6, 6, 5, 6, 4, 10, 3, 5, 5, 2, 5, 2, 7, 6, 7, 8, 5, 7, 6, 4]
->     0 [1, 0, 0, 1]
->     Total number of 8's: 2
-
-### Parameters
-
-### Passing Parameters from Git Bash into Python
-
-First create a run.sh shell file with the following contents
-
-``` python
-$ N=1; python environment-parameter.py
-$ N=2; python environment-parameter.py
-```
-
-environment-parameter.py and click-parameter.py can be retrieved from
-examples/parameters. They must be in the same directory as the
-previously created run.sh file, and you must cd (change directory) into
-this directory in Git Bash. Input the following commands into Git Bash
-
-    # This command creates an environment variable called N
-    $ export N=10
-    # This command prints the environment variable called N
-    $ echo $N
-    # This command launches a Python environment
-    $ python -i
-    >>> import os
-    >>> os.environ["N"]
-    >>> exit()
-    $ python environment-parameter.py
-    $ sh run.sh
-    $ sh run.sh | fgrep "csv,processors"
-    $ python click-parameter.py
-    # You can manually set the variable in git bash in the same line as you open the .py file
-    $ python click-parameter.py --n=3
-
-### click-parameter.py
-
-``` python
-import click
-from cloudmesh.common.StopWatch import StopWatch
-from time import sleep
-import os
-
-@click.command()
-@click.option('--n', default=1, help='Number of processors.')
-def work(n):
-    n=int(n)
-    StopWatch.start(f"processors {n}")
-    sleep(0.1*n)
-    print(n)
-    StopWatch.stop(f"processors {n}")
-    StopWatch.benchmark()
-
-if __name__ == '__main__':
-    work()
-```
-
-This Python program sets a variable n (default is 1) and runs a
-cloudmesh StopWatch based on the value of the variable n. If n is set to
-1, the program waits for a period of time (0.1 times n), prints the
-value of n, and then outputs the cloudmesh benchmark for a particular
-processor. If n is set to 1, cloudmesh benchmark will output processor 1
-and the period of time the program waited. If n is set to 2, cloudmesh
-benchmark will output processor 2 and so on.
-
-This is meant to be a beginner's basic exploration into the click
-module.
-
-### environment-parameter.py
-
-``` python
-from cloudmesh.common.StopWatch import StopWatch
-from time import sleep
-import os
-
-n=int(os.environ["N"])
-StopWatch.start(f"processors {n}")
-sleep(0.1*n)
-print(n)
-StopWatch.stop(f"processors {n}")
-StopWatch.benchmark()
-```
-
-This Python program does not set a variable N on its own. It refers to
-os.environ which should have previously set N as shown in the beginning
-of this document's git bash log. The program does the same procedures as
-the previous program once N is set and passed from os.environ.
+1.  Review the resources and provide a short summary that we add to this
+    document above the appropriate link
 
 # Appendix
 
-## Hardware of current students
+## Git Bash on Windows
 
--   Fidel Leal
-    -   Equipment
-        -   MacBook Pro 2015, 16GB RAM i7, SSD 512GB
-        -   PC, 64-bit, 8GB RAM, i5, SSD \<240GB, speed>
-            -   Windows 10 Education
-        -   Editor: Pycharm, vim
--   Cooper Young
-    -   Equipment
-        -   Dell Inspiron 7000, i7 2 Ghz, 16GB RAM, Intel Optane 512GB
-            SSD
-        -   Windows 10 Education 64bit
-        -   Editor: Vim, Pycharm, Pico
--   Jacques Fleischer
-    -   Equipment
-        -   Homebuilt computer, Ryzen 5 3600 3.6 GHz, NVIDIA GTX 1660,
-            16 GB 3200 MHz RAM, WD 1 TB M.2 SSD, 64-bit operating system
-        -   Windows 10 Home (21H1)
-        -   Editor: PyCharm, VSCode
+Git bash is a implementation of the bash shell fro windows that also
+includes Git.
+
+Git is an open-source software which helps to manage repository version
+control, particularly with GitHub repos.
+
+To verify whether you have Git in the first place, you can press
+`Win + R` on your desktop, type `cmd`, and press `Enter`. Then type
+`git clone` and press `Enter`. If you do not have Git installed, it will
+say `'git' is not recognized as an internal or external command...`
+
+As long as Git does not change the structure of their website and
+hyperlinks, you should be able to download Git from here and skip to
+Step #2: https://git-scm.com/downloads
+
+1.  Open a web browser and search `git`. Look for the result that is
+    from `git-scm.com` and click Downloads.
+
+2.  Click `Download for Windows`. The download will commence. Open the
+    file once it is finished downloading.
+
+3.  The UAC Prompt will appear. Click `Yes` because Git is a safe
+    program. It will show you Git's license: a GNU General Public
+    License. After understanding the terms, click `Next`. 1. The GNU
+    General Public License means that the program is open-source (free
+    of charge).
+
+4.  Click `Next` to confirm that `C:\Program Files\Git` is the directory
+    where you want Git to be installed.
+
+5.  Click `Next` unless you would like an icon for Git on the desktop
+    (in which case you can check the box and then click `Next`).
+
+6.  Click `Next` to accept the text editor, click `Next` again to Let
+    Git decide the default branch name, click `Next` again to run Git
+    from the command line and 3rd party software, click `Next` again to
+    use the OpenSSL library, click `Next` again to checkout
+    Windows-style, click `Next` again to use MinTTY, click `Next` again
+    to use the default git pull, click `Next` again to use the Git
+    Credential Manager Core, click `Next` again to enable file system
+    caching, and then click `Install` because the experimental features
+    are not necessary.
+
+7.  Wait for the green progress bar to finish. Congratulations--- you
+    have installed Git and Git Bash. You can now run it as an
+    administrator by pressing the Windows key, typing `git bash`, right
+    clicking `Git Bash`, and clicking `Run as administrator`. Click
+    `Yes` in the UAC prompt that appears.
 
 ## Make on Windows
 
@@ -2103,64 +2116,413 @@ Next run in Powershell
 Now you can use the Ubuntu distro freely. The WSL2 application will be
 in your shortcut menu in `Start`.
 
-# Make on Windows
+## Benchmarks
 
-Makefiles provide a good feature to organize workflows while assembling
-programs or documents to create an integrated document. Within
-`makefiles` you can define targets that you can call and are then
-executed. Preconditions can be used to execute rules conditionally. This
-mechanism can easily be used to define complex workflows that require a
-multitude of interdependent actions to be performed. Makefiles are
-executed by the program `make` that is available on all platforms.
+This sectiion is in more detail published at this
+[link](https://laszewski.medium.com/easy-benchmarking-of-long-running-programs-82059d9c67ce).
+If the link does not work use this
+[Link](https://laszewski.medium.com/easy-benchmarking-of-long-running-programs-82059d9c67ce?sk=7ed2ca2dacf7253c41e7ca4e180e2e1a).
 
-On Linux, it is likely to be pre-installed, while on macOS you can
-install it with Xcode. On Windows, you have to install it explicitly. We
-recommend that you install `gitbash` first. After you install `gitbash`,
-you can install `make` from an administrative `gitbash` terminal window.
-To start one, go to the search field next to the Windows icon on the
-bottom left and type in gitbash without a `RETURN`. You will then see a
-selection window that includes
-`Run as administrator. Click on it. As you run it as administrator, it will allow you to install`make\`.
-The following instructions will provide you with a guide to install make
-under windows.
+### Introduction {#introduction}
 
-## Installation
+We explain how we can manage long-running benchmarks. There are many
+useful tools to conducting benchmarks such as `timeit`, `cprofile`,
+`line_profiler`, and `memry_profiler` to name only a few. However, we
+present here an extremely easy way to obtain runtimes while dealing with
+the fact that they could run multiple hours or even days and could cause
+your system to crash. Hence if we wor to run it in a single program it
+will lead to a loss of information and many hours of unneeded
+replication.
 
-Please visit
+We use and demonstrate how we achieve this with a simple StopWatch,
+creation of shell scripts and even the integration of Jupyter notebooks.
 
--   <https://sourceforge.net/projects/ezwinports/files/>
+### Prerequisites
 
-and download the file
+As usual, we recommend that you use a virtual env. dependent on where
+your python 3 is installed, please adapt accordingly (python, or
+python3). Also, test out which version of python you have. On Windows,
+we assume you have gitbash installed and use it.
 
--   ['make-4.3-without-guile-w32-bin.zip'](https://sourceforge.net/projects/ezwinports/files/make-4.3-without-guile-w32-bin.zip/download)
+``` bash
+$ python3 -- version   # observe that you have the right version
+$ python3 -m venv ~/ENV
+$ source ~/ENV3/bin/activate
+# or for Windows gitbash
+# source ~/ENV3/Scripts/activate
+```
 
-After the download, you have to extract and unzip the file as follows in
-a gitbash that you started as administrative user:
+### System Parameters
 
-![administrativegitbash](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/gitbashadmin.png)
+It is essential that we benchmark programs to show their effect on the
+time consumed to obtain the results. Various factors play a role. This
+includes the number of physical computers involved, the number of
+processors on each computer, the number of cores on each computer, and
+the number of threads for each core. We can summarise these parameters
+as a vector such as
 
-figure: screenshot of opening gitbash in admin shell
+    S(N, p, c, t)
 
-> ``` bash
-> $ cp make-4.3-without-guile-w32-bin.zip /usr
-> $ cd /usr
-> $ unzip make-4.3-without-guile-w32-bin.zip
-> ```
+Where
 
-Now start a new terminal (a regular non-administrative one) and type the
-command
+-   `S` = is a placeholder for the system
+-   `N` = Number of computers or nodes
+-   `p` = Number of processors per node
+-   `c` = Number of cores per processor
+-   `t` = Number of threads per processor
 
-> ``` bash
-> $ which make
-> ```
+In some cases, it may be more convenient to specify the total values as
 
-It will provide you the location if the installation was successful
+    S^T(N, N*p, N*p*c, N*p*c*t)
 
-> ``` bash
-> /usr/bin/make
-> ```
+and
 
-to make sure it is properly installed and in the correct directory.
+-   `T` = indicates total
+
+In the case of heterogeneous systems, we define multiple such vectors to
+form a list of vectors.
+
+For the rest of the section, we assume the system is homogeneous.
+
+#### System Information
+
+Cloudmesh provides an easy command that can be used to obtain
+information to derive these values while using the command. However, it
+only works if the number of processors on the same node is 1.
+
+    pip install cloudmesh-cmd5
+    cms help    # dont forget to call it after the install as it sets some defaults
+    cms sysinfo 
+
+The output will be looking something like
+
+    +------------------+----------------------------------------------+
+    | Attribute        | Value                                        |
+    +------------------+----------------------------------------------+
+    | cpu              | Intel(R) Core(TM) i7-7920HQ CPU @ 3.10GHz    |
+    | cpu_cores        | 4                                            |
+    | cpu_count        | 8                                            |                                                    
+    | cpu_threads      | 8                                            |                                                    
+    | frequency        | scpufreq(current=3100, min=3100, max=3100)   |                                                    
+    | mem.active       | 5.7 GiB                                      |                                                    
+    | mem.available    | 5.8 GiB                                      |                                                    
+    | mem.free         | 96.7 MiB                                     |                                                    
+    | mem.inactive     | 5.6 GiB                                      |                                                    
+    | mem.percent      | 63.7 %                                       |                                                    
+    | mem.total        | 16.0 GiB                                     |                                                    
+    | mem.used         | 8.2 GiB                                      |                                                    
+    | mem.wired        | 2.4 GiB                                      |                                                    
+    | platform.version | 10.16                                        |                                                    
+    | python           | 3.9.5 (v3.9.5:0a7dcbdb13, ...)               |                                               
+    | python.pip       | 21.1.2                                       |                                                    
+    | python.version   | 3.9.5                                        |                                                   
+    | sys.platform     | darwin                                       |                                                    
+    | uname.machine    | x86_64                                       |                                                    
+    | uname.node       | mycomputer                                   |                                                    
+    | uname.processor  | i386                                         |
+    | uname.release    | 20.5.0                                       |                                                    
+    | uname.system     | Darwin                                       |                                                    
+    | uname.version    | Darwin Kernel Version 20.5.0: ....           |
+    | user             | gregor                                       |                                                      
+    +------------------+----------------------------------------------+
+
+To obtain the vectors you can say
+
+    cms sysinfo -v
+    cms sysinfo -t
+
+where `-v` specifies the vector and `-t` the totals. Knowing these
+values will help you structure your benchmarks.
+
+#### Parameters
+
+A benchmark is typically run while iterating over a number of parameters
+and measuring some system parameters that are relevant for the
+benchmark, such as the runtime of the program or application.
+
+Let us assume our application is called `f` and its parameters are `x`
+and `y`
+
+To create benchmarks over x and y we can generate them in various ways.
+
+#### Python only solution
+
+For all programs, we will store the output of the benchmarks in a
+directory called `benchmark`. Please create it.
+
+``` bash
+$ mkdir benchmark
+```
+
+you may be able to run your benchmark simply as a loop this is
+especially the case for smaller benchmarks.
+
+``` python
+import pickle
+from cloudmesh.common.StopWatch import StopWatch
+
+def f(x,y, print_benchmark=False, checkpoint=True):
+    # run your application with values x and y
+    print (f"Calculate f({x},{y})")
+    StopWatch.start(f"f{x},{y}")
+    result = x*y
+    StopWatch.stop(f"f{x},{y}")
+    if print_benchmark:
+        StopWatch.benchmark()
+    if checkpoint:
+        pickle.dump(result, open(f"benchmark/f-{x}-{y}.pkl", "wb" ))  
+    return result
+
+x_min = 0
+x_max = 2
+d_x = 1
+y_min = 0
+y_max = 1
+d_y = 1
+for x in range(x_min, x_max, dx):
+    for y in range(y_min, y_max, dy):
+        # run the function with parameters
+        result = f(x ,y, print_benchmark=True)
+```
+
+#### Script solution
+
+In some cases, the functions themselves may be large and in case the
+benchmark causes a crash of the python program executing it we would
+have to start over. In such cases, it is better to develop scripts that
+take parameters so we can execute the program through shell scripts and
+exclude those that fail.
+
+For this, we rewrite the python program via command-line arguments that
+we pass along.
+
+``` python
+# stored in file f.py
+import click
+
+@click.command()
+@click.option('--x', default=20, help='The x value')
+@click.option('--x', default=40, help='The y value')
+@click.option('--print_benchmark', default=True, help='prints the benchmark result')
+@click.option('--checkpoint', default=True, help='Creates a checkpoint')
+f(x,y, print_benchmark=False, checkpoint=True):
+    ... see previous program
+    return result
+
+if __name__ == '__main__':
+    f()
+```
+
+Now we can run this program with
+
+``` python
+$ python f.py --x 10 --y 5
+```
+
+To generate now the different runs from the loop we can do it either via
+Makefiles or write a program creating commands where we produce a script
+listing each invocation. Let us call this program `sweep-generator.py`.
+
+``` python
+x_min = 0
+x_max = 2
+d_x = 1
+y_min = 0
+y_max = 1
+d_y = 1
+for x in range(x_min, x_max, dx):
+    for y in range(y_min, y_max, dy):
+        print (f"cms banner f({x}, {y}; " 
+               f"python f.py --x {x} --y {y}")
+```
+
+The result will be
+
+    cms banner f(0,0); python f.py --x 0 --y 0
+    ...
+
+and so on. The banner will print a nice banner before you execute the
+real function so it is easier to monitor when execution
+
+To create a shell script, simply redirect it into a file such as
+
+``` bash
+$ python sweep-generator.py > sweep.sh
+```
+
+Now you can execute it with
+
+``` bash
+$ sh sweep.sh | tee result.log
+```
+
+The `tee` command will redirect the output to the file result, while
+still reporting its progress on the terminal. In case you want to run it
+without monitoring or tee is not supported properly you just run it as
+
+``` bash
+$ sh sweep.sh >> result.log
+```
+
+In case you need to monitor the progress for the latter you can use
+
+``` bash
+$ tail -f result.log
+```
+
+The advantage of this approach is that you can in case of a failure
+identify which benchmarks succeeded and exclude them from your next run
+of `sweep.sh` so you do not have to redo them. This may be useful if you
+identify that you ran out of resources for a parameterized run and it
+crashed.
+
+#### Integrating timers
+
+The beauty about cloudmesh is that it has built-in timers and if
+properly used we can use them even across different invocations of the
+function f.
+
+we simply have to `fgrep` to the log file to extract the information in
+the `csv` lines with
+
+``` python
+fgrep "#csv" result.log
+```
+
+This can then be further post-processed.
+
+Cloudmesh also includes a `cloudmesh.Shell.cm_grep`,
+`cloudmesh.common.readfile`, and other useful functions to make the
+processing of shell scripts and their output easier.
+
+#### Integration of Jupyter Notebooks
+
+Jupyter notebooks provide a simple mechanism to prototype. However, how
+do we now integrate them into a benchmarking suite? Certainly, we can
+just create the loop in the notebooks conducting the parameter sweep,
+but in case of a crash, this becomes highly unscalable.
+
+So what we have to do is augment a notebook so that we can
+
+1.  pass along the parameters,
+2.  execute it from the command line.
+
+For this, we use `papermill` that allows us to just do these two tasks.
+INstall it with
+
+``` python
+pip install papermill
+```
+
+Then when you open up jupyter-lablab and import our code. Create a new
+cell. In this cell you place all parameters for your run that you like
+to modify such as
+
+x = 0 y = 0
+
+This cell can be augmented with a tag called "parameters". To do this
+open the "cog" and enter in the tag name "parameters". Make sure you
+save the tag and the notebook. Now we can use `papermill` to run our
+notebook with parameters such as
+
+    $ mkdir benchmark
+    $ papermill sweep.ipynb benchmark/sweep-0-0.ipynb --x 0 --y 0 | tee benchmark/result-0-0.log
+    ...
+
+Naturally, we can auto-generate this as follows
+
+``` python
+x_min = 0
+x_max = 2
+d_x = 1
+y_min = 0
+y_max = 1
+d_y = 1
+for x in range(x_min, x_max, dx):
+    for y in range(y_min, y_max, dy):
+        print (f"cms banner f({x}, {y}; "
+               f"papermill sweep.ipynb benchmark/sweep-{x}-{y}.ipynb"
+               f"    --x {x} --y {y}"
+               f"    | tee benchmark/result-{x}-{y}.log")
+```
+
+This will produce a series of commands that we can also redirect into a
+shell script and then execute
+
+### Combining the logs
+
+As we have the logs all in the benchmark directory, we can even combine
+them and select the `csv` lines with
+
+``` bash
+$ cat benchmark/*.log | fgrep "#csv"
+```
+
+Now you can apply further processing such as importing it into pandas or
+any other spreadsheet-like tools you like to use for the analysis.
+
+#### Feedback
+
+This is a draft and if you see any issue, do a pull request and improve
+or send e-mail to laszewski\@gmail.com with improvement suggestions.
+
+# Assignments
+
+1.  Develop a section explaining what MPI-IO is
+
+2.  Develop a section to explain Collective I/O with NumPy arrays.
+
+3.  Add a section on how to use Numpy with MPI, that includes also the
+    instalation of numpy. THis is not to have a tutorial about numpy,
+    but how to use numpy within mpi4py. Subtasks include
+
+4.  Download Numpy with `pip install numpy` in a terminal
+
+5.  `import numpy as np` to use numpy in the program
+
+6.  Explain the edvantages of numpy over pickled lists
+
+    -   Numpy stores memory contiguously
+    -   Uses a smaller number of bytes
+    -   Can multiply arrays by index
+    -   It's faster
+    -   Can store different data types including images
+    -   Contains random number generators
+
+7.  Add a specific very small tutorial on using some basic numpy
+    features as they may be useful for MPI application development. THis
+    mayi include the following and be added to the appendix
+
+    1.  To define an array type: `np.nameofarray([1,2,3])`
+    2.  To get the dimension of the array: `nameofarray.ndim`
+    3.  To get the shape of the array (the number of rows and columns):
+        `nameofarray.shape`
+    4.  To get the type of the array: `nameofarray.dtype`
+    5.  To get the number of bytes: `nameofarray.itemsize`
+    6.  To get the number of elements in the array: `nameofarray.size`
+    7.  To get the total size: `nameofarray.size * nameofarray.itemsize`
+
+Please, note that we have a very comprehensive tutorial on numpy and
+there is no point to repeat that, we may just point to it and improve
+that tutorial where needed instead.
+
+5.  The images in <https://mpitutorial.com/tutorials/> seem much better
+    when it comes to for example scatter. Your task is to create better
+    images for all examples.
+
+6.  Convert the parallel rank program from
+    <https://mpitutorial.com/tutorials/performing-parallel-rank-with-mpi/>
+    to mpi4py. Write a tutorial for it.
+
+7.  Develop tutorials that showcase multiple communicators and groups.
+    See
+    <https://mpitutorial.com/tutorials/introduction-to-groups-and-communicators/>
+
+8.  Complete the count example while adding a bradcast to it to
+    communicate the parameters. Provide a modified tutorial.
+
+9.  Test out the Machinefile, host, and rankfile section. Improve if
+    needed.
 
 # Acknowledgements
 

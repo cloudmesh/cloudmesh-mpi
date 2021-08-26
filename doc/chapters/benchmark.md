@@ -1,9 +1,11 @@
-# Benchmarks
+## Benchmarks
 
-This article is in more detail published at this [link](https://laszewski.medium.com/easy-benchmarking-of-long-running-programs-82059d9c67ce).
-If the link does not work use this [Link](https://laszewski.medium.com/easy-benchmarking-of-long-running-programs-82059d9c67ce?sk=7ed2ca2dacf7253c41e7ca4e180e2e1a).
+This sectiion is in more detail published at this
+[link](https://laszewski.medium.com/easy-benchmarking-of-long-running-programs-82059d9c67ce).
+If the link does not work use this
+[Link](https://laszewski.medium.com/easy-benchmarking-of-long-running-programs-82059d9c67ce?sk=7ed2ca2dacf7253c41e7ca4e180e2e1a).
 
-## Introduction
+### Introduction
 
 We explain how we can manage long-running benchmarks. There are many useful
 tools to conducting benchmarks such as `timeit`, `cprofile`, `line_profiler`,
@@ -16,7 +18,7 @@ many hours of unneeded replication.
 We use and demonstrate how we achieve this with a simple StopWatch, creation of
 shell scripts and even the integration of Jupyter notebooks.
 
-## Prerequisites
+### Prerequisites
 
 As usual, we recommend that you use a virtual env. dependent on where your python
 3 is installed, please adapt accordingly (python, or python3). Also, test out
@@ -31,7 +33,7 @@ $ source ~/ENV3/bin/activate
 # source ~/ENV3/Scripts/activate
 ```
 
-## System Parameters
+### System Parameters
 
 It is essential that we benchmark programs to show their effect on the time
 consumed to obtain the results. Various factors play a role. This includes the
@@ -68,7 +70,7 @@ list of vectors.
 For the rest of the section, we assume the system is homogeneous.
 
 
-## System Information
+#### System Information
 
 Cloudmesh provides an easy command that can be used to obtain information to
 derive these values while using the command. However, it only works if the
@@ -106,7 +108,8 @@ The output will be looking something like
 | sys.platform     | darwin                                       |                                                    
 | uname.machine    | x86_64                                       |                                                    
 | uname.node       | mycomputer                                   |                                                    
-| uname.processor  | i386                                         |                                                    | uname.release    | 20.5.0                                       |                                                    
+| uname.processor  | i386                                         |
+| uname.release    | 20.5.0                                       |                                                    
 | uname.system     | Darwin                                       |                                                    
 | uname.version    | Darwin Kernel Version 20.5.0: ....           |
 | user             | gregor                                       |                                                      
@@ -123,7 +126,7 @@ cms sysinfo -t
 where `-v` specifies the vector and `-t` the totals.  Knowing these values will
 help you structure your benchmarks.
 
-## Parameters
+#### Parameters
 
 A benchmark is typically run while iterating over a number of parameters and
 measuring some system parameters that are relevant for the benchmark, such as
@@ -133,7 +136,7 @@ Let us assume our application is called `f` and its parameters are `x` and `y`
 
 To create benchmarks over x and y we can generate them in various ways. 
 
-### Python only solution
+#### Python only solution
 
 For all programs, we will store the output of the benchmarks in a directory called 
 `benchmark`. Please create it.
@@ -173,7 +176,7 @@ for x in range(x_min, x_max, dx):
         result = f(x ,y, print_benchmark=True)
 ```
 
-### Script solution
+#### Script solution
 
 In some cases, the functions themselves may be large and in case the benchmark
 causes a crash of the python program executing it we would have to start over.
@@ -265,7 +268,7 @@ which benchmarks succeeded and exclude them from your next run of `sweep.sh` so
 you do not have to redo them. This may be useful if you identify that you ran
 out of resources for a parameterized run and it crashed.
 
-### Integrating timers
+#### Integrating timers
 
 The beauty about cloudmesh is that it has built-in timers and if properly used
 we can use them even across different invocations of the function f.
@@ -282,7 +285,7 @@ Cloudmesh also includes a `cloudmesh.Shell.cm_grep`,
 `cloudmesh.common.readfile`, and other useful functions to make the processing
 of shell scripts and their output easier.
 
-### Integration of Jupyter Notebooks
+#### Integration of Jupyter Notebooks
 
 Jupyter notebooks provide a simple mechanism to prototype. However, how do we
 now integrate them into a benchmarking suite? Certainly, we can just create the
@@ -338,7 +341,7 @@ for x in range(x_min, x_max, dx):
 This will produce a series of commands that we can also redirect into a shell
 script and then execute
 
-## Combining the logs
+### Combining the logs
 
 As we have the logs all in the benchmark directory, we can even combine them and 
 select the `csv` lines with 
@@ -350,7 +353,7 @@ $ cat benchmark/*.log | fgrep "#csv"
 Now you can apply further processing such as importing it into pandas or any
 other spreadsheet-like tools you like to use for the analysis.
 
-### Feedback
+#### Feedback
 
 This is a draft and if you see any issue, do a pull request and improve or send 
 e-mail to laszewski@gmail.com with improvement suggestions.

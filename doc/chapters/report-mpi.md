@@ -274,9 +274,7 @@ where `myhost` is the name of your computer.
 ***Note:** the messages can be in a different order*.
 
 
-# TODO: Hosts, Machinefile, Rankfile
-
-TODO: this section has to be tested.
+# Hosts, Machinefile, Rankfile
 
 ## Running MPI on a Single Computer
 
@@ -286,7 +284,11 @@ once you scale up and use multiple computers.
 
 ## Running MPI on Multiple  Computers
 
-MPI is designed for running programs on multiple coomputers. One of these computers serves as manager and communicates to its workers. To define on which computer is running what, we need to have a configuration file that list a number of hosts to participate in our set of machines, the MPI cluster.
+MPI is designed for running programs on multiple coomputers. One of
+these computers serves as manager and communicates to its workers. To
+define on which computer is running what, we need to have a
+configuration file that list a number of hosts to participate in our
+set of machines, the MPI cluster.
 
 The configurationfile specifying this is called a machinefile,
 hostfile or rankfile. We will explain the differences to them in this
@@ -822,20 +824,13 @@ Executing
 > $ mpiexec -n 4 python allgather_buffer.py
 > ```
 
-results in the output 
+results in the output similar to 
 
 > ```
-> Process 1 table before Allgather:  [[0. 0.]
->  [0. 0.]] 
-> 
-> Process 0 table before Allgather:  [[0. 0.]
->  [0. 0.]] 
->
-> Process 1 table after Allgather:  [[0. 0.]
->  [0. 1.]] 
-> 
-> Process 0 table after Allgather:  [[0. 0.]
->  [0. 1.]] 
+> Process 1 table before Allgather: [[0. 0.][0. 0.]] 
+> Process 0 table before Allgather: [[0. 0.][0. 0.]] 
+> Process 1 table after Allgather:  [[0. 0.][0. 1.]] 
+> Process 0 table after Allgather:  [[0. 0.][0. 1.]] 
 > ```
 
 As we see, after `comm.Allgather()` is called, every process gets a copy
@@ -844,7 +839,9 @@ of the full multiplication table.
 We have not provided an example for the Python object version as it is
 essentially the same and can easily be developed as an excersise.
 
-## Dynamic Process Management with `spawn`
+## Process Management
+
+### Dynamic Process Management with `spawn`
 
 So far we have focussed on MPI used on a number of hosts that are
 automatically creating the process when mpirun is used.  However, MPI
@@ -913,7 +910,7 @@ This output depends on which child process is received first. The output can var
 >terminate use for now `CTRL-C`.
 
 
-## Futures
+### Futures
 
 Futures is an mpi4py module that runs processes in parallel for intercommunication between
 such processes. The following Python program creates a visualization of a Julia set by
@@ -931,11 +928,28 @@ The number after `-n` can be changed to however many cores are in the computer's
 For example, a dual-core processor can use `-n 2` so that more worker processes work to
 execute the same program.
 
-The program should output a png image of a Julia set upon successful execution.
+The program will output a png image of a Julia set upon successful execution.
+
+You can modify your number of processors accordingly matching your hardware infrastructure.
+
+For example, entering the number `3` will produce a 1920x1440 photo because 640x480 times 3 is 1920x1440. 
+Then, the program should output a visualization of a Julia data set as a png image.
+
 
 # Simple MPI Example Programs
 
 In this section we will showcase you some simple MPI example programs.
+
+## GPU Programming with MPI
+
+In case you have access to computers with GPUS you can naturally
+utilize them accordingly from python with the appropriate GPU drivers.
+
+In case not all have a GPU you can use rankfiles to controll the
+access and introduce through conditional programming based on rank
+access to the GPUs.
+
+# Examples
 
 ## MPI Ring Example
 
@@ -981,10 +995,15 @@ return a final value of 10 at the end of the ring.
 ## Counting Numbers
 
 The following program generates arrays of random numbers each 20 (n)
-  in length with the highest number possible being 10 (max_number).
-  It then uses a function called count() to count the number of 8's in
-  each data set.  The number of 8's in each list is stored count_data.
+in length with the highest number possible being 10 (max_number).  It
+then uses a function called count() to count the number of 8's in each
+data set.  The number of 8's in each list is stored count_data.
 Count_data is then summed and printed out as the total number of 8's.
+
+The progam allows you to set the program parameters. Note thath the
+program has on purpuse a bug in it as it does not communicate the
+values m, max_number, or find with a broadcast from rank 0 to all
+workers. Your task is to modify and complete this program. 
 
 > ``` python
 > !include ../examples/count/count.py
@@ -1005,6 +1024,10 @@ Executing `mpiexec -n 4 python count.py` gives us:
 
 ## Monte Carlo Calculation of Pi
 
+A very nice example to showcase the potential for doing lots of
+parallele calculations is to calculate the number pi. THis is quite
+easily achieved while using a monte carlo method.
+
 We start with the mathematical formulation of the Monte Carlo
 calculation of pi. For each quadrant of the unit square, the area is
 pi. Therefore, the ratio of the area outside of the circle is pi over
@@ -1012,68 +1035,86 @@ four. With this in mind, we can use the Monte Carlo Method for the
 calculation of pi.
 
 The following is a visualization of the program's methodology to calculate pi:
-![montecarlographic](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/monte-carlo-visualization.png){ width=25% }
 
-The following montecarlo.py program generates a very rough estimation of pi using the methodology and
-equation shown above.
+![montecarlographic](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/monte-carlo-visualization.png){ width=50% }
+
+The following montecarlo.py program generates an estimation of pi using the methodology and
+equation shown above. Increasing the total number of itterations will increase the accuracy.
 
 > ``` python
 > !include ../examples/monte-carlo/montecarlo.py
 > ```
 
-However, if a more exact approximation of pi is needed, then the following program can be run instead,
-using multiple cores of the processor using mpiexec:
+Instead of running this on one processor we can run the calculation on
+many. Implicitly this increases the accuraccy while running more
+trials in the same time as we run them all in parallel. Overhead does
+exists by starting the mpi programm and gathering teh result. However
+if the trail number is large enough it is negeligable.
 
-> ``` python
-> !include ../examples/monte-carlo/parallel_pi.py
+The following program shows the MPI implementation of it:
+
+---
+
+``` python
+!include ../examples/monte-carlo/parallel_pi.py
+ ```
+---
+
+To run this program using git bash, change directory to the folder
+containing this program and issue the command:
+
+> ```bash
+> $ mpiexec -n 4 python parallel_pi.py
 > ```
 
-To run this program using git bash, change directory to the folder containing this program and issue the command:
-`$ mpiexec -n 2 python parallel_pi.py`
 The number after `-n` can be changed to however many cores one has on their processor.
 
-- [ ] TODO: Open, HOW AND WHY DO WE NEED MULTIPLE COMPUTERS
 
-### Program
+Note: Please be advised that we use Cloudmesh.StopWatch which is a
+    convenient program to measure time and dicplay teh details fo the
+    computer. HOwever it is not threadsafe and at this time only
+    measures times in the second range. If your calculations for other
+    programs are faster or the trial number is to slow, you can use
+    other benchmarking methods.  use it in multiple threads) * other
+    strategies to benchmark, you research (only if really needed
 
-- [ ] TODO: Open, Example program to run Montecarlo on multiple hosts
+Furthermore, the numba version of the program can be run instead, which is slightly faster.
 
-- [ ] TODO: Open, Benchmarking of the code
+> ``` python
+> !include ../examples/futures/julia-numba.py
+> ```
 
-Use for benchmarking
-* cloudmesh.common (not thread-safe, but still can be used, research how to 
-  use it in multiple threads)
-  * other strategies to benchmark, you research (only if really needed
-* Use numba to speed up the code
-  * describe how to install
-* showcase basic usage on our monte carlo function
-* display results with matplotlib
+|         |   No Jit (1280x960)  |  Jit Enabled (1280x960) | No Jit (1920x1440) | Jit Enabled (1920x1440) |
+|---------|------------|---------------|-------------|------------|
+| 1 Core  | 44.898 s   | 45.800 s      |   68.489 s           |   68.610 s |
+| 2 Cores | 45.578 s   | 45.714 s      |   67.718 s           |   69.326 s |
+| 3 Cores | 43.026 s   | 44.521 s      |   68.785 s           |   69.487 s |
+| 4 Cores | 44.746 s   | 44.552 s      |   73.606 s           |   70.257 s |
+| 5 Cores | 43.223 s   | 42.825 s      |   68.226 s           |   68.443 s |
+| 6 Cores | 45.134 s   | 44.402 s      |   68.437 s           |   67.637 s |
+
+* These benchmark times were generated using a Ryzen 5 3600 CPU with
+  16 GB RAM on a Windows 10 computer.
+
+The improvement in shorter runtime with jit is not apparent likely
+because the computations required to run this program are not very
+complex; the same reason applies to why the increase in cores does not
+improve runtime.
+
+However this example showcases you how to run examples with a
+parameter to explore the behavior on multiple cores. Naturally you can
+use and explore other parameters once added to the program.
 
 
-## GPU Programming with MPI
 
-Only possibly for someone with GPU (contact me if you do) Once we are
-finished with MPI we will use and look at python dask and other
-frameworks as well as rest services to interface with the MPI
-programs. This way we will be able to expose the cluster to anyone and
-they do not even know they use a cluster while exposing this as a
-single function … (edited)
+### Assignments
 
-The Github repo is used by all of you to have write access and
-contribute to the research effort easily and in parallel.  You will
-get out of this as much as you put in. Thus it is important to set
-several dedicated hours aside (ideally each week) and contribute your
-work to others.
+1. Use numba to speed up the code. Create a tutporial including instalation instructions.
+2. Display results with matplotlib as created by the picture
+3. Modify cloudmesh.Stopwatch so we can use it for smaller time measurments
 
-It is difficult to assess how long the previous task takes as we just get
-started and we need to learn first how we work together as a team. If
-I were to do this alone it may take a week, but as you are less
-experienced it would likely take longer. However, to decrease the time
-needed we can split up work and each of you will work on a dedicated
-topic (but you can still work in smaller teams if you desire). We will
-start assigning tasks in GitHub once this is all set up.
 
-## Simple MPI Example Programs
+## Other MPI Example Programs
 
 You will find lots of example programs on the internet when you search for it.
 Please let us know about such examples and we will add the here. YOu can also contribute to our repository and add example programs that we then include in this document. In return you will become a coauthor or get acknowledged.
@@ -1087,122 +1128,27 @@ Please let us know about such examples and we will add the here. YOu can also co
 
   * <https://medium.com/@hyeamykim/parallel-k-means-from-scratch-2b297466fdcd>
 
+# Parameter Management
 
-## Python Ecosystem
-
-It is possible to pass parameters from Git Bash into a Python environment
-using os.environ and a shell file.
-
-
-> ``` python
-> !include ../examples/parameters/environment-parameter.py
-> ```
-
-Ensure that this code is saved in a particular directory. Then create a
-shell file named run.sh with the following contents:
-
-```python
-$ N=1; python environment-parameter.py
-$ N=2; python environment-parameter.py
-```
-
-Save the following py file in the same directory as well:
-> ``` python
-> !include ../examples/parameters/click-parameter.py
-> ```
-
-You must cd (change directory) into the directory with all of these 
-files in Git Bash. Input the following commands into Git Bash:
-
-```
-# This command creates an environment variable called N
-$ export N=10
-# This command prints the environment variable called N
-$ echo $N
-# This command launches a Python environment
-$ python -i
->>> import os
->>> os.environ["N"]
->>> exit()
-$ python environment-parameter.py
-$ sh run.sh
-$ sh run.sh | fgrep "csv,processors"
-$ python click-parameter.py
-# You can manually set the variable in git bash in the same line as you open the .py file
-$ python click-parameter.py --n=3
-```
-
-## Resources MPI
-
-* <https://research.computing.yale.edu/sites/default/files/files/mpi4py.pdf>
-* <https://www.nesi.org.nz/sites/default/files/mpi-in-python.pdf>
-* <https://www.kth.se/blogs/pdc/2019/08/parallel-programming-in-python-mpi4py-part-1/>
-* <http://education.molssi.org/parallel-programming/03-distributed-examples-mpi4py/index.html>
-* <http://www.ceci-hpc.be/assets/training/mpi4py.pdf>
-* <https://www.csc.fi/documents/200270/224366/mpi4py.pdf/825c582a-9d6d-4d18-a4ad-6cb6c43fefd8>
+Although this next topic is not directly related to MPI and mpi4py, it
+is very useful in general. Often we ask ourselfs the question, how do
+we pass parameters to a program includding MPI. There are multiple
+ways to achive this. Wth environment variables, command line
+arguments, and configuration files. We will expalin each of these
+methods and provide saimpel example.
 
 
-# Deep Lerning on the PI
+## Using the Shell Variables to Pass Parameters
 
-- [ ] TODO : Open, Install and use tensorflow
-- [ ] TODO : Open, Install and use horovod
+`os.environ` in Python allows us to easily access environment
+variables that are defined in a shell.  It returns a dictionary having
+user’s environmental variable as key and their values as value.
 
-## Tensorflow
-
-* tensorflow 2.3
-<https://itnext.io/installing-tensorflow-2-3-0-for-raspberry-pi3-4-debian-buster-11447cb31fc4>
-* Tensrflow: <https://magpi.raspberrypi.org/articles/tensorflow-ai-raspberry-pi>
-This seems for older tensorflow we want 2.5.0
-* Tensorflow 1.9 <https://blog.tensorflow.org/2018/08/tensorflow-19-officially-supports-raspberry-pi.html>
-* Tensorflow 2.1.0 <https://qengineering.eu/install-tensorflow-2.1.0-on-raspberry-pi-4.html>
-* Tensorflow <https://www.instructables.com/Google-Tensorflow-on-Rapsberry-Pi/>
-* Horovod with mpi4py, see original horovod documentation
-* Horovod goo, see if that works
-
-## Tensorflow Lite
-
-build on ubunto and rasperry os are slightly different
-
-* <https://www.hackster.io/news/benchmarking-tensorflow-lite-on-the-new-raspberry-pi-4-model-b-3fd859d05b98>
-
-## Horovod mpi4pi
-
-* <https://github.com/horovod/horovod#mpi4py>
-
-
-## Applications
-
-### Object tetection
-
-### Time series analysis
-
-
-## Python Ecosystem
-
-#### Using Environment Variables to Pass Parameters
-
-
-os.environ in Python is a mapping object that represents the user’s
-environmental variables.  It returns a dictionary having user’s
-environmental variable as key and their values as value.
-
-os.environ behaves like a python dictionary, so all the common
-dictionary operations like get and set can be performed.  We can also
-modify os.environ but any changes will be effective only for the
-current process where it was assigned and it will not change the value
-permanently.
-
-
-##### Example
-
-We demonstrate this in an example.
-We developed a 
-count.py program that uses os.environ from the os library
+To demonstrate its use, we have written a 
+`count.py` program that uses `os.environ` 
 to optionally pass parameters to an mpi program.
 
-> ``` python
-> !include ../examples/count/count.py
-> ```
+This example is included in a previous Section `Counting Numbers` and we like you to look it over.
 
 If the user changed the value of N, MAX, or FIND in the
 terminal using, for example, `export FIND="5"` (shown below)
@@ -1233,59 +1179,44 @@ variables, find will default to 8.
 > Total number of 8's: 2
 > ```
 
-### Parameters
 
-### Passing Parameters from Git Bash into Python
+Assignment:
 
-First create a run.sh shell file with the following contents
-```python
-$ N=1; python environment-parameter.py
-$ N=2; python environment-parameter.py
-```
+1. One thing we did not do is use the bradcast method to properly
+   communicte the 3 environment variables. We like you to improve the
+   code and submit to us.
 
-environment-parameter.py and click-parameter.py can be retrieved from examples/parameters.
-They must be in the same directory as the previously created run.sh file, and you must cd
-(change directory) into this directory in Git Bash.
-Input the following commands into Git Bash
+Setting the parameter can either be done vi the export shell command such as
 
-```
-# This command creates an environment variable called N
-$ export N=10
-# This command prints the environment variable called N
-$ echo $N
-# This command launches a Python environment
-$ python -i
->>> import os
->>> os.environ["N"]
->>> exit()
-$ python environment-parameter.py
-$ sh run.sh
-$ sh run.sh | fgrep "csv,processors"
-$ python click-parameter.py
-# You can manually set the variable in git bash in the same line as you open the .py file
-$ python click-parameter.py --n=3
-```
+> ```bash
+> $ export N=8
+> ```
 
-### click-parameter.py
+or while passing the parameter in the same line as a a command such as demonstrated next
 
-``` python
-!include ../examples/parameters/click-parameter.py
-```
+> ```bash
+> $ N=1; python environment-parameter.py
+> ```
 
-This Python program sets a variable n (default is 1) and runs a cloudmesh StopWatch
-based on the value of the variable n. If n is set to 1, the program waits for a
-period of time (0.1 times n), prints the value of n, and then outputs the cloudmesh
-benchmark for a particular processor. If n is set to 1, cloudmesh benchmark will
-output processor 1 and the period of time the program waited. If n is set to 2,
-cloudmesh benchmark will output processor 2 and so on.
+This can be generalized while using a file with many different parameters and commands. For example placing this in a file called `run.sh`
 
-This is meant to be a beginner's basic exploration into the click module.
+> ```python
+> $ N=1; python environment-parameter.py
+> $ N=2; python environment-parameter.py
+> ```
 
-### environment-parameter.py
 
-``` python
-!include ../examples/parameters/environment-parameter.py
-```
+It Allows us to execute the programs sequentially in the file with
+
+> ```bash
+> $ sh run.sh
+> ```
+
+Let us assume we use the python program
+
+> ``` python
+> !include ../examples/parameters/environment-parameter.py
+> ```
 
 This Python program does not set a variable N on its own. It refers to os.environ
 which should have previously set N as shown in the beginning of this document's
@@ -1293,9 +1224,91 @@ git bash log. The program does the same procedures as the
 previous program once N is set and passed from os.environ.
 
 
+Using in our case also the cloudmesh.StopWatch allows us easily to fgrep for the results we may be interested in to conduct benchmarks. Here is an example workflow to achive this
+
+> ```
+> # This command creates an environment variable called N
+> $ export N=10
+> # This command prints the environment variable called N
+> $ echo $N
+> # This command launches a Python environment
+> $ python -i
+> >>> import os
+> >>> os.environ["N"]
+> >>> exit()
+> $ python environment-parameter.py
+> $ sh run.sh
+> $ sh run.sh | fgrep "csv,processors"
+> ```
+
+
+### Using click to pass parameters
+
+Click is a convenient mechnaism to define parameters that can be passed via options to python programs. To show case its use please inspect tthe follwoing program
+
+> ``` python
+> !include ../examples/parameters/click-parameter.py
+> ```
+
+
+You can manually set the variable in git bash in the same line as you open the .py file
+
+> ```bash
+> $ python click-parameter.py --n=3
+> ```
+
+# Deep Lerning on the PI
+
+Assignment
+
+1. Create a tutorial to install use tensorflow from an MPI program
+1. Create a tutorial to install and use horovod. Explain relationship and differences to MPI
+
+
+## Tensorflow
+
+* tensorflow 2.3
+<https://itnext.io/installing-tensorflow-2-3-0-for-raspberry-pi3-4-debian-buster-11447cb31fc4>
+* Tensrflow: <https://magpi.raspberrypi.org/articles/tensorflow-ai-raspberry-pi>
+This seems for older tensorflow we want 2.5.0
+* Tensorflow 1.9 <https://blog.tensorflow.org/2018/08/tensorflow-19-officially-supports-raspberry-pi.html>
+* Tensorflow 2.1.0 <https://qengineering.eu/install-tensorflow-2.1.0-on-raspberry-pi-4.html>
+* Tensorflow <https://www.instructables.com/Google-Tensorflow-on-Rapsberry-Pi/>
+* Horovod with mpi4py, see original horovod documentation
+* Horovod goo, see if that works
+
+## Tensorflow Lite
+
+build on ubunto and rasperry os are slightly different
+
+* <https://www.hackster.io/news/benchmarking-tensorflow-lite-on-the-new-raspberry-pi-4-model-b-3fd859d05b98>
+
+## Horovod mpi4pi
+
+* <https://github.com/horovod/horovod#mpi4py>
+
+
+## Resources
+
+Here are a couple of links that may be useful. We have not yet looked over them but include them.
+
+* <https://research.computing.yale.edu/sites/default/files/files/mpi4py.pdf>
+* <https://www.nesi.org.nz/sites/default/files/mpi-in-python.pdf>
+* <https://www.kth.se/blogs/pdc/2019/08/parallel-programming-in-python-mpi4py-part-1/>
+* <http://education.molssi.org/parallel-programming/03-distributed-examples-mpi4py/index.html>
+* <http://www.ceci-hpc.be/assets/training/mpi4py.pdf>
+* <https://www.csc.fi/documents/200270/224366/mpi4py.pdf/825c582a-9d6d-4d18-a4ad-6cb6c43fefd8>
+
+### Assignment
+
+1. Review the resources and provide a short summary that we add to this document above the appropriate link
+
+
+
 # Appendix
 
-!include chapters/hardware.md
+
+!include chapters/gitbash.md
 
 ## Make on Windows
 
@@ -1395,63 +1408,10 @@ Next run in Powershell
 
 Now you can use the Ubuntu distro freely. The WSL2 application will be in your shortcut menu in `Start`. 
 
-# Make on Windows
 
-Makefiles provide a good feature to organize workflows while assembling
-programs or documents to create an integrated document. Within `makefiles` you
-can define targets that you can call and are then executed. Preconditions can
-be used to execute rules conditionally. This mechanism can easily be used to
-define complex workflows that require a multitude of interdependent actions to
-be performed. Makefiles are executed by the program `make` that is available on
-all platforms.
 
-On Linux, it is likely to be pre-installed, while on macOS you can install it
-with Xcode. On Windows, you have to install it explicitly. We recommend that
-you install `gitbash` first. After you install `gitbash`, you can install
-`make` from an administrative `gitbash` terminal window. To start one, go to
-the search field next to the Windows icon on the bottom left and type in
-gitbash without a `RETURN`. You will then see a selection window that includes
-`Run as administrator. Click on it. As you run it as administrator, it will
-allow you to install `make`. The following instructions will provide you with a
-guide to install make under windows.
 
-## Installation
-
-Please visit
-
-* <https://sourceforge.net/projects/ezwinports/files/>
-
-and download the file 
-
-* ['make-4.3-without-guile-w32-bin.zip'](https://sourceforge.net/projects/ezwinports/files/make-4.3-without-guile-w32-bin.zip/download)
-
-After the download, you have to extract and unzip the file as follows in a
-gitbash that you started as administrative user:
-
-![administrativegitbash](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/gitbashadmin.png)
-
-figure: screenshot of opening gitbash in admin shell 
-
-> ```bash
-> $ cp make-4.3-without-guile-w32-bin.zip /usr
-> $ cd /usr
-> $ unzip make-4.3-without-guile-w32-bin.zip
-> ```
-
-Now start a new terminal (a regular non-administrative one) and type the
-command
-
-> ```bash
-> $ which make
-> ```
-
-It will provide you the location if the installation was successful
-
-> ```bash
-> /usr/bin/make
-> ```
-
-to make sure it is properly installed and in the correct directory.
+!include chapters/benchmark.md
 
 # Assignments
 
@@ -1488,9 +1448,29 @@ to make sure it is properly installed and in the correct directory.
   there is no point to repeat that, we may just point to it and
   improve that tutorial where needed instead.
 
+5. The images in <https://mpitutorial.com/tutorials/> seem much better
+   when it comes to for example scatter. Your task is to create better
+   images for all examples.
+
+6. Convert the parallel rank program from <https://mpitutorial.com/tutorials/performing-parallel-rank-with-mpi/>
+   to mpi4py. Write a tutorial for it.
+
+7. Develop tutorials that showcase multiple communicators and
+   groups. See
+   <https://mpitutorial.com/tutorials/introduction-to-groups-and-communicators/>
+
+8. Complete the count example while adding a bradcast to it to
+   communicate the parameters. Provide a modified tutorial.
+
+9. Test out the Machinefile, host, and rankfile section. Improve if needed.
+
+
+
 # Acknowledgements
 
-We like to thank Erin Seliger and Agness Lungua for their effort on our very early draft of this paper.
+We like to thank Erin Seliger and Agness Lungua for their effort on
+our very early draft of this paper.
+
 
 
 # References
