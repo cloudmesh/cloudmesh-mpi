@@ -70,7 +70,9 @@ md-native:
 
 pdf-native: md-native
 	pandoc -s \
+                --include-in-header listings-setup.tex \
 		-t latex -V geometry:margin=1in --number-sections \
+                --listings \
 		--toc chapters/metadata-mpi.yaml \
 		../docs/report-mpi.md -o report-mpi.pdf
 
