@@ -5,7 +5,7 @@ from cloudmesh.common.console import Console
 from cloudmesh.common.util import path_expand
 from pprint import pprint
 from cloudmesh.common.debug import VERBOSE
-
+from cloudmesh.common.parameter import Parameter
 
 class MpiCommand(PluginCommand):
 
@@ -16,34 +16,26 @@ class MpiCommand(PluginCommand):
         ::
 
           Usage:
-                mpi --file=FILE
-                mpi list
-                mpi cooper --file=FILE
+                mpi deploy HOSTS
 
-          This command does some useful things.
+          This command deploys HOSTS mpi. At this time this command is 
+          intended only to be used with Raspberry PIs
 
           Arguments:
-              FILE   a file name
-
-          Options:
-              -f      specify the file
+              HOSTS   parameterized list of hosts
 
         """
-        arguments.FILE = arguments['--file'] or None
+        arguments.hosts = arguments['HOSTS']
 
         VERBOSE(arguments)
 
-        m = Manager()
-        if arguments.cooper:
-            print(arguments.FILE)
-            print('hello cooper')
-        elif arguments.FILE:
-            print("option a")
-            m.list(path_expand(arguments.FILE))
+        if arguments.deploy:
 
-        elif arguments.list:
-            print("option b")
-            m.list("just calling list without parameter")
-    #random comment
-        #Console.error("This is just a sample")
+            banner("Install MPI on hosts")
+
+            print (arguments.hosts)
+
+            raise NotImplementedError
+
+            
         return ""
