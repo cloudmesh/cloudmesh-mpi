@@ -1,20 +1,10 @@
-> **Note:** Do not modify the report.md file, instead modify only files
-> in the chapters dir
-
 # Preface
 
 ## Document Management in GitHub
 
-This document is managed in GitHub, and tasks are assigned via GitHub
-actions:
-
--   [All](https://github.com/cloudmesh/cloudmesh-mpi/projects/1),
-    [Fidel](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Aflealc),
-    [Cooper](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Acoopyoung),
-    [Gregor](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Alaszewsk),
-    [Jacques](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3Astapmoshun),
-    [Yohn
-    J](https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=assignee%3AYohnjparra)
+> **Note:** The source document is managest at
+> <https://cloudmesh.github.io/cloudmesh-mpi/doc/chapters> To make
+> changes or corrections please use a pull request
 
 The repository, documentation, and examples are available at:
 
@@ -68,8 +58,7 @@ including supercomputers. The framework is well known in the C-language
 community. However, many practitioners do not have the time to learn C
 to utilize such advanced cyberinfrastructure. Hence, it is advantageous
 to access MPI from Python. We showcase how you can easily deploy and use
-MPI from Python via a tool called `mpi4pi`. We will also show you how to
-use `mpi4pi` in support of AI workflows such as TensorFlow.
+MPI from Python via a tool called `mpi4pi`.
 
 Message Passing Interface (MPI) is a message-passing standard that
 allows for efficient data communication between the address spaces of
@@ -478,14 +467,13 @@ that the object is preserved, however it comes with the disadvantage
 that pickling the data takes more time than a direct memory copy.
 
 ![Sending and receiving data between two
-processes](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/send_receive.png){width="15%"}
-
--   [ ] **TODO: image is wrong needs to be between rank 0 and 1, remove
-    D0 D2**
+processes](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/send_receive.png){width="50%"}
 
 Here is the definition for the `send()` method:
 
->     comm.send(buf, dest, tag)
+> ``` python
+> comm.send(buf, dest, tag)
+> ```
 
 `buf` represents the data to be transmitted, `dest` and `tag` are
 integer values that specify the rank of the destination process, and a
@@ -495,7 +483,9 @@ messages to another process.
 
 On the other end is the `recv()` method, with the following definition:
 
->     comm.recv(buf, source, tag, status)
+> ``` python
+> comm.recv(buf, source, tag, status)
+> ```
 
 In this case, `buf` can specify the location for the received data to be
 stored. In more recent versions of MPI, 'buf' has been deprecated. In
@@ -646,7 +636,7 @@ Executing `mpiexec -n 4 python isend_ireceive.py` yields:
 > After isend/ireceive, the value in process 1 is 42
 > ```
 
-## Collective COmmunication
+## Collective Communication
 
 ### Broadcast
 
@@ -674,9 +664,7 @@ group.
 
 ![Broadcasting data from a root process to the rest of the processes in
 the communicator
-group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){width="25%"}
-
--   [ ] **TODO: in that image the root process does not send to itself**
+group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){width="50%"}
 
 The following code snippet shows the creation of the dictionary in
 process with rank 0. Notice how the variable `data` remains empty in all
@@ -785,10 +773,10 @@ data to each process.
 In our next example, we will `scatter` the members of a list among the
 processes in the communicator group. We illustrate the concept in the
 next figure, where we indicate the data that is scattered to the rnaked
-processes with #D_i\$
+processes with $D_i$
 
 ![Example to scatter data to different processors from the one with rank
-0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/scatter.png){width="25%"}
+0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/scatter.png){width="30%"}
 
 #### Scatter Python Objects
 
@@ -914,7 +902,7 @@ In this example, data from each process in the communicator group is
 gathered in the process with rank 0.
 
 ![Example to gather data to different processors from the one with rank
-0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/gather.png){width="25%"}
+0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/gather.png){width="30%"}
 
 > ``` python
 > #!/usr/bin/env python
@@ -1052,7 +1040,7 @@ is the case when `comm.Gather()` is used instead).
 
 ![Example to gather the data from each process into ALL of the processes
 in the
-group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/allgather.png){width="25%"}
+group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/allgather.png){width="30%"}
 
 > ``` python
 > #!/usr/bin/env python
@@ -1235,7 +1223,9 @@ modules, specifically via MPIPoolExecutor.
 > import numpy as np
 > from cloudmesh.common.StopWatch import StopWatch
 >
-> multiplier = int(input('Enter 1 for 640x480 pixels of Julia visualization image, 2 for 1280x960, and so on...'))
+> multiplier = int(input('Enter 1 for 640x480 pixels of Julia '
+>                        'visualization image, 2 for 1280x960, '
+>                        'and so on...'))
 >
 > StopWatch.start("Overall time")
 > x0, x1, w = -2.0, +2.0, 640*multiplier
@@ -1272,9 +1262,11 @@ modules, specifically via MPIPoolExecutor.
 > StopWatch.benchmark()
 > ```
 
-The program must be run through the terminal with the command:
+To run teh program use:
 
-`mpiexec -n 1 python julia-futures.py`
+> ``` bash
+> mpiexec -n 1 python julia-futures.py
+> ```
 
 The number after `-n` can be changed to however many cores are in the
 computer's processor. For example, a dual-core processor can use `-n 2`
@@ -1317,7 +1309,7 @@ is done 1 do the integer send around. Figure 1 showcases the process
 graph of this application.
 
 ![Processes organized in a ring perform a sum
-operation](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/ring.png){width="40%"}
+operation](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/ring.png){width="60%"}
 
 In the example, the user provides an integer that is transmitted from
 the process with rank 0, to process with rank 1, and so on until the
@@ -1351,7 +1343,7 @@ plus the number of processes in the communicator group.
 >             comm.send(data, dest=rank + 1)  # send data to neighbor
 >             data = comm.recv(data, source=size - 1)
 >             if debug:
->                 print(f'Final data received in process 0 after ring is completed: {data}')
+>                 print(f'Final data received in process 0: {data}')
 >         elif rank == size - 1:          
 >             data = comm.recv(source=rank - 1)  # recieve data from neighbor
 >             data += 1                          # Data is modified
@@ -1674,7 +1666,8 @@ is slightly faster.
 > from numba import jit
 > from cloudmesh.common.StopWatch import StopWatch
 >
-> multiplier = int(input('Enter 1 for 640x480 pixels of Julia visualization image, 2 for 1280x960, and so on...'))
+> multiplier = int(input('Enter 1 for 640x480 pixels of Julia visualization image,'
+>                        ' 2 for 1280x960, and so on...'))
 >
 > StopWatch.start("Overall time")
 > x0, x1, w = -2.0, +2.0, 640*multiplier
@@ -1753,7 +1746,7 @@ explore other parameters once added to the program.
 
 You will find lots of example programs on the internet when you search
 for it. Please let us know about such examples and we will add the here.
-YOu can also contribute to our repository and add example programs that
+You can also contribute to our repository and add example programs that
 we then include in this document. In return you will become a co-author
 or get acknowledged.
 
@@ -1915,40 +1908,6 @@ open the .py file
 > ``` bash
 > $ python click-parameter.py --n=3
 > ```
-
-# Deep Learning on the PI
-
-Assignment
-
-1.  Create a tutorial to install use tensorflow from an MPI program
-2.  Create a tutorial to install and use horovod. Explain relationship
-    and differences to MPI
-
-## Tensorflow
-
--   tensorflow 2.3
-    <https://itnext.io/installing-tensorflow-2-3-0-for-raspberry-pi3-4-debian-buster-11447cb31fc4>
--   Tensrflow:
-    <https://magpi.raspberrypi.org/articles/tensorflow-ai-raspberry-pi>
-    This seems for older tensorflow we want 2.5.0
--   Tensorflow 1.9
-    <https://blog.tensorflow.org/2018/08/tensorflow-19-officially-supports-raspberry-pi.html>
--   Tensorflow 2.1.0
-    <https://qengineering.eu/install-tensorflow-2.1.0-on-raspberry-pi-4.html>
--   Tensorflow
-    <https://www.instructables.com/Google-Tensorflow-on-Rapsberry-Pi/>
--   Horovod with mpi4py, see original horovod documentation
--   Horovod goo, see if that works
-
-## Tensorflow Lite
-
-Build on Ubuntu and raspberry os are slightly different
-
--   <https://www.hackster.io/news/benchmarking-tensorflow-lite-on-the-new-raspberry-pi-4-model-b-3fd859d05b98>
-
-## Horovod mpi4pi
-
--   <https://github.com/horovod/horovod#mpi4py>
 
 ## Resources
 
@@ -2191,9 +2150,9 @@ Cloudmesh provides an easy command that can be used to obtain
 information to derive these values while using the command. However, it
 only works if the number of processors on the same node is 1.
 
-    pip install cloudmesh-cmd5
-    cms help    # dont forget to call it after the install as it sets some defaults
-    cms sysinfo 
+>     pip install cloudmesh-cmd5
+>     cms help    # call it after the install as it sets some defaults
+>     cms sysinfo 
 
 The output will be looking something like
 
@@ -2229,8 +2188,8 @@ The output will be looking something like
 
 To obtain the vectors you can say
 
-    cms sysinfo -v
-    cms sysinfo -t
+>     cms sysinfo -v
+>     cms sysinfo -t
 
 where `-v` specifies the vector and `-t` the totals. Knowing these
 values will help you structure your benchmarks.
@@ -2251,40 +2210,40 @@ To create benchmarks over x and y we can generate them in various ways.
 For all programs, we will store the output of the benchmarks in a
 directory called `benchmark`. Please create it.
 
-``` bash
-$ mkdir benchmark
-```
+> ``` bash
+> $ mkdir benchmark
+> ```
 
 you may be able to run your benchmark simply as a loop this is
 especially the case for smaller benchmarks.
 
-``` python
-import pickle
-from cloudmesh.common.StopWatch import StopWatch
-
-def f(x,y, print_benchmark=False, checkpoint=True):
-    # run your application with values x and y
-    print (f"Calculate f({x},{y})")
-    StopWatch.start(f"f{x},{y}")
-    result = x*y
-    StopWatch.stop(f"f{x},{y}")
-    if print_benchmark:
-        StopWatch.benchmark()
-    if checkpoint:
-        pickle.dump(result, open(f"benchmark/f-{x}-{y}.pkl", "wb" ))  
-    return result
-
-x_min = 0
-x_max = 2
-d_x = 1
-y_min = 0
-y_max = 1
-d_y = 1
-for x in range(x_min, x_max, dx):
-    for y in range(y_min, y_max, dy):
-        # run the function with parameters
-        result = f(x ,y, print_benchmark=True)
-```
+> ``` python
+> import pickle
+> from cloudmesh.common.StopWatch import StopWatch
+>
+> def f(x,y, print_benchmark=False, checkpoint=True):
+>     # run your application with values x and y
+>     print (f"Calculate f({x},{y})")
+>     StopWatch.start(f"f{x},{y}")
+>     result = x*y
+>     StopWatch.stop(f"f{x},{y}")
+>     if print_benchmark:
+>         StopWatch.benchmark()
+>     if checkpoint:
+>         pickle.dump(result, open(f"benchmark/f-{x}-{y}.pkl", "wb" ))  
+>     return result
+>
+> x_min = 0
+> x_max = 2
+> d_x = 1
+> y_min = 0
+> y_max = 1
+> d_y = 1
+> for x in range(x_min, x_max, dx):
+>     for y in range(y_min, y_max, dy):
+>         # run the function with parameters
+>         result = f(x ,y, print_benchmark=True)
+> ```
 
 #### Script solution
 
@@ -2297,79 +2256,79 @@ exclude those that fail.
 For this, we rewrite the python program via command-line arguments that
 we pass along.
 
-``` python
-# stored in file f.py
-import click
-
-@click.command()
-@click.option('--x', default=20, help='The x value')
-@click.option('--x', default=40, help='The y value')
-@click.option('--print_benchmark', default=True, help='prints the benchmark result')
-@click.option('--checkpoint', default=True, help='Creates a checkpoint')
-f(x,y, print_benchmark=False, checkpoint=True):
-    ... see previous program
-    return result
-
-if __name__ == '__main__':
-    f()
-```
+> ``` python
+> # stored in file f.py
+> import click
+>
+> @click.command()
+> @click.option('--x', default=20, help='The x value')
+> @click.option('--x', default=40, help='The y value')
+> @click.option('--print_benchmark', default=True, help='prints the benchmark result')
+> @click.option('--checkpoint', default=True, help='Creates a checkpoint')
+> f(x,y, print_benchmark=False, checkpoint=True):
+>     ... see previous program
+>     return result
+>
+> if __name__ == '__main__':
+>     f()
+> ```
 
 Now we can run this program with
 
-``` python
-$ python f.py --x 10 --y 5
-```
+> ``` python
+> $ python f.py --x 10 --y 5
+> ```
 
 To generate now the different runs from the loop we can do it either via
 Makefiles or write a program creating commands where we produce a script
 listing each invocation. Let us call this program `sweep-generator.py`.
 
-``` python
-x_min = 0
-x_max = 2
-d_x = 1
-y_min = 0
-y_max = 1
-d_y = 1
-for x in range(x_min, x_max, dx):
-    for y in range(y_min, y_max, dy):
-        print (f"cms banner f({x}, {y}; " 
-               f"python f.py --x {x} --y {y}")
-```
+> ``` python
+> x_min = 0
+> x_max = 2
+> d_x = 1
+> y_min = 0
+> y_max = 1
+> d_y = 1
+> for x in range(x_min, x_max, dx):
+>     for y in range(y_min, y_max, dy):
+>         print (f"cms banner f({x}, {y}; " 
+>                f"python f.py --x {x} --y {y}")
+> ```
 
 The result will be
 
-    cms banner f(0,0); python f.py --x 0 --y 0
-    ...
+>     cms banner f(0,0); python f.py --x 0 --y 0
+>     ...
 
 and so on. The banner will print a nice banner before you execute the
 real function so it is easier to monitor when execution
 
 To create a shell script, simply redirect it into a file such as
 
-``` bash
-$ python sweep-generator.py > sweep.sh
-```
+> ``` bash
+> $ python sweep-generator.py > sweep.sh
+> ```
 
 Now you can execute it with
 
-``` bash
-$ sh sweep.sh | tee result.log
-```
+> ``` bash
+> $ sh sweep.sh | tee result.log
+> ```
 
 The `tee` command will redirect the output to the file result, while
 still reporting its progress on the terminal. In case you want to run it
 without monitoring or tee is not supported properly you just run it as
 
-``` bash
-$ sh sweep.sh >> result.log
-```
+> ``` bash
+> $ sh sweep.sh >> result.log
+> ```
 
 In case you need to monitor the progress for the latter you can use
 
-``` bash
-$ tail -f result.log
-```
+> ``` bash
+> $ tail -f result.log
+> ```
 
 The advantage of this approach is that you can in case of a failure
 identify which benchmarks succeeded and exclude them from your next run
@@ -2386,9 +2345,9 @@ function f.
 we simply have to `fgrep` to the log file to extract the information in
 the `csv` lines with
 
-``` python
-fgrep "#csv" result.log
-```
+> ``` python
+> fgrep "#csv" result.log
+> ```
 
 This can then be further post-processed.
 
@@ -2411,41 +2370,44 @@ So what we have to do is augment a notebook so that we can
 For this, we use `papermill` that allows us to just do these two tasks.
 INstall it with
 
-``` python
-pip install papermill
-```
+> ``` python
+> pip install papermill
+> ```
 
 Then when you open up jupyter-lablab and import our code. Create a new
 cell. In this cell you place all parameters for your run that you like
 to modify such as
 
-x = 0 y = 0
+> ``` python
+> x = 0
+> y = 0
+> ```
 
 This cell can be augmented with a tag called "parameters". To do this
 open the "cog" and enter in the tag name "parameters". Make sure you
 save the tag and the notebook. Now we can use `papermill` to run our
 notebook with parameters such as
 
-    $ mkdir benchmark
-    $ papermill sweep.ipynb benchmark/sweep-0-0.ipynb --x 0 --y 0 | tee benchmark/result-0-0.log
-    ...
+>     $ mkdir benchmark
+>     $ papermill sweep.ipynb benchmark/sweep-0-0.ipynb --x 0 --y 0 | tee benchmark/result-0-0.log
+>     ...
 
 Naturally, we can auto-generate this as follows
 
-``` python
-x_min = 0
-x_max = 2
-d_x = 1
-y_min = 0
-y_max = 1
-d_y = 1
-for x in range(x_min, x_max, dx):
-    for y in range(y_min, y_max, dy):
-        print (f"cms banner f({x}, {y}; "
-               f"papermill sweep.ipynb benchmark/sweep-{x}-{y}.ipynb"
-               f"    --x {x} --y {y}"
-               f"    | tee benchmark/result-{x}-{y}.log")
-```
+> ``` python
+> x_min = 0
+> x_max = 2
+> d_x = 1
+> y_min = 0
+> y_max = 1
+> d_y = 1
+> for x in range(x_min, x_max, dx):
+>     for y in range(y_min, y_max, dy):
+>         print (f"cms banner f({x}, {y}; "
+>                f"papermill sweep.ipynb benchmark/sweep-{x}-{y}.ipynb"
+>                f"    --x {x} --y {y}"
+>                f"    | tee benchmark/result-{x}-{y}.log")
+> ```
 
 This will produce a series of commands that we can also redirect into a
 shell script and then execute
@@ -2455,9 +2417,9 @@ shell script and then execute
 As we have the logs all in the benchmark directory, we can even combine
 them and select the `csv` lines with
 
-``` bash
-$ cat benchmark/*.log | fgrep "#csv"
-```
+> ``` bash
+> $ cat benchmark/*.log | fgrep "#csv"
+> ```
 
 Now you can apply further processing such as importing it into pandas or
 any other spreadsheet-like tools you like to use for the analysis.

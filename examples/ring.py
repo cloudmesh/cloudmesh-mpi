@@ -22,7 +22,7 @@ def ring(count=1, debug=Fasle):
             comm.send(data, dest=rank + 1)  # send data to neighbor
             data = comm.recv(data, source=size - 1)
             if debug:
-                print(f'Final data received in process 0 after ring is completed: {data}')
+                print(f'Final data received in process 0: {data}')
         elif rank == size - 1:          
             data = comm.recv(source=rank - 1)  # recieve data from neighbor
             data += 1                          # Data is modified

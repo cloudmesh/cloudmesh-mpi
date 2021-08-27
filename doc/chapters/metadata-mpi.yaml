@@ -1,5 +1,5 @@
 ---
-title: Python MPI for AI and Deep Learning
+title: MPI with Python
 author: Gregor von Laszewski <laszewski@gmail.com>, Fidel Leal, Jacques Fleischer, Cooper Young 
 header-includes: |
     \usepackage{fancyhdr}
@@ -19,8 +19,6 @@ abstract: |
 	  community.  However many practitioners do not have the time to learn C
 	  to utilize such advanced cyberinfrastructure. Hence, it is
 	  advantageous to access MPI from Python. We showcase how you can easily
-	  deploy and use MPI from Python via a tool called `mpi4pi`.  We will also show you
-	  how to use `mpi4pi` in support of AI workflows such as 
-    	  TensorFlow.
+	  deploy and use MPI from Python via a tool called `mpi4pi`.  
 	  For more information, please contact: <laszewski@gmail.com>
 ---

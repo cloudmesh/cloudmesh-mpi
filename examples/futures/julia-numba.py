@@ -4,7 +4,8 @@ import numpy as np
 from numba import jit
 from cloudmesh.common.StopWatch import StopWatch
 
-multiplier = int(input('Enter 1 for 640x480 pixels of Julia visualization image, 2 for 1280x960, and so on...'))
+multiplier = int(input('Enter 1 for 640x480 pixels of Julia visualization image,'
+                       ' 2 for 1280x960, and so on...'))
 
 StopWatch.start("Overall time")
 x0, x1, w = -2.0, +2.0, 640*multiplier

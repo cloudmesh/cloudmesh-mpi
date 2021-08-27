@@ -76,11 +76,11 @@ Cloudmesh provides an easy command that can be used to obtain information to
 derive these values while using the command. However, it only works if the
 number of processors on the same node is 1.
 
-```
-pip install cloudmesh-cmd5
-cms help    # dont forget to call it after the install as it sets some defaults
-cms sysinfo 
-```
+> ```
+> pip install cloudmesh-cmd5
+> cms help    # call it after the install as it sets some defaults
+> cms sysinfo 
+> ```
 
 The output will be looking something like 
 
@@ -118,10 +118,10 @@ The output will be looking something like
 
 To obtain the vectors you can say
 
-```
-cms sysinfo -v
-cms sysinfo -t
-```
+> ```
+> cms sysinfo -v
+> cms sysinfo -t
+> ```
 
 where `-v` specifies the vector and `-t` the totals.  Knowing these values will
 help you structure your benchmarks.
@@ -141,40 +141,40 @@ To create benchmarks over x and y we can generate them in various ways.
 For all programs, we will store the output of the benchmarks in a directory called 
 `benchmark`. Please create it.
 
-```bash
-$ mkdir benchmark
-```
+> ```bash
+> $ mkdir benchmark
+> ```
 
 you may be able to run your benchmark simply as a loop this is especially
 the case for smaller benchmarks.
 
-```python
-import pickle
-from cloudmesh.common.StopWatch import StopWatch
-
-def f(x,y, print_benchmark=False, checkpoint=True):
-    # run your application with values x and y
-    print (f"Calculate f({x},{y})")
-    StopWatch.start(f"f{x},{y}")
-    result = x*y
-    StopWatch.stop(f"f{x},{y}")
-    if print_benchmark:
-        StopWatch.benchmark()
-    if checkpoint:
-        pickle.dump(result, open(f"benchmark/f-{x}-{y}.pkl", "wb" ))  
-    return result
-
-x_min = 0
-x_max = 2
-d_x = 1
-y_min = 0
-y_max = 1
-d_y = 1
-for x in range(x_min, x_max, dx):
-    for y in range(y_min, y_max, dy):
-        # run the function with parameters
-        result = f(x ,y, print_benchmark=True)
-```
+> ```python
+> import pickle
+> from cloudmesh.common.StopWatch import StopWatch
+> 
+> def f(x,y, print_benchmark=False, checkpoint=True):
+>     # run your application with values x and y
+>     print (f"Calculate f({x},{y})")
+>     StopWatch.start(f"f{x},{y}")
+>     result = x*y
+>     StopWatch.stop(f"f{x},{y}")
+>     if print_benchmark:
+>         StopWatch.benchmark()
+>     if checkpoint:
+>         pickle.dump(result, open(f"benchmark/f-{x}-{y}.pkl", "wb" ))  
+>     return result
+> 
+> x_min = 0
+> x_max = 2
+> d_x = 1
+> y_min = 0
+> y_max = 1
+> d_y = 1
+> for x in range(x_min, x_max, dx):
+>     for y in range(y_min, y_max, dy):
+>         # run the function with parameters
+>         result = f(x ,y, print_benchmark=True)
+> ```
 
 #### Script solution
 
@@ -185,83 +185,83 @@ execute the program through shell scripts and exclude those that fail.
 
 For this, we rewrite the python program via command-line arguments that we pass along.
 
-```python
-# stored in file f.py
-import click
-
-@click.command()
-@click.option('--x', default=20, help='The x value')
-@click.option('--x', default=40, help='The y value')
-@click.option('--print_benchmark', default=True, help='prints the benchmark result')
-@click.option('--checkpoint', default=True, help='Creates a checkpoint')
-f(x,y, print_benchmark=False, checkpoint=True):
-    ... see previous program
-    return result
-
-if __name__ == '__main__':
-    f()
-```
+> ```python
+> # stored in file f.py
+> import click
+> 
+> @click.command()
+> @click.option('--x', default=20, help='The x value')
+> @click.option('--x', default=40, help='The y value')
+> @click.option('--print_benchmark', default=True, help='prints the benchmark result')
+> @click.option('--checkpoint', default=True, help='Creates a checkpoint')
+> f(x,y, print_benchmark=False, checkpoint=True):
+>     ... see previous program
+>     return result
+> 
+> if __name__ == '__main__':
+>     f()
+> ```
 
 Now we can run this program with 
 
-```python
-$ python f.py --x 10 --y 5
-```
+> ```python
+> $ python f.py --x 10 --y 5
+> ```
 
 To generate now the different runs from the loop we can do it either via
 Makefiles or write a program creating commands where we produce a script listing
 each invocation. Let us call this program `sweep-generator.py`.
 
 
-```python
-x_min = 0
-x_max = 2
-d_x = 1
-y_min = 0
-y_max = 1
-d_y = 1
-for x in range(x_min, x_max, dx):
-    for y in range(y_min, y_max, dy):
-        print (f"cms banner f({x}, {y}; " 
-               f"python f.py --x {x} --y {y}")
-```
+> ```python
+> x_min = 0
+> x_max = 2
+> d_x = 1
+> y_min = 0
+> y_max = 1
+> d_y = 1
+> for x in range(x_min, x_max, dx):
+>     for y in range(y_min, y_max, dy):
+>         print (f"cms banner f({x}, {y}; " 
+>                f"python f.py --x {x} --y {y}")
+> ```
 
 The result will be 
 
-```
-cms banner f(0,0); python f.py --x 0 --y 0
-...
-```
+> ```
+> cms banner f(0,0); python f.py --x 0 --y 0
+> ...
+> ```
 
 and so on. The banner will print a nice banner before you execute the real
 function so it is easier to monitor when execution
 
 To create a shell script, simply redirect it into a file such as
 
-```bash
-$ python sweep-generator.py > sweep.sh
-```
+> ```bash
+> $ python sweep-generator.py > sweep.sh
+> ```
 
 Now you can execute it with 
 
-```bash
-$ sh sweep.sh | tee result.log
-```
+> ```bash
+> $ sh sweep.sh | tee result.log
+> ```
 
 The `tee` command will redirect the output to the file result, while still
 reporting its progress on the terminal. In case you want to run it without
 monitoring or tee is not supported properly you just run it as 
 
 
-```bash
-$ sh sweep.sh >> result.log
-```
+> ```bash
+> $ sh sweep.sh >> result.log
+> ```
 
 In case you need to monitor the progress for the latter you can use 
 
-```bash
-$ tail -f result.log
-```
+> ```bash
+> $ tail -f result.log
+> ```
 
 The advantage of this approach is that you can in case of a failure identify
 which benchmarks succeeded and exclude them from your next run of `sweep.sh` so
@@ -275,9 +275,9 @@ we can use them even across different invocations of the function f.
 
 we simply have to `fgrep` to the log file to extract the information in the `csv` lines with 
 
-```python
-fgrep "#csv" result.log
-```
+> ```python
+> fgrep "#csv" result.log
+> ```
 
 This can then be further post-processed.
 
@@ -300,43 +300,45 @@ So what we have to do is augment a notebook so that we can
 For this, we use `papermill` that allows us to just do these two tasks. INstall
 it with
 
-```python
-pip install papermill
-```
+> ```python
+> pip install papermill
+> ```
 
 Then when you open up jupyter-lablab and import our code. Create a new cell. In this 
 cell you place all parameters for your run that you like to modify such as
 
-x = 0
-y = 0
+> ```python
+> x = 0
+> y = 0
+> ```
 
 This cell can be augmented with a tag called "parameters". To do this open the 
 "cog" and enter in the tag name "parameters". Make sure you save the tag and the notebook.
 Now we can use `papermill` to run our notebook with parameters such as 
 
-```
-$ mkdir benchmark
-$ papermill sweep.ipynb benchmark/sweep-0-0.ipynb --x 0 --y 0 | tee benchmark/result-0-0.log
-...
-```
+> ```
+> $ mkdir benchmark
+> $ papermill sweep.ipynb benchmark/sweep-0-0.ipynb --x 0 --y 0 | tee benchmark/result-0-0.log
+> ...
+> ```
 
 
 Naturally, we can auto-generate this as follows
 
-```python
-x_min = 0
-x_max = 2
-d_x = 1
-y_min = 0
-y_max = 1
-d_y = 1
-for x in range(x_min, x_max, dx):
-    for y in range(y_min, y_max, dy):
-        print (f"cms banner f({x}, {y}; "
-               f"papermill sweep.ipynb benchmark/sweep-{x}-{y}.ipynb"
-               f"    --x {x} --y {y}"
-               f"    | tee benchmark/result-{x}-{y}.log")
-```
+> ```python
+> x_min = 0
+> x_max = 2
+> d_x = 1
+> y_min = 0
+> y_max = 1
+> d_y = 1
+> for x in range(x_min, x_max, dx):
+>     for y in range(y_min, y_max, dy):
+>         print (f"cms banner f({x}, {y}; "
+>                f"papermill sweep.ipynb benchmark/sweep-{x}-{y}.ipynb"
+>                f"    --x {x} --y {y}"
+>                f"    | tee benchmark/result-{x}-{y}.log")
+> ```
 
 This will produce a series of commands that we can also redirect into a shell
 script and then execute
@@ -346,17 +348,14 @@ script and then execute
 As we have the logs all in the benchmark directory, we can even combine them and 
 select the `csv` lines with 
 
-```bash
-$ cat benchmark/*.log | fgrep "#csv"
-```
+> ```bash
+> $ cat benchmark/*.log | fgrep "#csv"
+> ```
 
 Now you can apply further processing such as importing it into pandas or any
 other spreadsheet-like tools you like to use for the analysis.
 
-#### Feedback
 
-This is a draft and if you see any issue, do a pull request and improve or send 
-e-mail to laszewski@gmail.com with improvement suggestions.
 
 
 
