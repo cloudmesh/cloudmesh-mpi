@@ -32,7 +32,9 @@ md-mpi: ${MPI}
 pdf-mpi: ${MPI} md-mpi
 	$(call banner, "CREATE MPI PDF DOCUMENT")
 	${PANDOC} cloudmesh/pandoc -s \
+                --include-in-header listings-setup.tex \
 		-t latex -V geometry:margin=1in --number-sections \
+		--listings \
 		--toc chapters/metadata-mpi.yaml tmp-3.md \
 		-o ../docs/report-mpi.pdf
 

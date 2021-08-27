@@ -1,10 +1,17 @@
 # Preface
 
+in part published at
+
+-   Medium
+    <https://laszewski.medium.com/python-and-mpi-part-1-7e76a6ec1c6d>
+-   Frinds Link:
+    <https://laszewski.medium.com/python-and-mpi-part-1-7e76a6ec1c6d?sk=cc21262764659c0ef2d3ddc684f54034>
+
 ## Document Management in GitHub
 
-> **Note:** The source document is managest at
-> <https://cloudmesh.github.io/cloudmesh-mpi/doc/chapters> To make
-> changes or corrections please use a pull request
+**Note:** The source document is managest at
+<https://cloudmesh.github.io/cloudmesh-mpi/doc/chapters> To make changes
+or corrections please use a pull request
 
 The repository, documentation, and examples are available at:
 
@@ -17,11 +24,11 @@ The repository, documentation, and examples are available at:
 
 To check out the repository use
 
->     $ git clone git@github.com:cloudmesh/cloudmesh-mpi.git
+    $ git clone git@github.com:cloudmesh/cloudmesh-mpi.git
 
 or
 
->     $ git clone https://github.com/cloudmesh/cloudmesh-mpi.git
+    $ git clone https://github.com/cloudmesh/cloudmesh-mpi.git
 
 ## Document Notation
 
@@ -30,10 +37,10 @@ To keep things uniform, we use the following document notations.
 1.  Empty lines are to be placed before and after a context change, such
     as a headline, paragraph, list, image inclusion.
 
-2.  All code is written in code blocks using the `>` and three
-    backquotes. A rendered example looks as follows:
+2.  All code is written in code blocks using and three backquotes. A
+    rendered example looks as follows:
 
-    >     this is an example
+        this is an example
 
 3.  Single quote inclusion must be used for filenames and other names as
     they are referred to in code blocks.
@@ -42,7 +49,7 @@ To keep things uniform, we use the following document notations.
     command with a `$` or other prefix indicating the computer on which
     the command is executed.
 
-    >     $ ls 
+        $ ls 
 
 5.  bibliography is managed via footnotes
 
@@ -94,16 +101,16 @@ line or a python program.
 
 In Python, you can do it with
 
-> ``` python
-> import multiprocessing
-> multiprocessing.cpu_count()
-> ```
+``` python
+import multiprocessing
+multiprocessing.cpu_count()
+```
 
 or as a command line
 
-> ``` bash
-> $ python -c "import multiprocessing;  print(multiprocessing.cpu_count())"
-> ```
+``` bash
+$ python -c "import multiprocessing;  print(multiprocessing.cpu_count())"
+```
 
 However, you can also use the command line tools that we have included
 in our documentation.
@@ -139,8 +146,8 @@ in our documentation.
     and download and install it. Select the two packages and click Next.
     When downloaded, click on them and complete the setups.
 
-    >     msmpisetup.exe
-    >     msmpisdk.msi
+        msmpisetup.exe
+        msmpisdk.msi
 
 4.  Open the system control panel and click on
     `Advanced system settings` (which can be searched for with the
@@ -151,36 +158,41 @@ in our documentation.
 5.  Under the user variables box, click on `Path`
 
 6.  Click New in order to add
-    `C:\Program Files (x86)\Microsoft SDKs\MPI` and
-    `C:\Program Files\Microsoft MPI\Bin` to the Path. The
-    `Browse Directory...` button makes this easier, and the
-    `Variable name` can correspond to each directory, e.g., "MPI" and
-    "MPI Bin" respectively
+
+    `C:\Program Files (x86)\Microsoft SDKs\MPI`
+
+    and
+
+    `C:\Program Files\Microsoft MPI\Bin`
+
+    to the Path. The `Browse Directory...` button makes this easier, and
+    the `Variable name` can correspond to each directory, e.g., "MPI"
+    and "MPI Bin" respectively
 
 7.  Close any open bash windows and then open a new one
 
 8.  Type the command
 
-    > ``` bash
-    > $ which mpiexec
-    > ```
+    ``` bash
+    $ which mpiexec
+    ```
 
     to verify if it works.
 
 9.  After you verified it is available, install mpi4py with
 
-    > ``` bash
-    > $ pip install mpi4py
-    > ```
+    ``` bash
+    $ pip install mpi4py
+    ```
 
     ideally, while bash is in venv
 
 10. Next, find out how many processes you can run on your machine and
     remember that number. You can do this with
 
-    > ``` bash
-    > $ wmic CPU Get DeviceID,NumberOfCores,NumberOfLogicalProcessors
-    > ```
+    ``` bash
+    $ wmic CPU Get DeviceID,NumberOfCores,NumberOfLogicalProcessors
+    ```
 
     Alternatively, you can use a python program as discussed in the
     section "Getting the CPU Count"
@@ -190,22 +202,22 @@ in our documentation.
 1.  Find out how many processes you can run on your machine and remember
     that number. You can do this with
 
-    > ``` bash
-    > $ sysctl hw.physicalcpu hw.logicalcpu
-    > ```
+    ``` bash
+    $ sysctl hw.physicalcpu hw.logicalcpu
+    ```
 
 2.  First, install python 3 from <https://www.python.org/downloads/>
 
 3.  Next, install homebrew and install the open-mpi version of MPI as
     well as mpi4py:
 
-    >     $ xcode-select --install
-    >     $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    >     $ brew install wget
-    >     $ brew install open-mpi
-    >     $ python3 -m venv ~/ENV3
-    >     $ source ~/ENV3/bin/activate
-    >     $ pip install mpi4py
+        $ xcode-select --install
+        $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        $ brew install wget
+        $ brew install open-mpi
+        $ python3 -m venv ~/ENV3
+        $ source ~/ENV3/bin/activate
+        $ pip install mpi4py
 
 ## Ubuntu
 
@@ -215,38 +227,38 @@ you like to use GPUs.
 1.  First, find out how many processes you can run on your machine and
     remember that number. You can do this with
 
-    > ``` bash
-    > $ nproc
-    > ```
+    ``` bash
+    $ nproc
+    ```
 
 2.  The installation of mpi4py on Ubuntu is relatively easy. Please
     follow these steps. We recommend that you create a python `venv` so
     you do not by accident interfere with your system python. As usual,
-    you can activate it in your
-    `.bashrc file while adding the source line there. Lastly, make sure you check it out and adjust the`-n\`
+    you can activate it in your `.bashrc` file while adding the source
+    line there. Lastly, make sure you check it out and adjust the `-n`
     parameters to the number of cores of your machine. In our example,
     we have chosen the number 4, you may have to change that value
 
-    > ``` bash
-    > $ sudo apt install python3.9 python3.9-dev
-    > $ python3 -m venev ~/ENV3
-    > $ source `/ENV3/bin/activate`
-    > (ENV3) $ sudo apt-get install -y mpich-doc mpich 
-    > (ENV3) $ pip install mpi4py -U
-    > ```
+    ``` bash
+    $ sudo apt install python3.9 python3.9-dev
+    $ python3 -m venev ~/ENV3
+    $ source `/ENV3/bin/activate`
+    (ENV3) $ sudo apt-get install -y mpich-doc mpich 
+    (ENV3) $ pip install mpi4py -U
+    ```
 
 ## Raspberry Pi
 
 1.  Install Open MPI in your pi by entering the following command
     assuming a PI4, PI3B+ PI3, PI2:
 
-    > ``` bash
-    > $ python -m venv ~/ENV3
-    > $ source ~/ENV3/bin/activate
-    > $ sudo apt-get install openmpi-bin
-    > $ mpicc --showme:version
-    > $ pip install mpi4py
-    > ```
+    ``` bash
+    $ python -m venv ~/ENV3
+    $ source ~/ENV3/bin/activate
+    $ sudo apt-get install openmpi-bin
+    $ mpicc --showme:version
+    $ pip install mpi4py
+    ```
 
     If you have other Raspberry Pi's you may need to update the core
     count according to the hardware specification.
@@ -256,16 +268,16 @@ you like to use GPUs.
 On all systems, the installation is very easy. Just change in our
 example the number 4 to the number of cores in your system.
 
-> ``` bash
-> (ENV3) $ mpiexec -n 4 python -m mpi4py.bench helloworld   
-> ```
+``` bash
+(ENV3) $ mpiexec -n 4 python -m mpi4py.bench helloworld   
+```
 
 You will see an output similar to
 
->     Hello, World! I am process 0 of 4 on myhost.
->     Hello, World! I am process 1 of 4 on myhost.
->     Hello, World! I am process 2 of 4 on myhost.
->     Hello, World! I am process 3 of 4 on myhost.
+    Hello, World! I am process 0 of 4 on myhost.
+    Hello, World! I am process 1 of 4 on myhost.
+    Hello, World! I am process 2 of 4 on myhost.
+    Hello, World! I am process 3 of 4 on myhost.
 
 where `myhost` is the name of your computer.
 
@@ -316,16 +328,16 @@ you use `ssh-agent`, and `ssh-add`.
 In the case of multiple computers, you can simply specify the hosts as a
 parameter to your MPI program that you run on your manager node
 
-> ``` bash
-> (ENV3) $ mpiexec -n 4 -host re0,red1,red2,red3 python -m mpi4py.bench helloworld   
-> ```
+``` bash
+(ENV3) $ mpiexec -n 4 -host re0,red1,red2,red3 python -m mpi4py.bench helloworld   
+```
 
 To specify how many processes you like to run on each of them, you can
 use the option `-ppn` followed by the number.
 
-> ``` bash
-> (ENV3) $ mpiexec -n 4 -pn 2 -host re0,red1,red2,red3 python -m mpi4py.bench helloworld   
-> ```
+``` bash
+(ENV3) $ mpiexec -n 4 -pn 2 -host re0,red1,red2,red3 python -m mpi4py.bench helloworld   
+```
 
 As today we usually have multiple cores on a processor, you could be
 using that core count as the parameter.
@@ -348,29 +360,29 @@ utilized.
 The machinefile can be explicitly passed along as a parameter while
 placing it in the manager machine
 
->     mpirun.openmpi \
->       -np 2 \
->       -machinefile /home/pi/mpi_testing/machinefile \
->       python helloworld.py
+    mpirun.openmpi \
+      -np 2 \
+      -machinefile /home/pi/mpi_testing/machinefile \
+      python helloworld.py
 
 An example of a simple machinefile contains the IP addresses. The
 username can be proceeded by the IP address.
 
->     pi@192.168.0.10:1
->     pi@192.168.0.11:2
->     pi@192.168.0.12:2
->     pi@192.168.0.13:2
->     pi@192.168.0.14:2
+    pi@192.168.0.10:1
+    pi@192.168.0.11:2
+    pi@192.168.0.12:2
+    pi@192.168.0.13:2
+    pi@192.168.0.14:2
 
 In many cases, your machine name may be available within your network
 and known to all hosts in the cluster. In that case, it is more
 convenient. To sue the machine names.
 
->     pi@red0:1
->     pi@red1:2
->     pi@red2:2
->     pi@red3:2
->     pi@red4:2
+    pi@red0:1
+    pi@red1:2
+    pi@red2:2
+    pi@red3:2
+    pi@red4:2
 
 Please make sure to change the IP addresses or name of your hosts
 according to your network.
@@ -384,13 +396,13 @@ hardware has, for example specific computers for data storage or GPUs.
 If you like to add multiple cores from a machine, you can also use a
 `rankfile`
 
->     mpirun -r my_rankfile --report-bindings ... 
->
->     Where the rankfile contains:
->     rank 0=pi@192.168.0.10 slot=1:0
->     rank 1=pi@192.168.0.10 slot=1:1
->     rank 2=pi@192.168.0.11 slot=1:0
->     rank 3=pi@192.168.0.10 slot=1:1
+    mpirun -r my_rankfile --report-bindings ... 
+
+    Where the rankfile contains:
+    rank 0=pi@192.168.0.10 slot=1:0
+    rank 1=pi@192.168.0.10 slot=1:1
+    rank 2=pi@192.168.0.11 slot=1:0
+    rank 3=pi@192.168.0.10 slot=1:1
 
 In this configuration, we only use 2 cores from two different PIs.
 
@@ -471,9 +483,9 @@ processes](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/send_r
 
 Here is the definition for the `send()` method:
 
-> ``` python
-> comm.send(buf, dest, tag)
-> ```
+``` python
+comm.send(buf, dest, tag)
+```
 
 `buf` represents the data to be transmitted, `dest` and `tag` are
 integer values that specify the rank of the destination process, and a
@@ -483,9 +495,9 @@ messages to another process.
 
 On the other end is the `recv()` method, with the following definition:
 
-> ``` python
-> comm.recv(buf, source, tag, status)
-> ```
+``` python
+comm.recv(buf, source, tag, status)
+```
 
 In this case, `buf` can specify the location for the received data to be
 stored. In more recent versions of MPI, 'buf' has been deprecated. In
@@ -498,39 +510,39 @@ or be left unspecified.
 In the following example, an integer is transmitted from process 0 to
 process 1.
 
-> ``` python
-> #!/usr/bin/env python
-> from mpi4py import MPI
->
-> # Communicator
-> comm = MPI.COMM_WORLD
->
-> # Get the rank of the current process in the communicator group
-> rank = comm.Get_rank()
->
-> # Variable to receive the data
-> data = None
->
-> # Process with rank 0 sends data to process with rank 1
-> if rank == 0:
->     comm.send(42, dest=1)
->
-> # Process with rank 1 receives and stores data
-> if rank == 1:
->     data = comm.recv(source=0)
->
-> # Each process in the communicator group prints its data
-> print(f'After send/receive, the value in process {rank} is {data}')
-> ```
+``` python
+#!/usr/bin/env python
+from mpi4py import MPI
+
+# Communicator
+comm = MPI.COMM_WORLD
+
+# Get the rank of the current process in the communicator group
+rank = comm.Get_rank()
+
+# Variable to receive the data
+data = None
+
+# Process with rank 0 sends data to process with rank 1
+if rank == 0:
+    comm.send(42, dest=1)
+
+# Process with rank 1 receives and stores data
+if rank == 1:
+    data = comm.recv(source=0)
+
+# Each process in the communicator group prints its data
+print(f'After send/receive, the value in process {rank} is {data}')
+```
 
 Executing `mpiexec -n 4 python send_receive.py` yields:
 
-> ``` bash
-> After send/receive, the value in process 2 is None
-> After send/receive, the value in process 3 is None 
-> After send/receive, the value in process 0 is None
-> After send/receive, the value in process 1 is 42
-> ```
+``` bash
+After send/receive, the value in process 2 is None
+After send/receive, the value in process 3 is None 
+After send/receive, the value in process 0 is None
+After send/receive, the value in process 1 is 42
+```
 
 As we can see, the transmission only occurred between processes 0 and 1,
 and no other process was affected.
@@ -543,41 +555,41 @@ data between processes from memory to memory. In our example we will
 agian be sending a message between processors of rank 0 and 1 in the
 communicator group.
 
-> ``` python
-> #!/usr/bin/env python
-> import numpy as np
-> from mpi4py import MPI
->
-> # Communicator
-> comm = MPI.COMM_WORLD
->
-> # Get the rank of the current process in the communicator group
-> rank = comm.Get_rank()
->
-> # Create empty buffer to receive data
-> buf = np.zeros(5, dtype=int)
->
-> # Process with rank 0 sends data to process with rank 1
-> if rank == 0:
->     data = np.arange(1, 6)
->     comm.Send([data, MPI.INT], dest=1)
->
-> # Process with rank 1 receives and stores data
-> if rank == 1:
->     comm.Recv([buf, MPI.INT], source=0)
->
-> # Each process in the communicator group prints the content of its buffer
-> print(f'After Send/Receive, the value in process {rank} is {buf}')
-> ```
+``` python
+#!/usr/bin/env python
+import numpy as np
+from mpi4py import MPI
+
+# Communicator
+comm = MPI.COMM_WORLD
+
+# Get the rank of the current process in the communicator group
+rank = comm.Get_rank()
+
+# Create empty buffer to receive data
+buf = np.zeros(5, dtype=int)
+
+# Process with rank 0 sends data to process with rank 1
+if rank == 0:
+    data = np.arange(1, 6)
+    comm.Send([data, MPI.INT], dest=1)
+
+# Process with rank 1 receives and stores data
+if rank == 1:
+    comm.Recv([buf, MPI.INT], source=0)
+
+# Each process in the communicator group prints the content of its buffer
+print(f'After Send/Receive, the value in process {rank} is {buf}')
+```
 
 Executing `mpiexec -n 4 python send_receive_buffer.py` yields:
 
-> ``` bash
-> After Send/Receive, the value in process 3 is [0 0 0 0 0]
-> After Send/Receive, the value in process 2 is [0 0 0 0 0]
-> After Send/Receive, the value in process 0 is [0 0 0 0 0]
-> After Send/Receive, the value in process 1 is [1 2 3 4 5]
-> ```
+``` bash
+After Send/Receive, the value in process 3 is [0 0 0 0 0]
+After Send/Receive, the value in process 2 is [0 0 0 0 0]
+After Send/Receive, the value in process 0 is [0 0 0 0 0]
+After Send/Receive, the value in process 1 is [1 2 3 4 5]
+```
 
 #### Non-blocking send and Recieve
 
@@ -600,41 +612,41 @@ exemplified do not allow data buffers involved in transmission or
 reception of data to be accessed until any ongoing communication
 involving the particular processes has been finalized.
 
-> ``` python
-> #!/usr/bin/env python
-> from mpi4py import MPI
->
-> # Communicator
-> comm = MPI.COMM_WORLD
->
-> # Get the rank of the current process in the communicator group
-> rank = comm.Get_rank()
->
-> # Variable to receive the data
-> data = None
->
-> # Process with rank 0 sends data to process with rank 1
-> if rank == 0:
->     send = comm.isend(42, dest=1)
->     send.wait()
->
-> # Process with rank 1 receives and stores data
-> if rank == 1:
->     receive = comm.irecv(source=0)
->     data = receive.wait()
->
-> # Each process in the communicator group prints its data
-> print(f'After isend/ireceive, the value in process {rank} is {data}')
-> ```
+``` python
+#!/usr/bin/env python
+from mpi4py import MPI
+
+# Communicator
+comm = MPI.COMM_WORLD
+
+# Get the rank of the current process in the communicator group
+rank = comm.Get_rank()
+
+# Variable to receive the data
+data = None
+
+# Process with rank 0 sends data to process with rank 1
+if rank == 0:
+    send = comm.isend(42, dest=1)
+    send.wait()
+
+# Process with rank 1 receives and stores data
+if rank == 1:
+    receive = comm.irecv(source=0)
+    data = receive.wait()
+
+# Each process in the communicator group prints its data
+print(f'After isend/ireceive, the value in process {rank} is {data}')
+```
 
 Executing `mpiexec -n 4 python isend_ireceive.py` yields:
 
-> ``` bash
-> After isend/ireceive, the value in process 2 is None
-> After isend/ireceive, the value in process 3 is None
-> After isend/ireceive, the value in process 0 is None
-> After isend/ireceive, the value in process 1 is 42
-> ```
+``` bash
+After isend/ireceive, the value in process 2 is None
+After isend/ireceive, the value in process 3 is None
+After isend/ireceive, the value in process 0 is None
+After isend/ireceive, the value in process 1 is 42
+```
 
 ## Collective Communication
 
@@ -670,48 +682,48 @@ The following code snippet shows the creation of the dictionary in
 process with rank 0. Notice how the variable `data` remains empty in all
 the other processes.
 
-> ``` python
-> #!/usr/bin/env python
-> from mpi4py import MPI
->
-> # Set up the MPI Communicator
-> comm = MPI.COMM_WORLD
->
-> # Get the rank of the current process in the communicator group
-> rank = comm.Get_rank()
->
-> if rank == 0:  # Process with rank 0 gets the data to be broadcast
->     data = {'size': [1, 3, 8],
->             'name': ['disk1', 'disk2', 'disk3']}
-> else:  # Other processes' data is empty
->     data = None
->
-> # Print data in each process
-> print(f'before broadcast, data on rank {rank} is: {data}')
->
-> # Data from process with rank 0 is broadcast to other processes in our
-> # communicator group
-> data = comm.bcast(data, root=0)
->
-> # Print data in each process after broadcast
-> print(f'after broadcast, data on rank {rank} is: {data}')
-> ```
+``` python
+#!/usr/bin/env python
+from mpi4py import MPI
+
+# Set up the MPI Communicator
+comm = MPI.COMM_WORLD
+
+# Get the rank of the current process in the communicator group
+rank = comm.Get_rank()
+
+if rank == 0:  # Process with rank 0 gets the data to be broadcast
+    data = {'size': [1, 3, 8],
+            'name': ['disk1', 'disk2', 'disk3']}
+else:  # Other processes' data is empty
+    data = None
+
+# Print data in each process
+print(f'before broadcast, data on rank {rank} is: {data}')
+
+# Data from process with rank 0 is broadcast to other processes in our
+# communicator group
+data = comm.bcast(data, root=0)
+
+# Print data in each process after broadcast
+print(f'after broadcast, data on rank {rank} is: {data}')
+```
 
 After running `mpiexec -n 4 python broadcast.py` we get the following:
 
->     before broadcast, data on rank 3 is: None
->     before broadcast, data on rank 0 is: 
->       {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
->     before broadcast, data on rank 1 is: None
->     before broadcast, data on rank 2 is: None
->     after broadcast, data on rank 3 is: 
->       {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
->     after broadcast, data on rank 0 is: 
->       {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
->     after broadcast, data on rank 1 is: 
->       {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
->     after broadcast, data on rank 2 is: 
->       {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+    before broadcast, data on rank 3 is: None
+    before broadcast, data on rank 0 is: 
+      {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+    before broadcast, data on rank 1 is: None
+    before broadcast, data on rank 2 is: None
+    after broadcast, data on rank 3 is: 
+      {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+    after broadcast, data on rank 0 is: 
+      {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+    after broadcast, data on rank 1 is: 
+      {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+    after broadcast, data on rank 2 is: 
+      {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
 
 As we can see, all other processes received the data broadcast from the
 root process.
@@ -722,45 +734,45 @@ In our following example, we broadcast a NumPy array from process 0 to
 the rest of the processes in the communicator group using the uppercase
 `comm.Bcast()` method.
 
-> ``` python
-> #!/usr/bin/env python
-> import numpy as np
-> from mpi4py import MPI
->
-> # Communicator
-> comm = MPI.COMM_WORLD
->
-> # Get the rank of the current process in the communicator group
-> rank = comm.Get_rank()
->
-> # Rank 0 gets a NumPy array containing values from 0 to 9
-> if rank == 0:
->     data = np.arange(0, 10, 1, dtype='i')
->
-> # Rest of the processes get an empty buffer
-> else:
->     data = np.zeros(10, dtype='i')
->
-> # Print data in each process before broadcast
-> print(f'before broadcasting, data for rank {rank} is: {data}')
->
-> # Broadcast occurs
-> comm.Bcast(data, root=0)
->
-> # Print data in each process after broadcast
-> print(f'after broadcasting, data for rank {rank} is: {data}')
-> ```
+``` python
+#!/usr/bin/env python
+import numpy as np
+from mpi4py import MPI
+
+# Communicator
+comm = MPI.COMM_WORLD
+
+# Get the rank of the current process in the communicator group
+rank = comm.Get_rank()
+
+# Rank 0 gets a NumPy array containing values from 0 to 9
+if rank == 0:
+    data = np.arange(0, 10, 1, dtype='i')
+
+# Rest of the processes get an empty buffer
+else:
+    data = np.zeros(10, dtype='i')
+
+# Print data in each process before broadcast
+print(f'before broadcasting, data for rank {rank} is: {data}')
+
+# Broadcast occurs
+comm.Bcast(data, root=0)
+
+# Print data in each process after broadcast
+print(f'after broadcasting, data for rank {rank} is: {data}')
+```
 
 Executing `mpiexec -n 4 python npbcast.py` yields:
 
->     before broadcasting, data for rank 1 is:  [0 0 0 0 0 0 0 0 0 0]
->     before broadcasting, data for rank 2 is:  [0 0 0 0 0 0 0 0 0 0]
->     before broadcasting, data for rank 3 is:  [0 0 0 0 0 0 0 0 0 0]
->     before broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
->     after broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
->     after broadcasting, data for rank 2 is:  [0 1 2 3 4 5 6 7 8 9]
->     after broadcasting, data for rank 3 is:  [0 1 2 3 4 5 6 7 8 9]
->     after broadcasting, data for rank 1 is:  [0 1 2 3 4 5 6 7 8 9]
+    before broadcasting, data for rank 1 is:  [0 0 0 0 0 0 0 0 0 0]
+    before broadcasting, data for rank 2 is:  [0 0 0 0 0 0 0 0 0 0]
+    before broadcasting, data for rank 3 is:  [0 0 0 0 0 0 0 0 0 0]
+    before broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
+    after broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
+    after broadcasting, data for rank 2 is:  [0 1 2 3 4 5 6 7 8 9]
+    after broadcasting, data for rank 3 is:  [0 1 2 3 4 5 6 7 8 9]
+    after broadcasting, data for rank 1 is:  [0 1 2 3 4 5 6 7 8 9]
 
 As we can see, the values in the array at the process with rank 0 have
 been broadcast to the rest of the processes in the communicator group.
@@ -782,45 +794,45 @@ processes with $D_i$
 
 The example program executing the sactter is showcased next
 
-> ``` python
-> #!/usr/bin/env python
-> from mpi4py import MPI
->
-> # Communicator
-> comm = MPI.COMM_WORLD
->
-> # Number of processes in the communicator group
-> size = comm.Get_size()
->
-> # Get the rank of the current process in the communicator group
-> rank = comm.Get_rank()
->
-> # Process with rank 0 gets a list with the data to be scattered
-> if rank == 0:
->     data = [(i + 1) ** 2 for i in range(size)]
-> else:
->     data = None
->
-> # Print data in each process before scattering
-> print(f'before scattering, data on rank {rank} is: {data}')
->
-> # Scattering occurs
-> data = comm.scatter(data, root=0)
->
-> # Print data in each process after scattering
-> print(f'after scattering, data on rank {rank} is: {data}')
-> ```
+``` python
+#!/usr/bin/env python
+from mpi4py import MPI
+
+# Communicator
+comm = MPI.COMM_WORLD
+
+# Number of processes in the communicator group
+size = comm.Get_size()
+
+# Get the rank of the current process in the communicator group
+rank = comm.Get_rank()
+
+# Process with rank 0 gets a list with the data to be scattered
+if rank == 0:
+    data = [(i + 1) ** 2 for i in range(size)]
+else:
+    data = None
+
+# Print data in each process before scattering
+print(f'before scattering, data on rank {rank} is: {data}')
+
+# Scattering occurs
+data = comm.scatter(data, root=0)
+
+# Print data in each process after scattering
+print(f'after scattering, data on rank {rank} is: {data}')
+```
 
 Executing `mpiexec -n 4 python scatter.py` yields:
 
->     before scattering, data on rank 2 is  None
->     before scattering, data on rank 3 is  None
->     before scattering, data on rank 0 is  [1, 4, 9, 16]
->     before scattering, data on rank 1 is  None
->     data for rank 2 is  9
->     data for rank 1 is  4
->     data for rank 3 is  16
->     data for rank 0 is  1
+    before scattering, data on rank 2 is  None
+    before scattering, data on rank 3 is  None
+    before scattering, data on rank 0 is  [1, 4, 9, 16]
+    before scattering, data on rank 1 is  None
+    data for rank 2 is  9
+    data for rank 1 is  4
+    data for rank 3 is  16
+    data for rank 0 is  1
 
 The members of the list from process 0 have been successfully scattered
 among the rest of the processes in the communicator group.
@@ -831,60 +843,60 @@ In the following example, we scatter a NumPy array among the processes
 in the communicator group by using the uppercase version of the method
 `comm.Scatter()`.
 
-> ``` python
-> #!/usr/bin/env python
-> import numpy as np
-> from mpi4py import MPI
->
-> # Communicator
-> comm = MPI.COMM_WORLD
->
-> # Number of processes in the communicator group
-> size = comm.Get_size()
->
-> # Get the rank of the current process in the communicator group
-> rank = comm.Get_rank()
->
-> # Data to be sent
-> sendbuf = None
->
-> # Process with rank 0 populates sendbuf with a 2-D array,
-> # based on the number of processes in our communicator group
-> if rank == 0:
->     sendbuf = np.zeros([size, 10], dtype='i')
->     sendbuf.T[:, :] = range(size)
->
->     # Print the content of sendbuf before scattering
->     print(f'sendbuf in 0: {sendbuf}')
->
-> # Each process gets a buffer (initially containing just zeros)
-> # to store scattered data.
-> recvbuf = np.zeros(10, dtype='i')
->
-> # Print the content of recvbuf in each process before scattering
-> print(f'recvbuf in {rank}: {recvbuf}')
->
-> # Scattering occurs
-> comm.Scatter(sendbuf, recvbuf, root=0)
->
-> # Print the content of sendbuf in each process after scattering
-> print(f'Buffer in process {rank} contains: {recvbuf}')
-> ```
+``` python
+#!/usr/bin/env python
+import numpy as np
+from mpi4py import MPI
+
+# Communicator
+comm = MPI.COMM_WORLD
+
+# Number of processes in the communicator group
+size = comm.Get_size()
+
+# Get the rank of the current process in the communicator group
+rank = comm.Get_rank()
+
+# Data to be sent
+sendbuf = None
+
+# Process with rank 0 populates sendbuf with a 2-D array,
+# based on the number of processes in our communicator group
+if rank == 0:
+    sendbuf = np.zeros([size, 10], dtype='i')
+    sendbuf.T[:, :] = range(size)
+
+    # Print the content of sendbuf before scattering
+    print(f'sendbuf in 0: {sendbuf}')
+
+# Each process gets a buffer (initially containing just zeros)
+# to store scattered data.
+recvbuf = np.zeros(10, dtype='i')
+
+# Print the content of recvbuf in each process before scattering
+print(f'recvbuf in {rank}: {recvbuf}')
+
+# Scattering occurs
+comm.Scatter(sendbuf, recvbuf, root=0)
+
+# Print the content of sendbuf in each process after scattering
+print(f'Buffer in process {rank} contains: {recvbuf}')
+```
 
 Executing `mpiexec -n 4 python npscatter.py` yields:
 
->     recvbuf in  1:  [0 0 0 0 0 0 0 0 0 0]
->     recvbuf in  2:  [0 0 0 0 0 0 0 0 0 0]
->     recvbuf in  3:  [0 0 0 0 0 0 0 0 0 0]
->     sendbuf in 0:  [[0 0 0 0 0 0 0 0 0 0]
->                     [1 1 1 1 1 1 1 1 1 1]
->                     [2 2 2 2 2 2 2 2 2 2]
->                     [3 3 3 3 3 3 3 3 3 3]]
->     recvbuf in  0:  [0 0 0 0 0 0 0 0 0 0]
->     Buffer in process 2 contains:  [2 2 2 2 2 2 2 2 2 2]
->     Buffer in process 0 contains:  [0 0 0 0 0 0 0 0 0 0]
->     Buffer in process 3 contains:  [3 3 3 3 3 3 3 3 3 3]
->     Buffer in process 1 contains:  [1 1 1 1 1 1 1 1 1 1]
+    recvbuf in  1:  [0 0 0 0 0 0 0 0 0 0]
+    recvbuf in  2:  [0 0 0 0 0 0 0 0 0 0]
+    recvbuf in  3:  [0 0 0 0 0 0 0 0 0 0]
+    sendbuf in 0:  [[0 0 0 0 0 0 0 0 0 0]
+                    [1 1 1 1 1 1 1 1 1 1]
+                    [2 2 2 2 2 2 2 2 2 2]
+                    [3 3 3 3 3 3 3 3 3 3]]
+    recvbuf in  0:  [0 0 0 0 0 0 0 0 0 0]
+    Buffer in process 2 contains:  [2 2 2 2 2 2 2 2 2 2]
+    Buffer in process 0 contains:  [0 0 0 0 0 0 0 0 0 0]
+    Buffer in process 3 contains:  [3 3 3 3 3 3 3 3 3 3]
+    Buffer in process 1 contains:  [1 1 1 1 1 1 1 1 1 1]
 
 As we can see, the values in the 2-D array at process with rank 0, have
 been scattered among all our processes in the communicator group, based
@@ -904,46 +916,46 @@ gathered in the process with rank 0.
 ![Example to gather data to different processors from the one with rank
 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/gather.png){width="30%"}
 
-> ``` python
-> #!/usr/bin/env python
-> from mpi4py import MPI
->
-> # Communicator
-> comm = MPI.COMM_WORLD
->
-> # Number of processes in the communicator group
-> size = comm.Get_size()
->
-> # Get the rank of the current process in the communicator group
-> rank = comm.Get_rank()
->
-> # Each process gets different data, depending on its rank number
-> data = (rank + 1) ** 2
->
-> # Print data in each process
-> print(f'before gathering, data on rank {rank} is: {data}')
->
-> # Gathering occurs
-> data = comm.gather(data, root=0)
->
-> # Process 0 prints out the gathered data, rest of the processes
-> # print their data as well
-> if rank == 0:
->     print(f'after gathering, process 0\'s data is: {data}')
-> else:
->     print(f'after gathering, data in rank {rank} is: {data}')
-> ```
+``` python
+#!/usr/bin/env python
+from mpi4py import MPI
+
+# Communicator
+comm = MPI.COMM_WORLD
+
+# Number of processes in the communicator group
+size = comm.Get_size()
+
+# Get the rank of the current process in the communicator group
+rank = comm.Get_rank()
+
+# Each process gets different data, depending on its rank number
+data = (rank + 1) ** 2
+
+# Print data in each process
+print(f'before gathering, data on rank {rank} is: {data}')
+
+# Gathering occurs
+data = comm.gather(data, root=0)
+
+# Process 0 prints out the gathered data, rest of the processes
+# print their data as well
+if rank == 0:
+    print(f'after gathering, process 0\'s data is: {data}')
+else:
+    print(f'after gathering, data in rank {rank} is: {data}')
+```
 
 Executing `mpiexec -n 4 python gather.py` yields:
 
->     before gathering, data on rank 2 is  9
->     before gathering, data on rank 3 is  16
->     before gathering, data on rank 0 is  1
->     before gathering, data on rank 1 is  4
->     after gathering, data in rank 2 is  None
->     after gathering, data in rank 1 is  None
->     after gathering, data in rank 3 is  None
->     after gathering, process 0's data is  [1, 4, 9, 16]
+    before gathering, data on rank 2 is  9
+    before gathering, data on rank 3 is  16
+    before gathering, data on rank 0 is  1
+    before gathering, data on rank 1 is  4
+    after gathering, data in rank 2 is  None
+    after gathering, data in rank 1 is  None
+    after gathering, data in rank 3 is  None
+    after gathering, process 0's data is  [1, 4, 9, 16]
 
 The data from processes with rank `1` to `size - 1` have been
 successfully gathered in process 0.
@@ -954,65 +966,65 @@ The example showcases the use of the uppercase method `comm.Gather()`.
 NumPy arrays from the processes in the communicator group are gathered
 into a 2-D array in process with rank 0.
 
-> ``` python
-> #!/usr/bin/env python
-> import numpy as np
-> from mpi4py import MPI
->
-> # Communicator group
-> comm = MPI.COMM_WORLD
->
-> # Number of processes in the communicator group
-> size = comm.Get_size()
->
-> # Get the rank of the current process in the communicator group
-> rank = comm.Get_rank()
->
-> # Each process gets an array with data based on its rank.
-> sendbuf = np.zeros(10, dtype='i') + rank
->
-> # Print the data in sendbuf before gathering 
-> print(f'Buffer in process {rank} before gathering: {sendbuf}')
->
-> # Variable to store gathered data
-> recvbuf = None
->
-> # Process with rank 0 initializes recvbuf to a 2-D array conatining
-> # only zeros. The size of the array is determined by the number of
-> # processes in the communicator group
-> if rank == 0:
->     recvbuf = np.zeros([size, 10], dtype='i')
->
->     # Print recvbuf
->     print(f'recvbuf in process 0 before gathering: {recvbuf}')
->
-> # Gathering occurs
-> comm.Gather(sendbuf, recvbuf, root=0)
->
-> # Print recvbuf in process with rank 0 after gathering
-> if rank == 0:
->     print(f'recvbuf in process 0 after gathering: \n{recvbuf}')
-> ```
+``` python
+#!/usr/bin/env python
+import numpy as np
+from mpi4py import MPI
+
+# Communicator group
+comm = MPI.COMM_WORLD
+
+# Number of processes in the communicator group
+size = comm.Get_size()
+
+# Get the rank of the current process in the communicator group
+rank = comm.Get_rank()
+
+# Each process gets an array with data based on its rank.
+sendbuf = np.zeros(10, dtype='i') + rank
+
+# Print the data in sendbuf before gathering 
+print(f'Buffer in process {rank} before gathering: {sendbuf}')
+
+# Variable to store gathered data
+recvbuf = None
+
+# Process with rank 0 initializes recvbuf to a 2-D array conatining
+# only zeros. The size of the array is determined by the number of
+# processes in the communicator group
+if rank == 0:
+    recvbuf = np.zeros([size, 10], dtype='i')
+
+    # Print recvbuf
+    print(f'recvbuf in process 0 before gathering: {recvbuf}')
+
+# Gathering occurs
+comm.Gather(sendbuf, recvbuf, root=0)
+
+# Print recvbuf in process with rank 0 after gathering
+if rank == 0:
+    print(f'recvbuf in process 0 after gathering: \n{recvbuf}')
+```
 
 Executing `mpiexec -n 4 python npgather.py` yields:
 
->     Buffer in process 2 before gathering:  [2 2 2 2 2 2 2 2 2 2]
->     Buffer in process 3 before gathering:  [3 3 3 3 3 3 3 3 3 3]
->     Buffer in process 0 before gathering:  [0 0 0 0 0 0 0 0 0 0]
->     Buffer in process 1 before gathering:  [1 1 1 1 1 1 1 1 1 1]
->     recvbuf in process 0 before gathering:
->      [[0 0 0 0 0 0 0 0 0 0]
->       [0 0 0 0 0 0 0 0 0 0]
->       [0 0 0 0 0 0 0 0 0 0]
->       [0 0 0 0 0 0 0 0 0 0]]
->     recvbuf in process 0 after gathering: 
->      [[0 0 0 0 0 0 0 0 0 0]
->       [1 1 1 1 1 1 1 1 1 1]
->       [2 2 2 2 2 2 2 2 2 2]
->       [3 3 3 3 3 3 3 3 3 3]]
->
-> The values contained in the buffers from the different processes in
-> the group have been gathered in the 2-D array in process with rank 0.
+    Buffer in process 2 before gathering:  [2 2 2 2 2 2 2 2 2 2]
+    Buffer in process 3 before gathering:  [3 3 3 3 3 3 3 3 3 3]
+    Buffer in process 0 before gathering:  [0 0 0 0 0 0 0 0 0 0]
+    Buffer in process 1 before gathering:  [1 1 1 1 1 1 1 1 1 1]
+    recvbuf in process 0 before gathering:
+     [[0 0 0 0 0 0 0 0 0 0]
+      [0 0 0 0 0 0 0 0 0 0]
+      [0 0 0 0 0 0 0 0 0 0]
+      [0 0 0 0 0 0 0 0 0 0]]
+    recvbuf in process 0 after gathering: 
+     [[0 0 0 0 0 0 0 0 0 0]
+      [1 1 1 1 1 1 1 1 1 1]
+      [2 2 2 2 2 2 2 2 2 2]
+      [3 3 3 3 3 3 3 3 3 3]]
+
+The values contained in the buffers from the different processes in the
+group have been gathered in the 2-D array in process with rank 0.
 
 ### Allgather Memory Objects
 
@@ -1042,49 +1054,49 @@ is the case when `comm.Gather()` is used instead).
 in the
 group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/allgather.png){width="30%"}
 
-> ``` python
-> #!/usr/bin/env python
-> import numpy as np
-> from mpi4py import MPI
->
-> # Communicator group
-> comm = MPI.COMM_WORLD
->
-> # Number of processes in the communicator group 
-> size = comm.Get_size()
->
-> # Get the rank of the current process in the communicator group
-> rank = comm.Get_rank()
->
-> # Initialize array and table
-> row = np.zeros(size)
-> table = np.zeros((size, size))
->
-> # Each process computes the local values and fills its array
-> for i in range(size):
->     j = i * rank
->     row[i] = j
->
-> # Print array in each process
-> print(f'Process {rank} table before Allgather: {table}\n')
->
-> # Gathering occurs
-> comm.Allgather([row, MPI.INT], [table, MPI.INT])
->
-> # Print table in each process after gathering
-> print(f'Process {rank} table after Allgather: {table}\n')
-> ```
+``` python
+#!/usr/bin/env python
+import numpy as np
+from mpi4py import MPI
+
+# Communicator group
+comm = MPI.COMM_WORLD
+
+# Number of processes in the communicator group 
+size = comm.Get_size()
+
+# Get the rank of the current process in the communicator group
+rank = comm.Get_rank()
+
+# Initialize array and table
+row = np.zeros(size)
+table = np.zeros((size, size))
+
+# Each process computes the local values and fills its array
+for i in range(size):
+    j = i * rank
+    row[i] = j
+
+# Print array in each process
+print(f'Process {rank} table before Allgather: {table}\n')
+
+# Gathering occurs
+comm.Allgather([row, MPI.INT], [table, MPI.INT])
+
+# Print table in each process after gathering
+print(f'Process {rank} table after Allgather: {table}\n')
+```
 
 Executing
 
->     $ mpiexec -n 4 python allgather_buffer.py
+    $ mpiexec -n 4 python allgather_buffer.py
 
 results in the output similar to
 
->     Process 1 table before Allgather: [[0. 0.][0. 0.]] 
->     Process 0 table before Allgather: [[0. 0.][0. 0.]] 
->     Process 1 table after Allgather:  [[0. 0.][0. 1.]] 
->     Process 0 table after Allgather:  [[0. 0.][0. 1.]] 
+    Process 1 table before Allgather: [[0. 0.][0. 0.]] 
+    Process 0 table before Allgather: [[0. 0.][0. 0.]] 
+    Process 1 table after Allgather:  [[0. 0.][0. 1.]] 
+    Process 0 table after Allgather:  [[0. 0.][0. 1.]] 
 
 As we see, after `comm.Allgather()` is called, every process gets a copy
 of the full multiplication table.
@@ -1103,9 +1115,9 @@ can be achieved by using a spawn communicator and command.
 
 Using
 
-> ``` python
-> MPI.Comm_Self.Spawn
-> ```
+``` python
+MPI.Comm_Self.Spawn
+```
 
 will create a child process that can communicate with the parent. In the
 spawn code example, the manager broadcasts an array to the worker.
@@ -1117,98 +1129,98 @@ manager and the second being the worker.
 from the one with rank
 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/spawn.png){width="25%"}
 
-> ``` python
-> #!/usr/bin/env python
-> from mpi4py import MPI
-> import numpy
-> import sys
-> import time
-> print("Hello")
-> comm = MPI.COMM_SELF.Spawn(sys.executable,
->                            args=['worker.py'],
->                            maxprocs=5)
-> rank = comm.Get_rank()
-> print(f"b and rank: {rank}")
->
-> N = numpy.array(100, 'i')
-> comm.Bcast([N, MPI.INT], root=MPI.ROOT)
-> #print(f"ROOT: {MPI.ROOT}")
-> print('c')
-> PI = numpy.array(0.0, 'd')
->
-> print('d')
-> comm.Reduce(None, [PI, MPI.DOUBLE],
->             op=MPI.SUM, root=MPI.ROOT)
-> print(PI)
->
-> comm.Disconnect()
-> ```
+``` python
+#!/usr/bin/env python
+from mpi4py import MPI
+import numpy
+import sys
+import time
+print("Hello")
+comm = MPI.COMM_SELF.Spawn(sys.executable,
+                           args=['worker.py'],
+                           maxprocs=5)
+rank = comm.Get_rank()
+print(f"b and rank: {rank}")
 
-> ``` python
-> #!/usr/bin/env python
-> from mpi4py import MPI
-> import numpy
-> import time
-> import sys
-> comm = MPI.Comm.Get_parent()
-> size = comm.Get_size()
-> rank = comm.Get_rank()
->
-> N = numpy.array(0, dtype='i')
-> comm.Bcast([N, MPI.INT], root=0)
-> print(f"N: {N} rank: {rank}")
->
-> h = 1.0 / N
-> s = 0.0
-> for i in range(rank, N, size):
->     x = h * (i + 0.5)
->     s += 4.0 / (1.0 + x**2)
-> PI = numpy.array(s * h, dtype='d')
-> comm.Reduce([PI, MPI.DOUBLE], None,
->             op=MPI.SUM, root=0)
->
-> #time.sleep(60)
-> comm.Disconnect()
-> #MPI.Finalize()
-> #sys.exit()
-> #MPI.Unpublish_name()
-> #MPI.Close_port()
-> ```
+N = numpy.array(100, 'i')
+comm.Bcast([N, MPI.INT], root=MPI.ROOT)
+#print(f"ROOT: {MPI.ROOT}")
+print('c')
+PI = numpy.array(0.0, 'd')
+
+print('d')
+comm.Reduce(None, [PI, MPI.DOUBLE],
+            op=MPI.SUM, root=MPI.ROOT)
+print(PI)
+
+comm.Disconnect()
+```
+
+``` python
+#!/usr/bin/env python
+from mpi4py import MPI
+import numpy
+import time
+import sys
+comm = MPI.Comm.Get_parent()
+size = comm.Get_size()
+rank = comm.Get_rank()
+
+N = numpy.array(0, dtype='i')
+comm.Bcast([N, MPI.INT], root=0)
+print(f"N: {N} rank: {rank}")
+
+h = 1.0 / N
+s = 0.0
+for i in range(rank, N, size):
+    x = h * (i + 0.5)
+    s += 4.0 / (1.0 + x**2)
+PI = numpy.array(s * h, dtype='d')
+comm.Reduce([PI, MPI.DOUBLE], None,
+            op=MPI.SUM, root=0)
+
+#time.sleep(60)
+comm.Disconnect()
+#MPI.Finalize()
+#sys.exit()
+#MPI.Unpublish_name()
+#MPI.Close_port()
+```
 
 To execute the example please go to the examples directory and run the
 manager program
 
->     $ cd examples/spawn
->     $ mpiexec -n 4 python manager.py
+    $ cd examples/spawn
+    $ mpiexec -n 4 python manager.py
 
 This will result in:
 
->     N: 100 rank: 4
->     N: 100 rank: 1
->     N: 100 rank: 3
->     N: 100 rank: 2
->     Hello
->     b and rank: 0
->     c
->     d
->     3.1416009869231245
->     N: 100 rank: 0
->     N: 100 rank: 1
->     N: 100 rank: 4
->     N: 100 rank: 3
->     N: 100 rank: 2
->     Hello
->     b and rank: 0
->     c
->     d
->     3.1416009869231245
->     N: 100 rank: 0
+    N: 100 rank: 4
+    N: 100 rank: 1
+    N: 100 rank: 3
+    N: 100 rank: 2
+    Hello
+    b and rank: 0
+    c
+    d
+    3.1416009869231245
+    N: 100 rank: 0
+    N: 100 rank: 1
+    N: 100 rank: 4
+    N: 100 rank: 3
+    N: 100 rank: 2
+    Hello
+    b and rank: 0
+    c
+    d
+    3.1416009869231245
+    N: 100 rank: 0
 
 This output depends on which child process is received first. The output
 can vary.
 
-> `WARNING:` When running this program it may not terminate. To
-> terminate use for now `CTRL-C`.
+`WARNING:` When running this program it may not terminate. To
+\>terminate use for now `CTRL-C`.
 
 ### Futures
 
@@ -1217,56 +1229,56 @@ intercommunication between such processes. The following Python program
 creates a visualization of a Julia set by utilizing this Futures
 modules, specifically via MPIPoolExecutor.
 
-> ``` python
-> from mpi4py.futures import MPIPoolExecutor
-> import matplotlib.pyplot as plt
-> import numpy as np
-> from cloudmesh.common.StopWatch import StopWatch
->
-> multiplier = int(input('Enter 1 for 640x480 pixels of Julia '
->                        'visualization image, 2 for 1280x960, '
->                        'and so on...'))
->
-> StopWatch.start("Overall time")
-> x0, x1, w = -2.0, +2.0, 640*multiplier
-> y0, y1, h = -1.5, +1.5, 480*multiplier
-> dx = (x1 - x0) / w
-> dy = (y1 - y0) / h
->
-> c = complex(0, 0.65)
->
-> def julia(x, y):
->     z = complex(x, y)
->     n = 255
->     while abs(z) < 3 and n > 1:
->         z = z**2 + c
->         n -= 1
->     return n
->
-> def julia_line(k):
->     line = bytearray(w)
->     y = y1 - k * dy
->     for j in range(w):
->         x = x0 + j * dx
->         line[j] = julia(x, y)
->     return line
->
-> if __name__ == '__main__':
->
->     with MPIPoolExecutor() as executor:
->         image = executor.map(julia_line, range(h))
->         image = np.array([list(l) for l in image])
->         plt.imsave("julia.png", image)
->
-> StopWatch.stop("Overall time")
-> StopWatch.benchmark()
-> ```
+``` python
+from mpi4py.futures import MPIPoolExecutor
+import matplotlib.pyplot as plt
+import numpy as np
+from cloudmesh.common.StopWatch import StopWatch
+
+multiplier = int(input('Enter 1 for 640x480 pixels of Julia '
+                       'visualization image, 2 for 1280x960, '
+                       'and so on...'))
+
+StopWatch.start("Overall time")
+x0, x1, w = -2.0, +2.0, 640*multiplier
+y0, y1, h = -1.5, +1.5, 480*multiplier
+dx = (x1 - x0) / w
+dy = (y1 - y0) / h
+
+c = complex(0, 0.65)
+
+def julia(x, y):
+    z = complex(x, y)
+    n = 255
+    while abs(z) < 3 and n > 1:
+        z = z**2 + c
+        n -= 1
+    return n
+
+def julia_line(k):
+    line = bytearray(w)
+    y = y1 - k * dy
+    for j in range(w):
+        x = x0 + j * dx
+        line[j] = julia(x, y)
+    return line
+
+if __name__ == '__main__':
+
+    with MPIPoolExecutor() as executor:
+        image = executor.map(julia_line, range(h))
+        image = np.array([list(l) for l in image])
+        plt.imsave("julia.png", image)
+
+StopWatch.stop("Overall time")
+StopWatch.benchmark()
+```
 
 To run teh program use:
 
-> ``` bash
-> mpiexec -n 1 python julia-futures.py
-> ```
+``` bash
+mpiexec -n 1 python julia-futures.py
+```
 
 The number after `-n` can be changed to however many cores are in the
 computer's processor. For example, a dual-core processor can use `-n 2`
@@ -1318,64 +1330,64 @@ before transmitting it to the next one, so the final value received by
 process 0 after the ring is complete is the sum of the original integer
 plus the number of processes in the communicator group.
 
-> ``` python
-> #!/usr/bin/env python
-> # USSAGE: mpieec -n 4 python ring.py --count 1000
-> from mpi4py import MPI
-> import click
-> from cloudmesh.common.StopWatch import StopWatch
->
-> @click.command()
-> @click.option('--count', default=1, help='Number of messages send.')
-> @click.option('--debug', default=False, help='Set debug.')
-> def ring(count=1, debug=Fasle):
->     comm = MPI.COMM_WORLD   # Communicator
->     rank = comm.Get_rank()  # Get the rank of the current process 
->     size = comm.Get_size()  # Get the size of the communicator group
->     if rank == 0:
->         print(f'Communicator group with {size} processes')
->         data = int(input('Enter an integer to transmit: '))  # Input the data
->         data += 1                                            # Data is modified
->     if rank == 0:  # ONly processor 0 uses the stopwatch
->         Stopwatch.start(f"ring {size} {count}")        
->     for i in range(0, count):
->         if rank == 0:        
->             comm.send(data, dest=rank + 1)  # send data to neighbor
->             data = comm.recv(data, source=size - 1)
->             if debug:
->                 print(f'Final data received in process 0: {data}')
->         elif rank == size - 1:          
->             data = comm.recv(source=rank - 1)  # recieve data from neighbor
->             data += 1                          # Data is modified
->             comm.send(data, dest=0)            # Sent to process 0, closing the ring
->         elif 0 < rank < size -1:
->             data = comm.recv(source=rank - 1)  # recieve data from neighbor            
->             data += 1                          # Data is modified
->             comm.send(data, dest=rank + 1)     # send to neighbor
->     if rank == 0:
->         print(f'Final data received in process 0: {data}')
->         assert data == count * size          # verify
->     if rank == 0:
->         Stopwatch.stop(f"ring {size} {count}")  #print the time
->         Stopwatch.benchmark()
->         
-> if __name__ == '__main__':
->     ring()
-> ```
+``` python
+#!/usr/bin/env python
+# USSAGE: mpieec -n 4 python ring.py --count 1000
+from mpi4py import MPI
+import click
+from cloudmesh.common.StopWatch import StopWatch
+
+@click.command()
+@click.option('--count', default=1, help='Number of messages send.')
+@click.option('--debug', default=False, help='Set debug.')
+def ring(count=1, debug=Fasle):
+    comm = MPI.COMM_WORLD   # Communicator
+    rank = comm.Get_rank()  # Get the rank of the current process 
+    size = comm.Get_size()  # Get the size of the communicator group
+    if rank == 0:
+        print(f'Communicator group with {size} processes')
+        data = int(input('Enter an integer to transmit: '))  # Input the data
+        data += 1                                            # Data is modified
+    if rank == 0:  # ONly processor 0 uses the stopwatch
+        Stopwatch.start(f"ring {size} {count}")        
+    for i in range(0, count):
+        if rank == 0:        
+            comm.send(data, dest=rank + 1)  # send data to neighbor
+            data = comm.recv(data, source=size - 1)
+            if debug:
+                print(f'Final data received in process 0: {data}')
+        elif rank == size - 1:          
+            data = comm.recv(source=rank - 1)  # recieve data from neighbor
+            data += 1                          # Data is modified
+            comm.send(data, dest=0)            # Sent to process 0, closing the ring
+        elif 0 < rank < size -1:
+            data = comm.recv(source=rank - 1)  # recieve data from neighbor            
+            data += 1                          # Data is modified
+            comm.send(data, dest=rank + 1)     # send to neighbor
+    if rank == 0:
+        print(f'Final data received in process 0: {data}')
+        assert data == count * size          # verify
+    if rank == 0:
+        Stopwatch.stop(f"ring {size} {count}")  #print the time
+        Stopwatch.benchmark()
+        
+if __name__ == '__main__':
+    ring()
+```
 
 Executing the code in the example by entering
 `mpiexec -n 2 python ring.py` in the terminal will produce the following
 result:
 
-> ``` bash
-> Communicator group with 4 processes
-> Enter an integer to transmit: 6
-> Process 0 transmitted value 7 to process 1
-> Process 1 transmitted value 8 to process 2
-> Process 2 transmitted value 9 to process 3
-> Process 3 transmitted value 10 to process 0
-> Final data received in process 0 after ring is completed: 10
-> ```
+``` bash
+Communicator group with 4 processes
+Enter an integer to transmit: 6
+Process 0 transmitted value 7 to process 1
+Process 1 transmitted value 8 to process 2
+Process 2 transmitted value 9 to process 3
+Process 3 transmitted value 10 to process 0
+Final data received in process 0 after ring is completed: 10
+```
 
 As we can see, the integer provided to process 0 (6 in this case) was
 successively incremented by each process in the communicator group to
@@ -1394,61 +1406,61 @@ program has on purpose a bug in it as it does not communicate the values
 m, max_number, or find with a broadcast from rank 0 to all workers. Your
 task is to modify and complete this program.
 
-> ``` python
-> # Run with
-> #     mpiexec -n 4 python count.py
->
-> # To change the values set them on your terminal on the
-> # machine running rank 0 with 
->
-> # export N=20
-> # export MAX=10
-> # export FIND=8
->
-> # Assignment:
-> # Add to this code the bradcast of the 3 parameters to all workers
->
-> import os
-> import random
-> from mpi4py import MPI
->
-> # Get the input values or set them to a default
-> n = os.environ.get("N") or 20
-> max_number = os.environ.get("MAX") or 10
-> find = os.environ.get("FIND") or 8
->
->
-> comm = MPI.COMM_WORLD   # Communicator
-> size = comm.Get_size()  # Number of processes 
-> rank = comm.Get_rank()  # Rank of this process
->
-> # Each process gets different data, depending on its rank number
-> data = []
-> for i in range(n):
->     r = random.randint(1, max_number)
->     data.append(r)
-> count = data.count(find)
->
-> print(rank, count, data)  # Print data from each process
-> count_data = comm.gather(count, root=0) # Gather the data
->
-> # Process 0 prints out the gathered data, rest of the processes
-> if rank == 0:
->     print(rank, count_data)
->     total = sum(count_data)
->     print(f"Total number of {find}'s:", total)
-> ```
+``` python
+# Run with
+#     mpiexec -n 4 python count.py
+
+# To change the values set them on your terminal on the
+# machine running rank 0 with 
+
+# export N=20
+# export MAX=10
+# export FIND=8
+
+# Assignment:
+# Add to this code the bradcast of the 3 parameters to all workers
+
+import os
+import random
+from mpi4py import MPI
+
+# Get the input values or set them to a default
+n = os.environ.get("N") or 20
+max_number = os.environ.get("MAX") or 10
+find = os.environ.get("FIND") or 8
+
+
+comm = MPI.COMM_WORLD   # Communicator
+size = comm.Get_size()  # Number of processes 
+rank = comm.Get_rank()  # Rank of this process
+
+# Each process gets different data, depending on its rank number
+data = []
+for i in range(n):
+    r = random.randint(1, max_number)
+    data.append(r)
+count = data.count(find)
+
+print(rank, count, data)  # Print data from each process
+count_data = comm.gather(count, root=0) # Gather the data
+
+# Process 0 prints out the gathered data, rest of the processes
+if rank == 0:
+    print(rank, count_data)
+    total = sum(count_data)
+    print(f"Total number of {find}'s:", total)
+```
 
 Executing `mpiexec -n 4 python count.py` gives us:
 
-> 1 1 \[7, 5, 2, 1, 5, 5, 5, 4, 5, 2, 6, 5, 2, 1, 8, 7, 10, 9, 5, 6\] 3
-> 3 \[9, 2, 9, 8, 2, 7, 7, 2, 10, 1, 2, 5, 3, 5, 10, 8, 10, 10, 8, 10\]
-> 2 3 \[1, 3, 8, 5, 7, 8, 4, 2, 8, 5, 10, 7, 10, 1, 6, 5, 9, 6, 6, 7\] 0
-> 3 \[6, 9, 10, 2, 4, 8, 8, 9, 4, 1, 6, 8, 6, 9, 7, 5, 5, 6, 3, 4\]
->
-> 0 \[3, 1, 3, 3\]
->
-> Total number of 8's: 10
+    1 1 [7, 5, 2, 1, 5, 5, 5, 4, 5, 2, 6, 5, 2, 1, 8, 7, 10, 9, 5, 6]
+    3 3 [9, 2, 9, 8, 2, 7, 7, 2, 10, 1, 2, 5, 3, 5, 10, 8, 10, 10, 8, 10]
+    2 3 [1, 3, 8, 5, 7, 8, 4, 2, 8, 5, 10, 7, 10, 1, 6, 5, 9, 6, 6, 7]
+    0 3 [6, 9, 10, 2, 4, 8, 8, 9, 4, 1, 6, 8, 6, 9, 7, 5, 5, 6, 3, 4]
+
+    0 [3, 1, 3, 3]
+
+    Total number of 8's: 10
 
 ## Monte Carlo Calculation of Pi
 
@@ -1471,30 +1483,30 @@ The following montecarlo.py program generates an estimation of pi using
 the methodology and equation shown above. Increasing the total number of
 iterations will increase the accuracy.
 
-> ``` python
-> import random as r
-> import math as m
-> import time
->
-> start = time.time()
->
-> inside = 0                        # Number of darts that land inside.
-> trials = 100000                   # Number of Trials.
->
-> for i in range(0, trials):        # Iterate for the number of darts.
->     x2 = r.random()**2            # Generate random x, y in [0, 1]
->     y2 = r.random()**2
->
->     if m.sqrt(x2 + y2) < 1.0:     # Increment if inside unit circle.
->         inside += 1
->
-> # inside / trials = pi / 4
-> pi = (float(inside) / trials) * 4
-> end = time.time()
->
-> print(pi)                          # Value of pi found
-> print(end - start)                 # Execution time
-> ```
+``` python
+import random as r
+import math as m
+import time
+
+start = time.time()
+
+inside = 0                        # Number of darts that land inside.
+trials = 100000                   # Number of Trials.
+
+for i in range(0, trials):        # Iterate for the number of darts.
+    x2 = r.random()**2            # Generate random x, y in [0, 1]
+    y2 = r.random()**2
+
+    if m.sqrt(x2 + y2) < 1.0:     # Increment if inside unit circle.
+        inside += 1
+
+# inside / trials = pi / 4
+pi = (float(inside) / trials) * 4
+end = time.time()
+
+print(pi)                          # Value of pi found
+print(end - start)                 # Execution time
+```
 
 Instead of running this on one processor, we can run the calculation on
 many. Implicitly this increases the accuracy while running more trials
@@ -1642,9 +1654,9 @@ StopWatch.benchmark()
 To run this program using git bash, change directory to the folder
 containing this program and issue the command:
 
-> ``` bash
-> $ mpiexec -n 4 python parallel_pi.py
-> ```
+``` bash
+$ mpiexec -n 4 python parallel_pi.py
+```
 
 The number after `-n` can be changed to however many cores one has on
 their processor.
@@ -1659,51 +1671,51 @@ methods.
 Furthermore, the numba version of the program can be run instead, which
 is slightly faster.
 
-> ``` python
-> from mpi4py.futures import MPIPoolExecutor
-> import matplotlib.pyplot as plt
-> import numpy as np
-> from numba import jit
-> from cloudmesh.common.StopWatch import StopWatch
->
-> multiplier = int(input('Enter 1 for 640x480 pixels of Julia visualization image,'
->                        ' 2 for 1280x960, and so on...'))
->
-> StopWatch.start("Overall time")
-> x0, x1, w = -2.0, +2.0, 640*multiplier
-> y0, y1, h = -1.5, +1.5, 480*multiplier
-> dx = (x1 - x0) / w
-> dy = (y1 - y0) / h
->
-> c = complex(0, 0.65)
->
-> @jit(nopython=True)
-> def julia(x, y):
->     z = complex(x, y)
->     n = 255
->     while abs(z) < 3 and n > 1:
->         z = z**2 + c
->         n -= 1
->     return n
->
-> def julia_line(k):
->     line = bytearray(w)
->     y = y1 - k * dy
->     for j in range(w):
->         x = x0 + j * dx
->         line[j] = julia(x, y)
->     return line
->
-> if __name__ == '__main__':
->
->     with MPIPoolExecutor() as executor:
->         image = executor.map(julia_line, range(h))
->         image = np.array([list(l) for l in image])
->         plt.imsave("julia.png", image)
->
-> StopWatch.stop("Overall time")
-> StopWatch.benchmark()
-> ```
+``` python
+from mpi4py.futures import MPIPoolExecutor
+import matplotlib.pyplot as plt
+import numpy as np
+from numba import jit
+from cloudmesh.common.StopWatch import StopWatch
+
+multiplier = int(input('Enter 1 for 640x480 pixels of Julia visualization image,'
+                       ' 2 for 1280x960, and so on...'))
+
+StopWatch.start("Overall time")
+x0, x1, w = -2.0, +2.0, 640*multiplier
+y0, y1, h = -1.5, +1.5, 480*multiplier
+dx = (x1 - x0) / w
+dy = (y1 - y0) / h
+
+c = complex(0, 0.65)
+
+@jit(nopython=True)
+def julia(x, y):
+    z = complex(x, y)
+    n = 255
+    while abs(z) < 3 and n > 1:
+        z = z**2 + c
+        n -= 1
+    return n
+
+def julia_line(k):
+    line = bytearray(w)
+    y = y1 - k * dy
+    for j in range(w):
+        x = x0 + j * dx
+        line[j] = julia(x, y)
+    return line
+
+if __name__ == '__main__':
+
+    with MPIPoolExecutor() as executor:
+        image = executor.map(julia_line, range(h))
+        image = np.array([list(l) for l in image])
+        plt.imsave("julia.png", image)
+
+StopWatch.stop("Overall time")
+StopWatch.benchmark()
+```
 
   ----------------------------------------------------------------------
              No Jit       Jit Enabled      No Jit         Jit Enabled
@@ -1784,25 +1796,25 @@ If the user changed the value of N, MAX, or FIND in the terminal using,
 for example, `export FIND="5"` (shown below) os.environ.get("FIND")
 would set the find variable equal to 5.
 
->     $ export FIND="5"
->     $ mpiexec -n 4 python count.py
->     1 0 [9, 6, 8, 3, 4, 8, 5, 6, 6, 3, 5, 6, 10, 5, 5, 1, 1, 2, 1, 3]
->     3 0 [3, 7, 2, 8, 4, 6, 5, 7, 4, 4, 7, 6, 1, 7, 10, 2, 1, 9, 2, 8]
->     2 0 [10, 8, 10, 8, 7, 2, 2, 7, 4, 3, 3, 7, 10, 8, 1, 5, 1, 4, 6, 5]
->     0 0 [5, 8, 9, 1, 2, 7, 1, 5, 5, 6, 3, 6, 10, 9, 7, 10, 5, 3, 6, 5]
->     0 [0, 0, 0, 0]
->     Total number of 5's: 0
+    $ export FIND="5"
+    $ mpiexec -n 4 python count.py
+    1 0 [9, 6, 8, 3, 4, 8, 5, 6, 6, 3, 5, 6, 10, 5, 5, 1, 1, 2, 1, 3]
+    3 0 [3, 7, 2, 8, 4, 6, 5, 7, 4, 4, 7, 6, 1, 7, 10, 2, 1, 9, 2, 8]
+    2 0 [10, 8, 10, 8, 7, 2, 2, 7, 4, 3, 3, 7, 10, 8, 1, 5, 1, 4, 6, 5]
+    0 0 [5, 8, 9, 1, 2, 7, 1, 5, 5, 6, 3, 6, 10, 9, 7, 10, 5, 3, 6, 5]
+    0 [0, 0, 0, 0]
+    Total number of 5's: 0
 
 However, if the user does not define any environment variables find will
 default to 8.
 
->     $ mpiexec -n 4 python count.py
->     1 0 [5, 5, 2, 6, 6, 3, 5, 3, 3, 2, 3, 9, 7, 1, 3, 7, 1, 7, 1, 3]
->     3 1 [7, 1, 5, 1, 2, 2, 10, 7, 2, 1, 2, 6, 4, 6, 10, 10, 5, 8, 10, 10]
->     2 0 [5, 1, 4, 4, 9, 9, 5, 1, 1, 3, 9, 3, 5, 2, 5, 7, 9, 7, 10, 5]
->     0 1 [6, 6, 5, 6, 4, 10, 3, 5, 5, 2, 5, 2, 7, 6, 7, 8, 5, 7, 6, 4]
->     0 [1, 0, 0, 1]
->     Total number of 8's: 2
+    $ mpiexec -n 4 python count.py
+    1 0 [5, 5, 2, 6, 6, 3, 5, 3, 3, 2, 3, 9, 7, 1, 3, 7, 1, 7, 1, 3]
+    3 1 [7, 1, 5, 1, 2, 2, 10, 7, 2, 1, 2, 6, 4, 6, 10, 10, 5, 8, 10, 10]
+    2 0 [5, 1, 4, 4, 9, 9, 5, 1, 1, 3, 9, 3, 5, 2, 5, 7, 9, 7, 10, 5]
+    0 1 [6, 6, 5, 6, 4, 10, 3, 5, 5, 2, 5, 2, 7, 6, 7, 8, 5, 7, 6, 4]
+    0 [1, 0, 0, 1]
+    Total number of 8's: 2
 
 Assignment:
 
@@ -1813,46 +1825,46 @@ Assignment:
 Setting the parameter can either be done vi the export shell command
 such as
 
-> ``` bash
-> $ export N=8
-> ```
+``` bash
+$ export N=8
+```
 
 or while passing the parameter in the same line as a command such as
 demonstrated next
 
-> ``` bash
-> $ N=1; python environment-parameter.py
-> ```
+``` bash
+$ N=1; python environment-parameter.py
+```
 
 This can be generalized while using a file with many different
 parameters and commands. For example, placing this in a file called
 `run.sh`
 
-> ``` python
-> $ N=1; python environment-parameter.py
-> $ N=2; python environment-parameter.py
-> ```
+``` python
+$ N=1; python environment-parameter.py
+$ N=2; python environment-parameter.py
+```
 
 It allows us to execute the programs sequentially in the file with
 
-> ``` bash
-> $ sh run.sh
-> ```
+``` bash
+$ sh run.sh
+```
 
 Let us assume we use the python program
 
-> ``` python
-> from cloudmesh.common.StopWatch import StopWatch
-> from time import sleep
-> import os
->
-> n=int(os.environ["N"])
-> StopWatch.start(f"processors {n}")
-> sleep(0.1*n)
-> print(n)
-> StopWatch.stop(f"processors {n}")
-> StopWatch.benchmark()
-> ```
+``` python
+from cloudmesh.common.StopWatch import StopWatch
+from time import sleep
+import os
+
+n=int(os.environ["N"])
+StopWatch.start(f"processors {n}")
+sleep(0.1*n)
+print(n)
+StopWatch.stop(f"processors {n}")
+StopWatch.benchmark()
+```
 
 This Python program does not set a variable N on its own. It refers to
 os.environ which should have previously set N as shown in the beginning
@@ -1863,18 +1875,18 @@ We are using, in our case also the cloudmesh.StopWatch to allow us
 easily to fgrep for the results we may be interested in to conduct
 benchmarks. Here is an example workflow to achieve this
 
->     # This command creates an environment variable called N
->     $ export N=10
->     # This command prints the environment variable called N
->     $ echo $N
->     # This command launches a Python environment
->     $ python -i
->     >>> import os
->     >>> os.environ["N"]
->     >>> exit()
->     $ python environment-parameter.py
->     $ sh run.sh
->     $ sh run.sh | fgrep "csv,processors"
+    # This command creates an environment variable called N
+    $ export N=10
+    # This command prints the environment variable called N
+    $ echo $N
+    # This command launches a Python environment
+    $ python -i
+    >>> import os
+    >>> os.environ["N"]
+    >>> exit()
+    $ python environment-parameter.py
+    $ sh run.sh
+    $ sh run.sh | fgrep "csv,processors"
 
 ### Using click to pass parameters
 
@@ -1882,32 +1894,32 @@ Click is a convenient mechanism to define parameters that can be passed
 via options to python programs. To showcase its use please inspect the
 following program
 
-> ``` python
-> import click
-> from cloudmesh.common.StopWatch import StopWatch
-> from time import sleep
-> import os
->
-> @click.command()
-> @click.option('--n', default=1, help='Number of processors.')
-> def work(n):
->     n=int(n)
->     StopWatch.start(f"processors {n}")
->     sleep(0.1*n)
->     print(n)
->     StopWatch.stop(f"processors {n}")
->     StopWatch.benchmark()
->
-> if __name__ == '__main__':
->     work()
-> ```
+``` python
+import click
+from cloudmesh.common.StopWatch import StopWatch
+from time import sleep
+import os
+
+@click.command()
+@click.option('--n', default=1, help='Number of processors.')
+def work(n):
+    n=int(n)
+    StopWatch.start(f"processors {n}")
+    sleep(0.1*n)
+    print(n)
+    StopWatch.stop(f"processors {n}")
+    StopWatch.benchmark()
+
+if __name__ == '__main__':
+    work()
+```
 
 You can manually set the variable in git bash in the same line as you
 open the .py file
 
-> ``` bash
-> $ python click-parameter.py --n=3
-> ```
+``` bash
+$ python click-parameter.py --n=3
+```
 
 ## Resources
 
@@ -1995,9 +2007,9 @@ recommend that you install `gitbash` first. After you install `gitbash`,
 you can install `make` from an administrative `gitbash` terminal window.
 To start one, go to the search field next to the Windows icon on the
 bottom left and type in gitbash without a `RETURN`. You will then see a
-selection window that includes
-`Run as administrator. Click on it. As you run it as administrator, it will allow you to install`make\`.
-The following instructions will provide you with a guide to install make
+selection window that includes `Run as administrator`. Click on it. As
+you run it as administrator, it will allow you to install `make`. The
+following instructions will provide you with a guide to install make
 under windows.
 
 ### Installation
@@ -2017,24 +2029,24 @@ a gitbash that you started as an administrative user:
 
 Figure: Screenshot of opening gitbash in admin shell
 
-> ``` bash
-> $ cp make-4.3-without-guile-w32-bin.zip /usr
-> $ cd /usr
-> $ unzip make-4.3-without-guile-w32-bin.zip
-> ```
+``` bash
+$ cp make-4.3-without-guile-w32-bin.zip /usr
+$ cd /usr
+$ unzip make-4.3-without-guile-w32-bin.zip
+```
 
 Now start a new terminal (a regular non-administrative one) and type the
 command
 
-> ``` bash
-> $ which make
-> ```
+``` bash
+$ which make
+```
 
 It will provide you the location if the installation was successful
 
-> ``` bash
-> /usr/bin/make
-> ```
+``` bash
+/usr/bin/make
+```
 
 to make sure it is properly installed and in the correct directory.
 
@@ -2057,9 +2069,9 @@ More information about WSL is provided at
 To install WSL2, you can follow these steps while using Powershell as an
 administrative user and run
 
->     ps$ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
->     ps$ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
->     ps$ wsl --set-default-version 2
+    ps$ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+    ps$ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+    ps$ wsl --set-default-version 2
 
 Next, Download the Ubuntu 20.04 LTS image from the Microsoft store
 
@@ -2071,7 +2083,7 @@ Make sure not just to give an empty passphrase but chose a secure one.
 
 Next run in Powershell
 
->     ps$ wsl.exe --set-version Ubuntu20.04 2
+    ps$ wsl.exe --set-version Ubuntu20.04 2
 
 Now you can use the Ubuntu distro freely. The WSL2 application will be
 in your shortcut menu in `Start`.
@@ -2150,9 +2162,9 @@ Cloudmesh provides an easy command that can be used to obtain
 information to derive these values while using the command. However, it
 only works if the number of processors on the same node is 1.
 
->     pip install cloudmesh-cmd5
->     cms help    # call it after the install as it sets some defaults
->     cms sysinfo 
+    pip install cloudmesh-cmd5
+    cms help    # call it after the install as it sets some defaults
+    cms sysinfo 
 
 The output will be looking something like
 
@@ -2188,8 +2200,8 @@ The output will be looking something like
 
 To obtain the vectors you can say
 
->     cms sysinfo -v
->     cms sysinfo -t
+    cms sysinfo -v
+    cms sysinfo -t
 
 where `-v` specifies the vector and `-t` the totals. Knowing these
 values will help you structure your benchmarks.
@@ -2210,40 +2222,40 @@ To create benchmarks over x and y we can generate them in various ways.
 For all programs, we will store the output of the benchmarks in a
 directory called `benchmark`. Please create it.
 
-> ``` bash
-> $ mkdir benchmark
-> ```
+``` bash
+$ mkdir benchmark
+```
 
 you may be able to run your benchmark simply as a loop this is
 especially the case for smaller benchmarks.
 
-> ``` python
-> import pickle
-> from cloudmesh.common.StopWatch import StopWatch
->
-> def f(x,y, print_benchmark=False, checkpoint=True):
->     # run your application with values x and y
->     print (f"Calculate f({x},{y})")
->     StopWatch.start(f"f{x},{y}")
->     result = x*y
->     StopWatch.stop(f"f{x},{y}")
->     if print_benchmark:
->         StopWatch.benchmark()
->     if checkpoint:
->         pickle.dump(result, open(f"benchmark/f-{x}-{y}.pkl", "wb" ))  
->     return result
->
-> x_min = 0
-> x_max = 2
-> d_x = 1
-> y_min = 0
-> y_max = 1
-> d_y = 1
-> for x in range(x_min, x_max, dx):
->     for y in range(y_min, y_max, dy):
->         # run the function with parameters
->         result = f(x ,y, print_benchmark=True)
-> ```
+``` python
+import pickle
+from cloudmesh.common.StopWatch import StopWatch
+
+def f(x,y, print_benchmark=False, checkpoint=True):
+    # run your application with values x and y
+    print (f"Calculate f({x},{y})")
+    StopWatch.start(f"f{x},{y}")
+    result = x*y
+    StopWatch.stop(f"f{x},{y}")
+    if print_benchmark:
+        StopWatch.benchmark()
+    if checkpoint:
+        pickle.dump(result, open(f"benchmark/f-{x}-{y}.pkl", "wb" ))  
+    return result
+
+x_min = 0
+x_max = 2
+d_x = 1
+y_min = 0
+y_max = 1
+d_y = 1
+for x in range(x_min, x_max, dx):
+    for y in range(y_min, y_max, dy):
+        # run the function with parameters
+        result = f(x ,y, print_benchmark=True)
+```
 
 #### Script solution
 
@@ -2256,79 +2268,79 @@ exclude those that fail.
 For this, we rewrite the python program via command-line arguments that
 we pass along.
 
-> ``` python
-> # stored in file f.py
-> import click
->
-> @click.command()
-> @click.option('--x', default=20, help='The x value')
-> @click.option('--x', default=40, help='The y value')
-> @click.option('--print_benchmark', default=True, help='prints the benchmark result')
-> @click.option('--checkpoint', default=True, help='Creates a checkpoint')
-> f(x,y, print_benchmark=False, checkpoint=True):
->     ... see previous program
->     return result
->
-> if __name__ == '__main__':
->     f()
-> ```
+``` python
+# stored in file f.py
+import click
+
+@click.command()
+@click.option('--x', default=20, help='The x value')
+@click.option('--x', default=40, help='The y value')
+@click.option('--print_benchmark', default=True, help='prints the benchmark result')
+@click.option('--checkpoint', default=True, help='Creates a checkpoint')
+f(x,y, print_benchmark=False, checkpoint=True):
+    ... see previous program
+    return result
+
+if __name__ == '__main__':
+    f()
+```
 
 Now we can run this program with
 
-> ``` python
-> $ python f.py --x 10 --y 5
-> ```
+``` python
+$ python f.py --x 10 --y 5
+```
 
 To generate now the different runs from the loop we can do it either via
 Makefiles or write a program creating commands where we produce a script
 listing each invocation. Let us call this program `sweep-generator.py`.
 
-> ``` python
-> x_min = 0
-> x_max = 2
-> d_x = 1
-> y_min = 0
-> y_max = 1
-> d_y = 1
-> for x in range(x_min, x_max, dx):
->     for y in range(y_min, y_max, dy):
->         print (f"cms banner f({x}, {y}; " 
->                f"python f.py --x {x} --y {y}")
-> ```
+``` python
+x_min = 0
+x_max = 2
+d_x = 1
+y_min = 0
+y_max = 1
+d_y = 1
+for x in range(x_min, x_max, dx):
+    for y in range(y_min, y_max, dy):
+        print (f"cms banner f({x}, {y}; " 
+               f"python f.py --x {x} --y {y}")
+```
 
 The result will be
 
->     cms banner f(0,0); python f.py --x 0 --y 0
->     ...
+    cms banner f(0,0); python f.py --x 0 --y 0
+    ...
 
 and so on. The banner will print a nice banner before you execute the
 real function so it is easier to monitor when execution
 
 To create a shell script, simply redirect it into a file such as
 
-> ``` bash
-> $ python sweep-generator.py > sweep.sh
-> ```
+``` bash
+$ python sweep-generator.py sweep.sh
+```
 
 Now you can execute it with
 
-> ``` bash
-> $ sh sweep.sh | tee result.log
-> ```
+``` bash
+$ sh sweep.sh | tee result.log
+```
 
 The `tee` command will redirect the output to the file result, while
 still reporting its progress on the terminal. In case you want to run it
 without monitoring or tee is not supported properly you just run it as
 
-> ``` bash
-> $ sh sweep.sh >> result.log
-> ```
+``` bash
+$ sh sweep.sh >result.log
+```
 
 In case you need to monitor the progress for the latter you can use
 
-> ``` bash
-> $ tail -f result.log
-> ```
+``` bash
+$ tail -f result.log
+```
 
 The advantage of this approach is that you can in case of a failure
 identify which benchmarks succeeded and exclude them from your next run
@@ -2345,9 +2357,9 @@ function f.
 we simply have to `fgrep` to the log file to extract the information in
 the `csv` lines with
 
-> ``` python
-> fgrep "#csv" result.log
-> ```
+``` python
+fgrep "#csv" result.log
+```
 
 This can then be further post-processed.
 
@@ -2370,44 +2382,44 @@ So what we have to do is augment a notebook so that we can
 For this, we use `papermill` that allows us to just do these two tasks.
 INstall it with
 
-> ``` python
-> pip install papermill
-> ```
+``` python
+pip install papermill
+```
 
 Then when you open up jupyter-lablab and import our code. Create a new
 cell. In this cell you place all parameters for your run that you like
 to modify such as
 
-> ``` python
-> x = 0
-> y = 0
-> ```
+``` python
+x = 0
+y = 0
+```
 
 This cell can be augmented with a tag called "parameters". To do this
 open the "cog" and enter in the tag name "parameters". Make sure you
 save the tag and the notebook. Now we can use `papermill` to run our
 notebook with parameters such as
 
->     $ mkdir benchmark
->     $ papermill sweep.ipynb benchmark/sweep-0-0.ipynb --x 0 --y 0 | tee benchmark/result-0-0.log
->     ...
+    $ mkdir benchmark
+    $ papermill sweep.ipynb benchmark/sweep-0-0.ipynb --x 0 --y 0 | tee benchmark/result-0-0.log
+    ...
 
 Naturally, we can auto-generate this as follows
 
-> ``` python
-> x_min = 0
-> x_max = 2
-> d_x = 1
-> y_min = 0
-> y_max = 1
-> d_y = 1
-> for x in range(x_min, x_max, dx):
->     for y in range(y_min, y_max, dy):
->         print (f"cms banner f({x}, {y}; "
->                f"papermill sweep.ipynb benchmark/sweep-{x}-{y}.ipynb"
->                f"    --x {x} --y {y}"
->                f"    | tee benchmark/result-{x}-{y}.log")
-> ```
+``` python
+x_min = 0
+x_max = 2
+d_x = 1
+y_min = 0
+y_max = 1
+d_y = 1
+for x in range(x_min, x_max, dx):
+    for y in range(y_min, y_max, dy):
+        print (f"cms banner f({x}, {y}; "
+               f"papermill sweep.ipynb benchmark/sweep-{x}-{y}.ipynb"
+               f"    --x {x} --y {y}"
+               f"    | tee benchmark/result-{x}-{y}.log")
+```
 
 This will produce a series of commands that we can also redirect into a
 shell script and then execute
@@ -2417,17 +2429,12 @@ shell script and then execute
 As we have the logs all in the benchmark directory, we can even combine
 them and select the `csv` lines with
 
-> ``` bash
-> $ cat benchmark/*.log | fgrep "#csv"
-> ```
+``` bash
+$ cat benchmark/*.log | fgrep "#csv"
+```
 
 Now you can apply further processing such as importing it into pandas or
 any other spreadsheet-like tools you like to use for the analysis.
-
-#### Feedback
-
-This is a draft and if you see any issue, do a pull request and improve
-or send e-mail to laszewski\@gmail.com with improvement suggestions.
 
 # Assignments
 
@@ -2469,22 +2476,18 @@ Please, note that we have a very comprehensive tutorial on NumPy and
 there is no point to repeat that, we may just point to it and improve
 that tutorial where needed instead.
 
-5.  The images in <https://mpitutorial.com/tutorials/> seem much better
-    when it comes to for example scatter. Your task is to create better
-    images for all examples.
-
-6.  Convert the parallel rank program from
+5.  Convert the parallel rank program from
     <https://mpitutorial.com/tutorials/performing-parallel-rank-with-mpi/>
     to mpi4py. Write a tutorial for it.
 
-7.  Develop tutorials that showcase multiple communicators and groups.
+6.  Develop tutorials that showcase multiple communicators and groups.
     See
     <https://mpitutorial.com/tutorials/introduction-to-groups-and-communicators/>
 
-8.  Complete the count example while adding a broadcast to it to
+7.  Complete the count example while adding a broadcast to it to
     communicate the parameters. Provide a modified tutorial.
 
-9.  Test out the machinefile, host, and rankfile section. Improve if
+8.  Test out the machinefile, host, and rankfile section. Improve if
     needed.
 
 # Acknowledgements

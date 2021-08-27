@@ -1,10 +1,16 @@
 # Preface
 
+in part published at
+
+* Medium <https://laszewski.medium.com/python-and-mpi-part-1-7e76a6ec1c6d>
+* Frinds Link: <https://laszewski.medium.com/python-and-mpi-part-1-7e76a6ec1c6d?sk=cc21262764659c0ef2d3ddc684f54034>
+
 ## Document Management in GitHub
 
-> **Note:** The source document is managest at
-> <https://cloudmesh.github.io/cloudmesh-mpi/doc/chapters>
-> To make changes or corrections please use a pull request
+
+**Note:** The source document is managest at
+<https://cloudmesh.github.io/cloudmesh-mpi/doc/chapters>
+To make changes or corrections please use a pull request
 
 The repository, documentation, and examples are available at:
 
@@ -16,15 +22,15 @@ The repository, documentation, and examples are available at:
     
 To check out the repository use 
   
-> ```
-> $ git clone git@github.com:cloudmesh/cloudmesh-mpi.git
-> ```
-  
+```
+$ git clone git@github.com:cloudmesh/cloudmesh-mpi.git
+```
+
 or 
   
-> ```
-> $ git clone https://github.com/cloudmesh/cloudmesh-mpi.git
-> ```
+```
+$ git clone https://github.com/cloudmesh/cloudmesh-mpi.git
+```
 
 
 ## Document Notation
@@ -34,11 +40,11 @@ To keep things uniform, we use the following document notations.
 1. Empty lines are to be placed before and after a context change, such
    as a headline, paragraph, list, image inclusion.
 
-2. All code is written in code blocks using the `>` and three backquotes. A rendered example looks as follows:
+2. All code is written in code blocks using and three backquotes. A rendered example looks as follows:
 
-   > ```
-   > this is an example
-   > ```
+   ```
+   this is an example
+   ```
 
 3. Single quote inclusion must be used for filenames and other names
    as they are referred to in code blocks.
@@ -47,9 +53,9 @@ To keep things uniform, we use the following document notations.
    with a `$` or other prefix indicating the computer on which the command 
    is executed. 
    
-   > ```
-   > $ ls 
-   > ```
+   ```
+   $ ls 
+   ```
    
 5. bibliography is managed via footnotes
 
@@ -99,16 +105,16 @@ cores on your computer is important. This can be found out through the command l
 
 In Python, you can do it with 
 
-> ```python
-> import multiprocessing
-> multiprocessing.cpu_count()
-> ```
+```python
+import multiprocessing
+multiprocessing.cpu_count()
+```
 
 or as a command line 
 
-> ```bash
-> $ python -c "import multiprocessing;  print(multiprocessing.cpu_count())"
-> ```
+```bash
+$ python -c "import multiprocessing;  print(multiprocessing.cpu_count())"
+```
 
 However, you can also use the command line tools that we have included in our documentation.
 
@@ -139,10 +145,10 @@ However, you can also use the command line tools that we have included in our do
    and download and install it. Select the two packages and click 
    Next. When downloaded, click on them and complete the setups.
 
-   > ```
-   > msmpisetup.exe
-   > msmpisdk.msi
-   > ```
+   ```
+   msmpisetup.exe
+   msmpisdk.msi
+   ```
 
 2. Open the system control panel and click on `Advanced system settings` (which
    can be searched for with the search box in the top-right, and then click
@@ -150,8 +156,15 @@ However, you can also use the command line tools that we have included in our do
 
 3. Under the user variables box, click on `Path`
 
-4. Click New in order to add `C:\Program Files (x86)\Microsoft SDKs\MPI` and
-   `C:\Program Files\Microsoft MPI\Bin` to the Path. The `Browse Directory...`
+4. Click New in order to add
+
+   `C:\Program Files (x86)\Microsoft SDKs\MPI`
+
+   and
+
+   `C:\Program Files\Microsoft MPI\Bin`
+
+   to the Path. The `Browse Directory...`
    button makes this easier, and the `Variable name` can correspond to each
    directory, e.g., "MPI" and "MPI Bin" respectively
 
@@ -159,25 +172,25 @@ However, you can also use the command line tools that we have included in our do
 
 6. Type the command
 
-   > ```bash
-   > $ which mpiexec
-   > ```
+   ```bash
+   $ which mpiexec
+   ```
 
    to verify if it works.
 
 7. After you verified it is available, install mpi4py with
 
-   > ```bash
-   > $ pip install mpi4py
-   > ```
+   ```bash
+   $ pip install mpi4py
+   ```
 
    ideally, while bash is in venv
 
 8. Next, find out how many processes you can run on your machine and remember that number. You can do this with
 
-   > ```bash
-   > $ wmic CPU Get DeviceID,NumberOfCores,NumberOfLogicalProcessors
-   > ```
+   ```bash
+   $ wmic CPU Get DeviceID,NumberOfCores,NumberOfLogicalProcessors
+   ```
 
    Alternatively, you can use a python program as discussed in the section "Getting the CPU Count"
 
@@ -185,23 +198,23 @@ However, you can also use the command line tools that we have included in our do
 
 1. Find out how many processes you can run on your machine and remember that number. You can do this with
 
-   > ```bash
-   > $ sysctl hw.physicalcpu hw.logicalcpu
-   > ```
+   ```bash
+   $ sysctl hw.physicalcpu hw.logicalcpu
+   ```
 
 2. First, install python 3 from <https://www.python.org/downloads/>
 
 3. Next, install homebrew and install the open-mpi version of MPI as well as mpi4py:
 
-   > ```
-   > $ xcode-select --install
-   > $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-   > $ brew install wget
-   > $ brew install open-mpi
-   > $ python3 -m venv ~/ENV3
-   > $ source ~/ENV3/bin/activate
-   > $ pip install mpi4py
-   > ```
+   ```
+   $ xcode-select --install
+   $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   $ brew install wget
+   $ brew install open-mpi
+   $ python3 -m venv ~/ENV3
+   $ source ~/ENV3/bin/activate
+   $ pip install mpi4py
+   ```
 
 ## Ubuntu
 
@@ -209,33 +222,37 @@ These instructions apply to 20.04 and 21.04. Please use 20.04 in case you like t
 
 1. First, find out how many processes you can run on your machine and remember that number. You can do this with
 
-   > ```bash
-   > $ nproc
-   > ```
+   ```bash
+   $ nproc
+   ```
 
-2. The installation of mpi4py on Ubuntu is relatively easy. Please follow these steps. We recommend that you create a 
-   python `venv` so you do not by accident interfere with your system python. As usual, you can activate it in your 
-   `.bashrc file while adding the source line there. Lastly, make sure you check it out and adjust the `-n` parameters to the number of cores of your machine. In our example, we have chosen the number 4, you may have to change that value
+2. The installation of mpi4py on Ubuntu is relatively easy. Please
+   follow these steps. We recommend that you create a python `venv` so
+   you do not by accident interfere with your system python. As usual,
+   you can activate it in your `.bashrc` file while adding the source
+   line there. Lastly, make sure you check it out and adjust the `-n`
+   parameters to the number of cores of your machine. In our example,
+   we have chosen the number 4, you may have to change that value
 
-   > ```bash
-   > $ sudo apt install python3.9 python3.9-dev
-   > $ python3 -m venev ~/ENV3
-   > $ source `/ENV3/bin/activate`
-   > (ENV3) $ sudo apt-get install -y mpich-doc mpich 
-   > (ENV3) $ pip install mpi4py -U
+   ```bash
+   $ sudo apt install python3.9 python3.9-dev
+   $ python3 -m venev ~/ENV3
+   $ source `/ENV3/bin/activate`
+   (ENV3) $ sudo apt-get install -y mpich-doc mpich 
+   (ENV3) $ pip install mpi4py -U
    ```
 
 ## Raspberry Pi
    
 1. Install Open MPI in your pi by entering the following command assuming a PI4, PI3B+ PI3, PI2:
    
-   > ```bash
-   > $ python -m venv ~/ENV3
-   > $ source ~/ENV3/bin/activate
-   > $ sudo apt-get install openmpi-bin
-   > $ mpicc --showme:version
-   > $ pip install mpi4py
-   > ```
+   ```bash
+   $ python -m venv ~/ENV3
+   $ source ~/ENV3/bin/activate
+   $ sudo apt-get install openmpi-bin
+   $ mpicc --showme:version
+   $ pip install mpi4py
+   ```
 
    If you have other Raspberry Pi's you may need to update the core count according to the hardware specification. 
 
@@ -243,18 +260,18 @@ These instructions apply to 20.04 and 21.04. Please use 20.04 in case you like t
 
 On all systems, the installation is very easy. Just change in our example the number 4 to the number of cores in your system.
 
-   > ```bash
-   > (ENV3) $ mpiexec -n 4 python -m mpi4py.bench helloworld   
-   > ```
+   ```bash
+   (ENV3) $ mpiexec -n 4 python -m mpi4py.bench helloworld   
+   ```
 
 You will see an output similar to 
 
-   > ```
-   > Hello, World! I am process 0 of 4 on myhost.
-   > Hello, World! I am process 1 of 4 on myhost.
-   > Hello, World! I am process 2 of 4 on myhost.
-   > Hello, World! I am process 3 of 4 on myhost.
-   > ```
+   ```
+   Hello, World! I am process 0 of 4 on myhost.
+   Hello, World! I am process 1 of 4 on myhost.
+   Hello, World! I am process 2 of 4 on myhost.
+   Hello, World! I am process 3 of 4 on myhost.
+   ```
 
 where `myhost` is the name of your computer.
 
@@ -309,15 +326,15 @@ In the case of multiple computers, you can simply specify the hosts as a
 parameter to your MPI program that you run on your manager node
 
 
-   > ```bash
-   > (ENV3) $ mpiexec -n 4 -host re0,red1,red2,red3 python -m mpi4py.bench helloworld   
-   > ```
+   ```bash
+   (ENV3) $ mpiexec -n 4 -host re0,red1,red2,red3 python -m mpi4py.bench helloworld   
+   ```
 
 To specify how many processes you like to run on each of them, you can use the option `-ppn` followed by the number.
 
-   > ```bash
-   > (ENV3) $ mpiexec -n 4 -pn 2 -host re0,red1,red2,red3 python -m mpi4py.bench helloworld   
-   > ```
+   ```bash
+   (ENV3) $ mpiexec -n 4 -pn 2 -host re0,red1,red2,red3 python -m mpi4py.bench helloworld   
+   ```
 
 As today we usually have multiple cores on a processor, you could be using that core count as the parameter.
 
@@ -340,34 +357,34 @@ the computer is utilized.
 The machinefile can be explicitly passed along as a parameter while
 placing it in the manager machine
 
-> ```
-> mpirun.openmpi \
->   -np 2 \
->   -machinefile /home/pi/mpi_testing/machinefile \
->   python helloworld.py
-> ```
+```
+mpirun.openmpi \
+  -np 2 \
+  -machinefile /home/pi/mpi_testing/machinefile \
+  python helloworld.py
+```
  
 An example of a simple machinefile contains the IP addresses. The
 username can be proceeded by the IP address.
 
-> ```
-> pi@192.168.0.10:1
-> pi@192.168.0.11:2
-> pi@192.168.0.12:2
-> pi@192.168.0.13:2
-> pi@192.168.0.14:2
-> ```
+```
+pi@192.168.0.10:1
+pi@192.168.0.11:2
+pi@192.168.0.12:2
+pi@192.168.0.13:2
+pi@192.168.0.14:2
+```
 
 In many cases, your machine name may be available within your network and known to all hosts in the cluster. In that case, it is more convenient.
 To sue the machine names.
 
-> ```
-> pi@red0:1
-> pi@red1:2
-> pi@red2:2
-> pi@red3:2
-> pi@red4:2
-> ```
+```
+pi@red0:1
+pi@red1:2
+pi@red2:2
+pi@red3:2
+pi@red4:2
+```
 
 Please make sure to change the IP addresses or name of your hosts according to
 your network.
@@ -382,15 +399,15 @@ If you like to add multiple cores from a machine, you can also use a
 `rankfile`
 
 
-> ```
-> mpirun -r my_rankfile --report-bindings ... 
-> 
-> Where the rankfile contains:
-> rank 0=pi@192.168.0.10 slot=1:0
-> rank 1=pi@192.168.0.10 slot=1:1
-> rank 2=pi@192.168.0.11 slot=1:0
-> rank 3=pi@192.168.0.10 slot=1:1
-> ```
+```
+mpirun -r my_rankfile --report-bindings ... 
+
+Where the rankfile contains:
+rank 0=pi@192.168.0.10 slot=1:0
+rank 1=pi@192.168.0.10 slot=1:1
+rank 2=pi@192.168.0.11 slot=1:0
+rank 3=pi@192.168.0.10 slot=1:1
+```
 
 In this configuration, we only use 2 cores from two different PIs.
 
@@ -465,9 +482,9 @@ between two specific processes in the communicator group. It can be applied to a
 
 Here is the definition for the `send()` method:
 
-> ```python
-> comm.send(buf, dest, tag)
-> ```
+```python
+comm.send(buf, dest, tag)
+```
 
 `buf` represents the data to be transmitted, `dest` and `tag` are integer
 values that specify the rank of the destination process, and a tag to identify
@@ -476,9 +493,9 @@ when a process sends multiple kinds of messages to another process.
 
 On the other end is the `recv()` method, with the following definition:
 
-> ```python
-> comm.recv(buf, source, tag, status)
-> ```    
+```python
+comm.recv(buf, source, tag, status)
+```    
 
 In this case, `buf` can specify the location for the received data to
 be stored. In more recent versions of MPI, 'buf' has been
@@ -491,18 +508,18 @@ source and tag of the data to be received. They can also be set to
 In the following example, an integer is transmitted from process 0 to
 process 1.
 
-> ``` python
-> !include ../examples/send_receive.py
-> ```
+``` python
+!include ../examples/send_receive.py
+```
 
 Executing `mpiexec -n 4 python send_receive.py` yields:
 
-> ```bash
-> After send/receive, the value in process 2 is None
-> After send/receive, the value in process 3 is None 
-> After send/receive, the value in process 0 is None
-> After send/receive, the value in process 1 is 42
-> ```
+```bash
+After send/receive, the value in process 2 is None
+After send/receive, the value in process 3 is None 
+After send/receive, the value in process 0 is None
+After send/receive, the value in process 1 is 42
+```
 
 As we can see, the transmission only occurred between processes 0 and 1, and
 no other process was affected.
@@ -515,18 +532,18 @@ of data between processes from memory to memory. In our example we
 will agian be sending a message between processors of rank 0 and 1 in
 the communicator group.
 
->```python
-> !include ../examples/send_receive_buffer.py
-> ```
+```python
+!include ../examples/send_receive_buffer.py
+```
 
 Executing `mpiexec -n 4 python send_receive_buffer.py` yields:
 
-> ```bash
-> After Send/Receive, the value in process 3 is [0 0 0 0 0]
-> After Send/Receive, the value in process 2 is [0 0 0 0 0]
-> After Send/Receive, the value in process 0 is [0 0 0 0 0]
-> After Send/Receive, the value in process 1 is [1 2 3 4 5]
-> ```
+```bash
+After Send/Receive, the value in process 3 is [0 0 0 0 0]
+After Send/Receive, the value in process 2 is [0 0 0 0 0]
+After Send/Receive, the value in process 0 is [0 0 0 0 0]
+After Send/Receive, the value in process 1 is [1 2 3 4 5]
+```
 
 #### Non-blocking send and Recieve
 
@@ -549,18 +566,18 @@ exemplified do not allow data buffers involved in transmission or
 reception of data to be accessed until any ongoing communication
 involving the particular processes has been finalized.
 
->```python
-> !include ../examples/isend_ireceive.py
-> ```
+```python
+!include ../examples/isend_ireceive.py
+```
 
 Executing `mpiexec -n 4 python isend_ireceive.py` yields:
 
-> ```bash
-> After isend/ireceive, the value in process 2 is None
-> After isend/ireceive, the value in process 3 is None
-> After isend/ireceive, the value in process 0 is None
-> After isend/ireceive, the value in process 1 is 42
-> ```
+```bash
+After isend/ireceive, the value in process 2 is None
+After isend/ireceive, the value in process 3 is None
+After isend/ireceive, the value in process 0 is None
+After isend/ireceive, the value in process 1 is 42
+```
 
 ## Collective Communication
 
@@ -593,27 +610,27 @@ The following code snippet shows the creation of the dictionary in process with
 rank 0. Notice how the variable `data` remains empty in all the other
 processes.
 
-> ``` python
-> !include ../examples/broadcast.py
-> ```
+``` python
+!include ../examples/broadcast.py
+```
 
 After running `mpiexec -n 4 python broadcast.py` we get the following:
 
-> ```
-> before broadcast, data on rank 3 is: None
-> before broadcast, data on rank 0 is: 
->   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-> before broadcast, data on rank 1 is: None
-> before broadcast, data on rank 2 is: None
-> after broadcast, data on rank 3 is: 
->   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-> after broadcast, data on rank 0 is: 
->   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-> after broadcast, data on rank 1 is: 
->   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-> after broadcast, data on rank 2 is: 
->   {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
-> ```
+```
+before broadcast, data on rank 3 is: None
+before broadcast, data on rank 0 is: 
+  {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+before broadcast, data on rank 1 is: None
+before broadcast, data on rank 2 is: None
+after broadcast, data on rank 3 is: 
+  {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+after broadcast, data on rank 0 is: 
+  {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+after broadcast, data on rank 1 is: 
+  {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+after broadcast, data on rank 2 is: 
+  {'size': [1, 3, 8], 'name': ['disk1', 'disk2', 'disk3']}
+```
 
 As we can see, all other processes received the data broadcast from the root process.
 
@@ -622,22 +639,22 @@ As we can see, all other processes received the data broadcast from the root pro
 In our following example, we broadcast a NumPy array from process 0 to the rest
 of the processes in the communicator group using the uppercase `comm.Bcast()` method.
 
-> ``` python
-> !include ../examples/broadcast_buffer.py
-> ```
+``` python
+!include ../examples/broadcast_buffer.py
+```
 
 Executing `mpiexec -n 4 python npbcast.py` yields:
 
-> ```
-> before broadcasting, data for rank 1 is:  [0 0 0 0 0 0 0 0 0 0]
-> before broadcasting, data for rank 2 is:  [0 0 0 0 0 0 0 0 0 0]
-> before broadcasting, data for rank 3 is:  [0 0 0 0 0 0 0 0 0 0]
-> before broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
-> after broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
-> after broadcasting, data for rank 2 is:  [0 1 2 3 4 5 6 7 8 9]
-> after broadcasting, data for rank 3 is:  [0 1 2 3 4 5 6 7 8 9]
-> after broadcasting, data for rank 1 is:  [0 1 2 3 4 5 6 7 8 9]
-> ```
+```
+before broadcasting, data for rank 1 is:  [0 0 0 0 0 0 0 0 0 0]
+before broadcasting, data for rank 2 is:  [0 0 0 0 0 0 0 0 0 0]
+before broadcasting, data for rank 3 is:  [0 0 0 0 0 0 0 0 0 0]
+before broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
+after broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
+after broadcasting, data for rank 2 is:  [0 1 2 3 4 5 6 7 8 9]
+after broadcasting, data for rank 3 is:  [0 1 2 3 4 5 6 7 8 9]
+after broadcasting, data for rank 1 is:  [0 1 2 3 4 5 6 7 8 9]
+```
  
 As we can see, the values in the array at the process with rank 0 have
 been broadcast to the rest of the processes in the communicator group.
@@ -659,22 +676,22 @@ rnaked processes with $D_i$
 
 The example program executing the sactter is showcased next
 
-> ``` python
-> !include ../examples/scatter.py
-> ```
+``` python
+!include ../examples/scatter.py
+```
 
 Executing `mpiexec -n 4 python scatter.py` yields:
 
-> ```
-> before scattering, data on rank 2 is  None
-> before scattering, data on rank 3 is  None
-> before scattering, data on rank 0 is  [1, 4, 9, 16]
-> before scattering, data on rank 1 is  None
-> data for rank 2 is  9
-> data for rank 1 is  4
-> data for rank 3 is  16
-> data for rank 0 is  1
-> ```
+```
+before scattering, data on rank 2 is  None
+before scattering, data on rank 3 is  None
+before scattering, data on rank 0 is  [1, 4, 9, 16]
+before scattering, data on rank 1 is  None
+data for rank 2 is  9
+data for rank 1 is  4
+data for rank 3 is  16
+data for rank 0 is  1
+```
  
 The members of the list from process 0 have been successfully
 scattered among the rest of the processes in the communicator group.
@@ -684,26 +701,26 @@ scattered among the rest of the processes in the communicator group.
 In the following example, we scatter a NumPy array among the processes in the
 communicator group by using the uppercase version of the method `comm.Scatter()`.
 
-> ``` python
-> !include ../examples/scatter_buffer.py
-> ```
+``` python
+!include ../examples/scatter_buffer.py
+```
 
 Executing `mpiexec -n 4 python npscatter.py` yields:
 
-> ```
-> recvbuf in  1:  [0 0 0 0 0 0 0 0 0 0]
-> recvbuf in  2:  [0 0 0 0 0 0 0 0 0 0]
-> recvbuf in  3:  [0 0 0 0 0 0 0 0 0 0]
-> sendbuf in 0:  [[0 0 0 0 0 0 0 0 0 0]
->                 [1 1 1 1 1 1 1 1 1 1]
->                 [2 2 2 2 2 2 2 2 2 2]
->                 [3 3 3 3 3 3 3 3 3 3]]
-> recvbuf in  0:  [0 0 0 0 0 0 0 0 0 0]
-> Buffer in process 2 contains:  [2 2 2 2 2 2 2 2 2 2]
-> Buffer in process 0 contains:  [0 0 0 0 0 0 0 0 0 0]
-> Buffer in process 3 contains:  [3 3 3 3 3 3 3 3 3 3]
-> Buffer in process 1 contains:  [1 1 1 1 1 1 1 1 1 1]
-> ```
+```
+recvbuf in  1:  [0 0 0 0 0 0 0 0 0 0]
+recvbuf in  2:  [0 0 0 0 0 0 0 0 0 0]
+recvbuf in  3:  [0 0 0 0 0 0 0 0 0 0]
+sendbuf in 0:  [[0 0 0 0 0 0 0 0 0 0]
+                [1 1 1 1 1 1 1 1 1 1]
+                [2 2 2 2 2 2 2 2 2 2]
+                [3 3 3 3 3 3 3 3 3 3]]
+recvbuf in  0:  [0 0 0 0 0 0 0 0 0 0]
+Buffer in process 2 contains:  [2 2 2 2 2 2 2 2 2 2]
+Buffer in process 0 contains:  [0 0 0 0 0 0 0 0 0 0]
+Buffer in process 3 contains:  [3 3 3 3 3 3 3 3 3 3]
+Buffer in process 1 contains:  [1 1 1 1 1 1 1 1 1 1]
+```
 
 As we can see, the values in the 2-D array at process with rank 0,
 have been scattered among all our processes in the communicator group,
@@ -721,22 +738,22 @@ gathered in the process with rank 0.
 ![Example to gather data to different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/gather.png){ width=30% }
 
 
-> ``` python
-> !include ../examples/gather.py
-> ```
+``` python
+!include ../examples/gather.py
+```
 
 Executing `mpiexec -n 4 python gather.py` yields:
 
-> ```
-> before gathering, data on rank 2 is  9
-> before gathering, data on rank 3 is  16
-> before gathering, data on rank 0 is  1
-> before gathering, data on rank 1 is  4
-> after gathering, data in rank 2 is  None
-> after gathering, data in rank 1 is  None
-> after gathering, data in rank 3 is  None
-> after gathering, process 0's data is  [1, 4, 9, 16]
-> ```
+```
+before gathering, data on rank 2 is  9
+before gathering, data on rank 3 is  16
+before gathering, data on rank 0 is  1
+before gathering, data on rank 1 is  4
+after gathering, data in rank 2 is  None
+after gathering, data in rank 1 is  None
+after gathering, data in rank 3 is  None
+after gathering, process 0's data is  [1, 4, 9, 16]
+```
 
 The data from processes with rank `1` to `size - 1` have been
 successfully gathered in process 0.
@@ -747,28 +764,28 @@ The example showcases the use of the uppercase method `comm.Gather()`.
 NumPy arrays from the processes in the communicator group are gathered
 into a 2-D array in process with rank 0.
 
-> ``` python
-> !include ../examples/gather_buffer.py
-> ```
+``` python
+!include ../examples/gather_buffer.py
+```
        
 Executing `mpiexec -n 4 python npgather.py` yields:
 
-> ```
-> Buffer in process 2 before gathering:  [2 2 2 2 2 2 2 2 2 2]
-> Buffer in process 3 before gathering:  [3 3 3 3 3 3 3 3 3 3]
-> Buffer in process 0 before gathering:  [0 0 0 0 0 0 0 0 0 0]
-> Buffer in process 1 before gathering:  [1 1 1 1 1 1 1 1 1 1]
-> recvbuf in process 0 before gathering:
->  [[0 0 0 0 0 0 0 0 0 0]
->   [0 0 0 0 0 0 0 0 0 0]
->   [0 0 0 0 0 0 0 0 0 0]
->   [0 0 0 0 0 0 0 0 0 0]]
-> recvbuf in process 0 after gathering: 
->  [[0 0 0 0 0 0 0 0 0 0]
->   [1 1 1 1 1 1 1 1 1 1]
->   [2 2 2 2 2 2 2 2 2 2]
->   [3 3 3 3 3 3 3 3 3 3]]
-> ```
+```
+Buffer in process 2 before gathering:  [2 2 2 2 2 2 2 2 2 2]
+Buffer in process 3 before gathering:  [3 3 3 3 3 3 3 3 3 3]
+Buffer in process 0 before gathering:  [0 0 0 0 0 0 0 0 0 0]
+Buffer in process 1 before gathering:  [1 1 1 1 1 1 1 1 1 1]
+recvbuf in process 0 before gathering:
+ [[0 0 0 0 0 0 0 0 0 0]
+  [0 0 0 0 0 0 0 0 0 0]
+  [0 0 0 0 0 0 0 0 0 0]
+  [0 0 0 0 0 0 0 0 0 0]]
+recvbuf in process 0 after gathering: 
+ [[0 0 0 0 0 0 0 0 0 0]
+  [1 1 1 1 1 1 1 1 1 1]
+  [2 2 2 2 2 2 2 2 2 2]
+  [3 3 3 3 3 3 3 3 3 3]]
+```
 The values contained in the buffers from the different processes in
 the group have been gathered in the 2-D array in process with rank 0.
 
@@ -795,24 +812,24 @@ member, which is the case when `comm.Gather()` is used instead).
 
 ![Example to gather the data from each process into ALL of the processes in the group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/allgather.png){ width=30% }
 
-> ```python
-> !include ../examples/allgather_buffer.py
-> ```
+```python
+!include ../examples/allgather_buffer.py
+```
 
 Executing 
 
-> ```
-> $ mpiexec -n 4 python allgather_buffer.py
-> ```
+```
+$ mpiexec -n 4 python allgather_buffer.py
+```
 
 results in the output similar to 
 
-> ```
-> Process 1 table before Allgather: [[0. 0.][0. 0.]] 
-> Process 0 table before Allgather: [[0. 0.][0. 0.]] 
-> Process 1 table after Allgather:  [[0. 0.][0. 1.]] 
-> Process 0 table after Allgather:  [[0. 0.][0. 1.]] 
-> ```
+```
+Process 1 table before Allgather: [[0. 0.][0. 0.]] 
+Process 0 table before Allgather: [[0. 0.][0. 0.]] 
+Process 1 table after Allgather:  [[0. 0.][0. 1.]] 
+Process 0 table after Allgather:  [[0. 0.][0. 1.]] 
+```
 
 As we see, after `comm.Allgather()` is called, every process gets a copy
 of the full multiplication table.
@@ -831,9 +848,9 @@ group. This can be achieved by using a spawn communicator and command.
 
 Using
 
-> ``` python
-> MPI.Comm_Self.Spawn
-> ```
+``` python
+MPI.Comm_Self.Spawn
+```
 
 will create a child process that can communicate with the parent. 
 In the spawn code example, the manager broadcasts an array to the worker.
@@ -844,50 +861,50 @@ manager and the second being the worker.
 ![Example to spawn a program and start it on the different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/spawn.png){ width=25% }
 
 
-> ``` python
-> !include ../examples/spawn/manager.py
-> ```
+``` python
+!include ../examples/spawn/manager.py
+```
 
-> ``` python
-> !include ../examples/spawn/worker.py
-> ```
+``` python
+!include ../examples/spawn/worker.py
+```
 
 To execute the example please go to the examples directory and run the manager
 program
 
-> ```
-> $ cd examples/spawn
-> $ mpiexec -n 4 python manager.py
-> ```
+```
+$ cd examples/spawn
+$ mpiexec -n 4 python manager.py
+```
 
 This will result in:
 
-> ```
-> N: 100 rank: 4
-> N: 100 rank: 1
-> N: 100 rank: 3
-> N: 100 rank: 2
-> Hello
-> b and rank: 0
-> c
-> d
-> 3.1416009869231245
-> N: 100 rank: 0
-> N: 100 rank: 1
-> N: 100 rank: 4
-> N: 100 rank: 3
-> N: 100 rank: 2
-> Hello
-> b and rank: 0
-> c
-> d
-> 3.1416009869231245
-> N: 100 rank: 0
-> ```
+```
+N: 100 rank: 4
+N: 100 rank: 1
+N: 100 rank: 3
+N: 100 rank: 2
+Hello
+b and rank: 0
+c
+d
+3.1416009869231245
+N: 100 rank: 0
+N: 100 rank: 1
+N: 100 rank: 4
+N: 100 rank: 3
+N: 100 rank: 2
+Hello
+b and rank: 0
+c
+d
+3.1416009869231245
+N: 100 rank: 0
+```
 
 This output depends on which child process is received first. The output can vary.
 
-> `WARNING:` When running this program it may not terminate. To
+`WARNING:` When running this program it may not terminate. To
 >terminate use for now `CTRL-C`.
 
 
@@ -897,15 +914,15 @@ Futures is an mpi4py module that runs processes in parallel for intercommunicati
 such processes. The following Python program creates a visualization of a Julia set by
 utilizing this Futures modules, specifically via MPIPoolExecutor.
 
-> ``` python
-> !include ../examples/futures/julia-futures.py
-> ```
+``` python
+!include ../examples/futures/julia-futures.py
+```
 
 To run teh program use:
 
-> ```bash
-> mpiexec -n 1 python julia-futures.py
-> ```
+```bash
+mpiexec -n 1 python julia-futures.py
+```
 
 The number after `-n` can be changed to however many cores are in the computer's processor.
 For example, a dual-core processor can use `-n 2` so that more worker processes work to
@@ -954,22 +971,22 @@ process 0 after the ring is complete is the sum of the original
 integer plus the number of processes in the communicator group.
 
 
-> ``` python
-> !include ../examples/ring.py
-> ```
+``` python
+!include ../examples/ring.py
+```
 
 Executing the code in the example by entering ```mpiexec -n 2 python
 ring.py``` in the terminal will produce the following result:
 
->```bash
-> Communicator group with 4 processes
-> Enter an integer to transmit: 6
-> Process 0 transmitted value 7 to process 1
-> Process 1 transmitted value 8 to process 2
-> Process 2 transmitted value 9 to process 3
-> Process 3 transmitted value 10 to process 0
-> Final data received in process 0 after ring is completed: 10
->```
+```bash
+Communicator group with 4 processes
+Enter an integer to transmit: 6
+Process 0 transmitted value 7 to process 1
+Process 1 transmitted value 8 to process 2
+Process 2 transmitted value 9 to process 3
+Process 3 transmitted value 10 to process 0
+Final data received in process 0 after ring is completed: 10
+````
 
 As we can see, the integer provided to process 0 (6 in this case) was
 successively incremented by each process in the communicator group to
@@ -988,22 +1005,22 @@ program has on purpose a bug in it as it does not communicate the
 values m, max_number, or find with a broadcast from rank 0 to all
 workers. Your task is to modify and complete this program. 
 
-> ``` python
-> !include ../examples/count/count.py
-> ```
+``` python
+!include ../examples/count/count.py
+```
 
 Executing `mpiexec -n 4 python count.py` gives us:
 
->
-> 1 1 [7, 5, 2, 1, 5, 5, 5, 4, 5, 2, 6, 5, 2, 1, 8, 7, 10, 9, 5, 6]
-> 3 3 [9, 2, 9, 8, 2, 7, 7, 2, 10, 1, 2, 5, 3, 5, 10, 8, 10, 10, 8, 10]
-> 2 3 [1, 3, 8, 5, 7, 8, 4, 2, 8, 5, 10, 7, 10, 1, 6, 5, 9, 6, 6, 7]
-> 0 3 [6, 9, 10, 2, 4, 8, 8, 9, 4, 1, 6, 8, 6, 9, 7, 5, 5, 6, 3, 4]
-> 
-> 0 [3, 1, 3, 3]
-> 
-> Total number of 8's: 10
->
+```
+1 1 [7, 5, 2, 1, 5, 5, 5, 4, 5, 2, 6, 5, 2, 1, 8, 7, 10, 9, 5, 6]
+3 3 [9, 2, 9, 8, 2, 7, 7, 2, 10, 1, 2, 5, 3, 5, 10, 8, 10, 10, 8, 10]
+2 3 [1, 3, 8, 5, 7, 8, 4, 2, 8, 5, 10, 7, 10, 1, 6, 5, 9, 6, 6, 7]
+0 3 [6, 9, 10, 2, 4, 8, 8, 9, 4, 1, 6, 8, 6, 9, 7, 5, 5, 6, 3, 4]
+
+0 [3, 1, 3, 3]
+
+Total number of 8's: 10
+```
 
 ## Monte Carlo Calculation of Pi
 
@@ -1024,9 +1041,9 @@ The following is a visualization of the program's methodology to calculate pi:
 The following montecarlo.py program generates an estimation of pi using the methodology and
 equation shown above. Increasing the total number of iterations will increase the accuracy.
 
-> ``` python
-> !include ../examples/monte-carlo/montecarlo.py
-> ```
+``` python
+!include ../examples/monte-carlo/montecarlo.py
+```
 
 Instead of running this on one processor, we can run the calculation on
 many. Implicitly this increases the accuracy while running more
@@ -1046,9 +1063,9 @@ The following program shows the MPI implementation:
 To run this program using git bash, change directory to the folder
 containing this program and issue the command:
 
-> ```bash
-> $ mpiexec -n 4 python parallel_pi.py
-> ```
+```bash
+$ mpiexec -n 4 python parallel_pi.py
+```
 
 The number after `-n` can be changed to however many cores one has on their processor.
 
@@ -1058,9 +1075,9 @@ Note: Please be advised that we use Cloudmesh.StopWatch which is a
 
 Furthermore, the numba version of the program can be run instead, which is slightly faster.
 
-> ``` python
-> !include ../examples/futures/julia-numba.py
-> ```
+``` python
+!include ../examples/futures/julia-numba.py
+```
 
 |         |   No Jit (1280x960)  |  Jit Enabled (1280x960) | No Jit (1920x1440) | Jit Enabled (1920x1440) |
 |---------|------------|---------------|-------------|------------|
@@ -1133,29 +1150,29 @@ terminal using, for example, `export FIND="5"` (shown below)
 os.environ.get("FIND") would set the find variable equal
 to 5.
 
-> ```
-> $ export FIND="5"
-> $ mpiexec -n 4 python count.py
-> 1 0 [9, 6, 8, 3, 4, 8, 5, 6, 6, 3, 5, 6, 10, 5, 5, 1, 1, 2, 1, 3]
-> 3 0 [3, 7, 2, 8, 4, 6, 5, 7, 4, 4, 7, 6, 1, 7, 10, 2, 1, 9, 2, 8]
-> 2 0 [10, 8, 10, 8, 7, 2, 2, 7, 4, 3, 3, 7, 10, 8, 1, 5, 1, 4, 6, 5]
-> 0 0 [5, 8, 9, 1, 2, 7, 1, 5, 5, 6, 3, 6, 10, 9, 7, 10, 5, 3, 6, 5]
-> 0 [0, 0, 0, 0]
-> Total number of 5's: 0
-> ```
+```
+$ export FIND="5"
+$ mpiexec -n 4 python count.py
+1 0 [9, 6, 8, 3, 4, 8, 5, 6, 6, 3, 5, 6, 10, 5, 5, 1, 1, 2, 1, 3]
+3 0 [3, 7, 2, 8, 4, 6, 5, 7, 4, 4, 7, 6, 1, 7, 10, 2, 1, 9, 2, 8]
+2 0 [10, 8, 10, 8, 7, 2, 2, 7, 4, 3, 3, 7, 10, 8, 1, 5, 1, 4, 6, 5]
+0 0 [5, 8, 9, 1, 2, 7, 1, 5, 5, 6, 3, 6, 10, 9, 7, 10, 5, 3, 6, 5]
+0 [0, 0, 0, 0]
+Total number of 5's: 0
+```
 
 However, if the user does not define any environment
 variables find will default to 8.
 
-> ```
-> $ mpiexec -n 4 python count.py
-> 1 0 [5, 5, 2, 6, 6, 3, 5, 3, 3, 2, 3, 9, 7, 1, 3, 7, 1, 7, 1, 3]
-> 3 1 [7, 1, 5, 1, 2, 2, 10, 7, 2, 1, 2, 6, 4, 6, 10, 10, 5, 8, 10, 10]
-> 2 0 [5, 1, 4, 4, 9, 9, 5, 1, 1, 3, 9, 3, 5, 2, 5, 7, 9, 7, 10, 5]
-> 0 1 [6, 6, 5, 6, 4, 10, 3, 5, 5, 2, 5, 2, 7, 6, 7, 8, 5, 7, 6, 4]
-> 0 [1, 0, 0, 1]
-> Total number of 8's: 2
-> ```
+```
+$ mpiexec -n 4 python count.py
+1 0 [5, 5, 2, 6, 6, 3, 5, 3, 3, 2, 3, 9, 7, 1, 3, 7, 1, 7, 1, 3]
+3 1 [7, 1, 5, 1, 2, 2, 10, 7, 2, 1, 2, 6, 4, 6, 10, 10, 5, 8, 10, 10]
+2 0 [5, 1, 4, 4, 9, 9, 5, 1, 1, 3, 9, 3, 5, 2, 5, 7, 9, 7, 10, 5]
+0 1 [6, 6, 5, 6, 4, 10, 3, 5, 5, 2, 5, 2, 7, 6, 7, 8, 5, 7, 6, 4]
+0 [1, 0, 0, 1]
+Total number of 8's: 2
+```
 
 
 Assignment:
@@ -1165,35 +1182,35 @@ Assignment:
 
 Setting the parameter can either be done vi the export shell command such as
 
-> ```bash
-> $ export N=8
-> ```
+```bash
+$ export N=8
+```
 
 or while passing the parameter in the same line as a command such as demonstrated next
 
-> ```bash
-> $ N=1; python environment-parameter.py
-> ```
+```bash
+$ N=1; python environment-parameter.py
+```
 
 This can be generalized while using a file with many different parameters and commands. For example, placing this in a file called `run.sh`
 
-> ```python
-> $ N=1; python environment-parameter.py
-> $ N=2; python environment-parameter.py
-> ```
+```python
+$ N=1; python environment-parameter.py
+$ N=2; python environment-parameter.py
+```
 
 
 It allows us to execute the programs sequentially in the file with
 
-> ```bash
-> $ sh run.sh
-> ```
+```bash
+$ sh run.sh
+```
 
 Let us assume we use the python program
 
-> ``` python
-> !include ../examples/parameters/environment-parameter.py
-> ```
+``` python
+!include ../examples/parameters/environment-parameter.py
+```
 
 This Python program does not set a variable N on its own. It refers to os.environ
 which should have previously set N as shown in the beginning of this document's
@@ -1203,36 +1220,36 @@ previous program once N is set and passed from os.environ.
 
 We are using, in our case also the cloudmesh.StopWatch to allow us easily to fgrep for the results we may be interested in to conduct benchmarks. Here is an example workflow to achieve this
 
-> ```
-> # This command creates an environment variable called N
-> $ export N=10
-> # This command prints the environment variable called N
-> $ echo $N
-> # This command launches a Python environment
-> $ python -i
-> >>> import os
-> >>> os.environ["N"]
-> >>> exit()
-> $ python environment-parameter.py
-> $ sh run.sh
-> $ sh run.sh | fgrep "csv,processors"
-> ```
+```
+# This command creates an environment variable called N
+$ export N=10
+# This command prints the environment variable called N
+$ echo $N
+# This command launches a Python environment
+$ python -i
+>>> import os
+>>> os.environ["N"]
+>>> exit()
+$ python environment-parameter.py
+$ sh run.sh
+$ sh run.sh | fgrep "csv,processors"
+```
 
 
 ### Using click to pass parameters
 
 Click is a convenient mechanism to define parameters that can be passed via options to python programs. To showcase its use please inspect the following program
 
-> ``` python
-> !include ../examples/parameters/click-parameter.py
-> ```
+``` python
+!include ../examples/parameters/click-parameter.py
+```
 
 
 You can manually set the variable in git bash in the same line as you open the .py file
 
-> ```bash
-> $ python click-parameter.py --n=3
-> ```
+```bash
+$ python click-parameter.py --n=3
+```
 
 
 ## Resources
@@ -1272,7 +1289,7 @@ you install `gitbash` first. After you install `gitbash`, you can install
 `make` from an administrative `gitbash` terminal window. To start one, go to
 the search field next to the Windows icon on the bottom left and type in
 gitbash without a `RETURN`. You will then see a selection window that includes
-`Run as administrator. Click on it. As you run it as administrator, it will
+`Run as administrator`. Click on it. As you run it as administrator, it will
 allow you to install `make`. The following instructions will provide you with a
 guide to install make under windows.
 
@@ -1293,24 +1310,24 @@ gitbash that you started as an administrative user:
 
 Figure: Screenshot of opening gitbash in admin shell 
 
-> ```bash
-> $ cp make-4.3-without-guile-w32-bin.zip /usr
-> $ cd /usr
-> $ unzip make-4.3-without-guile-w32-bin.zip
-> ```
+```bash
+$ cp make-4.3-without-guile-w32-bin.zip /usr
+$ cd /usr
+$ unzip make-4.3-without-guile-w32-bin.zip
+```
 
 Now start a new terminal (a regular non-administrative one) and type the
 command
 
-> ```bash
-> $ which make
-> ```
+```bash
+$ which make
+```
 
 It will provide you the location if the installation was successful
 
-> ```bash
-> /usr/bin/make
-> ```
+```bash
+/usr/bin/make
+```
 
 to make sure it is properly installed and in the correct directory.
 
@@ -1332,11 +1349,11 @@ More information about WSL is provided at
 To install WSL2, you can follow these steps while using
 Powershell as an administrative user and run
 
-> ```
-> ps$ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-> ps$ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-> ps$ wsl --set-default-version 2
-> ```
+```
+ps$ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+ps$ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+ps$ wsl --set-default-version 2
+```
 
 Next, Download the Ubuntu 20.04 LTS image from the Microsoft store
 
@@ -1348,9 +1365,9 @@ Make sure not just to give an empty passphrase but chose a secure one.
 
 Next run in Powershell
 
-> ```
-> ps$ wsl.exe --set-version Ubuntu20.04 2
-> ```
+```
+ps$ wsl.exe --set-version Ubuntu20.04 2
+```
 
 Now you can use the Ubuntu distro freely. The WSL2 application will be in your shortcut menu in `Start`. 
 
@@ -1392,19 +1409,16 @@ Now you can use the Ubuntu distro freely. The WSL2 application will be in your s
   there is no point to repeat that, we may just point to it and
   improve that tutorial where needed instead.
 
-5. The images in <https://mpitutorial.com/tutorials/> seem much better when it comes to for example scatter. Your task is to create better
-   images for all examples.
-
-6. Convert the parallel rank program from <https://mpitutorial.com/tutorials/performing-parallel-rank-with-mpi/>
+5. Convert the parallel rank program from <https://mpitutorial.com/tutorials/performing-parallel-rank-with-mpi/>
    to mpi4py. Write a tutorial for it.
 
-7. Develop tutorials that showcase multiple communicators and
+6. Develop tutorials that showcase multiple communicators and
    groups. See
    <https://mpitutorial.com/tutorials/introduction-to-groups-and-communicators/>
 
-8. Complete the count example while adding a broadcast to it to communicate the parameters. Provide a modified tutorial.
+7. Complete the count example while adding a broadcast to it to communicate the parameters. Provide a modified tutorial.
 
-9. Test out the machinefile, host, and rankfile section. Improve if needed.
+8. Test out the machinefile, host, and rankfile section. Improve if needed.
 
 
 
