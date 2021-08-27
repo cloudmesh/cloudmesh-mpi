@@ -1,11 +1,11 @@
 > **Note:** Do not modify the report.md file, instead modify only files
-> in in the chapters dir
+> in the chapters dir
 
 # Preface
 
 ## Document Management in GitHub
 
-This document ia managed in GitHub and tasks are assigned via GitHub
+This document is managed in GitHub, and tasks are assigned via GitHub
 actions:
 
 -   [All](https://github.com/cloudmesh/cloudmesh-mpi/projects/1),
@@ -35,20 +35,20 @@ or
 
 ## Document Notation
 
-To keep things uniform we use the following document notations.
+To keep things uniform, we use the following document notations.
 
-1.  Empty lines are to be placed before and after a context change such
+1.  Empty lines are to be placed before and after a context change, such
     as a headline, paragraph, list, image inclusion.
 
-2.  All code is written in code blocks using the `>` and three back
-    quotes. A rendered example looks as follows:
+2.  All code is written in code blocks using the `>` and three
+    backquotes. A rendered example looks as follows:
 
     >     this is an example
 
-3.  Single quote inclusion must be used for filenames, and other names
-    as they are refereed to in code blocks.
+3.  Single quote inclusion must be used for filenames and other names as
+    they are referred to in code blocks.
 
-4.  Do showcase command inclusion we use a block but preceed every
+4.  To showcase command inclusion, we use a block but precede every
     command with a `$` or other prefix indicating the computer on which
     the command is executed.
 
@@ -58,50 +58,50 @@ To keep things uniform we use the following document notations.
 
 # Introduction
 
-(Same as abstract): Today python has become the predominantly
-programming language to coordinate scientific applications especially
+(Same as abstract): Today Python has become the predominantly
+programming language to coordinate scientific applications, especially
 machine and deep learning applications. However, previously existing
 parallel programming paradigms such as **Message Passing Interface
 (MPI)** have proven to be a useful asset when it comes to enhancing
-complex data flows while executing them on multiple computers including
-supercomputers. The framework is well known in the C-language community.
-However many practitioners do not have the time to learn C to utilize
-such advanced cyberinfrastructure. Hence, it is advantageous to access
-MPI from Python. We showcase how you can easily deploy and use MPI from
-Python via a tool called `mpi4pi`. We will also show you how to use
-`mpi4pi` in support of AI workflows such as TensorFlow.
+complex data flows while executing them on multiple computers ,
+including supercomputers. The framework is well known in the C-language
+community. However, many practitioners do not have the time to learn C
+to utilize such advanced cyberinfrastructure. Hence, it is advantageous
+to access MPI from Python. We showcase how you can easily deploy and use
+MPI from Python via a tool called `mpi4pi`. We will also show you how to
+use `mpi4pi` in support of AI workflows such as TensorFlow.
 
 Message Passing Interface (MPI) is a message-passing standard that
-allows for efficient communication of data between the address spaces of
+allows for efficient data communication between the address spaces of
 multiple processes. The MPI standard began in 1992 as a collective
-effort by several organizations, institutions, vendors and users. Since
-the first draft of the specifiction in November of 1993, the standard
-has undergone several revisions and updates leading to its current
-version: MPI 4.0 (June 2021).
+effort by several organizations, institutions, vendors, and users. Since
+the first draft of the specification in November 1993, the standard has
+undergone several revisions and updates leading to its current version:
+MPI 4.0 (June 2021).
 
-Multiple implementations following the standard exist including the two
+Multiple implementations following the standard exist, including the two
 most popular MPICH [^1] and OpenMPI [^2]. However, other free or
 commercial implementations exist [^3].
 
 Additionally, MPI is a language-independent interface. Although support
 for C and Fortran is included as part of the standard, multiple
-libraries providing bindings fot other languages are available,
-including those for Java, Julia, R, Ruby and Python.
+libraries providing bindings for other languages are available,
+including those for Java, Julia, R, Ruby, and Python.
 
-Thanks to its user focused abstractins, its standardization,
+Thanks to its user-focused abstractions, its standardization,
 portability, and scalability, and availability MPI is a popular tool in
-the creation of high performance and parallel computing programs.
+the creation of high-performance and parallel computing programs.
 
 # Installation
 
-Next we discuss how to install mpi4p on various systems. We will focus
-on installing it in a single computer using multiple cores.
+Next, we discuss how to install mpi4p on various systems. We will focus
+on installing it on a single computer using multiple cores.
 
 ## Getting the CPU Count
 
-For the examples listed in this document, it is important to know the
-number of cores in your computer. This can be found out through the
-command line or a python program.
+For the examples listed in this document, knowing the number of cores on
+your computer is important. This can be found out through the command
+line or a python program.
 
 In Python, you can do it with
 
@@ -116,33 +116,33 @@ or as a command line
 > $ python -c "import multiprocessing;  print(multiprocessing.cpu_count())"
 > ```
 
-However, you can aslo use the commandline tools that we have included in
-our documentation.
+However, you can also use the command line tools that we have included
+in our documentation.
 
 ## Windows 10 EDU or PRO
 
 *Note:* We have not tested this on Windows home.
 
 1.  We assume you have installed GitBash on your computer. The
-    instalation is easy, but be careful to watch the various options at
+    installation is easy, but be careful to watch the various options at
     install time. Make sure it is added to the Path variable.
 
-    For detaile see: <https://git-scm.com/downloads>
+    For details see: <https://git-scm.com/downloads>
 
 2.  We also assume you have installed Python3.9 according to either the
-    instalation at python.org or conda. We do recommend the instalation
-    from python.org.
+    installation at python.org or conda. We do recommend the
+    installation from python.org.
 
     <https://www.python.org/downloads/>
 
-    You will need to install a python virtual env in order not to
-    conflict by accident with your system installed version of python.
+    You will need to install a python virtual env to avoid conflict by
+    accident with your system installed version of Python.
 
     For details on how to do this, please visit our extensive
     documentation at \[???\]
 
-3.  Microsoft has its own implementation of mpi which we recommend at
-    this time. First you need to download msmpi from
+3.  Microsoft has its own implementation of MPI which we recommend at
+    this time. First, you need to download msmpi from
 
     -   <https://docs.microsoft.com/en-us/message-passing-interface/microsoft-mpi#ms-mpi-downloads>
 
@@ -159,13 +159,13 @@ our documentation.
     `View advanced system settings`) and then click
     `Environment Variables...`
 
-5.  Under the user variables box click on `Path`
+5.  Under the user variables box, click on `Path`
 
 6.  Click New in order to add
     `C:\Program Files (x86)\Microsoft SDKs\MPI` and
     `C:\Program Files\Microsoft MPI\Bin` to the Path. The
-    `Browse Directory...` button makes this easier and the
-    `Variable name` can correspond to each directory, e.g. "MPI" and
+    `Browse Directory...` button makes this easier, and the
+    `Variable name` can correspond to each directory, e.g., "MPI" and
     "MPI Bin" respectively
 
 7.  Close any open bash windows and then open a new one
@@ -184,9 +184,9 @@ our documentation.
     > $ pip install mpi4py
     > ```
 
-    ideally while bash is in venv
+    ideally, while bash is in venv
 
-10. Next find out how many processes you can run on your machine and
+10. Next, find out how many processes you can run on your machine and
     remember that number. You can do this with
 
     > ``` bash
@@ -230,13 +230,13 @@ you like to use GPUs.
     > $ nproc
     > ```
 
-2.  The instalation of mpi4py on ubuntu is relatively easy. Please
+2.  The installation of mpi4py on Ubuntu is relatively easy. Please
     follow these steps. We recommend that you create a python `venv` so
-    you do not by accident interfere with your system python. As usual
+    you do not by accident interfere with your system python. As usual,
     you can activate it in your
     `.bashrc file while adding the source line there. Lastly, make sure you check it out and adjust the`-n\`
-    parameters to the number of cores of your machine. In our example we
-    have chosen the number 4, you may have to change that value
+    parameters to the number of cores of your machine. In our example,
+    we have chosen the number 4, you may have to change that value
 
     > ``` bash
     > $ sudo apt install python3.9 python3.9-dev
@@ -260,12 +260,12 @@ you like to use GPUs.
     > ```
 
     If you have other Raspberry Pi's you may need to update the core
-    cout according to the hardware specification.
+    count according to the hardware specification.
 
 ## Testing the Installation
 
-On all sytems the instalation is very easy. Just change in our example
-the number 4 to the numbers of cores in your system.
+On all systems, the installation is very easy. Just change in our
+example the number 4 to the number of cores in your system.
 
 > ``` bash
 > (ENV3) $ mpiexec -n 4 python -m mpi4py.bench helloworld   
@@ -286,74 +286,74 @@ where `myhost` is the name of your computer.
 
 ## Running MPI on a Single Computer
 
-In case you like to try out MPI nd just use it on a single computer with
-multiple cors, you can skip this section for now and revisit it, once
-you scale up and use multiple computers.
+In case you like to try out MPI and just use it on a single computer
+with multiple cors, you can skip this section for now and revisit it,
+once you scale up and use multiple computers.
 
 ## Running MPI on Multiple Computers
 
-MPI is designed for running programs on multiple coomputers. One of
-these computers serves as manager and communicates to its workers. To
-define on which computer is running what, we need to have a
-configuration file that list a number of hosts to participate in our set
-of machines, the MPI cluster.
+MPI is designed for running programs on multiple computers. One of these
+computers serves as manager and communicates to its workers. To define
+on which computer is running what, we need to have a a configuration
+file that lists a number of hosts to participate in our set of machines,
+the MPI cluster.
 
-The configurationfile specifying this is called a machinefile, hostfile
-or rankfile. We will explain the differences to them in this section.
+The configuration file specifying this is called a machinefile or
+rankfile. We will explain the differences to them in this section.
 
 ### Prerequisit
 
-Naturaly, the prequsit to use a cluster is that you
+Naturally, the requisite to use a cluster is that you
 
 1.  have MPI and mpi4py installed on each of the computers, and
 2.  have access via ssh on each of these computers
 
-If you use a raspberry PI cluster, we recommend that you use our
+If you use a Raspberry PI cluster, we recommend using our
 cloudmesh-pi-burn program \[TODOREF\]. This will conveniently create you
-a Raspberry PI cluster with login features eastablished. YOu still need
-to install mpi4py however on each node.
+a Raspberry PI cluster with login features established. You still need
+to install mpi4py, however on each node.
 
 If you use another set of resources, you will often see the
 recommendation to use passwordless ssh key between the nodes. This we
 only recommend if you are an expert and have placed the cluster behind a
-firewall. If you experiement instead with your own cluster, we recommend
-that you use password protected SSH keys on your manager node and
-pouplate them with ssh-copy-id to the worker computers. To not always
+firewall. If you experiment instead with your own cluster, we recommend
+that you use password-protected SSH keys on your manager node and
+populate them with ssh-copy-id to the worker computers. To not always
 have to type in your password to the different machines, we recommend
 you use `ssh-agent`, and `ssh-add`.
 
 ### Using Hosts
 
-In case of multiple computers you can simply specify the hosts as a
-paremeter to your mpi program tht you run on your manager node
+In the case of multiple computers, you can simply specify the hosts as a
+parameter to your MPI program that you run on your manager node
 
 > ``` bash
 > (ENV3) $ mpiexec -n 4 -host re0,red1,red2,red3 python -m mpi4py.bench helloworld   
 > ```
 
-To pescify how many processes you like to run on each of them you can
+To specify how many processes you like to run on each of them, you can
 use the option `-ppn` followed by the number.
 
 > ``` bash
 > (ENV3) $ mpiexec -n 4 -pn 2 -host re0,red1,red2,red3 python -m mpi4py.bench helloworld   
 > ```
 
-As today we usually have multiple cores on a processor you could be
-using that core count as the parameter
+As today we usually have multiple cores on a processor, you could be
+using that core count as the parameter.
 
-### Machinefile Single Cores
+### Machinefile
 
-To simplify the parameterpassing to MPI you can use machine files
+To simplify the parameter passing to MPI you can use machine files
 instead. This allows you also to define different numbers of processes
-for different hosts. Thus it is mor flexible. In factwe recommend that
-you use a machine file in most cases as you than also have record of how
-you configured your cluster.
+for different hosts. Thus it is more flexible. In fact, we recommend
+that you use a machine file in most cases as you then also have a record
+of how you configured your cluster.
 
-The machine file is a simple text file that lista all the different
-computers participating in your cluster. As MPI was originally sesigned
-at a time whne there was only one core on a computer, the simplest
+The machine file is a simple text file that lists all the different
+computers participating in your cluster. As MPI was originally designed
+at a time when there was only one core on a computer, the simplest
 machine file just lists the different computers. When starting a program
-with the machine file as option only one core of the computer is
+with the machine file as option, only one core of the computer is
 utilized.
 
 The machinefile can be explicitly passed along as a parameter while
@@ -364,8 +364,8 @@ placing it in the manager machine
 >       -machinefile /home/pi/mpi_testing/machinefile \
 >       python helloworld.py
 
-An example fo a simple machinefile contains the ipaddresses. The
-username can be proceeded by the ip address.
+An example of a simple machinefile contains the IP addresses. The
+username can be proceeded by the IP address.
 
 >     pi@192.168.0.10:1
 >     pi@192.168.0.11:2
@@ -373,9 +373,9 @@ username can be proceeded by the ip address.
 >     pi@192.168.0.13:2
 >     pi@192.168.0.14:2
 
-In many cases your machine name may be available within your network and
-known to all hosts in the cluster. In that case it is more convenient To
-sue the machine names.
+In many cases, your machine name may be available within your network
+and known to all hosts in the cluster. In that case, it is more
+convenient. To sue the machine names.
 
 >     pi@red0:1
 >     pi@red1:2
@@ -383,16 +383,16 @@ sue the machine names.
 >     pi@red3:2
 >     pi@red4:2
 
-Please make sure to change the ipaddresses or name of your hosts
+Please make sure to change the IP addresses or name of your hosts
 according to your network.
 
 ### Rankfiles for Multiple Cores
 
-In contrast to the host parameter you can fine tune the placement of
+In contrast to the host parameter, you can fine-tune the placement of
 processes to computers with a `rankfile`. This may be important if your
-hardware has for example specifig computers for data storage or GPUs.
+hardware has, for example specific computers for data storage or GPUs.
 
-If you like to add multiple cores from a machine you can also use a
+If you like to add multiple cores from a machine, you can also use a
 `rankfile`
 
 >     mpirun -r my_rankfile --report-bindings ... 
@@ -403,11 +403,11 @@ If you like to add multiple cores from a machine you can also use a
 >     rank 2=pi@192.168.0.11 slot=1:0
 >     rank 3=pi@192.168.0.10 slot=1:1
 
-In this configuration we only use 2 cores from two differnt PIs.
+In this configuration, we only use 2 cores from two different PIs.
 
 # MPI Functionality
 
-In this section we will discuss several useful MPI communication
+In this section, we will discuss several useful MPI communication
 features.
 
 ## Differences to the C Implementation of MPI
@@ -423,7 +423,7 @@ initialize and terminate the MPI environment are automatically handled
 after importing the mpi4py module. Although not generally advised,
 mpi4py still provides MPI.Init() and MPI.Finalize() for users interested
 in manually controlling these operations. Additionally, the automatic
-initialization and termination can be deativated. For more information
+initialization and termination can be deactivated. For more information
 on this topic, please check the original mpi4py documentation:
 
 -   [MPI.Init() and
@@ -433,7 +433,7 @@ on this topic, please check the original mpi4py documentation:
 
 ### Capitalization for Pickle vs. Memory Messages
 
-Another characteristic feature of mpi4py is the availablitly of
+Another characteristic feature of mpi4py is the availability of
 uppercase and lowercase communication methods. Lowercase methods like
 `comm.send()` use Python's `pickle` module to transmit objects in a
 serialized manner. In contrast, the uppercase versions of methods like
@@ -447,7 +447,7 @@ Data](https://mpi4py.readthedocs.io/en/stable/overview.html?highlight=pickle#com
 
 ### Communicator
 
-All MPI processes need to be adressable and are grouped in a
+All MPI processes need to be addressable and are grouped in a
 `communicator`. The default communicator is called `world` and assigns a
 rank to each process within the communicator.
 
@@ -457,13 +457,13 @@ Thus all MPI programs we will discuss here start with
 comm = MPI.COMM_WORLD
 ```
 
-In the MPI program the function
+In the MPI program, the function
 
 ``` python
 rank = comm.Get_rank()
 ```
 
-Returns the rank. This is useful to be able to write conditional
+returns the rank. This is useful to be able to write conditional
 programs that depend on the rank. Rank `0` is the rank of the manager
 process.
 
@@ -473,9 +473,9 @@ process.
 
 The `send()` and `recv()` methods provide for functionality to transmit
 data between two specific processes in the communicator group. It can be
-applied to any Python data object that can be pickles. The advantage is
-that the object is preserved, howevr it comes with the disadvantage that
-pickeling the data takes more time than a direct memory copy.
+applied to any Python data object that can be pickled. The advantage is
+that the object is preserved, however it comes with the disadvantage
+that pickling the data takes more time than a direct memory copy.
 
 ![Sending and receiving data between two
 processes](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/send_receive.png){width="15%"}
@@ -493,7 +493,7 @@ tag to identify the message being passed, respectively. `tag` is
 particularly useful for cases when a process sends multiple kinds of
 messages to another process.
 
-In the other end is the `recv()` method, with the following definition:
+On the other end is the `recv()` method, with the following definition:
 
 >     comm.recv(buf, source, tag, status)
 
@@ -589,23 +589,23 @@ Executing `mpiexec -n 4 python send_receive_buffer.py` yields:
 > After Send/Receive, the value in process 1 is [1 2 3 4 5]
 > ```
 
-#### Non blocking send and Recieve
+#### Non-blocking send and Recieve
 
-MPI can also use non blocking communications. This allows the program to
-send te message without waiting for the completion of the submission.
-Thi sis useful for many parallel programs so we can overlap
-communication ond computation while both take place simultaneously. The
-same can be done with recieve, but if a message is not avalable and you
-do need the messgae you may have to probe or execute the recive message
-or even use a blocked recieve. To wait for a message to be send or
-recived we can also use the wait method effectivle converting the non
-blocking message to a blocking one.
+MPI can also use non-blocking communications. This allows the program to
+send the message without waiting for the completion of the submission.
+This is useful for many parallel programs so we can overlap
+communication and computation while both take place simultaneously. The
+same can be done with receive, but if a message is not available and you
+do need the message, you may have to probe or even use a blocked
+receive. To wait for a message to be sent or received, we can also use
+the wait method , effectively converting the non-blocking message to a
+blocking one.
 
 Next, we showcase an example of the non-blocking send and receive
 methods `comm.isend()` and `comm.irecv()`. Non-blocking versions of
 these methods allow for the processes involved in transmission/reception
 of data to perform other operations in overlap with the communication.
-In contrast, the blocking versions of these methods previously
+In In contrast, the blocking versions of these methods previously
 exemplified do not allow data buffers involved in transmission or
 reception of data to be accessed until any ongoing communication
 involving the particular processes has been finalized.
@@ -661,21 +661,22 @@ parameter `root`, which establishes the rank number of the process
 broadcasting the data. If no root parameter is specified, `bcast` will
 default to broadcasting from the process with rank 0.
 
-Thus, the two lineas are functionally equivalent
+Thus, the two lines are functionally equivalent.
 
 ``` python
 data = comm.bcast(data, root=0)
 data = comm.bcast(data)
 ```
 
-In our next example, we broadcast a two-entry Python dictionary from a
-root process to the rest of the processes in the communicator group.
+In our following example, we broadcast a two-entry Python dictionary
+from a root process to the rest of the processes in the communicator
+group.
 
 ![Broadcasting data from a root process to the rest of the processes in
 the communicator
 group](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/bcast.png){width="25%"}
 
--   [ ] **TODO: in that image the rrot process does not send to itself**
+-   [ ] **TODO: in that image the root process does not send to itself**
 
 The following code snippet shows the creation of the dictionary in
 process with rank 0. Notice how the variable `data` remains empty in all
@@ -729,8 +730,8 @@ root process.
 
 #### Broadcast of a Memory Object
 
-In our next example, we broadcast a NumPy array from process 0 to the
-rest of the processes in the communicator group using the uppercase
+In our following example, we broadcast a NumPy array from process 0 to
+the rest of the processes in the communicator group using the uppercase
 `comm.Bcast()` method.
 
 > ``` python
@@ -791,7 +792,7 @@ processes with #D_i\$
 
 #### Scatter Python Objects
 
-THe example program executing the sactter is showcased next
+The example program executing the sactter is showcased next
 
 > ``` python
 > #!/usr/bin/env python
@@ -905,9 +906,9 @@ on their rank value.
 
 The gather function is the inverse function to scatter. Data from each
 process is gathered in consecutive order based on the rank of the
-processor
+processor.
 
-#### Gather a Python Objects
+#### Gather Python Objects
 
 In this example, data from each process in the communicator group is
 gathered in the process with rank 0.
@@ -1027,20 +1028,20 @@ Executing `mpiexec -n 4 python npgather.py` yields:
 
 ### Allgather Memory Objects
 
-This method is a many to many communication operation, where data from
-all processors is gatherd in a continious memory object on each of the
-processors. This is functionally equifalend to
+This method is a many-to-many communication operation, where data from
+all processors is gathered in a continuous memory object on each of the
+processors. This is functionally equivalent to
 
 1.  A gather on rank 0
-2.  A Sactter from rank 0
+2.  A Scatter from rank 0
 
-However this operation has naturally a perfomance bottleneck while all
-communication goes through rank0. Instead we can use parallel
+However, this operation naturally has a performance bottleneck while all
+communication goes through rank0. Instead, we can use parallel
 communication between all of the processes at once to improve the
-performance. The optimization is implicit and the user does not need to
+performance. The optimization is implicit, and the user does not need to
 worry about it.
 
-We demonstarte its use on the following example. Each process in the
+We demonstrate its use in the following example. Each process in the
 communicator group computes and stores values in a NumPy array (row).
 For each process, these values correspond to the multiples of the
 process' rank and the integers in the range of the communicator group's
@@ -1101,13 +1102,13 @@ As we see, after `comm.Allgather()` is called, every process gets a copy
 of the full multiplication table.
 
 We have not provided an example for the Python object version as it is
-essentially the same and can easily be developed as an excersise.
+essentially the same and can easily be developed as an exercise.
 
 ## Process Management
 
 ### Dynamic Process Management with `spawn`
 
-So far we have focussed on MPI used on a number of hosts that are
+So far, we have focussed on MPI used on a number of hosts that are
 automatically creating the process when mpirun is used. However, MPI
 also offers the ability to sawn a process in a communicator group. This
 can be achieved by using a spawn communicator and command.
@@ -1291,14 +1292,15 @@ visualization of a Julia data set as a png image.
 
 # Simple MPI Example Programs
 
-In this section we will showcase you some simple MPI example programs.
+In this section, we will showcase to you some simple MPI example
+programs.
 
 ## GPU Programming with MPI
 
 In case you have access to computers with GPUS you can naturally utilize
-them accordingly from python with the appropriate GPU drivers.
+them accordingly from Python with the appropriate GPU drivers.
 
-In case not all have a GPU you can use rankfiles to controll the access
+In case not all have a GPU, you can use rankfiles to control the access
 and introduce through conditional programming based on rank access to
 the GPUs.
 
@@ -1307,22 +1309,22 @@ the GPUs.
 ## MPI Ring Example
 
 The MPI Ring example program is one of the classical programs every MPI
-programmer has seen. Here a message is send from the Manager to the
-workers while the processors are arranged in a ring and the last worker
-sends the message back to the manager. Instead of just doing this once
-our program does it multiple times and add every time a communication is
-done 1 do the integer send around. Figure 1 showcases the process graph
-of this application.
+programmer has seen. Here a message is sent from the manager to the
+workers while the processors are arranged in a ring, and the last worker
+sends the message back to the manager. Instead of just doing this once,
+our program does it multiple times and adds every time a communication
+is done 1 do the integer send around. Figure 1 showcases the process
+graph of this application.
 
 ![Processes organized in a ring perform a sum
 operation](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/ring.png){width="40%"}
 
 In the example, the user provides an integer that is transmitted from
-process with rank 0, to process with rank 1 and so on until the data
-returns to process 0. Each process increments the integer by 1 before
-transmitting it to the next one, so the final value received by process
-0 after the ring is complete is the sum of the original integer plus the
-number of processes in the communicator group.
+the process with rank 0, to process with rank 1, and so on until the
+data returns to process 0. Each process increments the integer by 1
+before transmitting it to the next one, so the final value received by
+process 0 after the ring is complete is the sum of the original integer
+plus the number of processes in the communicator group.
 
 > ``` python
 > #!/usr/bin/env python
@@ -1395,8 +1397,8 @@ uses a function called count() to count the number of 8's in each data
 set. The number of 8's in each list is stored count_data. Count_data is
 then summed and printed out as the total number of 8's.
 
-The progam allows you to set the program parameters. Note thath the
-program has on purpuse a bug in it as it does not communicate the values
+The program allows you to set the program parameters. Note that the
+program has on purpose a bug in it as it does not communicate the values
 m, max_number, or find with a broadcast from rank 0 to all workers. Your
 task is to modify and complete this program.
 
@@ -1458,9 +1460,9 @@ Executing `mpiexec -n 4 python count.py` gives us:
 
 ## Monte Carlo Calculation of Pi
 
-A very nice example to showcase the potential for doing lots of
-parallele calculations is to calculate the number pi. THis is quite
-easily achieved while using a monte carlo method.
+A very nice example to showcase the potential for doing lots of parallel
+calculations is to calculate the number pi. This is quite easily
+achieved while using a monte Carlo method.
 
 We start with the mathematical formulation of the Monte Carlo
 calculation of pi. For each quadrant of the unit square, the area is pi.
@@ -1475,7 +1477,7 @@ calculate pi:
 
 The following montecarlo.py program generates an estimation of pi using
 the methodology and equation shown above. Increasing the total number of
-itterations will increase the accuracy.
+iterations will increase the accuracy.
 
 > ``` python
 > import random as r
@@ -1502,13 +1504,13 @@ itterations will increase the accuracy.
 > print(end - start)                 # Execution time
 > ```
 
-Instead of running this on one processor we can run the calculation on
-many. Implicitly this increases the accuraccy while running more trials
-in the same time as we run them all in parallel. Overhead does exists by
-starting the mpi programm and gathering teh result. However if the trail
-number is large enough it is negeligable.
+Instead of running this on one processor, we can run the calculation on
+many. Implicitly this increases the accuracy while running more trials
+at the same time as we run them all in parallel. Overhead does exist by
+starting the MPI program and gathering the result. However, if the trial
+number is large enough, it is negligible.
 
-The following program shows the MPI implementation of it:
+The following program shows the MPI implementation:
 
 ------------------------------------------------------------------------
 
@@ -1656,12 +1658,11 @@ The number after `-n` can be changed to however many cores one has on
 their processor.
 
 Note: Please be advised that we use Cloudmesh.StopWatch which is a
-convenient program to measure time and dicplay teh details fo the
-computer. HOwever it is not threadsafe and at this time only measures
+convenient program to measure time and display the details for the
+computer. However, it is not threadsafe and, at this time, only measures
 times in the second range. If your calculations for other programs are
-faster or the trial number is to slow, you can use other benchmarking
-methods. use it in multiple threads) \* other strategies to benchmark,
-you research (only if really needed
+faster or the trial number is too slow, you can use other benchmarking
+methods.
 
 Furthermore, the numba version of the program can be run instead, which
 is slightly faster.
@@ -1736,8 +1737,8 @@ because the computations required to run this program are not very
 complex; the same reason applies to why the increase in cores does not
 improve runtime.
 
-However this example showcases you how to run examples with a parameter
-to explore the behavior on multiple cores. Naturally you can use and
+However, this example showcases how to run examples with a parameter to
+explore the behavior on multiple cores. Naturally, you can use and
 explore other parameters once added to the program.
 
 ### Assignments
@@ -1753,7 +1754,7 @@ explore other parameters once added to the program.
 You will find lots of example programs on the internet when you search
 for it. Please let us know about such examples and we will add the here.
 YOu can also contribute to our repository and add example programs that
-we then include in this document. In return you will become a coauthor
+we then include in this document. In return you will become a co-author
 or get acknowledged.
 
 -   A program to calculate PI is provided at
@@ -1768,11 +1769,11 @@ or get acknowledged.
 # Parameter Management
 
 Although this next topic is not directly related to MPI and mpi4py, it
-is very useful in general. Often we ask ourselfs the question, how do we
-pass parameters to a program includding MPI. There are multiple ways to
-achive this. Wth environment variables, command line arguments, and
-configuration files. We will expalin each of these methods and provide
-saimpel example.
+is very useful in general. Often we ask ourselves the question, how do
+we pass parameters to a program, includding MPI. There are multiple ways
+to achieve this. With environment variables, command-line arguments, and
+configuration files. We will explain each of these methods and provide
+simple example.
 
 ## Using the Shell Variables to Pass Parameters
 
@@ -1781,7 +1782,7 @@ that are defined in a shell. It returns a dictionary having user's
 environmental variable as key and their values as value.
 
 To demonstrate its use, we have written a `count.py` program that uses
-`os.environ` to optionally pass parameters to an mpi program.
+`os.environ` to optionally pass parameters to an MPI program.
 
 This example is included in a previous Section `Counting Numbers` and we
 like you to look it over.
@@ -1799,7 +1800,7 @@ would set the find variable equal to 5.
 >     0 [0, 0, 0, 0]
 >     Total number of 5's: 0
 
-However, if the user does not define any evironment variables, find will
+However, if the user does not define any environment variables find will
 default to 8.
 
 >     $ mpiexec -n 4 python count.py
@@ -1812,8 +1813,8 @@ default to 8.
 
 Assignment:
 
-1.  One thing we did not do is use the bradcast method to properly
-    communicte the 3 environment variables. We like you to improve the
+1.  One thing we did not do is use the broadcast method to properly
+    communicate the 3 environment variables. We like you to improve the
     code and submit to us.
 
 Setting the parameter can either be done vi the export shell command
@@ -1823,7 +1824,7 @@ such as
 > $ export N=8
 > ```
 
-or while passing the parameter in the same line as a a command such as
+or while passing the parameter in the same line as a command such as
 demonstrated next
 
 > ``` bash
@@ -1831,7 +1832,7 @@ demonstrated next
 > ```
 
 This can be generalized while using a file with many different
-parameters and commands. For example placing this in a file called
+parameters and commands. For example, placing this in a file called
 `run.sh`
 
 > ``` python
@@ -1839,7 +1840,7 @@ parameters and commands. For example placing this in a file called
 > $ N=2; python environment-parameter.py
 > ```
 
-It Allows us to execute the programs sequentially in the file with
+It allows us to execute the programs sequentially in the file with
 
 > ``` bash
 > $ sh run.sh
@@ -1865,9 +1866,9 @@ os.environ which should have previously set N as shown in the beginning
 of this document's git bash log. The program does the same procedures as
 the previous program once N is set and passed from os.environ.
 
-Using in our case also the cloudmesh.StopWatch allows us easily to fgrep
-for the results we may be interested in to conduct benchmarks. Here is
-an example workflow to achive this
+We are using, in our case also the cloudmesh.StopWatch to allow us
+easily to fgrep for the results we may be interested in to conduct
+benchmarks. Here is an example workflow to achieve this
 
 >     # This command creates an environment variable called N
 >     $ export N=10
@@ -1884,9 +1885,9 @@ an example workflow to achive this
 
 ### Using click to pass parameters
 
-Click is a convenient mechnaism to define parameters that can be passed
-via options to python programs. To show case its use please inspect tthe
-follwoing program
+Click is a convenient mechanism to define parameters that can be passed
+via options to python programs. To showcase its use please inspect the
+following program
 
 > ``` python
 > import click
@@ -1915,7 +1916,7 @@ open the .py file
 > $ python click-parameter.py --n=3
 > ```
 
-# Deep Lerning on the PI
+# Deep Learning on the PI
 
 Assignment
 
@@ -1941,7 +1942,7 @@ Assignment
 
 ## Tensorflow Lite
 
-build on ubunto and rasperry os are slightly different
+Build on Ubuntu and raspberry os are slightly different
 
 -   <https://www.hackster.io/news/benchmarking-tensorflow-lite-on-the-new-raspberry-pi-4-model-b-3fd859d05b98>
 
@@ -2051,11 +2052,11 @@ and download the file
 -   ['make-4.3-without-guile-w32-bin.zip'](https://sourceforge.net/projects/ezwinports/files/make-4.3-without-guile-w32-bin.zip/download)
 
 After the download, you have to extract and unzip the file as follows in
-a gitbash that you started as administrative user:
+a gitbash that you started as an administrative user:
 
 ![administrativegitbash](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/gitbashadmin.png){width="25%"}
 
-Figure: screenshot of opening gitbash in admin shell
+Figure: Screenshot of opening gitbash in admin shell
 
 > ``` bash
 > $ cp make-4.3-without-guile-w32-bin.zip /usr
@@ -2472,26 +2473,26 @@ or send e-mail to laszewski\@gmail.com with improvement suggestions.
 
 2.  Develop a section to explain Collective I/O with NumPy arrays.
 
-3.  Add a section on how to use Numpy with MPI, that includes also the
-    instalation of numpy. THis is not to have a tutorial about numpy,
+3.  Add a section on how to use Numpy with MPI, including the
+    installation of NumPy. This is not to have a tutorial about numpy,
     but how to use numpy within mpi4py. Subtasks include
 
 4.  Download Numpy with `pip install numpy` in a terminal
 
-5.  `import numpy as np` to use numpy in the program
+5.  `import numpy as np` to use NumPy in the program
 
-6.  Explain the edvantages of numpy over pickled lists
+6.  Explain the advantages of NumPy over pickled lists
 
     -   Numpy stores memory contiguously
     -   Uses a smaller number of bytes
     -   Can multiply arrays by index
-    -   It's faster
-    -   Can store different data types including images
+    -   It is faster
+    -   Can store different data types, including images
     -   Contains random number generators
 
-7.  Add a specific very small tutorial on using some basic numpy
-    features as they may be useful for MPI application development. THis
-    mayi include the following and be added to the appendix
+7.  Add a specific, very small tutorial on using some basic numpy
+    features as they may be useful for MPI application development. This
+    may include the following and be added to the appendix
 
     1.  To define an array type: `np.nameofarray([1,2,3])`
     2.  To get the dimension of the array: `nameofarray.ndim`
@@ -2502,7 +2503,7 @@ or send e-mail to laszewski\@gmail.com with improvement suggestions.
     6.  To get the number of elements in the array: `nameofarray.size`
     7.  To get the total size: `nameofarray.size * nameofarray.itemsize`
 
-Please, note that we have a very comprehensive tutorial on numpy and
+Please, note that we have a very comprehensive tutorial on NumPy and
 there is no point to repeat that, we may just point to it and improve
 that tutorial where needed instead.
 
@@ -2518,10 +2519,10 @@ that tutorial where needed instead.
     See
     <https://mpitutorial.com/tutorials/introduction-to-groups-and-communicators/>
 
-8.  Complete the count example while adding a bradcast to it to
+8.  Complete the count example while adding a broadcast to it to
     communicate the parameters. Provide a modified tutorial.
 
-9.  Test out the Machinefile, host, and rankfile section. Improve if
+9.  Test out the machinefile, host, and rankfile section. Improve if
     needed.
 
 # Acknowledgements
@@ -2533,6 +2534,6 @@ very early draft of this paper.
 
 [^1]: Refernce missing
 
-[^2]: Refernce missing
+[^2]: Reference missing
 
 [^3]: Refernces missing
