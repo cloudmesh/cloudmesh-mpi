@@ -39,20 +39,20 @@ class Deploy:
 
     def install_mpi_raspberry(self):
         Console.info("Installing mpi on hosts")
-        Console.info("sudo apt-get install openmpi-bin -y; source ~/ENV3/bin/activate; pip3 install mpi4py")
+        Console.info("sudo apt-get install openmpi-bin -y; pip3 install mpi4py")
         jobSet = JobSet("install mpi", executor=JobSet.ssh)
         for host in self.hosts:
-            jobSet.add({"name": host, "host": host, "command": "sudo apt-get install openmpi-bin -y; source ~/ENV3/bin/activate; pip3 install mpi4py"})
+            jobSet.add({"name": host, "host": host, "command": "sudo apt-get install openmpi-bin -y; pip3 install mpi4py"})
         jobSet.run()
         d = dict(jobSet.job)
         self._print_JobSet(jobSet)
 
     def install_mpi_ubuntu(self):
         Console.info("Installing mpi on hosts")
-        Console.info("sudo apt-get install mpich-doc mpich -y; source ~/ENV3/bin/activate; pip3 install mpi4py")
+        Console.info("sudo apt-get install mpich-doc mpich -y; pip3 install mpi4py")
         jobSet = JobSet("install mpi", executor=JobSet.ssh)
         for host in self.hosts:
-            jobSet.add({"name": host, "host": host, "command": "sudo apt-get install mpich-doc mpich -y; source ~/ENV3/bin/activate; pip3 install mpi4py"})
+            jobSet.add({"name": host, "host": host, "command": "sudo apt-get install mpich-doc mpich -y; pip3 install mpi4py"})
         jobSet.run()
         d = dict(jobSet.job)
         self._print_JobSet(jobSet)
@@ -69,31 +69,33 @@ class Deploy:
     def install_python_dev_env(self):
         Console.info("Installing essential python packages")
         Console.info("sudo apt-get install python3-venv python3-wheel python3-dev build-essential python3-pip -y; pip3 install pip -U; python3 -m venv ~/ENV3")
+        bashrc = "source ${HOME}/ENV3/bin/activate"
         jobSet = JobSet("python install", executor=JobSet.ssh)
         for host in self.hosts:
             jobSet.add({"name": host, "host": host,
-                        "command": "sudo apt-get install python3-venv python3-wheel python3-dev build-essential python3-pip -y; pip3 install pip -U; python3 -m venv ~/ENV3"})
+                        "command": "sudo apt-get install python3-venv python3-wheel python3-dev build-essential python3-pip -y; pip3 install pip -U; python3 -m venv ~/ENV3 ; "
+                       f'grep -qF -- "{bashrc}" ~/.bashrc || echo "{bashrc}" >> "${{HOME}}/.bashrc"'})
         jobSet.run()
         self._print_JobSet(jobSet)
 
     def uninstall_mpi_raspberry(self):
         Console.info("Uninstalling mpi on hosts")
-        Console.info("sudo apt-get --purge remove openmpi-bin -y; source ~/ENV3/bin/activate; pip3 uninstall mpi4py -y")
+        Console.info("sudo apt-get --purge remove openmpi-bin -y; pip3 uninstall mpi4py -y")
         jobSet = JobSet("uninstall mpi", executor=JobSet.ssh)
         for host in self.hosts:
             jobSet.add({"name": host, "host": host,
-                        "command": "sudo apt-get --purge remove openmpi-bin -y; source ~/ENV3/bin/activate; pip3 uninstall mpi4py -y"})
+                        "command": "sudo apt-get --purge remove openmpi-bin -y; pip3 uninstall mpi4py -y"})
         jobSet.run()
         d = dict(jobSet.job)
         self._print_JobSet(jobSet)
 
     def uninstall_mpi_ubuntu(self):
         Console.info("Uninstalling mpi on hosts")
-        Console.info("sudo apt-get --purge remove mpich-doc mpich -y; source ~/ENV3/bin/activate; pip3 uninstall mpi4py -y")
+        Console.info("sudo apt-get --purge remove mpich-doc mpich -y; pip3 uninstall mpi4py -y")
         jobSet = JobSet("uninstall mpi", executor=JobSet.ssh)
         for host in self.hosts:
             jobSet.add({"name": host, "host": host,
-                        "command": "sudo apt-get --purge remove mpich-doc mpich -y; source ~/ENV3/bin/activate; pip3 uninstall mpi4py -y"})
+                        "command": "sudo apt-get --purge remove mpich-doc mpich -y; pip3 uninstall mpi4py -y"})
         jobSet.run()
         d = dict(jobSet.job)
         self._print_JobSet(jobSet)
