@@ -1,11 +1,10 @@
 from cloudmesh.shell.command import command
 from cloudmesh.shell.command import PluginCommand
-from cloudmesh.mpi.api.manager import Manager
-from cloudmesh.common.console import Console
-from cloudmesh.common.util import path_expand
-from pprint import pprint
 from cloudmesh.common.debug import VERBOSE
+from cloudmesh.common.util import banner
+from cloudmesh.mpi.command.deploy import Deploy
 from cloudmesh.common.parameter import Parameter
+
 
 class MpiCommand(PluginCommand):
 
@@ -16,26 +15,64 @@ class MpiCommand(PluginCommand):
         ::
 
           Usage:
-                mpi deploy HOSTS
-
-          This command deploys HOSTS mpi. At this time this command is 
-          intended only to be used with Raspberry PIs
+                mpi deploy raspberry HOSTS
+                mpi deploy ubuntu HOSTS
+                mpi uninstall raspberry HOSTS
+                mpi uninstall ubuntu HOSTS
 
           Arguments:
               HOSTS   parameterized list of hosts
+
+          Description:
+              mpi deploy raspberry HOSTS
+
+                  Will deploy mpi for raspberry OS HOSTS in a parallel manner and return installation results.
+
+              mpi deploy ubuntu HOSTS
+
+                  Will deploy mpi for ubuntu OS HOSTS (possibly running on raspberry pi platform) in a parallel manner
+                  and return installation results.
+
+              mpi uninstall raspberry HOSTS
+
+                  Will uninstall mpi packagess from raspberry OS HOSTS.
+
+              mpi uninstall ubuntu HOSTS
+
+                  Will uninstall mpi packages from ubuntu OS HOSTS.
 
         """
         arguments.hosts = arguments['HOSTS']
 
         VERBOSE(arguments)
 
-        if arguments.deploy:
+        if arguments.deploy and arguments.raspberry:
 
             banner("Install MPI on hosts")
+            hosts = Parameter.expand(arguments.hosts)
+            deploy = Deploy(hosts, ["pi"])
+            deploy.install_python_dev_env()
+            deploy.install_mpi_raspberry()
+            deploy.version()
 
-            print (arguments.hosts)
+        elif arguments.deploy and arguments.ubuntu:
+            banner("Install MPI on hosts")
+            hosts = Parameter.expand(arguments.hosts)
+            deploy = Deploy(hosts, ["pi"])
+            deploy.install_python_dev_env()
+            deploy.install_mpi_ubuntu()
+            deploy.version()
 
-            raise NotImplementedError
+        elif arguments.uninstall and arguments.raspberry:
+            banner("Uninstall MPI on hosts")
+            hosts = Parameter.expand(arguments.hosts)
+            deploy = Deploy(hosts, ["pi"])
+            deploy.uninstall_mpi_raspberry()
 
-            
+        elif arguments.uninstall and arguments.ubuntu:
+            banner("Uninstall MPI on hosts")
+            hosts = Parameter.expand(arguments.hosts)
+            deploy = Deploy(hosts, ["pi"])
+            deploy.uninstall_mpi_ubuntu()
+
         return ""
