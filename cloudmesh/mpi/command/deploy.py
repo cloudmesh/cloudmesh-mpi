@@ -40,6 +40,7 @@ class Deploy:
     def install_mpi_raspberry(self):
         Console.info("Installing mpi on hosts")
         Console.info("sudo apt-get install openmpi-bin -y; pip3 install mpi4py")
+        Console.info("This may take several minutes")
         jobSet = JobSet("install mpi", executor=JobSet.ssh)
         for host in self.hosts:
             jobSet.add({"name": host, "host": host, "command": "sudo apt-get install openmpi-bin -y; pip3 install mpi4py"})
@@ -50,6 +51,7 @@ class Deploy:
     def install_mpi_ubuntu(self):
         Console.info("Installing mpi on hosts")
         Console.info("sudo apt-get install mpich-doc mpich -y; pip3 install mpi4py")
+        Console.info("This may take several minutes")
         jobSet = JobSet("install mpi", executor=JobSet.ssh)
         for host in self.hosts:
             jobSet.add({"name": host, "host": host, "command": "sudo apt-get install mpich-doc mpich -y; pip3 install mpi4py"})
@@ -78,6 +80,7 @@ class Deploy:
     def install_python_dev_env(self):
         Console.info("Installing essential python packages")
         Console.info("sudo apt-get install python3-venv python3-wheel python3-dev build-essential python3-pip -y; pip3 install pip -U; python3 -m venv ~/ENV3")
+        Console.info("This may take several minutes")
         bashrc = "source ${HOME}/ENV3/bin/activate"
         jobSet = JobSet("python install", executor=JobSet.ssh)
         for host in self.hosts:
