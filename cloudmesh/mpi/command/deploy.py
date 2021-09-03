@@ -57,12 +57,21 @@ class Deploy:
         d = dict(jobSet.job)
         self._print_JobSet(jobSet)
 
-    def version(self):
+    def version_raspberry(self):
         Console.info("Checking version of mpi on hosts")
         Console.info("mpicc --showme:version")
         jobSet = JobSet("mpi version", executor=JobSet.ssh)
         for host in self.hosts:
             jobSet.add({"name": host, "host": host, "command": "mpicc --showme:version"})
+        jobSet.run()
+        self._print_JobSet(jobSet, stdout=True)
+
+    def version_ubuntu(self):
+        Console.info("Checking version of mpi on hosts")
+        Console.info("mpicc --showme:version")
+        jobSet = JobSet("mpi version", executor=JobSet.ssh)
+        for host in self.hosts:
+            jobSet.add({"name": host, "host": host, "command": "mpichversion | head  -n 1"})
         jobSet.run()
         self._print_JobSet(jobSet, stdout=True)
 

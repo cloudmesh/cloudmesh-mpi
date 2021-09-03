@@ -53,7 +53,7 @@ class MpiCommand(PluginCommand):
             deploy = Deploy(hosts, ["pi"])
             deploy.install_python_dev_env()
             deploy.install_mpi_raspberry()
-            deploy.version()
+            deploy.version_raspberry()
 
         elif arguments.deploy and arguments.ubuntu:
             banner("Install MPI on hosts")
@@ -61,7 +61,7 @@ class MpiCommand(PluginCommand):
             deploy = Deploy(hosts, ["pi"])
             deploy.install_python_dev_env()
             deploy.install_mpi_ubuntu()
-            deploy.version()
+            deploy.version_ubuntu()
 
         elif arguments.uninstall and arguments.raspberry:
             banner("Uninstall MPI on hosts")
