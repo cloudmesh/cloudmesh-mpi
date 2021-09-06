@@ -236,15 +236,15 @@ These instructions apply to 20.04 and 21.04. Please use 20.04 in case you like t
 
    ```bash
    $ sudo apt-get update
-   $ sudo apt install python3.9 python3.9-dev
+   $ sudo apt install python3.9 python3.9-dev python3-dev python3.8-venv 
    $ python3 -m venv ~/ENV3
    $ source ENV3/bin/activate
    (ENV3) $ sudo apt-get install -y mpich-doc mpich 
    (ENV3) $ pip install mpi4py -U
    ```
    
-   Sometimes `python3 -m venv ~/ENV3` will not work on Ubuntu or Debian. First do
-   `sudo apt install python3.8-venv` and then try it again.
+   Any errors along the lines of `Python.h: No such file or directory` or `Could not build wheels for mpi4py which use PEP 517`
+   should be fixed by installing python3-dev in the venv
 
 ## Raspberry Pi
    
