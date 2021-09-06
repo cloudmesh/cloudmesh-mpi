@@ -1395,12 +1395,15 @@ ps$ wsl.exe --set-version Ubuntu 2
 ```
 
 Now you can use the Ubuntu distro freely. The WSL2 application will be in your shortcut menu in `Start`.
+You can launch this WSL2 and install MPI on it by referring to the Ubuntu installation instructions at the
+beginning of this document. The same number of cores and threads will be available to use in the `mpiexec` command as
+the number of cores and threads on the host computer.
 
 !include chapters/benchmark.md
 
 # Assignments
 
-1. Develop a section explaining  what MPI-IO is
+1. Develop a section explaining what MPI-IO is
 2. Develop a section to explain Collective I/O with NumPy arrays.
 3. Add a section on how to use Numpy with MPI, including the installation of NumPy. This is not to have a tutorial about numpy,
    but how to use numpy within mpi4py. Subtasks include
