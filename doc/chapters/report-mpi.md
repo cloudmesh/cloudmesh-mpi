@@ -298,9 +298,9 @@ The configuration file specifying this is called a machinefile
 or rankfile. We will explain the differences to them in this
 section.
 
-### Prerequisit
+### Prerequisite
 
-Naturally, the requisite to  use a cluster is that you
+Naturally, the requisite to use a cluster is that you
 
 1. have MPI and mpi4py installed on each of the computers, and
 2. have access via ssh on each of these computers
@@ -1345,7 +1345,7 @@ To install WSL2 your computer must have Hyper-V support enabled.
 This does not work on Windows Home, and you need to upgrade to Windows
 Pro, Edu, or some other Windows 10 version that supports it. Windows
 Edu is typically free for educational institutions. The Hyper-V must
-be enabled from your Bios, and you need to change your settings if it
+be enabled from your BIOS, and you need to change your settings if it
 is not enabled.
 
 More information about WSL is provided at
@@ -1356,29 +1356,46 @@ To install WSL2, you can follow these steps while using
 Powershell as an administrative user and run
 
 ```
+ps$ dism.exe /online /enable-feature /featurename:Microsoft-Hyper-V-All /all /norestart
 ps$ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 ps$ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+```
+
+The next command will restart your computer so make sure that all your files and applications are saved:
+```
+ps$ Restart-Computer
+```
+
+Windows will say that it is working on updates (enabling the features).
+Once logging back in and restarting an elevated Powershell as admin, run:
+```
+ps$ $url = "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
+ps$ $outpath = "$Home\Downloads\wsl_update_x64.msi"
+ps$ Invoke-WebRequest -Uri $url -Outfile $outpath
+ps$ cd $Home\Downloads
+ps$ .\wsl_update_x64.msi
+```
+
+Proceed with the installation on screen. Then run:
+
+```
 ps$ wsl --set-default-version 2
 ```
 
-Next, restart your machine and then download the Ubuntu 20.04 LTS image from the Microsoft store
-
+Then download and install the Ubuntu 20.04 LTS image from the Microsoft store:
 * <https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab>
+and click Launch.
 
 Run Ubuntu and create a username and passphrase.
 
-Make sure not just to give an empty passphrase but chose a secure one.
+Make sure not just to give an empty passphrase but choose a secure one.
 
-Next run in Powershell
-
+Next run in a new instance of elevated (admin) Powershell:
 ```
-ps$ wsl.exe --set-version Ubuntu20.04 2
+ps$ wsl.exe --set-version Ubuntu 2
 ```
 
 Now you can use the Ubuntu distro freely. The WSL2 application will be in your shortcut menu in `Start`. 
-
-
-
 
 !include chapters/benchmark.md
 
