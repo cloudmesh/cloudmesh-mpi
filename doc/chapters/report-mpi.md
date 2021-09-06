@@ -1359,6 +1359,7 @@ Powershell as an administrative user and run
 ps$ dism.exe /online /enable-feature /featurename:Microsoft-Hyper-V-All /all /norestart
 ps$ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 ps$ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+ps$ wsl --set-default-version 2
 ```
 
 The next command will restart your computer so make sure that all your files and applications are saved:
@@ -1376,13 +1377,7 @@ ps$ cd $Home\Downloads
 ps$ .\wsl_update_x64.msi
 ```
 
-Proceed with the installation on screen. Then run:
-
-```
-ps$ wsl --set-default-version 2
-```
-
-Then download and install the Ubuntu 20.04 LTS image from the Microsoft store:
+Proceed with the installation on screen, then download and install the Ubuntu 20.04 LTS image from the Microsoft store:
 * <https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab>
 and click Launch.
 
