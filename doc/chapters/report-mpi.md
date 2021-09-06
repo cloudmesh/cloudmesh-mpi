@@ -1372,17 +1372,12 @@ ps$ Restart-Computer
 ```
 
 Windows will say that it is working on updates (enabling the features).
-Once logging back in and restarting an elevated Powershell as admin, run:
-```
-ps$ $url = "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
-ps$ $outpath = "$Home\Downloads\wsl_update_x64.msi"
-ps$ Invoke-WebRequest -Uri $url -Outfile $outpath
-ps$ cd $Home\Downloads
-ps$ .\wsl_update_x64.msi
-```
+Once logging back in, download this msi file, open it and complete the installation to update WSL:
+* <https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi>
 
-Proceed with the installation on screen, then download and install the Ubuntu 20.04 LTS image from the Microsoft store:
+Once the installation is complete, download and install the Ubuntu 20.04 LTS image from the Microsoft store:
 * <https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab>
+
 and click Launch.
 
 Run Ubuntu and create a username and passphrase.
