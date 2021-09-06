@@ -1361,7 +1361,7 @@ ps$ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /n
 ps$ wsl --set-default-version 2
 ```
 
-Next, Download the Ubuntu 20.04 LTS image from the Microsoft store
+Next, restart your machine and then download the Ubuntu 20.04 LTS image from the Microsoft store
 
 * <https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab>
 
