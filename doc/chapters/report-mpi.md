@@ -95,8 +95,7 @@ in the creation of high-performance and parallel computing programs.
 
 # Installation
 
-Next, we discuss how to install mpi4p on various systems. We will focus on installing it on a single computer using multiple cores.
-
+Next, we discuss how to install mpi4py on various systems. We will focus on installing it on a single computer using multiple cores.
 
 ## Getting the CPU Count
 
@@ -120,7 +119,7 @@ However, you can also use the command line tools that we have included in our do
 
 ## Windows 10 EDU or PRO
 
-*Note:* We have not tested this on Windows home.
+*Note:* We have not tested this on Windows Home.
 
 1. We assume you have installed GitBash on your computer. The installation is easy, but be careful to watch the various options at install time.
    Make sure it is added to the Path variable.
@@ -134,7 +133,8 @@ However, you can also use the command line tools that we have included in our do
 
    You will need to install a python virtual env to avoid conflict by accident with your system installed version of Python.
 
-   For details on how to do this, please visit our extensive documentation at [???]
+   For details on how to do this, please visit our extensive documentation at <https://cybertraining-dsc.github.io/docs/tutorial/reu/python/>
+   under the subsection titled "Python venv"
 
 1. Microsoft has its own implementation of MPI which we recommend at this time. First, you need to download msmpi from
 
@@ -235,12 +235,16 @@ These instructions apply to 20.04 and 21.04. Please use 20.04 in case you like t
    we have chosen the number 4, you may have to change that value
 
    ```bash
+   $ sudo apt-get update
    $ sudo apt install python3.9 python3.9-dev
-   $ python3 -m venev ~/ENV3
-   $ source `/ENV3/bin/activate`
+   $ python3 -m venv ~/ENV3
+   $ source ENV3/bin/activate
    (ENV3) $ sudo apt-get install -y mpich-doc mpich 
    (ENV3) $ pip install mpi4py -U
    ```
+   
+   Sometimes `python3 -m venv ~/ENV3` will not work on Ubuntu or Debian. First do
+   `sudo apt install python3.8-venv` and then try it again.
 
 ## Raspberry Pi
    
@@ -1390,7 +1394,7 @@ Next run in a new instance of elevated (admin) Powershell:
 ps$ wsl.exe --set-version Ubuntu 2
 ```
 
-Now you can use the Ubuntu distro freely. The WSL2 application will be in your shortcut menu in `Start`. 
+Now you can use the Ubuntu distro freely. The WSL2 application will be in your shortcut menu in `Start`.
 
 !include chapters/benchmark.md
 
