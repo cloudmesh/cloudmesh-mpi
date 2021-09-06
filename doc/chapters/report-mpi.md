@@ -1070,14 +1070,21 @@ $ mpiexec -n 4 python parallel_pi.py
 The number after `-n` can be changed to however many cores one has on their processor.
 
 
-Note: Please be advised that we use Cloudmesh.StopWatch which is a
-    convenient program to measure time and display the details for the computer. However, it is not threadsafe and, at this time, only measures times in the second range. If your calculations for other programs are faster or the trial number is too slow, you can use other benchmarking methods.  
+Note: Please be advised that we use Cloudmesh.StopWatch which is a 
+convenient program to measure time and display the details for the computer. 
+However, it is not threadsafe and, at this time, only measures times in the second range. 
+If your calculations for other programs are faster or the trial number is too slow, you can use other benchmarking methods.
 
-Furthermore, the numba version of the program can be run instead, which is slightly faster.
+## Computing a Visualization of Julia Set
+
+The following program outputs a png image of a Julia set. This can be executed with the aforementioned mpiexec command in git bash;
+just remember to alter the command to run julia-numba.py after changing the working directory to the same one that julia-numba.py
+resides in.
 
 ``` python
 !include ../examples/futures/julia-numba.py
 ```
+
 
 |         |   No Jit (1280x960)  |  Jit Enabled (1280x960) | No Jit (1920x1440) | Jit Enabled (1920x1440) |
 |---------|------------|---------------|-------------|------------|
@@ -1099,7 +1106,6 @@ improve runtime.
 However, this example showcases how to run examples with a
 parameter to explore the behavior on multiple cores. Naturally, you can
 use and explore other parameters once added to the program.
-
 
 
 ### Assignments
@@ -1431,8 +1437,8 @@ our very early draft of this paper.
 
 # References
 
-[^MPICH]: Refernce missing
+[^MPICH]: Reference missing
 
 [^OPENMPI]: Reference missing
 
-[^MISSINGMPI]: Refernces missing
+[^MISSINGMPI]: References missing
