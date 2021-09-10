@@ -1073,6 +1073,22 @@ $ mpiexec -n 4 python parallel_pi.py
 
 The number after `-n` can be changed to however many cores one has on their processor.
 
+Furthermore, the numba version of this program runs faster.
+
+```bash
+$ mpiexec -n 4 python parallel_pi_numba.py
+```
+
+|         | parallel_pi.py execution time   | parallel_pi_numba.py execution time   |
+|---------|---------------------------------|---------------------------------------|
+| 6 Cores | 237.873 s                       | 169.678 s                             |
+| 5 Cores | 257.720 s                       | 199.572 s                             |
+| 4 Cores | 326.811 s                       | 239.160 s                             |
+| 3 Cores | 383.343 s                       | 289.433 s                             |
+| 2 Cores | 545.500 s                       | 403.289 s                             |
+| 1 Core  | 1075.68 s                       | 810.525 s                             |
+
+* These benchmark times were generated using a Ryzen 5 3600 CPU with 16 GB RAM on a Windows 10 computer.
 
 Note: Please be advised that we use Cloudmesh.StopWatch which is a 
 convenient program to measure time and display the details for the computer. 
@@ -1088,7 +1104,6 @@ resides in.
 ``` python
 !include ../examples/futures/julia-numba.py
 ```
-
 
 |         |   No Jit (1280x960)  |  Jit Enabled (1280x960) | No Jit (1920x1440) | Jit Enabled (1920x1440) |
 |---------|------------|---------------|-------------|------------|
