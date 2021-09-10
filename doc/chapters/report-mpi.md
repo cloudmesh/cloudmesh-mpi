@@ -922,7 +922,7 @@ utilizing this Futures modules, specifically via MPIPoolExecutor.
 !include ../examples/futures/julia-futures.py
 ```
 
-To run teh program use:
+To run the program, issue this command in Git Bash:
 
 ```bash
 mpiexec -n 1 python julia-futures.py
@@ -936,8 +936,9 @@ The program will output a png image of a Julia set upon successful execution.
 
 You can modify your number of processors accordingly matching your hardware infrastructure.
 
-For example, entering the number `3` will produce a 1920x1440 photo because 640x480 times 3 is 1920x1440. 
-Then, the program should output a visualization of a Julia data set as a png image.
+For example, entering the number `3` will produce a 1920x1440 photo because 640x480 times 3 is 1920x1440.
+The user enters this number after starting execution of the program, when a prompt appears, asking for a value.
+Then, after input, the program should output a visualization of a Julia data set as a png image.
 
 
 # Simple MPI Example Programs
@@ -1073,6 +1074,22 @@ $ mpiexec -n 4 python parallel_pi.py
 
 The number after `-n` can be changed to however many cores one has on their processor.
 
+Furthermore, the numba version of this program runs faster.
+
+```bash
+$ mpiexec -n 4 python parallel_pi_numba.py
+```
+
+|         | parallel_pi.py execution time   | parallel_pi_numba.py execution time   |
+|---------|---------------------------------|---------------------------------------|
+| 6 Cores | 237.873 s                       | 169.678 s                             |
+| 5 Cores | 257.720 s                       | 199.572 s                             |
+| 4 Cores | 326.811 s                       | 239.160 s                             |
+| 3 Cores | 383.343 s                       | 289.433 s                             |
+| 2 Cores | 545.500 s                       | 403.289 s                             |
+| 1 Core  | 1075.68 s                       | 810.525 s                             |
+
+* These benchmark times were generated using a Ryzen 5 3600 CPU with 16 GB RAM on a Windows 10 computer.
 
 Note: Please be advised that we use Cloudmesh.StopWatch which is a 
 convenient program to measure time and display the details for the computer. 
@@ -1088,7 +1105,6 @@ resides in.
 ``` python
 !include ../examples/futures/julia-numba.py
 ```
-
 
 |         |   No Jit (1280x960)  |  Jit Enabled (1280x960) | No Jit (1920x1440) | Jit Enabled (1920x1440) |
 |---------|------------|---------------|-------------|------------|
