@@ -922,7 +922,7 @@ utilizing this Futures modules, specifically via MPIPoolExecutor.
 !include ../examples/futures/julia-futures.py
 ```
 
-To run teh program use:
+To run the program, issue this command in Git Bash:
 
 ```bash
 mpiexec -n 1 python julia-futures.py
@@ -936,8 +936,9 @@ The program will output a png image of a Julia set upon successful execution.
 
 You can modify your number of processors accordingly matching your hardware infrastructure.
 
-For example, entering the number `3` will produce a 1920x1440 photo because 640x480 times 3 is 1920x1440. 
-Then, the program should output a visualization of a Julia data set as a png image.
+For example, entering the number `3` will produce a 1920x1440 photo because 640x480 times 3 is 1920x1440.
+The user enters this number after starting execution of the program, when a prompt appears, asking for a value.
+Then, after input, the program should output a visualization of a Julia data set as a png image.
 
 
 # Simple MPI Example Programs
