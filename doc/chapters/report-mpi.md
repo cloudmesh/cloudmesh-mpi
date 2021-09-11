@@ -845,9 +845,9 @@ essentially the same and can easily be developed as an exercise.
 
 ### Dynamic Process Management with `spawn`
 
-So far, we have focussed on MPI used on a number of hosts that are
-automatically creating the process when mpirun is used.  However, MPI
-also offers the ability to sawn a process in a communicator
+So far, we have focused on MPI used on a number of hosts that are
+automatically creating the process when mpirun is used. However, MPI
+also offers the ability to spawn a process in a communicator
 group. This can be achieved by using a spawn communicator and command.
 
 Using
@@ -878,15 +878,15 @@ program
 
 ```
 $ cd examples/spawn
-$ mpiexec -n 4 python manager.py
+$ mpiexec -n 2 python manager.py
 ```
 
 This will result in:
 
 ```
+N: 100 rank: 3
 N: 100 rank: 4
 N: 100 rank: 1
-N: 100 rank: 3
 N: 100 rank: 2
 Hello
 b and rank: 0
@@ -894,16 +894,16 @@ c
 d
 3.1416009869231245
 N: 100 rank: 0
-N: 100 rank: 1
 N: 100 rank: 4
+N: 100 rank: 1
 N: 100 rank: 3
 N: 100 rank: 2
+N: 100 rank: 0
 Hello
 b and rank: 0
 c
 d
 3.1416009869231245
-N: 100 rank: 0
 ```
 
 This output depends on which child process is received first. The output can vary.
