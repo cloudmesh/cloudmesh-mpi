@@ -1137,8 +1137,8 @@ import sys
 import time
 print("Hello")
 comm = MPI.COMM_SELF.Spawn(sys.executable,
-                           args=['worker.py'],
-                           maxprocs=5)
+                           args=['mpi-worker.py'],
+                           maxprocs=2)
 rank = comm.Get_rank()
 print(f"b and rank: {rank}")
 
@@ -1191,7 +1191,7 @@ To execute the example please go to the examples directory and run the
 manager program
 
     $ cd examples/spawn
-    $ mpiexec -n 4 python manager.py
+    $ mpiexec -n 4 python mpi-manager.py
 
 This will result in:
 
@@ -1226,7 +1226,7 @@ can vary.
 
 Futures is an mpi4py module that runs processes in parallel for
 intercommunication between such processes. The following Python program
-creates a visualization of a Julia set by utilizing this Futures
+creates a visualization of a Julia set by utilizing the Futures
 modules, specifically via MPIPoolExecutor.
 
 ``` python
