@@ -1213,7 +1213,17 @@ Assignment:
 1. One thing we did not do is use the broadcast method to properly communicate the 3 environment variables. We like you to improve the
    code and submit to us.
 
-Setting the parameter can either be done via the export shell command such as
+Let us assume we use the Python program
+
+``` python
+!include ../examples/parameters/environment-parameter.py
+```
+
+This Python program does not set a variable N on its own. It refers to os.environ
+which is a module that refers to variables exported within the same shell that executes
+the program.
+
+Setting the variable/parameter can either be done via the export shell command such as
 
 ```bash
 $ export N=8
@@ -1226,6 +1236,7 @@ $ N=1; python environment-parameter.py
 ```
 
 This can be generalized while using a file with many different parameters and commands. For example, placing this in a file called `run.sh`
+with these contents:
 
 ```python
 $ N=1; python environment-parameter.py
@@ -1238,19 +1249,7 @@ It allows us to execute the programs sequentially in the file with
 $ sh run.sh
 ```
 
-Let us assume we use the Python program
-
-``` python
-!include ../examples/parameters/environment-parameter.py
-```
-
-This Python program does not set a variable N on its own. It refers to os.environ
-which should have previously set N as shown in the beginning of this document's
-git bash log. The program does the same procedures as the
-previous program once N is set and passed from os.environ.
-
-
-We are using, in our case also the cloudmesh.StopWatch to allow us easily to fgrep for the results we may be interested in to conduct benchmarks. Here is an example workflow to achieve this
+In our case, we are also using cloudmesh.StopWatch to allow us easily to fgrep for the results we may be interested in to conduct benchmarks. Here is an example workflow to achieve this
 
 ```
 # This command creates an environment variable called N
@@ -1275,7 +1274,6 @@ Click is a convenient mechanism to define parameters that can be passed via opti
 ``` python
 !include ../examples/parameters/click-parameter.py
 ```
-
 
 You can manually set the variable in git bash in the same line as you open the .py file
 
