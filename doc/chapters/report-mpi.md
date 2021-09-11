@@ -866,44 +866,36 @@ manager and the second being the worker.
 
 
 ``` python
-!include ../examples/spawn/manager.py
+!include ../examples/spawn/mpi-manager.py
 ```
 
 ``` python
-!include ../examples/spawn/worker.py
+!include ../examples/spawn/mpi-worker.py
 ```
 
-To execute the example please go to the examples directory and run the manager
+To execute the example please go to the examples directory and run the mpi-manager
 program
 
 ```
 $ cd examples/spawn
-$ mpiexec -n 2 python manager.py
+$ mpiexec -n 2 python mpi-manager.py
 ```
 
 This will result in:
 
 ```
-N: 100 rank: 3
-N: 100 rank: 4
-N: 100 rank: 1
-N: 100 rank: 2
-Hello
-b and rank: 0
-c
-d
-3.1416009869231245
-N: 100 rank: 0
-N: 100 rank: 4
-N: 100 rank: 1
-N: 100 rank: 3
-N: 100 rank: 2
 N: 100 rank: 0
 Hello
 b and rank: 0
 c
 d
-3.1416009869231245
+3.1416009869231254
+N: 100 rank: 0
+Hello
+b and rank: 0
+c
+d
+3.1416009869231254
 ```
 
 This output depends on which child process is received first. The output can vary.
