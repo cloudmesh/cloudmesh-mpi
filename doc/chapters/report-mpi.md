@@ -1087,11 +1087,15 @@ $ mpiexec -n 4 python parallel_pi.py
 
 The number after `-n` can be changed to however many cores one has on their processor.
 
-Howevver, running this program takes upwards of 4 minutes to complete with 6 cores. Numba,
-an open-source JIT (just in time) compiler, is a Python module that translates Python code
+However, running this program takes upwards of 4 minutes to complete with 6 cores. We can
+use numba to speed up the program execution time.
+
+### Numba
+
+Numba, an open-source JIT (just in time) compiler, is a Python module that translates Python code
 into machine code for faster runtimes.
 
-The numba version of this program runs faster, even cutting runtime down by a few minutes:
+The numba version of the Monte Carlo program runs faster, even cutting runtime down by a few minutes:
 
 ---
 ``` python
