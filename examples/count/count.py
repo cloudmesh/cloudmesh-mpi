@@ -16,9 +16,9 @@ import random
 from mpi4py import MPI
 
 # Get the input values or set them to a default
-n = os.environ.get("N") or 20
-max_number = os.environ.get("MAX") or 10
-find = os.environ.get("FIND") or 8
+n = int(os.environ.get("N") or 20)
+max_number = int(os.environ.get("MAX") or 10)
+find = int(os.environ.get("FIND") or 8)
 
 
 comm = MPI.COMM_WORLD   # Communicator
