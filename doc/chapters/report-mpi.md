@@ -1074,7 +1074,14 @@ $ mpiexec -n 4 python parallel_pi.py
 
 The number after `-n` can be changed to however many cores one has on their processor.
 
-Furthermore, the numba version of this program runs faster.
+Furthermore, the numba version of this program runs faster:
+
+---
+
+``` python
+!include ../examples/monte-carlo/parallel_pi_numba.py
+ ```
+---
 
 ```bash
 $ mpiexec -n 4 python parallel_pi_numba.py
