@@ -1159,24 +1159,24 @@ Please let us know about such examples and we will add the here. You can also co
 # Parameter Management
 
 Although this next topic is not directly related to MPI and mpi4py, it
-is very useful in general. Often we ask ourselves the question, how do
-we pass parameters to a program, includding MPI. There are multiple
-ways to achieve this. With environment variables, command-line
+is very useful in general. Often we ask ourselves the question, "how do
+we pass parameters to a program, including MPI?" There are multiple
+ways to achieve this, for example, with environment variables, command-line
 arguments, and configuration files. We will explain each of these
-methods and provide simple example.
+methods and provide simple examples.
 
 
 ## Using the Shell Variables to Pass Parameters
 
 `os.environ` in Python allows us to easily access environment
-variables that are defined in a shell.  It returns a dictionary having
-user’s environmental variable as key and their values as value.
+variables that are defined in a shell. It returns a dictionary having
+the user’s environmental variable as key and their values as value.
 
 To demonstrate its use, we have written a 
 `count.py` program that uses `os.environ` 
 to optionally pass parameters to an MPI program.
 
-This example is included in a previous Section `Counting Numbers` and we like you to look it over.
+This example is included in a previous section named `Counting Numbers` and we like you to look it over.
 
 If the user changed the value of N, MAX, or FIND in the
 terminal using, for example, `export FIND="5"` (shown below)
@@ -1195,7 +1195,7 @@ Total number of 5's: 0
 ```
 
 However, if the user does not define any environment
-variables find will default to 8.
+variables, FIND will default to 8.
 
 ```
 $ mpiexec -n 4 python count.py
@@ -1239,7 +1239,7 @@ It allows us to execute the programs sequentially in the file with
 $ sh run.sh
 ```
 
-Let us assume we use the python program
+Let us assume we use the Python program
 
 ``` python
 !include ../examples/parameters/environment-parameter.py
