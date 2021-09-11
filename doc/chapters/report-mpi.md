@@ -908,7 +908,7 @@ d
 
 This output depends on which child process is received first. The output can vary.
 
-`WARNING:` When running this program it may not terminate. To
+>`WARNING:` When running this program it may not terminate. To
 >terminate use for now `CTRL-C`.
 
 
