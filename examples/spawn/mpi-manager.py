@@ -15,8 +15,7 @@ import os
 #pprint (dict(os.environ))
 
 comm = MPI.COMM_SELF.Spawn(sys.executable,
-                           args=['mpi-worker.py'],
-                           maxprocs=2)
+                           args=['mpi-worker.py'])
 rank = comm.Get_rank()
 print(f"b and rank: {rank}")
 

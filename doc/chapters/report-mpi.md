@@ -866,44 +866,36 @@ manager and the second being the worker.
 
 
 ``` python
-!include ../examples/spawn/manager.py
+!include ../examples/spawn/mpi-manager.py
 ```
 
 ``` python
-!include ../examples/spawn/worker.py
+!include ../examples/spawn/mpi-worker.py
 ```
 
-To execute the example please go to the examples directory and run the manager
+To execute the example please go to the examples directory and run the mpi-manager
 program
 
 ```
 $ cd examples/spawn
-$ mpiexec -n 2 python manager.py
+$ mpiexec -n 2 python mpi-manager.py
 ```
 
 This will result in:
 
 ```
-N: 100 rank: 3
-N: 100 rank: 4
-N: 100 rank: 1
-N: 100 rank: 2
-Hello
-b and rank: 0
-c
-d
-3.1416009869231245
-N: 100 rank: 0
-N: 100 rank: 4
-N: 100 rank: 1
-N: 100 rank: 3
-N: 100 rank: 2
 N: 100 rank: 0
 Hello
 b and rank: 0
 c
 d
-3.1416009869231245
+3.1416009869231254
+N: 100 rank: 0
+Hello
+b and rank: 0
+c
+d
+3.1416009869231254
 ```
 
 This output depends on which child process is received first. The output can vary.
@@ -1000,15 +992,15 @@ return a final value of 10 at the end of the ring.
 ## Counting Numbers
 
 The following program generates arrays of random numbers each 20 (n)
-in length with the highest number possible being 10 (max_number).  It
+in length with the highest number possible being 10 (max_number). It
 then uses a function called count() to count the number of 8's in each
-data set.  The number of 8's in each list is stored count_data.
+data set. The number of 8's in each list is stored count_data.
 Count_data is then summed and printed out as the total number of 8's.
 
 The program allows you to set the program parameters. Note that the
 program has on purpose a bug in it as it does not communicate the
 values m, max_number, or find with a broadcast from rank 0 to all
-workers. Your task is to modify and complete this program. 
+workers. Your task is to modify and complete this program.
 
 ``` python
 !include ../examples/count/count.py
@@ -1147,7 +1139,7 @@ use and explore other parameters once added to the program.
 You will find lots of example programs on the internet when you search for it.
 Please let us know about such examples and we will add the here. You can also contribute to our repository and add example programs that we then include in this document. In return you will become a co-author or get acknowledged.
 
-* A program to calculate PI is provided at
+* A program to calculate Pi is provided at
 
   * <https://cvw.cac.cornell.edu/python/exercise>
   * <https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=monte>
@@ -1186,12 +1178,12 @@ to 5.
 ```
 $ export FIND="5"
 $ mpiexec -n 4 python count.py
-1 0 [9, 6, 8, 3, 4, 8, 5, 6, 6, 3, 5, 6, 10, 5, 5, 1, 1, 2, 1, 3]
-3 0 [3, 7, 2, 8, 4, 6, 5, 7, 4, 4, 7, 6, 1, 7, 10, 2, 1, 9, 2, 8]
-2 0 [10, 8, 10, 8, 7, 2, 2, 7, 4, 3, 3, 7, 10, 8, 1, 5, 1, 4, 6, 5]
-0 0 [5, 8, 9, 1, 2, 7, 1, 5, 5, 6, 3, 6, 10, 9, 7, 10, 5, 3, 6, 5]
-0 [0, 0, 0, 0]
-Total number of 5's: 0
+1 1 [6, 3, 3, 8, 4, 1, 1, 4, 4, 3, 8, 5, 10, 8, 8, 7, 2, 4, 1, 9]
+3 0 [3, 1, 4, 1, 6, 4, 9, 3, 1, 8, 8, 6, 4, 3, 7, 1, 8, 6, 1, 1]
+2 3 [5, 5, 4, 6, 8, 5, 9, 3, 7, 7, 10, 6, 7, 3, 2, 8, 3, 10, 7, 10]
+0 3 [7, 8, 6, 9, 6, 7, 5, 6, 1, 2, 1, 2, 9, 5, 9, 8, 5, 1, 8, 1]
+0 [3, 1, 3, 0]
+Total number of 5's: 7
 ```
 
 However, if the user does not define any environment
@@ -1213,7 +1205,17 @@ Assignment:
 1. One thing we did not do is use the broadcast method to properly communicate the 3 environment variables. We like you to improve the
    code and submit to us.
 
-Setting the parameter can either be done vi the export shell command such as
+Let us assume we use the Python program
+
+``` python
+!include ../examples/parameters/environment-parameter.py
+```
+
+This Python program does not set a variable N on its own. It refers to os.environ
+which is a module that refers to variables exported within the same shell that executes
+the program.
+
+Setting the variable/parameter can either be done via the export shell command such as
 
 ```bash
 $ export N=8
@@ -1226,12 +1228,12 @@ $ N=1; python environment-parameter.py
 ```
 
 This can be generalized while using a file with many different parameters and commands. For example, placing this in a file called `run.sh`
+with these contents:
 
 ```python
 $ N=1; python environment-parameter.py
 $ N=2; python environment-parameter.py
 ```
-
 
 It allows us to execute the programs sequentially in the file with
 
@@ -1239,19 +1241,7 @@ It allows us to execute the programs sequentially in the file with
 $ sh run.sh
 ```
 
-Let us assume we use the Python program
-
-``` python
-!include ../examples/parameters/environment-parameter.py
-```
-
-This Python program does not set a variable N on its own. It refers to os.environ
-which should have previously set N as shown in the beginning of this document's
-git bash log. The program does the same procedures as the
-previous program once N is set and passed from os.environ.
-
-
-We are using, in our case also the cloudmesh.StopWatch to allow us easily to fgrep for the results we may be interested in to conduct benchmarks. Here is an example workflow to achieve this
+In our case, we are also using cloudmesh.StopWatch to allow us easily to fgrep for the results we may be interested in to conduct benchmarks. Here is an example workflow to achieve this
 
 ```
 # This command creates an environment variable called N
@@ -1276,7 +1266,6 @@ Click is a convenient mechanism to define parameters that can be passed via opti
 ``` python
 !include ../examples/parameters/click-parameter.py
 ```
-
 
 You can manually set the variable in git bash in the same line as you open the .py file
 
