@@ -1031,7 +1031,7 @@ Total number of 8's: 10
 
 A very nice example to showcase the potential for doing lots of
 parallel calculations is to calculate the number pi. This is quite
-easily achieved while using a monte Carlo method.
+easily achieved while using a Monte Carlo Method.
 
 We start with the mathematical formulation of the Monte Carlo
 calculation of pi. For each quadrant of the unit square, the area is
@@ -1074,7 +1074,14 @@ $ mpiexec -n 4 python parallel_pi.py
 
 The number after `-n` can be changed to however many cores one has on their processor.
 
-Furthermore, the numba version of this program runs faster.
+Furthermore, the numba version of this program runs faster:
+
+---
+
+``` python
+!include ../examples/monte-carlo/parallel_pi_numba.py
+ ```
+---
 
 ```bash
 $ mpiexec -n 4 python parallel_pi_numba.py
