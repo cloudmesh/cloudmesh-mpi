@@ -3,6 +3,7 @@ from mpi4py import MPI
 import numpy
 from cloudmesh.common.StopWatch import StopWatch
 
+
 def mandelbrot(x, y, maxit):
     c = x + y*1j
     z = 0 + 0j
@@ -12,17 +13,16 @@ def mandelbrot(x, y, maxit):
         it += 1
     return it
 
+
 x1, x2 = -2.0, 1.0
 y1, y2 = -1.0, 1.0
-w, h = 150, 100
+w, h = 1200, 800
 maxit = 127
-
-
 
 comm = MPI.COMM_WORLD
 size = comm.Get_size()
 rank = comm.Get_rank()
-if rank==0:
+if rank == 0:
     StopWatch.start(f'parallel {size}')
 # number of rows to compute here
 N = h // size + (h % size > rank)
@@ -58,11 +58,11 @@ comm.Gatherv(sendbuf=[Cl, MPI.INT],
 
 rowtype.Free()
 
-if comm.rank == 0:
+if rank == 0:
     StopWatch.stop(f'parallel {size}')
 
-    #pyplot.imshow(C, aspect='equal')
-    #pyplot.show()
+    pyplot.imshow(C, aspect='equal')
+    pyplot.show()
     StopWatch.benchmark()
 
 
