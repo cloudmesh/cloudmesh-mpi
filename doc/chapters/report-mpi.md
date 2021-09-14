@@ -1128,7 +1128,31 @@ convenient program to measure time and display the details for the computer.
 However, it is not threadsafe and, at this time, only measures times in the second range. 
 If your calculations for other programs are faster or the trial number is too slow, you can use other benchmarking methods.
 
+## Mandelbrot
 
+We can run a program which outputs a visualization of a Mandelbrot data set, which, like the Julia set, is a fractal (the
+image repeats itself upon zooming in). This program runs processes in parallel and also has numba JIT decorators to achieve 
+faster runtimes:
+
+---
+``` python
+!include ../examples/mandelbrot/mandelbrot-parallel-numba.py
+```
+---
+
+At rank 0, the program starts and ends a benchmark for analysis of which -n parameter will give the shortest runtime.
+
+
+|         | mandelbrot-parallel.py execution time   | mandelbrot-parallel-numba.py execution time   |
+|---------|-----------------------------------------|-----------------------------------------------|
+| 6 Cores | 3.071 s                                 | 0.422 s                                       |
+| 5 Cores | 3.791 s                                 | 0.434 s                                       |
+| 4 Cores | 3.920 s                                 | 0.427 s                                       |
+| 3 Cores | 5.769 s                                 | 0.473 s                                       |
+| 2 Cores | 5.010 s                                 | 0.520 s                                       |
+| 1 Core  | 9.891 s                                 | 1.765 s                                       |
+
+* These benchmark times were generated using a Ryzen 5 3600 CPU with 16 GB RAM on a Windows 10 computer.
 
 ### Assignments
 
