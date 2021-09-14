@@ -233,7 +233,7 @@ These instructions apply to 20.04 and 21.04. Please use 20.04 in case you like t
 
    ```bash
    $ sudo apt-get update
-   $ sudo apt install python3.9 python3.9-dev python3-dev python3.8-venv 
+   $ sudo apt install python3.9 python3.9-dev python3-dev python3.9-venv 
    $ python3 -m venv ~/ENV3
    $ source ENV3/bin/activate
    (ENV3) $ sudo apt-get install -y mpich-doc mpich 
