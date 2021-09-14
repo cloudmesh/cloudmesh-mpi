@@ -1,4 +1,4 @@
-OPTIONS=--filter pandoc-include --filter pandoc-xnos
+OPTIONS=--filter=pandoc-include --filter=pandoc-xnos
 USER_ID=$(shell id -u)
 GROUP_ID=$(shell id -g)
 PWD=$(shell pwd)

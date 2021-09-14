@@ -90,7 +90,7 @@ the creation of high-performance and parallel computing programs.
 
 # Installation
 
-Next, we discuss how to install mpi4p on various systems. We will focus
+Next, we discuss how to install mpi4py on various systems. We will focus
 on installing it on a single computer using multiple cores.
 
 ## Getting the CPU Count
@@ -115,11 +115,9 @@ $ python -c "import multiprocessing;  print(multiprocessing.cpu_count())"
 However, you can also use the command line tools that we have included
 in our documentation.
 
-## Windows 10 EDU or PRO
+## Windows 10 Home, Education, or Pro
 
-*Note:* We have not tested this on Windows home.
-
-1.  We assume you have installed GitBash on your computer. The
+1.  We assume you have installed Git Bash on your computer. The
     installation is easy, but be careful to watch the various options at
     install time. Make sure it is added to the Path variable.
 
@@ -135,7 +133,9 @@ in our documentation.
     accident with your system installed version of Python.
 
     For details on how to do this, please visit our extensive
-    documentation at \[???\]
+    documentation at
+    <https://cybertraining-dsc.github.io/docs/tutorial/reu/python/>
+    under the subsection titled "Python venv"
 
 3.  Microsoft has its own implementation of MPI which we recommend at
     this time. First, you need to download msmpi from
@@ -240,12 +240,17 @@ you like to use GPUs.
     we have chosen the number 4, you may have to change that value
 
     ``` bash
-    $ sudo apt install python3.9 python3.9-dev
-    $ python3 -m venev ~/ENV3
-    $ source `/ENV3/bin/activate`
+    $ sudo apt-get update
+    $ sudo apt install python3.9 python3.9-dev python3-dev python3.8-venv 
+    $ python3 -m venv ~/ENV3
+    $ source ENV3/bin/activate
     (ENV3) $ sudo apt-get install -y mpich-doc mpich 
     (ENV3) $ pip install mpi4py -U
     ```
+
+    Any errors along the lines of `Python.h: No such file or directory`
+    or `Could not build wheels for mpi4py which use PEP 517` should be
+    fixed by installing python3-dev in the venv
 
 ## Raspberry Pi
 
@@ -302,7 +307,7 @@ the MPI cluster.
 The configuration file specifying this is called a machinefile or
 rankfile. We will explain the differences to them in this section.
 
-### Prerequisit
+### Prerequisite
 
 Naturally, the requisite to use a cluster is that you
 
@@ -1108,9 +1113,9 @@ essentially the same and can easily be developed as an exercise.
 
 ### Dynamic Process Management with `spawn`
 
-So far, we have focussed on MPI used on a number of hosts that are
+So far, we have focused on MPI used on a number of hosts that are
 automatically creating the process when mpirun is used. However, MPI
-also offers the ability to sawn a process in a communicator group. This
+also offers the ability to spawn a process in a communicator group. This
 can be achieved by using a spawn communicator and command.
 
 Using
@@ -1132,28 +1137,40 @@ from the one with rank
 ``` python
 #!/usr/bin/env python
 from mpi4py import MPI
+import mpi4py
 import numpy
 import sys
 import time
-print("Hello")
-comm = MPI.COMM_SELF.Spawn(sys.executable,
-                           args=['worker.py'],
-                           maxprocs=5)
-rank = comm.Get_rank()
-print(f"b and rank: {rank}")
+from pprint import pprint
+from cloudmesh.common.util import banner
+
+comm = MPI.COMM_WORLD
+size = comm.Get_size()
+name = comm.Get_processor_name()
+
+banner(f"MPI Spawn example {name} {size}")
+
+icomm = MPI.COMM_SELF.Spawn(
+    sys.executable,
+    args=['mpi-worker.py'],
+    maxprocs=size)
+
+rank = icomm.Get_rank()
+print(f"rank of {name}: {rank} of {size}")
 
 N = numpy.array(100, 'i')
-comm.Bcast([N, MPI.INT], root=MPI.ROOT)
+icomm.Bcast([N, MPI.INT], root=MPI.ROOT)
 #print(f"ROOT: {MPI.ROOT}")
 print('c')
 PI = numpy.array(0.0, 'd')
 
 print('d')
-comm.Reduce(None, [PI, MPI.DOUBLE],
+icomm.Reduce(None, [PI, MPI.DOUBLE],
             op=MPI.SUM, root=MPI.ROOT)
 print(PI)
 
-comm.Disconnect()
+time.sleep(30)
+icomm.Disconnect()
 ```
 
 ``` python
@@ -1162,9 +1179,9 @@ from mpi4py import MPI
 import numpy
 import time
 import sys
-comm = MPI.Comm.Get_parent()
-size = comm.Get_size()
-rank = comm.Get_rank()
+
+
+icomm = MPI.COMM_WORLD
 
 N = numpy.array(0, dtype='i')
 comm.Bcast([N, MPI.INT], root=0)
@@ -1176,11 +1193,14 @@ for i in range(rank, N, size):
     x = h * (i + 0.5)
     s += 4.0 / (1.0 + x**2)
 PI = numpy.array(s * h, dtype='d')
-comm.Reduce([PI, MPI.DOUBLE], None,
+icomm.Reduce([PI, MPI.DOUBLE], None,
             op=MPI.SUM, root=0)
 
+time.sleep(30)
+
 #time.sleep(60)
-comm.Disconnect()
+icomm.Disconnect()
+
 #MPI.Finalize()
 #sys.exit()
 #MPI.Unpublish_name()
@@ -1188,46 +1208,38 @@ comm.Disconnect()
 ```
 
 To execute the example please go to the examples directory and run the
-manager program
+mpi-manager program
 
     $ cd examples/spawn
-    $ mpiexec -n 4 python manager.py
+    $ mpiexec -n 2 python mpi-manager.py
 
 This will result in:
 
-    N: 100 rank: 4
-    N: 100 rank: 1
-    N: 100 rank: 3
-    N: 100 rank: 2
+    N: 100 rank: 0
     Hello
     b and rank: 0
     c
     d
-    3.1416009869231245
+    3.1416009869231254
     N: 100 rank: 0
-    N: 100 rank: 1
-    N: 100 rank: 4
-    N: 100 rank: 3
-    N: 100 rank: 2
     Hello
     b and rank: 0
     c
     d
-    3.1416009869231245
-    N: 100 rank: 0
+    3.1416009869231254
 
 This output depends on which child process is received first. The output
 can vary.
 
-`WARNING:` When running this program it may not terminate. To
-\>terminate use for now `CTRL-C`.
+> `WARNING:` When running this program it may not terminate. To
+> terminate use for now `CTRL-C`.
 
 ### Futures
 
 Futures is an mpi4py module that runs processes in parallel for
 intercommunication between such processes. The following Python program
-creates a visualization of a Julia set by utilizing this Futures
-modules, specifically via MPIPoolExecutor.
+creates a visualization of a Julia set by utilizing the Futures modules,
+specifically via MPIPoolExecutor.
 
 ``` python
 from mpi4py.futures import MPIPoolExecutor
@@ -1240,6 +1252,7 @@ multiplier = int(input('Enter 1 for 640x480 pixels of Julia '
                        'and so on...'))
 
 StopWatch.start("Overall time")
+
 x0, x1, w = -2.0, +2.0, 640*multiplier
 y0, y1, h = -1.5, +1.5, 480*multiplier
 dx = (x1 - x0) / w
@@ -1247,6 +1260,78 @@ dy = (y1 - y0) / h
 
 c = complex(0, 0.65)
 
+
+def julia(x, y):
+    z = complex(x, y)
+    n = 255
+    while abs(z) < 3 and n > 1:
+        z = z**2 + c
+        n -= 1
+    return n
+
+
+def julia_line(k):
+    line = bytearray(w)
+    y = y1 - k * dy
+    for j in range(w):
+        x = x0 + j * dx
+        line[j] = julia(x, y)
+    return line
+
+
+if __name__ == '__main__':
+    with MPIPoolExecutor() as executor:
+        image = executor.map(julia_line, range(h))
+        image = np.array([list(l) for l in image])
+        plt.imsave("julia.png", image)
+
+StopWatch.stop("Overall time")
+StopWatch.benchmark()
+```
+
+To run the program, issue this command in Git Bash:
+
+``` bash
+mpiexec -n 1 python julia-futures.py
+```
+
+The number after `-n` can be changed to however many cores are in the
+computer's processor. For example, a dual-core processor can use `-n 2`
+so that more worker processes work to execute the same program.
+
+The program will output a png image of a Julia set upon successful
+execution.
+
+Furthermore, the user enters a number upon starting execution of the
+program, when a prompt appears, asking for a value. Entering the number
+`3` will produce a 1920x1440 photo because the inputted value serves as
+a multiplier of the resolution of the Julia set picture. 640x480 times 3
+is 1920x1440. Then, after input, the program should output a
+visualization of a Julia data set as a png image.
+
+However, we created the numba version of this program in an attempt to
+achieve faster runtimes. For an explanation of numba, please see the
+Monte Carlo section of this document.
+
+``` python
+from mpi4py.futures import MPIPoolExecutor
+import matplotlib.pyplot as plt
+import numpy as np
+from numba import jit
+from cloudmesh.common.StopWatch import StopWatch
+
+multiplier = int(input('Enter 1 for 640x480 pixels of Julia visualization image,'
+                       ' 2 for 1280x960, and so on...'))
+
+StopWatch.start("Overall time")
+x0, x1, w = -2.0, +2.0, 640*multiplier
+y0, y1, h = -1.5, +1.5, 480*multiplier
+dx = (x1 - x0) / w
+dy = (y1 - y0) / h
+
+c = complex(0, 0.65)
+
+@jit(nopython=True)
 def julia(x, y):
     z = complex(x, y)
     n = 255
@@ -1274,25 +1359,34 @@ StopWatch.stop("Overall time")
 StopWatch.benchmark()
 ```
 
-To run teh program use:
+  ----------------------------------------------------------------------
+             No Jit       Jit Enabled      No Jit         Jit Enabled
+             (1280x960)   (1280x960)       (1920x1440)    (1920x1440)
+  ---------- ------------ ---------------- -------------- --------------
+  1 Core     44.898 s     45.800 s         68.489 s       68.610 s
 
-``` bash
-mpiexec -n 1 python julia-futures.py
-```
+  2 Cores    45.578 s     45.714 s         67.718 s       69.326 s
 
-The number after `-n` can be changed to however many cores are in the
-computer's processor. For example, a dual-core processor can use `-n 2`
-so that more worker processes work to execute the same program.
+  3 Cores    43.026 s     44.521 s         68.785 s       69.487 s
 
-The program will output a png image of a Julia set upon successful
-execution.
+  4 Cores    44.746 s     44.552 s         73.606 s       70.257 s
 
-You can modify your number of processors accordingly matching your
-hardware infrastructure.
+  5 Cores    43.223 s     42.825 s         68.226 s       68.443 s
 
-For example, entering the number `3` will produce a 1920x1440 photo
-because 640x480 times 3 is 1920x1440. Then, the program should output a
-visualization of a Julia data set as a png image.
+  6 Cores    45.134 s     44.402 s         68.437 s       67.637 s
+  ----------------------------------------------------------------------
+
+-   These benchmark times were generated using a Ryzen 5 3600 CPU with
+    16 GB RAM on a Windows 10 computer.
+
+The improvement in shorter runtime with jit is not apparent likely
+because the computations required to run this program are not very
+complex; the same reason applies to why the increase in cores does not
+improve runtime.
+
+However, this example showcases how to run examples with a parameter to
+explore the behavior on multiple cores. Naturally, you can use and
+explore other parameters once added to the program.
 
 # Simple MPI Example Programs
 
@@ -1301,8 +1395,8 @@ programs.
 
 ## GPU Programming with MPI
 
-In case you have access to computers with GPUS you can naturally utilize
-them accordingly from Python with the appropriate GPU drivers.
+In case you have access to computers with GPUs, you can naturally
+utilize them accordingly from Python with the appropriate GPU drivers.
 
 In case not all have a GPU, you can use rankfiles to control the access
 and introduce through conditional programming based on rank access to
@@ -1425,9 +1519,9 @@ import random
 from mpi4py import MPI
 
 # Get the input values or set them to a default
-n = os.environ.get("N") or 20
-max_number = os.environ.get("MAX") or 10
-find = os.environ.get("FIND") or 8
+n = int(os.environ.get("N") or 20)
+max_number = int(os.environ.get("MAX") or 10)
+find = int(os.environ.get("FIND") or 8)
 
 
 comm = MPI.COMM_WORLD   # Communicator
@@ -1466,7 +1560,7 @@ Executing `mpiexec -n 4 python count.py` gives us:
 
 A very nice example to showcase the potential for doing lots of parallel
 calculations is to calculate the number pi. This is quite easily
-achieved while using a monte Carlo method.
+achieved while using a Monte Carlo Method.
 
 We start with the mathematical formulation of the Monte Carlo
 calculation of pi. For each quadrant of the unit square, the area is pi.
@@ -1516,140 +1610,11 @@ number is large enough, it is negligible.
 
 The following program shows the MPI implementation:
 
-------------------------------------------------------------------------
-
-``` python
-# Originaly from https://cvw.cac.cornell.edu/python/exercise
-# Modified by us
-"""
-An estimate of the numerical value of pi via Monte Carlo integration.
-Computation is distributed across processors via MPI.
-"""
-
-import numpy as np
-from mpi4py import MPI
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-import sys
-from cloudmesh.common.StopWatch import StopWatch
-
-StopWatch.start("Overall time")
-def throw_darts(n):
-    """
-    returns an array of n uniformly random (x,y) pairs lying within the
-    square that circumscribes the unit circle centered at the origin,
-    i.e., the square with corners at (-1,-1), (-1,1), (1,1), (1,-1)
-    """
-    darts = 2*np.random.random((n,2)) - 1
-    return darts
-
-def in_unit_circle(p):
-    """
-    returns a boolean array, whose elements are True if the corresponding
-    point in the array p is within the unit circle centered at the origin,
-    and False otherwise -- hint: use np.linalg.norm to find the length of a vector
-    """
-    return np.linalg.norm(p,axis=-1)<=1.0
-
-def estimate_pi(n, block=100000):
-    """
-    returns an estimate of pi by drawing n random numbers in the square
-    [[-1,1], [-1,1]] and calculating what fraction land within the unit circle;
-    in this version, draw random numbers in blocks of the specified size,
-    and keep a running total of the number of points within the unit circle;
-    by throwing darts in blocks, we are spared from having to allocate
-    very large arrays (and perhaps running out of memory), but still can get
-    good performance by processing large arrays of random numbers
-    """
-    total_number = 0
-    i = 0
-    while i < n:
-        if n-i < block:
-            block = n-i
-        darts = throw_darts(block)
-        number_in_circle = np.sum(in_unit_circle(darts))
-        total_number += number_in_circle
-        i += block
-    return (4.*total_number)/n
-
-def estimate_pi_in_parallel(comm, N):
-    """
-    on each of the available processes,
-    calculate an estimate of pi by drawing N random numbers;
-    the manager process will assemble all of the estimates
-    produced by all workers, and compute the mean and
-    standard deviation across the independent runs
-    """
-
-    if rank == 0:
-        data = [N for i in range(size)]
-    else:
-        data = None
-    data = comm.scatter(data, root=0)
-    #
-    pi_est = estimate_pi(N)
-    #
-    pi_estimates = comm.gather(pi_est, root=0)
-    if rank == 0:
-        return pi_estimates
-
-
-def estimate_pi_statistics(comm, Ndarts, Nruns_per_worker):
-    results = []
-    for i in range(Nruns_per_worker):
-        result = estimate_pi_in_parallel(comm, Ndarts)
-        if rank == 0:
-            results.append(result)
-    if rank == 0:
-        pi_est_mean = np.mean(results)
-        pi_est_std  = np.std(results)
-        return pi_est_mean, pi_est_std
-
-if __name__ == '__main__':
-    """
-    for N from 4**5 to 4**14 (integer powers of 4), 
-    compute mean and standard deviation of estimates of pi
-    by throwing N darts multiple times (Nruns_total times,
-    distributed across workers)
-    """
-    comm = MPI.COMM_WORLD
-    rank = comm.Get_rank()
-    size = comm.Get_size()
-    if rank == 0:
-        print("MPI size = {}".format(size))
-        sys.stdout.flush()
-    Nruns_total = 64
-    Nruns_per_worker = Nruns_total // size
-    #
-    estimates = []
-    for log4N in range(5,15):
-        N = int(4**log4N)
-        result = estimate_pi_statistics(comm, N, Nruns_per_worker)
-        if rank == 0:
-            pi_est_mean, pi_est_std = result
-            estimates.append((N, pi_est_mean, pi_est_std))
-            print(N, pi_est_mean, pi_est_std)
-            sys.stdout.flush()
-    if rank == 0:
-        estimates = np.array(estimates)
-        plt.figure()
-        plt.errorbar(np.log2(estimates[:,0]), estimates[:,1], yerr=estimates[:,2])
-        plt.ylabel('estimate of pi')
-        plt.xlabel('log2(number of darts N)')
-        plt.savefig('pi_vs_log2_N.png')
-        plt.figure()
-        plt.ylabel('log2(standard deviation)')
-        plt.xlabel('log2(number of darts N)')
-        plt.plot(np.log2(estimates[:,0]), np.log2(estimates[:,2]))
-        plt.savefig('log2_std_vs_log2_N.png')
-    MPI.Finalize()
-
-StopWatch.stop("Overall time")
-StopWatch.benchmark()
-```
-
-------------------------------------------------------------------------
+  -------------------------------------------------
+  \`\`\` python
+  !include ../examples/monte-carlo/parallel_pi.py
+  \`\`\`
+  -------------------------------------------------
 
 To run this program using git bash, change directory to the folder
 containing this program and issue the command:
@@ -1661,6 +1626,45 @@ $ mpiexec -n 4 python parallel_pi.py
 The number after `-n` can be changed to however many cores one has on
 their processor.
 
+However, running this program takes upwards of 4 minutes to complete
+with 6 cores. We can use numba to speed up the program execution time.
+
+### Numba
+
+Numba, an open-source JIT (just in time) compiler, is a Python module
+that translates Python code into machine code for faster runtimes.
+
+The numba version of the Monte Carlo program runs faster, even cutting
+runtime down by a few minutes:
+
+  -------------------------------------------------------
+  \`\`\` python
+  !include ../examples/monte-carlo/parallel_pi_numba.py
+  \`\`\`
+  -------------------------------------------------------
+
+Note how before the definition of functions in this code, there is the
+@jit(nopython=True) decorator, which translates each defined function
+into faster machine code. To install and use numba, simply issue the
+command `pip install numba` within a terminal. Here is the command to
+execute the numba version of the Monte Carlo program:
+
+``` bash
+$ mpiexec -n 4 python parallel_pi_numba.py
+```
+
+            parallel_pi.py execution time   parallel_pi_numba.py execution time
+  --------- ------------------------------- -------------------------------------
+  6 Cores   237.873 s                       169.678 s
+  5 Cores   257.720 s                       199.572 s
+  4 Cores   326.811 s                       239.160 s
+  3 Cores   383.343 s                       289.433 s
+  2 Cores   545.500 s                       403.289 s
+  1 Core    1075.68 s                       810.525 s
+
+-   These benchmark times were generated using a Ryzen 5 3600 CPU with
+    16 GB RAM on a Windows 10 computer.
+
 Note: Please be advised that we use Cloudmesh.StopWatch which is a
 convenient program to measure time and display the details for the
 computer. However, it is not threadsafe and, at this time, only measures
@@ -1668,83 +1672,47 @@ times in the second range. If your calculations for other programs are
 faster or the trial number is too slow, you can use other benchmarking
 methods.
 
-Furthermore, the numba version of the program can be run instead, which
-is slightly faster.
+## Mandelbrot
 
-``` python
-from mpi4py.futures import MPIPoolExecutor
-import matplotlib.pyplot as plt
-import numpy as np
-from numba import jit
-from cloudmesh.common.StopWatch import StopWatch
+We can run a program which outputs a visualization of a Mandelbrot data
+set, which, like the Julia set, is a fractal (the image repeats itself
+upon zooming in). This program runs processes in parallel and also has
+numba JIT decorators to achieve faster runtimes:
 
-multiplier = int(input('Enter 1 for 640x480 pixels of Julia visualization image,'
-                       ' 2 for 1280x960, and so on...'))
+  --------------------------------------------------------------
+  \`\`\` python
+  !include ../examples/mandelbrot/mandelbrot-parallel-numba.py
+  \`\`\`
+  --------------------------------------------------------------
 
-StopWatch.start("Overall time")
-x0, x1, w = -2.0, +2.0, 640*multiplier
-y0, y1, h = -1.5, +1.5, 480*multiplier
-dx = (x1 - x0) / w
-dy = (y1 - y0) / h
+Like other programs, mandelbrot can be executed via
+`mpiexec -n 4 python mandelbrot-parallel-numba.py`, with the appropriate
+-n parameter according to the user's system.
 
-c = complex(0, 0.65)
+Unlike the Julia program, this Mandelbrot program does not save the
+visualization as a png image; instead, it spawns a pyplot window. At
+rank 0, the program starts and ends a benchmark for analysis of which -n
+parameter will give the shortest runtime.
 
-@jit(nopython=True)
-def julia(x, y):
-    z = complex(x, y)
-    n = 255
-    while abs(z) < 3 and n > 1:
-        z = z**2 + c
-        n -= 1
-    return n
+  ---------------------------------------------------------------------
+          mandelbrot-parallel.py       mandelbrot-parallel-numba.py
+          execution time               execution time
+  ------- ---------------------------- --------------------------------
+  6 Cores 3.071 s                      0.422 s
 
-def julia_line(k):
-    line = bytearray(w)
-    y = y1 - k * dy
-    for j in range(w):
-        x = x0 + j * dx
-        line[j] = julia(x, y)
-    return line
+  5 Cores 3.791 s                      0.434 s
 
-if __name__ == '__main__':
+  4 Cores 3.920 s                      0.427 s
 
-    with MPIPoolExecutor() as executor:
-        image = executor.map(julia_line, range(h))
-        image = np.array([list(l) for l in image])
-        plt.imsave("julia.png", image)
+  3 Cores 5.769 s                      0.473 s
 
-StopWatch.stop("Overall time")
-StopWatch.benchmark()
-```
+  2 Cores 5.010 s                      0.520 s
 
-  ----------------------------------------------------------------------
-             No Jit       Jit Enabled      No Jit         Jit Enabled
-             (1280x960)   (1280x960)       (1920x1440)    (1920x1440)
-  ---------- ------------ ---------------- -------------- --------------
-  1 Core     44.898 s     45.800 s         68.489 s       68.610 s
-
-  2 Cores    45.578 s     45.714 s         67.718 s       69.326 s
-
-  3 Cores    43.026 s     44.521 s         68.785 s       69.487 s
-
-  4 Cores    44.746 s     44.552 s         73.606 s       70.257 s
-
-  5 Cores    43.223 s     42.825 s         68.226 s       68.443 s
-
-  6 Cores    45.134 s     44.402 s         68.437 s       67.637 s
-  ----------------------------------------------------------------------
+  1 Core  9.891 s                      1.765 s
+  ---------------------------------------------------------------------
 
 -   These benchmark times were generated using a Ryzen 5 3600 CPU with
     16 GB RAM on a Windows 10 computer.
-
-The improvement in shorter runtime with jit is not apparent likely
-because the computations required to run this program are not very
-complex; the same reason applies to why the increase in cores does not
-improve runtime.
-
-However, this example showcases how to run examples with a parameter to
-explore the behavior on multiple cores. Naturally, you can use and
-explore other parameters once added to the program.
 
 ### Assignments
 
@@ -1762,7 +1730,7 @@ You can also contribute to our repository and add example programs that
 we then include in this document. In return you will become a co-author
 or get acknowledged.
 
--   A program to calculate PI is provided at
+-   A program to calculate Pi is provided at
 
     -   <https://cvw.cac.cornell.edu/python/exercise>
     -   <https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=monte>
@@ -1774,23 +1742,23 @@ or get acknowledged.
 # Parameter Management
 
 Although this next topic is not directly related to MPI and mpi4py, it
-is very useful in general. Often we ask ourselves the question, how do
-we pass parameters to a program, includding MPI. There are multiple ways
-to achieve this. With environment variables, command-line arguments, and
-configuration files. We will explain each of these methods and provide
-simple example.
+is very useful in general. Often we ask ourselves the question, "how do
+we pass parameters to a program, including MPI?" There are multiple ways
+to achieve this, for example, with environment variables, command-line
+arguments, and configuration files. We will explain each of these
+methods and provide simple examples.
 
 ## Using the Shell Variables to Pass Parameters
 
 `os.environ` in Python allows us to easily access environment variables
-that are defined in a shell. It returns a dictionary having user's
+that are defined in a shell. It returns a dictionary having the user's
 environmental variable as key and their values as value.
 
 To demonstrate its use, we have written a `count.py` program that uses
 `os.environ` to optionally pass parameters to an MPI program.
 
-This example is included in a previous Section `Counting Numbers` and we
-like you to look it over.
+This example is included in a previous section named `Counting Numbers`
+and we like you to look it over.
 
 If the user changed the value of N, MAX, or FIND in the terminal using,
 for example, `export FIND="5"` (shown below) os.environ.get("FIND")
@@ -1798,15 +1766,15 @@ would set the find variable equal to 5.
 
     $ export FIND="5"
     $ mpiexec -n 4 python count.py
-    1 0 [9, 6, 8, 3, 4, 8, 5, 6, 6, 3, 5, 6, 10, 5, 5, 1, 1, 2, 1, 3]
-    3 0 [3, 7, 2, 8, 4, 6, 5, 7, 4, 4, 7, 6, 1, 7, 10, 2, 1, 9, 2, 8]
-    2 0 [10, 8, 10, 8, 7, 2, 2, 7, 4, 3, 3, 7, 10, 8, 1, 5, 1, 4, 6, 5]
-    0 0 [5, 8, 9, 1, 2, 7, 1, 5, 5, 6, 3, 6, 10, 9, 7, 10, 5, 3, 6, 5]
-    0 [0, 0, 0, 0]
-    Total number of 5's: 0
+    1 1 [6, 3, 3, 8, 4, 1, 1, 4, 4, 3, 8, 5, 10, 8, 8, 7, 2, 4, 1, 9]
+    3 0 [3, 1, 4, 1, 6, 4, 9, 3, 1, 8, 8, 6, 4, 3, 7, 1, 8, 6, 1, 1]
+    2 3 [5, 5, 4, 6, 8, 5, 9, 3, 7, 7, 10, 6, 7, 3, 2, 8, 3, 10, 7, 10]
+    0 3 [7, 8, 6, 9, 6, 7, 5, 6, 1, 2, 1, 2, 9, 5, 9, 8, 5, 1, 8, 1]
+    0 [3, 1, 3, 0]
+    Total number of 5's: 7
 
-However, if the user does not define any environment variables find will
-default to 8.
+However, if the user does not define any environment variables, FIND
+will default to 8.
 
     $ mpiexec -n 4 python count.py
     1 0 [5, 5, 2, 6, 6, 3, 5, 3, 3, 2, 3, 9, 7, 1, 3, 7, 1, 7, 1, 3]
@@ -1822,36 +1790,7 @@ Assignment:
     communicate the 3 environment variables. We like you to improve the
     code and submit to us.
 
-Setting the parameter can either be done vi the export shell command
-such as
-
-``` bash
-$ export N=8
-```
-
-or while passing the parameter in the same line as a command such as
-demonstrated next
-
-``` bash
-$ N=1; python environment-parameter.py
-```
-
-This can be generalized while using a file with many different
-parameters and commands. For example, placing this in a file called
-`run.sh`
-
-``` python
-$ N=1; python environment-parameter.py
-$ N=2; python environment-parameter.py
-```
-
-It allows us to execute the programs sequentially in the file with
-
-``` bash
-$ sh run.sh
-```
-
-Let us assume we use the python program
+Let us assume we use the Python program
 
 ``` python
 from cloudmesh.common.StopWatch import StopWatch
@@ -1867,13 +1806,41 @@ StopWatch.benchmark()
 ```
 
 This Python program does not set a variable N on its own. It refers to
-os.environ which should have previously set N as shown in the beginning
-of this document's git bash log. The program does the same procedures as
-the previous program once N is set and passed from os.environ.
+os.environ which is a module that refers to variables exported within
+the same shell that executes the program.
 
-We are using, in our case also the cloudmesh.StopWatch to allow us
-easily to fgrep for the results we may be interested in to conduct
-benchmarks. Here is an example workflow to achieve this
+Setting the variable/parameter can either be done via the export shell
+command such as
+
+``` bash
+$ export N=8
+```
+
+or while passing the parameter in the same line as a command such as
+demonstrated next
+
+``` bash
+$ N=1; python environment-parameter.py
+```
+
+This can be generalized while using a file with many different
+parameters and commands. For example, placing this in a file called
+`run.sh` with these contents:
+
+``` python
+$ N=1; python environment-parameter.py
+$ N=2; python environment-parameter.py
+```
+
+It allows us to execute the programs sequentially in the file with
+
+``` bash
+$ sh run.sh
+```
+
+In our case, we are also using cloudmesh.StopWatch to allow us easily to
+fgrep for the results we may be interested in to conduct benchmarks.
+Here is an example workflow to achieve this
 
     # This command creates an environment variable called N
     $ export N=10
@@ -2059,7 +2026,7 @@ To install WSL2 your computer must have Hyper-V support enabled. This
 does not work on Windows Home, and you need to upgrade to Windows Pro,
 Edu, or some other Windows 10 version that supports it. Windows Edu is
 typically free for educational institutions. The Hyper-V must be enabled
-from your Bios, and you need to change your settings if it is not
+from your BIOS, and you need to change your settings if it is not
 enabled.
 
 More information about WSL is provided at
@@ -2069,24 +2036,41 @@ More information about WSL is provided at
 To install WSL2, you can follow these steps while using Powershell as an
 administrative user and run
 
+    ps$ dism.exe /online /enable-feature /featurename:Microsoft-Hyper-V-All /all /norestart
     ps$ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
     ps$ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
     ps$ wsl --set-default-version 2
 
-Next, Download the Ubuntu 20.04 LTS image from the Microsoft store
+The next command will restart your computer so make sure that all your
+files and applications are saved:
 
--   <https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab>
+    ps$ Restart-Computer
+
+Windows will say that it is working on updates (enabling the features).
+Once logging back in, download this msi file, open it and complete the
+installation to update WSL: \*
+<https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi>
+
+Once the installation is complete, download and install the Ubuntu 20.04
+LTS image from the Microsoft store: \*
+<https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab>
+
+and click Launch.
 
 Run Ubuntu and create a username and passphrase.
 
-Make sure not just to give an empty passphrase but chose a secure one.
+Make sure not just to give an empty passphrase but choose a secure one.
 
-Next run in Powershell
+Next run in a new instance of elevated (admin) Powershell:
 
-    ps$ wsl.exe --set-version Ubuntu20.04 2
+    ps$ wsl.exe --set-version Ubuntu 2
 
 Now you can use the Ubuntu distro freely. The WSL2 application will be
-in your shortcut menu in `Start`.
+in your shortcut menu in `Start`. You can launch this WSL2 and install
+MPI on it by referring to the Ubuntu installation instructions at the
+beginning of this document. The same number of cores and threads will be
+available to use in the `mpiexec` command as the number of cores and
+threads on the host computer.
 
 ## Benchmarks
 
@@ -2497,8 +2481,8 @@ very early draft of this paper.
 
 # References
 
-[^1]: Refernce missing
+[^1]: Reference missing
 
 [^2]: Reference missing
 
-[^3]: Refernces missing
+[^3]: References missing
