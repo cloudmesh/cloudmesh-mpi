@@ -1,19 +1,13 @@
-import mpi4py.MPI
 from mpi4py.futures import MPIPoolExecutor
 import matplotlib.pyplot as plt
 import numpy as np
 from cloudmesh.common.StopWatch import StopWatch
 
-comm = mpi4py.MPI.COMM_WORLD
-size = comm.Get_size()
-rank = comm.Get_rank()
-
 multiplier = int(input('Enter 1 for 640x480 pixels of Julia '
                        'visualization image, 2 for 1280x960, '
                        'and so on...'))
 
-if rank == 0:
-    StopWatch.start(f'parallel {size}')
+StopWatch.start("Overall time")
 
 x0, x1, w = -2.0, +2.0, 640*multiplier
 y0, y1, h = -1.5, +1.5, 480*multiplier
@@ -47,6 +41,5 @@ if __name__ == '__main__':
         image = np.array([list(l) for l in image])
         plt.imsave("julia.png", image)
 
-if rank == 0:
-    StopWatch.stop(f'parallel {size}')
-    StopWatch.benchmark()
+StopWatch.stop("Overall time")
+StopWatch.benchmark()
