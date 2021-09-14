@@ -1140,6 +1140,7 @@ faster runtimes:
 ```
 ---
 
+Unlike the Julia program, this Mandelbrot program does not save the visualization as a png image; instead, it spawns a pyplot window.
 At rank 0, the program starts and ends a benchmark for analysis of which -n parameter will give the shortest runtime.
 
 
