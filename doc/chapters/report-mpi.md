@@ -117,11 +117,9 @@ $ python -c "import multiprocessing;  print(multiprocessing.cpu_count())"
 
 However, you can also use the command line tools that we have included in our documentation.
 
-## Windows 10 EDU or PRO
+## Windows 10 Home, Education, or Pro
 
-*Note:* We have not tested this on Windows Home.
-
-1. We assume you have installed GitBash on your computer. The installation is easy, but be careful to watch the various options at install time.
+1. We assume you have installed Git Bash on your computer. The installation is easy, but be careful to watch the various options at install time.
    Make sure it is added to the Path variable.
 
    For details see: <https://git-scm.com/downloads>
@@ -138,8 +136,7 @@ However, you can also use the command line tools that we have included in our do
 
 1. Microsoft has its own implementation of MPI which we recommend at this time. First, you need to download msmpi from
 
-   *
-   <https://docs.microsoft.com/en-us/message-passing-interface/microsoft-mpi#ms-mpi-downloads>
+   * <https://docs.microsoft.com/en-us/message-passing-interface/microsoft-mpi#ms-mpi-downloads>
    
    Go to the download link underneath the heading `MS-MPI Downloads`
    and download and install it. Select the two packages and click 
@@ -290,7 +287,7 @@ In case you like to try out MPI and just use it on a single computer
 with multiple cors, you can skip this section for now and revisit it,
 once you scale up and use multiple computers.
 
-## Running MPI on Multiple  Computers
+## Running MPI on Multiple Computers
 
 MPI is designed for running programs on multiple computers. One of
 these computers serves as manager and communicates to its workers. To
@@ -908,7 +905,7 @@ This output depends on which child process is received first. The output can var
 
 Futures is an mpi4py module that runs processes in parallel for intercommunication between
 such processes. The following Python program creates a visualization of a Julia set by
-utilizing this Futures modules, specifically via MPIPoolExecutor.
+utilizing the Futures modules, specifically via MPIPoolExecutor.
 
 ``` python
 !include ../examples/futures/julia-futures.py
@@ -926,12 +923,38 @@ execute the same program.
 
 The program will output a png image of a Julia set upon successful execution.
 
-You can modify your number of processors accordingly matching your hardware infrastructure.
-
-For example, entering the number `3` will produce a 1920x1440 photo because 640x480 times 3 is 1920x1440.
-The user enters this number after starting execution of the program, when a prompt appears, asking for a value.
+Furthermore, the user enters a number upon starting execution of the program, when a prompt appears, 
+asking for a value. Entering the number `3` will produce a 1920x1440 photo because the inputted value
+serves as a multiplier of the resolution of the Julia set picture. 640x480 times 3 is 1920x1440.
 Then, after input, the program should output a visualization of a Julia data set as a png image.
 
+However, we created the numba version of this program in an attempt to achieve faster runtimes. For
+an explanation of numba, please see the Monte Carlo section of this document.
+
+``` python
+!include ../examples/futures/julia-numba.py
+```
+
+|         |   No Jit (1280x960)  |  Jit Enabled (1280x960) | No Jit (1920x1440) | Jit Enabled (1920x1440) |
+|---------|------------|---------------|-------------|------------|
+| 1 Core  | 44.898 s   | 45.800 s      |   68.489 s           |   68.610 s |
+| 2 Cores | 45.578 s   | 45.714 s      |   67.718 s           |   69.326 s |
+| 3 Cores | 43.026 s   | 44.521 s      |   68.785 s           |   69.487 s |
+| 4 Cores | 44.746 s   | 44.552 s      |   73.606 s           |   70.257 s |
+| 5 Cores | 43.223 s   | 42.825 s      |   68.226 s           |   68.443 s |
+| 6 Cores | 45.134 s   | 44.402 s      |   68.437 s           |   67.637 s |
+
+* These benchmark times were generated using a Ryzen 5 3600 CPU with
+  16 GB RAM on a Windows 10 computer.
+
+The improvement in shorter runtime with jit is not apparent likely
+because the computations required to run this program are not very
+complex; the same reason applies to why the increase in cores does not
+improve runtime.
+
+However, this example showcases how to run examples with a
+parameter to explore the behavior on multiple cores. Naturally, you can
+use and explore other parameters once added to the program.
 
 # Simple MPI Example Programs
 
@@ -939,7 +962,7 @@ In this section, we will showcase to you some simple MPI example programs.
 
 ## GPU Programming with MPI
 
-In case you have access to computers with GPUS you can naturally
+In case you have access to computers with GPUs, you can naturally
 utilize them accordingly from Python with the appropriate GPU drivers.
 
 In case not all have a GPU, you can use rankfiles to control the
@@ -966,7 +989,6 @@ returns to process 0. Each process increments the integer by 1 before
 transmitting it to the next one, so the final value received by
 process 0 after the ring is complete is the sum of the original
 integer plus the number of processes in the communicator group.
-
 
 ``` python
 !include ../examples/ring.py
@@ -1051,10 +1073,9 @@ if the trial number is large enough, it is negligible.
 The following program shows the MPI implementation:
 
 ---
-
 ``` python
 !include ../examples/monte-carlo/parallel_pi.py
- ```
+```
 ---
 
 To run this program using git bash, change directory to the folder
@@ -1066,14 +1087,26 @@ $ mpiexec -n 4 python parallel_pi.py
 
 The number after `-n` can be changed to however many cores one has on their processor.
 
-Furthermore, the numba version of this program runs faster:
+However, running this program takes upwards of 4 minutes to complete with 6 cores. We can
+use numba to speed up the program execution time.
+
+### Numba
+
+Numba, an open-source JIT (just in time) compiler, is a Python module that translates Python code
+into machine code for faster runtimes.
+
+The numba version of the Monte Carlo program runs faster, even cutting runtime down by a few minutes:
 
 ---
-
 ``` python
 !include ../examples/monte-carlo/parallel_pi_numba.py
- ```
+```
 ---
+
+Note how before the definition of functions in this code, there is the @jit(nopython=True) decorator,
+which translates each defined function into faster machine code. To install and use numba, simply
+issue the command `pip install numba` within a terminal. Here is the command to execute the numba
+version of the Monte Carlo program:
 
 ```bash
 $ mpiexec -n 4 python parallel_pi_numba.py
@@ -1095,37 +1128,35 @@ convenient program to measure time and display the details for the computer.
 However, it is not threadsafe and, at this time, only measures times in the second range. 
 If your calculations for other programs are faster or the trial number is too slow, you can use other benchmarking methods.
 
-## Computing a Visualization of Julia Set
+## Mandelbrot
 
-The following program outputs a png image of a Julia set. This can be executed with the aforementioned mpiexec command in git bash;
-just remember to alter the command to run julia-numba.py after changing the working directory to the same one that julia-numba.py
-resides in.
+We can run a program which outputs a visualization of a Mandelbrot data set, which, like the Julia set, is a fractal (the
+image repeats itself upon zooming in). This program runs processes in parallel and also has numba JIT decorators to achieve 
+faster runtimes:
 
+---
 ``` python
-!include ../examples/futures/julia-numba.py
+!include ../examples/mandelbrot/mandelbrot-parallel-numba.py
 ```
+---
 
-|         |   No Jit (1280x960)  |  Jit Enabled (1280x960) | No Jit (1920x1440) | Jit Enabled (1920x1440) |
-|---------|------------|---------------|-------------|------------|
-| 1 Core  | 44.898 s   | 45.800 s      |   68.489 s           |   68.610 s |
-| 2 Cores | 45.578 s   | 45.714 s      |   67.718 s           |   69.326 s |
-| 3 Cores | 43.026 s   | 44.521 s      |   68.785 s           |   69.487 s |
-| 4 Cores | 44.746 s   | 44.552 s      |   73.606 s           |   70.257 s |
-| 5 Cores | 43.223 s   | 42.825 s      |   68.226 s           |   68.443 s |
-| 6 Cores | 45.134 s   | 44.402 s      |   68.437 s           |   67.637 s |
+Like other programs, mandelbrot can be executed via `mpiexec -n 4 python mandelbrot-parallel-numba.py`, with the appropriate -n parameter
+according to the user's system.
 
-* These benchmark times were generated using a Ryzen 5 3600 CPU with
-  16 GB RAM on a Windows 10 computer.
+Unlike the Julia program, this Mandelbrot program does not save the visualization as a png image; instead, it spawns a pyplot window.
+At rank 0, the program starts and ends a benchmark for analysis of which -n parameter will give the shortest runtime.
 
-The improvement in shorter runtime with jit is not apparent likely
-because the computations required to run this program are not very
-complex; the same reason applies to why the increase in cores does not
-improve runtime.
 
-However, this example showcases how to run examples with a
-parameter to explore the behavior on multiple cores. Naturally, you can
-use and explore other parameters once added to the program.
+|         | mandelbrot-parallel.py execution time   | mandelbrot-parallel-numba.py execution time   |
+|---------|-----------------------------------------|-----------------------------------------------|
+| 6 Cores | 3.071 s                                 | 0.422 s                                       |
+| 5 Cores | 3.791 s                                 | 0.434 s                                       |
+| 4 Cores | 3.920 s                                 | 0.427 s                                       |
+| 3 Cores | 5.769 s                                 | 0.473 s                                       |
+| 2 Cores | 5.010 s                                 | 0.520 s                                       |
+| 1 Core  | 9.891 s                                 | 1.765 s                                       |
 
+* These benchmark times were generated using a Ryzen 5 3600 CPU with 16 GB RAM on a Windows 10 computer.
 
 ### Assignments
 

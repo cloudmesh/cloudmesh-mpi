@@ -1,9 +1,11 @@
 from matplotlib import pyplot
 from mpi4py import MPI
 import numpy
+from numba import jit
 from cloudmesh.common.StopWatch import StopWatch
 
 
+@jit(nopython=True)
 def mandelbrot(x, y, maxit):
     c = x + y*1j
     z = 0 + 0j
