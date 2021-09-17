@@ -1158,6 +1158,10 @@ At rank 0, the program starts and ends a benchmark for analysis of which -n para
 
 * These benchmark times were generated using a Ryzen 5 3600 CPU with 16 GB RAM on a Windows 10 computer.
 
+This program will output an image and pdf called mandelbrot:
+
+![mandelbrot](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/mandelbrot.png){ width=40% }
+
 ### Assignments
 
 1. Use numba to speed up the code. Create a tutporial including instalation instructions.
