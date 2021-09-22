@@ -249,7 +249,7 @@ These instructions apply to 20.04 and 21.04. Please use 20.04 in case you like t
 
    ```bash
    $ sudo apt-get update
-   $ sudo apt install python3.9 python3.9-dev python3-dev python3.8-venv 
+   $ sudo apt install python3.9 python3.9-dev python3-dev python3.9-venv 
    $ python3 -m venv ~/ENV3
    $ source ENV3/bin/activate
    (ENV3) $ sudo apt-get install -y mpich-doc mpich 
@@ -1162,7 +1162,6 @@ faster runtimes:
 Like other programs, mandelbrot can be executed via `mpiexec -n 4 python mandelbrot-parallel-numba.py`, with the appropriate -n parameter
 according to the user's system.
 
-Unlike the Julia program, this Mandelbrot program does not save the visualization as a png image; instead, it spawns a pyplot window.
 At rank 0, the program starts and ends a benchmark for analysis of which -n parameter will give the shortest runtime.
 
 
@@ -1176,6 +1175,10 @@ At rank 0, the program starts and ends a benchmark for analysis of which -n para
 | 1 Core  | 9.891 s                                 | 1.765 s                                       |
 
 * These benchmark times were generated using a Ryzen 5 3600 CPU with 16 GB RAM on a Windows 10 computer.
+
+This program will save an image and pdf called mandelbrot:
+
+![mandelbrot](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/mandelbrot.png){ width=40% }
 
 ### Assignments
 

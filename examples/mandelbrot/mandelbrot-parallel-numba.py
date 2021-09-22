@@ -7,11 +7,11 @@ from cloudmesh.common.StopWatch import StopWatch
 
 @jit(nopython=True)
 def mandelbrot(x, y, maxit):
-    c = x + y*1j
+    c = x + y * 1j
     z = 0 + 0j
     it = 0
     while abs(z) < 2 and it < maxit:
-        z = z**2 + c
+        z = z ** 2 + c
         it += 1
     return it
 
@@ -30,16 +30,15 @@ if rank == 0:
 N = h // size + (h % size > rank)
 
 # first row to compute here
-start = comm.scan(N)-N
+start = comm.scan(N) - N
 
 # array to store local result
 Cl = numpy.zeros([N, w], dtype='i')
 
-
 dx = (x2 - x1) / w
 dy = (y2 - y1) / h
 for i in range(N):
-    y = y1 + (i+ start) * dy
+    y = y1 + (i + start) * dy
     for j in range(w):
         x = x1 + j * dx
         Cl[i, j] = mandelbrot(x, y, maxit)
@@ -63,9 +62,9 @@ rowtype.Free()
 if rank == 0:
     StopWatch.stop(f'parallel {size}')
 
-    pyplot.imshow(C, aspect='equal')
-    pyplot.show()
+    pyplot.imsave('mandelbrot.png', C)
+    pyplot.imsave('mandelbrot.pdf', C)
+
     StopWatch.benchmark()
-
-
-
+    # pyplot.imshow(C, aspect='equal')
+    # pyplot.show()
