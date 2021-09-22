@@ -5,8 +5,6 @@ This sectiion is in more detail published at this
 If the link does not work use this
 [Link](https://laszewski.medium.com/easy-benchmarking-of-long-running-programs-82059d9c67ce?sk=7ed2ca2dacf7253c41e7ca4e180e2e1a).
 
-### Introduction
-
 We explain how we can manage long-running benchmarks. There are many useful
 tools to conducting benchmarks such as `timeit`, `cprofile`, `line_profiler`,
 and `memry_profiler` to name only a few. However, we present here an extremely

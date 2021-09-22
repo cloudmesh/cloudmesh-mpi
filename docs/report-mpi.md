@@ -1,11 +1,18 @@
 # Preface
 
-in part published at
+This project has been initiated by Gregor von Laszewski as a voluntary
+summer research project available for university students. Besides the
+coauthors students that contributed to very early yversions of this
+document, are listed in the acknowledgement section.
+
+This document is isn part published at:
 
 -   Medium
     <https://laszewski.medium.com/python-and-mpi-part-1-7e76a6ec1c6d>
--   Frinds Link:
+-   Friends Link:
     <https://laszewski.medium.com/python-and-mpi-part-1-7e76a6ec1c6d?sk=cc21262764659c0ef2d3ddc684f54034>
+
+Please check them out as they may include slight improvements.
 
 ## Document Management in GitHub
 
@@ -30,6 +37,17 @@ or
 
     $ git clone https://github.com/cloudmesh/cloudmesh-mpi.git
 
+In cas eyou have `make` and docker instaled on your machine, you can
+create this document locally with
+
+``` bash
+$ make image
+$ make
+```
+
+Please not that `make` can also be installed on Windows as documented in
+our appenix, so you can also create this document easily on Windows.
+
 ## Document Notation
 
 To keep things uniform, we use the following document notations.
@@ -51,7 +69,8 @@ To keep things uniform, we use the following document notations.
 
         $ ls 
 
-5.  bibliography is managed via footnotes
+5.  The Bibliography is for now managed via markdown footnotes or direct
+    links
 
 # Introduction
 
@@ -248,9 +267,12 @@ you like to use GPUs.
     (ENV3) $ pip install mpi4py -U
     ```
 
-    Any errors along the lines of `Python.h: No such file or directory`
-    or `Could not build wheels for mpi4py which use PEP 517` should be
-    fixed by installing python3-dev in the venv
+    Any errors along the lines of
+
+    -   `Python.h: No such file or directory` or
+    -   `Could not build wheels for mpi4py which use PEP 517`
+
+    should be fixed by installing python3-dev in the venv
 
 ## Raspberry Pi
 
@@ -424,13 +446,14 @@ differences.
 
 ### Initialization
 
-In mpi4py, the standard MPI_INIT() and MPI_FINALIZE() commonly used to
-initialize and terminate the MPI environment are automatically handled
-after importing the mpi4py module. Although not generally advised,
-mpi4py still provides MPI.Init() and MPI.Finalize() for users interested
-in manually controlling these operations. Additionally, the automatic
-initialization and termination can be deactivated. For more information
-on this topic, please check the original mpi4py documentation:
+In mpi4py, the standard `MPI_INIT()` and `MPI_FINALIZE()` commonly used
+to initialize and terminate the MPI environment are automatically
+handled after importing the mpi4py module. Although not generally
+advised, mpi4py still provides `MPI.Init()` and `MPI.Finalize()` for
+users interested in manually controlling these operations. Additionally,
+the automatic initialization and termination can be deactivated. For
+more information on this topic, please check the original mpi4py
+documentation:
 
 -   [MPI.Init() and
     MPI.Finalize()](https://githubmemory.com/repo/mpi4py/mpi4py/issues/54)
@@ -774,10 +797,10 @@ Executing `mpiexec -n 4 python npbcast.py` yields:
     before broadcasting, data for rank 2 is:  [0 0 0 0 0 0 0 0 0 0]
     before broadcasting, data for rank 3 is:  [0 0 0 0 0 0 0 0 0 0]
     before broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
-    after broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
-    after broadcasting, data for rank 2 is:  [0 1 2 3 4 5 6 7 8 9]
-    after broadcasting, data for rank 3 is:  [0 1 2 3 4 5 6 7 8 9]
-    after broadcasting, data for rank 1 is:  [0 1 2 3 4 5 6 7 8 9]
+    after  broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
+    after  broadcasting, data for rank 2 is:  [0 1 2 3 4 5 6 7 8 9]
+    after  broadcasting, data for rank 3 is:  [0 1 2 3 4 5 6 7 8 9]
+    after  broadcasting, data for rank 1 is:  [0 1 2 3 4 5 6 7 8 9]
 
 As we can see, the values in the array at the process with rank 0 have
 been broadcast to the rest of the processes in the communicator group.
@@ -1610,11 +1633,136 @@ number is large enough, it is negligible.
 
 The following program shows the MPI implementation:
 
-  -------------------------------------------------
-  \`\`\` python
-  !include ../examples/monte-carlo/parallel_pi.py
-  \`\`\`
-  -------------------------------------------------
+``` python
+# Originaly from https://cvw.cac.cornell.edu/python/exercise
+# Modified by us
+"""
+An estimate of the numerical value of pi via Monte Carlo integration.
+Computation is distributed across processors via MPI.
+"""
+
+import numpy as np
+from mpi4py import MPI
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import sys
+from cloudmesh.common.StopWatch import StopWatch
+
+StopWatch.start("Overall time")
+def throw_darts(n):
+    """
+    returns an array of n uniformly random (x,y) pairs lying within the
+    square that circumscribes the unit circle centered at the origin,
+    i.e., the square with corners at (-1,-1), (-1,1), (1,1), (1,-1)
+    """
+    darts = 2*np.random.random((n,2)) - 1
+    return darts
+
+def in_unit_circle(p):
+    """
+    returns a boolean array, whose elements are True if the corresponding
+    point in the array p is within the unit circle centered at the origin,
+    and False otherwise -- hint: use np.linalg.norm to find the length of a vector
+    """
+    return np.linalg.norm(p,axis=-1)<=1.0
+
+def estimate_pi(n, block=100000):
+    """
+    returns an estimate of pi by drawing n random numbers in the square
+    [[-1,1], [-1,1]] and calculating what fraction land within the unit circle;
+    in this version, draw random numbers in blocks of the specified size,
+    and keep a running total of the number of points within the unit circle;
+    by throwing darts in blocks, we are spared from having to allocate
+    very large arrays (and perhaps running out of memory), but still can get
+    good performance by processing large arrays of random numbers
+    """
+    total_number = 0
+    i = 0
+    while i < n:
+        if n-i < block:
+            block = n-i
+        darts = throw_darts(block)
+        number_in_circle = np.sum(in_unit_circle(darts))
+        total_number += number_in_circle
+        i += block
+    return (4.*total_number)/n
+
+def estimate_pi_in_parallel(comm, N):
+    """
+    on each of the available processes,
+    calculate an estimate of pi by drawing N random numbers;
+    the manager process will assemble all of the estimates
+    produced by all workers, and compute the mean and
+    standard deviation across the independent runs
+    """
+
+    if rank == 0:
+        data = [N for i in range(size)]
+    else:
+        data = None
+    data = comm.scatter(data, root=0)
+    #
+    pi_est = estimate_pi(N)
+    #
+    pi_estimates = comm.gather(pi_est, root=0)
+    if rank == 0:
+        return pi_estimates
+
+
+def estimate_pi_statistics(comm, Ndarts, Nruns_per_worker):
+    results = []
+    for i in range(Nruns_per_worker):
+        result = estimate_pi_in_parallel(comm, Ndarts)
+        if rank == 0:
+            results.append(result)
+    if rank == 0:
+        pi_est_mean = np.mean(results)
+        pi_est_std  = np.std(results)
+        return pi_est_mean, pi_est_std
+
+if __name__ == '__main__':
+    """
+    for N from 4**5 to 4**14 (integer powers of 4), 
+    compute mean and standard deviation of estimates of pi
+    by throwing N darts multiple times (Nruns_total times,
+    distributed across workers)
+    """
+    comm = MPI.COMM_WORLD
+    rank = comm.Get_rank()
+    size = comm.Get_size()
+    if rank == 0:
+        print("MPI size = {}".format(size))
+        sys.stdout.flush()
+    Nruns_total = 64
+    Nruns_per_worker = Nruns_total // size
+    #
+    estimates = []
+    for log4N in range(5,15):
+        N = int(4**log4N)
+        result = estimate_pi_statistics(comm, N, Nruns_per_worker)
+        if rank == 0:
+            pi_est_mean, pi_est_std = result
+            estimates.append((N, pi_est_mean, pi_est_std))
+            print(N, pi_est_mean, pi_est_std)
+            sys.stdout.flush()
+    if rank == 0:
+        estimates = np.array(estimates)
+        plt.figure()
+        plt.errorbar(np.log2(estimates[:,0]), estimates[:,1], yerr=estimates[:,2])
+        plt.ylabel('estimate of pi')
+        plt.xlabel('log2(number of darts N)')
+        plt.savefig('pi_vs_log2_N.png')
+        plt.figure()
+        plt.ylabel('log2(standard deviation)')
+        plt.xlabel('log2(number of darts N)')
+        plt.plot(np.log2(estimates[:,0]), np.log2(estimates[:,2]))
+        plt.savefig('log2_std_vs_log2_N.png')
+    MPI.Finalize()
+
+StopWatch.stop("Overall time")
+StopWatch.benchmark()
+```
 
 To run this program using git bash, change directory to the folder
 containing this program and issue the command:
@@ -1637,11 +1785,138 @@ that translates Python code into machine code for faster runtimes.
 The numba version of the Monte Carlo program runs faster, even cutting
 runtime down by a few minutes:
 
-  -------------------------------------------------------
-  \`\`\` python
-  !include ../examples/monte-carlo/parallel_pi_numba.py
-  \`\`\`
-  -------------------------------------------------------
+``` python
+# Credit to Cornell University for this script, retrieved from https://cvw.cac.cornell.edu/python/exercise
+
+from __future__ import print_function, division
+"""
+An estimate of the numerical value of pi via Monte Carlo integration.
+Computation is distributed across processors via MPI.
+"""
+
+import numpy as np
+from mpi4py import MPI
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import sys
+from numba import jit
+from cloudmesh.common.StopWatch import StopWatch
+
+StopWatch.start("Overall time")
+@jit(nopython=True)
+def throw_darts(n):
+    """
+    returns an array of n uniformly random (x,y) pairs lying within the
+    square that circumscribes the unit circle centered at the origin,
+    i.e., the square with corners at (-1,-1), (-1,1), (1,1), (1,-1)
+    """
+    darts = 2*np.random.random((n,2)) - 1
+    return darts
+
+def in_unit_circle(p):
+    """
+    returns a boolean array, whose elements are True if the corresponding
+    point in the array p is within the unit circle centered at the origin,
+    and False otherwise -- hint: use np.linalg.norm to find the length of a vector
+    """
+    return np.linalg.norm(p,axis=-1)<=1.0
+
+def estimate_pi(n, block=100000):
+    """
+    returns an estimate of pi by drawing n random numbers in the square
+    [[-1,1], [-1,1]] and calculating what fraction land within the unit circle;
+    in this version, draw random numbers in blocks of the specified size,
+    and keep a running total of the number of points within the unit circle;
+    by throwing darts in blocks, we are spared from having to allocate
+    very large arrays (and perhaps running out of memory), but still can get
+    good performance by processing large arrays of random numbers
+    """
+    total_number = 0
+    i = 0
+    while i < n:
+        if n-i < block:
+            block = n-i
+        darts = throw_darts(block)
+        number_in_circle = np.sum(in_unit_circle(darts))
+        total_number += number_in_circle
+        i += block
+    return (4.*total_number)/n
+
+def estimate_pi_in_parallel(comm, N):
+    """
+    on each of the available processes,
+    calculate an estimate of pi by drawing N random numbers;
+    the manager process will assemble all of the estimates
+    produced by all workers, and compute the mean and
+    standard deviation across the independent runs
+    """
+
+    if rank == 0:
+        data = [N for i in range(size)]
+    else:
+        data = None
+    data = comm.scatter(data, root=0)
+    #
+    pi_est = estimate_pi(N)
+    #
+    pi_estimates = comm.gather(pi_est, root=0)
+    if rank == 0:
+        return pi_estimates
+
+def estimate_pi_statistics(comm, Ndarts, Nruns_per_worker):
+    results = []
+    for i in range(Nruns_per_worker):
+        result = estimate_pi_in_parallel(comm, Ndarts)
+        if rank == 0:
+            results.append(result)
+    if rank == 0:
+        pi_est_mean = np.mean(results)
+        pi_est_std  = np.std(results)
+        return pi_est_mean, pi_est_std
+
+if __name__ == '__main__':
+    """
+    for N from 4**5 to 4**14 (integer powers of 4), 
+    compute mean and standard deviation of estimates of pi
+    by throwing N darts multiple times (Nruns_total times,
+    distributed across workers)
+    """
+    comm = MPI.COMM_WORLD
+    rank = comm.Get_rank()
+    size = comm.Get_size()
+    if rank == 0:
+        print("MPI size = {}".format(size))
+        sys.stdout.flush()
+    Nruns_total = 64
+    Nruns_per_worker = Nruns_total // size
+    #
+    estimates = []
+    for log4N in range(5,15):
+        N = int(4**log4N)
+        result = estimate_pi_statistics(comm, N, Nruns_per_worker)
+        if rank == 0:
+            pi_est_mean, pi_est_std = result
+            estimates.append((N, pi_est_mean, pi_est_std))
+            print(N, pi_est_mean, pi_est_std)
+            sys.stdout.flush()
+    if rank == 0:
+        estimates = np.array(estimates)
+        plt.figure()
+        plt.errorbar(np.log2(estimates[:,0]), estimates[:,1], yerr=estimates[:,2])
+        plt.ylabel('estimate of pi')
+        plt.xlabel('log2(number of darts N)')
+        plt.savefig('pi_vs_log2_N.png')
+        plt.figure()
+        plt.ylabel('log2(standard deviation)')
+        plt.xlabel('log2(number of darts N)')
+        plt.plot(np.log2(estimates[:,0]), np.log2(estimates[:,2]))
+        plt.savefig('log2_std_vs_log2_N.png')
+    MPI.Finalize()
+
+StopWatch.stop("Overall time")
+StopWatch.benchmark()
+```
 
 Note how before the definition of functions in this code, there is the
 @jit(nopython=True) decorator, which translates each defined function
@@ -1679,11 +1954,76 @@ set, which, like the Julia set, is a fractal (the image repeats itself
 upon zooming in). This program runs processes in parallel and also has
 numba JIT decorators to achieve faster runtimes:
 
-  --------------------------------------------------------------
-  \`\`\` python
-  !include ../examples/mandelbrot/mandelbrot-parallel-numba.py
-  \`\`\`
-  --------------------------------------------------------------
+``` python
+from matplotlib import pyplot
+from mpi4py import MPI
+import numpy
+from numba import jit
+from cloudmesh.common.StopWatch import StopWatch
+
+
+@jit(nopython=True)
+def mandelbrot(x, y, maxit):
+    c = x + y*1j
+    z = 0 + 0j
+    it = 0
+    while abs(z) < 2 and it < maxit:
+        z = z**2 + c
+        it += 1
+    return it
+
+
+x1, x2 = -2.0, 1.0
+y1, y2 = -1.0, 1.0
+w, h = 1200, 800
+maxit = 127
+
+comm = MPI.COMM_WORLD
+size = comm.Get_size()
+rank = comm.Get_rank()
+if rank == 0:
+    StopWatch.start(f'parallel {size}')
+# number of rows to compute here
+N = h // size + (h % size > rank)
+
+# first row to compute here
+start = comm.scan(N)-N
+
+# array to store local result
+Cl = numpy.zeros([N, w], dtype='i')
+
+
+dx = (x2 - x1) / w
+dy = (y2 - y1) / h
+for i in range(N):
+    y = y1 + (i+ start) * dy
+    for j in range(w):
+        x = x1 + j * dx
+        Cl[i, j] = mandelbrot(x, y, maxit)
+
+# gather results at root (process 0)
+
+counts = comm.gather(N, root=0)
+C = None
+if rank == 0:
+    C = numpy.zeros([h, w], dtype='i')
+
+rowtype = MPI.INT.Create_contiguous(w)
+rowtype.Commit()
+
+comm.Gatherv(sendbuf=[Cl, MPI.INT],
+             recvbuf=[C, (counts, None), rowtype],
+             root=0)
+
+rowtype.Free()
+
+if rank == 0:
+    StopWatch.stop(f'parallel {size}')
+
+    pyplot.imshow(C, aspect='equal')
+    pyplot.show()
+    StopWatch.benchmark()
+```
 
 Like other programs, mandelbrot can be executed via
 `mpiexec -n 4 python mandelbrot-parallel-numba.py`, with the appropriate
@@ -2078,8 +2418,6 @@ This sectiion is in more detail published at this
 [link](https://laszewski.medium.com/easy-benchmarking-of-long-running-programs-82059d9c67ce).
 If the link does not work use this
 [Link](https://laszewski.medium.com/easy-benchmarking-of-long-running-programs-82059d9c67ce?sk=7ed2ca2dacf7253c41e7ca4e180e2e1a).
-
-### Introduction {#introduction}
 
 We explain how we can manage long-running benchmarks. There are many
 useful tools to conducting benchmarks such as `timeit`, `cprofile`,
@@ -2476,8 +2814,9 @@ that tutorial where needed instead.
 
 # Acknowledgements
 
-We like to thank Erin Seliger and Agness Lungua for their effort on our
-very early draft of this paper.
+We like to thank Cooper Young for his contribution to start the MPI
+futures section. We like to thank Erin Seliger and Agness Lungua for
+their effort on our very early draft of this paper.
 
 # References
 

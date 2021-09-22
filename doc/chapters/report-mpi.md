@@ -1,12 +1,18 @@
 # Preface
 
-in part published at
+This project has been initiated by Gregor von Laszewski as a voluntary
+summer research project available for university students. Besides the
+coauthors students that contributed to very early yversions of this
+document, are listed in the acknowledgement section.
+
+This document is isn part published at:
 
 * Medium <https://laszewski.medium.com/python-and-mpi-part-1-7e76a6ec1c6d>
-* Frinds Link: <https://laszewski.medium.com/python-and-mpi-part-1-7e76a6ec1c6d?sk=cc21262764659c0ef2d3ddc684f54034>
+* Friends Link: <https://laszewski.medium.com/python-and-mpi-part-1-7e76a6ec1c6d?sk=cc21262764659c0ef2d3ddc684f54034>
+
+Please check them out as they may include slight improvements.
 
 ## Document Management in GitHub
-
 
 **Note:** The source document is managest at
 <https://cloudmesh.github.io/cloudmesh-mpi/doc/chapters>
@@ -32,6 +38,16 @@ or
 $ git clone https://github.com/cloudmesh/cloudmesh-mpi.git
 ```
 
+In cas eyou have `make` and docker instaled on your machine, you can create this document locally with
+
+```bash
+$ make image
+$ make
+```
+
+Please not that `make` can also be installed on Windows as documented
+in our appenix, so you can also create this document easily on
+Windows.
 
 ## Document Notation
 
@@ -57,7 +73,7 @@ To keep things uniform, we use the following document notations.
    $ ls 
    ```
    
-5. bibliography is managed via footnotes
+5. The Bibliography is for now managed via markdown footnotes or direct links
 
 
 # Introduction
@@ -240,7 +256,11 @@ These instructions apply to 20.04 and 21.04. Please use 20.04 in case you like t
    (ENV3) $ pip install mpi4py -U
    ```
    
-   Any errors along the lines of `Python.h: No such file or directory` or `Could not build wheels for mpi4py which use PEP 517`
+   Any errors along the lines of
+
+   * `Python.h: No such file or directory` or
+   * `Could not build wheels for mpi4py which use PEP 517`
+
    should be fixed by installing python3-dev in the venv
 
 ## Raspberry Pi
@@ -425,10 +445,10 @@ differences.
 
 ### Initialization
 
-In mpi4py, the standard MPI_INIT() and MPI_FINALIZE() commonly used to
+In mpi4py, the standard `MPI_INIT()` and `MPI_FINALIZE()` commonly used to
 initialize and terminate the MPI environment are automatically handled
 after importing the mpi4py module.  Although not generally advised,
-mpi4py still provides MPI.Init() and MPI.Finalize() for users
+mpi4py still provides `MPI.Init()` and `MPI.Finalize()` for users
 interested in manually controlling these operations. Additionally, the
 automatic initialization and termination can be deactivated. For more
 information on this topic, please check the original mpi4py documentation:
@@ -651,10 +671,10 @@ before broadcasting, data for rank 1 is:  [0 0 0 0 0 0 0 0 0 0]
 before broadcasting, data for rank 2 is:  [0 0 0 0 0 0 0 0 0 0]
 before broadcasting, data for rank 3 is:  [0 0 0 0 0 0 0 0 0 0]
 before broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
-after broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
-after broadcasting, data for rank 2 is:  [0 1 2 3 4 5 6 7 8 9]
-after broadcasting, data for rank 3 is:  [0 1 2 3 4 5 6 7 8 9]
-after broadcasting, data for rank 1 is:  [0 1 2 3 4 5 6 7 8 9]
+after  broadcasting, data for rank 0 is:  [0 1 2 3 4 5 6 7 8 9]
+after  broadcasting, data for rank 2 is:  [0 1 2 3 4 5 6 7 8 9]
+after  broadcasting, data for rank 3 is:  [0 1 2 3 4 5 6 7 8 9]
+after  broadcasting, data for rank 1 is:  [0 1 2 3 4 5 6 7 8 9]
 ```
  
 As we can see, the values in the array at the process with rank 0 have
@@ -1072,11 +1092,10 @@ if the trial number is large enough, it is negligible.
 
 The following program shows the MPI implementation:
 
----
-``` python
+
+```python
 !include ../examples/monte-carlo/parallel_pi.py
 ```
----
 
 To run this program using git bash, change directory to the folder
 containing this program and issue the command:
@@ -1097,11 +1116,11 @@ into machine code for faster runtimes.
 
 The numba version of the Monte Carlo program runs faster, even cutting runtime down by a few minutes:
 
----
-``` python
+
+```python
 !include ../examples/monte-carlo/parallel_pi_numba.py
 ```
----
+
 
 Note how before the definition of functions in this code, there is the @jit(nopython=True) decorator,
 which translates each defined function into faster machine code. To install and use numba, simply
@@ -1134,11 +1153,11 @@ We can run a program which outputs a visualization of a Mandelbrot data set, whi
 image repeats itself upon zooming in). This program runs processes in parallel and also has numba JIT decorators to achieve 
 faster runtimes:
 
----
-``` python
+
+```python
 !include ../examples/mandelbrot/mandelbrot-parallel-numba.py
 ```
----
+
 
 Like other programs, mandelbrot can be executed via `mpiexec -n 4 python mandelbrot-parallel-numba.py`, with the appropriate -n parameter
 according to the user's system.
@@ -1238,7 +1257,7 @@ Assignment:
 
 Let us assume we use the Python program
 
-``` python
+```python
 !include ../examples/parameters/environment-parameter.py
 ```
 
@@ -1294,7 +1313,7 @@ $ sh run.sh | fgrep "csv,processors"
 
 Click is a convenient mechanism to define parameters that can be passed via options to python programs. To showcase its use please inspect the following program
 
-``` python
+```python
 !include ../examples/parameters/click-parameter.py
 ```
 
@@ -1487,10 +1506,9 @@ the number of cores and threads on the host computer.
 
 # Acknowledgements
 
-We like to thank Erin Seliger and Agness Lungua for their effort on
-our very early draft of this paper.
-
-
+We like to thank Cooper Young for his contribution to start the MPI
+futures section.  We like to thank Erin Seliger and Agness Lungua for
+their effort on our very early draft of this paper.
 
 # References
 

@@ -3,6 +3,7 @@ USER_ID=$(shell id -u)
 GROUP_ID=$(shell id -g)
 PWD=$(shell pwd)
 PANDOC=docker run --rm --volume "${PWD}/..:/data" --user ${USER_ID}:${GROUP_ID}
+PANDOC-NATIVE=pandoc
 
 MPI=chapters/report-mpi.md ../docs/report-mpi.pdf 
 GROUP=chapters/management.md chapters/hardware.md ../docs/report-group.pdf
@@ -35,8 +36,29 @@ pdf-mpi: ${MPI} md-mpi
                 --include-in-header listings-setup.tex \
 		-t latex -V geometry:margin=1in --number-sections \
 		--listings \
-		--toc chapters/metadata-mpi.yaml tmp-3.md \
+		--toc \
+		chapters/metadata-mpi.yaml tmp-3.md \
 		-o ../docs/report-mpi.pdf
+
+epub-mpi: ${MPI} md-mpi
+	$(call banner, "CREATE MPI EPUB DOCUMENT")
+	${PANDOC} cloudmesh/pandoc -s \
+		--toc \
+		–-css=chapters/epub.css \
+		--number-sections \
+		chapters/metadata-mpi-epub.yaml tmp-3.md \
+		-o ../docs/report-mpi.epub
+
+epub-mpi-native: 
+	$(call banner, "CREATE MPI EPUB DOCUMENT")
+	${PANDOC-NATIVE} \
+		--verbose \
+		-s \
+		--toc \
+		--number-sections \
+		chapters/metadata-mpi.yaml tmp-3.md \
+		-o ../docs/report-mpi.epub \
+		–-css epub.css 
 
 md-group: ${GROUP}
 	$(call banner, "CREATE GROUP MARKDOWN DOCUMENT")
