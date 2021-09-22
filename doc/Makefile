@@ -19,7 +19,7 @@ endef
 
 .PHONY: clean
 
-all: pdf-mpi pdf-group clean
+all: pdf-mpi epub-mpi tex-mpi pdf-group clean
 
 md-mpi: ${MPI}
 	$(call banner, "CREATE MPI MARKDOWN DOCUMENT")
@@ -40,25 +40,29 @@ pdf-mpi: ${MPI} md-mpi
 		chapters/metadata-mpi.yaml tmp-3.md \
 		-o ../docs/report-mpi.pdf
 
-epub-mpi: ${MPI} md-mpi
+tex-mpi: ${MPI} md-mpi
 	$(call banner, "CREATE MPI EPUB DOCUMENT")
 	${PANDOC} cloudmesh/pandoc -s \
 		--toc \
-		–-css=chapters/epub.css \
 		--number-sections \
 		chapters/metadata-mpi-epub.yaml tmp-3.md \
-		-o ../docs/report-mpi.epub
+		-o ../docs/report-mpi.tex
 
-epub-mpi-native: 
+cover:
+	bookmanager format/mpi.yaml cover
+
+
+epub-mpi: cover
 	$(call banner, "CREATE MPI EPUB DOCUMENT")
-	${PANDOC-NATIVE} \
-		--verbose \
-		-s \
+	${PANDOC} \
+		cloudmesh/pandoc -s \
 		--toc \
 		--number-sections \
 		chapters/metadata-mpi.yaml tmp-3.md \
 		-o ../docs/report-mpi.epub \
-		–-css epub.css 
+		--css format/epub.css \
+		--epub-cover-image=dest/book/cover.png
+	rm -rf dest
 
 md-group: ${GROUP}
 	$(call banner, "CREATE GROUP MARKDOWN DOCUMENT")
@@ -99,4 +103,15 @@ pdf-native: md-native
                 --listings \
 		--toc chapters/metadata-mpi.yaml \
 		../docs/report-mpi.md -o report-mpi.pdf
+
+epub-native: 
+	$(call banner, "CREATE MPI EPUB DOCUMENT")
+	${PANDOC-NATIVE} \
+		--verbose \
+		-s \
+		--toc \
+		--number-sections \
+		chapters/metadata-mpi.yaml tmp-3.md \
+		-o ../docs/report-mpi.epub \
+		--css format/epub.css 
 
