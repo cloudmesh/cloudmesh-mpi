@@ -1,0 +1,17 @@
+---
+title: MPI with Python
+author: Gregor von Laszewski <laszewski@gmail.com>, Fidel Leal, Jacques Fleischer
+abstract: |
+	  Today python has become the predominantly programming language to
+	  coordinate scientific applications especially machine and deep
+	  learning applications. However, previously existing parallel
+	  programming paradigms such as **Message Passing Interface (MPI)** have
+	  proven to be a useful asset when it comes to enhancing complex data
+	  flows while executing them on multiple computers including
+	  supercomputers. The framework is well known in the C-language
+	  community.  However many practitioners do not have the time to learn C
+	  to utilize such advanced cyberinfrastructure. Hence, it is
+	  advantageous to access MPI from Python. We showcase how you can easily
+	  deploy and use MPI from Python via a tool called `mpi4pi`.  
+	  For more information, please contact: <laszewski@gmail.com>
+---

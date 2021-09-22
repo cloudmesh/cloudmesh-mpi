@@ -260,7 +260,7 @@ you like to use GPUs.
 
     ``` bash
     $ sudo apt-get update
-    $ sudo apt install python3.9 python3.9-dev python3-dev python3.8-venv 
+    $ sudo apt install python3.9 python3.9-dev python3-dev python3.9-venv 
     $ python3 -m venv ~/ENV3
     $ source ENV3/bin/activate
     (ENV3) $ sudo apt-get install -y mpich-doc mpich 
@@ -1964,11 +1964,11 @@ from cloudmesh.common.StopWatch import StopWatch
 
 @jit(nopython=True)
 def mandelbrot(x, y, maxit):
-    c = x + y*1j
+    c = x + y * 1j
     z = 0 + 0j
     it = 0
     while abs(z) < 2 and it < maxit:
-        z = z**2 + c
+        z = z ** 2 + c
         it += 1
     return it
 
@@ -1987,16 +1987,15 @@ if rank == 0:
 N = h // size + (h % size > rank)
 
 # first row to compute here
-start = comm.scan(N)-N
+start = comm.scan(N) - N
 
 # array to store local result
 Cl = numpy.zeros([N, w], dtype='i')
 
-
 dx = (x2 - x1) / w
 dy = (y2 - y1) / h
 for i in range(N):
-    y = y1 + (i+ start) * dy
+    y = y1 + (i + start) * dy
     for j in range(w):
         x = x1 + j * dx
         Cl[i, j] = mandelbrot(x, y, maxit)
@@ -2020,19 +2019,20 @@ rowtype.Free()
 if rank == 0:
     StopWatch.stop(f'parallel {size}')
 
-    pyplot.imshow(C, aspect='equal')
-    pyplot.show()
+    pyplot.imsave('mandelbrot.png', C)
+    pyplot.imsave('mandelbrot.pdf', C)
+
     StopWatch.benchmark()
+    # pyplot.imshow(C, aspect='equal')
+    # pyplot.show()
 ```
 
 Like other programs, mandelbrot can be executed via
 `mpiexec -n 4 python mandelbrot-parallel-numba.py`, with the appropriate
 -n parameter according to the user's system.
 
-Unlike the Julia program, this Mandelbrot program does not save the
-visualization as a png image; instead, it spawns a pyplot window. At
-rank 0, the program starts and ends a benchmark for analysis of which -n
-parameter will give the shortest runtime.
+At rank 0, the program starts and ends a benchmark for analysis of which
+-n parameter will give the shortest runtime.
 
   ---------------------------------------------------------------------
           mandelbrot-parallel.py       mandelbrot-parallel-numba.py
@@ -2053,6 +2053,10 @@ parameter will give the shortest runtime.
 
 -   These benchmark times were generated using a Ryzen 5 3600 CPU with
     16 GB RAM on a Windows 10 computer.
+
+This program will save an image and pdf called mandelbrot:
+
+![mandelbrot](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/mandelbrot.png){width="40%"}
 
 ### Assignments
 
