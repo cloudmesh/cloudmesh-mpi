@@ -8,15 +8,15 @@ The documentation is located at
 This includes
 
 MPI 
-* <https://raw.githubusercontent.com/cloudmesh/cloudmesh-mpi/main/docs/report-mpi.pdf>
-* <https://raw.githubusercontent.com/cloudmesh/cloudmesh-mpi/main/docs/report-mpi.epub>
+* <https://cloudmesh.github.io/cloudmesh-mpi//report-mpi.pdf>
+* <https://cloudmesh.github.io/cloudmesh-mpi//report-mpi.epub>
 
 Communication for a team
 
-* <https://raw.githubusercontent.com/cloudmesh/cloudmesh-mpi/main/docs/report-group.pdf>
+* <hhttps://cloudmesh.github.io/cloudmesh-mpi//report-group.pdf>
 
 Epub for the group is not avaliable yet:
 
-* <https://raw.githubusercontent.com/cloudmesh/cloudmesh-mpi/main/docs/report-group.epub>
+* <hhttps://cloudmesh.github.io/cloudmesh-mpi//report-group.epub>
 
 The material is copyrighted by Gregor von Laszewski but can be distributed freely as PDF document.
