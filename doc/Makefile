@@ -19,7 +19,7 @@ endef
 
 .PHONY: clean
 
-all: pdf-mpi epub-mpi tex-mpi pdf-group clean
+all: pdf-mpi epub-mpi pdf-group clean
 
 md-mpi: ${MPI}
 	$(call banner, "CREATE MPI MARKDOWN DOCUMENT")
@@ -41,7 +41,7 @@ pdf-mpi-simple: ${MPI} md-mpi
 		-o ../docs/report-mpi.pdf
 
 pdf-mpi: md-mpi
-	pandoc title-latex.md tmp-3.md -o ../docs/report-mpi.pdf --from markdown --template ./format/eisvogel/eisvogel --listings --number-sections
+	pandoc title-latex.md tmp-3.md -o ../docs/report-mpi.pdf --from markdown --template ./format/eisvogel/eisvogel --listings --number-sections --bibliography references.bib 
 
 broken-pdf-mpi: ${MPI} md-mpi
 	$(call banner, "CREATE MPI PDF DOCUMENT")

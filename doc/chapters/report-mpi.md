@@ -1,11 +1,17 @@
 # Preface
 
-This project has been initiated by Gregor von Laszewski as a voluntary
-summer research project available for university students. Besides the
-coauthors students that contributed to very early yversions of this
-document, are listed in the acknowledgement section.
+Gregor von Laszewski has initiated this project as a voluntary
+summer research project available for university students.
 
-This document is isn part published at:
+## Acknowledgement
+
+Besides the
+coauthors, students who contributed to this document's very early version are
+Cooper Young, Erin Seliger, and Agness Lungua.
+
+## Online Availability
+
+This document is in part published at:
 
 * Medium <https://laszewski.medium.com/python-and-mpi-part-1-7e76a6ec1c6d>
 * Friends Link: <https://laszewski.medium.com/python-and-mpi-part-1-7e76a6ec1c6d?sk=cc21262764659c0ef2d3ddc684f54034>
@@ -78,7 +84,7 @@ To keep things uniform, we use the following document notations.
 
 # Introduction
 
-(Same as abstract): Today Python has become the predominantly
+(Same as abstract): Today Python [@las-2020-book-python] has become the predominantly
 programming language to coordinate scientific applications, especially
 machine and deep learning applications. However, previously existing
 parallel programming paradigms such as **Message Passing Interface
@@ -297,7 +303,6 @@ You will see an output similar to
 where `myhost` is the name of your computer.
 
 ***Note:** the messages can be in a different order*.
-
 
 # Hosts, Machinefile, Rankfile
 
@@ -1506,12 +1511,6 @@ the number of cores and threads on the host computer.
 8. Test out the machinefile, host, and rankfile section. Improve if needed.
 
 
-
-# Acknowledgements
-
-We like to thank Cooper Young for his contribution to start the MPI
-futures section.  We like to thank Erin Seliger and Agness Lungua for
-their effort on our very early draft of this paper.
 
 # References
 

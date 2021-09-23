@@ -1,11 +1,16 @@
 # Preface
 
-This project has been initiated by Gregor von Laszewski as a voluntary
-summer research project available for university students. Besides the
-coauthors students that contributed to very early yversions of this
-document, are listed in the acknowledgement section.
+Gregor von Laszewski has initiated this project as a voluntary summer
+research project available for university students.
 
-This document is isn part published at:
+## Acknowledgement
+
+Besides the coauthors, students who contributed to this document's very
+early version are Cooper Young, Erin Seliger, and Agness Lungua.
+
+## Online Availability
+
+This document is in part published at:
 
 -   Medium
     <https://laszewski.medium.com/python-and-mpi-part-1-7e76a6ec1c6d>
@@ -74,17 +79,17 @@ To keep things uniform, we use the following document notations.
 
 # Introduction
 
-(Same as abstract): Today Python has become the predominantly
-programming language to coordinate scientific applications, especially
-machine and deep learning applications. However, previously existing
-parallel programming paradigms such as **Message Passing Interface
-(MPI)** have proven to be a useful asset when it comes to enhancing
-complex data flows while executing them on multiple computers ,
-including supercomputers. The framework is well known in the C-language
-community. However, many practitioners do not have the time to learn C
-to utilize such advanced cyberinfrastructure. Hence, it is advantageous
-to access MPI from Python. We showcase how you can easily deploy and use
-MPI from Python via a tool called `mpi4pi`.
+(Same as abstract): Today Python [@las-2020-book-python] has become the
+predominantly programming language to coordinate scientific
+applications, especially machine and deep learning applications.
+However, previously existing parallel programming paradigms such as
+**Message Passing Interface (MPI)** have proven to be a useful asset
+when it comes to enhancing complex data flows while executing them on
+multiple computers , including supercomputers. The framework is well
+known in the C-language community. However, many practitioners do not
+have the time to learn C to utilize such advanced cyberinfrastructure.
+Hence, it is advantageous to access MPI from Python. We showcase how you
+can easily deploy and use MPI from Python via a tool called `mpi4pi`.
 
 Message Passing Interface (MPI) is a message-passing standard that
 allows for efficient data communication between the address spaces of
@@ -2815,12 +2820,6 @@ that tutorial where needed instead.
 
 8.  Test out the machinefile, host, and rankfile section. Improve if
     needed.
-
-# Acknowledgements
-
-We like to thank Cooper Young for his contribution to start the MPI
-futures section. We like to thank Erin Seliger and Agness Lungua for
-their effort on our very early draft of this paper.
 
 # References
 
