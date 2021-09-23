@@ -30,7 +30,7 @@ md-mpi: ${MPI}
 		--number-sections tmp-3.md \
 		-o ../docs/report-mpi.md
 
-pdf-mpi: ${MPI} md-mpi
+pdf-mpi-simple: ${MPI} md-mpi
 	$(call banner, "CREATE MPI PDF DOCUMENT")
 	${PANDOC} cloudmesh/pandoc -s \
                 --include-in-header listings-setup.tex \
@@ -40,13 +40,18 @@ pdf-mpi: ${MPI} md-mpi
 		chapters/metadata-mpi.yaml tmp-3.md \
 		-o ../docs/report-mpi.pdf
 
-tex-mpi: ${MPI} md-mpi
-	$(call banner, "CREATE MPI EPUB DOCUMENT")
+pdf-mpi: md-mpi
+	pandoc title-latex.md tmp-3.md -o ../docs/report-mpi.pdf --from markdown --template ./format/eisvogel/eisvogel --listings --number-sections
+
+broken-pdf-mpi: ${MPI} md-mpi
+	$(call banner, "CREATE MPI PDF DOCUMENT")
 	${PANDOC} cloudmesh/pandoc -s \
-		--toc \
-		--number-sections \
-		chapters/metadata-mpi-epub.yaml tmp-3.md \
-		-o ../docs/report-mpi.tex
+		title-latex.md tmp-3.md \
+		-o ../docs/report-mpi.pdf \
+		--from markdown \
+		--template ./format/eisvogel/eisvogel \
+		--listings \
+		--number-sections
 
 cover:
 	bookmanager format/mpi.yaml cover
