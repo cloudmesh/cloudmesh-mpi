@@ -65,7 +65,7 @@ To keep things uniform, we use the following document notations.
 2. All code is written in code blocks using and three backquotes. A rendered example looks as follows:
 
    ```
-   this is an example
+   a = "this is an example"
    ```
 
 3. Single quote inclusion must be used for filenames and other names
@@ -1142,7 +1142,7 @@ runtime down by a few minutes:
 
 
 Note how before the definition of functions in this code, there is the
-@jit(nopython=True) decorator, which translates each defined function
+`@jit(nopython=True)` decorator, which translates each defined function
 into faster machine code. To install and use numba, simply issue the
 command `pip install numba` within a terminal. Here is the command to
 execute the numba version of the Monte Carlo program:

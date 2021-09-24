@@ -41,7 +41,7 @@ pdf-mpi-simple: ${MPI} md-mpi
 		-o ../docs/report-mpi.pdf
 
 pdf-mpi: md-mpi
-	pandoc --bibliography references.bib  --template ./format/eisvogel/eisvogel --listings --number-sections  title-latex.md tmp-3.md -o ../docs/report-mpi.pdf --from markdown 
+	pandoc title-latex.md tmp-3.md -o ../docs/report-mpi.pdf --template ./format/eisvogel/eisvogel --listings --number-sections --csl=format/ieee-with-url.csl --citeproc --bibliography references.bib  
 
 broken-pdf-mpi: ${MPI} md-mpi
 	$(call banner, "CREATE MPI PDF DOCUMENT")
