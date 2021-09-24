@@ -9,7 +9,8 @@ from cloudmesh.common.util import banner
 
 comm = MPI.COMM_WORLD
 size = comm.Get_size()
-name = comm.Get_processor_name()
+#name = comm.Get_processor_name()
+name = mpi4py.MPI.Get_processor_name()
 
 banner(f"MPI Spawn example {name} {size}")
 
@@ -19,18 +20,19 @@ icomm = MPI.COMM_SELF.Spawn(
     maxprocs=size)
 
 rank = icomm.Get_rank()
-print(f"rank of {name}: {rank} of {size}")
+icomm.Bcast([size, MPI.INT])
+print(f"manager: rank of {name}: {rank} of {size}")
 
 N = numpy.array(100, 'i')
 icomm.Bcast([N, MPI.INT], root=MPI.ROOT)
 #print(f"ROOT: {MPI.ROOT}")
-print('c')
+print('manager: c')
 PI = numpy.array(0.0, 'd')
 
-print('d')
+print('manager: d')
 icomm.Reduce(None, [PI, MPI.DOUBLE],
             op=MPI.SUM, root=MPI.ROOT)
-print(PI)
+print("manager:",PI)
 
 time.sleep(30)
 icomm.Disconnect()
