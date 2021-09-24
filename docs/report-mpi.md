@@ -79,17 +79,17 @@ To keep things uniform, we use the following document notations.
 
 # Introduction
 
-(Same as abstract): Today Python [@las-2020-book-python] has become the
-predominantly programming language to coordinate scientific
-applications, especially machine and deep learning applications.
-However, previously existing parallel programming paradigms such as
-**Message Passing Interface (MPI)** have proven to be a useful asset
-when it comes to enhancing complex data flows while executing them on
-multiple computers , including supercomputers. The framework is well
-known in the C-language community. However, many practitioners do not
-have the time to learn C to utilize such advanced cyberinfrastructure.
-Hence, it is advantageous to access MPI from Python. We showcase how you
-can easily deploy and use MPI from Python via a tool called `mpi4pi`.
+Today Python [@las-2020-book-python] has become the predominantly
+programming language to coordinate scientific applications, especially
+machine and deep learning applications. However, previously existing
+parallel programming paradigms such as **Message Passing Interface
+(MPI)** have proven to be a useful asset when it comes to enhancing
+complex data flows while executing them on multiple computers ,
+including supercomputers. The framework is well known in the C-language
+community. However, many practitioners do not have the time to learn C
+to utilize such advanced cyberinfrastructure. Hence, it is advantageous
+to access MPI from Python. We showcase how you can easily deploy and use
+MPI from Python via a tool called `mpi4pi`.
 
 Message Passing Interface (MPI) is a message-passing standard that
 allows for efficient data communication between the address spaces of
@@ -100,8 +100,9 @@ undergone several revisions and updates leading to its current version:
 MPI 4.0 (June 2021).
 
 Multiple implementations following the standard exist, including the two
-most popular MPICH [^1] and OpenMPI [^2]. However, other free or
-commercial implementations exist [^3].
+most popular MPICH [@www-mpich] and OpenMPI [@www-openmpi]. However,
+other free or commercial implementations exist
+[@www-intelmpi][@www-msmpi][@www-nvidiampi].
 
 Additionally, MPI is a language-independent interface. Although support
 for C and Fortran is included as part of the standard, multiple
@@ -1174,7 +1175,8 @@ from cloudmesh.common.util import banner
 
 comm = MPI.COMM_WORLD
 size = comm.Get_size()
-name = comm.Get_processor_name()
+#name = comm.Get_processor_name()
+name = mpi4py.MPI.Get_processor_name()
 
 banner(f"MPI Spawn example {name} {size}")
 
@@ -1184,18 +1186,19 @@ icomm = MPI.COMM_SELF.Spawn(
     maxprocs=size)
 
 rank = icomm.Get_rank()
-print(f"rank of {name}: {rank} of {size}")
+icomm.Bcast([size, MPI.INT])
+print(f"manager: rank of {name}: {rank} of {size}")
 
 N = numpy.array(100, 'i')
 icomm.Bcast([N, MPI.INT], root=MPI.ROOT)
 #print(f"ROOT: {MPI.ROOT}")
-print('c')
+print('manager: c')
 PI = numpy.array(0.0, 'd')
 
-print('d')
+print('manager: d')
 icomm.Reduce(None, [PI, MPI.DOUBLE],
             op=MPI.SUM, root=MPI.ROOT)
-print(PI)
+print("manager:",PI)
 
 time.sleep(30)
 icomm.Disconnect()
@@ -1208,12 +1211,15 @@ import numpy
 import time
 import sys
 
+size = -1
+comm = MPI.COMM_WORLD
+size = comm.Bcast([size, MPI.INT])
+rank = comm.Get_rank()
 
-icomm = MPI.COMM_WORLD
 
 N = numpy.array(0, dtype='i')
 comm.Bcast([N, MPI.INT], root=0)
-print(f"N: {N} rank: {rank}")
+print(f"worker: N: {N} rank: {rank}")
 
 h = 1.0 / N
 s = 0.0
@@ -1221,13 +1227,13 @@ for i in range(rank, N, size):
     x = h * (i + 0.5)
     s += 4.0 / (1.0 + x**2)
 PI = numpy.array(s * h, dtype='d')
-icomm.Reduce([PI, MPI.DOUBLE], None,
+comm.Reduce([PI, MPI.DOUBLE], None,
             op=MPI.SUM, root=0)
 
 time.sleep(30)
 
 #time.sleep(60)
-icomm.Disconnect()
+comm.Disconnect()
 
 #MPI.Finalize()
 #sys.exit()
@@ -1601,9 +1607,9 @@ calculate pi:
 
 ![montecarlographic](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/monte-carlo-visualization.png){width="50%"}
 
-The following montecarlo.py program generates an estimation of pi using
-the methodology and equation shown above. Increasing the total number of
-iterations will increase the accuracy.
+The following `montecarlo.py` program generates an estimation of pi
+using the methodology and equation shown above. Increasing the total
+number of iterations will increase the accuracy.
 
 ``` python
 import random as r
@@ -2237,7 +2243,7 @@ open the .py file
 $ python click-parameter.py --n=3
 ```
 
-## Resources
+## Links to Other Documents
 
 Here are a couple of links that may be useful. We have not yet looked
 over them but include them.
@@ -2397,12 +2403,14 @@ files and applications are saved:
 
 Windows will say that it is working on updates (enabling the features).
 Once logging back in, download this msi file, open it and complete the
-installation to update WSL: \*
-<https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi>
+installation to update WSL:
+
+-   <https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi>
 
 Once the installation is complete, download and install the Ubuntu 20.04
-LTS image from the Microsoft store: \*
-<https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab>
+LTS image from the Microsoft store:
+
+-   <https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab>
 
 and click Launch.
 
@@ -2777,54 +2785,50 @@ any other spreadsheet-like tools you like to use for the analysis.
     installation of NumPy. This is not to have a tutorial about numpy,
     but how to use numpy within mpi4py. Subtasks include
 
-4.  Download Numpy with `pip install numpy` in a terminal
+    1.  Download Numpy with `pip install numpy` in a terminal
 
-5.  `import numpy as np` to use NumPy in the program
+    2.  `import numpy as np` to use NumPy in the program
 
-6.  Explain the advantages of NumPy over pickled lists
+    3.  Explain the advantages of NumPy over pickled lists
 
-    -   Numpy stores memory contiguously
-    -   Uses a smaller number of bytes
-    -   Can multiply arrays by index
-    -   It is faster
-    -   Can store different data types, including images
-    -   Contains random number generators
+        -   Numpy stores memory contiguously
+        -   Uses a smaller number of bytes
+        -   Can multiply arrays by index
+        -   It is faster
+        -   Can store different data types, including images
+        -   Contains random number generators
 
-7.  Add a specific, very small tutorial on using some basic numpy
-    features as they may be useful for MPI application development. This
-    may include the following and be added to the appendix
+    4.  Add a specific, very small tutorial on using some basic numpy
+        features as they may be useful for MPI application development.
+        This may include the following and be added to the appendix
 
-    1.  To define an array type: `np.nameofarray([1,2,3])`
-    2.  To get the dimension of the array: `nameofarray.ndim`
-    3.  To get the shape of the array (the number of rows and columns):
-        `nameofarray.shape`
-    4.  To get the type of the array: `nameofarray.dtype`
-    5.  To get the number of bytes: `nameofarray.itemsize`
-    6.  To get the number of elements in the array: `nameofarray.size`
-    7.  To get the total size: `nameofarray.size * nameofarray.itemsize`
+        1.  To define an array type: `np.nameofarray([1,2,3])`
+        2.  To get the dimension of the array: `nameofarray.ndim`
+        3.  To get the shape of the array (the number of rows and
+            columns): `nameofarray.shape`
+        4.  To get the type of the array: `nameofarray.dtype`
+        5.  To get the number of bytes: `nameofarray.itemsize`
+        6.  To get the number of elements in the array:
+            `nameofarray.size`
+        7.  To get the total size:
+            `nameofarray.size * nameofarray.itemsize`
 
-Please, note that we have a very comprehensive tutorial on NumPy and
-there is no point to repeat that, we may just point to it and improve
-that tutorial where needed instead.
+    Please, note that we have a very comprehensive tutorial on NumPy and
+    there is no point to repeat that, we may just point to it and
+    improve that tutorial where needed instead.
 
-5.  Convert the parallel rank program from
+4.  Convert the parallel rank program from
     <https://mpitutorial.com/tutorials/performing-parallel-rank-with-mpi/>
     to mpi4py. Write a tutorial for it.
 
-6.  Develop tutorials that showcase multiple communicators and groups.
+5.  Develop tutorials that showcase multiple communicators and groups.
     See
     <https://mpitutorial.com/tutorials/introduction-to-groups-and-communicators/>
 
-7.  Complete the count example while adding a broadcast to it to
+6.  Complete the count example while adding a broadcast to it to
     communicate the parameters. Provide a modified tutorial.
 
-8.  Test out the machinefile, host, and rankfile section. Improve if
+7.  Test out the machinefile, host, and rankfile section. Improve if
     needed.
 
 # References
-
-[^1]: Reference missing
-
-[^2]: Reference missing
-
-[^3]: References missing

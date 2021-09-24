@@ -84,7 +84,7 @@ To keep things uniform, we use the following document notations.
 
 # Introduction
 
-(Same as abstract): Today Python [@las-2020-book-python] has become the predominantly
+Today Python [@las-2020-book-python] has become the predominantly
 programming language to coordinate scientific applications, especially
 machine and deep learning applications. However, previously existing
 parallel programming paradigms such as **Message Passing Interface
@@ -104,8 +104,10 @@ users. Since the first draft of the specification in November 1993,
 the standard has undergone several revisions and updates leading to
 its current version: MPI 4.0 (June 2021).
 
-Multiple implementations following the standard exist, including the two most popular MPICH [^MPICH] and OpenMPI [^OPENMPI].  However, other free or
-commercial implementations exist [^MISSINGMPI].
+Multiple implementations following the standard exist, including the
+two most popular MPICH [@www-mpich] and OpenMPI [@www-openmpi].
+However, other free or commercial implementations exist
+[@www-intelmpi][@www-msmpi][@www-nvidiampi].
 
 Additionally, MPI is a language-independent interface. Although support for C and Fortran is
 included as part of the standard, multiple libraries providing bindings for other languages
@@ -424,7 +426,6 @@ example specific computers for data storage or GPUs.
 If you like to add multiple cores from a machine, you can also use a
 `rankfile`
 
-
 ```
 mpirun -r my_rankfile --report-bindings ... 
 
@@ -492,8 +493,6 @@ rank = comm.Get_rank()
 
 returns the rank. This is useful to be able to write conditional
 programs that depend on the rank. Rank `0` is the rank of the manager process.
-
-
 
 ### Point-to-Point Communication
 
@@ -754,7 +753,9 @@ based on their rank value.
 
 ### Gather
 
-The gather function is the inverse function to scatter. Data from each process is gathered in consecutive order based on the rank of the processor.
+The gather function is the inverse function to scatter. Data from each
+process is gathered in consecutive order based on the rank of the
+processor.
 
 #### Gather Python Objects
 
@@ -818,14 +819,18 @@ the group have been gathered in the 2-D array in process with rank 0.
 
 ### Allgather Memory Objects
 
-This method is a many-to-many communication operation, where data from all processors is gathered in a continuous memory object on each of the processors. This is functionally equivalent to
+This method is a many-to-many communication operation, where data from
+all processors is gathered in a continuous memory object on each of
+the processors. This is functionally equivalent to
 
 1. A gather on rank 0
 2. A Scatter from rank 0
 
-However, this operation naturally has a performance bottleneck while all communication goes through rank0.
-Instead, we can use parallel communication between all of the processes at once to improve the performance.
-The optimization is implicit, and the user does not need to worry about it.
+However, this operation naturally has a performance bottleneck while
+all communication goes through rank0.  Instead, we can use parallel
+communication between all of the processes at once to improve the
+performance.  The optimization is implicit, and the user does not need
+to worry about it.
 
 We demonstrate its use in the following example. Each process in the
 communicator group computes and stores values in a NumPy array
@@ -920,7 +925,8 @@ d
 3.1416009869231254
 ```
 
-This output depends on which child process is received first. The output can vary.
+This output depends on which child process is received first. The
+output can vary.
 
 >`WARNING:` When running this program it may not terminate. To
 >terminate use for now `CTRL-C`.
@@ -928,9 +934,10 @@ This output depends on which child process is received first. The output can var
 
 ### Futures
 
-Futures is an mpi4py module that runs processes in parallel for intercommunication between
-such processes. The following Python program creates a visualization of a Julia set by
-utilizing the Futures modules, specifically via MPIPoolExecutor.
+Futures is an mpi4py module that runs processes in parallel for
+intercommunication between such processes. The following Python
+program creates a visualization of a Julia set by utilizing the
+Futures modules, specifically via MPIPoolExecutor.
 
 ``` python
 !include ../examples/futures/julia-futures.py
@@ -942,19 +949,23 @@ To run the program, issue this command in Git Bash:
 mpiexec -n 1 python julia-futures.py
 ```
 
-The number after `-n` can be changed to however many cores are in the computer's processor.
-For example, a dual-core processor can use `-n 2` so that more worker processes work to
-execute the same program.
+The number after `-n` can be changed to however many cores are in the
+computer's processor.  For example, a dual-core processor can use `-n
+2` so that more worker processes work to execute the same program.
 
-The program will output a png image of a Julia set upon successful execution.
+The program will output a png image of a Julia set upon successful
+execution.
 
-Furthermore, the user enters a number upon starting execution of the program, when a prompt appears, 
-asking for a value. Entering the number `3` will produce a 1920x1440 photo because the inputted value
-serves as a multiplier of the resolution of the Julia set picture. 640x480 times 3 is 1920x1440.
-Then, after input, the program should output a visualization of a Julia data set as a png image.
+Furthermore, the user enters a number upon starting execution of the
+program, when a prompt appears, asking for a value. Entering the
+number `3` will produce a 1920x1440 photo because the inputted value
+serves as a multiplier of the resolution of the Julia set
+picture. 640x480 times 3 is 1920x1440.  Then, after input, the program
+should output a visualization of a Julia data set as a png image.
 
-However, we created the numba version of this program in an attempt to achieve faster runtimes. For
-an explanation of numba, please see the Monte Carlo section of this document.
+However, we created the numba version of this program in an attempt to
+achieve faster runtimes. For an explanation of numba, please see the
+Monte Carlo section of this document.
 
 ``` python
 !include ../examples/futures/julia-numba.py
@@ -1082,8 +1093,9 @@ The following is a visualization of the program's methodology to calculate pi:
 
 ![montecarlographic](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/monte-carlo-visualization.png){ width=50% }
 
-The following montecarlo.py program generates an estimation of pi using the methodology and
-equation shown above. Increasing the total number of iterations will increase the accuracy.
+The following `montecarlo.py` program generates an estimation of pi
+using the methodology and equation shown above. Increasing the total
+number of iterations will increase the accuracy.
 
 ``` python
 !include ../examples/monte-carlo/montecarlo.py
@@ -1109,17 +1121,19 @@ containing this program and issue the command:
 $ mpiexec -n 4 python parallel_pi.py
 ```
 
-The number after `-n` can be changed to however many cores one has on their processor.
+The number after `-n` can be changed to however many cores one has on
+their processor.
 
-However, running this program takes upwards of 4 minutes to complete with 6 cores. We can
-use numba to speed up the program execution time.
+However, running this program takes upwards of 4 minutes to complete
+with 6 cores. We can use numba to speed up the program execution time.
 
 ### Numba
 
-Numba, an open-source JIT (just in time) compiler, is a Python module that translates Python code
-into machine code for faster runtimes.
+Numba, an open-source JIT (just in time) compiler, is a Python module
+that translates Python code into machine code for faster runtimes.
 
-The numba version of the Monte Carlo program runs faster, even cutting runtime down by a few minutes:
+The numba version of the Monte Carlo program runs faster, even cutting
+runtime down by a few minutes:
 
 
 ```python
@@ -1127,10 +1141,11 @@ The numba version of the Monte Carlo program runs faster, even cutting runtime d
 ```
 
 
-Note how before the definition of functions in this code, there is the @jit(nopython=True) decorator,
-which translates each defined function into faster machine code. To install and use numba, simply
-issue the command `pip install numba` within a terminal. Here is the command to execute the numba
-version of the Monte Carlo program:
+Note how before the definition of functions in this code, there is the
+@jit(nopython=True) decorator, which translates each defined function
+into faster machine code. To install and use numba, simply issue the
+command `pip install numba` within a terminal. Here is the command to
+execute the numba version of the Monte Carlo program:
 
 ```bash
 $ mpiexec -n 4 python parallel_pi_numba.py
@@ -1147,16 +1162,19 @@ $ mpiexec -n 4 python parallel_pi_numba.py
 
 * These benchmark times were generated using a Ryzen 5 3600 CPU with 16 GB RAM on a Windows 10 computer.
 
-Note: Please be advised that we use Cloudmesh.StopWatch which is a 
-convenient program to measure time and display the details for the computer. 
-However, it is not threadsafe and, at this time, only measures times in the second range. 
-If your calculations for other programs are faster or the trial number is too slow, you can use other benchmarking methods.
+Note: Please be advised that we use Cloudmesh.StopWatch which is a
+convenient program to measure time and display the details for the
+computer.  However, it is not threadsafe and, at this time, only
+measures times in the second range.  If your calculations for other
+programs are faster or the trial number is too slow, you can use other
+benchmarking methods.
 
 ## Mandelbrot
 
-We can run a program which outputs a visualization of a Mandelbrot data set, which, like the Julia set, is a fractal (the
-image repeats itself upon zooming in). This program runs processes in parallel and also has numba JIT decorators to achieve 
-faster runtimes:
+We can run a program which outputs a visualization of a Mandelbrot
+data set, which, like the Julia set, is a fractal (the image repeats
+itself upon zooming in). This program runs processes in parallel and
+also has numba JIT decorators to achieve faster runtimes:
 
 
 ```python
@@ -1194,8 +1212,11 @@ This program will save an image and pdf called mandelbrot:
 
 ## Other MPI Example Programs
 
-You will find lots of example programs on the internet when you search for it.
-Please let us know about such examples and we will add the here. You can also contribute to our repository and add example programs that we then include in this document. In return you will become a co-author or get acknowledged.
+You will find lots of example programs on the internet when you search
+for it.  Please let us know about such examples and we will add the
+here. You can also contribute to our repository and add example
+programs that we then include in this document. In return you will
+become a co-author or get acknowledged.
 
 * A program to calculate Pi is provided at
 
@@ -1226,7 +1247,8 @@ To demonstrate its use, we have written a
 `count.py` program that uses `os.environ` 
 to optionally pass parameters to an MPI program.
 
-This example is included in a previous section named `Counting Numbers` and we like you to look it over.
+This example is included in a previous section named `Counting
+Numbers` and we like you to look it over.
 
 If the user changed the value of N, MAX, or FIND in the
 terminal using, for example, `export FIND="5"` (shown below)
@@ -1260,7 +1282,8 @@ Total number of 8's: 2
 
 Assignment:
 
-1. One thing we did not do is use the broadcast method to properly communicate the 3 environment variables. We like you to improve the
+1. One thing we did not do is use the broadcast method to properly
+   communicate the 3 environment variables. We like you to improve the
    code and submit to us.
 
 Let us assume we use the Python program
@@ -1285,8 +1308,9 @@ or while passing the parameter in the same line as a command such as demonstrate
 $ N=1; python environment-parameter.py
 ```
 
-This can be generalized while using a file with many different parameters and commands. For example, placing this in a file called `run.sh`
-with these contents:
+This can be generalized while using a file with many different
+parameters and commands. For example, placing this in a file called
+`run.sh` with these contents:
 
 ```python
 $ N=1; python environment-parameter.py
@@ -1299,7 +1323,9 @@ It allows us to execute the programs sequentially in the file with
 $ sh run.sh
 ```
 
-In our case, we are also using cloudmesh.StopWatch to allow us easily to fgrep for the results we may be interested in to conduct benchmarks. Here is an example workflow to achieve this
+In our case, we are also using cloudmesh.StopWatch to allow us easily
+to fgrep for the results we may be interested in to conduct
+benchmarks. Here is an example workflow to achieve this
 
 ```
 # This command creates an environment variable called N
@@ -1319,7 +1345,9 @@ $ sh run.sh | fgrep "csv,processors"
 
 ### Using click to pass parameters
 
-Click is a convenient mechanism to define parameters that can be passed via options to python programs. To showcase its use please inspect the following program
+Click is a convenient mechanism to define parameters that can be
+passed via options to python programs. To showcase its use please
+inspect the following program
 
 ```python
 !include ../examples/parameters/click-parameter.py
@@ -1332,7 +1360,7 @@ $ python click-parameter.py --n=3
 ```
 
 
-## Resources
+## Links to Other Documents
 
 Here are a couple of links that may be useful. We have not yet looked over them but include them.
 
@@ -1345,7 +1373,8 @@ Here are a couple of links that may be useful. We have not yet looked over them 
 
 ### Assignment
 
-1. Review the resources and provide a short summary that we add to this document above the appropriate link
+1. Review the resources and provide a short summary that we add to
+this document above the appropriate link
 
 
 # Appendix
@@ -1437,15 +1466,18 @@ ps$ wsl --set-default-version 2
 ```
 
 The next command will restart your computer so make sure that all your files and applications are saved:
+
 ```
 ps$ Restart-Computer
 ```
 
 Windows will say that it is working on updates (enabling the features).
 Once logging back in, download this msi file, open it and complete the installation to update WSL:
+
 * <https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi>
 
 Once the installation is complete, download and install the Ubuntu 20.04 LTS image from the Microsoft store:
+
 * <https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab>
 
 and click Launch.
@@ -1455,6 +1487,7 @@ Run Ubuntu and create a username and passphrase.
 Make sure not just to give an empty passphrase but choose a secure one.
 
 Next run in a new instance of elevated (admin) Powershell:
+
 ```
 ps$ wsl.exe --set-version Ubuntu 2
 ```
@@ -1511,11 +1544,5 @@ the number of cores and threads on the host computer.
 8. Test out the machinefile, host, and rankfile section. Improve if needed.
 
 
-
 # References
 
-[^MPICH]: Reference missing
-
-[^OPENMPI]: Reference missing
-
-[^MISSINGMPI]: References missing

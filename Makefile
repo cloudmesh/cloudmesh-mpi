@@ -20,8 +20,6 @@ image:
 todo:
 	sh bin/todo.sh
 
-all: install
-
 install:
 	pip install -e .
 
