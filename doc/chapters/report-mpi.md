@@ -1473,31 +1473,31 @@ the number of cores and threads on the host computer.
 3. Add a section on how to use Numpy with MPI, including the installation of NumPy. This is not to have a tutorial about numpy,
    but how to use numpy within mpi4py. Subtasks include
 
-  1. Download Numpy with `pip install numpy` in a terminal
-  2. `import numpy as np` to use NumPy in the program
-  3. Explain the advantages of NumPy over pickled lists
-     - Numpy stores memory contiguously
-     - Uses a smaller number of bytes 
-     - Can multiply arrays by index
-     - It is faster
-     - Can store different data types, including images
-     - Contains random number generators
+   1. Download Numpy with `pip install numpy` in a terminal
+   2. `import numpy as np` to use NumPy in the program
+   3. Explain the advantages of NumPy over pickled lists
+      - Numpy stores memory contiguously
+      - Uses a smaller number of bytes 
+      - Can multiply arrays by index
+      - It is faster
+      - Can store different data types, including images
+      - Contains random number generators
 
-4. Add a specific, very small tutorial on using some basic numpy features as they may be useful for MPI application
-   development. This may include the following and be added to the
-   appendix
+   4. Add a specific, very small tutorial on using some basic numpy features as they may be useful for MPI application
+      development. This may include the following and be added to the
+      appendix
 
-   1. To define an array type: `np.nameofarray([1,2,3])`
-   2. To get the dimension of the array: `nameofarray.ndim`
-   3. To get the shape of the array (the number of rows and columns): `nameofarray.shape`
-   4. To get the type of the array: `nameofarray.dtype`
-   5. To get the number of bytes: `nameofarray.itemsize`
-   6. To get the number of elements in the array: `nameofarray.size`
-   7. To get the total size: `nameofarray.size * nameofarray.itemsize`
+      1. To define an array type: `np.nameofarray([1,2,3])`
+      2. To get the dimension of the array: `nameofarray.ndim`
+      3. To get the shape of the array (the number of rows and columns): `nameofarray.shape`
+      4. To get the type of the array: `nameofarray.dtype`
+      5. To get the number of bytes: `nameofarray.itemsize`
+      6. To get the number of elements in the array: `nameofarray.size`
+      7. To get the total size: `nameofarray.size * nameofarray.itemsize`
 
-  Please, note that we have a very comprehensive tutorial on NumPy and
-  there is no point to repeat that, we may just point to it and
-  improve that tutorial where needed instead.
+   Please, note that we have a very comprehensive tutorial on NumPy and
+   there is no point to repeat that, we may just point to it and
+   improve that tutorial where needed instead.
 
 5. Convert the parallel rank program from <https://mpitutorial.com/tutorials/performing-parallel-rank-with-mpi/>
    to mpi4py. Write a tutorial for it.
