@@ -12,6 +12,6 @@ TBD [^ref1].
 
 ## Example
 
-# Refernce
+# Reference
 
 [^ref1]: ....
