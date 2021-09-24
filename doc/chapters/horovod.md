@@ -1,6 +1,6 @@
-# Horovod.md
+# Horovod
 
-## Instalation
+## Installation
 
 20.04
 
