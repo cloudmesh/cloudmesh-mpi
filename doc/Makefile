@@ -40,10 +40,7 @@ pdf-mpi-simple: ${MPI} md-mpi
 		chapters/metadata-mpi.yaml tmp-3.md \
 		-o ../docs/report-mpi.pdf
 
-pdf-mpi: md-mpi
-	pandoc title-latex.md tmp-3.md -o ../docs/report-mpi.pdf --template ./format/eisvogel/eisvogel --listings --number-sections --csl=format/ieee-with-url.csl --citeproc --bibliography references.bib  
-
-d-pdf-mpi: ${MPI} md-mpi
+pdf-mpi: ${MPI} md-mpi
 	$(call banner, "CREATE MPI PDF DOCUMENT")
 	${PANDOC} cloudmesh/pandoc -s \
 		title-latex.md tmp-3.md -o ../docs/report-mpi.pdf --template ./format/eisvogel/eisvogel --listings --number-sections --csl=format/ieee-with-url.csl --citeproc --bibliography references.bib  
@@ -104,6 +101,11 @@ pdf-native: md-native
                 --listings \
 		--toc chapters/metadata-mpi.yaml \
 		../docs/report-mpi.md -o report-mpi.pdf
+
+native-pdf-mpi: md-mpi
+	pandoc title-latex.md tmp-3.md -o ../docs/report-mpi.pdf --template ./format/eisvogel/eisvogel --listings --number-sections --csl=format/ieee-with-url.csl --citeproc --bibliography references.bib  
+
+
 
 epub-native: 
 	$(call banner, "CREATE MPI EPUB DOCUMENT")
