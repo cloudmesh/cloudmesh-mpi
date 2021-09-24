@@ -1,5 +1,5 @@
 # Originaly from https://cvw.cac.cornell.edu/python/exercise
-# Modified by us
+# Modified by the cloudmesh team
 """
 An estimate of the numerical value of pi via Monte Carlo integration.
 Computation is distributed across processors via MPI.

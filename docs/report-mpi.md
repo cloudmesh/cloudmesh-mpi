@@ -1642,11 +1642,11 @@ at the same time as we run them all in parallel. Overhead does exist by
 starting the MPI program and gathering the result. However, if the trial
 number is large enough, it is negligible.
 
-The following program shows the MPI implementation:
+The following program shows the MPI implementation [@www-montecarlo-pi]:
 
 ``` python
 # Originaly from https://cvw.cac.cornell.edu/python/exercise
-# Modified by us
+# Modified by the cloudmesh team
 """
 An estimate of the numerical value of pi via Monte Carlo integration.
 Computation is distributed across processors via MPI.
@@ -1797,8 +1797,8 @@ The numba version of the Monte Carlo program runs faster, even cutting
 runtime down by a few minutes:
 
 ``` python
-# Credit to Cornell University for this script, retrieved from https://cvw.cac.cornell.edu/python/exercise
-
+# Originally from https://cvw.cac.cornell.edu/python/exercise
+# Modified by the cloudmesh team
 from __future__ import print_function, division
 """
 An estimate of the numerical value of pi via Monte Carlo integration.
@@ -2084,11 +2084,6 @@ for it. Please let us know about such examples and we will add the here.
 You can also contribute to our repository and add example programs that
 we then include in this document. In return you will become a co-author
 or get acknowledged.
-
--   A program to calculate Pi is provided at
-
-    -   <https://cvw.cac.cornell.edu/python/exercise>
-    -   <https://github.com/cloudmesh/cloudmesh-mpi/projects/1?card_filter_query=monte>
 
 -   A program to calculate k-means is provided at
 

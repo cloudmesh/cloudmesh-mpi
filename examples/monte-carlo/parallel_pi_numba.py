@@ -1,5 +1,5 @@
-# Credit to Cornell University for this script, retrieved from https://cvw.cac.cornell.edu/python/exercise
-
+# Originally from https://cvw.cac.cornell.edu/python/exercise
+# Modified by the cloudmesh team
 from __future__ import print_function, division
 """
 An estimate of the numerical value of pi via Monte Carlo integration.

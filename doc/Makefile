@@ -43,15 +43,11 @@ pdf-mpi-simple: ${MPI} md-mpi
 pdf-mpi: md-mpi
 	pandoc title-latex.md tmp-3.md -o ../docs/report-mpi.pdf --template ./format/eisvogel/eisvogel --listings --number-sections --csl=format/ieee-with-url.csl --citeproc --bibliography references.bib  
 
-broken-pdf-mpi: ${MPI} md-mpi
+d-pdf-mpi: ${MPI} md-mpi
 	$(call banner, "CREATE MPI PDF DOCUMENT")
 	${PANDOC} cloudmesh/pandoc -s \
-		title-latex.md tmp-3.md \
-		-o ../docs/report-mpi.pdf \
-		--from markdown \
-		--template ./format/eisvogel/eisvogel \
-		--listings \
-		--number-sections
+		title-latex.md tmp-3.md -o ../docs/report-mpi.pdf --template ./format/eisvogel/eisvogel --listings --number-sections --csl=format/ieee-with-url.csl --citeproc --bibliography references.bib  
+
 
 cover:
 	bookmanager format/mpi.yaml cover
