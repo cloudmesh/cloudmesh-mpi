@@ -1150,13 +1150,13 @@ can be achieved by using a spawn communicator and command.
 Using
 
 ``` python
-MPI.Comm_Self.Spawn
+MPI.COMM_SELF.Spawn
 ```
 
 will create a child process that can communicate with the parent. In the
 spawn code example, the manager broadcasts an array to the worker.
 
-In this example, we have two python programs, the first one being the
+In this example, we have two Python programs: the first one being the
 manager and the second being the worker.
 
 ![Example to spawn a program and start it on the different processors
@@ -1166,63 +1166,36 @@ from the one with rank
 ``` python
 #!/usr/bin/env python
 from mpi4py import MPI
-import mpi4py
 import numpy
 import sys
-import time
-from pprint import pprint
-from cloudmesh.common.util import banner
+import psutil
 
-comm = MPI.COMM_WORLD
-size = comm.Get_size()
-#name = comm.Get_processor_name()
-name = mpi4py.MPI.Get_processor_name()
-
-banner(f"MPI Spawn example {name} {size}")
-
-icomm = MPI.COMM_SELF.Spawn(
-    sys.executable,
-    args=['mpi-worker.py'],
-    maxprocs=size)
-
-rank = icomm.Get_rank()
-icomm.Bcast([size, MPI.INT])
-print(f"manager: rank of {name}: {rank} of {size}")
+comm = MPI.COMM_SELF.Spawn(sys.executable,
+                           args=['mpi-worker.py'],
+                           maxprocs=(psutil.cpu_count(logical=False) - 1))
 
 N = numpy.array(100, 'i')
-icomm.Bcast([N, MPI.INT], root=MPI.ROOT)
-#print(f"ROOT: {MPI.ROOT}")
-print('manager: c')
+comm.Bcast([N, MPI.INT], root=MPI.ROOT)
 PI = numpy.array(0.0, 'd')
-
-print('manager: d')
-icomm.Reduce(None, [PI, MPI.DOUBLE],
+comm.Reduce(None, [PI, MPI.DOUBLE],
             op=MPI.SUM, root=MPI.ROOT)
-print("manager:",PI)
+print(PI)
 
-time.sleep(30)
-icomm.Disconnect()
+comm.Disconnect()
 ```
 
 ``` python
 #!/usr/bin/env python
 from mpi4py import MPI
 import numpy
-import time
-import sys
 
-size = -1
-comm = MPI.COMM_WORLD
-size = comm.Bcast([size, MPI.INT])
+comm = MPI.Comm.Get_parent()
+size = comm.Get_size()
 rank = comm.Get_rank()
-
 
 N = numpy.array(0, dtype='i')
 comm.Bcast([N, MPI.INT], root=0)
-print(f"worker: N: {N} rank: {rank}")
-
-h = 1.0 / N
-s = 0.0
+h = 1.0 / N; s = 0.0
 for i in range(rank, N, size):
     x = h * (i + 0.5)
     s += 4.0 / (1.0 + x**2)
@@ -1230,43 +1203,21 @@ PI = numpy.array(s * h, dtype='d')
 comm.Reduce([PI, MPI.DOUBLE], None,
             op=MPI.SUM, root=0)
 
-time.sleep(30)
-
-#time.sleep(60)
 comm.Disconnect()
-
-#MPI.Finalize()
-#sys.exit()
-#MPI.Unpublish_name()
-#MPI.Close_port()
 ```
 
-To execute the example please go to the examples directory and run the
-mpi-manager program
+To execute the example which calculates the number pi, please go to the
+examples directory and run the mpi-manager program only with `-n 1` (the
+additional processes are spawned according to the number of cores
+available; executing with any number other than 1 will cause the program
+to hang)
 
     $ cd examples/spawn
-    $ mpiexec -n 2 python mpi-manager.py
+    $ mpiexec -n 1 python mpi-manager.py
 
-This will result in:
+This will result in an output close to the following:
 
-    N: 100 rank: 0
-    Hello
-    b and rank: 0
-    c
-    d
-    3.1416009869231254
-    N: 100 rank: 0
-    Hello
-    b and rank: 0
-    c
-    d
-    3.1416009869231254
-
-This output depends on which child process is received first. The output
-can vary.
-
-> `WARNING:` When running this program it may not terminate. To
-> terminate use for now `CTRL-C`.
+    3.1416009869231245
 
 ### Futures
 
