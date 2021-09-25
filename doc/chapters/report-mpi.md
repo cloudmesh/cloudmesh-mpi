@@ -121,6 +121,17 @@ in the creation of high-performance and parallel computing programs.
 
 Next, we discuss how to install mpi4py on various systems. We will focus on installing it on a single computer using multiple cores.
 
+## Operating Systems and MPI Versions
+
+The following table shows which operating systems use which version of MPI:
+
+| Operating System | MPI Version  |
+|--------------|------------------|
+| Windows      | MS-MPI v10.1.2   |
+| macOS        | Open MPI v4.1.1  |
+| Ubuntu       | MPICH v3.3.2     |
+| Raspberry Pi | Open MPI v3.1.3  |
+
 ## Getting the CPU Count
 
 For the examples listed in this document, knowing the number of
@@ -237,6 +248,8 @@ However, you can also use the command line tools that we have included in our do
    $ pip install mpi4py
    ```
 
+If you are prompted to install command line developer tools, install them.
+
 ## Ubuntu
 
 These instructions apply to 20.04 and 21.04. Please use 20.04 in case you like to use GPUs.
@@ -257,10 +270,10 @@ These instructions apply to 20.04 and 21.04. Please use 20.04 in case you like t
 
    ```bash
    $ sudo apt-get update
-   $ sudo apt install python3.9 python3.9-dev python3-dev python3.9-venv 
+   $ sudo apt install python3.9 python3.9-dev python3-dev python3.9-venv python3.8-venv
    $ python3 -m venv ~/ENV3
    $ source ENV3/bin/activate
-   (ENV3) $ sudo apt-get install -y mpich-doc mpich 
+   (ENV3) $ sudo apt-get install -y mpich-doc mpich
    (ENV3) $ pip install mpi4py -U
    ```
    
