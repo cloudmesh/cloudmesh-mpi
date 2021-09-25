@@ -909,7 +909,7 @@ $ cd examples/spawn
 $ mpiexec -n 1 python mpi-manager.py
 ```
 
-This will result in:
+This will result in an output close to the following:
 
 ```
 3.1416009869231245
