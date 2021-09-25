@@ -880,14 +880,15 @@ group. This can be achieved by using a spawn communicator and command.
 Using
 
 ``` python
-MPI.Comm_Self.Spawn
+MPI.COMM_SELF.Spawn
 ```
 
 will create a child process that can communicate with the parent. 
 In the spawn code example, the manager broadcasts an array to the worker.
 
-In this example, we have two python programs, the first one being the
-manager and the second being the worker. 
+In this example, we have two Python programs: the first one being the
+manager and the second being the worker. These programs work to calculate
+the number pi.
 
 ![Example to spawn a program and start it on the different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/spawn.png){ width=25% }
 
@@ -901,35 +902,20 @@ manager and the second being the worker.
 ```
 
 To execute the example please go to the examples directory and run the mpi-manager
-program
+program only with `-n 1` (the additional processes are spawned according to the number
+of cores available; executing with any number other than 1 will cause the program to hang)
 
 ```
 $ cd examples/spawn
-$ mpiexec -n 2 python mpi-manager.py
+$ mpiexec -n 1 python mpi-manager.py
 ```
 
 This will result in:
 
 ```
-N: 100 rank: 0
-Hello
-b and rank: 0
-c
-d
-3.1416009869231254
-N: 100 rank: 0
-Hello
-b and rank: 0
-c
-d
-3.1416009869231254
+3.1416009869231245
 ```
 
-This output depends on which child process is received first. The
-output can vary.
-
->`WARNING:` When running this program it may not terminate. To
->terminate use for now `CTRL-C`.
 
 
 ### Futures
