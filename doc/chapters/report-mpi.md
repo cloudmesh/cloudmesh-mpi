@@ -887,8 +887,7 @@ will create a child process that can communicate with the parent.
 In the spawn code example, the manager broadcasts an array to the worker.
 
 In this example, we have two Python programs: the first one being the
-manager and the second being the worker. These programs work to calculate
-the number pi.
+manager and the second being the worker.
 
 ![Example to spawn a program and start it on the different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/spawn.png){ width=25% }
 
@@ -901,7 +900,7 @@ the number pi.
 !include ../examples/spawn/mpi-worker.py
 ```
 
-To execute the example please go to the examples directory and run the mpi-manager
+To execute the example which calculates the number pi, please go to the examples directory and run the mpi-manager
 program only with `-n 1` (the additional processes are spawned according to the number
 of cores available; executing with any number other than 1 will cause the program to hang)
 
