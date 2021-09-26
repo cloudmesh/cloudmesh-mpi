@@ -2,11 +2,11 @@
 
 ## Installation
 
-20.04
+Up-to-date installation instructions may be found at the official Horovod Installation Guide [^ref1] section in the docs.
 
 ## Introduction
 
-TBD [^ref1].
+TBD .
 
 ## Details
 
@@ -14,4 +14,4 @@ TBD [^ref1].
 
 # Reference
 
-[^ref1]: ....
+[^ref1]: https://horovod.readthedocs.io/en/stable/install_include.html
