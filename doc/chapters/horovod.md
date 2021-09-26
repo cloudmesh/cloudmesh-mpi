@@ -37,7 +37,7 @@ The following are a collection of details regarding Horovod that may be of inter
 1) Horovod is based on the MPI model.
 "Horovod core principles are based on the MPI concepts size, rank, local rank, allreduce, allgather, and broadcast [^ref4]." This allows a single training script to be scaled to any number of GPUs or hosts.
 2) Horovod can be used with either an MPI installation (i.e., OpenMPI) or Gloo, which is an open-source library by Facebook.
-OpenMPI seems to be the preferred option, though Gloo is reported to have similar performance results when combined with NCCL [^ref8].
+OpenMPI seems to be the preferred option, though Gloo is reported to have similar performance results when combined with NCCL [^ref8] [^ref1].
 4) Horovod includes support for mpi4py [^ref5].
 5) Horovod has advanced techniques built-in for increased performance such as tensor fusion [^ref6] and autotuning [^ref7].
 6) Horovod includes support for elastic training, which allows it to scale up and down the number of workers dynamically, allowing the job to continue if some hosts fail [^ref9].
