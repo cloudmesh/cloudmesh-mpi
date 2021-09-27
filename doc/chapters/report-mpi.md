@@ -488,8 +488,8 @@ information on the topic, the manual section
 
 ### Using NumPy with mpi4py
 
-Serveral of the examples presented in the following sections use NumPy arrays to show the behavior of mpi4py's uppercase
-communiction methods.
+Serveral of the examples presented in the following sections use NumPy arrays to illustrate the behavior of mpi4py's uppercase
+communication methods.
 
 NumPy is a Python library geared towards scientific computing. It features high-level mathematical functions that add support
 to work with and operate on multi-dimensional arrays and matrices.
