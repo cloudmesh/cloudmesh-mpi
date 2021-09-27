@@ -486,6 +486,26 @@ memory buffer, as featured in the MPI standard. For additional
 information on the topic, the manual section 
 [Communicating Python Objects and Array Data](https://mpi4py.readthedocs.io/en/stable/overview.html?highlight=pickle#communicating-python-objects-and-array-data).
 
+### Using NumPy with mpi4py
+
+Serveral of the examples presented in the following sections use NumPy arrays to show the behavior of mpi4py's uppercase
+communiction methods.
+
+NumPy is a Python library geared towards scientific computing. It features high-level mathematical functions that add support
+to work with and operate on multi-dimensional arrays and matrices.
+
+NumPy quickly gained popularity thanks to its performance advantages in comparison to Python lists. NumPy array elements must
+have a uniform type and are stored contiguously in memory. As a consequence, memory consumption is lower and runtime
+performance improves, since there is no need to store type pointers or perform type checks before operating on any element.
+Type uniformity and contiguous memory use also allow for fast and efficient application of diverse mathematical operations to
+all indices of an array, making NumPy very attractive for use in statistical analysis, visualization libraries, and large data
+manipulation.
+
+An interesting and useful exception to the type uniformity rule can be achieved by defining a NumPy array of Python objects,
+which allows for an array containing elements of different sizes/types, including other NumPy arrays.
+
+To learn more about NumPy installation and use, please check our tutorials in Section 10.2 of [Python for Cloud Computing](https://cloudmesh-community.github.io/pub/vonLaszewski-python.pdf#%5B%7B%22num%22%3A4318%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C75%2C720%2C0%5D).
+
 ## MPI Functionality
 
 ### Communicator
