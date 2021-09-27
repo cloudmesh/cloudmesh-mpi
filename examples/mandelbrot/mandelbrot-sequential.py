@@ -1,3 +1,8 @@
+from matplotlib import pyplot
+from cloudmesh.common.StopWatch import StopWatch
+
+StopWatch.start("Overall time")
+
 def mandelbrot(x, y, maxit):
     c = x + y*1j
     z = 0 + 0j
@@ -9,7 +14,7 @@ def mandelbrot(x, y, maxit):
 
 x1, x2 = -2.0, 1.0
 y1, y2 = -1.0, 1.0
-w, h = 150, 100
+w, h = 1200, 800
 maxit = 127
 
 import numpy
@@ -22,6 +27,11 @@ for i in range(h):
         x = x1 + j * dx
         C[i, j] = mandelbrot(x, y, maxit)
 
-from matplotlib import pyplot
-#pyplot.imshow(C, aspect='equal')
-#pyplot.show()
+
+pyplot.imsave('mandelbrot-sequential.png', C)
+pyplot.imsave('mandelbrot-sequential.pdf', C)
+
+StopWatch.stop("Overall time")
+StopWatch.benchmark()
+
+

@@ -62,8 +62,8 @@ rowtype.Free()
 if rank == 0:
     StopWatch.stop(f'parallel {size}')
 
-    pyplot.imsave('mandelbrot.png', C)
-    pyplot.imsave('mandelbrot.pdf', C)
+    pyplot.imsave('mandelbrot-parallel-numba.png', C)
+    pyplot.imsave('mandelbrot-parallel-numba.pdf', C)
 
     StopWatch.benchmark()
     # pyplot.imshow(C, aspect='equal')
