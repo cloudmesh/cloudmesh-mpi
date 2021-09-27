@@ -94,7 +94,7 @@ complex data flows while executing them on multiple computers
 C-language community.  However, many practitioners do not have the time
 to learn C to utilize such advanced cyberinfrastructure. Hence, it is
 advantageous to access MPI from Python. We showcase how you can easily
-deploy and use MPI from Python via a tool called `mpi4pi`.  
+deploy and use MPI from Python via a tool called `mpi4py`.  
 
 Message Passing Interface (MPI) is a message-passing standard that
 allows for efficient data communication between the address spaces
