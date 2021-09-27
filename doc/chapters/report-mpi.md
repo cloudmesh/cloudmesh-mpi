@@ -121,6 +121,17 @@ in the creation of high-performance and parallel computing programs.
 
 Next, we discuss how to install mpi4py on various systems. We will focus on installing it on a single computer using multiple cores.
 
+## Operating Systems and MPI Versions
+
+The following table shows which operating systems use which version of MPI:
+
+| Operating System | MPI Version  |
+|--------------|------------------|
+| Windows      | MS-MPI v10.1.2   |
+| macOS        | Open MPI v4.1.1  |
+| Ubuntu       | MPICH v3.3.2     |
+| Raspberry Pi | Open MPI v3.1.3  |
+
 ## Getting the CPU Count
 
 For the examples listed in this document, knowing the number of
@@ -237,6 +248,8 @@ However, you can also use the command line tools that we have included in our do
    $ pip install mpi4py
    ```
 
+If you are prompted to install command line developer tools, install them.
+
 ## Ubuntu
 
 These instructions apply to 20.04 and 21.04. Please use 20.04 in case you like to use GPUs.
@@ -257,10 +270,10 @@ These instructions apply to 20.04 and 21.04. Please use 20.04 in case you like t
 
    ```bash
    $ sudo apt-get update
-   $ sudo apt install python3.9 python3.9-dev python3-dev python3.9-venv 
+   $ sudo apt install python3.9 python3.9-dev python3-dev python3.9-venv python3.8-venv
    $ python3 -m venv ~/ENV3
    $ source ENV3/bin/activate
-   (ENV3) $ sudo apt-get install -y mpich-doc mpich 
+   (ENV3) $ sudo apt-get install -y mpich-doc mpich
    (ENV3) $ pip install mpi4py -U
    ```
    
@@ -880,14 +893,14 @@ group. This can be achieved by using a spawn communicator and command.
 Using
 
 ``` python
-MPI.Comm_Self.Spawn
+MPI.COMM_SELF.Spawn
 ```
 
 will create a child process that can communicate with the parent. 
 In the spawn code example, the manager broadcasts an array to the worker.
 
-In this example, we have two python programs, the first one being the
-manager and the second being the worker. 
+In this example, we have two Python programs: the first one being the
+manager and the second being the worker.
 
 ![Example to spawn a program and start it on the different processors from the one with rank 0](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/spawn.png){ width=25% }
 
@@ -900,36 +913,21 @@ manager and the second being the worker.
 !include ../examples/spawn/mpi-worker.py
 ```
 
-To execute the example please go to the examples directory and run the mpi-manager
-program
+To execute the example which calculates the number pi, please go to the examples directory and run the mpi-manager
+program only with `-n 1` (the additional processes are spawned according to the number
+of cores available; executing with any number other than 1 will cause the program to hang)
 
 ```
 $ cd examples/spawn
-$ mpiexec -n 2 python mpi-manager.py
+$ mpiexec -n 1 python mpi-manager.py
 ```
 
-This will result in:
+This will result in an output close to the following:
 
 ```
-N: 100 rank: 0
-Hello
-b and rank: 0
-c
-d
-3.1416009869231254
-N: 100 rank: 0
-Hello
-b and rank: 0
-c
-d
-3.1416009869231254
+3.1416009869231245
 ```
 
-This output depends on which child process is received first. The
-output can vary.
-
->`WARNING:` When running this program it may not terminate. To
->terminate use for now `CTRL-C`.
 
 
 ### Futures
