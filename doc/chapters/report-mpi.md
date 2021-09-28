@@ -94,7 +94,7 @@ complex data flows while executing them on multiple computers
 C-language community.  However, many practitioners do not have the time
 to learn C to utilize such advanced cyberinfrastructure. Hence, it is
 advantageous to access MPI from Python. We showcase how you can easily
-deploy and use MPI from Python via a tool called `mpi4pi`.  
+deploy and use MPI from Python via a tool called `mpi4py`.  
 
 Message Passing Interface (MPI) is a message-passing standard that
 allows for efficient data communication between the address spaces
@@ -485,6 +485,26 @@ serialized manner. In contrast, the uppercase versions of methods like
 memory buffer, as featured in the MPI standard. For additional
 information on the topic, the manual section 
 [Communicating Python Objects and Array Data](https://mpi4py.readthedocs.io/en/stable/overview.html?highlight=pickle#communicating-python-objects-and-array-data).
+
+### Using NumPy with mpi4py
+
+Serveral of the examples presented in the following sections use NumPy arrays to illustrate the behavior of mpi4py's uppercase
+communication methods.
+
+NumPy is a Python library geared towards scientific computing. It features high-level mathematical functions that add support
+to work with and operate on multi-dimensional arrays and matrices.
+
+NumPy quickly gained popularity thanks to its performance advantages in comparison to Python lists. NumPy array elements must
+have a uniform type and are stored contiguously in memory. As a consequence, memory consumption is lower and runtime
+performance improves, since there is no need to store type pointers or perform type checks before operating on any element.
+Type uniformity and contiguous memory use also allow for fast and efficient application of diverse mathematical operations to
+all indices of an array, making NumPy very attractive for use in statistical analysis, visualization libraries, and large data
+manipulation.
+
+An interesting and useful exception to the type uniformity rule can be achieved by defining a NumPy array of Python objects,
+which allows for an array containing elements of different sizes/types, including other NumPy arrays.
+
+To learn more about NumPy installation and use, please check our tutorials in Section 10.2 of [Python for Cloud Computing](https://cloudmesh-community.github.io/pub/vonLaszewski-python.pdf#%5B%7B%22num%22%3A4318%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C75%2C720%2C0%5D).
 
 ## MPI Functionality
 
@@ -1125,6 +1145,14 @@ their processor.
 However, running this program takes upwards of 4 minutes to complete
 with 6 cores. We can use numba to speed up the program execution time.
 
+Additionally, we can run this program on multiple hosts. For instance,
+you can use a machinefile or rankfile to execute the program on a PI cluster.
+Be advised, however, that we do not use numba on RaspberryOS, hence the
+execution of the program can take a relatively long time. For a reference,
+running `mpiexec -n 7 --machinefile machinefile ... parallel_pi.py" on a
+PI cluster consisting of a manager PI4 and six PI3 workers took around
+40 minutes.
+ 
 ### Numba
 
 Numba, an open-source JIT (just in time) compiler, is a Python module
