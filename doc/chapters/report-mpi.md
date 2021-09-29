@@ -529,7 +529,7 @@ programs that depend on the rank. Rank `0` is the rank of the manager process.
 
 ### Point-to-Point Communication
 
-#### Send and Recieve Python Objects
+#### Send and Receive Python Objects
 
 The `send()` and `recv()` methods provide for functionality to transmit data
 between two specific processes in the communicator group. It can be applied to any Python data object that can be pickled. The advantage is that the object is preserved, however it comes with the disadvantage that pickling the data takes more time than a direct memory copy.
@@ -587,7 +587,7 @@ no other process was affected.
 The following example illustrates the use of the uppercase versions of
 the methods `comm.Send()` and `comm.Recv()` to perform a transmission
 of data between processes from memory to memory. In our example we
-will agian be sending a message between processors of rank 0 and 1 in
+will again be sending a message between processors of rank 0 and 1 in
 the communicator group.
 
 ```python
@@ -603,7 +603,7 @@ After Send/Receive, the value in process 0 is [0 0 0 0 0]
 After Send/Receive, the value in process 1 is [1 2 3 4 5]
 ```
 
-#### Non-blocking send and Recieve
+#### Non-blocking Send and Receive
 
 MPI can also use non-blocking communications. This allows the program
 to send the message without waiting for the completion of the
@@ -611,8 +611,8 @@ submission. This is useful for many parallel programs so we can
 overlap communication and computation while both take place
 simultaneously. The same can be done with receive, but if a message is
 not available and you do need the message, you may have to probe or even use a blocked receive.  To wait for
-a message to be sent or received, we can also use the wait method
-, effectively converting the non-blocking message to a blocking one.
+a message to be sent or received, we can also use the wait method, 
+effectively converting the non-blocking message to a blocking one.
 
 
 Next, we showcase an example of the non-blocking send and receive methods
@@ -636,6 +636,30 @@ After isend/ireceive, the value in process 3 is None
 After isend/ireceive, the value in process 0 is None
 After isend/ireceive, the value in process 1 is 42
 ```
+
+#### Ping Pong
+
+This example program uses the aforementioned `send()` and `recv()` methods
+to print a variable, `sendmsg`, depending on which rank the MPI program is
+presently working with.
+
+```python
+!include ../examples/pingpong.py
+```
+
+This program can only be executed using `mpiexec -n 2 python pingpong.py`, which yields
+
+```bash
+abc
+777
+```
+
+Note how, at first line-by-line glace, the program's code sets sendmsg to `777` before it is set to
+`abc`. However, upon program execution, the output is `abc` first because of the `dest` and `tag`
+values. On rank 0 (during program's initial stages), `777` is sent to destination 1. On rank 1 (remember
+there are only two ranks: 0 and 1), `abc` is sent to destination 0. The destination integers correspond
+to the ranks and the program leaves printing the sendmsg for last (after the `send()` and `recv()` methods
+have determined the variable values). This explains the output.
 
 ## Collective Communication
 
