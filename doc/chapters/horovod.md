@@ -8,7 +8,7 @@ In general, installing Horovod will require:
 - Python 3.6+
 - CMake
 - Tensorflow, PyTorch, or MXNet
-- OpenMPI (optional, could use Gloo)
+- OpenMPI (optional, could use Gloo, which is included)
 
 then horovod should be able to be installed with pip:
 ```
