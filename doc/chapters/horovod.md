@@ -28,7 +28,7 @@ For installation details on a per-setup basis, however, be sure to refer to the 
 
 ## Introduction
 
-Horovod [^ref2] is a framework for distributed deep learning training developed by engineers at Uber. It makes use of a simple infrastructure setup that can be applied easily to any of its supported deep learning frameworks, including TensorFlow, Keras, PyTorch, and MXNet. By elegantly distributing data-parallel training across all of the connected machines and GPUs, it is able to achieve up to 90% scaling efficiency [^ref3].
+Horovod [^ref2] is a framework for distributed deep learning training developed by engineers at Uber. It makes use of a simple infrastructure setup that can be applied easily to any of the supported deep learning frameworks, including TensorFlow, Keras, PyTorch, and MXNet. By elegantly distributing data-parallel training across all of the connected machines and GPUs, it is able to achieve up to 90% scaling efficiency [^ref3].
 
 ## Details
 
@@ -39,12 +39,70 @@ The following are a collection of details regarding Horovod that may be of inter
 2) Horovod can be used with either an MPI installation (i.e., OpenMPI) or Gloo, which is an open-source library by Facebook.
 OpenMPI seems to be the preferred option, though Gloo is reported to have similar performance results when combined with NCCL [^ref8] [^ref1].
 4) Horovod includes support for mpi4py [^ref5].
-5) Horovod has advanced techniques built-in for increased performance such as tensor fusion [^ref6] and autotuning [^ref7].
+5) Horovod has advanced techniques built-in for increased performance in the distributed training process such as tensor fusion [^ref6] and autotuning [^ref7].
 6) Horovod includes support for elastic training, which allows it to scale up and down the number of workers dynamically, allowing the job to continue if some hosts fail [^ref9].
 
 ## Usage Example
 
+The following example is a modified version with added commentary of code from the official horovod Github repo [^ref10], which is protected under Apache-2.0 license.
+This example uses keras, but the implementation is incredibly similar between the supported frameworks. See the official docs [^ref11] for individual differences in implementation between each framework.
 
+Step one: import horovod for the required framework
+```
+import tensorflow as tf
+import horovod.tensorflow.keras as hvd
+```
+Step two: initialize horovod
+```
+hvd.init()
+```
+Step three: pin each GPU to a single process
+```
+gpus = tf.config.experimental.list_physical_devices('GPU')
+for gpu in gpus:
+    tf.config.experimental.set_memory_growth(gpu, True)
+if gpus:
+    tf.config.experimental.set_visible_devices(gpus[hvd.local_rank()], 'GPU')
+```
+Step four: import the data, build the model, and wrap the optimizer with a Horovod DistributedOptimizer 
+``` 
+# Build model and dataset
+dataset = ...
+model = ...
+opt = tf.optimizers.Adam(0.001 * hvd.size())
+
+# Horovod: add Horovod DistributedOptimizer.
+opt = hvd.DistributedOptimizer(opt)
+```
+Step five: Ensure experimental_run_tf_function=False so that the DistributedOptimizer is used, and broadcast to ensure workers are initialized consistently
+```
+# Horovod: Specify `experimental_run_tf_function=False` to ensure TensorFlow
+# uses hvd.DistributedOptimizer() to compute gradients.
+mnist_model.compile(loss=tf.losses.SparseCategoricalCrossentropy(),
+                    optimizer=opt,
+                    metrics=['accuracy'],
+                    experimental_run_tf_function=False)
+
+callbacks = [
+    # Horovod: broadcast initial variable states from rank 0 to all other processes.
+    # This is necessary to ensure consistent initialization of all workers when
+    # training is started with random weights or restored from a checkpoint.
+    hvd.callbacks.BroadcastGlobalVariablesCallback(0),
+]
+```
+Step six: save checkpoints only on worker 0 to prevent corruption
+```
+if hvd.rank() == 0:
+    callbacks.append(keras.callbacks.ModelCheckpoint('./checkpoint-{epoch}.h5'))
+```
+Step seven: Begin the training!
+```
+model.fit(dataset,
+          steps_per_epoch=500 // hvd.size(),
+          callbacks=callbacks,
+          epochs=24,
+          verbose=1 if hvd.rank() == 0 else 0)
+```
 
 # Reference
 
@@ -57,3 +115,5 @@ OpenMPI seems to be the preferred option, though Gloo is reported to have simila
 [^ref7]: https://horovod.readthedocs.io/en/stable/autotune.html
 [^ref8]: https://developer.nvidia.com/nccl
 [^ref9]: https://horovod.readthedocs.io/en/stable/elastic_include.html
+[^ref10]: 
+[^ref11]: https://horovod.readthedocs.io/en/stable/summary_include.html
