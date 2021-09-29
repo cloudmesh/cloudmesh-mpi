@@ -1149,7 +1149,7 @@ Additionally, we can run this program on multiple hosts. For instance,
 you can use a machinefile or rankfile to execute the program on a PI cluster.
 Be advised, however, that we do not use numba on RaspberryOS, hence the
 execution of the program can take a relatively long time. For a reference,
-running `mpiexec -n 7 --machinefile machinefile ... parallel_pi.py" on a
+running `mpiexec -n 7 --machinefile machinefile ... parallel_pi.py"` on a
 PI cluster consisting of a manager PI4 and six PI3 workers took around
 40 minutes.
  
