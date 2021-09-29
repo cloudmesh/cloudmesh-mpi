@@ -45,7 +45,7 @@ OpenMPI seems to be the preferred option, though Gloo is reported to have simila
 ## Usage Example
 
 The following example is a modified version with added commentary of code from the official horovod Github repo [^ref10], which is protected under Apache-2.0 license.
-This example uses keras, but the implementation is incredibly similar between the supported frameworks. See the official docs [^ref11] for individual differences in implementation between each framework.
+This basic example uses keras with tensorflow 2.0, but the implementation is incredibly similar between other supported frameworks. See the official docs [^ref11] for individual differences in implementation between each framework.
 
 Step one: import horovod for the required framework
 ```
@@ -64,14 +64,18 @@ for gpu in gpus:
 if gpus:
     tf.config.experimental.set_visible_devices(gpus[hvd.local_rank()], 'GPU')
 ```
-Step four: import the data, build the model, and wrap the optimizer with a Horovod DistributedOptimizer 
+Step four: import the data, build the model, and scale the learning rate to the number of GPUs
 ``` 
 # Build model and dataset
 dataset = ...
 model = ...
-opt = tf.optimizers.Adam(0.001 * hvd.size())
 
-# Horovod: add Horovod DistributedOptimizer.
+# Scale learning rate to # of GPUs
+scaled_lr = 0.001 * hvd.size()
+opt = tf.optimizers.Adam(scaled_lr)
+```
+Step five: Wrap the optimizer with a Horovod DistributedOptimizer
+```
 opt = hvd.DistributedOptimizer(opt)
 ```
 Step five: Ensure experimental_run_tf_function=False so that the DistributedOptimizer is used, and broadcast to ensure workers are initialized consistently
@@ -115,5 +119,5 @@ model.fit(dataset,
 [^ref7]: https://horovod.readthedocs.io/en/stable/autotune.html
 [^ref8]: https://developer.nvidia.com/nccl
 [^ref9]: https://horovod.readthedocs.io/en/stable/elastic_include.html
-[^ref10]: 
+[^ref10]: https://github.com/horovod/horovod/blob/master/examples/tensorflow2/tensorflow2_keras_mnist.py
 [^ref11]: https://horovod.readthedocs.io/en/stable/summary_include.html
