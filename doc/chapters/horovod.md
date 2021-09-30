@@ -10,6 +10,8 @@ In general, installing Horovod will require:
 - Tensorflow, PyTorch, or MXNet
 - OpenMPI (optional, could use Gloo, which is included)
 
+OpenMPI: https://github.com/cloudmesh/cloudmesh-mpi/blob/main/docs/report-mpi.md
+
 then horovod should be able to be installed with pip:
 ```
 $ pip install horovod
