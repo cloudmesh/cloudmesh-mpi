@@ -19,7 +19,7 @@ $ python --version
 2. Install CMake
 
 Go to https://cmake.org/download/. Under binary distributions, download the latest Windows installer.
-** During installation, be sure to select the checkbox to modify the PATH variable. If not selected, this must be done manually.
+NOTE: During installation, be sure to select the checkbox to modify the PATH variable. If not selected, this must be done manually.
 
 3. Install OpenMPI
 
@@ -79,7 +79,7 @@ $ python --version
 ```
 2. Install CMake
 Go to https://cmake.org/download/. Under binary distributions, download the latest pre-compiled binaries for your platform.
-** If no binary is available for your platform, you will have to install from source. See https://cmake.org/install/ under the Linux, UNIX section for more details.
+NOTE: If no binary is available for your platform, you will have to install from source. See https://cmake.org/install/ under the Linux, UNIX section for more details.
 
 3. Install OpenMPI
 
