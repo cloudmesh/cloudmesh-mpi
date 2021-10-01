@@ -1170,12 +1170,8 @@ However, running this program takes upwards of 4 minutes to complete
 with 6 cores. We can use numba to speed up the program execution time.
 
 Additionally, we can run this program on multiple hosts. For instance,
-you can use a machinefile or rankfile to execute the program on a PI cluster.
-Be advised, however, that we do not use numba on RaspberryOS, hence the
-execution of the program can take a relatively long time. For a reference,
-running `mpiexec -n 7 --machinefile machinefile ... parallel_pi.py"` on a
-PI cluster consisting of a manager PI4 and six PI3 workers took around
-40 minutes.
+you can use a machinefile or rankfile to execute the program on a PI
+cluster.
  
 ### Numba
 
@@ -1218,6 +1214,81 @@ computer.  However, it is not threadsafe and, at this time, only
 measures times in the second range.  If your calculations for other
 programs are faster or the trial number is too slow, you can use other
 benchmarking methods.
+
+### Running Monte Carlo on multiple hosts
+
+Another way to increase the performance of our program would be executing
+it on multiple hosts.
+
+As an example, we can run the program in a cluster of 7 PIs: a manager
+PI4, and six worker PI3s. Be advised, however, that we do not use numba on
+RaspberryOS, hence execution can take a relatively long time in comparison
+to the numba version. For a reference, simultaneously running a copy of
+the program on the cluster (7 processes total) took around 40 minutes.
+However, using a machinefile to run four copies of the program on each
+node (for a total of 28 processes) significantly sped up execution,
+taking only a fourth of that time (~ 10 minutes). 
+ 
+First, we need to make sure that mpi4py is installed on all PIs. For that
+purpose, you can follow our tutorial to [Deploy MPI for Python (mpi4py) on
+your Pi Cluster](https://cloudmesh.github.io/pi/tutorial/mpi/) using
+Cloudmesh.
+
+Next, we send a copy of the program to each of the hosts in our cluster.
+It is important that the file be stored in the same directory address for
+every host. For this example, we send it to the home directory `~/`.
+
+```bash
+(ENV3) pi@red:~ $ for h in red red0{1..6}; do
+> scp parallel_pi.py pi@$h:~/ &
+> done
+[4] 2176
+[5] 2177
+[6] 2178
+[7] 2179
+[8] 2180
+[9] 2181
+[10] 2182
+(ENV3) pi@red:~ $
+```
+
+Next, we create a machinefile to specify the number of hosts and cores
+to be employed by mpi4py during execution. Notice that we are employing
+the four available cores on each node.
+
+```
+pi@red slots=4
+pi@red01 slots=4
+pi@red02 slots=4
+pi@red03 slots=4
+pi@red04 slots=4
+pi@red05 slots=4
+pi@red06 slots=4
+```
+
+We will need to save the machinefile only in the node from which the `mpiexec`
+command is executed.
+
+Finally, we run the program by calling `mpiexec` from the command line. Note we
+have added the parameter `-machinefile` to specify the machinefile location.
+Additionally we used the full address of the Python binary from ENV3 to ensure
+that every host runs the program inside our environment.
+
+```bash
+(ENV3) pi@red:~ $ mpiexec -n 28 -machinefile ./machinefile ~/ENV3/bin/python parallel_pi.py
+MPI size = 28
+1024 3.1455775669642856 0.05692609648889646
+4096 3.138096400669643 0.02867811562631138
+16384 3.1421116420200894 0.01228796385009885
+65536 3.1414925711495534 0.005532607075034393
+262144 3.1418974740164622 0.0029191407443025902
+1048576 3.141772815159389 0.0017866555629716318
+4194304 3.1415172815322876 0.0008114422251076501
+16777216 3.1416021159717014 0.0003635004457387496
+67108864 3.1415649854711125 0.0001929914184235647
+268435456 3.1416016641472067 9.638285643379315e-05
+...
+```
 
 ## Mandelbrot
 
