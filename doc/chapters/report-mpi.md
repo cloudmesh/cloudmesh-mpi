@@ -958,8 +958,9 @@ manager and the second being the worker.
 ```
 
 To execute the example which calculates the number pi, please go to the examples directory and run the mpi-manager
-program only with `-n 1` (the additional processes are spawned according to the number
-of cores available; executing with any number other than 1 will cause the program to hang)
+program with `-n 1`. There must only be 1 process because the additional processes are automatically created
+within the mpi-manager. The number of processes is automatically calculated according to the number of cores available
+minus 1 (because one core is already dedicated to the manager).
 
 ```
 $ cd examples/spawn
