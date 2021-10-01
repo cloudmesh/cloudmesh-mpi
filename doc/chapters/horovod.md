@@ -2,31 +2,103 @@
 
 ## Installation
 
-Up-to-date installation instructions may be found at the Horovod Installation Guide [^ref1] section in the official Horovod docs.
+See the up-to-date Horovod Installation Guide [^ref1] section in the official Horovod docs for any issues.
 
-In general, installing Horovod will require:
+Installing Horovod will require:
 - Python 3.6+
 - CMake
 - Tensorflow, PyTorch, or MXNet
 - OpenMPI (optional, could use Gloo, which is included)
 
-OpenMPI: https://github.com/cloudmesh/cloudmesh-mpi/blob/main/docs/report-mpi.md
+### Windows
 
-then horovod should be able to be installed with pip:
+1. Check Python installation to ensure version 3.6+. Update if necessary.
 ```
-$ pip install horovod
+$ python --version
 ```
-or with ensuring specific framework dependencies: 
+2. Install CMake
 
+Go to https://cmake.org/download/. Under binary distributions, download the latest Windows installer.
+** During installation, be sure to select the checkbox to modify the PATH variable. If not selected, this must be done manually.
+
+3. Install OpenMPI
+
+Follow instructions found at the following link for your specific system: https://github.com/cloudmesh/cloudmesh-mpi/blob/main/docs/report-mpi.md
+
+5. Install Horovod
+
+We will install Horovod for OpenMPI with tensorflow.
+
+First, we will set environment variables to ensure proper installation.
 ```
-$ pip install horovod[keras,tensorflow] // for example
+$ export HOROVOD_WITHOUT_GLOO=1
+$ export HOROVOD_WITH_MPI=1
+$ export HOROVOD_WITH_TENSORFLOW=1
 ```
-or with all frameworks:
+Then, run the actual installation, while ensuring tensorflow requirement.
 ```
-$ pip install horovod[all-dependencies]
+$ pip install horovod[tensorflow]
 ```
 
-For installation details on a per-setup basis, however, be sure to refer to the official guide [^ref1].
+
+### MacOS
+
+1. Check Python installation to ensure version 3.6+. Update if necessary.
+```
+$ python --version
+```
+2. Install CMake
+- Go to https://cmake.org/download/. Under binary distributions, download the latest MacOS version as either a disk image or tarball.
+- Copy CMake.app into /Applications
+- Add the install directory (e.g. /Applications/CMake.app/Contents/bin) to PATH
+
+3. Install OpenMPI
+
+Follow instructions found at the following link for your specific system: https://github.com/cloudmesh/cloudmesh-mpi/blob/main/docs/report-mpi.md
+
+4. Install Horovod
+
+We will install Horovod for OpenMPI with tensorflow.
+
+First, we will set environment variables to ensure proper installation.
+```
+$ export HOROVOD_WITHOUT_GLOO=1
+$ export HOROVOD_WITH_MPI=1
+$ export HOROVOD_WITH_TENSORFLOW=1
+```
+Then, run the actual installation, while ensuring tensorflow requirement.
+```
+$ pip install horovod[tensorflow]
+```
+
+### Linux
+
+1. Check Python installation to ensure version 3.6+. Update if necessary.
+```
+$ python --version
+```
+2. Install CMake
+Go to https://cmake.org/download/. Under binary distributions, download the latest pre-compiled binaries for your platform.
+** If no binary is available for your platform, you will have to install from source. See https://cmake.org/install/ under the Linux, UNIX section for more details.
+
+3. Install OpenMPI
+
+Follow instructions found at the following link for your specific system: https://github.com/cloudmesh/cloudmesh-mpi/blob/main/docs/report-mpi.md
+
+4. Install Horovod
+
+We will install Horovod for OpenMPI with tensorflow.
+
+First, we will set environment variables to ensure proper installation.
+```
+$ export HOROVOD_WITHOUT_GLOO=1
+$ export HOROVOD_WITH_MPI=1
+$ export HOROVOD_WITH_TENSORFLOW=1
+```
+Then, run the actual installation, while ensuring tensorflow requirement.
+```
+$ pip install horovod[tensorflow]
+```
 
 ## Introduction
 
@@ -44,9 +116,9 @@ OpenMPI seems to be the preferred option, though Gloo is reported to have simila
 5) Horovod has techniques built-in for increased performance in the distributed training process such as tensor fusion [^ref6] and autotuning [^ref7].
 6) Horovod includes support for elastic training, which allows it to scale up and down the number of workers dynamically, allowing the job to continue if some hosts fail [^ref9].
 
-## Usage Example
+## Example
 
-The following example is a modified version with added commentary of code from the official horovod GitHub repo [^ref10], which is protected under Apache-2.0 license.
+The following example is a modified version with added commentary of code from the official horovod GitHub repo [^ref10].
 This basic example uses keras with tensorflow 2.0, but the implementation is incredibly similar between other supported frameworks. See the official docs [^ref11] for individual differences in implementation between each framework.
 
 Step one: import horovod for the required framework
