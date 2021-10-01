@@ -30,7 +30,7 @@ For installation details on a per-setup basis, however, be sure to refer to the 
 
 ## Introduction
 
-Horovod [^ref2] is a framework for distributed deep learning training developed by engineers at Uber. It makes use of a simple infrastructure setup that can be applied easily to any of the supported deep learning frameworks, including TensorFlow, Keras, PyTorch, and MXNet. By distributing data-parallel training across all of the connected hosts and GPUs, it is able to achieve up to 90% scaling efficiency [^ref3].
+Horovod [^ref2] is a framework for distributed deep learning training developed by engineers at Uber. It makes use of a simple infrastructure setup that can be applied easily to any of the supported deep learning frameworks, including TensorFlow, Keras, PyTorch, and MXNet. By distributing data-parallel training across all of the connected hosts and GPUs, it reportedly achieves up to 90% scaling efficiency [^ref3].
 
 ## Details
 
@@ -41,12 +41,12 @@ The following are a collection of details regarding Horovod that may be of inter
 2) Horovod can be used with either an MPI installation (i.e., OpenMPI) or Gloo, which is an open-source library by Facebook.
 OpenMPI seems to be the preferred option, though Gloo is reported to have similar performance results when combined with NCCL [^ref8] [^ref1].
 4) Horovod includes support for mpi4py [^ref5].
-5) Horovod has advanced techniques built-in for increased performance in the distributed training process such as tensor fusion [^ref6] and autotuning [^ref7].
+5) Horovod has techniques built-in for increased performance in the distributed training process such as tensor fusion [^ref6] and autotuning [^ref7].
 6) Horovod includes support for elastic training, which allows it to scale up and down the number of workers dynamically, allowing the job to continue if some hosts fail [^ref9].
 
 ## Usage Example
 
-The following example is a modified version with added commentary of code from the official horovod Github repo [^ref10], which is protected under Apache-2.0 license.
+The following example is a modified version with added commentary of code from the official horovod GitHub repo [^ref10], which is protected under Apache-2.0 license.
 This basic example uses keras with tensorflow 2.0, but the implementation is incredibly similar between other supported frameworks. See the official docs [^ref11] for individual differences in implementation between each framework.
 
 Step one: import horovod for the required framework
