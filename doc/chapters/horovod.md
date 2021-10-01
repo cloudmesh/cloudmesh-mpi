@@ -48,6 +48,7 @@ $ pip install horovod[tensorflow]
 $ python --version
 ```
 2. Install CMake
+
 - Go to https://cmake.org/download/. Under binary distributions, download the latest MacOS version as either a disk image or tarball.
 - Copy CMake.app into /Applications
 - Add the install directory (e.g. /Applications/CMake.app/Contents/bin) to PATH
@@ -78,6 +79,7 @@ $ pip install horovod[tensorflow]
 $ python --version
 ```
 2. Install CMake
+
 Go to https://cmake.org/download/. Under binary distributions, download the latest pre-compiled binaries for your platform.
 NOTE: If no binary is available for your platform, you will have to install from source. See https://cmake.org/install/ under the Linux, UNIX section for more details.
 
