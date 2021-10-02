@@ -3,8 +3,8 @@
 ## Introduction
 
 Horovod [^ref2] is a framework for distributed deep learning training
-developed by engineers at Uber. It makes use of a simple
-infrastructure setup that can be applied to any of the
+developed by engineers at Uber. It makes use of a simplified
+infrastructure setup for training distribution that can be applied to any of the
 supported deep learning frameworks, including TensorFlow, Keras,
 PyTorch, and MXNet. By distributing data-parallel training across all
 of the connected hosts and GPUs, it reportedly achieves up to 90%
