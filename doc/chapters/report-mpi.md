@@ -1007,7 +1007,7 @@ this variable will cause it to default to 4 workers.
 The higher this number, the faster the runtime (up until the maximum 
 number of threads on the CPU is surpassed).
 
-The futures feature only works with `-n 1` because it uses a method
+The futures feature only works with `mpiexec -n 1` because it uses a method
 similar to that of spawn. Any other number will only repeat the program
 needlessly; it will not run faster or more efficiently.
 
