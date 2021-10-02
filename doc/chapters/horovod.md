@@ -101,20 +101,22 @@ TODO: NOT TESTED
 
 2. Install CMake
 
-   * Go to https://cmake.org/download/. Under binary distributions,
-     download the latest MacOS version as either a disk image or tarball.
-   * Copy CMake.app into /Applications
-   * Add the install directory (e.g. /Applications/CMake.app/Contents/bin) to PATH
-
-3. Install OpenMPI
-
    The easiset way to install cmake is via homebrew using
 
    ```bash
    $ brew install cmake
    ```
+ 
+   Alernatively,
+   * Go to https://cmake.org/download/. Under binary distributions,
+     download the latest MacOS version as a disk image.
+   * Copy CMake.app into /Applications
+   * Add the install directory (e.g. /Applications/CMake.app/Contents/bin) to PATH
 
-   Alternatively, follow instructions found at the following link for your specific
+3. Install OpenMPI
+  
+
+   Follow instructions found at the following link for your specific
    system:
    https://github.com/cloudmesh/cloudmesh-mpi/blob/main/docs/report-mpi.md
 
