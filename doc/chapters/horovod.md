@@ -1,12 +1,21 @@
 # Horovod
 
-TBD: what is Horovod
+## Introduction
 
-Discuss MPI vs GLOO
+Horovod [^ref2] is a framework for distributed deep learning training
+developed by engineers at Uber. It makes use of a simple
+infrastructure setup that can be applied to any of the
+supported deep learning frameworks, including TensorFlow, Keras,
+PyTorch, and MXNet. By distributing data-parallel training across all
+of the connected hosts and GPUs, it reportedly achieves up to 90%
+scaling efficiency [^ref3].
+
+## MPI vs Gloo
+TODO
 
 ## Installation
 
-Horovod can be installed on many systems. The web page of Horovod,
+Horovod can be installed on many systems. The web page of Horovod
 provides the official Installation Guide [^ref1].
 
 Installing Horovod will require:
@@ -17,14 +26,14 @@ Installing Horovod will require:
 * OpenMPI (optional, could use Gloo, which is included)
 
 We will outline here simple install instructions for various operating
-systems while also describing different instalations based on MPI vs GLOO
+systems while also describing different instalations based on MPI vs Gloo
 
 ### Windows with OpenMPI
 
 TODO: NOT TESTED
 
 1. We assume you have gitbash installed. We also assume that you use
-   for the instalation steps an administarative gitbash terminal
+   for the installation steps an administrative gitbash terminal
 
    TBD (see our docuementatio in cloudmesh-mpi)
    no reason to duplicate
@@ -38,7 +47,7 @@ TODO: NOT TESTED
 1. Check Python installation to ensure version 3.6+. Update if
    necessary.
 
-   ```
+   ```bash
    $ which python 
    $ python --version
    ```
@@ -51,10 +60,10 @@ TODO: NOT TESTED
 	selected, this must be done manually. You can do it directly from
 	the commandline with the following commands:
 
-    ```bash
-	cd ~/Download
-	wget https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3-windows-x86_64.msi
-	msiexec /i cmake-3.21.3-windows-x86_64.msi`
+   	```bash
+	$ cd ~/Download
+	$ wget https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3-windows-x86_64.msi
+	$ msiexec /i cmake-3.21.3-windows-x86_64.msi`
 	```
 
 	TODO: does this allow setting the path. If not can we do a prg
@@ -163,16 +172,6 @@ https://github.com/cloudmesh/cloudmesh-mpi/blob/main/docs/report-mpi.md
    $ export HOROVOD_WITH_TENSORFLOW=1
    $ pip install horovod[tensorflow]
    ```
-
-## Introduction
-
-Horovod [^ref2] is a framework for distributed deep learning training
-developed by engineers at Uber. It makes use of a simple
-infrastructure setup that can be applied easily to any of the
-supported deep learning frameworks, including TensorFlow, Keras,
-PyTorch, and MXNet. By distributing data-parallel training across all
-of the connected hosts and GPUs, it reportedly achieves up to 90%
-scaling efficiency [^ref3].
 
 ## Details
 
