@@ -115,7 +115,7 @@ TODO: NOT TESTED
    environment variables to ensure proper values for the pip
    installation.
 
-   ```
+   ```bash
    $ pip install tensorflow
    $ export HOROVOD_WITHOUT_GLOO=1
    $ export HOROVOD_WITH_MPI=1
@@ -129,7 +129,7 @@ For Gloo make sure lubuv is installed first
 $ brew install libuv
 ```
 
-### Linux
+### Linux with OpenMPI
 
 1. Check Python installation to ensure version 3.6+. Update if necessary.
 ```
