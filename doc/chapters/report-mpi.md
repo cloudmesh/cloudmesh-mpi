@@ -1001,7 +1001,7 @@ photo since 640x480 times 3 is 1920x1440. Not issuing an `export`
 command will cause the program to default to a multiplier of 1.
 The higher this number, the slower the runtime.
 
-The workers variables serves as an integer which sets the number of
+The workers variable serves as an integer which sets the number of
 workers to spawn for collaborative program execution. Not exporting
 this variable will cause it to default to 4 workers.
 The higher this number, the faster the runtime (up until the maximum 
