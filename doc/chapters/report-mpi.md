@@ -989,51 +989,55 @@ Futures modules, specifically via MPIPoolExecutor.
 To run the program, issue this command in Git Bash:
 
 ```bash
-mpiexec -n 1 python julia-futures.py
+$ export multiplier=2
+$ export workers=4
+$ mpiexec -n 1 python julia-futures.py
 ```
 
-The number after `-n` can be changed to however many cores are in the
-computer's processor.  For example, a dual-core processor can use `-n
-2` so that more worker processes work to execute the same program.
+The multiplier variable serves as an integer which multiplies the
+standard resolution of the Julia set picture, which is 640x480. 
+For example, issuing `export multipler=3` will produce a 1920x1440 
+photo since 640x480 times 3 is 1920x1440. Not issuing an `export`
+command will cause the program to default to a multiplier of 1.
+The higher this number, the slower the runtime.
+
+The workers variables serves as an integer which sets the number of
+workers to spawn for collaborative program execution. Not exporting
+this variable will cause it to default to 4 workers.
+The higher this number, the faster the runtime (up until the maximum 
+number of threads on the CPU is surpassed).
+
+The futures feature only works with `-n 1` because it uses a method
+similar to that of spawn. Any other number will only repeat the program
+needlessly; it will not run faster or more efficiently.
 
 The program will output a png image of a Julia set upon successful
 execution.
 
-Furthermore, the user enters a number upon starting execution of the
-program, when a prompt appears, asking for a value. Entering the
-number `3` will produce a 1920x1440 photo because the inputted value
-serves as a multiplier of the resolution of the Julia set
-picture. 640x480 times 3 is 1920x1440.  Then, after input, the program
-should output a visualization of a Julia data set as a png image.
-
-However, we created the numba version of this program in an attempt to
-achieve faster runtimes. For an explanation of numba, please see the
-Monte Carlo section of this document.
+We created the numba version of this program in an attempt to
+achieve faster runtimes. Numba utilizes the jit decorator. For further 
+explanation of numba, please see the Monte Carlo section of this document.
 
 ``` python
 !include ../examples/futures/julia-numba.py
 ```
 
-|         |   No Jit (1280x960)  |  Jit Enabled (1280x960) | No Jit (1920x1440) | Jit Enabled (1920x1440) |
-|---------|------------|---------------|-------------|------------|
-| 1 Core  | 44.898 s   | 45.800 s      |   68.489 s           |   68.610 s |
-| 2 Cores | 45.578 s   | 45.714 s      |   67.718 s           |   69.326 s |
-| 3 Cores | 43.026 s   | 44.521 s      |   68.785 s           |   69.487 s |
-| 4 Cores | 44.746 s   | 44.552 s      |   73.606 s           |   70.257 s |
-| 5 Cores | 43.223 s   | 42.825 s      |   68.226 s           |   68.443 s |
-| 6 Cores | 45.134 s   | 44.402 s      |   68.437 s           |   67.637 s |
+| No Jit    | 1 Worker   | 2 Workers     | 6 Workers    | 12 Workers    | 20 Workers   |
+|-----------|------------|---------------|--------------|---------------|--------------|
+| 640x480   | 23.022 s   | 11.883 s      | 5.457 s      | 4.617 s       | 5.594 s      |
+| 1280x960  | 45.383 s   | 22.886 s      | 9.254 s      | 6.801 s       | 7.050 s      |
+| 1920x1440 | 68.428 s   | 34.782 s      | 13.132 s     | 9.103 s       | 8.745 s      |
+
+| Jit Enabled | 1 Worker   | 2 Workers     | 6 Workers    | 12 Workers    | 20 Workers   |
+|-------------|------------|---------------|--------------|---------------|--------------|
+| 640x480     | 23.684 s   | 11.768 s      | 5.98 s       | 5.532 s       | 7.301 s      |
+| 1280x960    | 45.938 s   | 23.026 s      | 9.328 s      | 7.491 s       | 8.743 s      |
+| 1920x1440   | 68.292 s   | 33.860 s      | 13.672 s     | 9.675 s       | 10.026 s     |
 
 * These benchmark times were generated using a Ryzen 5 3600 CPU with
-  16 GB RAM on a Windows 10 computer.
+  16 GB RAM on a Windows 10 computer. The Ryzen 5 3600 is a 6-core, 12-thread processor.
 
-The improvement in shorter runtime with jit is not apparent likely
-because the computations required to run this program are not very
-complex; the same reason applies to why the increase in cores does not
-improve runtime.
-
-However, this example showcases how to run examples with a
-parameter to explore the behavior on multiple cores. Naturally, you can
-use and explore other parameters once added to the program.
+Jit does not appear to shorten the program runtimes, even causing it to be longer in some instances.
 
 # Simple MPI Example Programs
 
