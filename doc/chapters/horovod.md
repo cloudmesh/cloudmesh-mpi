@@ -101,7 +101,7 @@ TODO: NOT TESTED
 
 2. Install CMake
 
-   The easiset way to install cmake is via homebrew using
+   The easiest way to install cmake is via homebrew using
 
    ```bash
    $ brew install cmake
@@ -148,13 +148,18 @@ $ python --version
 ```
 2. Install CMake
 
+The easiest way to install CMake is via apt-get.
+
+```bash
+$ sudo apt-get install cmake
+```
+
+Alternatively:
 Go to https://cmake.org/download/. Under binary distributions,
 download the latest pre-compiled binaries for your platform.  NOTE: If
 no binary is available for your platform, you will have to install
 from source. See https://cmake.org/install/ under the Linux, UNIX
 section for more details.
-
-TODO: apt get instead?
 
 3. Install OpenMPI
 
@@ -286,7 +291,7 @@ model.fit(dataset,
      startup vi prefernces (light background black color)
    * Explain how to copy content from windows/browser into gitbash
      shell
-   * explain  how we can set path variables from te shell via a
+   * explain  how we can set path variables from the shell via a
      commandline so that its preseved when we start a new gitbash
 7. In macOS zsh explain how to set a prompt that hat the ENV as prefix
 
