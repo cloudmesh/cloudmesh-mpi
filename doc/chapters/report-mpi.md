@@ -367,15 +367,15 @@ In the case of multiple computers, you can simply specify the hosts as a
 parameter to your MPI program that you run on your manager node
 
 
-   ```bash
-   (ENV3) $ mpiexec -n 4 -host re0,red1,red2,red3 python -m mpi4py.bench helloworld   
-   ```
+```bash
+(ENV3) $ mpiexec -n 4 -host re0,red1,red2,red3 python -m mpi4py.bench helloworld   
+```
 
 To specify how many processes you like to run on each of them, you can use the option `-ppn` followed by the number.
 
-   ```bash
-   (ENV3) $ mpiexec -n 4 -pn 2 -host re0,red1,red2,red3 python -m mpi4py.bench helloworld   
-   ```
+```bash
+(ENV3) $ mpiexec -n 4 -pn 2 -host re0,red1,red2,red3 python -m mpi4py.bench helloworld   
+```
 
 As today we usually have multiple cores on a processor, you could be using that core count as the parameter.
 
@@ -1202,14 +1202,14 @@ execute the numba version of the Monte Carlo program:
 $ mpiexec -n 4 python parallel_pi_numba.py
 ```
 
-|         | parallel_pi.py execution time   | parallel_pi_numba.py execution time   |
+| Cores   | parallel_pi.py execution time   | parallel_pi_numba.py execution time   |
 |---------|---------------------------------|---------------------------------------|
-| 6 Cores | 237.873 s                       | 169.678 s                             |
-| 5 Cores | 257.720 s                       | 199.572 s                             |
-| 4 Cores | 326.811 s                       | 239.160 s                             |
-| 3 Cores | 383.343 s                       | 289.433 s                             |
-| 2 Cores | 545.500 s                       | 403.289 s                             |
-| 1 Core  | 1075.68 s                       | 810.525 s                             |
+| 6       | 237.873 s                       | 169.678 s                             |
+| 5       | 257.720 s                       | 199.572 s                             |
+| 4       | 326.811 s                       | 239.160 s                             |
+| 3       | 383.343 s                       | 289.433 s                             |
+| 2       | 545.500 s                       | 403.289 s                             |
+| 1       | 1075.68 s                       | 810.525 s                             |
 
 * These benchmark times were generated using a Ryzen 5 3600 CPU with 16 GB RAM on a Windows 10 computer.
 
@@ -1314,14 +1314,14 @@ according to the user's system.
 At rank 0, the program starts and ends a benchmark for analysis of which -n parameter will give the shortest runtime.
 
 
-|         | mandelbrot-parallel.py execution time   | mandelbrot-parallel-numba.py execution time   |
+| Cores   | mandelbrot-parallel.py execution time   | mandelbrot-parallel-numba.py execution time   |
 |---------|-----------------------------------------|-----------------------------------------------|
-| 6 Cores | 3.071 s                                 | 0.422 s                                       |
-| 5 Cores | 3.791 s                                 | 0.434 s                                       |
-| 4 Cores | 3.920 s                                 | 0.427 s                                       |
-| 3 Cores | 5.769 s                                 | 0.473 s                                       |
-| 2 Cores | 5.010 s                                 | 0.520 s                                       |
-| 1 Core  | 9.891 s                                 | 1.765 s                                       |
+| 6       | 3.071 s                                 | 0.422 s                                       |
+| 5       | 3.791 s                                 | 0.434 s                                       |
+| 4       | 3.920 s                                 | 0.427 s                                       |
+| 3       | 5.769 s                                 | 0.473 s                                       |
+| 2       | 5.010 s                                 | 0.520 s                                       |
+| 1       | 9.891 s                                 | 1.765 s                                       |
 
 * These benchmark times were generated using a Ryzen 5 3600 CPU with 16 GB RAM on a Windows 10 computer.
 
