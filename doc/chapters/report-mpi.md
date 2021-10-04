@@ -989,21 +989,21 @@ Futures modules, specifically via MPIPoolExecutor.
 To run the program, issue this command in Git Bash:
 
 ```bash
-$ export multiplier=2
-$ export workers=4
+$ cms set multiplier=2
+$ cms set workers=4
 $ mpiexec -n 1 python julia-futures.py
 ```
 
 The multiplier variable serves as an integer which multiplies the
 standard resolution of the Julia set picture, which is 640x480. 
-For example, issuing `export multipler=3` will produce a 1920x1440 
-photo since 640x480 times 3 is 1920x1440. Not issuing an `export`
+For example, issuing `cms set multipler=3` will produce a 1920x1440 
+photo since 640x480 times 3 is 1920x1440. Not issuing a `cms set`
 command will cause the program to default to a multiplier of 1.
 The higher this number, the slower the runtime.
 
 The workers variable serves as an integer which sets the number of
 workers to spawn for collaborative program execution. Not exporting
-this variable will cause it to default to 4 workers.
+this variable will cause it to default to 1 worker.
 The higher this number, the faster the runtime (up until the maximum 
 number of threads on the CPU is surpassed).
 
@@ -1024,20 +1024,27 @@ explanation of numba, please see the Monte Carlo section of this document.
 
 | No Jit    | 1 Worker   | 2 Workers     | 6 Workers    | 12 Workers    | 20 Workers   |
 |-----------|------------|---------------|--------------|---------------|--------------|
-| 640x480   | 23.022 s   | 11.883 s      | 5.457 s      | 4.617 s       | 5.594 s      |
-| 1280x960  | 45.383 s   | 22.886 s      | 9.254 s      | 6.801 s       | 7.050 s      |
-| 1920x1440 | 68.428 s   | 34.782 s      | 13.132 s     | 9.103 s       | 8.745 s      |
+| 640x480   | 22.470 s   | 12.220 s      | 4.946 s      | 4.384 s       | 5.257 s      |
+| 1280x960  | 45.951 s   | 23.702 s      | 8.982 s      | 6.258 s       | 6.523 s      |
+| 1920x1440 | 68.779 s   | 34.652 s      | 12.933 s     | 8.385 s       | 8.042 s      |
 
 | Jit Enabled | 1 Worker   | 2 Workers     | 6 Workers    | 12 Workers    | 20 Workers   |
 |-------------|------------|---------------|--------------|---------------|--------------|
-| 640x480     | 23.684 s   | 11.768 s      | 5.98 s       | 5.532 s       | 7.301 s      |
-| 1280x960    | 45.938 s   | 23.026 s      | 9.328 s      | 7.491 s       | 8.743 s      |
-| 1920x1440   | 68.292 s   | 33.860 s      | 13.672 s     | 9.675 s       | 10.026 s     |
+| 640x480     | 24.551 s   | 12.499 s      | 5.632 s      | 5.054 s       | 6.616 s      |
+| 1280x960    | 46.183 s   | 23.406 s      | 9.543 s      | 7.190 s       | 8.226 s      |
+| 1920x1440   | 68.366 s   | 34.569 s      | 12.938 s     | 9.278 s       | 8.854 s      |
 
 * These benchmark times were generated using a Ryzen 5 3600 CPU with
   16 GB RAM on a Windows 10 computer. The Ryzen 5 3600 is a 6-core, 12-thread processor.
+  
+| No Jit    | 1 Worker   | 2 Workers     | 6 Workers    | 12 Workers    | 20 Workers   |
+|-----------|------------|---------------|--------------|---------------|--------------|
+| 640x480   |   |     |      |       |       |
+| 1280x960  |    |      |     |       |      |
+| 1920x1440 |    |      |    |      |      |
 
-Jit does not appear to shorten the program runtimes, even causing it to be longer in some instances.
+Jit does not appear to shorten the program runtimes, causing it to be longer in most instances
+except for a few higher resolution outputs.
 
 # Simple MPI Example Programs
 
