@@ -2,28 +2,34 @@ from mpi4py.futures import MPIPoolExecutor
 import matplotlib.pyplot as plt
 import numpy as np
 from cloudmesh.common.StopWatch import StopWatch
-import os
+from cloudmesh.common.variables import Variables
+import multiprocessing
 
 StopWatch.start("Overall time")
 
-multiplier = os.getenv("multiplier")
-workers = os.getenv("workers")
+v = Variables()
 
-if multiplier:
+if (v["multiplier"]):
+    multiplier = int((v["multiplier"]))
     print(f"Proceeding since multiplier exists: {multiplier=}")
-    multiplier = int(os.getenv("multiplier"))
     pass
 else:
-    print("No multiplier was input so multiplier defaults to 1")
+    print("No multiplier was input so multiplier defaults to 1\n"
+          "Use `$ cms set multiplier=2` to output higher resolution "
+          "Julia set image")
     multiplier = 1
     pass
-if workers:
+if (v["workers"]):
+    workers = int((v["workers"]))
     print(f"Proceeding since workers exists: {workers=}")
-    workers = int(os.getenv("workers"))
     pass
 else:
-    print("No number of workers was input so workers defaults to 4")
-    workers = 4
+    print("No number of workers was input so workers defaults to 1\n"
+          "We suggest you use",multiprocessing.cpu_count(),
+          "workers for shortest runtime because that is the number of"
+          "threads you have available. Do this by issuing command "
+          f"`$ cms set workers={multiprocessing.cpu_count()}`")
+    workers = 1
     pass
 
 x0, x1, w = -2.0, +2.0, 640*multiplier
