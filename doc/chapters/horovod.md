@@ -11,7 +11,11 @@ of the connected hosts and GPUs, it reportedly achieves up to 90%
 scaling efficiency [^ref3].
 
 ## MPI vs Gloo
-TODO
+Horovod supports two separate frameworks for communication among training machines: MPI and Gloo [^ref13]. 
+
+Gloo is included by default in the installation of Horovod, while MPI requires a separate installation.
+
+MPI is reported to have better performance than Gloo with a CPU-setup, while performance with a GPU setup is comparable between the two [^ref12].
 
 ## Installation
 
@@ -308,3 +312,5 @@ model.fit(dataset,
 [^ref9]: https://horovod.readthedocs.io/en/stable/elastic_include.html
 [^ref10]: https://github.com/horovod/horovod/blob/master/examples/tensorflow2/tensorflow2_keras_mnist.py
 [^ref11]: https://horovod.readthedocs.io/en/stable/summary_include.html
+[^ref12]: https://horovod.readthedocs.io/en/stable/mpi.html
+[^ref13]: https://github.com/facebookincubator/gloo
