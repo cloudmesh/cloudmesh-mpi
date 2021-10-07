@@ -994,6 +994,8 @@ $ cms set workers=4
 $ mpiexec -n 1 python julia-futures.py
 ```
 
+>Note: if command cms is not found, make sure to install cloudmesh-common, cloudmesh_base, cloudmesh-inventory via pip
+
 The multiplier variable serves as an integer which multiplies the
 standard resolution of the Julia set picture, which is 640x480. 
 For example, issuing `cms set multipler=3` will produce a 1920x1440 
@@ -1037,11 +1039,17 @@ explanation of numba, please see the Monte Carlo section of this document.
 * These benchmark times were generated using a Ryzen 5 3600 CPU with
   16 GB RAM on a Windows 10 computer. The Ryzen 5 3600 is a 6-core, 12-thread processor.
   
-| No Jit    | 1 Worker   | 2 Workers     | 6 Workers    | 12 Workers    | 20 Workers   |
-|-----------|------------|---------------|--------------|---------------|--------------|
-| 640x480   |   |     |      |       |       |
-| 1280x960  |    |      |     |       |      |
-| 1920x1440 |    |      |    |      |      |
+| No Jit    | 1 Worker   | 2 Workers     | 3 Workers    | 4 Workers     |
+|-----------|------------|---------------|--------------|---------------|
+| 640x480   | 51.555 s   | 49.103 s      | 48.501 s     | 48.983 s      |
+| 1280x960  | 66.044 s   | 56.652 s      | 53.693 s     | 52.929 s      |
+| 1920x1440 | 87.918 s   | 68.069 s      | 61.836 s     | 59.414        |
+
+* These benchmark times were generated using a Raspberry Pi 4 Model B 2018 with
+  8 GB RAM on a Raspbian 10 (codename buster) OS. It uses an ARM Cortex-A72 4-core, 4-thread processor.
+  On this Raspberry Pi, 4 workers can be used via the `cms set workers=4` and `mpirun -np 1 --oversubscribe python julia-futures.py`
+  commands. However, any number of workers greater than 4 causes the program to hang and timeout with an unknown MPI
+  spawn error, likely because the Pi does not support using a greater number of threads.
 
 Jit does not appear to shorten the program runtimes, causing it to be longer in most instances
 except for a few higher resolution outputs.
