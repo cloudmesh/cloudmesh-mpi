@@ -66,6 +66,10 @@ Job for slurmd.service failed because the control process exited with error code
 See "systemctl status slurmd.service" and "journalctl -xe" for details.
 
 Issuing `systemctl status slurmd.service` gives:
+```
 Oct 08 09:52:16 red slurmd[1380]: error: Couldn't find the specified plugin name for select/cons_tres looking at all files
 Oct 08 09:52:16 red slurmd[1380]: error: cannot find select plugin for select/cons_tres
 Oct 08 09:52:16 red slurmd[1380]: fatal: Can't find plugin for select/cons_tres
+```
+
+This slurm documentation suggests it is because slurm is outdated <https://lists.schedmd.com/pipermail/slurm-users/2020-April/005206.html>
