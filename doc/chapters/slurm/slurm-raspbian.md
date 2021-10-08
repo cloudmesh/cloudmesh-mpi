@@ -44,3 +44,28 @@ We hit submit at bottom of form, select all, and then copy. Issue command `sudo 
 REMEMBER if you need to delete everything if something is already within this file, set cursor to beginning of document and set Mark by Command + Shift + 6 
 then scroll to bottom and press Ctrl + K (you should now recopy the text that the configurator produced and now shift + insert into nano to paste it.
 Then save this file slurm.conf)
+
+Now we issue command `sudo nano /etc/slurm-llnl/cgroup.conf` and ensure the following is pasted in:
+
+```
+CgroupAutomount=yes
+CgroupReleaseAgentDir="/etc/slurm/cgroup"
+ConstrainCores=yes
+ConstrainDevices=yes
+ConstrainRAMSpace=yes
+```
+
+and restart daemons:
+```
+sudo systemctl restart slurmctld
+sudo systemctl restart slurmd
+```
+
+Now we find an error:
+Job for slurmd.service failed because the control process exited with error code.
+See "systemctl status slurmd.service" and "journalctl -xe" for details.
+
+Issuing `systemctl status slurmd.service` gives:
+Oct 08 09:52:16 red slurmd[1380]: error: Couldn't find the specified plugin name for select/cons_tres looking at all files
+Oct 08 09:52:16 red slurmd[1380]: error: cannot find select plugin for select/cons_tres
+Oct 08 09:52:16 red slurmd[1380]: fatal: Can't find plugin for select/cons_tres
