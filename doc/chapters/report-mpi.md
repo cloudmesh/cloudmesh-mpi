@@ -1049,7 +1049,7 @@ explanation of numba, please see the Monte Carlo section of this document.
   8 GB RAM on a Raspbian 10 (codename buster) OS. It uses an ARM Cortex-A72 4-core, 4-thread processor.
   On this Raspberry Pi, 4 workers can be used via the `cms set workers=4` and `mpirun -np 1 --oversubscribe python julia-futures.py`
   commands. However, any number of workers greater than 4 causes the program to hang and timeout with an unknown MPI
-  spawn error, likely because the Pi does not support using a greater number of threads.
+  spawn error, likely because the Pi does not support using a greater number of threads. Also, numba cannot be used on Pi.
 
 Jit does not appear to shorten the program runtimes, causing it to be longer in most instances
 except for a few higher resolution outputs.
