@@ -1043,7 +1043,7 @@ explanation of numba, please see the Monte Carlo section of this document.
 |-----------|------------|---------------|--------------|---------------|
 | 640x480   | 51.555 s   | 49.103 s      | 48.501 s     | 48.983 s      |
 | 1280x960  | 66.044 s   | 56.652 s      | 53.693 s     | 52.929 s      |
-| 1920x1440 | 87.918 s   | 68.069 s      | 61.836 s     | 59.414        |
+| 1920x1440 | 87.918 s   | 68.069 s      | 61.836 s     | 59.414 s      |
 
 * These benchmark times were generated using a Raspberry Pi 4 Model B 2018 with
   8 GB RAM on a Raspbian 10 (codename buster) OS. It uses an ARM Cortex-A72 4-core, 4-thread processor.
