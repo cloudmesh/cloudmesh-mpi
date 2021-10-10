@@ -6,7 +6,7 @@ Slurm stands for **S**imple **L**inux **U**tility for **R**esource **M**anagemen
 for a group of computers (otherwise referred to as cluster) to carry out tasks efficiently and in a particular order. It is possible
 to install Slurm on a cluster of Raspberry Pis which have 32-bit armv7l (also called armhf) processors.
 
-This tutorial will use a cluster of four Raspberry Pi 4 Model B (2018) computers running Raspbian OS 10 (codename buster).
+This tutorial will use a cluster of four Raspberry Pi 4 Model B computers running Raspbian OS 10 (codename buster).
 They have 64 GB SD cards; we also use a USB stick that is connected to the manager Pi, which serves as shared storage
 between all of the Pis. This USB stick can be a standard flash drive, an USB SD card adapter with an SD card inside, or it
 can even be replaced by a NAS box connected to the network. All that matters is that it must be mountable and it must have 
