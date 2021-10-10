@@ -1,6 +1,6 @@
 # Installing Slurm on a Raspberry Pi Cluster
 
-## Introduction
+## 1. Introduction
 
 Slurm stands for **S**imple **L**inux **U**tility for **R**esource **M**anagement. It is an open-source job scheduler
 for a group of computers (otherwise referred to as cluster) to carry out tasks efficiently and in a particular order. It is possible
@@ -20,16 +20,68 @@ should be able to follow along because the Git Bash commands and Pi commands wil
 We give credit to the original tutorial <https://blog.llandsmeer.com/tech/2020/03/02/slurm-single-instance.html> which we
 have heavily edited to use cloudmesh commands and to be more efficient overall.
 
-## Preparation
+## 2. Preparation
 
 The first thing we do is burn the Pis. Burning them using cloudmesh is much easier than configuring each Pi manually. Our tutorial
 for burning the Pis' SD cards using a Windows host computer can be found at <https://cloudmesh.github.io/pi/tutorial/raspberry-burn-windows/>
 while the tutorial for Raspberry Pi OS can be found at <https://cloudmesh.github.io/pi/tutorial/raspberry-burn/> and the tutorial for
-Ubuntu at <https://cloudmesh.github.io/pi/tutorial/ubuntu-burn/>.
+Ubuntu at <https://cloudmesh.github.io/pi/tutorial/ubuntu-burn/>. Follow one of these tutorials fully.
 
 This tutorial assumes that your manager node's hostname is red and your worker nodes' hostnames are red01, red02, and red03. You may have
-additional workers; be sure to alter this tutorial's commands accordingly (e.g. instead of `red0[1-3]` perhaps you have `red0[1-4]` if
+additional workers; be sure to alter this tutorial's commands accordingly (e.g. instead of `red,red0[1-3]` perhaps you have `red,red0[1-4]` if
 you have five Pis total instead of four). Following this name schema will make following this tutorial run more smoothly.
+
+## 3. Installation
+
+### 3.1 Verify Proper Cluster Setup
+
+Turn on your Pis and wait for them to boot. To be sure that cms is installed properly from the burn tutorial, issue this command in Git
+Bash on the host computer:
+
+```
+(ENV3) you@yourhostcomputer $ eval `ssh-agent`
+(ENV3) you@yourhostcomputer $ eval `ssh-add`
+```
+
+Enter your ssh password and then issue command:
+
+```
+(ENV3) you@yourhostcomputer $ cms pi temp "red,red0[1-3]"
+pi temp red,red0[1-3]
++--------+--------+-------+----------------------------+
+| host   |    cpu |   gpu | date                       |
+|--------+--------+-------+----------------------------|
+| red    | 50.147 |  50.6 | 2021-10-10 20:27:49.670815 |
+| red01  | 48.686 |  49.1 | 2021-10-10 20:27:48.991141 |
+| red02  | 50.147 |  50.6 | 2021-10-10 20:27:49.007155 |
+| red03  | 55.017 |  55   | 2021-10-10 20:27:52.193808 |
++--------+--------+-------+----------------------------+
+Timer: 5.9208s Load: 0.2612s pi temp red,red0[1-3]
+```
+
+If some of the temperatures are 0 (zero), then there is likely an issue with connecting to
+one of the Pis; if so, we suggest you reburn using the tutorials in the Preparation section of this tutorial.
+
+We must install the ntpdate package because SLURM and Munge run most efficiently when the cluster is
+on the same page when it comes to the time. Software for job scheduling such as SLURM must run on computers
+that have the correct time, so lets update apt-get and install ntpdate, which may take around three minutes:
+
+```
+(ENV3) you@yourhostcomputer $ cms host ssh red,red0[1-3] "'sudo apt-get update'"
+```
+
+Then issue:
+```
+(ENV3) you@yourhostcomputer $ cms host ssh red,red0[1-3] "'sudo apt install ntpdate -y'"
+```
+
+When the output says True under the success column and it has finished, then reboot the Pis:
+```
+(ENV3) you@yourhostcomputer $ cms host reboot "red,red0[1-3]"
+``` 
+
+### 3.2 Prepare Shared Storage
+
 
 
 `$ sudo apt install munge`
