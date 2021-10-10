@@ -82,6 +82,65 @@ When the output says True under the success column and it has finished, then reb
 
 ### 3.2 Prepare Shared Storage
 
+We will use a USB SD Card adapter with an 8 GB SanDisk Memory Stick Pro Duo card inserted. It really does not matter
+what type of storage is used as long as it is sufficiently fast, readable, and mountable. We can use a regular USB drive
+or even a NAS device, but this tutorial will follow USB storage.
+
+Ensure that the USB is connected to red, the manager Pi. Then, ssh into red: `(ENV3) you@yourhostcomputer $ ssh red`
+
+Then issue command 
+```
+(ENV3) pi@red:~ $ lsblk
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda           8:0    1  7.5G  0 disk
+└─sda1        8:1    1  7.4G  0 part
+mmcblk0     179:0    0 59.7G  0 disk
+├─mmcblk0p1 179:1    0  256M  0 part /boot
+└─mmcblk0p2 179:2    0 59.4G  0 part /
+```
+
+This USB's partition is shown to be `/dev/sda1` but it may differ. Note the name of the USB, which can be identified by the SIZE
+column (as long as you remember what the size is of your device). Make sure there is no important information on this drive because
+we will now format it and erase everything:
+
+`(ENV3) pi@red:~ $ sudo mkfs.ext4 /dev/sda1`
+
+Ensure you enter this command perfectly because you can accidentally erase your Pi otherwise.
+
+Create the mount directory by issuing these commands:
+```
+(ENV3) pi@red:~ $ sudo mkdir /clusterfs
+(ENV3) pi@red:~ $ sudo chown nobody.nogroup -R /clusterfs
+(ENV3) pi@red:~ $ sudo chmod 777 -R /clusterfs
+(ENV3) pi@red:~ $ blkid
+```
+
+Take note of the UUID of your USB device (identifiable by the partition name you have identified such as `/dev/sda1`). We must edit a
+system file so that the device is automatically mounted on boot for convenience:
+
+```
+(ENV3) pi@red:~ $ sudo nano /etc/fstab
+```
+
+>Convenient tips for using the nano editor include the `Ctrl + Insert` keyboard shortcut to Copy and the `Shift + Insert` shortcut
+>to paste. These also work for the Git Bash console. Use the arrow keys for navigating through the file.
+
+Create a new line underneath the last PARTUUID line by moving your cursor with the arrow keys right before the # line and pressing `Enter`.
+Then, type this line: `UUID=65077e7a-4bd6-47ea-8014-01e06655cc31 /clusterfs ext4 defaults 0 2` and edit the UUID to be the one of your USB
+device.
+
+The file should look like this when finished:
+
+```
+proc            /proc           proc    defaults          0       0
+PARTUUID=90f4d157-01  /boot           vfat    defaults          0       2
+PARTUUID=90f4d157-02  /               ext4    defaults,noatime  0       1
+UUID=2d112ab1-8948-4e7b-a690-587f3470d0f2 /clusterfs ext4 defaults 0 2
+# a swapfile is not a swap partition, no line here
+#   use  dphys-swapfile swap[on|off]  for that
+```
+
+Press `Ctrl + X` and then type `y` to confirm that you want to save the modified buffer (you may have to press `Enter` after `y`).
 
 
 `$ sudo apt install munge`
