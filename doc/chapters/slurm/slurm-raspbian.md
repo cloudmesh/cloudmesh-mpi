@@ -68,14 +68,11 @@ that have the correct time, so lets update apt-get and install ntpdate, which ma
 
 ```
 (ENV3) you@yourhostcomputer $ cms host ssh red,red0[1-3] "'sudo apt-get update'"
-```
-
-Then issue:
-```
 (ENV3) you@yourhostcomputer $ cms host ssh red,red0[1-3] "'sudo apt install ntpdate -y'"
 ```
 
 When the output says True under the success column and it has finished, then reboot the Pis:
+
 ```
 (ENV3) you@yourhostcomputer $ cms host reboot "red,red0[1-3]"
 ``` 
