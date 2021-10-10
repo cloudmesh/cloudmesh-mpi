@@ -199,6 +199,8 @@ Now we are back on our host computer.
 
 For convenience, we can utilize the `cms host ssh` command to execute the same command across all of our worker Pis.
 We must install the NFS client on our workers:
-`(ENV3) you@yourhostcomputer $ cms host ssh red0[1-3] "'sudo apt install nfs-common -y'"`
+```
+(ENV3) you@yourhostcomputer $ cms host ssh red0[1-3] "'sudo apt install nfs-common -y'"
+```
 
 The success column should read True for all workers.
