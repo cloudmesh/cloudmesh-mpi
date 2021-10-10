@@ -83,7 +83,11 @@ We will use a USB SD Card adapter with an 8 GB SanDisk Memory Stick Pro Duo card
 what type of storage is used as long as it is sufficiently fast, readable, and mountable. We can use a regular USB drive
 or even a NAS device, but this tutorial will follow USB storage.
 
-Ensure that the USB is connected to red, the manager Pi. Then, ssh into red: `(ENV3) you@yourhostcomputer $ ssh red`
+Ensure that the USB is connected to red, the manager Pi. Then, ssh into red: 
+
+```bash
+(ENV3) you@yourhostcomputer $ ssh red
+```
 
 Then issue command 
 ```
