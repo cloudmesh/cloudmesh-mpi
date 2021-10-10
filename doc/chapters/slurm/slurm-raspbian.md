@@ -29,13 +29,13 @@ Ubuntu at <https://cloudmesh.github.io/pi/tutorial/ubuntu-burn/>. Follow one of 
 
 This tutorial assumes that your manager node's hostname is red and your worker nodes' hostnames are red01, red02, and red03. You may have
 additional workers; be sure to alter this tutorial's commands accordingly (e.g. instead of `red,red0[1-3]` perhaps you have `red,red0[1-4]` if
-you have five Pis total instead of four). Following this name schema will make following this tutorial run more smoothly.
+you have five Pis total instead of four). Following this naming schema will make following this tutorial run more smoothly.
 
 ## 3. Installation
 
 ### 3.1 Verify Proper Cluster Setup
 
-Turn on your Pis and wait for them to boot. To be sure that cms is installed properly from the burn tutorial, issue this command in Git
+Turn on your Pis and wait for them to boot. To be sure that `cms` is installed properly from the burn tutorial, issue this command in Git
 Bash on the host computer:
 
 ```
