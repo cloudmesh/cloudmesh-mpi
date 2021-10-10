@@ -4,7 +4,7 @@
 
 Slurm stands for **S**imple **L**inux **U**tility for **R**esource **M**anagement. It is an open-source job scheduler
 for a group of computers (otherwise referred to as cluster) to carry out tasks efficiently and in a particular order. It is possible
-to install Slurm on a cluster of Raspberry Pis which have 32-bit armv7l (also called armhf) processors.
+to install Slurm on a cluster of Raspberry Pis.
 
 This tutorial will use a cluster of four Raspberry Pi 4 Model B computers running Raspbian OS 10 (codename buster).
 They have 64 GB SD cards; we also use a USB stick that is connected to the manager Pi, which serves as shared storage
