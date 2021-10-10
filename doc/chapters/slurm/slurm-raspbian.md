@@ -132,6 +132,8 @@ device.
 The file should look like this when finished:
 
 ```
+  GNU nano 3.2                      /etc/exports
+  
 proc            /proc           proc    defaults          0       0
 PARTUUID=90f4d157-01  /boot           vfat    defaults          0       2
 PARTUUID=90f4d157-02  /               ext4    defaults,noatime  0       1
@@ -142,72 +144,61 @@ UUID=2d112ab1-8948-4e7b-a690-587f3470d0f2 /clusterfs ext4 defaults 0 2
 
 Press `Ctrl + X` and then type `y` to confirm that you want to save the modified buffer (you may have to press `Enter` after `y`).
 
+Then mount the drive by issuing `(ENV3) pi@red:~ sudo mount -a`.
 
-`$ sudo apt install munge`
+>NOTE: There may be an error upon trying to mount the drive: `mount: /clusterfs: can't find UUID`. For whatever reason, the UUID
+>may have spontaneously changed. Simply issue `blkid` command again, take note of the new UUID, and re-edit fstab through command
+>`sudo nano /etc/fstab`. Then try remounting through command `sudo mount -a`.
 
+Issue these commands to change the permissions of the drive and to install the Network File Sharing server:
 ```
-$ munge -n | unmunge
-STATUS:           Success (0)
-[...]
-```
-
-```
-$ sudo apt install mariadb-server
-$ sudo mysql -u root
-create database slurm_acct_db;
-create user 'slurm'@'localhost';
-set password for 'slurm'@'localhost' = password('slurmdbpass');
-grant usage on *.* to 'slurm'@'localhost';
-grant all privileges on slurm_acct_db.* to 'slurm'@'localhost';
-flush privileges;
-exit
+(ENV3) pi@red:~ $ sudo chown nobody.nogroup -R /clusterfs
+(ENV3) pi@red:~ $ sudo chmod -R 766 /clusterfs
+(ENV3) pi@red:~ $ sudo apt install nfs-kernel-server -y
 ```
 
-`$ sudo apt install slurmd slurm-client slurmctld`
+Lets confirm the private IP address of our manager pi, red. Issue command `ifconfig`. Scroll up to find the `eth0` configuration.
+We are looking for the `inet` in the following line. The IP address used in this tutorial is `10.1.1.1`, but it may be different.
+Note this number.
 
-Now we encounter some difficulties.
-
-This configurator <https://slurm.schedmd.com/configurator.html> is meant for latest version of slurm, however we have just installed an earlier
-version of slurm. We know that we have installed an earlier version of slurm because `dpkg -l | grep slurm` gives us 18.08.5.2-1+deb10u2
-
-We try to use the configurator meant for latest version of slurm anyways. cluster is set as Cluster Name, red is set as SlurmctldHost, and red is set as NodeName
-as per tutorial instructions. Process ID Logging section must be filled out first by issuing command `cat /lib/systemd/system/slurmd.service` to know where PIDFile
-is. We find it is in
-
-/run/slurmd.pid
-
-So we enter for SlurmctldPidFile `/run/slurmctld.pid` and for SlurmdPidFile `/run/slurmd.pid`
-
-We hit submit at bottom of form, select all, and then copy. Issue command `sudo nano /etc/slurm-llnl/slurm.conf` and paste the copied text and save file.
-REMEMBER if you need to delete everything if something is already within this file, set cursor to beginning of document and set Mark by Command + Shift + 6 
-then scroll to bottom and press Ctrl + K (you should now recopy the text that the configurator produced and now shift + insert into nano to paste it.
-Then save this file slurm.conf)
-
-Now we issue command `sudo nano /etc/slurm-llnl/cgroup.conf` and ensure the following is pasted in:
-
+We must now export the NFS share by first editing `/etc/exports` through command:
 ```
-CgroupAutomount=yes
-CgroupReleaseAgentDir="/etc/slurm/cgroup"
-ConstrainCores=yes
-ConstrainDevices=yes
-ConstrainRAMSpace=yes
+(ENV3) pi@red:~ $ sudo nano /etc/exports
 ```
 
-and restart daemons:
+Add a new line at the bottom depending on the IP address you identified: `/clusterfs 10.1.1.1/24(rw,sync,no_root_squash,no_subtree_check)`
+The file should look like:
 ```
-sudo systemctl restart slurmctld
-sudo systemctl restart slurmd
+  GNU nano 3.2                      /etc/exports
+
+# /etc/exports: the access control list for filesystems which may be exported
+#               to NFS clients.  See exports(5).
+#
+# Example for NFSv2 and NFSv3:
+# /srv/homes       hostname1(rw,sync,no_subtree_check) hostname2(ro,sync,no_sub$
+#
+# Example for NFSv4:
+# /srv/nfs4        gss/krb5i(rw,sync,fsid=0,crossmnt,no_subtree_check)
+# /srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)
+#
+/clusterfs 10.1.1.1/24(rw,sync,no_root_squash,no_subtree_check)
 ```
 
-Now we find an error:
-Job for slurmd.service failed because the control process exited with error code.
-See "systemctl status slurmd.service" and "journalctl -xe" for details.
+The parameters we set ensure read/write access, immediate updating of the file upon modifying, root access across all Pis of the
+cluster, and prevent an error caused by simultaneous editing (these characteristics are respective to each parameter).
 
-Issuing `systemctl status slurmd.service` gives:
+Issue commands 
 ```
-Oct 08 09:52:16 red slurmd[1380]: error: Couldn't find the specified plugin name for select/cons_tres looking at all files
-Oct 08 09:52:16 red slurmd[1380]: error: cannot find select plugin for select/cons_tres
-Oct 08 09:52:16 red slurmd[1380]: fatal: Can't find plugin for select/cons_tres
+(ENV3) pi@red:~ $ sudo exportfs -a
+(ENV3) pi@red:~ $ exit
 ```
 
-This slurm documentation suggests it is because slurm is outdated <https://lists.schedmd.com/pipermail/slurm-users/2020-April/005206.html>
+Now we are back on our host computer.
+
+### 3.3 Mount the USB on Worker Pis
+
+For convenience, we can utilize the `cms host ssh` command to execute the same command across all of our worker Pis.
+We must install the NFS client on our workers:
+`(ENV3) you@yourhostcomputer $ cms host ssh red0[1-3] "'sudo apt install nfs-common -y'"`
+
+The success column should read True for all workers.
