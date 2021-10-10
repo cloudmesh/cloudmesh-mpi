@@ -1,9 +1,36 @@
-We have attempted to install slurm on Raspbian OS 10 (codename buster).
-However, we encounter some issues possibly due to vague instructions in tutorial but we will troubleshoot this.
+# Installing Slurm on a Raspberry Pi Cluster
 
-The tutorial we follow can be found at <https://blog.llandsmeer.com/tech/2020/03/02/slurm-single-instance.html>
+## Introduction
 
-All of these commands execute successfully
+Slurm stands for **S**imple **L**inux **U**tility for **R**esource **M**anagement. It is an open-source job scheduler
+for a group of computers (otherwise referred to as cluster) to carry out tasks efficiently and in a particular order. It is possible
+to install Slurm on a cluster of Raspberry Pis which have 32-bit armv7l (also called armhf) processors.
+
+This tutorial will use a cluster of four Raspberry Pi 4 Model B (2018) computers running Raspbian OS 10 (codename buster).
+They have 64 GB SD cards; we also use a USB stick that is connected to the manager Pi, which serves as shared storage
+between all of the Pis. This USB stick can be a standard flash drive, an USB SD card adapter with an SD card inside, or it
+can even be replaced by a NAS box connected to the network. All that matters is that it must be mountable and it must have 
+at least 100 MB free (after this tutorial only 34 MB is used in this shared storage, but we should have more space just to be safe).
+We must also have a power supply box to turn on these Pis and a network switch box with ethernet cables to connect them (the host
+computer which issues commands to these Pis must also be connected to the network switch box).
+
+In this tutorial, the host computer used to connect and issue commands to this cluster is a Windows 10 PC using Git Bash, but other computers 
+should be able to follow along because the Git Bash commands and Pi commands will be the same.
+
+We give credit to the original tutorial <https://blog.llandsmeer.com/tech/2020/03/02/slurm-single-instance.html> which we
+have heavily edited to use cloudmesh commands and to be more efficient overall.
+
+## Preparation
+
+The first thing we do is burn the Pis. Burning them using cloudmesh is much easier than configuring each Pi manually. Our tutorial
+for burning the Pis' SD cards using a Windows host computer can be found at <https://cloudmesh.github.io/pi/tutorial/raspberry-burn-windows/>
+while the tutorial for Raspberry Pi OS can be found at <https://cloudmesh.github.io/pi/tutorial/raspberry-burn/> and the tutorial for
+Ubuntu at <https://cloudmesh.github.io/pi/tutorial/ubuntu-burn/>.
+
+This tutorial assumes that your manager node's hostname is red and your worker nodes' hostnames are red01, red02, and red03. You may have
+additional workers; be sure to alter this tutorial's commands accordingly (e.g. instead of `red0[1-3]` perhaps you have `red0[1-4]` if
+you have five Pis total instead of four). Following this name schema will make following this tutorial run more smoothly.
+
 
 `$ sudo apt install munge`
 
