@@ -204,3 +204,171 @@ We must install the NFS client on our workers:
 ```
 
 The success column should read True for all workers.
+
+Now, you must repeat the following process for each worker Pi by ssh into each one and issuing these commands:
+```
+pi@red01:~ $ sudo mkdir /clusterfs
+pi@red01:~ $ sudo chown nobody.nogroup /clusterfs
+pi@red01:~ $ sudo chmod -R 777 /clusterfs
+pi@red01:~ $ sudo nano /etc/fstab
+```
+
+In nano, add the line (altered to whatever your actual manager Pi IP address is):
+`10.1.1.1:/clusterfs    /clusterfs    nfs    defaults   0 0`
+...so the document should look like:
+```
+  GNU nano 3.2                       /etc/fstab
+
+proc            /proc           proc    defaults          0       0
+PARTUUID=47e92ff7-01  /boot           vfat    defaults          0       2
+PARTUUID=47e92ff7-02  /               ext4    defaults,noatime  0       1
+10.1.1.1:/clusterfs    /clusterfs    nfs    defaults   0 0
+# a swapfile is not a swap partition, no line here
+#   use  dphys-swapfile swap[on|off]  for that
+```
+
+Once you have repeated this process for every Pi, issue:
+```
+pi@red03:~ $ exit
+(ENV3) you@yourhostcomputer $ cms host reboot "red,red0[1-3]"
+``` 
+
+and wait for the Pis to come back online. Once back on, issue:
+```
+(ENV3) you@yourhostcomputer $ cms host ssh red0[1-3] "'sudo mount -a'"
+```
+
+### 3.4 Configure Manager Pi Node
+
+We will be designating red as the manager node. Thanks to cms, we have already automatically edited the hosts file
+of every Pi to have the IPs and hostnames of each one. This allows the Pis to ssh into each other.
+
+On red, issue commands:
+```
+(ENV3) pi@red:~ $ sudo apt install slurm-wlm -y
+(ENV3) pi@red:~ $ cd /etc/slurm-llnl/
+(ENV3) pi@red:/etc/slurm-llnl $ sudo cp /usr/share/doc/slurm-client/examples/slurm.conf.simple.gz .
+(ENV3) pi@red:/etc/slurm-llnl $ sudo gzip -d slurm.conf.simple.gz
+(ENV3) pi@red:/etc/slurm-llnl $ sudo mv slurm.conf.simple slurm.conf
+```
+
+These commands will set up the default SLURM configuration file for the cluster. We must now edit the file to further
+specify parameters such as our manager Pi's hostname and which nodes we will use to delegate jobs. Open nano by issuing:
+```
+(ENV3) pi@red:/etc/slurm-llnl $ sudo nano slurm.conf
+```
+
+SlurmctldHost should be set to red(10.1.1.1) or whatever IP address your manager has, as in:
+```
+...
+SlurmctldHost=red(10.1.1.1)
+#SlurmctldHost=
+...
+```
+
+Also, scroll down to the LOGGING AND ACCOUNTING section and change `ClusterName` if desired. We will set it as:
+`ClusterName=cluster`
+
+Next, we must add the nodes at the very bottom of the document and change the partition name. The bottom of the document 
+should look as follows, following our particular IP addressing schema (yours may differ, you can confirm by issuing command 
+`ifconfig` on each Pi):
+```
+# COMPUTE NODES
+NodeName=red01 NodeAddr=10.1.1.2 CPUs=1 State=UNKNOWN
+NodeName=red02 NodeAddr=10.1.1.3 CPUs=1 State=UNKNOWN
+NodeName=red03 NodeAddr=10.1.1.4 CPUs=1 State=UNKNOWN
+PartitionName=mycluster Nodes=red0[1-3] Default=YES MaxTime=INFINITE State=UP
+```
+
+Exit nano via `Ctrl + X` and press `y` and `Enter` to save changes. Then issue command:
+```
+(ENV3) pi@red:/etc/slurm-llnl $ sudo nano /etc/slurm-llnl/cgroup.conf
+```
+
+Paste this into the file cgroup.conf in nano:
+```
+CgroupMountpoint="/sys/fs/cgroup"
+CgroupAutomount=yes
+CgroupReleaseAgentDir="/etc/slurm-llnl/cgroup"
+AllowedDevicesFile="/etc/slurm-llnl/cgroup_allowed_devices_file.conf"
+ConstrainCores=no
+TaskAffinity=no
+ConstrainRAMSpace=yes
+ConstrainSwapSpace=no
+ConstrainDevices=no
+AllowedRamSpace=100
+AllowedSwapSpace=0
+MaxRAMPercent=100
+MaxSwapPercent=100
+MinRAMSpace=30
+```
+
+Save and exit nano as per usual and then issue command:
+```
+(ENV3) pi@red:/etc/slurm-llnl $ sudo nano /etc/slurm-llnl/cgroup_allowed_devices_file.conf
+```
+
+Paste this inside and then save and exit nano:
+```
+/dev/null
+/dev/urandom
+/dev/zero
+/dev/sda*
+/dev/cpu/*/*
+/dev/pts/*
+/clusterfs*
+```
+
+Issue this command to copy our configuration files to the shared storage so we can copy them to the worker Pis later:
+```
+(ENV3) pi@red:/etc/slurm-llnl $ sudo cp slurm.conf cgroup.conf cgroup_allowed_devices_file.conf /clusterfs
+(ENV3) pi@red:/etc/slurm-llnl $ sudo cp /etc/munge/munge.key /clusterfs
+```
+
+Now we must start Munge, the authentication service for SLURM, as well as the SLURM controller service slurmctld:
+```
+(ENV3) pi@red:/etc/slurm-llnl $ sudo systemctl enable munge
+(ENV3) pi@red:/etc/slurm-llnl $ sudo systemctl start munge
+(ENV3) pi@red:/etc/slurm-llnl $ sudo systemctl enable slurmctld
+(ENV3) pi@red:/etc/slurm-llnl $ sudo systemctl start slurmctld
+```
+
+### 3.5 Configure Worker Pi Nodes
+
+We must repeat the following process for every worker Pi. These commands will start the SLURM client, copy the necessary
+configuration files from the shared USB (or your storage of choice), and start Munge. Issue these commands on each worker:
+```
+pi@red01:~ $ sudo apt install slurmd slurm-client -y
+pi@red01:~ $ sudo cp /clusterfs/munge.key /etc/munge/munge.key
+pi@red01:~ $ sudo cp /clusterfs/slurm.conf /etc/slurm-llnl/slurm.conf
+pi@red01:~ $ sudo cp /clusterfs/cgroup* /etc/slurm-llnl
+pi@red01:~ $ sudo systemctl enable munge
+pi@red01:~ $ sudo systemctl start munge
+pi@red01:~ $ ssh pi@red munge -n | unmunge
+```
+
+You may need to type `yes` and `Enter` if prompted to continue connecting.
+
+Start the SLURM daemon by issuing these commands on all workers:
+```
+sudo systemctl enable slurmd
+sudo systemctl start slurmd
+```
+
+### 3.6 Test Slurm
+
+Now we can finally test SLURM by connecting to red through SSH and issuing commands:
+```
+pi@red:~ $ sinfo
+pi@red:~ $ srun --nodes=3 hostname
+```
+
+You should see an output similar to:
+```
+red02
+red01
+red03
+```
+
+
+
