@@ -118,40 +118,18 @@ Create the mount directory by issuing these commands:
 (ENV3) pi@red:~ $ blkid
 ```
 
-Take note of the UUID of your USB device (identifiable by the partition name you have identified such as `/dev/sda1`). We must edit a
-system file so that the device is automatically mounted on boot for convenience:
+Take note of the UUID of your USB device (identifiable by the partition name you have identified such as `/dev/sda1`). We must append a
+system file so that the device is automatically mounted on boot for convenience. Change the UUID in this command accordingly and issue it:
 
 ```bash
-(ENV3) pi@red:~ $ sudo nano /etc/fstab
+(ENV3) pi@red:/nfs $ echo "UUID=55d94f07-0c1f-445c-860c-87fc9fc348be /nfs ext4 defaults 0 2" | sudo tee /etc/fstab -a
 ```
-
-> Convenient tips for using the nano editor include the `Ctrl + Insert` keyboard shortcut to Copy and the `Shift + Insert` shortcut
-> to paste. These also work for the Git Bash console. Use the arrow keys for navigating through the file.
-
-Create a new line underneath the last PARTUUID line by moving your cursor with the arrow keys right before the # line and pressing `Enter`.
-Then, type this line: `UUID=65077e7a-4bd6-47ea-8014-01e06655cc31 /nfs ext4 defaults 0 2` and edit the UUID to be the one of your USB
-device.
-
-The file should look like this when finished:
-
-```
-GNU nano 3.2           /etc/exports
-  
-proc                   /proc           proc    defaults          0       0
-PARTUUID=90f4d157-01  /boot           vfat    defaults          0       2
-PARTUUID=90f4d157-02  /               ext4    defaults,noatime  0       1
-UUID=2d112ab1-8948-4e7b-a690-587f3470d0f2 /nfs ext4 defaults 0 2
-# a swapfile is not a swap partition, no line here
-#   use  dphys-swapfile swap[on|off]  for that
-```
-
-Press `Ctrl + X` and then type `y` to confirm that you want to save the modified buffer (you may have to press `Enter` after `y`).
 
 Then mount the drive by issuing `(ENV3) pi@red:~ sudo mount -a`.
 
 There may be an error upon trying to mount the drive: `mount: /nfs: can't find UUID`. For whatever reason, the UUID
-may have spontaneously changed. Simply issue `blkid` command again, take note of the new UUID, and re-edit fstab through command
-`sudo nano /etc/fstab`. Then try remounting through command `sudo mount -a`.
+may have spontaneously changed. Simply issue `blkid` command again, take note of the new UUID, and reissue the aforementioned echo command
+with the correct UUID. Then try remounting through command `sudo mount -a`.
 
 Issue these commands to change the permissions of the drive and to install the Network File Sharing server:
 
@@ -163,31 +141,13 @@ Issue these commands to change the permissions of the drive and to install the N
 
 Let's confirm the private IP address of our manager pi, red. Issue command `ifconfig`. Scroll up to find the `eth0` configuration.
 We are looking for the `inet` in the following line. The IP address used in this tutorial is `10.1.1.1`, but it may be different.
-Note this number.
+Note this number and make sure that it is the one belonging to your ethernet connection to the switch box (eth0).
 
-We must now export the NFS share by first editing `/etc/exports` through command:
+We must now export the NFS share by first appending `/etc/exports` through command (edit it to change `10.1.1.1` to whatever your
+IP address is):
 
 ```bash
-(ENV3) pi@red:~ $ sudo nano /etc/exports
-```
-
-Add a new line at the bottom depending on the IP address you identified: `/nfs 10.1.1.1/24(rw,sync,no_root_squash,no_subtree_check)`
-The file should look like:
-
-```
-  GNU nano 3.2                      /etc/exports
-
-# /etc/exports: the access control list for filesystems which may be exported
-#               to NFS clients.  See exports(5).
-#
-# Example for NFSv2 and NFSv3:
-# /srv/homes       hostname1(rw,sync,no_subtree_check) hostname2(ro,sync,no_sub$
-#
-# Example for NFSv4:
-# /srv/nfs4        gss/krb5i(rw,sync,fsid=0,crossmnt,no_subtree_check)
-# /srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)
-#
-/nfs 10.1.1.1/24(rw,sync,no_root_squash,no_subtree_check)
+(ENV3) pi@red:/nfs $ echo "/nfs 10.1.1.1/24(rw,sync,no_root_squash,no_subtree_check)" | sudo tee /etc/exports -a
 ```
 
 The parameters we set ensure read/write access, immediate updating of the file upon modifying, root access across all Pis of the
@@ -213,30 +173,14 @@ We must install the NFS client on our workers:
 
 The success column should read True for all workers.
 
-Now, you must repeat the following process for each worker Pi by ssh into each one and issuing these commands:
+Now, you must repeat the following process for each worker Pi by ssh into each one and issuing these commands
+(make sure that the last command's IP address is edited to be your manager Pi's IP address):
 
 ```bash
 pi@red01:~ $ sudo mkdir /nfs
 pi@red01:~ $ sudo chown nobody.nogroup /nfs
 pi@red01:~ $ sudo chmod -R 777 /nfs
-pi@red01:~ $ sudo nano /etc/fstab
-```
-
-In nano, add the line (altered to whatever your actual manager Pi IP address is):
-
-`10.1.1.1:/nfs    /nfs    nfs    defaults   0 0`
-
-... so the document should look like:
-
-```
-  GNU nano 3.2                       /etc/fstab
-
-proc            /proc           proc    defaults          0       0
-PARTUUID=47e92ff7-01  /boot           vfat    defaults          0       2
-PARTUUID=47e92ff7-02  /               ext4    defaults,noatime  0       1
-10.1.1.1:/nfs    /nfs    nfs    defaults   0 0
-# a swapfile is not a swap partition, no line here
-#   use  dphys-swapfile swap[on|off]  for that
+pi@red01:~ $ echo "10.1.1.1:/nfs    /nfs    nfs    defaults   0 0" | sudo tee /etc/fstab -a
 ```
 
 Once you have repeated this process for every Pi, issue:
@@ -246,20 +190,23 @@ pi@red03:~ $ exit
 (ENV3) you@yourhostcomputer $ cms host reboot "red,red0[1-3]"
 ``` 
 
-and wait for the Pis to come back online. Once back on, issue:
+and wait for the Pis to come back online. Once fully back online (wait at least two minutes), issue:
 
 ```bash
 (ENV3) you@yourhostcomputer $ cms host ssh red0[1-3] "'sudo mount -a'"
 ```
+
+Success column should read True for each worker Pi.
 
 ### 3.4 Configure Manager Pi Node
 
 We will be designating red as the manager node. Thanks to cms, we have already automatically edited the hosts file
 of every Pi to have the IPs and hostnames of each one. This allows the Pis to ssh into each other.
 
-On red, issue commands:
+Issue commands:
 
 ```bash
+(ENV3) you@yourhostcomputer $ ssh red
 (ENV3) pi@red:~ $ sudo apt install slurm-wlm -y
 (ENV3) pi@red:~ $ cd /etc/slurm-llnl/
 (ENV3) pi@red:/etc/slurm-llnl $ sudo cp /usr/share/doc/slurm-client/examples/slurm.conf.simple.gz .
@@ -274,6 +221,9 @@ specify parameters such as our manager Pi's hostname and which nodes we will use
 (ENV3) pi@red:/etc/slurm-llnl $ sudo nano slurm.conf
 ```
 
+> Convenient tips for using the nano editor include the `Ctrl + Insert` keyboard shortcut to Copy and the `Shift + Insert` shortcut
+> to paste. These also work for the Git Bash console. Use the arrow keys for navigating through the file.
+
 SlurmctldHost should be set to red(10.1.1.1) or whatever IP address your manager has, as in:
 
 ```
@@ -283,26 +233,22 @@ SlurmctldHost=red(10.1.1.1)
 ...
 ```
 
-Also, scroll down to the LOGGING AND ACCOUNTING section and change `ClusterName` if desired. We will set it as:
-
-`ClusterName=cluster`
-
 Next, we must add the nodes at the very bottom of the document and change the partition name. The bottom of the document 
 should look as follows, following our particular IP addressing schema (yours may differ, you can confirm by issuing command 
 `ifconfig` on each Pi):
 
 ```
 # COMPUTE NODES
-NodeName=red01 NodeAddr=10.1.1.2 CPUs=1 State=UNKNOWN
-NodeName=red02 NodeAddr=10.1.1.3 CPUs=1 State=UNKNOWN
-NodeName=red03 NodeAddr=10.1.1.4 CPUs=1 State=UNKNOWN
+NodeName=red01 NodeAddr=10.1.1.2 CPUs=4 State=UNKNOWN
+NodeName=red02 NodeAddr=10.1.1.3 CPUs=4 State=UNKNOWN
+NodeName=red03 NodeAddr=10.1.1.4 CPUs=4 State=UNKNOWN
 PartitionName=mycluster Nodes=red0[1-3] Default=YES MaxTime=INFINITE State=UP
 ```
 
 Exit nano via `Ctrl + X` and press `y` and `Enter` to save changes. Then issue command:
 
 ```
-(ENV3) pi@red:/etc/slurm-llnl $ sudo nano /etc/slurm-llnl/cgroup.conf
+(ENV3) pi@red:/etc/slurm-llnl $ sudo nano cgroup.conf
 ```
 
 Paste this into the file cgroup.conf in nano:
@@ -327,7 +273,7 @@ MinRAMSpace=30
 Save and exit nano as per usual and then issue command:
 
 ```bash
-(ENV3) pi@red:/etc/slurm-llnl $ sudo nano /etc/slurm-llnl/cgroup_allowed_devices_file.conf
+(ENV3) pi@red:/etc/slurm-llnl $ sudo nano cgroup_allowed_devices_file.conf
 ```
 
 Paste this inside and then save and exit nano:
@@ -356,30 +302,58 @@ Now we must start Munge, the authentication service for SLURM, as well as the SL
 (ENV3) pi@red:/etc/slurm-llnl $ sudo systemctl start munge
 (ENV3) pi@red:/etc/slurm-llnl $ sudo systemctl enable slurmctld
 (ENV3) pi@red:/etc/slurm-llnl $ sudo systemctl start slurmctld
+(ENV3) pi@red:/etc/slurm-llnl $ exit
+(ENV3) you@yourhostcomputer $ ssh red01
 ```
 
 ### 3.5 Configure Worker Pi Nodes
 
-We must repeat the following process for every worker Pi. These commands will start the SLURM client, copy the necessary
-configuration files from the shared USB (or your storage of choice), and start Munge. Issue these commands on each worker:
+Next, we must repeat the following process for every worker Pi. These commands will install the SLURM client, copy the necessary
+configuration files from the shared USB (or your storage of choice), and start Munge. Issue these commands on each worker
+(so after performing the following on red01, do the same for red02 and red03 and others if you have more):
 
 ```bash
 pi@red01:~ $ sudo apt install slurmd slurm-client -y
 pi@red01:~ $ sudo cp /nfs/munge.key /etc/munge/munge.key
 pi@red01:~ $ sudo cp /nfs/slurm.conf /etc/slurm-llnl/slurm.conf
 pi@red01:~ $ sudo cp /nfs/cgroup* /etc/slurm-llnl
-pi@red01:~ $ sudo systemctl enable munge
-pi@red01:~ $ sudo systemctl start munge
-pi@red01:~ $ ssh pi@red munge -n | unmunge
 ```
 
-You may need to type `yes` and `Enter` if prompted to continue connecting.
-
-Start the SLURM daemon by issuing these commands on all workers:
+Issue `exit` command on your current worker until you are back on your host computer and issue these commands:
 
 ```bash
-sudo systemctl enable slurmd
-sudo systemctl start slurmd
+(ENV3) you@yourhostcomputer $ cms host ssh red0[1-3] "'sudo systemctl enable munge'"
+(ENV3) you@yourhostcomputer $ cms host ssh red0[1-3] "'sudo systemctl start munge'"
+(ENV3) you@yourhostcomputer $ cms host reboot "red,red0[1-3]"
+```
+
+Wait for the Pis to come back online (around two minutes to be safe).
+
+When they are back online, try ssh'ing into each worker and issuing this command to verify that Munge works 
+(you may need to type `yes` and `Enter` if prompted to continue connecting):
+```bash
+pi@red01:~ $ ssh pi@red munge -n | unmunge
+STATUS:           Success (0)
+ENCODE_HOST:      red01 (127.0.1.1)
+ENCODE_TIME:      2021-10-10 22:41:41 -0400 (1633920101)
+DECODE_TIME:      2021-10-10 22:41:41 -0400 (1633920101)
+TTL:              300
+CIPHER:           aes128 (4)
+MAC:              sha256 (5)
+ZIP:              none (0)
+UID:              pi (1000)
+GID:              pi (1000)
+LENGTH:           0
+```
+
+> Note: a different output with errors may be resolved by rebooting the Pis.
+
+Start the SLURM daemon by issuing these commands:
+
+```bash
+pi@red03:~ $ exit
+(ENV3) you@yourhostcomputer $ cms host ssh red0[1-3] "'sudo systemctl enable slurmd'"
+(ENV3) you@yourhostcomputer $ cms host ssh red0[1-3] "'sudo systemctl start slurmd'"
 ```
 
 ### 3.6 Test Slurm
@@ -387,6 +361,7 @@ sudo systemctl start slurmd
 Now we can finally test SLURM by connecting to red through SSH and issuing commands:
 
 ```bash
+(ENV3) you@yourhostcomputer $ ssh red
 pi@red:~ $ sinfo
 pi@red:~ $ srun --nodes=3 hostname
 ```
