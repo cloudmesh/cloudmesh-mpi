@@ -149,9 +149,9 @@ Press `Ctrl + X` and then type `y` to confirm that you want to save the modified
 
 Then mount the drive by issuing `(ENV3) pi@red:~ sudo mount -a`.
 
-> NOTE: There may be an error upon trying to mount the drive: `mount: /nfs: can't find UUID`. For whatever reason, the UUID
-> may have spontaneously changed. Simply issue `blkid` command again, take note of the new UUID, and re-edit fstab through command
-> `sudo nano /etc/fstab`. Then try remounting through command `sudo mount -a`.
+There may be an error upon trying to mount the drive: `mount: /nfs: can't find UUID`. For whatever reason, the UUID
+may have spontaneously changed. Simply issue `blkid` command again, take note of the new UUID, and re-edit fstab through command
+`sudo nano /etc/fstab`. Then try remounting through command `sudo mount -a`.
 
 Issue these commands to change the permissions of the drive and to install the Network File Sharing server:
 
