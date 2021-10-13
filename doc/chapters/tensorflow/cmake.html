@@ -4,7 +4,6 @@ start_total=`date +%s`
 
 start_cmake=`date +%s`
 
-cd ~
 cd opencv
 mkdir -p build
 cd build
@@ -39,7 +38,7 @@ sudo ldconfig
 # cleaning (frees 300 KB)
 make clean
 sudo apt-get update
-cd ~
+cd ../..
 
 end_total=`date +%s`
 
