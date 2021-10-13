@@ -57,9 +57,9 @@ $ bash tensorflow.sh
 NOTE: If this script ends with an error 'cant find gdown', then the device probably needs to be restarted. In this case, ```sudo reboot``` the pi and then run the following commands:
 ```
 # download the wheel
-gdown https://drive.google.com/uc?id=1I1H2xMs4BTm-UQhBPuLgqnLgmE0ATRl5
+$ gdown https://drive.google.com/uc?id=1I1H2xMs4BTm-UQhBPuLgqnLgmE0ATRl5
 # install TensorFlow 2.5.0
-sudo -H pip3 install tensorflow-2.5.0-cp38-cp38-linux_aarch64.whl
+$ sudo -H pip3 install tensorflow-2.5.0-cp38-cp38-linux_aarch64.whl
 ```
 
 ### Verify installation
