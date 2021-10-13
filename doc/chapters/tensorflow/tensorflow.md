@@ -11,7 +11,7 @@ We will be using Ubuntu 20.04 on a Raspberry Pi 4 with 64gb SD card.
 For this we will use the official Raspberry Pi Imager [^ref2].
 
 Simply install the software, use an SD card reader for your device, and burn the following OS to the card from the options in the program:
-Ubuntu Server 20.04 LTS (RPi 3/4) 64-bit for arm64 architectures
+Ubuntu Server 20.04 LTS (RPi 3/4/400) 64-bit for arm64 architectures
 
 Once completed, insert it into the Pi and turn it on, going through any necessary preliminary setup.
 
