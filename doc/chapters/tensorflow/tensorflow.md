@@ -48,7 +48,7 @@ $ bash dependencies.sh
 
 
 Next, we build cmake.
-(ESTIMATED TIME: __ minutes)
+(ESTIMATED TIME: 90 minutes)
 ```
 $ bash cmake.sh
 ```
