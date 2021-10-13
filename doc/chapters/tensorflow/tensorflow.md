@@ -54,7 +54,7 @@ Finally, we install tensorflow from custom wheels.
 ```
 $ bash tensorflow.sh
 ```
-NOTE: If this script ends with an error 'cant find gdown', then the device probably needs to be restarted. ```sudo reboot``` the pi and then run the following commands:
+NOTE: If this script ends with an error 'cant find gdown', then the device probably needs to be restarted. In this case, ```sudo reboot``` the pi and then run the following commands:
 ```
 # download the wheel
 gdown https://drive.google.com/uc?id=1I1H2xMs4BTm-UQhBPuLgqnLgmE0ATRl5
