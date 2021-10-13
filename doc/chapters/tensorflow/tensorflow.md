@@ -16,7 +16,7 @@ Ubuntu Server 20.04 LTS (RPi 3/4) 64-bit for arm64 architectures
 Once completed, insert it into the Pi and turn it on, going through any necessary preliminary setup.
 
 ### Download installation scripts
-Once the Pi with ubuntu 20.04 is up and running and we are prepared in the home directory, we can collect the bash scripts for installation:
+Once the Pi with ubuntu 20.04 is up and running and we are prepared in the desired home directory, we can collect the bash scripts for installation:
 ```
 $ wget https://github.com/cloudmesh/cloudmesh-mpi/blob/main/doc/chapters/tensorflow/dependencies.html
 $ wget https://github.com/cloudmesh/cloudmesh-mpi/blob/main/doc/chapters/tensorflow/cmake.html
