@@ -1,0 +1,60 @@
+#!/bin/sh
+
+start_total=`date +%s`
+
+start_cmake=`date +%s`
+
+cd ~
+cd opencv
+mkdir -p build
+cd build
+
+# build make
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local \
+        -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
+		-D ENABLE_NEON=ON \
+        -D BUILD_TIFF=ON \
+        -D WITH_FFMPEG=ON \
+        -D WITH_GSTREAMER=ON \
+        -D WITH_TBB=ON \
+        -D BUILD_TBB=ON \
+        -D BUILD_TESTS=OFF \
+        -D WITH_EIGEN=OFF \
+        -D WITH_V4L=ON \
+        -D WITH_LIBV4L=ON \
+        -D WITH_VTK=OFF \
+        -D OPENCV_ENABLE_NONFREE=ON \
+        -D INSTALL_C_EXAMPLES=OFF \
+        -D INSTALL_PYTHON_EXAMPLES=OFF \
+        -D BUILD_NEW_PYTHON_SUPPORT=ON \
+        -D BUILD_opencv_python3=TRUE \
+        -D OPENCV_GENERATE_PKGCONFIG=ON \
+        -D BUILD_EXAMPLES=OFF ..
+
+# start build
+make -j4
+# install the libraries
+sudo make install
+sudo ldconfig
+# cleaning (frees 300 KB)
+make clean
+sudo apt-get update
+cd ~
+
+end_total=`date +%s`
+
+time_total=$((end_total-start_total))
+
+echo "#################################################"
+echo "# CMake install Completed        #"
+echo "#################################################"
+echo ""
+echo "Time for total install:         ${time_total} s"
+echo ""
+echo "#################################################"
+echo "Note: try checking installation by doing"
+echo "     $ python3"
+echo "     >>> import cv2"
+echo "     >>> cv2.__version__"
+echo "     >>> exit()"
+exit 0
