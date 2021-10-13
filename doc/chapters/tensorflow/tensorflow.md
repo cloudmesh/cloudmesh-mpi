@@ -29,6 +29,14 @@ $ mv cmake.html cmake.sh
 $ mv tensorflow.html tensorflow.sh
 ```
 
+### Wait for ubuntu updates to finish
+If you just started the OS, the system may be busy in the background installing updates. To check this, try
+```
+$ sudo apt-get update
+$ sudo apt-get upgrade
+```
+If you get an error along the lines of 'Could not get lock /var/lib/dpkg/lock-frontend.  It is held by process 2863 (unattended-upgr)', then you need to wait for updates to finish. Once you can run these commands successfully, move on to the next step. 
+
 ### Use the scripts
 
 The install process is split into 3 bash scripts which we just downloaded.
