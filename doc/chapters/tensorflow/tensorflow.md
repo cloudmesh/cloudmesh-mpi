@@ -7,7 +7,7 @@ We will be using Ubuntu 20.04 on a Raspberry Pi 4 with 64gb SD card.
 
 ## Installation
 
-### Burn Ubuntu 20.04 onto an SD card
+### Burn Ubuntu 20.04 onto an SD card for your Pi
 For this we will use the official Raspberry Pi Imager [^ref2].
 
 Simply install the software, use an SD card reader for your device, and burn the following OS to the card from the options in the program:
