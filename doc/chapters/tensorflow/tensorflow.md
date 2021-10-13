@@ -41,16 +41,21 @@ If you get an error along the lines of 'Could not get lock /var/lib/dpkg/lock-fr
 
 The install process is split into 3 bash scripts which we just downloaded.
 First, we set up the developer machine and install OpenCV.
+(ESTIMATED TIME: 13 minutes)
 ```
 $ bash dependencies.sh
 ```
 
+
 Next, we build cmake.
+(ESTIMATED TIME: __ minutes)
 ```
 $ bash cmake.sh
 ```
 
+
 Finally, we install tensorflow from custom wheels.
+(ESTIMATED TIME: __ minutes)
 ```
 $ bash tensorflow.sh
 ```
