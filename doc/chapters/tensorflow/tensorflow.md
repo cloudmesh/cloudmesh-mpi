@@ -55,7 +55,7 @@ This should show a version successfully, i.e. 4.5.2.
 If no other blatant errors occurred during the script's process, it should be fine to move on.
 
 We will now need to ```sudo reboot``` before running the next bash script, which will download & install tensorflow from custom wheels.
-(ESTIMATED TIME: __ minutes)
+(ESTIMATED TIME: 20 minutes)
 ```
 $ bash tensorflow.sh
 ```
