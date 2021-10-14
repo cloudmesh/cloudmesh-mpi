@@ -43,20 +43,101 @@ rm opencv_contrib.zip
 end_opencv=`date +%s`
 time_opencv=$((end_opencv-start_opencv))
 echo "OpenCV installation complete. Time: ${time_opencv} s"
+echo "Starting CMake installation..."
 
+start_cmake=`date +%s`
+
+cd opencv
+mkdir -p build
+cd build
+# build make
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local \
+        -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
+		-D ENABLE_NEON=ON \
+        -D BUILD_TIFF=ON \
+        -D WITH_FFMPEG=ON \
+        -D WITH_GSTREAMER=ON \
+        -D WITH_TBB=ON \
+        -D BUILD_TBB=ON \
+        -D BUILD_TESTS=OFF \
+        -D WITH_EIGEN=OFF \
+        -D WITH_V4L=ON \
+        -D WITH_LIBV4L=ON \
+        -D WITH_VTK=OFF \
+        -D OPENCV_ENABLE_NONFREE=ON \
+        -D INSTALL_C_EXAMPLES=OFF \
+        -D INSTALL_PYTHON_EXAMPLES=OFF \
+        -D BUILD_NEW_PYTHON_SUPPORT=ON \
+        -D BUILD_opencv_python3=TRUE \
+        -D OPENCV_GENERATE_PKGCONFIG=ON \
+        -D BUILD_EXAMPLES=OFF ..
+
+# start build
+make -j4
+# install the libraries
+sudo make install
+sudo ldconfig
+# cleaning (frees 300 KB)
+make clean
+sudo apt-get update
+cd ../..
+
+end_cmake=`date +%s`
+time_cmake=$((end_cmake-start_cmake))
+echo "CMake installation complete. Time: ${time_cmake} s"
+echo "Starting tensorflow preliminary setup..."
+
+start_tfsetup=`date +%s`
+
+sudo apt-get update
+sudo apt-get upgrade
+# install pip and pip3
+sudo apt-get install python-pip python3-pip
+# remove old versions, if not placed in a virtual environment (let pip search for them)
+sudo pip uninstall tensorflow
+sudo pip3 uninstall tensorflow
+# install the dependencies (if not already onboard)
+sudo apt-get install gfortran
+sudo apt-get install libhdf5-dev libc-ares-dev libeigen3-dev
+sudo apt-get install libatlas-base-dev libopenblas-dev libblas-dev
+sudo apt-get install liblapack-dev
+# upgrade setuptools 47.1.1 -> 57.0.0
+sudo -H pip3 install --upgrade setuptools
+# utmost important: use only numpy version 1.19.5
+sudo -H pip3 install numpy==1.19.5
+sudo -H pip3 install pybind11
+sudo -H pip3 install Cython
+# install h5py with Cython version 0.29.23 (± 6 min @1950 MHz)
+sudo -H pip3 install h5py==3.1.0
+sudo -H pip3 install --upgrade wrapt
+sudo -H pip3 install gast==0.4.0
+sudo -H pip3 install absl-py astunparse
+sudo -H pip3 install flatbuffers google_pasta
+sudo -H pip3 install keras_preprocessing --no-deps
+sudo -H pip3 install opt_einsum protobuf
+sudo -H pip3 install six termcolor wheel
+sudo -H pip3 install typing_extensions
+# install gdown to download from Google drive
+pip3 install gdown
+
+end_tfsetup=`date +%s`
+time_tfsetup=$((end_tfsetup-start_tfsetup))
+echo "Tensorflow preliminary setup complete. Time: ${time_tfsetup} s"
 
 end_total=`date +%s`
-
 time_total=$((end_total-start_total))
 
 echo "#################################################"
-echo "# Dev machine & OpenCV install Completed        #"
+echo "# Dev machine & dependencies install Completed  #"
 echo "#################################################"
 echo ""
 echo "Time for dev machine install:   ${time_dev} s"
 echo "Time for OpenCV install:        ${time_opencv} s"
+echo "Time for CMake setup:           ${time_cmake} s"
+echo "Time for tensorflow pre setup:  ${time_tfsetup} s"
 echo ""
 echo "Time for total install:         ${time_total} s"
 echo ""
 echo "#################################################"
+echo "NOTE: The device now needs to be restarted before finishing tensorflow install"
 exit 0
