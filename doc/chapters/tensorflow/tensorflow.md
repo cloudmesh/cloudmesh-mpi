@@ -19,13 +19,11 @@ Once completed, insert it into the Pi and turn it on, going through any necessar
 Once the Pi with ubuntu 20.04 is up and running and we are prepared in the desired home directory, we can collect the bash scripts for installation:
 ```
 $ wget https://raw.githubusercontent.com/cloudmesh/cloudmesh-mpi/main/doc/chapters/tensorflow/dependencies.html
-$ wget https://raw.githubusercontent.com/cloudmesh/cloudmesh-mpi/main/doc/chapters/tensorflow/cmake.html
 $ wget https://raw.githubusercontent.com/cloudmesh/cloudmesh-mpi/main/doc/chapters/tensorflow/tensorflow.html
 ```
 then rename them with 
 ```
 $ mv dependencies.html dependencies.sh
-$ mv cmake.html cmake.sh
 $ mv tensorflow.html tensorflow.sh
 ```
 
@@ -39,32 +37,26 @@ If you get an error along the lines of 'Could not get lock /var/lib/dpkg/lock-fr
 
 ### Use the scripts
 
-The install process is split into 3 bash scripts which we just downloaded.
-First, we set up the developer machine and install OpenCV.
-(ESTIMATED TIME: 13 minutes)
+The install process is split into 2 bash scripts which we just downloaded.
+First, we set up the developer machine, install OpenCV, build CMake, and prepare for tensorflow install.
+(ESTIMATED TIME: 120 minutes)
 ```
 $ bash dependencies.sh
 ```
 
-
-Next, we build cmake.
-(ESTIMATED TIME: 90 minutes)
+Once this is finished, we should check to see if things have gone properly up to this point. Try the following:
 ```
-$ bash cmake.sh
+$ python3
+>>> import cv2
+>>> cv2.__version__
+>>> exit()
 ```
+This should show a version successfully, i.e. 4.5.2.
 
-
-Finally, we install tensorflow from custom wheels.
+We will now need to ```sudo reboot``` before running the next bash script, which will download & install tensorflow from custom wheels.
 (ESTIMATED TIME: __ minutes)
 ```
 $ bash tensorflow.sh
-```
-NOTE: If this script ends with an error 'cant find gdown', then the device probably needs to be restarted. In this case, ```sudo reboot``` the pi and then run the following commands:
-```
-# download the wheel
-$ gdown https://drive.google.com/uc?id=1I1H2xMs4BTm-UQhBPuLgqnLgmE0ATRl5
-# install TensorFlow 2.5.0
-$ sudo -H pip3 install tensorflow-2.5.0-cp38-cp38-linux_aarch64.whl
 ```
 
 ### Verify installation
