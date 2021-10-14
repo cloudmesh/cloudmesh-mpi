@@ -44,7 +44,7 @@ First, we set up the developer machine, install OpenCV, build CMake, and prepare
 $ bash dependencies.sh
 ```
 
-Once this is finished, we should check to see if things have gone properly up to this point. Try the following:
+Once this is finished, we should check to see if some things have gone properly up to this point. Try the following:
 ```
 $ python3
 >>> import cv2
@@ -52,6 +52,7 @@ $ python3
 >>> exit()
 ```
 This should show a version successfully, i.e. 4.5.2.
+If no other blatant errors occurred during the script's process, it should be fine to move on.
 
 We will now need to ```sudo reboot``` before running the next bash script, which will download & install tensorflow from custom wheels.
 (ESTIMATED TIME: __ minutes)
