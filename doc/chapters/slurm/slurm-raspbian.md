@@ -114,7 +114,7 @@ Create the mount directory by issuing these commands:
 ```bash
 (ENV3) pi@red:~ $ sudo mkdir /nfs
 (ENV3) pi@red:~ $ sudo chown nobody.nogroup -R /nfs
-(ENV3) pi@red:~ $ sudo chmod 777 -R /nfs
+(ENV3) pi@red:~ $ sudo chmod guo+rw -R /nfs
 (ENV3) pi@red:~ $ blkid
 ```
 
