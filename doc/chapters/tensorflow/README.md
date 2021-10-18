@@ -1,6 +1,6 @@
 # Preparing a Single Raspberry Pi 4 with Tensorflow 2.5.0 on Ubuntu 20.04
 
-Duration: 160 minutes
+Duration: 2 hours 40 minutes
 
 ## Introduction
 To get tensorflow 2.5.0 running on a single Raspberry Pi, we have created an automated installation process consisting of 2 scripts.
