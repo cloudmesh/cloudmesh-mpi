@@ -30,7 +30,7 @@ Step 1:
 Duration: 2 hours
 
 ```bash
-$ curl -Ls http://cloudmesh.github.io/get/tensorflow/step1 | sh
+$ curl -Ls http://cloudmesh.github.io/get/pi/tensorflow/step1 | sh
 $ reboot
 ```
 
@@ -39,7 +39,7 @@ Step 2:
 Duration: 20 minutes
 
 ```bash
-$ curl -Ls http://cloudmesh.github.io/get/tensorflow/step2 | sh
+$ curl -Ls http://cloudmesh.github.io/get/pi/tensorflow/step2 | sh
 ```
 
 ### Verify installation
