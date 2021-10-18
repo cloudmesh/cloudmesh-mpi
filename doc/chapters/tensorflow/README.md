@@ -24,7 +24,7 @@ Once completed, insert it into the Pi and turn it on, going through any necessar
 ### Use the scripts
 Once the Pi with ubuntu 20.04 is up and running and we are prepared in the desired home directory, we can begin installation using our scripts.
 
-Step 1
+Step 1:
 
 Duration: 2 hours
 
@@ -33,7 +33,7 @@ $ curl -Ls http://cloudmesh.github.io/get/tensorflow/step1 | sh
 $ reboot
 ```
 
-Step 2
+Step 2:
 
 Duration: 20 minutes
 
