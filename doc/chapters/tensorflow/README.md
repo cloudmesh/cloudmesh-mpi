@@ -15,7 +15,7 @@ Requirements:
 ### Burn Ubuntu 20.04 onto an SD card for your Pi
 Duration: 20 minutes
 
-For this we will use the official Raspberry Pi Imager [^ref2].
+For this we will use the official Raspberry Pi Imager [^ref1].
 
 Simply install the software, use an SD card reader for your device, and burn the following OS to the card from the options in the program:
 Ubuntu Server 20.04 LTS (RPi 3/4/400) 64-bit for arm64 architectures
@@ -46,9 +46,9 @@ $ curl -Ls http://cloudmesh.github.io/get/tensorflow/step2 | sh
 To verify tensorflow installation, try the following:
 
 ```
-$ python3 -c "import tensorflow; tensorflow.__version__"
+$ python3 -c "import tensorflow; print(tensorflow.__version__)"
 ```
 it should show version 2.5.0.
 
 ## References
-[^ref2]: https://www.raspberrypi.com/software/
+[^ref1]: https://www.raspberrypi.com/software/
