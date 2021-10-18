@@ -4,6 +4,7 @@ Duration: 2 hours 40 minutes
 
 ## Introduction
 To get tensorflow 2.5.0 running on a single Raspberry Pi, we will first burn Ubuntu to the Pi's SD card, then run an automated tensorflow installation process consisting of 2 scripts.
+
 Requirements:
 - Raspberry Pi 4
 - 64gb SD card
