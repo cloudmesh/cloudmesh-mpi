@@ -9,7 +9,7 @@ Requirements:
 - access to internet
 
 ## Installation
-DURATION: 160 minutes
+Duration: 160 minutes
 
 ### Burn Ubuntu 20.04 onto an SD card for your Pi
 Duration: 20 minutes
