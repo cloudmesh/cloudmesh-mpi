@@ -10,7 +10,7 @@ Requirements:
 - SD card reader + computer to run Pi Imager application
 - access to internet
 
-## Prepare Ubuntu on the Pi
+## Prepare a Pi running Ubuntu
 
 Duration: 20 minutes
 
@@ -19,7 +19,7 @@ For this we will use the official Raspberry Pi Imager [^ref1].
 Simply install the software, use an SD card reader for your device, and burn the following OS to the card from the options in the program:
 Ubuntu Server 20.04 LTS (RPi 3/4/400) 64-bit for arm64 architectures
 
-Once completed, insert it into the Pi and turn it on, going through any necessary preliminary setup.
+Once completed, insert the SD card into the Pi and turn it on, going through any necessary preliminary setup.
 
 ## Installation
 
