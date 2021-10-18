@@ -45,12 +45,8 @@ $ curl -Ls http://cloudmesh.github.io/get/tensorflow/step2 | sh
 To verify tensorflow installation, try the following:
 
 ```
-$ python3
->>> import tensorflow as tf
->>> tf.__version__
->>> exit()
+$ python3 -c "import tensorflow; tensorflow.__version__"
 ```
-
 it should show version 2.5.0.
 
 ## References
