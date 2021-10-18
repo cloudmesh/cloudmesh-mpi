@@ -25,29 +25,33 @@ Once completed, insert it into the Pi and turn it on, going through any necessar
 Once the Pi with ubuntu 20.04 is up and running and we are prepared in the desired home directory, we can begin installation using our scripts.
 
 Step 1
+
 Duration: 2 hours
+
 ```bash
 $ curl -Ls http://cloudmesh.github.io/get/tensorflow/step1 | sh
 $ reboot
 ```
 
 Step 2
+
 Duration: 20 minutes
+
 ```bash
 $ curl -Ls http://cloudmesh.github.io/get/tensorflow/step2 | sh
 ```
 
 ### Verify installation
 To verify tensorflow installation, try the following:
+
 ```
 $ python3
 >>> import tensorflow as tf
 >>> tf.__version__
 >>> exit()
 ```
+
 it should show version 2.5.0.
 
 ## References
-
-[^ref1]: https://qengineering.eu/install-ubuntu-20.04-on-raspberry-pi-4.html
 [^ref2]: https://www.raspberrypi.com/software/
