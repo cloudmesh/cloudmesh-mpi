@@ -10,7 +10,7 @@ Requirements:
 - SD card reader + computer to run Pi Imager application
 - access to internet
 
-## Prepare a Pi running Ubuntu
+## Prepare a Pi 4 running Ubuntu 20.04
 
 Duration: 20 minutes
 
@@ -42,7 +42,7 @@ Duration: 20 minutes
 $ curl -Ls http://cloudmesh.github.io/get/pi/tensorflow/step2 | sh
 ```
 
-### Verify installation
+## Verify installation
 To verify tensorflow installation, try the following:
 
 ```
