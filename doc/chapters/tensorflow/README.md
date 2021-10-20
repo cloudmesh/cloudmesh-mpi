@@ -91,7 +91,7 @@ model.fit(x_train, y_train, epochs=5)
 model.evaluate(x_test,  y_test, verbose=2)
 ```
 
-After 5 epochs of training, my Pi reported achieved a final testing accuracy of 0.9768.
+After 5 epochs of training, my Pi reported a final testing accuracy of 0.9768.
 
 ## References
 [^ref1]: https://www.raspberrypi.com/software/
