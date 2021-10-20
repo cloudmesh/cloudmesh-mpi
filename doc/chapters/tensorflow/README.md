@@ -1,9 +1,9 @@
-# Preparing a Single Raspberry Pi 4 with Tensorflow 2.5.0 on Ubuntu 20.04
+# Preparing a Single Raspberry Pi 4 with TensorFlow 2.5.0 on Ubuntu 20.04
 
 Duration: 2 hours 40 minutes
 
 ## Introduction
-To get tensorflow 2.5.0 running on a single Raspberry Pi, we will first burn Ubuntu to the Pi's SD card, then run an automated tensorflow installation process consisting of 2 scripts.
+To get TensorFlow 2.5.0 running on a single Raspberry Pi, we will first burn Ubuntu to the Pi's SD card, then run an automated TensorFlow installation process consisting of 2 scripts.
 
 Requirements:
 - Raspberry Pi 4
@@ -44,12 +44,55 @@ $ curl -Ls http://cloudmesh.github.io/get/pi/tensorflow/step2 | sh
 ```
 
 ## Verify installation
-To verify tensorflow installation, try the following:
+To verify TensorFlow installation, try the following:
 
 ```
 $ python3 -c "import tensorflow; print(tensorflow.__version__)"
 ```
+
 it should show version 2.5.0.
+
+## Example
+
+To show TensorFlow 2 in action, we will use a basic example as presented in the official quickstart guide [^ref2] using the mnist dataset. Comments are provided to explain each step.
+
+To test this on your own, simply run the following as a python script.
+
+```
+import tensorflow as tf
+
+# load the mnist dataset
+mnist = tf.keras.datasets.mnist
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+
+# feature scale the data, converting from integers to floating point numbers
+x_train, x_test = x_train / 255.0, x_test / 255.0
+
+# build our model with custom layers
+model = tf.keras.models.Sequential([
+  tf.keras.layers.Flatten(input_shape=(28, 28)),
+  tf.keras.layers.Dense(128, activation='relu'),
+  tf.keras.layers.Dropout(0.2),
+  tf.keras.layers.Dense(10)
+])
+
+# choose our loss function
+loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
+
+# compile the model with our loss function and a selected optimizer strategy
+model.compile(optimizer='adam',
+              loss=loss_fn,
+              metrics=['accuracy'])
+              
+# train the model
+model.fit(x_train, y_train, epochs=5)
+
+# evaluate the model
+model.evaluate(x_test,  y_test, verbose=2)
+```
+
+After 5 epochs of training, my Pi reported achieved a final testing accuracy of 0.9768.
 
 ## References
 [^ref1]: https://www.raspberrypi.com/software/
+[^ref2]: https://www.tensorflow.org/tutorials/quickstart/beginner
