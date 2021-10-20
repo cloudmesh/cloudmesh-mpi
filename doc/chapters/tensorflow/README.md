@@ -56,7 +56,7 @@ it should show version 2.5.0.
 
 To show TensorFlow 2 in action, we will use a basic example as presented in the official quickstart guide [^ref2] using the mnist dataset. Comments are provided to explain each step.
 
-To test this on your own, simply run the following as a python script.
+If you would like to test this on your own, you may save the following into a python script (i.e., example.py) and run it with ```python3 example.py```.
 
 ```
 import tensorflow as tf
