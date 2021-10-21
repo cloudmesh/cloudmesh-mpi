@@ -48,14 +48,14 @@ Next, we will complete the setup, which uses the following steps:
 Turn on your Pis and wait for them to boot. To be sure that `cms` is installed properly from the burn tutorial, issue this command in Git
 Bash on the host computer:
 
-"`bash
+```bash
 (ENV3) you@yourhostcomputer $ eval `ssh-agent`
 (ENV3) you@yourhostcomputer $ eval `ssh-add`
 ```
 
 Enter your ssh password and then issue the command:
 
-"`bash
+```bash
 (ENV3) you@yourhostcomputer $ cms pi temp "red,red0[1-3]"
 pi temp red,red0[1-3]
 +--------+--------+-------+----------------------------+
@@ -76,14 +76,14 @@ We must install the `ntpdate` package because SLURM and Munge run most efficient
 on the same page when it comes to the time. Software for job scheduling such as SLURM must run on computers
 that have the correct time. Let us set up `ntpdate` as follows, which may take around three minutes:
 
-"`bash
+```bash
 (ENV3) you@yourhostcomputer $ cms host ssh red,red0[1-3] "'sudo apt-get update'"
 (ENV3) you@yourhostcomputer $ cms host ssh red,red0[1-3] "'sudo apt install ntpdate -y'"
 ```
 
 When the command has finished and the output says `True` under the success column reboot the Pis:
 
-"`bash
+```bash
 (ENV3) you@yourhostcomputer $ cms host reboot "red,red0[1-3]"
 ``` 
 
@@ -98,7 +98,7 @@ or even a NAS device, but this tutorial will follow USB storage.
 
 Ensure that the USB storage is connected to red, the manager Pi. Then, ssh into red: 
 
-"`bash
+```bash
 (ENV3) you@yourhostcomputer $ ssh red
 ```
 
@@ -117,7 +117,7 @@ The USB partition is listed here and shown to be `/dev/sda1`, but it may differ.
 column (as long as you remember what the size is of your device is and it is unique). Make sure there is no important information on this drive because
 we will now format it and erase everything:
 
-"`bash
+```bash
 (ENV3) pi@red:~ $ sudo mkfs.ext4 /dev/sda1
 ```
 
@@ -134,7 +134,7 @@ Create the mount directory by issuing these commands:
 Take note of the UUID of your USB device (identifiable by the partition name you have identified such as `/dev/sda1`). We must append a
 system file so that the device is automatically mounted on boot for convenience. Change the UUID in this command accordingly and issue it:
 
-"`bash
+```bash
 (ENV3) pi@red:/nfs $ echo "UUID=55d94f07-0c1f-445c-860c-87fc9fc348be /nfs ext4 defaults 0 2" | sudo tee /etc/fstab -a
 ```
 
