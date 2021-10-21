@@ -56,7 +56,7 @@ it should show version 2.5.0.
 
 To show TensorFlow 2 in action, we will use a basic example as presented in the official quickstart guide [^ref2] using the mnist dataset. Comments are provided to explain each step.
 
-If you would like to test this on your own, you may save the following into a python script (i.e., example.py) and run it with ```python3 example.py```.
+If you would like to test the following code on your own, simply run the command ```$ curl -Ls http://cloudmesh.github.io/get/pi/tensorflow/example/ | python3```.
 
 ```
 import tensorflow as tf
@@ -91,7 +91,7 @@ model.fit(x_train, y_train, epochs=5)
 model.evaluate(x_test,  y_test, verbose=2)
 ```
 
-After 5 epochs of training, my Pi reported a final testing accuracy of 0.9768.
+After 5 epochs of training, my Pi reported a final testing accuracy of approximately 0.9768.
 
 ## References
 [^ref1]: https://www.raspberrypi.com/software/
