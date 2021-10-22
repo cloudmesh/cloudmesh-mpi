@@ -140,7 +140,7 @@ system file so that the device is automatically mounted on boot for convenience.
 
 **TODO: we can automatize this step in future while probing the UUID automatically and using it in a dynamic script. THis should also fix the issue reported in the next section.**
 
-Then mount the drive by issuing `(ENV3) pi@red:~ sudo mount -a'.
+Then mount the drive by issuing `(ENV3) pi@red:~ sudo mount -a`.
 
 There may be an error upon trying to mount the drive: `mount: /nfs: can't find UUID`. For whatever reason, the UUID
 may have spontaneously changed. Simply issue `blkid` command again, take note of the new UUID, and reissue the aforementioned echo command
