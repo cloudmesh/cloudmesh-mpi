@@ -56,9 +56,14 @@ it should show version 2.5.0.
 
 To show TensorFlow 2 in action, we will use a basic example as presented in the official quickstart guide [^ref2] using the mnist dataset. Comments are provided to explain each step.
 
-If you would like to test the following code on your own, simply run the command ```$ curl -Ls http://cloudmesh.github.io/get/pi/tensorflow/example/ | python3```.
+If you would like to test the following code on your own, simply run the command
 
+```bash
+$ curl -Ls http://cloudmesh.github.io/get/pi/tensorflow/example/ | python3
 ```
+
+
+```python
 import tensorflow as tf
 
 # load the mnist dataset
