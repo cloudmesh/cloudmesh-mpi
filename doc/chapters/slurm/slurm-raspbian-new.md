@@ -266,7 +266,7 @@ NodeName=red03 NodeAddr=10.1.1.4 CPUs=4 State=UNKNOWN
 PartitionName=mycluster Nodes=red0[1-3] Default=YES MaxTime=INFINITE State=UP
 ```
 
-Exit nano via `Ctrl + X` and press `y' and `Enter` to save changes. Then issue command:
+Exit nano via `Ctrl + X` and press `y` and `Enter` to save changes. Then issue command:
 
 ```
 (ENV3) pi@red:/etc/slurm-llnl $ sudo nano cgroup.conf
