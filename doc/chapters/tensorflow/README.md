@@ -1,6 +1,6 @@
 # Preparing a Single Raspberry Pi 4 with TensorFlow 2.5.0 on Ubuntu 20.04
 
-Duration: 2 hours 40 minutes
+Duration: 1 hour 15 minutes
 
 ## Introduction
 To get TensorFlow 2.5.0 running on a single Raspberry Pi, we will first burn Ubuntu to the Pi's SD card, then run an automated TensorFlow installation process consisting of 2 scripts.
@@ -28,7 +28,7 @@ Once the Pi with ubuntu 20.04 is up and running and we are prepared in the desir
 
 Step 1:
 
-Duration: 2 hours
+Duration: 35 minutes
 
 ```bash
 $ curl -Ls http://cloudmesh.github.io/get/pi/tensorflow/step1 | sh
