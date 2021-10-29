@@ -18,7 +18,7 @@ def step1():
     #results2 = Host.ssh(hosts=hosts, command="sudo apt install ntpdate -y")
     #pprint(results2)
     testresults = Host.ssh(hosts=hosts, command="ls abc")
-    print(Printer.write(testresults))
+    print(Printer.write(testresults,header=["stderr","host"]))
     #results3 = Host.ssh(hosts=hosts, command="touch step1")
     #print(results3)
     #results4 = Host.ssh(hosts=hosts, command="sudo reboot")
@@ -48,6 +48,7 @@ completed = True
 for entry in results4:
     if 'step1' in str(entry["stderr"]) and 'cannot access' in str(entry["stderr"]):
         completed = False
+        entry["stderr"]="False"
 if completed:
     step2()
 else:
