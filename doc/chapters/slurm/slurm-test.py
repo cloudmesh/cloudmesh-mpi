@@ -5,6 +5,7 @@ from cloudmesh.common.util import banner
 from cloudmesh.common.parameter import Parameter
 from cloudmesh.common.Host import Host
 from cloudmesh.common.util import readfile,writefile
+from pprint import pprint
 import os
 import sys
 
@@ -19,7 +20,7 @@ banner("Slurm on Raspberry Pi Cluster Installation")
 print(hosts)
 print(ehosts)
 results4 = Host.ssh(hosts=hosts,command="ls")
-print(results4)
+pprint(results4)
 '''
 sys.exit()
 #def parallel_execute(hosts,command):
