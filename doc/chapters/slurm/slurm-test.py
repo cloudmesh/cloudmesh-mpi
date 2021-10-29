@@ -45,7 +45,7 @@ results4 = Host.ssh(hosts=hosts,command="ls step1")
 pprint(results4)
 completed = True
 for entry in results4:
-    if 'step1' in entry["stderr"] and 'cannot access' in entry["stderr"]:
+    if 'step1' in str(entry["stderr"]) and 'cannot access' in str(entry["stderr"]):
         completed = False
 if completed:
     step2()
