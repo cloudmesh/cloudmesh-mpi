@@ -19,7 +19,7 @@ ehosts = Parameter.expand(hosts)
 banner("Slurm on Raspberry Pi Cluster Installation")
 print(hosts)
 print(ehosts)
-results4 = Host.ssh(hosts=hosts,command="ls")
+results4 = Host.ssh(hosts=hosts,command="ls abcdefgh")
 pprint(results4)
 '''
 sys.exit()
