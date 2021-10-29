@@ -14,7 +14,9 @@ hosts = "red,red0[1-3]"
 ehosts = Parameter.expand(hosts)
 
 cloudmesh.banner("Slurm on Raspberry Pi Cluster Installation")
-
+results4 = Host.ssh(hosts=hosts,command="ls step1")
+print(results4)
+exit
 #def parallel_execute(hosts,command):
 #  os.system("cms host ssh "+hosts+" \"'"+command+""'\"")
 #
@@ -24,6 +26,10 @@ print(results)
 #parallel_execute(hosts,"sudo apt install ntpdate -y")
 results2 = Host.ssh(hosts=hosts,command="sudo apt install ntpdate -y")
 print(results2)
+
+results3 = Host.ssh(hosts=hosts,command="sudo reboot")
+print(results3)
+# results3 = Host.ssh(hosts=hosts,command="sudo shutdown -r now")
 
 #for host in ehosts:
 #  os.system("cms host ssh "+hosts+" 'touch step1'")
