@@ -2,21 +2,26 @@
 
 from cloudmesh.common.StopWatch import StopWatch
 from cloudmesh.common.util import banner
-from cloudmesh.common.Parameter import Parameter
+from cloudmesh.common.parameter import Parameter
+from cloudmesh.common.Host import Host
 from cloudmesh.common.util import readfile,writefile
 import os
+import sys
 
 #a = readfile("test1")
 #writefile("test2",a)
 
-StopWatch.start("Total Runtime")
+#StopWatch.start("Total Runtime")
 hosts = "red,red0[1-3]"
 ehosts = Parameter.expand(hosts)
 
-cloudmesh.banner("Slurm on Raspberry Pi Cluster Installation")
-results4 = Host.ssh(hosts=hosts,command="ls step1")
+banner("Slurm on Raspberry Pi Cluster Installation")
+print(hosts)
+print(ehosts)
+results4 = Host.ssh(hosts=hosts,command="ls")
 print(results4)
-exit
+'''
+sys.exit()
 #def parallel_execute(hosts,command):
 #  os.system("cms host ssh "+hosts+" \"'"+command+""'\"")
 #
@@ -45,3 +50,4 @@ print(results4)
 
 StopWatch.stop("Total Runtime")
 StopWatch.benchmark()
+'''
