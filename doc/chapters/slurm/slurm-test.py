@@ -12,7 +12,7 @@ import sys
 
 def step1(results):
     banner("Step 1")
-    print(Printer.write(results,header=["host","stderr"]))
+    print(Printer.write(results))
 
     #results = Host.ssh(hosts=hosts, command="sudo apt-get update")
     #pprint(results)
