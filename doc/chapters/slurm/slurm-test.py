@@ -10,15 +10,16 @@ from pprint import pprint
 import os
 import sys
 
-def step1():
+def step1(results):
     banner("Step 1")
+    print(Printer.write(results,header=["host","stderr"]))
+
     #results = Host.ssh(hosts=hosts, command="sudo apt-get update")
     #pprint(results)
     # parallel_execute(hosts,"sudo apt install ntpdate -y")
     #results2 = Host.ssh(hosts=hosts, command="sudo apt install ntpdate -y")
     #pprint(results2)
-    testresults = Host.ssh(hosts=hosts, command="ls abc")
-    print(Printer.write(testresults,header=["stderr","host"]))
+
     #results3 = Host.ssh(hosts=hosts, command="touch step1")
     #print(results3)
     #results4 = Host.ssh(hosts=hosts, command="sudo reboot")
@@ -42,17 +43,18 @@ ehosts = Parameter.expand(hosts)
 banner("Slurm on Raspberry Pi Cluster Installation")
 print(hosts)
 print(ehosts)
-results4 = Host.ssh(hosts=hosts,command="ls step1")
-pprint(results4)
+results = Host.ssh(hosts=hosts,command="ls step1")
+
 completed = True
-for entry in results4:
+for entry in results:
     if 'step1' in str(entry["stderr"]) and 'cannot access' in str(entry["stderr"]):
         completed = False
         entry["stderr"]="False"
 if completed:
+    pprint(results)
     step2()
 else:
-    step1()
+    step1(results)
 
 
 '''
