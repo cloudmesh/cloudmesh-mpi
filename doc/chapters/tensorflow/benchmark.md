@@ -6,6 +6,12 @@
   -  TensorFlow 2.5.0
   -  Cloudmesh
 
+To install Cloudmesh for our purposes, we only need the following commands:
+
+```bash
+asdf
+```
+
 ## Benchmark 1: Basic MNIST
 
 ```bash
