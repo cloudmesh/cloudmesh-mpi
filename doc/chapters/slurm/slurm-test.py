@@ -55,6 +55,7 @@ if completed:
     step2()
 else:
     step1(results)
+    os.system('touch step1')
 
 
 '''
