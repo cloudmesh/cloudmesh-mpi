@@ -5,6 +5,7 @@ from cloudmesh.common.util import banner
 from cloudmesh.common.parameter import Parameter
 from cloudmesh.common.Host import Host
 from cloudmesh.common.util import readfile,writefile
+from cloudmesh.common.Printer import Printer
 from pprint import pprint
 import os
 import sys
@@ -17,7 +18,7 @@ def step1():
     #results2 = Host.ssh(hosts=hosts, command="sudo apt install ntpdate -y")
     #pprint(results2)
     testresults = Host.ssh(hosts=hosts, command="ls abc")
-    pprint(testresults)
+    print(Printer.write(testresults))
     #results3 = Host.ssh(hosts=hosts, command="touch step1")
     #print(results3)
     #results4 = Host.ssh(hosts=hosts, command="sudo reboot")
