@@ -9,7 +9,7 @@
 ### Tensorflow on M1 Mac
 
 The following are a few leads for installation of TensorFlow on an M1 Mac:
-- Apple developer instructions using tensorflow-metal, which is maintained by Apple themselves https://developer.apple.com/metal/tensorflow-plugin/
+- Apple developer instructions using tensorflow-metal, which is maintained by Apple themselves and should support M1 Max https://developer.apple.com/metal/tensorflow-plugin/
 - additional article detailing installation https://towardsdatascience.com/installing-tensorflow-on-the-m1-mac-410bb36b776
 
 
