@@ -1,4 +1,4 @@
-# Installing Slurm on a Raspberry Pi Cluster
+# NEW: Installing Slurm on a Raspberry Pi Cluster
 
 ## 1. Introduction
 
@@ -48,14 +48,14 @@ Next, we will complete the setup, which uses the following steps:
 Turn on your Pis and wait for them to boot. To be sure that `cms` is installed properly from the burn tutorial, issue this command in Git
 Bash on the host computer:
 
-"`bash
+```bash
 (ENV3) you@yourhostcomputer $ eval `ssh-agent`
 (ENV3) you@yourhostcomputer $ eval `ssh-add`
 ```
 
 Enter your ssh password and then issue the command:
 
-"`bash
+```bash
 (ENV3) you@yourhostcomputer $ cms pi temp "red,red0[1-3]"
 pi temp red,red0[1-3]
 +--------+--------+-------+----------------------------+
@@ -76,14 +76,14 @@ We must install the `ntpdate` package because SLURM and Munge run most efficient
 on the same page when it comes to the time. Software for job scheduling such as SLURM must run on computers
 that have the correct time. Let us set up `ntpdate` as follows, which may take around three minutes:
 
-"`bash
+```bash
 (ENV3) you@yourhostcomputer $ cms host ssh red,red0[1-3] "'sudo apt-get update'"
 (ENV3) you@yourhostcomputer $ cms host ssh red,red0[1-3] "'sudo apt install ntpdate -y'"
 ```
 
 When the command has finished and the output says `True` under the success column reboot the Pis:
 
-"`bash
+```bash
 (ENV3) you@yourhostcomputer $ cms host reboot "red,red0[1-3]"
 ``` 
 
@@ -98,7 +98,7 @@ or even a NAS device, but this tutorial will follow USB storage.
 
 Ensure that the USB storage is connected to red, the manager Pi. Then, ssh into red: 
 
-"`bash
+```bash
 (ENV3) you@yourhostcomputer $ ssh red
 ```
 
@@ -117,14 +117,14 @@ The USB partition is listed here and shown to be `/dev/sda1`, but it may differ.
 column (as long as you remember what the size is of your device is and it is unique). Make sure there is no important information on this drive because
 we will now format it and erase everything:
 
-"`bash
+```bash
 (ENV3) pi@red:~ $ sudo mkfs.ext4 /dev/sda1
 ```
 
 Ensure you enter this command precisely because you can accidentally erase your Pi otherwise. You can certainly place the USB storage in another USB port, but  make appropriate changes, 
 
 Create the mount directory by issuing these commands:
-"`bash
+```bash
 (ENV3) pi@red:~ $ sudo mkdir /nfs
 (ENV3) pi@red:~ $ sudo chown nobody.nogroup -R /nfs
 (ENV3) pi@red:~ $ sudo chmod guo+rw -R /nfs
@@ -134,13 +134,13 @@ Create the mount directory by issuing these commands:
 Take note of the UUID of your USB device (identifiable by the partition name you have identified such as `/dev/sda1`). We must append a
 system file so that the device is automatically mounted on boot for convenience. Change the UUID in this command accordingly and issue it:
 
-"`bash
+```bash
 (ENV3) pi@red:/nfs $ echo "UUID=55d94f07-0c1f-445c-860c-87fc9fc348be /nfs ext4 defaults 0 2" | sudo tee /etc/fstab -a
 ```
 
 **TODO: we can automatize this step in future while probing the UUID automatically and using it in a dynamic script. THis should also fix the issue reported in the next section.**
 
-Then mount the drive by issuing `(ENV3) pi@red:~ sudo mount -a'.
+Then mount the drive by issuing `(ENV3) pi@red:~ sudo mount -a`.
 
 There may be an error upon trying to mount the drive: `mount: /nfs: can't find UUID`. For whatever reason, the UUID
 may have spontaneously changed. Simply issue `blkid` command again, take note of the new UUID, and reissue the aforementioned echo command
@@ -148,7 +148,7 @@ with the correct UUID. Then try remounting through command `sudo mount -a'.
 
 Issue these commands to change the permissions of the drive and to install the Network File Sharing server:
 
-"`bash
+```bash
 (ENV3) pi@red:~ $ sudo chown nobody.nogroup -R /nfs
 (ENV3) pi@red:~ $ sudo chmod -R 766 /nfs
 (ENV3) pi@red:~ $ sudo apt install nfs-kernel-server -y
@@ -163,7 +163,7 @@ Note this number and make sure that it is the one belonging to your ethernet con
 We must now export the NFS share by first appending `/etc/exports` through command (edit it to change `10.1.1.1` to whatever your
 IP address is):
 
-"`bash
+```bash
 (ENV3) pi@red:/nfs $ echo "/nfs 10.1.1.1/24(rw,sync,no_root_squash,no_subtree_check)" | sudo tee /etc/exports -a
 ```
 
@@ -184,7 +184,7 @@ Now we are back on our host computer.
 For convenience, we can utilize the cloudmesh `cms host ssh` command to execute the same command in across all of our worker Pis.
 To install install the NFS client on all of our workers use:
 
-"`bash
+```bash
 (ENV3) you@yourhostcomputer $ cms host ssh red0[1-3] "'sudo apt install nfs-common -y'"
 ```
 
@@ -195,7 +195,7 @@ Now, you must repeat the following process for each worker Pi by ssh into each o
 
 **TODO: in future we will have a single script for this and execute the script on each worker. We will likely use the cms host command to make it simple.**
 
-"`bash
+```bash
 pi@red01:~ $ sudo mkdir /nfs
 pi@red01:~ $ sudo chown nobody.nogroup /nfs
 pi@red01:~ $ sudo chmod -R 777 /nfs
@@ -204,14 +204,14 @@ pi@red01:~ $ echo "10.1.1.1:/nfs    /nfs    nfs    defaults   0 0" | sudo tee /e
 
 Once you have repeated this process for every Pi, issue:
 
-"`bash
+```bash
 pi@red03:~ $ exit
 (ENV3) you@yourhostcomputer $ cms host reboot "red,red0[1-3]"
 ``` 
 
 and wait for the Pis to come back online. Once fully back online (wait at least two minutes), issue:
 
-"`bash
+```bash
 (ENV3) you@yourhostcomputer $ cms host ssh red0[1-3] "'sudo mount -a'"
 ```
 
@@ -224,7 +224,7 @@ of every Pi to have the IPs and hostnames of each one. This allows the Pis to ss
 
 Issue the commands:
 
-"`bash
+```bash
 (ENV3) you@yourhostcomputer $ ssh red
 (ENV3) pi@red:~ $ sudo apt install slurm-wlm -y
 (ENV3) pi@red:~ $ cd /etc/slurm-llnl/
@@ -266,7 +266,7 @@ NodeName=red03 NodeAddr=10.1.1.4 CPUs=4 State=UNKNOWN
 PartitionName=mycluster Nodes=red0[1-3] Default=YES MaxTime=INFINITE State=UP
 ```
 
-Exit nano via `Ctrl + X` and press `y' and `Enter` to save changes. Then issue command:
+Exit nano via `Ctrl + X` and press `y` and `Enter` to save changes. Then issue command:
 
 ```
 (ENV3) pi@red:/etc/slurm-llnl $ sudo nano cgroup.conf
@@ -293,7 +293,7 @@ MinRAMSpace=30
 
 Save and exit nano as per usual and then issue command:
 
-"`bash
+```bash
 (ENV3) pi@red:/etc/slurm-llnl $ sudo nano cgroup_allowed_devices_file.conf
 ```
 
@@ -311,14 +311,14 @@ Paste this inside and then save and exit nano:
 
 Issue this command to copy our configuration files to the shared storage so we can copy them to the worker Pis later:
 
-"`bash
+```bash
 (ENV3) pi@red:/etc/slurm-llnl $ sudo cp slurm.conf cgroup.conf cgroup_allowed_devices_file.conf /nfs
 (ENV3) pi@red:/etc/slurm-llnl $ sudo cp /etc/munge/munge.key /nfs
 ```
 
 Now we must start Munge, the authentication service for SLURM, as well as the SLURM controller service slurmctld:
 
-"`bash
+```bash
 (ENV3) pi@red:/etc/slurm-llnl $ sudo systemctl enable munge
 (ENV3) pi@red:/etc/slurm-llnl $ sudo systemctl start munge
 (ENV3) pi@red:/etc/slurm-llnl $ sudo systemctl enable slurmctld
@@ -333,7 +333,7 @@ Next, we must repeat the following process for every worker Pi. These commands w
 configuration files from the shared USB (or your storage of choice), and start Munge. Issue these commands on each worker
 (so after performing the following on red01, do the same for red02 and red03 and others if you have more):
 
-"`bash
+```bash
 pi@red01:~ $ sudo apt install slurmd slurm-client -y
 pi@red01:~ $ sudo cp /nfs/munge.key /etc/munge/munge.key
 pi@red01:~ $ sudo cp /nfs/slurm.conf /etc/slurm-llnl/slurm.conf
@@ -342,7 +342,7 @@ pi@red01:~ $ sudo cp /nfs/cgroup* /etc/slurm-llnl
 
 Issue `exit` command on your current worker until you are back on your host computer and issue these commands:
 
-"`bash
+```bash
 (ENV3) you@yourhostcomputer $ cms host ssh red0[1-3] "'sudo systemctl enable munge'"
 (ENV3) you@yourhostcomputer $ cms host ssh red0[1-3] "'sudo systemctl start munge'"
 (ENV3) you@yourhostcomputer $ cms host reboot "red,red0[1-3]"
@@ -352,7 +352,7 @@ Wait for the Pis to come back online (around two minutes to be safe).
 
 When they are back online, try to  ssh into each worker and issuing this command to verify that Munge works 
 (you may need to type `yes` and `Enter` if prompted to continue connecting):
-"`bash
+```bash
 pi@red01:~ $ ssh pi@red munge -n | unmunge
 STATUS:           Success (0)
 ENCODE_HOST:      red01 (127.0.1.1)
@@ -371,7 +371,7 @@ LENGTH:           0
 
 Start the SLURM daemon by issuing these commands:
 
-"`bash
+```bash
 pi@red03:~ $ exit
 (ENV3) you@yourhostcomputer $ cms host ssh red0[1-3] "'sudo systemctl enable slurmd'"
 (ENV3) you@yourhostcomputer $ cms host ssh red0[1-3] "'sudo systemctl start slurmd'"
@@ -381,7 +381,7 @@ pi@red03:~ $ exit
 
 Now we can test SLURM by connecting to red through SSH and issuing commands:
 
-"`bash
+```bash
 (ENV3) you@yourhostcomputer $ ssh red
 pi@red:~ $ sinfo
 pi@red:~ $ srun --nodes=3 hostname
@@ -395,7 +395,7 @@ red01
 red03
 ```
 
-# Acknowledgement
+# Acknowledgment
 
 This work is based on a tutorial published at [^www-slurm]. However, it is heavily modified to leverage the much more convenient cluster set up of cloudmesh, as well as the much more convenient configuration of Slurm that hides many of the setup complexity.
 

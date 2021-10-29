@@ -1,5 +1,7 @@
 # Preparing a Raspberry Pi 4 with Tensorflow 2.5.0 on Ubuntu 20.04
 
+### **NOTE: These instructions have been updated and made more concise in the README.md of the same directory.
+
 ## Introduction
 To get tensorflow 2.5.0 running on a Raspberry Pi is not quite as easy as using a single pip command - it requires a fair bit of setup to get installed.
 This documentation will attempt to simplify the process outlined by authors at qengineering.eu [^ref1] by providing shell scripts to make the process more automatic.
