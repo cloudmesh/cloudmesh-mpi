@@ -6,6 +6,19 @@
   -  TensorFlow 2.5.0
   -  Cloudmesh
 
+### Tensorflow on M1 Mac
+
+The following are a few leads for installation of TensorFlow on an M1 Mac:
+- Apple developer instructions using tensorflow-metal, which is maintained by Apple themselves https://developer.apple.com/metal/tensorflow-plugin/
+- additional article detailing installation https://towardsdatascience.com/installing-tensorflow-on-the-m1-mac-410bb36b776
+
+
+### Tensorflow on Raspberry Pi with Ubuntu
+
+See https://github.com/cloudmesh/cloudmesh-mpi/blob/main/doc/chapters/tensorflow/README.md for setting up a Raspberry Pi with TensorFlow on Ubuntu 20.04
+
+### Cloudmesh
+
 To install Cloudmesh for our purposes, we only need the following commands:
 
 ```bash
