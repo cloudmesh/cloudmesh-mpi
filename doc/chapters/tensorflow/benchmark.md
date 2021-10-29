@@ -9,7 +9,8 @@
 To install Cloudmesh for our purposes, we only need the following commands:
 
 ```bash
-asdf
+pip install cloudmesh-installer
+cloudmesh-installer get cmd5
 ```
 
 ## Benchmark 1: Basic MNIST
@@ -17,9 +18,11 @@ asdf
 ```bash
 $ curl -Ls http://cloudmesh.github.io/get/pi/tensorflow/benchmark/mnist | python
 ```
+
 ## Results
 
 Raspberry Pi 4 running Ubuntu 20.04 Server 64-bit
+
 ```
 +---------------------+------------------------------------------------------------------+
 | Attribute           | Value                                                            |
@@ -77,7 +80,8 @@ Raspberry Pi 4 running Ubuntu 20.04 Server 64-bit
 # csv,install,ok,64.029,64.029,2021-10-28 20:03:33,,None,ubuntu,ubuntu,Linux,#49-Ubuntu SMP PREEMPT Wed Sep 29 17:49:16 UTC 2021
 ```
 
-Henry's Desktop PC
+Henry's Desktop PC (CPU Only)
+
 ```
 +------------------+--------------------------------------------------------------------------------+
 | Attribute        | Value                                                                          |
@@ -115,3 +119,4 @@ Henry's Desktop PC
 # csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
 # csv,install,ok,7.069,7.069,2021-10-28 20:08:17,,None,Phasma,Henry,Windows,('10', '10.0.19043', 'SP0', 'Multiprocessor Free')
 ```
+
