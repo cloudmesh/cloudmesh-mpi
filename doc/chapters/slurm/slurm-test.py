@@ -9,6 +9,28 @@ from pprint import pprint
 import os
 import sys
 
+def step1():
+    banner("Step 1")
+    #results = Host.ssh(hosts=hosts, command="sudo apt-get update")
+    #pprint(results)
+    # parallel_execute(hosts,"sudo apt install ntpdate -y")
+    #results2 = Host.ssh(hosts=hosts, command="sudo apt install ntpdate -y")
+    #pprint(results2)
+    testresults = Host.ssh(hosts=hosts, command="ls abc")
+    pprint(testresults)
+    #results3 = Host.ssh(hosts=hosts, command="touch step1")
+    #print(results3)
+    #results4 = Host.ssh(hosts=hosts, command="sudo reboot")
+    #pprint(results4)
+    # results4 = Host.ssh(hosts=hosts,command="sudo shutdown -r now")
+
+
+def step2():
+    banner("Step 2")
+    results = Host.ssh(hosts=hosts, command="ls")
+    pprint(results)
+
+
 #a = readfile("test1")
 #writefile("test2",a)
 
@@ -19,29 +41,29 @@ ehosts = Parameter.expand(hosts)
 banner("Slurm on Raspberry Pi Cluster Installation")
 print(hosts)
 print(ehosts)
-results4 = Host.ssh(hosts=hosts,command="ls abcdefgh")
+results4 = Host.ssh(hosts=hosts,command="ls step1")
 pprint(results4)
+completed = True
+for entry in results4:
+    if 'step1' in entry["stderr"] and 'cannot access' in entry["stderr"]:
+        completed = False
+if completed:
+    step2()
+else:
+    step1()
+
+
 '''
-sys.exit()
 #def parallel_execute(hosts,command):
 #  os.system("cms host ssh "+hosts+" \"'"+command+""'\"")
 #
 #parallel_execute(hosts,"sudo apt-get update")
-results = Host.ssh(hosts=hosts,command="sudo apt-get update")
-print(results)
-#parallel_execute(hosts,"sudo apt install ntpdate -y")
-results2 = Host.ssh(hosts=hosts,command="sudo apt install ntpdate -y")
-print(results2)
 
-results3 = Host.ssh(hosts=hosts,command="sudo reboot")
-print(results3)
-# results3 = Host.ssh(hosts=hosts,command="sudo shutdown -r now")
 
 #for host in ehosts:
 #  os.system("cms host ssh "+hosts+" 'touch step1'")
 
-results3 = Host.ssh(hosts=hosts,command="touch step1")
-print(results3)
+
 # print (names)
 
 results4 = Host.ssh(hosts=hosts,
