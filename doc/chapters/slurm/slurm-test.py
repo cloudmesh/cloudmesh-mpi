@@ -12,6 +12,8 @@ from pprint import pprint
 import os
 import sys
 
+hosts = "red,red0[1-3]"
+
 def step1(results):
     banner("Step 1")
     print(Printer.write(results))
@@ -44,7 +46,7 @@ def step2():
 #writefile("test2",a)
 
 #StopWatch.start("Total Runtime")
-hosts = "red,red0[1-3]"
+
 ehosts = Parameter.expand(hosts)
 
 banner("Slurm on Raspberry Pi Cluster Installation")
