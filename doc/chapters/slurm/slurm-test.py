@@ -6,6 +6,8 @@ from cloudmesh.common.parameter import Parameter
 from cloudmesh.common.Host import Host
 from cloudmesh.common.util import readfile,writefile
 from cloudmesh.common.Printer import Printer
+from cloudmesh.common.console import Console
+from cloudmesh.common.util import yn_choice
 from pprint import pprint
 import os
 import sys
@@ -14,23 +16,29 @@ def step1(results):
     banner("Step 1")
     print(Printer.write(results))
 
-    #results = Host.ssh(hosts=hosts, command="sudo apt-get update")
-    #pprint(results)
-    # parallel_execute(hosts,"sudo apt install ntpdate -y")
-    #results2 = Host.ssh(hosts=hosts, command="sudo apt install ntpdate -y")
-    #pprint(results2)
+    results = Host.ssh(hosts=hosts, command="sudo apt-get update")
+    pprint(results)
+    #parallel_execute(hosts,"sudo apt install ntpdate -y")
+    results2 = Host.ssh(hosts=hosts, command="sudo apt install ntpdate -y")
+    pprint(results2)
 
-    #results3 = Host.ssh(hosts=hosts, command="touch step1")
-    #print(results3)
-    #results4 = Host.ssh(hosts=hosts, command="sudo reboot")
-    #pprint(results4)
-    # results4 = Host.ssh(hosts=hosts,command="sudo shutdown -r now")
+    results3 = Host.ssh(hosts=hosts, command="touch step1")
+    pprint(results3)
+    results4 = Host.ssh(hosts=hosts, command="sudo reboot")
+    pprint(results4)
+    #results4 = Host.ssh(hosts=hosts,command="sudo shutdown -r now")
 
 
 def step2():
     banner("Step 2")
-    results = Host.ssh(hosts=hosts, command="ls")
-    pprint(results)
+    if not yn_choice('Please insert USB storage medium into top USB 3.0 (blue) port on manager pi red and press y when done'):
+        Console.error("Terminating: User Break")
+        return ""
+    os.system('lsblk')
+    if not yn_choice('Please confirm that sda1 is your USB which will be formatted by pressing y'):
+        Console.error("Terminating: User Break")
+        return ""
+    os.system('lsblk')
 
 
 #a = readfile("test1")
