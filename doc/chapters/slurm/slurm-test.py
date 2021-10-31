@@ -19,14 +19,15 @@ def step1(results):
     print(Printer.write(results))
 
     results = Host.ssh(hosts=hosts, command="sudo apt-get update")
-    pprint(results)
+    print(Printer.write(results))
     #parallel_execute(hosts,"sudo apt install ntpdate -y")
     results2 = Host.ssh(hosts=hosts, command="sudo apt install ntpdate -y")
-    pprint(results2)
+    print(Printer.write(results2))
 
     results3 = Host.ssh(hosts=hosts, command="touch step1")
-    pprint(results3)
-    print(f'''cms host reboot {hosts}''')
+    print(Printer.write(results3))
+    print("cms host reboot "+hosts)
+    os.system("cms host reboot "+hosts)
     #results4 = Host.ssh(hosts=hosts,command="sudo shutdown -r now")
 
 
@@ -39,7 +40,7 @@ def step2():
     if not yn_choice('Please confirm that sda1 is your USB which will be formatted by pressing y'):
         Console.error("Terminating: User Break")
         return ""
-    os.system('lsblk')
+    
 
 
 #a = readfile("test1")
@@ -60,11 +61,13 @@ for entry in results:
         completed = False
         entry["stderr"]="False"
 if completed:
+    banner("Step 1 is done. Executing step 2 now")
     pprint(results)
     step2()
 else:
+    banner("Step 1 is not done. Executing step 1 now")
     step1(results)
-    os.system('touch step1')
+    #os.system('touch step1')
 
 
 '''
