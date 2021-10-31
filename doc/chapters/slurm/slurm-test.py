@@ -24,7 +24,7 @@ def step1(results):
 
     results3 = Host.ssh(hosts=hosts, command="touch step1")
     pprint(results3)
-    results4 = Host.ssh(hosts=hosts, command="sudo reboot")
+    results4 = Host.ssh(hosts=hosts, command=f"cms host reboot {hosts}")
     pprint(results4)
     #results4 = Host.ssh(hosts=hosts,command="sudo shutdown -r now")
 
