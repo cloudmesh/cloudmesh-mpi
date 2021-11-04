@@ -8,27 +8,26 @@ There exist a multitude of APIs available that offer natural langauge processing
 - Azure Cognitive Science for Language
 - Google Natural Language API
 - Salesforce Einstein Language
+- IBM Watson Natural Language Understanding
 
 
 ## Overview
 
 The following chart shows the most common features that are shared among APIs and links to the specific corresponding functions in their documentation.
 
-|   | Amazon Comprehend  | Azure  | Google  | Einstein Language  |
-|---|---|---|---|---|
-| Sentiment detection  | DetectSentiment [^ref2] | sentiment [^ref9]  | analyzeSentiment [^ref15] | CommunitySentiment [^ref19]  |
-|  Keyphrase extraction | DetectKeyPhrases [^ref3]  | keyPhrases [^ref10]  | ---  | ---  |
-|  Syntax detection | DetectSyntax [^ref4]  | --- | analyzeSyntax [^ref16]  | ---  |
-|  Entity recognition | DetectEntities [^ref5]  |  entities/recognition/general [^ref11] | analyzeEntities [^ref17] |   |
-|  Language detection | DetectDominantLanguage [^ref6]  | languages [^ref12]  | (included in others)  |  --- |
-|  PII detection | DetectPiiEntities [^ref7]  | entities/recognition/pii [^ref13]  | ---  | ---  |
+|   | Amazon Comprehend  | Azure  | Google  | Einstein Language  | IBM Watson  |
+|---|---|---|---|---|---|
+| Sentiment detection  | DetectSentiment [^ref2] | sentiment [^ref9]  | analyzeSentiment [^ref15] | CommunitySentiment [^ref19]  | Sentiment [^ref20]  |
+|  Keyphrase extraction | DetectKeyPhrases [^ref3]  | keyPhrases [^ref10]  | ---  | ---  | Keywords [^ref22] |
+|  Syntax detection | DetectSyntax [^ref4]  | --- | analyzeSyntax [^ref16]  | ---  | Syntax [^ref23]  |
+|  Entity recognition | DetectEntities [^ref5]  |  entities/recognition/general [^ref11] | analyzeEntities [^ref17] | ---  | Entities [^ref24]  |
+|  Language detection | DetectDominantLanguage [^ref6]  | languages [^ref12]  | (included in others)  |  --- | (included in others)  |
+|  PII detection | DetectPiiEntities [^ref7]  | entities/recognition/pii [^ref13]  | ---  | ---  | ---  |
 
 ## Amazon Comprehend [^ref1]
 
 Supported Interfaces:
-- AWS CLI
-- Python
-- Java
+AWS CLI, Python, Java
 
 ### Functions
 
@@ -55,11 +54,7 @@ DetectPiiEntities [^ref7]
 ## Azure Cognitive Science for Language [^ref8]
 
 Supported Interfaces:
-- REST API
-- Python
-- C#
-- Java
-- Javascript
+REST API, Python, C#, Java, Javascript
 
 ### Functions
 
@@ -81,14 +76,7 @@ entities/recognition/pii [^ref13]
 ## Google Natural Language API [^ref14]
 
 Supported Interfaces:
-- REST API
-- Python
-- C#
-- Java
-- Go
-- Node.js
-- PHP
-- Ruby
+REST API, Python, C#, JAVA, Go, Node.js, PHP, Ruby
 
 ### Functions
 
@@ -104,12 +92,33 @@ analyzeEntities [^ref17]
 ## Salesforce Einstein Language [^ref18]
 
 Supported Interfaces:
-- REST API
+REST API
 
 ### Functions
 
 CommunitySentiment [^ref19]
 - document, auth token, cache control, model -> label [positive, negative, neutral], probability scores
+
+## IBM Watson Natural Language Understanding [^ref21]
+
+Supported Interfaces:
+Rest API, Python, Java, Node, Go, .NET, Ruby, Swift, Unity
+
+### Functions
+
+Sentiment [^ref20]
+- text/url, target keywords -> label, score for document & any target keywords
+
+Keywords [^ref22]
+- text/url, max # keywords, sentiment/emotion flags -> list of keywords, each with detected sentiment and emotion if flagged
+
+Syntax [^ref23]
+- text/url, sentences flag, optional tokens -> detected part of speech, location, and additonal tokens for each word + sentence (if flagged)
+
+Entities [^ref24]
+- text/url, max # entities, sentiment/emotion/mentions flags -> list of entities with detected labels & additional optional flags
+
+
 
 # References
 [^ref1]: https://aws.amazon.com/comprehend/
@@ -131,3 +140,8 @@ CommunitySentiment [^ref19]
 [^ref17]: https://cloud.google.com/natural-language/docs/reference/rest/v1/documents/analyzeEntities
 [^ref18]: https://metamind.readme.io/docs/intro-to-einstein-language
 [^ref19]: https://metamind.readme.io/docs/use-pre-built-models-sentiment
+[^ref20]: https://cloud.ibm.com/apidocs/natural-language-understanding#sentiment
+[^ref21]: https://www.ibm.com/cloud/watson-natural-language-understanding
+[^ref22]: https://cloud.ibm.com/apidocs/natural-language-understanding#keywords
+[^ref23]: https://cloud.ibm.com/apidocs/natural-language-understanding#syntax
+[^ref24]: https://cloud.ibm.com/apidocs/natural-language-understanding#entities
