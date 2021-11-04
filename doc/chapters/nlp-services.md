@@ -16,12 +16,12 @@ The following chart shows the most common features that are shared among APIs an
 
 |   | Amazon Comprehend  | Azure  | Google  | Einstein Language  |
 |---|---|---|---|---|
-| Sentiment detection  | DetectSentiment [^ref2] | sentiment [^ref9]  | analyzeSentiment [^ref15] |   |
-|  Keyphrase extraction | DetectKeyPhrases [^ref3]  | keyPhrases [^ref10]  | ---  |   |
-|  Syntax detection | DetectSyntax [^ref4]  | --- | analyzeSyntax [^ref16]  |   |
+| Sentiment detection  | DetectSentiment [^ref2] | sentiment [^ref9]  | analyzeSentiment [^ref15] | CommunitySentiment [^ref19]  |
+|  Keyphrase extraction | DetectKeyPhrases [^ref3]  | keyPhrases [^ref10]  | ---  | ---  |
+|  Syntax detection | DetectSyntax [^ref4]  | --- | analyzeSyntax [^ref16]  | ---  |
 |  Entity recognition | DetectEntities [^ref5]  |  entities/recognition/general [^ref11] | analyzeEntities [^ref17] |   |
-|  Language detection | DetectDominantLanguage [^ref6]  | languages [^ref12]  | (included in others)  |   |
-|  PII detection | DetectPiiEntities [^ref7]  | entities/recognition/pii [^ref13]  | ---  |   |
+|  Language detection | DetectDominantLanguage [^ref6]  | languages [^ref12]  | (included in others)  |  --- |
+|  PII detection | DetectPiiEntities [^ref7]  | entities/recognition/pii [^ref13]  | ---  | ---  |
 
 ## Amazon Comprehend [^ref1]
 
@@ -107,7 +107,7 @@ Supported Interfaces:
 
 ### Functions
 
-CommunitySentiment model [^ref19]
+CommunitySentiment [^ref19]
 - document, auth token, cache control, model -> label [positive, negative, neutral], probability scores
 
 # References
