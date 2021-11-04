@@ -81,6 +81,7 @@ entities/recognition/pii [^ref13]
 ## Google Natural Language API [^ref14]
 
 Supported Interfaces:
+- REST API
 - Python
 - C#
 - Java
