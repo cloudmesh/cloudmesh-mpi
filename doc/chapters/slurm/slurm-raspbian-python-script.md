@@ -29,16 +29,18 @@ The first task we conduct is to burn the Pis. Burning them using cloudmesh is mu
 manually. Our tutorial for burning the Pis' SD cards using for different operating systems can be found at 
 
 Windows: <https://cloudmesh.github.io/pi/tutorial/raspberry-burn-windows/>
+
 Raspberry Pi OS: <https://cloudmesh.github.io/pi/tutorial/raspberry-burn/> 
+
 Ubuntu: <https://cloudmesh.github.io/pi/tutorial/ubuntu-burn/>
+
 macOS: <https://cloudmesh.github.io/pi/tutorial/sdcard-burn-pi-headless/>
 
 Please, decide which burn host you like to use and follow the instructions to set up a cluster
 
 This tutorial assumes that your manager node's hostname is `red` and your worker nodes' hostnames are `red01`, `red02`, 
-and `red03`. You may have additional workers; be sure to alter this tutorial's commands accordingly (e.g. instead of 
-`red,red0[1-3]` perhaps you have `red,red0[1-4]` if you have five Pis total instead of four). Following this naming 
-schema will make this tutorial run more smoothly.
+and `red03`. You may have additional workers; be sure to alter the script accordingly (e.g. instead of 
+`red,red0[1-3]` perhaps you have `red,red0[1-4]` if you have five Pis total instead of four).
 
 ## 3. Installation
 
