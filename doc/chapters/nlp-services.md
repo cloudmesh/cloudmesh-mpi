@@ -145,3 +145,14 @@ Entities [^ref24]
 [^ref22]: https://cloud.ibm.com/apidocs/natural-language-understanding#keywords
 [^ref23]: https://cloud.ibm.com/apidocs/natural-language-understanding#syntax
 [^ref24]: https://cloud.ibm.com/apidocs/natural-language-understanding#entities
+
+# Bibtex
+
+@misc{www-aws-comprehend,
+author = {{Amazon}},
+  title = {DetectSentiment: Amazon Comprehend},
+howpublished = {Web Page},
+url = {https://docs.aws.amazon.com/comprehend/latest/dg/API_DetectSentiment.html},
+month =nov,
+year =2021
+}
