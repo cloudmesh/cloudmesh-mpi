@@ -40,10 +40,12 @@ def step2():
     if not yn_choice('Please insert USB storage medium into top USB 3.0 (blue) port on manager pi and press y when done'):
         Console.error("Terminating: User Break")
         return ""
+        os._exit()
     os.system('lsblk')
     if not yn_choice('Please confirm that sda1 is your USB WHICH WILL BE FORMATTED by pressing y'):
         Console.error("Terminating: User Break")
         return ""
+        os._exit()
     results = Host.ssh(hosts=manager, command="sudo mkfs.ext4 /dev/sda1")
     print(Printer.write(results))
     results = Host.ssh(hosts=manager, command="sudo mkdir /clusterfs")
