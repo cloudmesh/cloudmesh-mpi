@@ -24,7 +24,7 @@ The following chart shows the most common features that are shared among APIs an
 |  Language detection | DetectDominantLanguage [^ref6]  | languages [^ref12]  | (included in others)  |  --- | (included in others)  |
 |  PII detection | DetectPiiEntities [^ref7]  | entities/recognition/pii [^ref13]  | ---  | ---  | ---  |
 
-## Amazon Comprehend [^ref1]
+## Amazon Comprehend [^www-aws-comprehend]
 
 Supported Interfaces:
 AWS CLI, Python, Java
@@ -118,10 +118,20 @@ Syntax [^ref23]
 Entities [^ref24]
 - text/url, max # entities, sentiment/emotion/mentions flags -> list of entities with detected labels & additional optional flags
 
+# Bibtex
+
+@misc{www-aws-comprehend,
+author = {{Amazon}},
+  title = {DetectSentiment: Amazon Comprehend},
+howpublished = {Web Page},
+url = {https://docs.aws.amazon.com/comprehend/latest/dg/API_DetectSentiment.html},
+month =nov,
+year =2021
+}
 
 
 # References
-[^ref1]: https://aws.amazon.com/comprehend/
+[^www-aws-comprehend]: https://aws.amazon.com/comprehend/
 [^ref2]: https://docs.aws.amazon.com/comprehend/latest/dg/API_DetectSentiment.html
 [^ref3]: https://docs.aws.amazon.com/comprehend/latest/dg/API_DetectKeyPhrases.html
 [^ref4]: https://docs.aws.amazon.com/comprehend/latest/dg/API_DetectSyntax.html
@@ -146,13 +156,3 @@ Entities [^ref24]
 [^ref23]: https://cloud.ibm.com/apidocs/natural-language-understanding#syntax
 [^ref24]: https://cloud.ibm.com/apidocs/natural-language-understanding#entities
 
-# Bibtex
-
-@misc{www-aws-comprehend,
-author = {{Amazon}},
-  title = {DetectSentiment: Amazon Comprehend},
-howpublished = {Web Page},
-url = {https://docs.aws.amazon.com/comprehend/latest/dg/API_DetectSentiment.html},
-month =nov,
-year =2021
-}
