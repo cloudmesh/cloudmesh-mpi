@@ -247,6 +247,7 @@ def step4():
     print(Printer.write(results))
     results = Host.ssh(hosts=manager, command="sinfo")
     print(Printer.write(results))
+    print(len(hostnames))
     results = Host.ssh(hosts=manager, command=f"srun --nodes={(len(hostnames))} hostname")
     print(Printer.write(results))
     banner("Slurm installed")
