@@ -19,10 +19,10 @@ workers = "red0[1-3]"
 manager = "red"
 
 def step0():
-    banner("Welcome to Slurm Installation. Initializing preliminary installation.")
+    banner("Welcome to Slurm Installation. Initializing preliminary steps.")
     print("We assume that your manager and workers follow the 'red' naming schema.")
     user_input_workers = input(str('''Please enter the naming schema of your red workers. For example, if you have 3\n
-    workers then enter "red0[1-3]". Another example for 7 workers is "red0[1-7]". Do not include quotation marks'''))
+    workers then enter "red0[1-3]". Another example for 7 workers is "red0[1-7]". Do not include quotation marks\n'''))
     results = Host.ssh(hosts=manager, command="touch user_input_workers")
     print(Printer.write(results))
     results = Host.ssh(hosts=manager, command=f'''echo '{user_input_workers}' >> user_input_workers''')
@@ -36,7 +36,7 @@ def step0():
         workers = str(entry["stdout"])
 
     # formulating hosts variable which has manager AND workers
-    hosts = f'''{manager}'''+f''',{workers}'''
+    hosts = f'''{manager},{workers}'''
     hosts = str(hosts)
     print(hosts)
     results3 = Host.ssh(hosts=hosts, command="touch step0")
@@ -53,7 +53,7 @@ def step1(results):
         workers = str(entry["stdout"])
 
     # formulating hosts variable which has manager AND workers
-    hosts = f'''{manager}'''+f''',{workers}'''
+    hosts = f'''{manager},{workers}'''
     hosts = str(hosts)
     print(hosts)
 
@@ -90,7 +90,7 @@ def step2():
         workers = str(entry["stdout"])
 
     # formulating hosts variable which has manager AND workers
-    hosts = f'''{manager}'''+f''',{workers}'''
+    hosts = f'''{manager},{workers}'''
     hosts = str(hosts)
     print(hosts)
 
@@ -187,7 +187,7 @@ def step3():
         workers = str(entry["stdout"])
 
     # formulating hosts variable which has manager AND workers
-    hosts = f'''{manager}'''+f''',{workers}'''
+    hosts = f'''{manager},{workers}'''
     hosts = str(hosts)
     print(hosts)
 
@@ -284,7 +284,7 @@ def step4():
         workers = str(entry["stdout"])
 
     # formulating hosts variable which has manager AND workers
-    hosts = f'''{manager}'''+f''',{workers}'''
+    hosts = f'''{manager},{workers}'''
     hosts = str(hosts)
     print(hosts)
 
@@ -323,7 +323,7 @@ def step4():
     results3 = Host.ssh(hosts=hosts, command="touch step4")
     print(Printer.write(results3))
     print("Rebooting cluster now.")
-    banner("After successful reboot, test slurm by issuing $ srun --nodes=3 hostname (just change number of nodes accordingly if necessary)")
+    banner("After successful reboot, test slurm by issuing $ srun --nodes=3 hostname (change 3 to number of nodes if necessary)")
     os.system("cms host reboot "+hosts)
 
 
