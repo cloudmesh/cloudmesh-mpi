@@ -318,6 +318,7 @@ def step4():
 banner("Slurm on Raspberry Pi Cluster Installation")
 
 results42 = Host.ssh(hosts=manager, command="ls user_input_workers")
+print(Printer.write(results42))
 canReadInputWorkers = True
 for entry in results42:
     if 'user_input_workers' in str(entry["stderr"]) and 'cannot access' in str(entry["stderr"]):
