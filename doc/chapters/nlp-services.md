@@ -5,7 +5,7 @@
 There exist a multitude of APIs available that offer natural langauge processing services with pre-packaged, trained functions. This document will act as a survey for a number of these different services, highlighting their features and similarities.
 
 - Amazon Comprehend (available through AWS)
-- Azure Cognitive Science for Language
+- Azure Cognitive Service for Language
 - Google Natural Language API
 - Salesforce Einstein Language
 - IBM Watson Natural Language Understanding
@@ -13,7 +13,7 @@ There exist a multitude of APIs available that offer natural langauge processing
 
 ## Overview
 
-The following chart shows the most common features that are shared among APIs and links to the specific corresponding functions in their documentation.
+The following table shows the most common features that are shared among APIs and links to the specific corresponding functions in their documentation.
 
 |   | Amazon Comprehend  | Azure  | Google  | Einstein Language  | IBM Watson  |
 |---|---|---|---|---|---|
@@ -26,12 +26,14 @@ The following chart shows the most common features that are shared among APIs an
 
 ## Amazon Comprehend [^aws-comprehend]
 
+Comprehend is Amazon's solution for cloud-based NLP. It is available with an AWS account. To use, it requires use of either the AWS Command Line Interface or an AWS sdk for Python, Java, or .NET. Notable features include functionality for giving batches of documents to be processed as well as submission of multiple jobs in a list. The DetectEntities function also allows use of a custom-trained model.
+
 Supported Interfaces:
-AWS CLI, Python, Java
+AWS CLI, Python, Java, .NET
 
 ### Functions
 
-The following is a non-exhaustive selection of functions provided by the API 
+The following is a non-exhaustive selection of pre-configured functions provided by the API that are common among NLP services.
 
 DetectSentiment [^aws-comprehend-sentiment]
 - language, text -> Sentiment [POSITIVE | NEGATIVE | NEUTRAL | MIXED], SentimentScore [float 0.0-1.0 for each possible sentiment]
@@ -51,12 +53,16 @@ DetectDominantLanguage [^aws-comprehend-language]
 DetectPiiEntities [^aws-comprehend-pii]
 - language, text -> list of entities with type, score
 
-## Azure Cognitive Science for Language [^azure-language]
+## Azure Cognitive Service for Language [^azure-language]
+
+Azure Cognitive Service for Language is Microsoft's solution for cloud-based NLP. It requires an Azure account. Notable features include a variety of pre-configured, non-customizable models for different functions as well as the addition of some customizable options which allow the input of one's own custom-trained model.
 
 Supported Interfaces:
 REST API, Python, C#, Java, Javascript
 
 ### Functions
+
+The following is a non-exhaustive selection of pre-configured functions provided by the API that are common among NLP services.
 
 sentiment [^azure-language-sentiment]
 - document, key, endpoint -> sentiment scores [positive, negative, neutral] for entire input as well as each sentence 
@@ -75,10 +81,14 @@ entities/recognition/pii [^azure-language-pii]
 
 ## Google Natural Language API [^google-natural-language]
 
+Google Natural Language API is Google's solution for cloud-based NLP. It requires a Google Cloud account. The Natural Language API includes only the pre-configured models for common NLP functions, though Google also offers Google Cloud services specific to healthcare NLP as well as a code-free ML model manager called AutoML. 
+
 Supported Interfaces:
 REST API, Python, C#, JAVA, Go, Node.js, PHP, Ruby
 
 ### Functions
+
+The following is a non-exhaustive selection of pre-configured functions provided by the API that are common among NLP services.
 
 analyzeSentiment [^google-natural-language-sentiment]
 - document, encodingType -> Sentiment object, language, sentences list (each with their own sentiment)
@@ -91,20 +101,28 @@ analyzeEntities [^google-natural-language-entity]
 
 ## Salesforce Einstein Language [^einstein-language]
 
+Einstein Language is Salesforce's solution to cloud-based NLP. It requires a Salesforce/Einstein account. It is under the umbrella of Einstein AI, which also includes Einstein Vision for image processing purposes. At the moment, Einstein Language only includes two main features, Intent and Sentiment. Intent analyzes meaning in text for the specific purpose of deciding market intent in customers. Sentiment is comparable to the classic sentiment detection provided by other NLP services, and therefore it is what will be covered in this document.
+
 Supported Interfaces:
 REST API
 
 ### Functions
+
+The following is a non-exhaustive selection of pre-configured functions provided by the API that are common among NLP services.
 
 CommunitySentiment [^einstein-language-sentiment]
 - document, auth token, cache control, model -> label [positive, negative, neutral], probability scores
 
 ## IBM Watson Natural Language Understanding [^ibm-natural-language]
 
+Watson Natural Language Understanding is IBM's solution to cloud-based NLP. It requires an IBM Cloud account. Notable features include the ability to use custom-trained models for each of its functions as well as access to related NLP services in the IBM Cloud platform such as Watson Knowledge Studio and Watson Discovery, which provide NLP functions and customized model training that tends to be more specific to businesses.
+
 Supported Interfaces:
 Rest API, Python, Java, Node, Go, .NET, Ruby, Swift, Unity
 
 ### Functions
+
+The following is a non-exhaustive selection of pre-configured functions provided by the API that are common among NLP services.
 
 Sentiment [^ibm-natural-language-sentiment]
 - text/url, target keywords -> label, score for document & any target keywords
