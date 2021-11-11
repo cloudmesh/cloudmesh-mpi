@@ -81,7 +81,7 @@ entities/recognition/pii [^azure-language-pii]
 
 ## Google Natural Language API [^google-natural-language]
 
-Google Natural Language API is Google's solution for cloud-based NLP. It requires a Google Cloud account. The Natural Language API includes only the pre-configured models for common NLP functions, though Google also offers Google Cloud services specific to healthcare NLP as well as a code-free ML model manager called AutoML. 
+Google Natural Language API is Google's solution for cloud-based NLP. It requires a Google Cloud account. The Natural Language API includes only the pre-configured models for common NLP functions, though Google also offers services specific to healthcare NLP as well as a code-free ML model manager called AutoML as part of Google Cloud.
 
 Supported Interfaces:
 REST API, Python, C#, JAVA, Go, Node.js, PHP, Ruby
