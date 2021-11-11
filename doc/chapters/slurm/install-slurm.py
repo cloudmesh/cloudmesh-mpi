@@ -19,8 +19,26 @@ workers = "red0[1-3]"
 manager = "red"
 
 def step1(results):
-    banner("Step 1")
+    # intro and asking for workers from user
+    banner("Welcome to Slurm Installation. Initializing Step 1 now.")
     print(Printer.write(results))
+    print("We assume that your manager and workers follow the 'red' naming schema.")
+    user_input_workers = input(str('''Please enter the naming schema of your red workers. For example, if you have 3\n
+    workers then enter "red0[1-3]". Another example for 7 workers is "red0[1-7]". Do not include quotation marks'''))
+    results = Host.ssh(hosts=manager, command="touch user_input_workers")
+    print(Printer.write(results))
+    results = Host.ssh(hosts=manager, command=f'''echo '{user_input_workers}' >> user_input_workers''')
+    print(Printer.write(results))
+    results = Host.ssh(hosts=manager, command='cat user_input_workers')
+    print(Printer.write(results))
+    for entry in results:
+        print(str(entry["stdout"]))
+        workers = str(entry["stdout"])
+
+    # formulating hosts variable which has manager AND workers
+    hosts = f'''{manager}'''+f''',{workers}'''
+    hosts = str(hosts)
+    print(hosts)
 
     results = Host.ssh(hosts=hosts, command="sudo apt-get update")
     print(Printer.write(results))
@@ -40,12 +58,25 @@ def step2():
     if not yn_choice('Please insert USB storage medium into top USB 3.0 (blue) port on manager pi and press y when done'):
         Console.error("Terminating: User Break")
         return ""
-        os._exit()
+        sys.exit()
     os.system('lsblk')
     if not yn_choice('Please confirm that sda1 is your USB WHICH WILL BE FORMATTED by pressing y'):
         Console.error("Terminating: User Break")
         return ""
-        os._exit()
+        sys.exit()
+
+    # executing reading of workers
+    results = Host.ssh(hosts=manager, command='cat user_input_workers')
+    print(Printer.write(results))
+    for entry in results:
+        print(str(entry["stdout"]))
+        workers = str(entry["stdout"])
+
+    # formulating hosts variable which has manager AND workers
+    hosts = f'''{manager}'''+f''',{workers}'''
+    hosts = str(hosts)
+    print(hosts)
+
     results = Host.ssh(hosts=manager, command="sudo mkfs.ext4 /dev/sda1")
     print(Printer.write(results))
     results = Host.ssh(hosts=manager, command="sudo mkdir /clusterfs")
@@ -130,6 +161,18 @@ def step3():
     print(ipaddress4)
     trueIP = ipaddress4[0]
     print(trueIP)
+
+    # executing reading of workers
+    results = Host.ssh(hosts=manager, command='cat user_input_workers')
+    print(Printer.write(results))
+    for entry in results:
+        print(str(entry["stdout"]))
+        workers = str(entry["stdout"])
+
+    # formulating hosts variable which has manager AND workers
+    hosts = f'''{manager}'''+f''',{workers}'''
+    hosts = str(hosts)
+    print(hosts)
 
     #now doing actual step 3
     results = Host.ssh(hosts=manager, command="sudo systemctl status nfs-server.service")
@@ -216,6 +259,18 @@ def step3():
 
 
 def step4():
+    # executing reading of workers
+    results = Host.ssh(hosts=manager, command='cat user_input_workers')
+    print(Printer.write(results))
+    for entry in results:
+        print(str(entry["stdout"]))
+        workers = str(entry["stdout"])
+
+    # formulating hosts variable which has manager AND workers
+    hosts = f'''{manager}'''+f''',{workers}'''
+    hosts = str(hosts)
+    print(hosts)
+
     #getting hostname count
     results = Host.ssh(hosts=workers, command="cat /proc/sys/kernel/hostname")
     print(Printer.write(results))
@@ -260,18 +315,52 @@ def step4():
 
 #StopWatch.start("Total Runtime")
 
-ehosts = Parameter.expand(hosts)
-
 banner("Slurm on Raspberry Pi Cluster Installation")
+
+results42 = Host.ssh(hosts=manager, command="ls user_input_workers")
+canReadInputWorkers = True
+for entry in results42:
+    if 'user_input_workers' in str(entry["stderr"]) and 'cannot access' in str(entry["stderr"]):
+        canReadInputWorkers = False
+        entry["stderr"] = "False"
+if not canReadInputWorkers:
+    print("We assume that your manager and workers follow the 'red' naming schema.")
+    user_input_workers = input(str('''Please enter the naming schema of your red workers. For example, if you have 3\n
+    workers then enter "red0[1-3]". Another example for 7 workers is "red0[1-7]". Do not include quotation marks'''))
+    results = Host.ssh(hosts=manager, command="touch user_input_workers")
+    print(Printer.write(results))
+    results = Host.ssh(hosts=manager, command=f'''echo '{user_input_workers}' >> user_input_workers''')
+    print(Printer.write(results))
+    results = Host.ssh(hosts=manager, command='cat user_input_workers')
+    print(Printer.write(results))
+    for entry in results:
+        print(str(entry["stdout"]))
+        workers = str(entry["stdout"])
+
+    # formulating hosts variable which has manager AND workers
+    hosts = f'''{manager}'''+f''',{workers}'''
+    hosts = str(hosts)
+    print(hosts)
+
+# executing reading of workers
+results = Host.ssh(hosts=manager, command='cat user_input_workers')
+print(Printer.write(results))
+for entry in results:
+    print(str(entry["stdout"]))
+    workers = str(entry["stdout"])
+
+# formulating hosts variable which has manager AND workers
+hosts = f'''{manager}'''+f''',{workers}'''
+hosts = str(hosts)
 print(hosts)
-print(ehosts)
+
 results = Host.ssh(hosts=hosts,command="ls step1")
 
 completed = True
 for entry in results:
     if 'step1' in str(entry["stderr"]) and 'cannot access' in str(entry["stderr"]):
         completed = False
-        entry["stderr"]="False"
+        entry["stderr"] = "False"
 if completed:
     banner("Step 1 is done.")
     pprint(results)
