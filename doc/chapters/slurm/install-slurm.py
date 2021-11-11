@@ -337,11 +337,10 @@ results9001 = Host.ssh(hosts=manager, command="ls step0")
 print(Printer.write(results9001))
 step0done = True
 for entry in results9001:
-    if 'step0' in str(entry["stderr"]) and 'cannot access' in str(entry["stderr"]):
+    if 'step0' in str(entry["stdout"]) and 'cannot access' in str(entry["stdout"]):
         step0done = False
         entry["stderr"] = "False"
 
-print(step0done)
 if not step0done:
     step0()
 
