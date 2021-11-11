@@ -341,6 +341,7 @@ for entry in results9001:
         step0done = False
         entry["stderr"] = "False"
 
+print(step0done)
 if not step0done:
     step0()
 
