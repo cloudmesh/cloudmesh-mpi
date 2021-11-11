@@ -247,13 +247,12 @@ def step4():
     print(Printer.write(results))
     results = Host.ssh(hosts=manager, command="sinfo")
     print(Printer.write(results))
-    print(len(hostnames))
-    results = Host.ssh(hosts=manager, command=f"srun --nodes={(len(hostnames))} hostname")
-    print(Printer.write(results))
     banner("Slurm installed")
     results3 = Host.ssh(hosts=hosts, command="touch step4")
     print(Printer.write(results3))
-
+    print("Rebooting cluster now.")
+    banner("After successful reboot, test slurm by issuing $ srun --nodes=3 hostname (just change number of nodes accordingly if necessary)")
+    os.system("cms host reboot "+hosts)
 
 
 #a = readfile("test1")
