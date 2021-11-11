@@ -26,7 +26,7 @@ The following table shows the most common features that are shared among APIs an
 
 ## Amazon Comprehend [^aws-comprehend]
 
-Comprehend is Amazon's solution for cloud-based NLP. It is available with an AWS account. To use, it requires use of either the AWS Command Line Interface or an AWS sdk for Python, Java, or .NET. Notable features include functionality for giving batches of documents to be processed as well as submission of multiple jobs in a list. The DetectEntities function also allows use of a custom-trained model.
+Comprehend is Amazon's solution for cloud-based NLP. It is available with an AWS account. To use, it requires use of either the AWS Command Line Interface or an AWS sdk for Python, Java, or .NET. Notable features include functionality for giving batches of documents to be processed as well as submission of multiple jobs in a list. The DetectEntities function also allows use of a custom-trained model, but many other functions do not.
 
 Supported Interfaces:
 AWS CLI, Python, Java, .NET
