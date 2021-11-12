@@ -73,11 +73,10 @@ def step1(results):
 
 def step2():
     banner("Step 2")
-    '''
     if not yn_choice('Please insert USB storage medium into top USB 3.0 (blue) port on manager pi and press y when done'):
-        Console.error("Terminating: User Break")
+        Console.error("You pressed no but the script is continuing as normal...")
         return ""
-        sys.exit()
+    '''
     os.system('lsblk')
     if not yn_choice('Please confirm that sda1 is your USB WHICH WILL BE FORMATTED by pressing y'):
         Console.error("Terminating: User Break")
