@@ -152,8 +152,15 @@ def step2():
     print(ipaddress4)
     trueIP = ipaddress4[0]
     print(trueIP)
-    results = Host.ssh(hosts=manager, command=f'''echo "/clusterfs {trueIP}/24(rw,sync,no_root_squash,no_subtree_check)" | sudo tee /etc/exports -a''')
+    results = Host.ssh(hosts=manager, command=f'''sudo cat /etc/exports''')
     print(Printer.write(results))
+    for entry in results:
+        Preexisting = False
+        if f'/clusterfs {trueIP}/24(rw,sync,no_root_squash,no_subtree_check)' in str(entry["stdout"]):
+            Preexisting = True
+    if not Preexisting:
+        results = Host.ssh(hosts=manager, command=f'''echo "/clusterfs {trueIP}/24(rw,sync,no_root_squash,no_subtree_check)" | sudo tee /etc/exports -a''')
+        print(Printer.write(results))
     results = Host.ssh(hosts=manager, command="sudo exportfs -a")
     print(Printer.write(results))
     results = Host.ssh(hosts=workers, command="sudo apt install nfs-common -y")
@@ -164,8 +171,16 @@ def step2():
     print(Printer.write(results))
     results = Host.ssh(hosts=workers, command="sudo chmod -R 777 /clusterfs")
     print(Printer.write(results))
-    results = Host.ssh(hosts=workers, command=f'''echo "{trueIP}:/clusterfs    /clusterfs    nfs    defaults   0 0" | sudo tee /etc/fstab -a''')
+
+    results = Host.ssh(hosts=manager, command=f'''sudo cat /etc/fstab''')
     print(Printer.write(results))
+    for entry in results:
+        Preexisting = False
+        if f'{trueIP}:/clusterfs    /clusterfs    nfs    defaults   0 0' in str(entry["stdout"]):
+            Preexisting = True
+    if not Preexisting:
+        results = Host.ssh(hosts=workers, command=f'''echo "{trueIP}:/clusterfs    /clusterfs    nfs    defaults   0 0" | sudo tee /etc/fstab -a''')
+        print(Printer.write(results))
     results3 = Host.ssh(hosts=hosts, command="touch step2")
     print(Printer.write(results3))
     print("cms host reboot "+hosts)
