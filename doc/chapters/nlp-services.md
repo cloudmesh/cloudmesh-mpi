@@ -141,7 +141,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-aws-comprehend,
 	title = {{Natural Language Processing - Amazon Comprehend}},
 	author = {{Amazon Web Services, Inc}},
-	year = {2021},
+	year = 2021,
 	month = oct,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://aws.amazon.com/comprehend}
@@ -150,7 +150,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-aws-comprehend-sentiment,
 	title = {{DetectSentiment - Amazon Comprehend}},
 	author = {{Amazon Web Services, Inc}},
-	year = {2021},
+	year = 2021,
 	month = nov,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://docs.aws.amazon.com/comprehend/latest/dg/API_DetectSentiment.html}
@@ -159,7 +159,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-aws-comprehend-keyphrase,
 	title = {{DetectKeyPhrases - Amazon Comprehend}},
 	author = {{Amazon Web Services, Inc}},
-	year = {2021},
+	year = 2021,
 	month = nov,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://docs.aws.amazon.com/comprehend/latest/dg/API_DetectKeyPhrases.html}
@@ -168,7 +168,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-aws-comprehend-syntax,
 	title = {{DetectSyntax - Amazon Comprehend}},
 	author = {{Amazon Web Services, Inc}},
-	year = {2021},
+	year = 2021,
 	month = nov,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://docs.aws.amazon.com/comprehend/latest/dg/API_DetectSyntax.html}
@@ -177,7 +177,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-aws-comprehend-entity,
 	title = {{DetectEntities - Amazon Comprehend}},
 	author = {{Amazon Web Services, Inc}},
-	year = {2021},
+	year = 2021,
 	month = nov,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://docs.aws.amazon.com/comprehend/latest/dg/API_DetectEntities.html}
@@ -186,7 +186,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-aws-comprehend-language,
 	title = {{DetectDominantLanguage - Amazon Comprehend}},
 	author = {{Amazon Web Services, Inc}},
-	year = {2021},
+	year = 2021,
 	month = nov,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://docs.aws.amazon.com/comprehend/latest/dg/API_DetectDominantLanguage.html}
@@ -195,7 +195,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-aws-comprehend-pii,
 	title = {{DetectPiiEntities - Amazon Comprehend}},
 	author = {{Amazon Web Services, Inc}},
-	year = {2021},
+	year = 2021,
 	month = nov,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://docs.aws.amazon.com/comprehend/latest/dg/API_DetectPiiEntities.html}
@@ -204,7 +204,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-azure-language,
 	author = {{Microsoft}},
 	title = {{Azure Cognitive Service for language documentation}},
-	year = {2021},
+	year = 2021,
 	month = nov,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://docs.microsoft.com/en-us/azure/cognitive-services/language-service}
@@ -213,7 +213,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-azure-language-sentiment,
 	author = {{Microsoft}},
 	title = {{Quickstart: Use the Sentiment Analysis client library and REST API - Azure Cognitive Services}},
-	year = {2021},
+	year = 2021,
 	month = nov,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://docs.microsoft.com/en-us/azure/cognitive-services/language-service/sentiment-opinion-mining/quickstart?pivots=rest-api}
@@ -222,7 +222,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-azure-language-keyphrase,
 	author = {{Microsoft}},
 	title = {{Quickstart: Use the Key Phrase Extraction client library - Azure Cognitive Services}},
-	year = {2021},
+	year = 2021,
 	month = nov,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://docs.microsoft.com/en-us/azure/cognitive-services/language-service/key-phrase-extraction/quickstart?pivots=rest-api}
@@ -231,7 +231,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-azure-language-entity,
 	author = {{Microsoft}},
 	title = {{Quickstart: Use the NER client library - Azure Cognitive Services}},
-	year = {2021},
+	year = 2021,
 	month = nov,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://docs.microsoft.com/en-us/azure/cognitive-services/language-service/named-entity-recognition/quickstart?pivots=rest-api}
@@ -240,7 +240,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-azure-language-language,
 	author = {{Microsoft}},
 	title = {{Quickstart: Use the Language Detection client library - Azure Cognitive Services}},
-	year = {2021},
+	year = 2021,
 	month = nov,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://docs.microsoft.com/en-us/azure/cognitive-services/language-service/language-detection/quickstart?pivots=rest-api}
@@ -249,7 +249,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-azure-language-pii,
 	author = {{Microsoft}},
 	title = {{Quickstart: Detect Personally Identifying Information (PII) in text - Azure Cognitive Services}},
-	year = {2021},
+	year = 2021,
 	month = nov,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://docs.microsoft.com/en-us/azure/cognitive-services/language-service/personally-identifiable-information/quickstart?pivots=rest-api}
@@ -258,7 +258,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-google-natural-language,
 	title = {{Cloud Natural Language - Google Cloud}},
 	author = {{Google Cloud}},
-	year = {2021},
+	year = 2021,
 	month = nov,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://cloud.google.com/natural-language}
@@ -267,7 +267,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-google-natural-language-sentiment,
 	title = {{Method: documents.analyzeSentiment - Cloud Natural Language API}},
 	author = {{Google Cloud}},
-	year = {2019},
+	year = 2019,
 	month = dec,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://cloud.google.com/natural-language/docs/reference/rest/v1/documents/analyzeSentiment}
@@ -276,7 +276,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-google-natural-language-syntax,
 	title = {{Method: documents.analyzeSyntax - Cloud Natural Language API}},
 	author = {{Google Cloud}},
-	year = {2019},
+	year = 2019,
 	month = dec,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://cloud.google.com/natural-language/docs/reference/rest/v1/documents/analyzeSyntax}
@@ -285,7 +285,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-google-natural-language-entity,
 	title = {{Method: documents.analyzeEntities - Cloud Natural Language API}},
 	author = {{Google Cloud}},
-	year = {2019},
+	year = 2019,
 	month = dec,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://cloud.google.com/natural-language/docs/reference/rest/v1/documents/analyzeEntities}
@@ -294,7 +294,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-einstein-language,
 	title = {{Introduction to Salesforce Einstein Language}},
 	author = {{Einstein Platform Services}},
-	year = {2021},
+	year = 2021,
 	month = nov,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://metamind.readme.io/docs/intro-to-einstein-language}
@@ -303,7 +303,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-einstein-language-sentiment,
 	title = {{Community Sentiment Model}},
 	author = {{Einstein Platform Services}},
-	year = {2021},
+	year = 2021,
 	month = nov,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://metamind.readme.io/docs/use-pre-built-models-sentiment}
@@ -312,7 +312,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-ibm-natural-language,
 	title = {{IBM Watson Natural Language Understanding - Overview}},
 	author = {{IBM}},
-	year = {2021},
+	year = 2021,
 	month = aug,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://www.ibm.com/cloud/watson-natural-language-understanding}
@@ -321,7 +321,7 @@ Entities [^www-ibm-natural-language-entity]
 @misc{www-ibm-natural-language-sentiment,
 	title = {{Natural Language Understanding - IBM Cloud API Docs}},
 	author = {{IBM}},
-	year = {2016},
+	year = 2016,
 	month = may,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://cloud.ibm.com/apidocs/natural-language-understanding#sentiment}
@@ -329,7 +329,7 @@ Entities [^www-ibm-natural-language-entity]
 
 @misc{www-ibm-natural-language-keyphrase,
 	title = {{Natural Language Understanding - IBM Cloud API Docs}},
-	year = {2016},
+	year = 2016,
 	month = may,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://cloud.ibm.com/apidocs/natural-language-understanding#keywords}
@@ -337,7 +337,7 @@ Entities [^www-ibm-natural-language-entity]
 
 @misc{www-ibm-natural-language-syntax,
 	title = {{Natural Language Understanding - IBM Cloud API Docs}},
-	year = {2016},
+	year = 2016,
 	month = may,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://cloud.ibm.com/apidocs/natural-language-understanding#syntax}
@@ -345,7 +345,7 @@ Entities [^www-ibm-natural-language-entity]
 
 @misc{www-ibm-natural-language-entity,
 	title = {{Natural Language Understanding - IBM Cloud API Docs}},
-	year = {2016},
+	year = 2016,
 	month = may,
 	note = {[Online; accessed 9. Nov. 2021]},
 	url = {https://cloud.ibm.com/apidocs/natural-language-understanding#entities}
