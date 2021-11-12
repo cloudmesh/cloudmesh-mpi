@@ -12,7 +12,8 @@ from pprint import pprint
 import os
 import sys
 import re
-import subprocess
+from cloudmesh.burn.usb import USB
+from cloudmesh.burn.sdcard import SDCard
 
 hosts = "red,red0[1-3]"
 workers = "red0[1-3]"
@@ -72,6 +73,7 @@ def step1(results):
 
 def step2():
     banner("Step 2")
+    '''
     if not yn_choice('Please insert USB storage medium into top USB 3.0 (blue) port on manager pi and press y when done'):
         Console.error("Terminating: User Break")
         return ""
@@ -81,6 +83,7 @@ def step2():
         Console.error("Terminating: User Break")
         return ""
         sys.exit()
+    '''
 
     # executing reading of workers
     results = Host.ssh(hosts=manager, command='cat user_input_workers')
@@ -94,7 +97,16 @@ def step2():
     hosts = str(hosts)
     print(hosts)
 
-    results = Host.ssh(hosts=manager, command="sudo mkfs.ext4 /dev/sda1")
+    card = SDCard()
+    card.info()
+    USB.check_for_readers()
+    print('Please enter the device path e.g. "/dev/sda" or no input default to /dev/sda:')
+    device = input()
+    if device == '':
+        device = '/dev/sda'
+    print(device)
+
+    results = Host.ssh(hosts=manager, command=f"sudo mkfs.ext4 {device}")
     print(Printer.write(results))
     results = Host.ssh(hosts=manager, command="sudo mkdir /clusterfs")
     print(Printer.write(results))
@@ -102,8 +114,8 @@ def step2():
     print(Printer.write(results))
     results = Host.ssh(hosts=manager, command="sudo chmod 777 -R /clusterfs")
     print(Printer.write(results))
-    print(os.system("sudo blkid /dev/sda1"))
-    results9 = Host.ssh(hosts=manager, command="sudo blkid /dev/sda1")
+    print(os.system(f"sudo blkid {device}"))
+    results9 = Host.ssh(hosts=manager, command=f"sudo blkid {device}")
     print(Printer.write(results9))
     for entry in results9:
         print(str(entry["stdout"]))
