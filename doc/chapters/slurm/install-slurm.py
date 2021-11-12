@@ -104,8 +104,7 @@ def step2():
     if device == '':
         device = '/dev/sda'
     print(device)
-    print(f"sudo mkfs.ext4 {device}")
-    results = Host.ssh(hosts=manager, command=f"sudo mkfs.ext4 {device}")
+    results = Host.ssh(hosts=manager, command=f"sudo mkfs.ext4 -F {device}")
     print(Printer.write(results))
     results = Host.ssh(hosts=manager, command="sudo mkdir /clusterfs")
     print(Printer.write(results))
