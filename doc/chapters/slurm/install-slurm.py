@@ -23,7 +23,7 @@ def step0():
     banner("Welcome to Slurm Installation. Initializing preliminary steps.")
     print("We assume that your manager and workers follow the 'red' naming schema.")
     user_input_workers = input(str('''Please enter the naming schema of your red workers. For example, if you have 3\n
-    workers then enter "red0[1-3]". Another example for 7 workers is "red0[1-7]". Do not include quotation marks\n'''))
+    workers then enter "red0[1-3]". Another example for 7 workers is "red0[1-7]" (do not include quotation marks):\n'''))
     results = Host.ssh(hosts=manager, command="touch user_input_workers")
     print(Printer.write(results))
     results = Host.ssh(hosts=manager, command=f'''echo '{user_input_workers}' >> user_input_workers''')
