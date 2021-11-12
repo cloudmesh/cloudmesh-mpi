@@ -99,7 +99,9 @@ def step2():
     card = SDCard()
     card.info()
     USB.check_for_readers()
-    print('Please enter the device path e.g. "/dev/sda" or no input default to /dev/sda (remember, do not add quotation marks):')
+    print('Please enter the device path e.g. "/dev/sda" or no input default to /dev/sda (remember, do not add '
+          'quotation marks)')
+    print('The device of the path you enter WILL BE FORMATTED and used as cluster file storage for slurm config:')
     device = input()
     if device == '':
         device = '/dev/sda'
