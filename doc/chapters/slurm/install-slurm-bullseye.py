@@ -332,6 +332,8 @@ def step4():
     print(Printer.write(results))
     results = Host.ssh(hosts=workers, command="sudo chmod -R 777 /clusterfs")
     print(Printer.write(results))
+    results = Host.ssh(hosts=workers, command="sudo apt install git")
+    print(Printer.write(results))
     results = Host.ssh(hosts=workers, command="sudo apt install slurmd slurm-client -y")
     print(Printer.write(results))
     results = Host.ssh(hosts=workers, command="git clone git://github.com/SchedMD/slurm.git")
