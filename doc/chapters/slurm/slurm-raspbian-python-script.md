@@ -42,6 +42,21 @@ This tutorial assumes that your manager node's hostname is `red` and your worker
 and `red03`. You may have additional workers; be sure to alter the script accordingly (e.g. instead of 
 `red,red0[1-3]` perhaps you have `red,red0[1-4]` if you have five Pis total instead of four).
 
+## 2.1 Raspberry Pi OS Compatibility
+
+Note: if you want to burn the 64 bit OS or a Legacy version of Raspberry OS use the following series of commands instead. This creates a default cluster configuration, and then changes the OS tag to latest-lite-64. For the legacy version use the latest-lite-legacy tag or latest-full legacy tag. Currently (12/16/21) the legacy version is based on Debian Buster while the latest version is based on Debian Bullseye. The Raspberry Pi team released the legacy OS to solve compatibility issues that arose during their upgrade to the Bullseye image. You must research to see which OS your application supports.
+
+These commands are meant to be executed on Linux. Equivalent commands for setting the legacy tags for other operating systems are forthcoming.
+
+```bash
+cms burn image versions --refresh  
+cms inventory add cluster "red,red0[1-4]"
+cms inventory set "red,red0[1-4]" tag to latest-lite-64 --inventory="inventory-red.yaml"
+cms burn raspberry "red,red0[1-4]" --device=/dev/sdb --inventory="inventory-red.yaml" 
+```
+
+Slurm is presently not easily run on Bullseye. It is more compatible with Buster.
+
 ## 3. Installation
 
 Next, we will complete the setup, which uses the following steps:
