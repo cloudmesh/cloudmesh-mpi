@@ -119,7 +119,21 @@ in the creation of high-performance and parallel computing programs.
 
 # Installation
 
-Next, we discuss how to install mpi4py on various systems. We will focus on installing it on a single computer using multiple cores.
+Next, we discuss how to install mpi4py on various systems. We will focus on installing it on a single computer
+using multiple cores. 
+
+## Python Version
+
+In most cases you can probably use the neweste version of Python and then add MPI4Python. However, we have currently only tested it for Python version 3.9. If you have tested it on newer versions, please let us know so we add it here to our compatibility list.
+
+| Python Version | OS            | Tested     | Processor | 
+|----------------|---------------|------------|-----------|
+| 3.9            | Mac           | yes        | Intel     |
+| 3.9            | Windows       | yes        | Intel     |
+| 3.9.7          | Ubuntu 20.04  | yes        | AMD       |
+| 3.9.7          | Ubuntu 20.04  | yes        | Intel     |
+| 3.9            | RaspberryOS   | yes        | ARM       |
+
 
 ## Getting the CPU Count
 
