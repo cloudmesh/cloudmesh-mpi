@@ -89,7 +89,7 @@ including supercomputers. The framework is well known in the C-language
 community. However, many practitioners do not have the time to learn C
 to utilize such advanced cyberinfrastructure. Hence, it is advantageous
 to access MPI from Python. We showcase how you can easily deploy and use
-MPI from Python via a tool called `mpi4pi`.
+MPI from Python via a tool called `mpi4py`.
 
 Message Passing Interface (MPI) is a message-passing standard that
 allows for efficient data communication between the address spaces of
@@ -132,6 +132,18 @@ us know so we add it here to our compatibility list.
   3.9.7            Ubuntu 20.04   yes      AMD
   3.9.7            Ubuntu 20.04   yes      Intel
   3.9              RaspberryOS    yes      ARM
+
+## Operating Systems and MPI Versions
+
+The following table shows which operating systems use which version of
+MPI:
+
+  Operating System   MPI Version
+  ------------------ -----------------
+  Windows            MS-MPI v10.1.2
+  macOS              Open MPI v4.1.1
+  Ubuntu             MPICH v3.3.2
+  Raspberry Pi       Open MPI v3.1.3
 
 ## Getting the CPU Count
 
@@ -259,6 +271,9 @@ in our documentation.
         $ source ~/ENV3/bin/activate
         $ pip install mpi4py
 
+If you are prompted to install command line developer tools, install
+them.
+
 ## Ubuntu
 
 These instructions apply to 20.04 and 21.04. Please use 20.04 in case
@@ -281,10 +296,10 @@ you like to use GPUs.
 
     ``` bash
     $ sudo apt-get update
-    $ sudo apt install python3.9 python3.9-dev python3-dev python3.9-venv 
+    $ sudo apt install python3.9 python3.9-dev python3-dev python3.9-venv python3.8-venv
     $ python3 -m venv ~/ENV3
     $ source ENV3/bin/activate
-    (ENV3) $ sudo apt-get install -y mpich-doc mpich 
+    (ENV3) $ sudo apt-get install -y mpich-doc mpich
     (ENV3) $ pip install mpi4py -U
     ```
 
@@ -493,6 +508,35 @@ information on the topic, the manual section [Communicating Python
 Objects and Array
 Data](https://mpi4py.readthedocs.io/en/stable/overview.html?highlight=pickle#communicating-python-objects-and-array-data).
 
+### Using NumPy with mpi4py
+
+Serveral of the examples presented in the following sections use NumPy
+arrays to illustrate the behavior of mpi4py's uppercase communication
+methods.
+
+NumPy is a Python library geared towards scientific computing. It
+features high-level mathematical functions that add support to work with
+and operate on multi-dimensional arrays and matrices.
+
+NumPy quickly gained popularity thanks to its performance advantages in
+comparison to Python lists. NumPy array elements must have a uniform
+type and are stored contiguously in memory. As a consequence, memory
+consumption is lower and runtime performance improves, since there is no
+need to store type pointers or perform type checks before operating on
+any element. Type uniformity and contiguous memory use also allow for
+fast and efficient application of diverse mathematical operations to all
+indices of an array, making NumPy very attractive for use in statistical
+analysis, visualization libraries, and large data manipulation.
+
+An interesting and useful exception to the type uniformity rule can be
+achieved by defining a NumPy array of Python objects, which allows for
+an array containing elements of different sizes/types, including other
+NumPy arrays.
+
+To learn more about NumPy installation and use, please check our
+tutorials in Section 10.2 of [Python for Cloud
+Computing](https://cloudmesh-community.github.io/pub/vonLaszewski-python.pdf#%5B%7B%22num%22%3A4318%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C75%2C720%2C0%5D).
+
 ## MPI Functionality
 
 ### Communicator
@@ -519,7 +563,7 @@ process.
 
 ### Point-to-Point Communication
 
-#### Send and Recieve Python Objects
+#### Send and Receive Python Objects
 
 The `send()` and `recv()` methods provide for functionality to transmit
 data between two specific processes in the communicator group. It can be
@@ -601,7 +645,7 @@ and no other process was affected.
 The following example illustrates the use of the uppercase versions of
 the methods `comm.Send()` and `comm.Recv()` to perform a transmission of
 data between processes from memory to memory. In our example we will
-agian be sending a message between processors of rank 0 and 1 in the
+again be sending a message between processors of rank 0 and 1 in the
 communicator group.
 
 ``` python
@@ -640,7 +684,7 @@ After Send/Receive, the value in process 0 is [0 0 0 0 0]
 After Send/Receive, the value in process 1 is [1 2 3 4 5]
 ```
 
-#### Non-blocking send and Recieve
+#### Non-blocking Send and Receive
 
 MPI can also use non-blocking communications. This allows the program to
 send the message without waiting for the completion of the submission.
@@ -649,7 +693,7 @@ communication and computation while both take place simultaneously. The
 same can be done with receive, but if a message is not available and you
 do need the message, you may have to probe or even use a blocked
 receive. To wait for a message to be sent or received, we can also use
-the wait method , effectively converting the non-blocking message to a
+the wait method, effectively converting the non-blocking message to a
 blocking one.
 
 Next, we showcase an example of the non-blocking send and receive
@@ -696,6 +740,47 @@ After isend/ireceive, the value in process 3 is None
 After isend/ireceive, the value in process 0 is None
 After isend/ireceive, the value in process 1 is 42
 ```
+
+#### Ping Pong
+
+This example program uses the aforementioned `send()` and `recv()`
+methods to print a variable, `sendmsg`, depending on which rank the MPI
+program is presently working with.
+
+``` python
+from mpi4py import MPI
+
+comm = MPI.COMM_WORLD
+assert comm.size == 2
+
+if comm.rank == 0:
+    sendmsg = 777
+    comm.send(sendmsg, dest=1, tag=55)
+    recvmsg = comm.recv(source=1, tag=77)
+else:
+    recvmsg = comm.recv(source=0, tag=55)
+    sendmsg = "abc"
+    comm.send(sendmsg, dest=0, tag=77)
+print(sendmsg)
+```
+
+This program can only be executed using
+`mpiexec -n 2 python pingpong.py`, which yields
+
+``` bash
+abc
+777
+```
+
+Note how, at first line-by-line glace, the program's code sets sendmsg
+to `777` before it is set to `abc`. However, upon program execution, the
+output is `abc` first because of the `dest` and `tag` values. On rank 0
+(during program's initial stages), `777` is sent to destination 1. On
+rank 1 (remember there are only two ranks: 0 and 1), `abc` is sent to
+destination 0. The destination integers correspond to the ranks and the
+program leaves printing the sendmsg for last (after the `send()` and
+`recv()` methods have determined the variable values). This explains the
+output.
 
 ## Collective Communication
 
@@ -1222,10 +1307,11 @@ comm.Disconnect()
 ```
 
 To execute the example which calculates the number pi, please go to the
-examples directory and run the mpi-manager program only with `-n 1` (the
-additional processes are spawned according to the number of cores
-available; executing with any number other than 1 will cause the program
-to hang)
+examples directory and run the mpi-manager program with `-n 1`. There
+must only be 1 process because the additional processes are
+automatically created within the mpi-manager. The number of processes is
+automatically calculated according to the number of cores available
+minus 1 (because one core is already dedicated to the manager).
 
     $ cd examples/spawn
     $ mpiexec -n 1 python mpi-manager.py
@@ -1246,12 +1332,35 @@ from mpi4py.futures import MPIPoolExecutor
 import matplotlib.pyplot as plt
 import numpy as np
 from cloudmesh.common.StopWatch import StopWatch
-
-multiplier = int(input('Enter 1 for 640x480 pixels of Julia '
-                       'visualization image, 2 for 1280x960, '
-                       'and so on...'))
+from cloudmesh.common.variables import Variables
+import multiprocessing
 
 StopWatch.start("Overall time")
+
+v = Variables()
+
+if (v["multiplier"]):
+    multiplier = int((v["multiplier"]))
+    print(f"Proceeding since multiplier exists: {multiplier=}")
+    pass
+else:
+    print("No multiplier was input so multiplier defaults to 1\n"
+          "Use `$ cms set multiplier=2` to output higher resolution "
+          "Julia set image")
+    multiplier = 1
+    pass
+if (v["workers"]):
+    workers = int((v["workers"]))
+    print(f"Proceeding since workers exists: {workers=}")
+    pass
+else:
+    print("No number of workers was input so workers defaults to 1\n"
+          "We suggest you use",multiprocessing.cpu_count(),
+          "workers for shortest runtime because that is the number of"
+          "threads you have available. Do this by issuing command "
+          f"`$ cms set workers={multiprocessing.cpu_count()}`")
+    workers = 1
+    pass
 
 x0, x1, w = -2.0, +2.0, 640*multiplier
 y0, y1, h = -1.5, +1.5, 480*multiplier
@@ -1280,7 +1389,7 @@ def julia_line(k):
 
 
 if __name__ == '__main__':
-    with MPIPoolExecutor() as executor:
+    with MPIPoolExecutor(max_workers=workers) as executor:
         image = executor.map(julia_line, range(h))
         image = np.array([list(l) for l in image])
         plt.imsave("julia.png", image)
@@ -1292,26 +1401,38 @@ StopWatch.benchmark()
 To run the program, issue this command in Git Bash:
 
 ``` bash
-mpiexec -n 1 python julia-futures.py
+$ cms set multiplier=2
+$ cms set workers=4
+$ mpiexec -n 1 python julia-futures.py
 ```
 
-The number after `-n` can be changed to however many cores are in the
-computer's processor. For example, a dual-core processor can use `-n 2`
-so that more worker processes work to execute the same program.
+> Note: if command cms is not found, make sure to install
+> cloudmesh-common, cloudmesh_base, cloudmesh-inventory via pip
+
+The multiplier variable serves as an integer which multiplies the
+standard resolution of the Julia set picture, which is 640x480. For
+example, issuing `cms set multipler=3` will produce a 1920x1440 photo
+since 640x480 times 3 is 1920x1440. Not issuing a `cms set` command will
+cause the program to default to a multiplier of 1. The higher this
+number, the slower the runtime.
+
+The workers variable serves as an integer which sets the number of
+workers to spawn for collaborative program execution. Not exporting this
+variable will cause it to default to 1 worker. The higher this number,
+the faster the runtime (up until the maximum number of threads on the
+CPU is surpassed).
+
+The futures feature only works with `mpiexec -n 1` because it uses a
+method similar to that of spawn. Any other number will only repeat the
+program needlessly; it will not run faster or more efficiently.
 
 The program will output a png image of a Julia set upon successful
 execution.
 
-Furthermore, the user enters a number upon starting execution of the
-program, when a prompt appears, asking for a value. Entering the number
-`3` will produce a 1920x1440 photo because the inputted value serves as
-a multiplier of the resolution of the Julia set picture. 640x480 times 3
-is 1920x1440. Then, after input, the program should output a
-visualization of a Julia data set as a png image.
-
-However, we created the numba version of this program in an attempt to
-achieve faster runtimes. For an explanation of numba, please see the
-Monte Carlo section of this document.
+We created the numba version of this program in an attempt to achieve
+faster runtimes. Numba utilizes the jit decorator. For further
+explanation of numba, please see the Monte Carlo section of this
+document.
 
 ``` python
 from mpi4py.futures import MPIPoolExecutor
@@ -1319,17 +1440,43 @@ import matplotlib.pyplot as plt
 import numpy as np
 from numba import jit
 from cloudmesh.common.StopWatch import StopWatch
-
-multiplier = int(input('Enter 1 for 640x480 pixels of Julia visualization image,'
-                       ' 2 for 1280x960, and so on...'))
+from cloudmesh.common.variables import Variables
+import multiprocessing
 
 StopWatch.start("Overall time")
+
+v = Variables()
+
+if (v["multiplier"]):
+    multiplier = int((v["multiplier"]))
+    print(f"Proceeding since multiplier exists: {multiplier=}")
+    pass
+else:
+    print("No multiplier was input so multiplier defaults to 1\n"
+          "Use `$ cms set multiplier=2` to output higher resolution "
+          "Julia set image")
+    multiplier = 1
+    pass
+if (v["workers"]):
+    workers = int((v["workers"]))
+    print(f"Proceeding since workers exists: {workers=}")
+    pass
+else:
+    print("No number of workers was input so workers defaults to 1\n"
+          "We suggest you use",multiprocessing.cpu_count(),
+          "workers for shortest runtime because that is the number of"
+          "threads you have available. Do this by issuing command "
+          f"`$ cms set workers={multiprocessing.cpu_count()}`")
+    workers = 1
+    pass
+
 x0, x1, w = -2.0, +2.0, 640*multiplier
 y0, y1, h = -1.5, +1.5, 480*multiplier
 dx = (x1 - x0) / w
 dy = (y1 - y0) / h
 
 c = complex(0, 0.65)
+
 
 @jit(nopython=True)
 def julia(x, y):
@@ -1340,6 +1487,7 @@ def julia(x, y):
         n -= 1
     return n
 
+
 def julia_line(k):
     line = bytearray(w)
     y = y1 - k * dy
@@ -1348,9 +1496,9 @@ def julia_line(k):
         line[j] = julia(x, y)
     return line
 
-if __name__ == '__main__':
 
-    with MPIPoolExecutor() as executor:
+if __name__ == '__main__':
+    with MPIPoolExecutor(max_workers=workers) as executor:
         image = executor.map(julia_line, range(h))
         image = np.array([list(l) for l in image])
         plt.imsave("julia.png", image)
@@ -1359,34 +1507,40 @@ StopWatch.stop("Overall time")
 StopWatch.benchmark()
 ```
 
-  ----------------------------------------------------------------------
-             No Jit       Jit Enabled      No Jit         Jit Enabled
-             (1280x960)   (1280x960)       (1920x1440)    (1920x1440)
-  ---------- ------------ ---------------- -------------- --------------
-  1 Core     44.898 s     45.800 s         68.489 s       68.610 s
+  No Jit      1 Worker   2 Workers   6 Workers   12 Workers   20 Workers
+  ----------- ---------- ----------- ----------- ------------ ------------
+  640x480     22.470 s   12.220 s    4.946 s     4.384 s      5.257 s
+  1280x960    45.951 s   23.702 s    8.982 s     6.258 s      6.523 s
+  1920x1440   68.779 s   34.652 s    12.933 s    8.385 s      8.042 s
 
-  2 Cores    45.578 s     45.714 s         67.718 s       69.326 s
-
-  3 Cores    43.026 s     44.521 s         68.785 s       69.487 s
-
-  4 Cores    44.746 s     44.552 s         73.606 s       70.257 s
-
-  5 Cores    43.223 s     42.825 s         68.226 s       68.443 s
-
-  6 Cores    45.134 s     44.402 s         68.437 s       67.637 s
-  ----------------------------------------------------------------------
+  Jit Enabled   1 Worker   2 Workers   6 Workers   12 Workers   20 Workers
+  ------------- ---------- ----------- ----------- ------------ ------------
+  640x480       24.551 s   12.499 s    5.632 s     5.054 s      6.616 s
+  1280x960      46.183 s   23.406 s    9.543 s     7.190 s      8.226 s
+  1920x1440     68.366 s   34.569 s    12.938 s    9.278 s      8.854 s
 
 -   These benchmark times were generated using a Ryzen 5 3600 CPU with
-    16 GB RAM on a Windows 10 computer.
+    16 GB RAM on a Windows 10 computer. The Ryzen 5 3600 is a 6-core,
+    12-thread processor.
 
-The improvement in shorter runtime with jit is not apparent likely
-because the computations required to run this program are not very
-complex; the same reason applies to why the increase in cores does not
-improve runtime.
+  No Jit      1 Worker   2 Workers   3 Workers   4 Workers
+  ----------- ---------- ----------- ----------- -----------
+  640x480     51.555 s   49.103 s    48.501 s    48.983 s
+  1280x960    66.044 s   56.652 s    53.693 s    52.929 s
+  1920x1440   87.918 s   68.069 s    61.836 s    59.414 s
 
-However, this example showcases how to run examples with a parameter to
-explore the behavior on multiple cores. Naturally, you can use and
-explore other parameters once added to the program.
+-   These benchmark times were generated using a Raspberry Pi 4 Model B
+    2018 with 8 GB RAM on a Raspbian 10 (codename buster) OS. It uses an
+    ARM Cortex-A72 4-core, 4-thread processor. On this Raspberry Pi, 4
+    workers can be used via the `cms set workers=4` and
+    `mpirun -np 1 --oversubscribe python julia-futures.py` commands.
+    However, any number of workers greater than 4 causes the program to
+    hang and timeout with an unknown MPI spawn error, likely because the
+    Pi does not support using a greater number of threads. Also, numba
+    cannot be used on Pi.
+
+Jit does not appear to shorten the program runtimes, causing it to be
+longer in most instances except for a few higher resolution outputs.
 
 # Simple MPI Example Programs
 
@@ -1754,6 +1908,10 @@ their processor.
 However, running this program takes upwards of 4 minutes to complete
 with 6 cores. We can use numba to speed up the program execution time.
 
+Additionally, we can run this program on multiple hosts. For instance,
+you can use a machinefile or rankfile to execute the program on a PI
+cluster.
+
 ### Numba
 
 Numba, an open-source JIT (just in time) compiler, is a Python module
@@ -1905,14 +2063,14 @@ execute the numba version of the Monte Carlo program:
 $ mpiexec -n 4 python parallel_pi_numba.py
 ```
 
-            parallel_pi.py execution time   parallel_pi_numba.py execution time
-  --------- ------------------------------- -------------------------------------
-  6 Cores   237.873 s                       169.678 s
-  5 Cores   257.720 s                       199.572 s
-  4 Cores   326.811 s                       239.160 s
-  3 Cores   383.343 s                       289.433 s
-  2 Cores   545.500 s                       403.289 s
-  1 Core    1075.68 s                       810.525 s
+  Cores   parallel_pi.py execution time   parallel_pi_numba.py execution time
+  ------- ------------------------------- -------------------------------------
+  6       237.873 s                       169.678 s
+  5       257.720 s                       199.572 s
+  4       326.811 s                       239.160 s
+  3       383.343 s                       289.433 s
+  2       545.500 s                       403.289 s
+  1       1075.68 s                       810.525 s
 
 -   These benchmark times were generated using a Ryzen 5 3600 CPU with
     16 GB RAM on a Windows 10 computer.
@@ -1923,6 +2081,80 @@ computer. However, it is not threadsafe and, at this time, only measures
 times in the second range. If your calculations for other programs are
 faster or the trial number is too slow, you can use other benchmarking
 methods.
+
+### Running Monte Carlo on multiple hosts
+
+Another way to increase the performance of our program would be
+executing it on multiple hosts.
+
+As an example, we can run the program in a cluster of 7 PIs: a manager
+PI4, and six worker PI3s. Be advised, however, that we do not use numba
+on RaspberryOS, hence execution can take a relatively long time in
+comparison to the numba version. For a reference, simultaneously running
+a copy of the program on the cluster (7 processes total) took around 40
+minutes. However, using a machinefile to run four copies of the program
+on each node (for a total of 28 processes) significantly sped up
+execution, taking only a fourth of that time (\~ 10 minutes).
+
+First, we need to make sure that mpi4py is installed on all PIs. For
+that purpose, you can follow our tutorial to [Deploy MPI for Python
+(mpi4py) on your Pi
+Cluster](https://cloudmesh.github.io/pi/tutorial/mpi/) using Cloudmesh.
+
+Next, we send a copy of the program to each of the hosts in our cluster.
+It is important that the file be stored in the same directory address
+for every host. For this example, we send it to the home directory `~/`.
+
+``` bash
+(ENV3) pi@red:~ $ for h in red red0{1..6}; do
+> scp parallel_pi.py pi@$h:~/ &
+> done
+[4] 2176
+[5] 2177
+[6] 2178
+[7] 2179
+[8] 2180
+[9] 2181
+[10] 2182
+(ENV3) pi@red:~ $
+```
+
+Next, we create a machinefile to specify the number of hosts and cores
+to be employed by mpi4py during execution. Notice that we are employing
+the four available cores on each node.
+
+    pi@red slots=4
+    pi@red01 slots=4
+    pi@red02 slots=4
+    pi@red03 slots=4
+    pi@red04 slots=4
+    pi@red05 slots=4
+    pi@red06 slots=4
+
+We will need to save the machinefile only in the node from which the
+`mpiexec` command is executed.
+
+Finally, we run the program by calling `mpiexec` from the command line.
+Note we have added the parameter `-machinefile` to specify the
+machinefile location. Additionally we used the full address of the
+Python binary from ENV3 to ensure that every host runs the program
+inside our environment.
+
+``` bash
+(ENV3) pi@red:~ $ mpiexec -n 28 -machinefile ./machinefile ~/ENV3/bin/python parallel_pi.py
+MPI size = 28
+1024 3.1455775669642856 0.05692609648889646
+4096 3.138096400669643 0.02867811562631138
+16384 3.1421116420200894 0.01228796385009885
+65536 3.1414925711495534 0.005532607075034393
+262144 3.1418974740164622 0.0029191407443025902
+1048576 3.141772815159389 0.0017866555629716318
+4194304 3.1415172815322876 0.0008114422251076501
+16777216 3.1416021159717014 0.0003635004457387496
+67108864 3.1415649854711125 0.0001929914184235647
+268435456 3.1416016641472067 9.638285643379315e-05
+...
+```
 
 ## Mandelbrot
 
@@ -1996,8 +2228,8 @@ rowtype.Free()
 if rank == 0:
     StopWatch.stop(f'parallel {size}')
 
-    pyplot.imsave('mandelbrot.png', C)
-    pyplot.imsave('mandelbrot.pdf', C)
+    pyplot.imsave('mandelbrot-parallel-numba.png', C)
+    pyplot.imsave('mandelbrot-parallel-numba.pdf', C)
 
     StopWatch.benchmark()
     # pyplot.imshow(C, aspect='equal')
@@ -2012,20 +2244,20 @@ At rank 0, the program starts and ends a benchmark for analysis of which
 -n parameter will give the shortest runtime.
 
   ---------------------------------------------------------------------
-          mandelbrot-parallel.py       mandelbrot-parallel-numba.py
+  Cores   mandelbrot-parallel.py       mandelbrot-parallel-numba.py
           execution time               execution time
   ------- ---------------------------- --------------------------------
-  6 Cores 3.071 s                      0.422 s
+  6       3.071 s                      0.422 s
 
-  5 Cores 3.791 s                      0.434 s
+  5       3.791 s                      0.434 s
 
-  4 Cores 3.920 s                      0.427 s
+  4       3.920 s                      0.427 s
 
-  3 Cores 5.769 s                      0.473 s
+  3       5.769 s                      0.473 s
 
-  2 Cores 5.010 s                      0.520 s
+  2       5.010 s                      0.520 s
 
-  1 Core  9.891 s                      1.765 s
+  1       9.891 s                      1.765 s
   ---------------------------------------------------------------------
 
 -   These benchmark times were generated using a Ryzen 5 3600 CPU with
