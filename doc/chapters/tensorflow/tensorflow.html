@@ -1,0 +1,21 @@
+#!/bin/sh
+
+start_tf=`date +%s`
+
+# download the wheel
+gdown https://drive.google.com/uc?id=1I1H2xMs4BTm-UQhBPuLgqnLgmE0ATRl5
+# install TensorFlow 2.5.0 (± 108 min @1950 MHz)
+sudo -H pip3 install tensorflow-2.5.0-cp38-cp38-linux_aarch64.whl
+
+end_tf=`date +%s`
+
+time_total=$((end_tf-start_tf))
+
+echo "#################################################"
+echo "# Tensorflow installation completed             #"
+echo "#################################################"
+echo ""
+echo "Time for Tensorflow install:      ${time_total} s"
+echo ""
+echo "#################################################"
+exit 0

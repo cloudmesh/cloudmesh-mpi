@@ -20,6 +20,8 @@ class MpiCommand(PluginCommand):
                 mpi uninstall raspberry HOSTS
                 mpi uninstall ubuntu HOSTS
 
+          This command is used to install MPI on a cluster running Raspberry Pi OS or Ubuntu OS.
+
           Arguments:
               HOSTS   parameterized list of hosts
 
