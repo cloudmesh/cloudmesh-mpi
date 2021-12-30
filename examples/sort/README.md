@@ -18,23 +18,25 @@
    ```
    
 2. local upload
-    to add file, do once
+    
 
-   ```bash
-   git add filename
-   ```
+   1. to add file, do once
+
+      ```bash
+      git add filename
+      ```
    
-2a. once changed file, do
+   2. once changed file, do
 
-    ```bash
-    git commit -m "this is my comment" filename
-    ```
+      ```bash
+      git commit -m "this is my comment" filename
+      ```
 	
-2b. remote upload
+   3. remote upload
 
-    ```bash
-    git push
-    ```
+      ```bash
+      git push
+      ```
 	
 3. verify
 
@@ -52,4 +54,27 @@
    ```
 
 Never modify anythin in docs, Only Gregor does this!!!
+
+## List of sort algorithms in python
+
+* [array.sort](https://docs.python.org/3/howto/sorting.html)
+*
+[numpy.sort](https://numpy.org/doc/stable/reference/generated/numpy.sort.html)
+
+## Other sort algorithms
+
+* [Countung Sort](https://en.wikipedia.org/wiki/Counting_sort)
+* [Adaptive merge sort](https://www.tutorialspoint.com/adaptive-merging-and-sorting-in-data-structure)
+* [Adaptive sort](https://en.wikipedia.org/wiki/Adaptive_sort)
+
+## Speeding up the sequential algorithms
+
+```python
+from numba import jit
+
+@jit
+def sort_alg(a)
+	# do sorting of a
+	return a
+```
 
