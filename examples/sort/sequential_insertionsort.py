@@ -12,11 +12,12 @@ def insertion_sort(arr, n):
         #insert x
         arr[j + 1] = x
 
-#test and input
-a = []
-n = int(input())
-for i in range(n):
-    x = int(input())
-    a.append(x)
-insertion_sort(a, len(a))
-print(a)
+if __name__ == "__main__":
+    #test and input
+    a = []
+    n = int(input())
+    for i in range(n):
+        x = int(input())
+        a.append(x)
+    insertion_sort(a, len(a))
+    print(a)

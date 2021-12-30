@@ -32,10 +32,11 @@ def quicksort(arr, l, r):
     quicksort(arr, l, k - 1)
     quicksort(arr, k + 1, r)
 
-a = []
-n = int(input())
-for i in range(n):
-    x = int(input())
-    a.append(x)
-quicksort(a, 0, n - 1)
-print(a)
+if __name__ == "__main__":
+    a = []
+    n = int(input())
+    for i in range(n):
+        x = int(input())
+        a.append(x)
+    quicksort(a, 0, n - 1)
+    print(a)

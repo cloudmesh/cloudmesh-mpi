@@ -34,12 +34,13 @@ def heapsort(arr, n):
         #swap max of current heap to position i and remove from heap
         (arr[i], arr[0]) = (arr[0], arr[i]) 
         heapify(arr, i, 0)
-
-a = []
-n = int(input())
-for i in range(n):
-    x = int(input())
-    a.append(x)
-heapsort(a, n)
-print(a)
+        
+if __name__ == "__main__":
+    a = []
+    n = int(input())
+    for i in range(n):
+        x = int(input())
+        a.append(x)
+    heapsort(a, n)
+    print(a)
 

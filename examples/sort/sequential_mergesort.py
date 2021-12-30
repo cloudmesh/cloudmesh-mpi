@@ -36,13 +36,12 @@ def merge(arr, n):
             j += 1
             k += 1
 
-#test and input
-a = []
-n = int(input())
-for i in range(n):
-    x = int(input())
-    a.append(x)
-merge(a, len(a))
-print(a)
-
-
+if __name__ == "__main__":
+    #test and input
+    a = []
+    n = int(input())
+    for i in range(n):
+        x = int(input())
+        a.append(x)
+    merge(a, len(a))
+    print(a)
