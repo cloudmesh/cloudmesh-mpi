@@ -1,6 +1,8 @@
 from verify import verify
 from generate import generate_random
 from generate import generate_shuffle
+from cloudmesh.common.StopWatch import StopWatch
+from performance import assess
 #bubble sort
 #https://www.geeksforgeeks.org/python-program-for-bubble-sort/
 
@@ -12,7 +14,7 @@ def bubble_sort(order, arr):
                 #swap unordered pairs
                 if arr[j] > arr[j + 1]:
                     (arr[j], arr[j + 1]) = (arr[j + 1], arr[j])
-    elif order == "descending":
+    elif order in ["descending",">"]: 
         for i in range(n - 1):
             for j in range(n - i - 1):
                 #swap unordered pairs
@@ -22,24 +24,9 @@ def bubble_sort(order, arr):
 if __name__ == "__main__":
     #test and input
     a = []
-    n = int(input())
-    for i in range(n):
-        x = int(input())
-        a.append(x)
-    bubble_sort("ascending", a)
-    print(a)
-    print(verify("ascending", a))
-    bubble_sort("descending", a)
-    print(verify("descending", a))
-
-    bubble_sort("<", a)
-    print(a)
     #assert verify("descending", a)
-
-    a = generate_random(100)
-    bubble_sort("<", a)
-    print(a)
-    assert verify("ascending", a)
+    assess(bubble_sort, "bubble_sort")
 
     a = generate_shuffle("ascending", 10, 1)
     print(a)
+    StopWatch.benchmark()
