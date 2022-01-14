@@ -55,7 +55,9 @@ cms inventory set "red,red0[1-4]" tag to latest-lite-64 --inventory="inventory-r
 cms burn raspberry "red,red0[1-4]" --device=/dev/sdb --inventory="inventory-red.yaml" 
 ```
 
-Slurm is presently not easily run on Bullseye. It is more compatible with Buster.
+TODO: fix this. Slurm is presently not easily run on Bullseye. It is more compatible with Buster.
+
+WARNING: As of January 13, 2022, SLURM can presently only be run on a previous version of Raspberry Pi OS. This version is known as Buster and has the number x.x it can be downloaded from the following link, or through our convenient downloader on cloudmesh in the documented fashion in section x.x.
 
 ## 3. Installation
 
@@ -150,6 +152,48 @@ red01
 red03
 ```
 
+## 4. Using SLURM
+
+### 4.1 Creating a Job
+
+To make a job in Slurm, we must first create the submission script. On the manager pi (red), issue command
+
+```bash
+(ENV3) pi@red:~ $ sudo nano submit.sh
+```
+
+Then copy and paste the following into nano (use `Shift+Insert` to paste and press `Ctrl+X`, `y`, and `Enter`):
+```bash
+#!/bin/bash
+#
+#SBATCH --job-name=test
+#SBATCH --output=res.txt
+#
+#SBATCH --ntasks=1
+#SBATCH --time=1:00
+#SBATCH --mem-per-cpu=1
+
+srun hostname
+srun sleep 10
+```
+
+The SBATCH parameters specify varying aspects of the job, including the time reserved for the job on the node as well as the MB of RAM per CPU (in this
+case, only 1). [^www-ceci-hpc]
+
+We can start the job by executing command
+
+```bash
+(ENV3) pi@red:~ $ sbatch submit.sh
+```
+
+### 4.2 Status of queue
+
+TODO: explain how queue start works here.
+
+### 4.3 Killing the job
+
+TODO: explain how to kill job in slurm
+
 # Acknowledgment
 
 This work is based on a tutorial published at [^www-slurm]. However, it is heavily modified to leverage the much more convenient cluster set up of cloudmesh, as well as the much more convenient configuration of Slurm that hides many of the setup complexity.
@@ -160,5 +204,10 @@ This work is based on a tutorial published at [^www-slurm]. However, it is heavi
 
 [^www-slurm]: Running SLURM locally on Ubuntu 18.04, The Weekend Writeup Blog, 
 <https://blog.llandsmeer.com/tech/2020/03/02/slurm-single-instance.html>
+
+[^www-iastate]: Slurm basics, Iowa State University <https://researchit.las.iastate.edu/slurm-basics>
+
+[^www-ceci-hpc]: Slurm Quick Start Tutorial, Consortium des Équipements de Calcul Intensif <https://support.ceci-hpc.be/doc/_contents/QuickStart/SubmittingJobs/SlurmTutorial.html>
+
 
 
