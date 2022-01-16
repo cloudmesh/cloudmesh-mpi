@@ -6,11 +6,20 @@ import sys
 from verify import verify
 from generate import generate_random
 from generate import generate_shuffle
-#from cloudmesh.common.StopWatch import StopWatch
+from cloudmesh.common.StopWatch import StopWatch
 #from sequential_mergesort import merge
+from performance import multiprocessing_assess
 from pprint import pprint
 
-def sequential_merge(l,r):
+def sequential_merge(*args):
+    l = []
+    r = []
+    if len(args) == 1: l,r = args[0]
+    else: l,r = args
+    #print("L IS ",end="")
+    #print(l)
+    #print("R IS ",end="")
+    #print(r)
     res = []
     #i for left half, j for right half, k for arr
     i = j = k = 0 
@@ -53,23 +62,21 @@ def multiprocessing_mergesort(arr, processes):
         arr1.append(arr[(size * i):(size * (i + 1))])
     arr1 = pool.map(sequential_mergesort, arr1)
     while len(arr1) > 1:
-        print("hello")
+        #print("hello")
         extra = None
         if len(arr1) % 2 == 1:
             extra = arr1.pop()
         arr1 = [(arr1[i], arr1[i + 1]) for i in range(0, len(arr1), 2)]
-        arr1 = pool.map(sequential_mergesort, arr1) + ([extra] if extra else [])
-    return arr1
+        arr1 = pool.map(sequential_merge, arr1)
+        if extra: arr1.append(extra)
+
+    return arr1[0]
     #arr1 = pool.map()
     
 
 if __name__ == "__main__":
     a = generate_random(100)
     processes = multiprocessing.cpu_count()
-    for p in [processes]:
-    #for p in range(1, processes):
-        a = generate_random(100)
-        #print(a)
-        a = multiprocessing_mergesort(a, processes)
-        #print(a)
-        pprint(a)
+    print(processes)
+    for p in range(1, processes):
+        multiprocessing_assess(multiprocessing_mergesort, "multiprocessing_mergesort", processes)
