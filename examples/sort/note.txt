@@ -1,0 +1,22 @@
+what to plot:
+    repeat 10 experiments for each process number and for each n
+
+plots by size:
+    on x-axis: p
+    on y-axis: time
+    constant: n
+
+plots by process:
+    on x-axis: n
+    on y-axis: time
+    constant: p
+
+plot speedup:
+    on x-axis: p
+    on y-axis: s = time(1) / time(p)
+
+plot efficiency:
+    x-axis: p
+    y-axis: efficiency = S / p
+
+https://www.bu.edu/tech/support/research/training-consulting/online-tutorials/matlab-pct/scalability/
