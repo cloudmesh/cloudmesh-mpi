@@ -1,4 +1,7 @@
+#!/usr/bin/env python 
+
 #inspired by https://devopslog.wordpress.com/2012/04/15/mergesort-example-using-python-multiprocessing/
+#and https://gist.github.com/stephenmcd/39ded69946155930c347
 import math
 import multiprocessing
 import random
@@ -74,9 +77,22 @@ def multiprocessing_mergesort(arr, processes):
     #arr1 = pool.map()
     
 
+#./multiprocessing_mergesort.py "[3]" "[10]" 10
+#./multiprocessing_mergesort.py "[1,2,3,10]" "[10,100,200,1000,10000]" 10
 if __name__ == "__main__":
-    a = generate_random(100)
-    processes = multiprocessing.cpu_count()
-    print(processes)
-    for p in range(1, processes):
-        multiprocessing_assess(multiprocessing_mergesort, "multiprocessing_mergesort", processes)
+    processes = eval(sys.argv[1])
+    sizes = eval(sys.argv[2])
+    count = int(sys.argv[3])
+    print(processes, sizes)
+    for _p in processes:
+        p = int(_p)
+        for _n in sizes:
+            n = int(_n)
+            multiprocessing_benchmark(multiprocessing_mergesort, "multiprocessing_mergesort", p, n, count)
+
+
+    #a = generate_random(100)
+    #processes = multiprocessing.cpu_count()
+    #print(processes)
+    #for p in range(1, processes):
+        #multiprocessing_assess(multiprocessing_mergesort, "multiprocessing_mergesort", p, sizes)
