@@ -1,0 +1,1 @@
+python multiprocessing_mergesort.py | fgrep "# csv" | tee output.log
