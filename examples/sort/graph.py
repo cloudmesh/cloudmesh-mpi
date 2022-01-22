@@ -17,6 +17,8 @@ for p in range(1,12):
             x.append(n)
             y.append(float(values[3]))
             data.append([n, float(values[3])])
+##print(y)
+
 
 
 #plt.scatter(x, y)
@@ -29,9 +31,8 @@ data = {
     "x":x,
     "y":y
 }
-# Draw a nested boxplot to show bills by day and time
 sns.boxplot(x="x", y="y",
-            data=data)
-sns.set_title(f"{")
+data=data)
+#sns.set_title(f"{n}")
 sns.despine(offset=10, trim=True)
 plt.show()
