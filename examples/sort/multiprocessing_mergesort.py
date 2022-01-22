@@ -11,7 +11,7 @@ from generate import generate_random
 from generate import generate_shuffle
 from cloudmesh.common.StopWatch import StopWatch
 #from sequential_mergesort import merge
-from performance import multiprocessing_assess
+from performance import multiprocessing_benchmark
 from pprint import pprint
 
 def sequential_merge(*args):
@@ -80,15 +80,20 @@ def multiprocessing_mergesort(arr, processes):
 #./multiprocessing_mergesort.py "[3]" "[10]" 10
 #./multiprocessing_mergesort.py "[1,2,3,10]" "[10,100,200,1000,10000]" 10
 if __name__ == "__main__":
-    processes = eval(sys.argv[1])
-    sizes = eval(sys.argv[2])
-    count = int(sys.argv[3])
+    #processes = eval(sys.argv[1])
+    #sizes = eval(sys.argv[2])
+    #count = int(sys.argv[3])
+    processes = multiprocessing.cpu_count()
+    sizes = [10, 100, 1000]
     print(processes, sizes)
-    for _p in processes:
+    for _p in range(1,processes):
         p = int(_p)
         for _n in sizes:
             n = int(_n)
-            multiprocessing_benchmark(multiprocessing_mergesort, "multiprocessing_mergesort", p, n, count)
+            #print(n)
+            #multiprocessing_benchmark(multiprocessing_mergesort, "multiprocessing_mergesort", p, n, count)
+            multiprocessing_benchmark(multiprocessing_mergesort, "multiprocessing_mergesort", p, n)
+
 
 
     #a = generate_random(100)
