@@ -17,14 +17,15 @@ def assess(sort_type, sort_name):
 		assert verify("ascending", a)
 	StopWatch.benchmark()
 
-def multiprocessing_benchmark(sort_type, sort_name, processes, size):
-	a = generate_random(size)
-	if debug: 
-		print(a)
-	StopWatch.start(f"{sort_name}_{size}_{processes}")
-	a = sort_type(a, processes) 
-	StopWatch.stop(f"{sort_name}_{size}_{processes}")
-	if debug:
-		print(a)
-	assert verify("ascending", a)
-	StopWatch.benchmark()
+def multiprocessing_benchmark(sort_type, sort_name, processes, size, count):
+	for i in range(count):
+		a = generate_random(size)
+		if debug: 
+			print(a)
+		StopWatch.start(f"{sort_name}_{processes}_{size}")
+		a = sort_type(a, processes) 
+		StopWatch.stop(f"{sort_name}_{processes}_{size}")
+		if debug:
+			print(a)
+		assert verify("ascending", a)
+		StopWatch.benchmark()
