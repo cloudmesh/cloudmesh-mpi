@@ -91,8 +91,12 @@ if __name__ == "__main__":
         for _n in sizes:
             n = int(_n)
             #print(n)
-            #multiprocessing_benchmark(multiprocessing_mergesort, "multiprocessing_mergesort", p, n, count)
-            multiprocessing_benchmark(multiprocessing_mergesort, "multiprocessing_mergesort", p, n, count)
+            #multiprocessing_benchmark(multiprocessing_mergesort,
+            # "multiprocessing_mergesort", p, n, count)
+            multiprocessing_benchmark(
+                multiprocessing_mergesort,
+                "multiprocessing_mergesort",
+                p, n, count)
 
 
 

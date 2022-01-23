@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from pprint import pprint
 
-content = readfile("output.log").splitlines()
+content = readfile("output-speedup.log").splitlines()
 x = []
 y = []
 data = []
@@ -41,4 +41,5 @@ ax.set_title(f"efficiency, size = {10000}")
 ax.set_ylabel("efficiency")
 ax.set_xlabel("# of processes")
 sns.despine(offset=10, trim=True)
-plt.show()
+# plt.show()
+plt.savefig('images/eficciency.pdf')

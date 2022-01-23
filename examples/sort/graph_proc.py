@@ -5,20 +5,20 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from pprint import pprint
 
-content = readfile("output.log").splitlines()
+content = readfile("output-num.log").splitlines()
 x = []
 y = []
 data = []
 
-#plots by process (p = 3)
-for n in [10, 100, 1000, 10000]:
-    p = 3
-    lines = Shell.find_lines_with(content, what=f"mergesort_{p}_{n}")
+#plots by size (n = 1000)
+for p in range(1,12): #12 is # of processes on my computer
+    n = 10000
+    lines = Shell.find_lines_with(content, what=f"mergesort_{p}_")
     for entry in lines:
         values = entry.split(",")
-        x.append(n)
+        x.append(p)
         y.append(float(values[3]))
-        data.append([n, float(values[3])])
+        data.append([p, float(values[3])])
 
 sns.set_theme(style="ticks", palette="pastel")
 data = {
@@ -27,8 +27,9 @@ data = {
 }
 ax = sns.boxplot(x="x", y="y",
 data=data)
-ax.set_title(f"processes = {p}")
+ax.set_title(f"size = {n}")
 ax.set_ylabel("time (s)")
-ax.set_xlabel("size of dataset")
+ax.set_xlabel("# of processes")
 sns.despine(offset=10, trim=True)
-plt.show()
+plt.savefig('images/proc.pdf')
+# plt.show()
