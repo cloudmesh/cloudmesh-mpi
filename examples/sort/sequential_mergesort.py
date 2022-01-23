@@ -1,8 +1,10 @@
 #merge sort
 #https://www.educative.io/edpresso/merge-sort-in-python
 import sys;
+from generate import generate_random
 
-def merge(arr, n):
+def sequential_mergesort(arr):
+    n = len(arr)
     if n > 1:
         #split array into left and right half
         mid = n / 2
@@ -10,8 +12,8 @@ def merge(arr, n):
         r = arr[mid:]
 
         #sort left and right halves individually
-        merge(l, len(l))
-        merge(r, len(r))
+        merge(l)
+        merge(r)
 
         #i for left half, j for right half, k for arr
         i = j = k = 0 
@@ -38,10 +40,7 @@ def merge(arr, n):
 
 if __name__ == "__main__":
     #test and input
-    a = []
-    n = int(input())
-    for i in range(n):
-        x = int(input())
-        a.append(x)
-    merge(a, len(a))
+    a = generate_random(50)
+    print(a)
+    sequential_mergesort(a)
     print(a)

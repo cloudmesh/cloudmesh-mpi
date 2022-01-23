@@ -80,19 +80,19 @@ def multiprocessing_mergesort(arr, processes):
 #./multiprocessing_mergesort.py "[3]" "[10]" 10
 #./multiprocessing_mergesort.py "[1,2,3,10]" "[10,100,200,1000,10000]" 10
 if __name__ == "__main__":
-    #processes = eval(sys.argv[1])
-    #sizes = eval(sys.argv[2])
-    #count = int(sys.argv[3])
-    processes = multiprocessing.cpu_count()
-    sizes = [10, 100, 1000]
+    processes = eval(sys.argv[1])
+    sizes = eval(sys.argv[2])
+    count = int(sys.argv[3])
+    #processes = multiprocessing.cpu_count()
+    #sizes = [10, 100, 1000]
     print(processes, sizes)
-    for _p in range(1,processes):
+    for _p in processes:
         p = int(_p)
         for _n in sizes:
             n = int(_n)
             #print(n)
             #multiprocessing_benchmark(multiprocessing_mergesort, "multiprocessing_mergesort", p, n, count)
-            multiprocessing_benchmark(multiprocessing_mergesort, "multiprocessing_mergesort", p, n)
+            multiprocessing_benchmark(multiprocessing_mergesort, "multiprocessing_mergesort", p, n, count)
 
 
 

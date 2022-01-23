@@ -9,30 +9,27 @@ content = readfile("output.log").splitlines()
 x = []
 y = []
 data = []
-for p in range(1,12):
-    for n in [10, 100, 1000]:
-        lines = Shell.find_lines_with(content, what=f"mergesort_{n}_")
-        for entry in lines:
-            values = entry.split(",")
-            x.append(n)
-            y.append(float(values[3]))
-            data.append([n, float(values[3])])
-##print(y)
 
-
-
-#plt.scatter(x, y)
-#plt.xlabel('N')
-#plt.ylabel('Time/s')
-#plt.show()
+#plots by size (n = 1000)
+for p in range(1,12): #12 is # of processes on my computer
+    n = 10000
+    lines = Shell.find_lines_with(content, what=f"mergesort_{p}_")
+    for entry in lines:
+        values = entry.split(",")
+        x.append(p)
+        y.append(float(values[3]))
+        data.append([n, float(values[3])])
 
 sns.set_theme(style="ticks", palette="pastel")
 data = {
     "x":x,
     "y":y
 }
-sns.boxplot(x="x", y="y",
+ax = sns.boxplot(x="x", y="y",
 data=data)
-#sns.set_title(f"{n}")
+ax.set_title(f"size = {n}")
+ax.set_ylabel("time (s)")
+ax.set_xlabel("# of processes")
 sns.despine(offset=10, trim=True)
 plt.show()
+
