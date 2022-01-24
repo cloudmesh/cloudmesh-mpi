@@ -1,9 +1,10 @@
+#! /bin/bash -x
+
 #python multiprocessing_mergesort.py p s c| fgrep "# csv" | tee output.log
 
 #p = "[1,2,3,4,5,6,7,8,9,10,11"] # processors
 #s = "[1000]" # size of total
 #c = 10 # repeat of the same experiment with the same p and s
-set +x
 
 pip install -r requirements.txt
 
