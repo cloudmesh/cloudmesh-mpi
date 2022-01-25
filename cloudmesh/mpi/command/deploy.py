@@ -33,7 +33,7 @@ class Deploy:
         Console.info("Testing jobSet")
         jobSet = JobSet("ls", executor=JobSet.ssh)
         for host in self.hosts:
-            jobSet.add({"name": host, "host": host, "command": "sudo ls -al /; ls -al /home/root"})
+            jobSet.add_directory({"name": host, "host": host, "command": "sudo ls -al /; ls -al /home/root"})
         jobSet.run()
         self._print_JobSet(jobSet)
 
@@ -43,7 +43,7 @@ class Deploy:
         Console.info("This may take several minutes")
         jobSet = JobSet("install mpi", executor=JobSet.ssh)
         for host in self.hosts:
-            jobSet.add({"name": host, "host": host, "command": "sudo apt-get install openmpi-bin -y; source ~/ENV3/bin/activate; pip3 install mpi4py"})
+            jobSet.add_directory({"name": host, "host": host, "command": "sudo apt-get install openmpi-bin -y; source ~/ENV3/bin/activate; pip3 install mpi4py"})
         jobSet.run()
         d = dict(jobSet.job)
         self._print_JobSet(jobSet)
@@ -54,7 +54,7 @@ class Deploy:
         Console.info("This may take several minutes")
         jobSet = JobSet("install mpi", executor=JobSet.ssh)
         for host in self.hosts:
-            jobSet.add({"name": host, "host": host, "command": "sudo apt-get install mpich-doc mpich -y; source ~/ENV3/bin/activate; pip3 install mpi4py"})
+            jobSet.add_directory({"name": host, "host": host, "command": "sudo apt-get install mpich-doc mpich -y; source ~/ENV3/bin/activate; pip3 install mpi4py"})
         jobSet.run()
         d = dict(jobSet.job)
         self._print_JobSet(jobSet)
@@ -64,7 +64,7 @@ class Deploy:
         Console.info("mpicc --showme:version")
         jobSet = JobSet("mpi version", executor=JobSet.ssh)
         for host in self.hosts:
-            jobSet.add({"name": host, "host": host, "command": "mpicc --showme:version"})
+            jobSet.add_directory({"name": host, "host": host, "command": "mpicc --showme:version"})
         jobSet.run()
         self._print_JobSet(jobSet, stdout=True)
 
@@ -73,7 +73,7 @@ class Deploy:
         Console.info("mpicc --showme:version")
         jobSet = JobSet("mpi version", executor=JobSet.ssh)
         for host in self.hosts:
-            jobSet.add({"name": host, "host": host, "command": "mpichversion | head  -n 1"})
+            jobSet.add_directory({"name": host, "host": host, "command": "mpichversion | head  -n 1"})
         jobSet.run()
         self._print_JobSet(jobSet, stdout=True)
 
@@ -84,7 +84,7 @@ class Deploy:
         bashrc = "source ${HOME}/ENV3/bin/activate"
         jobSet = JobSet("python install", executor=JobSet.ssh)
         for host in self.hosts:
-            jobSet.add({"name": host, "host": host,
+            jobSet.add_directory({"name": host, "host": host,
                         "command": "sudo apt-get install python3-venv python3-wheel python3-dev build-essential python3-pip -y; pip3 install pip -U; python3 -m venv ~/ENV3 ; "
                        f'grep -qF -- "{bashrc}" ~/.bashrc || echo "{bashrc}" >> "${{HOME}}/.bashrc"'})
         jobSet.run()
@@ -95,7 +95,7 @@ class Deploy:
         Console.info("sudo apt-get --purge remove openmpi-bin -y; source ~/ENV3/bin/activate; pip3 uninstall mpi4py -y")
         jobSet = JobSet("uninstall mpi", executor=JobSet.ssh)
         for host in self.hosts:
-            jobSet.add({"name": host, "host": host,
+            jobSet.add_directory({"name": host, "host": host,
                         "command": "sudo apt-get --purge remove openmpi-bin -y; source ~/ENV3/bin/activate; pip3 uninstall mpi4py -y"})
         jobSet.run()
         d = dict(jobSet.job)
@@ -106,7 +106,7 @@ class Deploy:
         Console.info("sudo apt-get --purge remove mpich-doc mpich -y; source ~/ENV3/bin/activate; pip3 uninstall mpi4py -y")
         jobSet = JobSet("uninstall mpi", executor=JobSet.ssh)
         for host in self.hosts:
-            jobSet.add({"name": host, "host": host,
+            jobSet.add_directory({"name": host, "host": host,
                         "command": "sudo apt-get --purge remove mpich-doc mpich -y; source ~/ENV3/bin/activate; pip3 uninstall mpi4py -y"})
         jobSet.run()
         d = dict(jobSet.job)

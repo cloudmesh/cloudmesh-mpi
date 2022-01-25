@@ -1,5 +1,23 @@
 # Notes
 
+## Gregors new experiment.py
+
+Example:
+
+```bash
+./experiment.py --processes="[1-5,8]" --size="[100]" --repeat=10 
+```
+
+Help:
+
+```bash
+./experiment.py --help 
+```
+
+Bug:
+
+At this time the log file parameter is not implemented. We may remove it. 
+
 ## Simple use of git
 
 0. download
