@@ -26,14 +26,29 @@ def get_data(content, name="multiprocessing_mergesort"):
 		found.append(entry)
 	return found
 
+def get_ranges(data):
+	processes = []
+	sizes = []
+	counts = []
+	for line in data:
+		name, p, s, c, time, total = line
+		processes.append(p)
+		sizes.append(s)
+		counts.append(c)
+	return {
+		"processes": list(set(processes)),
+		"sizes": list(set(sizes)),
+		"counts": len(list(set(counts)))
+	}
+
 def processes_time_fixed_size(data, size, name=None, processes=None, label=None):
 	"""creates image from data with processes and time while keeping size constant"""
 	x = []
 	y = []
 	result = []
 	for entry in data:
-		label, p, size, count, t, total = entry
-		if processes is None or p in processes:
+		label, p, s, count, t, total = entry
+		if processes is None or p in processes and s==size:
 			x.append(p)
 			y.append(t)
 
@@ -70,7 +85,8 @@ def speedup_fixed_size(name, data, size):
 @click.option('--sort', default="multiprocessing_mergesort", help="sorting function")
 @click.option('--x', help="value for x axis", default=None)
 @click.option('--y', help="value for y axis", default=None)
-def analysis(processes, size, repeat, log, debug, sort, x, y):
+@click.option('--info', help="value for y axis", default=False)
+def analysis(processes, size, repeat, log, debug, sort, x, y, info):
 	"""performance experiment."""
 
 	processes = Parameter.expand(processes)
@@ -92,6 +108,10 @@ def analysis(processes, size, repeat, log, debug, sort, x, y):
 	data = get_data(content, name=sort)
 	if debug:
 		pprint(data)
+
+	if info:
+		pprint(get_ranges(data))
+		return
 
 	try:
 		Shell.run("mkdir -p images")
