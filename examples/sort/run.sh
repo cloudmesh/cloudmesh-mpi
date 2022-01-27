@@ -8,15 +8,15 @@
 
 pip install -r requirements.txt
 
-python multiprocessing_mergesort.py "[1,4,8,16]" "[10000]" 10 | fgrep "# csv" | tee output-speedup.log
+./experiment.py --processes="[1-p]" --size="[100]" --repeat=10 | fgrep "# csv" | tee output.log
 
-python graph_efficiency.py
-python graph_speedup.py
-python graph_proc.py
+#python graph_efficiency.py
+#python graph_speedup.py
+#python graph_proc.py
 
 
-python multiprocessing_mergesort.py "[8]" "[100,1000,10000]" 10 | fgrep "# csv" | tee output-num.log
+#python multiprocessing_mergesort.py "[8]" "[100,1000,10000]" 10 | fgrep "# csv" | tee output-num.log
 
-python graph_size.py
+#python graph_size.py
 
 

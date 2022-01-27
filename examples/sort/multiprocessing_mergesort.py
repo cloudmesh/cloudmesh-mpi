@@ -1,17 +1,20 @@
-#inspired by https://devopslog.wordpress.com/2012/04/15/mergesort-example-using-python-multiprocessing/
-#and https://gist.github.com/stephenmcd/39ded69946155930c347
+# inspired by https://devopslog.wordpress.com/2012/04/15/mergesort-example-using-python-multiprocessing/
+# and https://gist.github.com/stephenmcd/39ded69946155930c347
 import math
 import multiprocessing
+
 
 def sequential_merge(*args):
     l = []
     r = []
-    if len(args) == 1: l,r = args[0]
-    else: l,r = args
+    if len(args) == 1:
+        l, r = args[0]
+    else:
+        l, r = args
     res = []
     i = j = k = 0
     while i < len(l) and j < len(r):
-        #each time choose between element at front of l or r
+        # each time choose between element at front of l or r
         if l[i] <= r[j]:
             res.append(l[i])
             i += 1
@@ -19,7 +22,7 @@ def sequential_merge(*args):
             res.append(r[j])
             j += 1
 
-    #add any unused elements
+    # add any unused elements
     while i < len(l):
         res.append(l[i])
         i += 1
@@ -28,14 +31,16 @@ def sequential_merge(*args):
         j += 1
     return res
 
+
 def sequential_mergesort(arr):
     n = len(arr)
     if n > 1:
         mid = int(n / 2)
         l = sequential_mergesort(arr[:mid])
         r = sequential_mergesort(arr[mid:])
-        return sequential_merge(l,r)
+        return sequential_merge(l, r)
     return arr
+
 
 def multiprocessing_mergesort(arr, processes):
     pool = multiprocessing.Pool(processes=processes)
@@ -53,4 +58,3 @@ def multiprocessing_mergesort(arr, processes):
         if extra: arr1.append(extra)
 
     return arr1[0]
-
