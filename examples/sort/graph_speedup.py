@@ -11,6 +11,10 @@ y = []
 data = []
 nums = []
 
+# is this is wrongly calculated as the average has to be calculated first?
+# should we have three graphs, one for values vs average(1), one for values vs min(1)  one for values vs max(1)
+# count is const
+
 #plots by speedup (n = 10000)
 for p in range(1,12): #12 is # of processes on my computer
     n = 10000

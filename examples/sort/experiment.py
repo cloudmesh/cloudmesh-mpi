@@ -13,6 +13,12 @@ def get_sort_by_name(name="multiprocessing_mergesort"):
 	else:
 		return None
 
+def get_label(name, p, n, i, tag=None):
+	if tag is None:
+		tag = os.uname().nodename
+	return f"{tag}_{sort}_{p}_{n}_{i}"
+
+
 @click.command()
 @click.option('--processes', default="[1]", help='Number of processes as array. [1-2,8,16]')
 @click.option('--size', default="[100]", help='Total size of the array to be sorted as array. [10, 100]')
@@ -52,12 +58,13 @@ def experiment(processes, size, repeat, log, clear, debug, sort):
 		for n in sizes:
 			for i in range(repeat):
 				print(f"Experiment: size={n} processes={p} repeat={i}")
+				label = get_label(sort, p, n, i)
 				a = generate_random(n)
 				if debug:
 					print(a)
-				StopWatch.start(f"{sort}_{p}_{n}_{i}")
+				StopWatch.start(label)
 				a = sort_algorithm(a, p)
-				StopWatch.stop(f"{sort}_{p}_{n}_{i}")
+				StopWatch.stop(label)
 				if debug:
 					print(a)
 				assert verify("ascending", a)

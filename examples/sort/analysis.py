@@ -4,7 +4,7 @@
 Example:
 	./analysis.py --size="[100]"; gopen images/*.pdf
 		create all images for the experiment with size 100
-		
+
 	./analysis.py --info=True
 		shows the experiment ranges for count, sizes, processes
 
