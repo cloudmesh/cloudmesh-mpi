@@ -8,7 +8,9 @@
 
 pip install -r requirements.txt
 
-./experiment.py --processes="[1-p]" --size="[100]" --repeat=10 | fgrep "# csv" | tee output.log
+#./experiment.py --processes="[1-p]" --size="[100]" --repeat=10 | fgrep "# csv" | tee output.log
+./experiment.py --processes="[1-t]" --size="[100]" --repeat=10 | tee output.log
+#| fgrep "# csv" | tee output.log
 
 #python graph_efficiency.py
 #python graph_speedup.py

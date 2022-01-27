@@ -8,7 +8,6 @@ from cloudmesh.common.parameter import Parameter
 import psutil
 import os
 
-
 def get_sort_by_name(name="multiprocessing_mergesort"):
     if name in ["mp-mergesort", "multiprocessing_mergesort"]:
         from multiprocessing_mergesort import multiprocessing_mergesort
@@ -41,8 +40,8 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag):
         if not c:
             return ""
 
-    p = psutil.cpu_count()
-    t = psutil.cpu_count(logical=False)
+    t = psutil.cpu_count()
+    p = psutil.cpu_count(logical=False)
 
     processes = processes.replace("p", str(p)).replace("t", str(t))
     processes = Parameter.expand(processes)
@@ -50,6 +49,8 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag):
 
     processes = [int(number) for number in processes]
     sizes = [int(number) for number in sizes]
+
+    total = len(processes) * len(sizes) * repeat
 
     print("Starting experiment")
 
@@ -61,12 +62,17 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag):
     print(f"Debug:     {debug}")
     print(f"Algorithm: {sort}")
     print(f"Tag:       {tag}")
+    print(f"Total:     {total}")
 
     sort_algorithm = get_sort_by_name(sort)
+
+    c = 0
     for p in processes:
         for n in sizes:
             for i in range(repeat):
-                print(f"Experiment: size={n} processes={p} repeat={i}")
+                c = c + 1
+                progress = total - c
+                print(f"Experiment {progress:<10}: size={n} processes={p} repeat={i}", end="\r")
                 label = get_label(sort, p, n, i, tag)
                 a = generate_random(n)
                 if debug:
@@ -77,6 +83,7 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag):
                 if debug:
                     print(a)
                 assert verify("ascending", a)
+
     StopWatch.benchmark()
 
 
