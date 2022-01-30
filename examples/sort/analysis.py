@@ -23,7 +23,7 @@ from pprint import pprint
 def get_data(content, name="multiprocessing_mergesort"):
 	found = []
 	"csv,multiprocessing_mergesort_1_10000_3,ok,0.305,2.24,2022-01-23 22:40:24,,None,BL-UITS-NWLT005,alexandra,Darwin,10.15.7 "
-	lines = Shell.find_lines_with(content, what=f"# csv,{name}_")
+	lines = Shell.find_lines_with(content, what=f"# csv")
 	for line in lines:
 		entries = line.split(",")
 		entry = [entries[a] for a in [1,3,4]]
@@ -111,13 +111,15 @@ def analysis(processes, size, repeat, log, debug, sort, x, y, info):
 	print(f"Debug:     {debug}")
 
 	content = readfile(log).splitlines()
+	pprint(content)
 	data = get_data(content, name=sort)
 	if debug:
+		pprint(content)
 		pprint(data)
 
 	if info:
 		pprint(get_ranges(data))
-		return
+	return
 
 	try:
 		Shell.run("mkdir -p images")
