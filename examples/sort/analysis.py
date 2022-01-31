@@ -24,11 +24,12 @@ def get_data(content, name="multiprocessing_mergesort"):
 	found = []
 	"csv,multiprocessing_mergesort_1_10000_3,ok,0.305,2.24,2022-01-23 22:40:24,,None,BL-UITS-NWLT005,alexandra,Darwin,10.15.7 "
 	lines = Shell.find_lines_with(content, what=f"# csv")
-	for line in lines:
+
+	for line in lines[1:]:
 		entries = line.split(",")
 		entry = [entries[a] for a in [1,3,4]]
 		processes, size, count = entry[0].split(name)[1].split("_")[1:]
-		entry = [name, int(processes), int(size), int(count), float(entry[1]), float(entry[2])]
+		entry = [name, int(processes), int(size), int(count), float(entry[1]), float(entry[2]), entries[8], entries[9]]
 		found.append(entry)
 	return found
 
@@ -53,7 +54,9 @@ def processes_time_fixed_size(data, size, name=None, processes=None, label=None)
 	y = []
 	result = []
 	for entry in data:
-		label, p, s, count, t, total = entry
+		entry = [name, int(processes), int(size), int(count), float(entry[1]), float(entry[2]), entries[8], entries[9]]
+
+		label, p, s, count, t, total, host, user = entry
 		if processes is None or p in processes and s==size:
 			x.append(p)
 			y.append(t)
@@ -62,6 +65,9 @@ def processes_time_fixed_size(data, size, name=None, processes=None, label=None)
 		"x": x,
 		"y": y
 	}
+
+	pprint (x)
+	pprint(y)
 
 	if name is None:
 		name = f"images/processes_time_{size}"
@@ -111,10 +117,10 @@ def analysis(processes, size, repeat, log, debug, sort, x, y, info):
 	print(f"Debug:     {debug}")
 
 	content = readfile(log).splitlines()
-	pprint(content)
+	#pprint(content)
 	data = get_data(content, name=sort)
 	if debug:
-		pprint(content)
+		#print(content)
 		pprint(data)
 
 	if info:
