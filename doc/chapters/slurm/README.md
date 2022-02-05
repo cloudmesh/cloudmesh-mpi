@@ -103,11 +103,11 @@ ssh into the manager node (in our case, `red`) via this command:
 (ENV3) you@yourhostcomputer $ ssh red
 ```
 
-Now download and run the script:
+Now download and run the script (make sure that cloudmesh is installed on the Pi):
 
 ```bash
 (ENV3) pi@red:~ $ curl -L https://raw.githubusercontent.com/cloudmesh/get/main/pi/slurm/index.html --output slurm.py
-(ENV3) pi@red:~ $ python slurm.py
+(ENV3) pi@red:~ $ python3 slurm.py
 ```
 
 The first step will install needed packages such as ntpdate and will reboot at the end. Once the reboot is executed,
@@ -115,7 +115,7 @@ wait two minutes for the cluster to come back online, ssh into manager again, an
 
 ```bash
 (ENV3) you@yourhostcomputer $ ssh red
-(ENV3) pi@red:~ $ python slurm.py
+(ENV3) pi@red:~ $ python3 slurm.py
 ```
 
 This will run the second step, which will prompt the user to insert a blank USB in the top, blue USB3.0 port
@@ -129,7 +129,7 @@ After reboot completes, ssh into manager again and rerun script:
 
 ```bash
 (ENV3) you@yourhostcomputer $ ssh red
-(ENV3) pi@red:~ $ python slurm.py
+(ENV3) pi@red:~ $ python3 slurm.py
 ```
 
 This will run the third step, which starts the nfs service and uses the nfs to copy Slurm configuration files which
@@ -140,7 +140,7 @@ After reboot completes, ssh into manager again and rerun script for the last ste
 
 ```bash
 (ENV3) you@yourhostcomputer $ ssh red
-(ENV3) pi@red:~ $ python slurm.py
+(ENV3) pi@red:~ $ python3 slurm.py
 ```
 
 Step 4 copies the munge key and attempts to run slurm. If slurm runs successfully, the output should have
