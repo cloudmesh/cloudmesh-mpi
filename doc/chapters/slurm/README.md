@@ -9,7 +9,7 @@ system used on many advanced supercomputers. However, it is possible to install 
 Raspberry Pis.
 
 This tutorial will use a cluster of four Raspberry Pi 4 Model B computers running Raspbian OS 10 (codename buster). We 
-use 64 GB SD cards on each of the Pis. In addition, also use a single USB stick connected to the manager Pi, which 
+use 64 GB SD cards on each of the Pis. In addition, we also use a single USB stick connected to the manager Pi, which 
 serves as shared storage between all of the Pis. This USB stick can be a standard flash drive, a USB SD card adapter 
 with an SD card inside, or it can even be replaced by a NAS box connected to the network. All that matters is that it 
 must be mountable, and it must be greater than 34 MB so we can share the configuration files.  For simplicity, we use 
@@ -39,25 +39,34 @@ macOS: <https://cloudmesh.github.io/pi/tutorial/sdcard-burn-pi-headless/>
 Please, decide which burn host you like to use and follow the instructions to set up a cluster
 
 This tutorial assumes that your manager node's hostname is `red` and your worker nodes' hostnames are `red01`, `red02`, 
-and `red03`. You may have additional workers; be sure to alter the script accordingly (e.g. instead of 
-`red,red0[1-3]` perhaps you have `red,red0[1-4]` if you have five Pis total instead of four).
+and `red03`. You may have additional workers, which is okay because the script is scalable. All that matters is that
+the user must enter the workers naming schema accordingly. For example, someone with four workers (`red01`, `red02`,
+`red03`, and `red04`) will enter `red0[1-4]` at the beginning of the script's execution, when prompted.
 
 ## 2.1 Raspberry Pi OS Compatibility
 
-Note: if you want to burn the 64 bit OS or a Legacy version of Raspberry OS use the following series of commands instead. This creates a default cluster configuration, and then changes the OS tag to latest-lite-64. For the legacy version use the latest-lite-legacy tag or latest-full legacy tag. Currently (12/16/21) the legacy version is based on Debian Buster while the latest version is based on Debian Bullseye. The Raspberry Pi team released the legacy OS to solve compatibility issues that arose during their upgrade to the Bullseye image. You must research to see which OS your application supports.
+WARNING: As of January 13, 2022, SLURM can presently only be run on a previous version of Raspberry Pi OS. This version is known as Buster and has the version number `10`.
 
-These commands are meant to be executed on Linux. Equivalent commands for setting the legacy tags for other operating systems are forthcoming.
+Note: if you want to burn the legacy version (codename buster) of Raspberry OS use the following series of commands instead. This creates a default cluster configuration, and then changes the OS tag to latest-lite-legacy. For the newest 64-bit version, use the `latest-lite-64` tag or `latest-full-64` tag. Currently (2/6/22) the legacy version is based on Debian Buster while the latest version is based on Debian Bullseye. The Raspberry Pi team released the legacy OS to solve compatibility issues that arose during their upgrade to the Bullseye image. You must research to see which OS your application supports.
 
 ```bash
 cms burn image versions --refresh  
-cms inventory add cluster "red,red0[1-4]"
-cms inventory set "red,red0[1-4]" tag to latest-lite-64 --inventory="inventory-red.yaml"
-cms burn raspberry "red,red0[1-4]" --device=/dev/sdb --inventory="inventory-red.yaml" 
+cms inventory add cluster "red,red0[1-3]"
+cms inventory set "red,red0[1-3]" tag to latest-lite-legacy --inventory="inventory-red.yaml"
+cms burn raspberry "red,red0[1-3]" --device=/dev/sdb --inventory="inventory-red.yaml" 
 ```
 
-TODO: fix this. Slurm is presently not easily run on Bullseye. It is more compatible with Buster.
+or on windows, use
 
-WARNING: As of January 13, 2022, SLURM can presently only be run on a previous version of Raspberry Pi OS. This version is known as Buster and has the number x.x it can be downloaded from the following link, or through our convenient downloader on cloudmesh in the documented fashion in section x.x.
+```bash
+(ENV3) (admin) you@yourlaptop $ cms burn image versions --refresh
+(ENV3) (admin) you@yourlaptop $ cms burn image get latest-lite-legacy
+(ENV3) (admin) you@yourlaptop $ cms inventory add cluster "red,red0[1-3]"
+(ENV3) (admin) you@yourlaptop $ cms inventory set "red,red0[1-3]" tag to latest-lite-legacy --inventory="inventory-red.yaml"
+(ENV3) (admin) you@yourlaptop $ cms burn raspberry "red,red0[1-3]" --password=myloginpassword --disk=4 --locale=en_US.UTF-8 --timezone="America-New_York" "--ssid='Net Work'" --wifipassword=mywifipassword
+```
+
+If burning latest 64 bit instead, change `latest-lite-legacy` to `latest-lite-64` where appropriate in the aforementioned commands.
 
 ## 3. Installation
 
