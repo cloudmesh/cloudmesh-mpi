@@ -21,6 +21,8 @@ $ cms host key gather "red,red0[1-3]" \"~/.ssh/cluster_red_keys\"
 host key gather red,red0[1-3] "~/.ssh/cluster_red_keys"
 Command ****OUTPUT**** 
 
+output omitted for clarity and security!
+
 Timer: 3.0269s Load: 0.0040s host key gather red,red0[1-3] "~/.ssh/cluster_red_keys"
 (ENV39)
 
