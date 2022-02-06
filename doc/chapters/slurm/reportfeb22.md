@@ -35,10 +35,6 @@ ERROR: The file does not exist
 Timer: 0.0080s Load: 0.0040s host key scatter red,red0[1-3] "~/.ssh/cluster_red_keys"
 (ENV39)
 you@yourlaptop MINGW64 MINGW64 ~
-$ cms host key scatter "red,red0[1-3]" \"~/.ssh/cluster_red_keys\"
-host key scatter red,red0[1-3] "~/.ssh/cluster_red_keys"
-ERROR: The file does not exist
-Timer: 0.0080s Load: 0.0040s host key scatter red,red0[1-3] "~/.ssh/cluster_red_keys"
 (ENV39)
 you@yourlaptop MINGW64 MINGW64 ~
 $ cd .ssh
