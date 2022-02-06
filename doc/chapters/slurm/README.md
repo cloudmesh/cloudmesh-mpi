@@ -163,6 +163,8 @@ red01
 red03
 ```
 
+If this does not happen, wait a few seconds in case the other nodes are still booting. Once they become available, SLURM should detect the newly allocated resources and proceed with printing the hostnames. This may take a minute.
+
 ## 4. Using SLURM
 
 ### 4.1 Creating a Job
