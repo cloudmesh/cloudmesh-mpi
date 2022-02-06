@@ -120,6 +120,7 @@ wait two minutes for the cluster to come back online, ssh into manager again, an
 
 This will run the second step, which will prompt the user to insert a blank USB in the top, blue USB3.0 port
 of the manager Pi. Confirm that sda1 points to the correct device when prompted and the script will format the USB.
+**Everything on the USB will be deleted. Make sure there is nothing important on it.**
 The script will create a shared file system with the USB for all of the Pis.
 
 Furthermore, step 2 retrieves the UUID of the USB and edits system config files so it mounts on boot. It also downloads
