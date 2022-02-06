@@ -6,7 +6,7 @@ I suggest following 4.2 instead of 4.1. I also suggest a change to the documenta
 Continue until you reach Section 5.
 
 In Section 5, instead of doing the first block of code, we do
-```
+```bash
 cms burn image versions --refresh
 cms burn image get latest-lite-legacy
 ```
@@ -15,9 +15,14 @@ Ensure `cms burn info` works by running the command.
 
 Do not use `cms burn raspberry` until doing the following (we assume you have a manager and three workers, if not, change accordingly):
 
-```
+```bash
 (ENV3) (admin) you@yourlaptop $ cms inventory add cluster "red,red0[1-3]"
 (ENV3) (admin) you@yourlaptop $ cms inventory set "red,red0[1-3]" tag to latest-lite-legacy --inventory="inventory-red.yaml"
+```
+
+Then do `cms burn raspberry` as follows, altering to accomodate your own network where needed:
+
+```bash
 (ENV3) (admin) you@yourlaptop $ cms burn raspberry "red,red0[1-4]" --password=myloginpassword --disk=4 --locale=en_US.UTF-8 --timezone="America-New_York" "--ssid='Net Work'" --wifipassword=mywifipassword
 ```
 
