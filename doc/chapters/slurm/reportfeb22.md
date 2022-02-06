@@ -20,10 +20,10 @@ Do not use `cms burn raspberry` until doing the following (we assume you have a 
 (ENV3) (admin) you@yourlaptop $ cms inventory set "red,red0[1-3]" tag to latest-lite-legacy --inventory="inventory-red.yaml"
 ```
 
-Then do `cms burn raspberry` as follows, altering to accomodate your own network where needed:
+Then do `cms burn raspberry` as follows, altering to accomodate your own setup where needed:
 
 ```bash
-(ENV3) (admin) you@yourlaptop $ cms burn raspberry "red,red0[1-4]" --password=myloginpassword --disk=4 --locale=en_US.UTF-8 --timezone="America-New_York" "--ssid='Net Work'" --wifipassword=mywifipassword
+(ENV3) (admin) you@yourlaptop $ cms burn raspberry "red,red0[1-3]" --password=myloginpassword --disk=4 --locale=en_US.UTF-8 --timezone="America-New_York" "--ssid='Net Work'" --wifipassword=mywifipassword
 ```
 
 Remember, like in the example above, when doing `cms burn raspberry` command, do NOT include `--new` parameter! This way, the inventory we just created is not disregarded.
