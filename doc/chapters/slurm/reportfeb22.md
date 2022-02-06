@@ -1,5 +1,5 @@
-Begin with Python 3.9.8 on Windows 10 Pro
-Begin from Section 4 in raspberry burn windows tutorial
+Begin with Python 3.9.8 on Windows 10 Pro.
+Begin from Section 4 in [raspberry burn windows tutorial](https://cloudmesh.github.io/pi/tutorial/raspberry-burn/#4-installing-cloudmesh-and-setup)
 
 I suggest adding `cd ..` immediately before `cd cloudmesh-inventory` in section 4.2.
 
