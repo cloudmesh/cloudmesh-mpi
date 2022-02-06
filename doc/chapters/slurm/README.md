@@ -110,7 +110,7 @@ Now download and run the script (make sure that cloudmesh is installed on the Pi
 (ENV3) pi@red:~ $ python3 slurm.py
 ```
 
-The first step will install needed packages such as ntpdate and will reboot at the end. Once the reboot is executed,
+The first step will prompt the user to input the worker Pis' naming schema. For example, if the setup has three workers named `red01`, `red02`, and so on, then the user would input `red0[1-3]`. Then the script will install needed packages such as ntpdate and reboot at the end. Once the reboot is executed,
 wait two minutes for the cluster to come back online, ssh into manager again, and rerun script:
 
 ```bash
