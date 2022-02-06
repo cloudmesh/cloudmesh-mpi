@@ -23,9 +23,9 @@ Do not use `cms burn raspberry` until doing the following (we assume you have a 
 
 Remember, like in the example above, when doing `cms burn raspberry` command, do NOT include `--new` parameter! This way, the inventory we just created is not disregarded.
 
-Continue from section 6 after inserting burned cards into Pis and booting.
+After inserting burned cards into Pis and booting: before attempting to ssh to the Pis, ensure that on the laptop, the ~/.ssh/known_hosts file does not have conflicting entries for past red configurations. We suggest that you remove all preexisting entries that start with "red".
 
-When attempting to ssh to the Pis, ensure that on the laptop, the ~/.ssh/known_hosts file does not have conflicting entries for past red configurations.
+Continue from section 6 after inserting burned cards into Pis, removing old entries in known_hosts (if applicable), and booting.
 
 If you already have a cluster_red_keys file when trying to gather, delete the old one.
 
