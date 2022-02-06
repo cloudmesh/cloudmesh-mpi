@@ -69,3 +69,5 @@ host key scatter red,red0[1-3] cluster_red_keys
 Timer: 4.0332s Load: 0.0040s host key scatter red,red0[1-3] cluster_red_keys
 (ENV39)
 ```
+
+Do section 6.4 on red, the manager Pi, but with the newest development version.
