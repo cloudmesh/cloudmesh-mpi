@@ -144,8 +144,9 @@ After reboot completes, ssh into manager again and rerun script for the last ste
 (ENV3) pi@red:~ $ python3 slurm.py
 ```
 
-Step 4 copies the munge key and attempts to run slurm. If slurm runs successfully, the output should have
-the names of the workers, in any order:
+Step 4 copies the munge key and reboots the cluster. 
+
+`ssh` back into the manager Pi and try to run slurm by issuing command `srun --nodes=3 hostname` (or the number for --nodes can be changed according to the number of workers). If slurm runs successfully, the output should have the names of the workers, in any order:
 
 ```bash
 red02
