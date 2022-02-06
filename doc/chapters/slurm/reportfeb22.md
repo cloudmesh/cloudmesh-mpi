@@ -1,7 +1,9 @@
 Begin with Python 3.9.8 on Windows 10 Pro.
-Begin from Section 4 in [raspberry burn windows tutorial](https://cloudmesh.github.io/pi/tutorial/raspberry-burn/#4-installing-cloudmesh-and-setup)
+Begin from Section 4 in [raspberry burn windows tutorial](https://cloudmesh.github.io/pi/tutorial/raspberry-burn-windows/#4-installing-cloudmesh-and-setup)
 
-I suggest adding `cd ..` immediately before `cd cloudmesh-inventory` in section 4.2.
+I suggest following 4.2 instead of 4.1. I also suggest a change to the documentation, adding `cd ..` immediately before `cd cloudmesh-inventory` in section 4.2.
+
+Continue until you reach Section 5.
 
 In Section 5, instead of doing the first block of code, we do
 ```
@@ -9,13 +11,27 @@ cms burn image versions --refresh
 cms burn image get latest-lite-legacy
 ```
 
-when doing `cms burn raspberry` command, do NOT include `--new` parameter!
+Ensure `cms burn info` works by running the command.
+
+Do not use `cms burn raspberry` until doing the following (we assume you have a manager and three workers, if not, change accordingly):
+
+```
+(ENV3) (admin) you@yourlaptop $ cms inventory add cluster "red,red0[1-3]"
+(ENV3) (admin) you@yourlaptop $ cms inventory set "red,red0[1-3]" tag to latest-lite-legacy --inventory="inventory-red.yaml"
+(ENV3) (admin) you@yourlaptop $ cms burn raspberry "red,red0[1-4]" --password=myloginpassword --disk=4 --locale=en_US.UTF-8 --timezone="America-New_York" "--ssid='Net Work'" --wifipassword=mywifipassword
+```
+
+Remember, like in the example above, when doing `cms burn raspberry` command, do NOT include `--new` parameter! This way, the inventory we just created is not disregarded.
+
+Continue from section 6 after inserting burned cards into Pis and booting.
 
 When attempting to ssh to the Pis, ensure that on the laptop, the ~/.ssh/known_hosts file does not have conflicting entries for past red configurations.
 
 If you already have a cluster_red_keys file when trying to gather, delete the old one.
 
 Another note: when scattering the keys on windows, it might help to cd to the .ssh folder if you receive a "ERROR The file does not exist" error otherwise.
+
+See the following output which shows why it is necessary to `cd` to .ssh folder.
 
 ```
 you@yourlaptop MINGW64 ~
