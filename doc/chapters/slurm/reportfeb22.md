@@ -13,6 +13,8 @@ when doing `cms burn raspberry` command, do NOT include `--new` parameter!
 
 When attempting to ssh to the Pis, ensure that on the laptop, the ~/.ssh/known_hosts file does not have conflicting entries for past red configurations.
 
+If you already have a cluster_red_keys file when trying to gather, delete the old one.
+
 Another note: when scattering the keys on windows, it might help to cd to the .ssh folder if you receive a "ERROR The file does not exist" error otherwise.
 
 ```
