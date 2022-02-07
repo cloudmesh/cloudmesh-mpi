@@ -66,7 +66,7 @@ or on windows, use
 (ENV3) (admin) you@yourlaptop $ cms burn raspberry "red,red0[1-3]" --password=myloginpassword --disk=4 --locale=en_US.UTF-8 --timezone="America-New_York" "--ssid='Net Work'" --wifipassword=mywifipassword
 ```
 
-If burning latest 64 bit instead, change `latest-lite-legacy` to `latest-lite-64` (or `latest-full-64` for desktop environment) where appropriate in the aforementioned commands. Not using the legacy tag will likely result in a loss of functionality for SLURM.
+If burning latest 64 bit instead, change `latest-lite-legacy` to `latest-lite-64` (or `latest-full-64` for desktop environment) where appropriate in the aforementioned commands. However, doing this will likely result in a loss of functionality for SLURM.
 
 ## 3. Installation
 
