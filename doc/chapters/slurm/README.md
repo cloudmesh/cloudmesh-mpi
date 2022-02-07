@@ -47,7 +47,7 @@ the user must enter the workers naming schema accordingly. For example, someone 
 
 WARNING: As of January 13, 2022, SLURM can presently only be run on a previous version of Raspberry Pi OS. This version is known as Buster and has the version number `10`.
 
-Note: if you want to burn the legacy version (codename buster) of Raspberry OS use the following series of commands instead. This creates a default cluster configuration, and then changes the OS tag to latest-lite-legacy. For the newest 64-bit version, use the `latest-lite-64` tag or `latest-full-64` tag. Currently (2/6/22) the legacy version is based on Debian Buster while the latest version is based on Debian Bullseye. The Raspberry Pi team released the legacy OS to solve compatibility issues that arose during their upgrade to the Bullseye image. You must research to see which OS your application supports.
+Note: if you want to burn the legacy version (codename buster) of Raspberry OS use the following series of commands instead. This creates a default cluster configuration, and then changes the OS tag to latest-lite-legacy. Currently (2/6/22) the legacy version is based on Debian Buster while the latest version is based on Debian Bullseye. The Raspberry Pi team released the legacy OS to solve compatibility issues that arose during their upgrade to the Bullseye image. You must research to see which OS your application supports.
 
 ```bash
 cms burn image versions --refresh  
@@ -66,7 +66,7 @@ or on windows, use
 (ENV3) (admin) you@yourlaptop $ cms burn raspberry "red,red0[1-3]" --password=myloginpassword --disk=4 --locale=en_US.UTF-8 --timezone="America-New_York" "--ssid='Net Work'" --wifipassword=mywifipassword
 ```
 
-If burning latest 64 bit instead, change `latest-lite-legacy` to `latest-lite-64` where appropriate in the aforementioned commands.
+If burning latest 64 bit instead, change `latest-lite-legacy` to `latest-lite-64` (or `latest-full-64` for desktop environment) where appropriate in the aforementioned commands. Not using the legacy tag will likely result in a loss of functionality for SLURM.
 
 ## 3. Installation
 
