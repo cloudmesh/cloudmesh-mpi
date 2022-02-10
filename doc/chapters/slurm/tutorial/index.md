@@ -36,7 +36,7 @@ nodes.
 
 The script is meant to automate an arduous process of logging in and switching back and forth from manager to worker,
 with many commands along the way. The script takes inspiration from preexisting tutorials such as those written by
-Garrett Mills [^mills].
+Garrett Mills. [^mills]
 
 We assume that the user has access and can log in to all nodes; we also assume that manager has the hostname `red`
 and that the workers follow an incremental naming schema, such as `red01`, `red02`, `red03`, `red04`, and so on,
