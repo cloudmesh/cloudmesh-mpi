@@ -148,11 +148,14 @@ Create a new file called `sort.slurm`. Take note that the filename nor the file 
 (ENV3) pi@red:~ $ sudo nano sort.slurm
 ```
 
-Paste the following contents inside the nano interface by copying the following and then by pressing `Shift + Insert` inside the terminal.
+Paste the following contents inside the nano interface by copying the following and then by pressing `Shift + Insert` inside the terminal. You can also change the number after `--nodes=` accordingly if you have more than or less than 3 workers.
 
 ```
 #!/bin/sh
+#SBATCH -p mycluster
 #SBATCH --time=1
+#SBATCH --nodes=3
+
 srun hostname | sort
 ```
 
@@ -163,11 +166,17 @@ You can execute the batch script by running the following:
 (ENV3) pi@red:~ $ sbatch sort.slurm
 ```
 
-Then, ssh into your first worker node (in our case, it is `red01`) and view the contents. The name of the output file will depend on the number of the batch job.
+Then, ssh into your first worker node (in our case, it is `red01`) and view the contents. The name of the output file will depend on the number of the batch job. Issue `ls` command, as seen in the following code, to see what the file name is.
 
 ```bash
 (ENV3) pi@red~ $ exit
-(ENV3) you@yourhostcomputer $ 
+(ENV3) you@yourhostcomputer~ $ ssh red01
+(ENV3) pi@red01~ $ ls
+slurm-23.out
+(ENV3) pi@red01~ $ cat slurm-23.out
+red01
+red02
+red03
 ```
 
 More extensive example 
