@@ -79,7 +79,7 @@ login to your manager Pi and issue this command after you SSH into it:
 pi@red $ curl -Ls https://raw.githubusercontent.com/cloudmesh/get/main/pi/index.html | sh -
 ```
 
-## 3. Install SLURM
+## 3. Installing SLURM
 
 ssh into the manager node (in our case, `red`) via this command:
 
