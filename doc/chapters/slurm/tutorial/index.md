@@ -87,7 +87,7 @@ ssh into the manager node (in our case, `red`) via this command:
 (ENV3) you@yourhostcomputer $ ssh red
 ```
 
-Now download and run the script (make sure that cloudmesh is installed on the Pi, perhaps by following this tutorial: <https://cloudmesh.github.io/pi/tutorial/raspberry-burn-windows/#64-installing-cms-on-a-pi>):
+Now download and run the script:
 
 ```bash
 (ENV3) pi@red:~ $ curl -L https://raw.githubusercontent.com/cloudmesh/get/main/pi/slurm/index.html --output slurm.py
