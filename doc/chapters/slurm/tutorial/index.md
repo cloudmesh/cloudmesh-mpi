@@ -140,6 +140,41 @@ red03
 
 If this does not happen, wait a few seconds in case the other nodes are still booting. Once they become available, SLURM should detect the newly allocated resources and proceed with printing the hostnames. This may take a minute.
 
-# References 
+## sbatch
 
-[^mills]: Building a Raspberry Pi Cluster, Garrett Mills <https://glmdev.medium.com/building-a-raspberry-pi-cluster-784f0df9afbd>
+sort.slurm
+
+```
+#!/bin/sh
+#SBATCH --time=1
+srun hostname | sort
+```
+
+Calling it 
+
+```
+$ sbatch sort.slurm
+```
+
+More extensive example 
+
+for loop with multiple sbatch jobs
+
+## squeue
+
+list 
+
+## look at mpi program 
+
+run with srun 
+run with sbatch
+
+add ref to mpi manual (ours)
+
+* <https://cloudmesh.github.io/cloudmesh-mpi//report-mpi.pdf> 
+
+add link to how we set things up on windows ... (make sure its exactly what you did).
+
+
+## References 
+
