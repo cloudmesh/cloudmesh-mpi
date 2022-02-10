@@ -65,7 +65,19 @@ through MPI (Message Passing Interface) and for forays into artificial intellige
 * Any number of worker Pis with OS version Buster
 * The cluster of manager Pi and worker Pi(s) must be preconfigured with login access to each node; they must also have Internet access
 
+If you have not yet set up your cluster to communicate with each other and would like an automated process, please see
+[cloudmesh.github.io](https://cloudmesh.github.io/pi/tutorial/raspberry-burn-windows/#2-pre-requisites) for automated
+burning of SD cards to create a quick configured cluster.
+
 For parts for different Pi cluster configurations, please see our links on [piplanet.org](https://cloudmesh.github.io/pi/docs/hardware/parts/)
+
+If you already have a configured cluster that can log in to each node, but you do not have cloudmesh installed, simply
+login to your manager Pi and issue this command after you SSH into it:
+
+```bash
+(ENV3) you@yourhostcomputer $ ssh red
+pi@red $ curl -Ls https://raw.githubusercontent.com/cloudmesh/get/main/pi/index.html | sh -
+```
 
 ### 3 Download and Run Scripts
 
