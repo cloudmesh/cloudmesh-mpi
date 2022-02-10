@@ -79,7 +79,7 @@ login to your manager Pi and issue this command after you SSH into it:
 pi@red $ curl -Ls https://raw.githubusercontent.com/cloudmesh/get/main/pi/index.html | sh -
 ```
 
-### 3 Download and Run Scripts
+## 3. Download and Run Scripts
 
 ssh into the manager node (in our case, `red`) via this command:
 
@@ -140,9 +140,15 @@ red03
 
 If this does not happen, wait a few seconds in case the other nodes are still booting. Once they become available, SLURM should detect the newly allocated resources and proceed with printing the hostnames. This may take a minute.
 
-## sbatch
+## 4. Testing SLURM by Running a Batch Script
 
-sort.slurm
+Create a new file called `sort.slurm`. Take note that the filename nor the file extension do not really matter. We are simply creating a file with text inside.
+
+```bash
+(ENV3) pi@red:~ $ sudo nano sort.slurm
+```
+
+Paste the following contents inside the nano interface by copying the following and then by pressing `Shift + Insert` inside the terminal.
 
 ```
 #!/bin/sh
@@ -150,10 +156,18 @@ sort.slurm
 srun hostname | sort
 ```
 
-Calling it 
+After pasting the contents, exit nano by using `Ctrl + X` and type `y` and press `Enter`.
+You can execute the batch script by running the following:
 
+```bash
+(ENV3) pi@red:~ $ sbatch sort.slurm
 ```
-$ sbatch sort.slurm
+
+Then, ssh into your first worker node (in our case, it is `red01`) and view the contents. The name of the output file will depend on the number of the batch job.
+
+```bash
+(ENV3) pi@red~ $ exit
+(ENV3) you@yourhostcomputer $ 
 ```
 
 More extensive example 
