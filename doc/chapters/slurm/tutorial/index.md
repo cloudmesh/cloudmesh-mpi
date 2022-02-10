@@ -79,7 +79,7 @@ login to your manager Pi and issue this command after you SSH into it:
 pi@red $ curl -Ls https://raw.githubusercontent.com/cloudmesh/get/main/pi/index.html | sh -
 ```
 
-## 3. Download and Run Scripts
+## 3. Install SLURM
 
 ssh into the manager node (in our case, `red`) via this command:
 
@@ -140,7 +140,9 @@ red03
 
 If this does not happen, wait a few seconds in case the other nodes are still booting. Once they become available, SLURM should detect the newly allocated resources and proceed with printing the hostnames. This may take a minute.
 
-## 4. Testing SLURM by Running a Batch Script
+## 4. Using SLURM
+
+### 4.1 Using `sbatch`
 
 Create a new file called `sort.slurm`. Take note that the filename nor the file extension do not really matter. We are simply creating a file with text inside.
 
@@ -183,9 +185,18 @@ More extensive example
 
 for loop with multiple sbatch jobs
 
-## squeue
+### 4.2 Using `squeue`
 
-list 
+The user can identify jobs in progress or that have yet to run by issuing the `squeue` command:
+
+```bash
+pi@red01:~ $ squeue
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+                20 mycluster sort.slu       pi PD       0:00      4 (PartitionNodeLimit)
+                21 mycluster sort.slu       pi PD       0:00      4 (PartitionNodeLimit)
+```
+
+As seen in the previous output, jobs 20 and 21 have failed to run because they do not have enough workers to perform the job (in this configuration, there were only 3 workers when the job needs 4).
 
 ## look at mpi program 
 
