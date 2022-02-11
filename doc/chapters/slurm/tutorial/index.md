@@ -66,8 +66,9 @@ through MPI (Message Passing Interface) and for forays into artificial intellige
 * The cluster of manager Pi and worker Pi(s) must be preconfigured with login access to each node; they must also have Internet access
 
 If you have not yet set up your cluster to communicate with each other and would like an automated process, please see
-[cloudmesh.github.io](https://cloudmesh.github.io/pi/tutorial/raspberry-burn-windows/#2-pre-requisites) for automated
-burning of SD cards to create a quick configured cluster.
+<https://cloudmesh.github.io/pi/tutorial/raspberry-burn-windows/> for automated
+burning of SD cards to create a quick configured cluster. We strongly recommend using this to configure the cluster because it will
+automate the process and enable the SLURM script to work without having to input SSH passwords for each node at every step.
 
 For parts for different Pi cluster configurations, please see our links on [piplanet.org](https://cloudmesh.github.io/pi/docs/hardware/parts/)
 
