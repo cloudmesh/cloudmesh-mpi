@@ -61,11 +61,11 @@ through MPI (Message Passing Interface) and for forays into artificial intellige
 ## 2. Pre-requisites
 
 * Computer/Laptop with Windows 10, macOS, or Linux
-* A manager Pi with hostname `red` and cloudmesh installed (with Python version >= 3.9, and OS version Buster)
-* Any number of worker Pis with OS version Buster
+* A manager Pi with hostname `red` and cloudmesh installed (with Python version >= 3.9, and Raspbian OS version Buster)
+* Any number of worker Pis with Raspbian OS version Buster
 * The cluster of manager Pi and worker Pi(s) must be preconfigured with login access to each node; they must also have Internet access
 
-SLURM will not install correctly if the Pis in the cluster are not OS Buster.
+SLURM will not install correctly if the Pis in the cluster are not Raspbian OS Buster.
 
 If you have not yet set up your cluster to communicate with each other and would like an automated process, please see
 <https://cloudmesh.github.io/pi/tutorial/raspberry-burn-windows/> for automated
