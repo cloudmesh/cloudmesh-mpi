@@ -210,6 +210,14 @@ add ref to mpi manual (ours)
 
 add link to how we set things up on windows ... (make sure its exactly what you did).
 
+## Known Issues
+
+The script has been known to fail in the fourth step, when the `sudo apt update -y` is run in order to install the
+slurm daemon. This results in failure to install SLURM. This may be a result of the static IP configuration
+as discussed in this thread: <https://forums.raspberrypi.com/viewtopic.php?t=123260#p991054>
+
+This failure seems to occur in 50% of all runs, but it may be an isolated incident related to a configuration of
+the Internet router that the Pis are connected to. This script was tested with an ARRIS BGW210-700 router.
 
 ## References 
 
