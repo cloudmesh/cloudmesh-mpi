@@ -65,6 +65,8 @@ through MPI (Message Passing Interface) and for forays into artificial intellige
 * Any number of worker Pis with OS version Buster
 * The cluster of manager Pi and worker Pi(s) must be preconfigured with login access to each node; they must also have Internet access
 
+SLURM will not install correctly if the Pis in the cluster are not OS Buster.
+
 If you have not yet set up your cluster to communicate with each other and would like an automated process, please see
 <https://cloudmesh.github.io/pi/tutorial/raspberry-burn-windows/> for automated
 burning of SD cards to create a quick configured cluster. We strongly recommend using this to configure the cluster because it will
