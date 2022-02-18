@@ -155,7 +155,7 @@ Create a new file called `sort.slurm`. Take note that the filename nor the file 
 
 Paste the following contents inside the nano interface by copying the following and then by pressing `Shift + Insert` inside the terminal. You can also change the number after `--nodes=` accordingly if you have more than or less than 3 workers.
 
-```
+```bash
 #!/bin/sh
 #SBATCH -p mycluster
 #SBATCH --time=1
@@ -184,6 +184,20 @@ red02
 red03
 ```
 
+For a more extensive script with a for loop, which will execute numerous srun commands, make a new file
+called forloop.slurm and paste in the following:
+
+```bash
+#!/bin/sh
+#SBATCH -p mycluster
+#SBATCH --time=1
+#SBATCH --nodes=3
+
+for i in {0..2}
+do
+   sbatch sort.slurm
+done
+```
 More extensive example 
 
 for loop with multiple sbatch jobs
@@ -206,20 +220,34 @@ As seen in the previous output, jobs 20 and 21 have failed to run because they d
 run with srun 
 run with sbatch
 
-add ref to mpi manual (ours)
+To run MPI on SLURM, ensure that Open MPI is installed. To install this, consult our documentation at the following
+links. The first link is to the entire PDF and the second link is to the specific installation section.
 
 * <https://cloudmesh.github.io/cloudmesh-mpi//report-mpi.pdf> 
+
+* <https://github.com/cloudmesh/cloudmesh-mpi/blob/main/doc/chapters/report-mpi.md#installation>
+
+After installing Open MPI, ensure that you have cloned our cloudmesh-mpi repository and navigate to the examples
+folder. Then, navigate to the count folder and run the following:
+
+```bash
+# Allocate a Slurm job with 3 nodes and run your MPI application in it
+pi@red:~ $ salloc -N 3 mpirun count.py
+```
 
 add link to how we set things up on windows ... (make sure its exactly what you did).
 
 ## Known Issues
 
-The script has been known to fail in the fourth step, when the `sudo apt update -y` is run in order to install the
-slurm daemon. This results in failure to install SLURM. This may be a result of the static IP configuration
-as discussed in this thread: <https://forums.raspberrypi.com/viewtopic.php?t=123260#p991054>
+The script has been known to fail in the fourth step, when the `sudo apt install slurmd slurm-client -y --fix-missing` 
+is run in order to install the slurm daemon. This results in failure to install SLURM. This may be a result of the 
+static IP configuration as discussed in this thread: <https://forums.raspberrypi.com/viewtopic.php?t=123260#p991054>
 
-This failure seems to occur in 50% of all runs, but it may be an isolated incident related to a configuration of
+This failure seems to occur sometimes, but it may be an isolated incident related to a configuration of
 the Internet router that the Pis are connected to. This script was tested with an ARRIS BGW210-700 router.
+
+It can be solved by manually SSH'ing to each worker Pi and running `sudo apt install slurmd slurm-client -y --fix-missing`.
+
 
 ## References 
 
