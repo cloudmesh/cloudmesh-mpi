@@ -185,7 +185,7 @@ red03
 ```
 
 For a more extensive script with a for loop, which will execute numerous srun commands, make a new file
-called forloop.slurm and paste in the following:
+called forloop.slurm on manager Pi, and paste in the following:
 
 ```bash
 #!/bin/sh
@@ -193,11 +193,15 @@ called forloop.slurm and paste in the following:
 #SBATCH --time=1
 #SBATCH --nodes=3
 
-for i in {0..2}
+for i in 1 2 3
 do
-   sbatch sort.slurm
+   echo "Running $1 try"
+   srun hostname | sort
 done
 ```
+
+Run it like the previously mentioned script and the output will be available on the first worker node.
+
 More extensive example 
 
 for loop with multiple sbatch jobs
