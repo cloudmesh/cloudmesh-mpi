@@ -22,8 +22,9 @@ from pprint import pprint
 
 def get_data(content, name="multiprocessing_mergesort"):
 	found = []
-	"csv,multiprocessing_mergesort_1_10000_3,ok,0.305,2.24,2022-01-23 22:40:24,,None,BL-UITS-NWLT005,alexandra,Darwin,10.15.7 "
-	lines = Shell.find_lines_with(content, what=f"# csv")
+	#csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_9,ok,0.839,0.839,2022-02-20 21:06:18,,None,BL-UITS-NWLT005,alexandra,Darwin,10.15.7
+	#lines = Shell.find_lines_with(content, what=f"# csv")
+	lines = [line for line in content if "# csv" in line]
 
 	for line in lines[1:]:
 		entries = line.split(",")
@@ -50,11 +51,23 @@ def get_ranges(data):
 
 def processes_time_fixed_size(data, size, name=None, processes=None, label=None):
 	"""creates image from data with processes and time while keeping size constant"""
+	"""['multiprocessing_mergesort',
+	8,
+	100,
+	3,
+	0.606,
+	0.606,
+	'BL-UITS-NWLT005',
+	'alexandra']"""
 	x = []
 	y = []
 	result = []
+	#print("data = ",end="")
+	#pprint(data)
 	for entry in data:
-		entry = [name, int(processes), int(size), int(count), float(entry[1]), float(entry[2]), entries[8], entries[9]]
+		#print("entry = ",end="")
+		#pprint(entry)
+		#entry = [name, int(processes), int(size), int(count), float(entry[1]), float(entry[2]), entries[8], entries[9]]
 
 		label, p, s, count, t, total, host, user = entry
 		if processes is None or p in processes and s==size:
@@ -66,26 +79,61 @@ def processes_time_fixed_size(data, size, name=None, processes=None, label=None)
 		"y": y
 	}
 
-	pprint (x)
+	pprint(x)
 	pprint(y)
 
-	if name is None:
+	if name == None:
 		name = f"images/processes_time_{size}"
+		#name = "images"
 	sns.set_theme(style="ticks", palette="pastel")
 	ax = sns.boxplot(x="x", y="y", data=result)
 	label = label.replace("_", " ")
 	ax.set_title(f"{label}, size={size}")
 	ax.set_ylabel("time/s")
 	ax.set_xlabel("processes")
-	plt.savefig(f"{name}.png")
-	plt.savefig(f"{name}.pdf")
-	# plt.show()
+	#plt.savefig(f"{name}.png")
+	#plt.savefig(f"{name}.pdf")
+	plt.show()
 	plt.close()
 
-def speedup_fixed_size(name, data, size):
+def speedup_fixed_size(data, size, name, processes):
 	"""creates image from data to show speedup with fixed size"""
-	pass
-	plt.savefig('images/size.pdf')
+	x = []
+	y = []
+	result = []
+	nums = []
+	pprint(processes)
+	for p in processes:
+		print(p)
+		temp = []
+		for entry in data:
+			label, p, s, count, t, total, host, user = entry
+			if size == s:
+				print("HERE")
+				print(t)
+				temp.append(t)
+		nums.append(temp)
+	pprint(nums)
+	time_0 = sum(nums[0][i] for i in len(nums[0])) / len(nums[0])
+	for i in len(nums):
+		time = sum(nums[i][j] for j in len(nums[i])) / len(nums[i])
+		x.append(processes[i])
+		y.append(float(time_0 / time))
+		result.append([processes[i], float(time_0 / time)])
+
+	if name == None:
+		name = f"speedup_{size}"
+	sns.set_theme(style="ticks", palette="pastel")
+	ax = sns.boxplot(x="x", y="y", data=result)
+	label = label.replace("_", " ")
+	ax.set_title(f"{label}, size={size}")
+	ax.set_ylabel("speedup")
+	ax.set_xlabel("processes")
+	#plt.savefig(f"{name}.png")
+	#plt.savefig(f"{name}.pdf")
+	plt.show()
+	plt.close()
+	#plt.savefig('images/size.pdf')
 
 @click.command()
 @click.option('--processes', default="[1]", help='Number of processes as array. [1-2,8,16]')
@@ -98,6 +146,7 @@ def speedup_fixed_size(name, data, size):
 @click.option('--x', help="value for x axis", default=None)
 @click.option('--y', help="value for y axis", default=None)
 @click.option('--info', help="value for y axis", default=False)
+
 def analysis(processes, size, repeat, log, debug, sort, x, y, info):
 	"""performance experiment."""
 
@@ -116,9 +165,14 @@ def analysis(processes, size, repeat, log, debug, sort, x, y, info):
 	print(f"Logfile:   {log}")
 	print(f"Debug:     {debug}")
 
-	content = readfile(log).splitlines()
+	f = open("output.log", "r")
+	content = f.read().splitlines()
+	#print("content = ",end="")
 	#pprint(content)
 	data = get_data(content, name=sort)
+	#for size in sizes: 
+		#processes_time_fixed_size(data, size, label=sort)
+	speedup_fixed_size(data, size, sort, processes)
 	if debug:
 		#print(content)
 		pprint(data)
