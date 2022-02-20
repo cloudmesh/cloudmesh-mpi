@@ -1,22 +1,23 @@
-from verify import verify
 from generate import generate_random
-from generate import generate_shuffle
-from cloudmesh.common.StopWatch import StopWatch
-from performance import assess
 import math
-#heap sort
 
-#using binary tree
-#left child of node i = 2i + 1
-#right child of node i = 2i + 2
-#parent of node i = (i - 1) / 2
+from performance import assess
 
-import sys;
+from generate import generate_random
 
-#build max heap
+
+# heap sort
+
+# using binary tree
+# left child of node i = 2i + 1
+# right child of node i = 2i + 2
+# parent of node i = (i - 1) / 2
+
+
+# build max heap
 def max_heapify(arr, n, i):
     big = i
-    #node i's two children
+    # node i's two children
     l = 2 * i + 1
     r = 2 * i + 2
 
@@ -25,16 +26,17 @@ def max_heapify(arr, n, i):
     if r < n and arr[r] > arr[big]:
         big = r
 
-    #if l or r greater than i, swap
+    # if l or r greater than i, swap
     if big != i:
         (arr[i], arr[big]) = (arr[big], arr[i])
-        #heapify again on new i
+        # heapify again on new i
         max_heapify(arr, n, big)
 
-#build min heap
+
+# build min heap
 def min_heapify(arr, n, i):
     m = i
-    #node i's two children
+    # node i's two children
     l = 2 * i + 1
     r = 2 * i + 2
 
@@ -43,40 +45,41 @@ def min_heapify(arr, n, i):
     if r < n and arr[r] < arr[m]:
         m = r
 
-    #if l or r greater than i, swap
+    # if l or r greater than i, swap
     if m != i:
         (arr[i], arr[m]) = (arr[m], arr[i])
-        #heapify again on new i
+        # heapify again on new i
         min_heapify(arr, n, m)
+
 
 def heap_sort(order, arr):
     n = len(arr)
-    if order in ["ascending","<"]: 
-        #build max heap from bottom up
+    if order in ["ascending", "<"]:
+        # build max heap from bottom up
         for i in range(math.ceil(n / 2), -1, -1):
             max_heapify(arr, n, i)
 
-        #swap and heapify
+        # swap and heapify
         for i in range(n - 1, 0, -1):
-            #swap max of current heap to position i and remove from heap
-            (arr[i], arr[0]) = (arr[0], arr[i]) 
+            # swap max of current heap to position i and remove from heap
+            (arr[i], arr[0]) = (arr[0], arr[i])
             max_heapify(arr, i, 0)
 
-    elif order in ["descending",">"]: 
-        #build min heap from bottom up
+    elif order in ["descending", ">"]:
+        # build min heap from bottom up
         for i in range(math.ceil(n / 2), -1, -1):
             min_heapify(arr, n, i)
 
-        #swap and heapify
+        # swap and heapify
         for i in range(n - 1, 0, -1):
-            #swap max of current heap to position i and remove from heap
-            (arr[i], arr[0]) = (arr[0], arr[i]) 
+            # swap max of current heap to position i and remove from heap
+            (arr[i], arr[0]) = (arr[0], arr[i])
             min_heapify(arr, i, 0)
-        
+
+
 if __name__ == "__main__":
     a = []
     a = generate_random(20)
     heap_sort(">", a)
     print(a)
     assess(heap_sort, "heap_sort")
-

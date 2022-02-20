@@ -1470,7 +1470,7 @@ $ N=2; python environment-parameter.py
 It allows us to execute the programs sequentially in the file with
 
 ```bash
-$ sh run.sh
+$ sh run.py
 ```
 
 In our case, we are also using cloudmesh.StopWatch to allow us easily

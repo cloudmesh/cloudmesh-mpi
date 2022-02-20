@@ -1,5 +1,6 @@
 import random
 
+
 def generate_from_input():
     a = []
     n = int(input())
@@ -8,6 +9,7 @@ def generate_from_input():
         a.append(x)
     return a
 
+
 def generate_random(n):
     a = []
     for i in range(n):
@@ -15,8 +17,9 @@ def generate_random(n):
         a.append(x)
     return a
 
+
 def generate_shuffle(order, n, m):
-    if order in ["ascending","<"]:
+    if order in ["ascending", "<"]:
         a = []
         for i in range(n):
             a.append(i)
@@ -25,7 +28,7 @@ def generate_shuffle(order, n, m):
             x2 = random.randint(0, n)
             a[x1], a[x2] = a[x2], a[x1]
         return a
-    elif order in ["descending",">"]: 
+    elif order in ["descending", ">"]:
         a = []
         for i in range(n, 0):
             a.append(i)

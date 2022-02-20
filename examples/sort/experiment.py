@@ -1,12 +1,15 @@
 #!/usr/bin/env python
-from generate import generate_random
-from cloudmesh.common.StopWatch import StopWatch
-from verify import verify
-import click
-from cloudmesh.common.util import yn_choice
-from cloudmesh.common.parameter import Parameter
-import psutil
 import os
+
+import click
+import psutil
+
+from cloudmesh.common.StopWatch import StopWatch
+from cloudmesh.common.parameter import Parameter
+from cloudmesh.common.util import yn_choice
+from generate import generate_random
+from verify import verify
+
 
 def get_sort_by_name(name="multiprocessing_mergesort"):
     if name in ["mp-mergesort", "multiprocessing_mergesort"]:

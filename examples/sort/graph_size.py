@@ -1,16 +1,15 @@
-from cloudmesh.common.util import readfile
-from cloudmesh.common.Shell import Shell
-import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from pprint import pprint
+
+from cloudmesh.common.Shell import Shell
+from cloudmesh.common.util import readfile
 
 content = readfile("output-speedup.log").splitlines()
 x = []
 y = []
 data = []
 
-#plots by process (p = 3)
+# plots by process (p = 3)
 for n in [10, 100, 1000, 10000]:
     p = 3
     lines = Shell.find_lines_with(content, what=f"mergesort_{p}_{n}")
@@ -22,11 +21,11 @@ for n in [10, 100, 1000, 10000]:
 
 sns.set_theme(style="ticks", palette="pastel")
 data = {
-    "x":x,
-    "y":y
+    "x": x,
+    "y": y
 }
 ax = sns.boxplot(x="x", y="y",
-data=data)
+                 data=data)
 ax.set_title(f"processes = {p}")
 ax.set_ylabel("time (s)")
 ax.set_xlabel("size of dataset")

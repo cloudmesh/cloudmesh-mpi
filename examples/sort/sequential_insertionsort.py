@@ -1,35 +1,36 @@
-from verify import verify
-from generate import generate_random
-from generate import generate_shuffle
-from cloudmesh.common.StopWatch import StopWatch
 from performance import assess
-#insertion sort
+
+from generate import generate_random
+from verify import verify
+
+
+# insertion sort
 
 def insertion_sort(order, arr):
     n = len(arr)
-    if order in ["ascending","<"]: 
+    if order in ["ascending", "<"]:
         for i in range(1, n):
             x = arr[i]
             j = i - 1
-            #shift all elements greater than x to the right by 1
+            # shift all elements greater than x to the right by 1
             while j >= 0 and x < arr[j]:
                 arr[j + 1] = arr[j]
                 j -= 1
-            #insert x
+            # insert x
             arr[j + 1] = x
-    elif order in ["descending",">"]: 
+    elif order in ["descending", ">"]:
         for i in range(1, n):
             x = arr[i]
             j = i - 1
-            #shift all elements less than x to the right by 1
+            # shift all elements less than x to the right by 1
             while j >= 0 and x > arr[j]:
-                arr[j + 1] = arr[j] 
+                arr[j + 1] = arr[j]
                 j -= 1
-            #insert x
+            # insert x
             arr[j + 1] = x
 
 
-#test and input
+# test and input
 if __name__ == "__main__":
     a = []
     a = generate_random(20)
