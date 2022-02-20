@@ -170,9 +170,9 @@ def analysis(processes, size, repeat, log, debug, sort, x, y, info):
 	#print("content = ",end="")
 	#pprint(content)
 	data = get_data(content, name=sort)
-	#for size in sizes: 
-		#processes_time_fixed_size(data, size, label=sort)
-	speedup_fixed_size(data, size, sort, processes)
+	for size in sizes: 
+		processes_time_fixed_size(data, size, label=sort)
+	#speedup_fixed_size(data, size, sort, processes)
 	if debug:
 		#print(content)
 		pprint(data)
