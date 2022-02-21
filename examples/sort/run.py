@@ -18,12 +18,12 @@ def run(p, t, log, user, node):
     else:
         n = "t"
 
-    command = f'python ./experiment.py --user={user} --node={node}"' \
-              f'" --processes="[1-{n}]" --size="[100]" --repeat=10 | tee {log}'
+    command = f'python ./experiment.py --user={user} --node={node} --log={log}' \
+              f' --processes="[1-{n}]" --size="[100]" --repeat=10 | tee {log}'
     banner(command)
     os.system(command)
 
-    os.system("python ./analysis.py --log {log}")
+    os.system(f"python ./analysis.py --log={log}")
 
     # | fgrep "# csv" | tee output.log
 
