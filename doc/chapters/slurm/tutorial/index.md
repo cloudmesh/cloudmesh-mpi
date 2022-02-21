@@ -243,15 +243,18 @@ add link to how we set things up on windows ... (make sure its exactly what you 
 
 ## Known Issues
 
-The script has been known to fail in the fourth step, when the `sudo apt install slurmd slurm-client -y --fix-missing` 
-is run in order to install the slurm daemon. This results in failure to install SLURM. This may be a result of the 
+The script often encounters issues downloading packages, which fix themselves when repeatedly attempted. This may be a result of 
 static IP configuration as discussed in this thread: <https://forums.raspberrypi.com/viewtopic.php?t=123260#p991054>
 
-This failure seems to occur sometimes, but it may be an isolated incident related to a configuration of
-the Internet router that the Pis are connected to. This script was tested with an ARRIS BGW210-700 router.
+The script still works despite this issue.
 
-It can be solved by manually SSH'ing to each worker Pi and running `sudo apt install slurmd slurm-client -y --fix-missing`.
+## Benchmark
 
+The SLURM installation script takes around 28 minutes (a benchmark generated with Cloudmesh StopWatch reported the script
+to take 1710 seconds to install). The benchmark was done on a cluster of one manager and four worker nodes. The Internet
+speed was 30 Mbps for download and 2.5 Mbps for upload.
+
+Most of the time results from the retrying of downloading packages in the fourth step, as mentioned in the Known Issues section.
 
 ## References 
 
