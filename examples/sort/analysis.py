@@ -166,7 +166,7 @@ def analysis(processes, size, repeat, log, debug, sort, x, y, info):
     print(f"Logfile:   {log}")
     print(f"Debug:     {debug}")
 
-    f = open("output.log", "r")
+    f = open(log, "r")
     content = f.read().splitlines()
     # print("content = ",end="")
     # pprint(content)

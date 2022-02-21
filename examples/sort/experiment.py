@@ -4,6 +4,8 @@ import os
 import click
 import psutil
 
+from cloudmesh.common.Shell import Shell
+
 from cloudmesh.common.StopWatch import StopWatch
 from cloudmesh.common.parameter import Parameter
 from cloudmesh.common.util import yn_choice
@@ -24,6 +26,8 @@ def get_label(name, p, n, i, tag=None):
         tag = os.uname().nodename
     return f"{tag}_{name}_{p}_{n}_{i}"
 
+username = Shell.run('whoami').strip()
+hostname = Shell.run('hostname').strip()
 
 @click.command()
 @click.option('--processes', default="[1]", help='Number of processes as array. [1-2,8,16]')
@@ -35,7 +39,9 @@ def get_label(name, p, n, i, tag=None):
 @click.option('--debug', default=False, help='Switch on some debugging')
 @click.option('--sort', default="multiprocessing_mergesort", help="sorting function")
 @click.option('--tag', default=None, help="a prefix for the stopwatch timer name")
-def experiment(processes, size, repeat, log, clear, debug, sort, tag):
+@click.option('--user', default=username, help="a user for the stopwatch timer")
+@click.option('--node', default=hostname, help="a node name for the stopwatch timer")
+def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node):
     """performance experiment."""
 
     if clear:
@@ -87,7 +93,7 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag):
                     print(a)
                 assert verify("ascending", a)
 
-    StopWatch.benchmark()
+    StopWatch.benchmark(user=user, node=node)
 
 
 if __name__ == '__main__':

@@ -9,17 +9,21 @@ from cloudmesh.common.util import banner
 @click.command()
 @click.option('-p', default=False, is_flag=True)
 @click.option('-t', default=True, is_flag=True)
-def run(p, t):
+@click.option('--log', default="output.log")
+@click.option('--user', default=None, help="a user for the stopwatch timer")
+@click.option('--node', default=None, help="a node name for the stopwatch timer")
+def run(p, t, log, user, node):
     if p:
         n = "p"
     else:
         n = "t"
 
-    command = f'python ./experiment.py --processes="[1-{n}]" --size="[100]" --repeat=10 | tee output.log'
+    command = f'python ./experiment.py --user={user} --node={node}"' \
+              f'" --processes="[1-{n}]" --size="[100]" --repeat=10 | tee {log}'
     banner(command)
     os.system(command)
 
-    os.system("python ./analysis.py")
+    os.system("python ./analysis.py --log {log}")
 
     # | fgrep "# csv" | tee output.log
 
