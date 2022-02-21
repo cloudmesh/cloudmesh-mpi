@@ -1,8 +1,13 @@
 #!/usr/bin/env python
-import os
+
+#
+# run with
+#
+#  ./run.py --log="log/gregor.log" --user=gregor --node=5950x
+#
 
 import click
-
+import os
 from cloudmesh.common.util import banner
 
 
@@ -19,7 +24,7 @@ def run(p, t, log, user, node):
         n = "t"
 
     command = f'python ./experiment.py --user={user} --node={node} --log={log}' \
-              f' --processes="[1-{n}]" --size="[100]" --repeat=10 | tee {log}'
+              f' --processes="[1-{n}]" --size="[100]" --repeat=10 |tee {log}'
     banner(command)
     os.system(command)
 
