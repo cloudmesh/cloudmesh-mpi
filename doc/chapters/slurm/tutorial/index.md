@@ -191,17 +191,13 @@ called forloop.py on manager Pi (you can use nano), and paste in the following:
 
 ```python
 import os
-count = 10
+count = 5
 scriptname = "sort.slurm"
 for i in range(count):
 	os.system(f"sbatch {scriptname}")
 ```
 
-Run it like the previously mentioned script and the output will be available on the first worker node.
-
-More extensive example 
-
-for loop with multiple sbatch jobs
+Then issue `python3 forloop.py` and the outputs will be available on the first worker node.
 
 ### 4.3 Using `squeue`
 
