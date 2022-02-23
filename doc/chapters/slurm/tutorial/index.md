@@ -190,6 +190,7 @@ For a more extensive script with a for loop, which will execute numerous srun co
 called forloop.py on manager Pi (you can use nano), and paste in the following:
 
 ```python
+import os
 count = 10
 scriptname = "sort.slurm"
 for i in range(count):
