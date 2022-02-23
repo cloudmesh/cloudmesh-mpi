@@ -184,20 +184,16 @@ red02
 red03
 ```
 
+### 4.2 Using `sbatch` in a for loop
+
 For a more extensive script with a for loop, which will execute numerous srun commands, make a new file
-called forloop.slurm on manager Pi, and paste in the following:
+called forloop.py on manager Pi (you can use nano), and paste in the following:
 
-```bash
-#!/bin/sh
-#SBATCH -p mycluster
-#SBATCH --time=1
-#SBATCH --nodes=3
-
-for i in 1 2 3
-do
-   echo "Running $1 try"
-   srun hostname | sort
-done
+```python
+count = 10
+scriptname = "sort.slurm"
+for i in range(count):
+	os.system(f"sbatch {scriptname}")
 ```
 
 Run it like the previously mentioned script and the output will be available on the first worker node.
@@ -206,7 +202,7 @@ More extensive example
 
 for loop with multiple sbatch jobs
 
-### 4.2 Using `squeue`
+### 4.3 Using `squeue`
 
 The user can identify jobs in progress or that have yet to run by issuing the `squeue` command:
 
