@@ -224,8 +224,7 @@ links. The first link is to the entire PDF and the second link is to the specifi
 
 * <https://github.com/cloudmesh/cloudmesh-mpi/blob/main/doc/chapters/report-mpi.md#installation>
 
-After installing Open MPI, ensure that you have cloned our cloudmesh-mpi repository and navigate to the examples
-folder. Then, navigate to the count folder and run the following:
+After installing Open MPI, ensure that you have cloned our cloudmesh-mpi repository with `git clone https://github.com/cloudmesh/cloudmesh-mpi.git` and navigate to the examples folder. Then, navigate to the count folder and run the following:
 
 ```bash
 # Allocate a Slurm job with 3 nodes and run your MPI application in it
