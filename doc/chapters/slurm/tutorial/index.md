@@ -217,7 +217,7 @@ As seen in the previous output, jobs 20 and 21 have failed to run because they d
 run with srun 
 run with sbatch
 
-To run MPI on SLURM, ensure that Open MPI is installed. To install this, you can run the slurm.py script again with `python3 slurm.py` on the mananger node.
+To run MPI on SLURM, ensure that Open MPI is installed. To install this, you can run the slurm.py script again with `python3 slurm.py` on the manager node.
 This will execute step 5 of the script, which creates a Python virtual environment and installs mpi4py.
 Additionally, you can consult the following documentation to install MPI manually. The first link is to the entire PDF and the second link is to the specific installation section.
 
