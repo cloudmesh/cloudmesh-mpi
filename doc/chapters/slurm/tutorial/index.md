@@ -145,9 +145,26 @@ If this does not happen, wait a few seconds in case the other nodes are still bo
 
 ## 4. Using SLURM
 
-### 4.1 Using `sbatch`
+### 4.1 Using `srun`
 
-Create a new file called `sort.slurm`. Take note that the filename nor the file extension do not really matter. We are simply creating a file with text inside.
+The `srun` command is a SLURM functionality which runs a command on a certain number of nodes. It has the
+`--nodes` parameter, which specifies how many worker nodes to run the command on. As an example, we can
+run an `srun` command to get the hostnames of all the worker nodes:
+
+```bash
+(ENV3) pi@red:~ $ srun --nodes=3 hostname | sort
+red01
+red02
+red03
+```
+
+### 4.2 Using `sbatch`
+
+`sbatch` is for predefined tasks to be run in "batches". This way, the user does not have to run numerous
+`srun` commands and can simply use a text file to run jobs.
+
+To test `sbatch`, Create a new file called `sort.slurm`. Take note that the filename nor the file extension do not 
+really matter. We are simply creating a file with text inside.
 
 ```bash
 (ENV3) pi@red:~ $ sudo nano sort.slurm
@@ -184,9 +201,9 @@ red02
 red03
 ```
 
-### 4.2 Using `sbatch` in a for loop
+### 4.3 Using `sbatch` in a for loop
 
-For a more extensive script with a for loop, which will execute numerous srun commands, make a new file
+For a more extensive script with a for loop, which will execute numerous `srun` commands, make a new file
 called forloop.py on manager Pi (you can use nano), and paste in the following:
 
 ```python
@@ -199,7 +216,7 @@ for i in range(count):
 
 Then issue `python3 forloop.py` and the outputs will be available on the first worker node.
 
-### 4.3 Using `squeue`
+### 4.4 Using `squeue`
 
 The user can identify jobs in progress or that have yet to run by issuing the `squeue` command:
 
@@ -212,7 +229,7 @@ pi@red01:~ $ squeue
 
 As seen in the previous output, jobs 20 and 21 have failed to run because they do not have enough workers to perform the job (in this configuration, there were only 3 workers when the job needs 4).
 
-## look at mpi program 
+### 4.5 Using MPI with SLURM
 
 run with srun 
 run with sbatch
@@ -225,11 +242,11 @@ Additionally, you can consult the following documentation to install MPI manuall
 
 * <https://github.com/cloudmesh/cloudmesh-mpi/blob/main/doc/chapters/report-mpi.md#installation>
 
-After installing Open MPI, ensure that you have cloned our cloudmesh-mpi repository with `git clone https://github.com/cloudmesh/cloudmesh-mpi.git` and navigate to the examples folder. Then, navigate to the count folder and run the following:
+After installing Open MPI, test the following command:
 
 ```bash
 # Allocate a Slurm job with 4 nodes and run your MPI application in it
-(ENV3) pi@red:~/cm/cloudmesh-mpi/examples $ salloc -N 4 mpiexec python -m mpi4py.bench helloworld
+(ENV3) pi@red:~ $ salloc -N 4 mpiexec python -m mpi4py.bench helloworld
 salloc: Granted job allocation 26
 Hello, World! I am process 0 of 4 on red01.
 Hello, World! I am process 1 of 4 on red02.
