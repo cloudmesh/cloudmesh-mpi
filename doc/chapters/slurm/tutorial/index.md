@@ -217,8 +217,9 @@ As seen in the previous output, jobs 20 and 21 have failed to run because they d
 run with srun 
 run with sbatch
 
-To run MPI on SLURM, ensure that Open MPI is installed. To install this, consult our documentation at the following
-links. The first link is to the entire PDF and the second link is to the specific installation section.
+To run MPI on SLURM, ensure that Open MPI is installed. To install this, you can run the slurm.py script again with `python3 slurm.py` on the mananger node.
+This will execute step 5 of the script, which creates a Python virtual environment and installs mpi4py.
+Additionally, you can consult the following documentation to install MPI manually. The first link is to the entire PDF and the second link is to the specific installation section.
 
 * <https://cloudmesh.github.io/cloudmesh-mpi//report-mpi.pdf> 
 
@@ -227,11 +228,16 @@ links. The first link is to the entire PDF and the second link is to the specifi
 After installing Open MPI, ensure that you have cloned our cloudmesh-mpi repository with `git clone https://github.com/cloudmesh/cloudmesh-mpi.git` and navigate to the examples folder. Then, navigate to the count folder and run the following:
 
 ```bash
-# Allocate a Slurm job with 3 nodes and run your MPI application in it
-pi@red:~ $ salloc -N 3 mpirun count.py
+# Allocate a Slurm job with 4 nodes and run your MPI application in it
+(ENV3) pi@red:~/cm/cloudmesh-mpi/examples $ salloc -N 4 mpiexec python -m mpi4py.bench helloworld
+salloc: Granted job allocation 26
+Hello, World! I am process 0 of 4 on red01.
+Hello, World! I am process 1 of 4 on red02.
+Hello, World! I am process 2 of 4 on red03.
+Hello, World! I am process 3 of 4 on red04.
+salloc: Relinquishing job allocation 26
 ```
 
-add link to how we set things up on windows ... (make sure its exactly what you did).
 
 ## Known Issues
 
