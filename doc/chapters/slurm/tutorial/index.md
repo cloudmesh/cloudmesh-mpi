@@ -14,14 +14,19 @@ resources:
 
 {{% pageinfo %}}
 
-In this tutorial, we explain how to run a Python script that
-automatically installs SLURM on a pre-configured Pi Cluster. This
-tutorial assumes that the user has access to all nodes (workers) and
-that the Pi OS is Buster.
+In this tutorial, we explain how to automatically install SLURM with a
+script on a pre-configured Pi Cluster.
+
+TODO: The cluster is preconfigured with our convenient burn tool that
+set up tehe cluster at the time the SDCards are created with ease.
+
+This tutorial assumes that the user has access to all nodes (workers)
+and that the RasperryOS V 10 (Buster).
+
 
 **Learning Objectives**
 
-* Learn how to run a Python script to install SLURM on a Pi Cluster
+* Learn how to run a script to install SLURM on a Pi Cluster
 * Test SLURM on the cluster after burning
 
 **Topics covered**
@@ -32,66 +37,95 @@ that the Pi OS is Buster.
 
 ## 1. Introduction
 
-There exists yet no automatic script to install SLURM, an open-source
-job scheduler and workload manager, on a cluster of Raspberry
-Pis. Thus, we have developed a Python script that automatically
-installs SLURM on any number of worker nodes.
+There exists yet no convenient way to configure a slurm cluster for
+raspbery PIs without little effort. Our work integrates two efforts
+that will in combination the instalation of a slurm cluster on
+Raspberry PIs easy.
+
+The first effort is the ceration of a network of PI nodes that are
+integrated in a network and in which each node can communicate with
+each other.
+
+The second effort is to use our newly developed script to deploy a
+SLURM cluster in the nodes with little effort. We have chosen SLURM as
+it is a popular , an open-source job scheduler and workload
+manager. It is common on many academic supercompters. Hence our PI
+cluster can also be used as a onramp to more complex hardware.
 
 The script is meant to automate an arduous process of logging in and
 switching back and forth from manager to worker, with many commands
-along the way. The script takes inspiration from preexisting tutorials
-such as those written by Garrett Mills. [^mills]
+along the way and benefits from inspiration we took from work
+conducted by others [^mills]
 
-We assume that the user has access and can log in to all nodes; we
-also assume that manager has the hostname `red` and that the workers
-follow an incremental naming schema, such as `red01`, `red02`,
-`red03`, `red04`, and so on, with any number of workers
-possible. Furthermore, due to latest version incompatibility, the
-script only works with Raspberry Pi OS version `10`, codename Buster.
+As we use our raspberry pi cluster burning tool, we can assume that
+the user has access and can log in to all nodes. We also assume that
+we have one PI that is the manager. To replicate a common nameing
+scheme we will have the manager node have a NAME, while all workers
+have a number appended to the NAME.  For our tutorial we are chosen
+the hostname `red` for the manager. Thus the workers are named by an
+incremental naming schema, such as `red01`, `red02`, `red03`, `red04`,
+and so on. In case you have hudrest of Pis you can adjust the maing
+scheeme accordingly with more leading zeros in the number.
 
-We enable automation of using SSH to issue commands to multiple Pis at
-a time through the cloudmesh libraries. Thus, cloudmesh must be
-installed on the manager Pi before proceeding.
+Currently, the script only works with Raspberry
+Pi OS version `10`, codename Buster.
 
-This script does the following:
+We utilize SSH to issue commands the PI workers and leverage libraries
+that are developed as part of cloudmesh to issue them on multiple Pis.
 
-* Updates packages on each Pi,
+In particular, the script does the following:
+
+* Updates needed packages on each Pi,
 * Installs ntpdate package for time synchronization,
 * Configures shared storage for sharing configuration files across the
   cluster,
 * Installs the SLURM workload manager and daemons,
-* Dynamically writes config files based on IP addresses and hostnames
-  of the Pis,
+* Dynamically writes configuration files based on IP addresses and
+  hostnames of the Pis, and
 * Installs MUNGE authentication service for security.
 
-After SLURM is successfully installed, it can be used as a
-sophisticated manager for running intensive computations through MPI
-(Message Passing Interface) and for forays into artificial
-intelligence, for example.
+After SLURM is successfully installed, it can be used as a jop manager
+for running intensive computations through MPI (Message Passing
+Interface) and for forays into artificial intelligence, for
+example. To find out more about MPI we have written a separate
+tutorial [^TODO].
 
 ## 2. Pre-requisites
 
+YOu will need the following
+
 * Computer/Laptop with Windows 10, macOS, or Linux
-* A manager Pi with hostname `red` and cloudmesh installed (with
-  Python version >= 3.9, and Raspbian OS version Buster)
+
+* Pi you dedicate as a manager which we will name `red` and cloudmesh installed (with  Python version >= 3.9, and Raspbian OS version Buster)
 * Any number of worker Pis with Raspbian OS version Buster
 * The cluster of manager Pi and worker Pi(s) must be preconfigured
   with login access to each node; they must also have Internet access
 
-SLURM will not install correctly if the Pis in the cluster are not
-Raspbian OS Buster.
+At present we require Raspberry PI Buster (v number) as SLURM is
+easiest to install on it.
 
 If you have not yet set up your cluster to communicate with each other
 and would like an automated process, please see
 <https://cloudmesh.github.io/pi/tutorial/raspberry-burn-windows/> for
-automated burning of SD cards to create a quick configured cluster. We
-strongly recommend using this to configure the cluster because it will
-automate the process and enable the SLURM script to work without
-having to input SSH passwords for each node at every step.
+automated burning of SD cards to create a quick configured cluster.
+Burning such a cluster can also be done from Linux and MacOs.
+
+TODO: links missing
+
+We strongly recommend using the burn program to configure the cluster
+because it will automate the process and enable the SLURM script to
+work without having to input SSH passwords for each node at every
+step.
+
+TODO: next sentence should go into requirements:
 
 For parts for different Pi cluster configurations, please see our
 links on
 [piplanet.org](https://cloudmesh.github.io/pi/docs/hardware/parts/)
+
+## ?. Installing Cloudmesh on the Manager (numbers need to be updated)
+
+To start we install cloudmesh which significantly simplifies the install:
 
 If you already have a configured cluster that can log in to each node,
 but you do not have cloudmesh installed, simply login to your manager
@@ -104,11 +138,13 @@ pi@red $ curl -Ls https://raw.githubusercontent.com/cloudmesh/get/main/pi/index.
 
 ## 3. Installing SLURM
 
-ssh into the manager node (in our case, `red`) via this command:
+Next, we wil install SLURM. First, 
+`ssh` into the manager node (in our case, `red`) via this command:
 
 ```bash
 (ENV3) you@yourhostcomputer $ ssh red
 ```
+
 
 Now download and run the script:
 
@@ -117,17 +153,25 @@ Now download and run the script:
 (ENV3) pi@red:~ $ python3 slurm.py
 ```
 
+TODO: The rerunning of the script must be much better explained.e.g
+reboots necessary
+
+
 The first step will prompt the user to input the worker Pis' naming
 schema. For example, if the setup has three workers named `red01`,
 `red02`, and so on, then the user would input `red0[1-3]`. Then the
 script will install needed packages such as ntpdate and reboot at the
 end. Once the reboot is executed, wait two minutes for the cluster to
-come back online, ssh into manager again, and rerun script:
+come back online, `ssh` into manager again, and rerun script:
 
 ```bash
 (ENV3) you@yourhostcomputer $ ssh red
 (ENV3) pi@red:~ $ python3 slurm.py
 ```
+
+TODO: slurm.py shoudl be executable, than we can say ./slurm.py
+we may want to rename to install_slurm.py
+
 
 This will run the second step, which will prompt the user to insert a
 blank USB in the top, blue USB3.0 port of the manager Pi. The user
@@ -141,7 +185,7 @@ config files so it mounts on boot. It also downloads the packages for
 nfs server and points the workers to the private IP address of the
 manager, where the nfs is located.
 
-After reboot completes, ssh into manager again and rerun script:
+After reboot completes, `ssh` into manager again and rerun script:
 
 ```bash
 (ENV3) you@yourhostcomputer $ ssh red
@@ -182,6 +226,10 @@ hostnames. This may take a minute.
 
 ## 4. Using SLURM
 
+Now we want to demonstrate how to use your new cluster. For this we
+introduce you to the commands `srun and `sbatch`.
+
+
 ### 4.1 Using `srun`
 
 The `srun` command is a SLURM functionality which runs a command on a
@@ -205,7 +253,8 @@ a text file to run jobs.
 
 To test `sbatch`, Create a new file called `sort.slurm`. Take note
 that the filename nor the file extension do not really matter. We are
-simply creating a file with text inside.
+simply creating a file with text inside. (we use here the editor nano
+as it is available on the RasberryOS.
 
 ```bash
 (ENV3) pi@red:~ $ sudo nano sort.slurm
@@ -216,6 +265,10 @@ following and then by pressing `Shift + Insert` inside the
 terminal. You can also change the number after `--nodes=` accordingly
 if you have more than or less than 3 workers.
 
+TODO: use a wget command, in reality the exampel shoudl be in a
+directory and we can just cd to it. This way de do not have to explain
+nano.
+
 ```bash
 #!/bin/sh
 #SBATCH -p mycluster
@@ -225,8 +278,9 @@ if you have more than or less than 3 workers.
 srun hostname | sort
 ```
 
-After pasting the contents, exit nano by using `Ctrl + X` and type `y` and press `Enter`.
-You can execute the batch script by running the following:
+After pasting the contents, exit nano by using `Ctrl + X` and type `y`
+and press `Enter`.  You can execute the batch script by running the
+following:
 
 ```bash
 (ENV3) pi@red:~ $ sbatch sort.slurm
@@ -283,8 +337,11 @@ configuration, there were only 3 workers when the job needs 4).
 
 ### 4.5 Using MPI with SLURM
 
-run with srun 
-run with sbatch
+
+TODO: explanation missing
+
+* run with srun 
+* run with sbatch
 
 To run MPI on SLURM, ensure that Open MPI is installed. To install
 this, you can run the slurm.py script again with `python3 slurm.py` on
@@ -294,7 +351,7 @@ Additionally, you can consult the following documentation to install
 MPI manually. The first link is to the entire PDF and the second link
 is to the specific installation section.
 
-* <https://cloudmesh.github.io/cloudmesh-mpi//report-mpi.pdf> 
+* <https://cloudmesh.github.io/cloudmesh-mpi/report-mpi.pdf> 
 
 * <https://github.com/cloudmesh/cloudmesh-mpi/blob/main/doc/chapters/report-mpi.md#installation>
 
@@ -311,17 +368,24 @@ Hello, World! I am process 3 of 4 on red04.
 salloc: Relinquishing job allocation 26
 ```
 
+TODO: explain how to use git cloen ....
+cd ...
+have demo ready ....
 
 ## Known Issues
 
-The script often encounters issues downloading packages, which fix
-themselves when repeatedly attempted. This may be a result of static
-IP configuration as discussed in this thread:
+In case you have limited network bandwidth or the code mirrors are
+buisy the script may encounter issues downloading packages. However,
+if you hen repeatedly attempted to run the script, you will eventually
+succeed.
+
+We laso know that there could be an issue resulting from our use of
+static IP configuration as discussed in this thread:
 <https://forums.raspberrypi.com/viewtopic.php?t=123260#p991054>
 
 The script still works despite this issue.
 
-## Benchmark
+## Timing and Benchmark
 
 The SLURM installation script takes around 28 minutes (a benchmark
 generated with Cloudmesh StopWatch reported the script to take 1710
@@ -331,6 +395,15 @@ download and 2.5 Mbps for upload.
 
 Most of the time results from the retrying of downloading packages in
 the fourth step, as mentioned in the Known Issues section.
+
+TODO: can we not put a loop for the download and have some check that things are downloaded. I do such things for example in other projects.
+
+e.g. implement
+
+while not downloaded
+   do the downoad
+   if download complete
+      downloaded = True
 
 ## References 
 
