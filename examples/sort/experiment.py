@@ -84,13 +84,9 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
                 print(f"Experiment {progress:<10}: size={n} processes={p} repeat={i}", end="\r")
                 label = get_label(sort, p, n, i, tag)
                 a = generate_random(n)
-                if debug:
-                    print(a)
                 StopWatch.start(label)
                 a = sort_algorithm(a, p)
                 StopWatch.stop(label)
-                if debug:
-                    print(a)
                 assert verify("ascending", a)
 
     StopWatch.benchmark(user=user, node=node)
