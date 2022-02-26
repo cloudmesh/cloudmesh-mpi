@@ -92,11 +92,12 @@ tutorial [^TODO].
 
 ## 2. Pre-requisites
 
-YOu will need the following
+You will need the following
 
 * Computer/Laptop with Windows 10, macOS, or Linux
 
-* Pi you dedicate as a manager which we will name `red` and cloudmesh installed (with  Python version >= 3.9, and Raspbian OS version Buster)
+* Pi you dedicate as a manager which we will name `red` and cloudmesh 
+  installed (with  Python version >= 3.9, and Raspbian OS version Buster)
 * Any number of worker Pis with Raspbian OS version Buster
 * The cluster of manager Pi and worker Pi(s) must be preconfigured
   with login access to each node; they must also have Internet access
@@ -368,18 +369,18 @@ Hello, World! I am process 3 of 4 on red04.
 salloc: Relinquishing job allocation 26
 ```
 
-TODO: explain how to use git cloen ....
+TODO: explain how to use git clone ....
 cd ...
 have demo ready ....
 
 ## Known Issues
 
 In case you have limited network bandwidth or the code mirrors are
-buisy the script may encounter issues downloading packages. However,
-if you hen repeatedly attempted to run the script, you will eventually
+busy the script may encounter issues downloading packages. However,
+if you can repeatedly attempted to run the script, you will eventually
 succeed.
 
-We laso know that there could be an issue resulting from our use of
+We also know that there could be an issue resulting from our use of
 static IP configuration as discussed in this thread:
 <https://forums.raspberrypi.com/viewtopic.php?t=123260#p991054>
 
@@ -387,10 +388,7 @@ The script still works despite this issue.
 
 ## Timing and Benchmark
 
-The SLURM installation script takes around 28 minutes (a benchmark
-generated with Cloudmesh StopWatch reported the script to take 1710
-seconds to install). The benchmark was done on a cluster of one
-manager and four worker nodes. The Internet speed was 30 Mbps for
+The SLURM installation script takes around 28 minutes. The Internet speed was 30 Mbps for
 download and 2.5 Mbps for upload.
 
 Most of the time results from the retrying of downloading packages in
