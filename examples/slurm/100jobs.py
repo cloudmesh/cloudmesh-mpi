@@ -7,6 +7,9 @@ describe what this is
 from cloudmesh.common.Shell import Shell
 from cloudmesh.common.util import writefile
 
+n = number_of_jobs = 5
+maximum_time=10
+
 def create_job(name, delay):
     script = \
         f"""
@@ -23,10 +26,10 @@ def create_job(name, delay):
 
 if __name__ == '__main__':
     total = 0.0
-    StopWatch.start("100-jobs")
+    StopWatch.start(f"{n}-jobs")
     for i in range (100):
         name = f"job-{i}.slurm"
-        t = random(0,1) * 3
+        t = random(0,1) * maximum_time
         total = total + t
         create_job(name, t)
         result = Shell.run(f"sbatch {name}")
