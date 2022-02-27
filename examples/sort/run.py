@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-#
-# run with
-#
-#  ./run.py --log="log/gregor.log" --user=gregor --node=5950x
-#
+"""
+run with:
+    ./run.py --log="log/[logfile name].log" --user=[user name] --node=[node name for stopwatch] --sort=[sort algorithm]
+
+"""
 
 import click
 import os
@@ -12,34 +12,30 @@ from cloudmesh.common.util import banner
 
 
 @click.command()
-@click.option('-p', default=False, is_flag=True)
-@click.option('-t', default=True, is_flag=True)
+@click.option('-p', default=False, is_flag=True, help="# of physical cores only")
+@click.option('-t', default=True, is_flag=True, help="logical CPUs: # of physical cores times number of threads on each core")
 @click.option('--log', default="output.log")
 @click.option('--user', default=None, help="a user for the stopwatch timer")
 @click.option('--node', default=None, help="a node name for the stopwatch timer")
-def run(p, t, log, user, node):
+@click.option('--sort', default="multiprocessing_mergesort", help="sorting function to run and analyze")
+def run(p, t, log, user, node, sort):
     if p:
         n = "p"
     else:
         n = "t"
 
-    command = f'python ./experiment.py --user={user} --node={node} --log={log}' \
-              f' --processes="[1-{n}]" --size="[100]" --repeat=10 |tee {log}'
-    banner(command)
-    os.system(command)
+    # run experiment.py to generate data from specified sort {sort}
+    # data is stored in specified log file {log}
+    # default size of array to be sorted is 100
+    run_experiment = f'python ./experiment.py --user={user} --node={node} --log={log}' \
+              f' --processes="[1-{n}]" --size="[100]" --repeat=10 --sort={sort} |tee {log}'
+    banner(run_experiment)
+    os.system(run_experiment)
 
-    os.system(f"python ./analysis.py --log={log}")
-
-    # | fgrep "# csv" | tee output.log
-
-    # python graph_efficiency.py
-    # python graph_speedup.py
-    # python graph_proc.py
-
-    # python multiprocessing_mergesort.py "[8]" "[100,1000,10000]" 10 | fgrep "# csv" | tee output-num.log
-
-    # python graph_size.py
-
+    # run analysis.py on data generated from experiment.py
+    # currently outputs graph of processes and time 
+    run_analysis = f"python ./analysis.py --log={log}"
+    os.system(run_analysis)
 
 if __name__ == '__main__':
     run()
