@@ -16,14 +16,15 @@ import click
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+import pandas as pd
+import numpy as np
+
 from cloudmesh.common.Shell import Shell
 from cloudmesh.common.parameter import Parameter
 
 
 def get_data(content, name="multiprocessing_mergesort"):
     found = []
-    # csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_9,ok,0.839,0.839,2022-02-20 21:06:18,,None,BL-UITS-NWLT005,alexandra,Darwin,10.15.7
-    # lines = Shell.find_lines_with(content, what=f"# csv")
     lines = [line for line in content if "# csv" in line]
 
     for line in lines[1:]:
@@ -53,21 +54,11 @@ def get_ranges(data):
 
 def processes_time_fixed_size(data, size, name=None, processes=None, label=None):
     """creates image from data with processes and time while keeping size constant"""
-    """['multiprocessing_mergesort',
-    8,
-    100,
-    3,
-    0.606,
-    0.606,
-    'BL-UITS-NWLT005',
-    'alexandra']"""
     x = []
     y = []
     result = []
-    # print("data = ",end="")
 
     for entry in data:
-        print("entry = ", end="")
         label, p, s, count, t, total, host, user = entry
         if processes is None or p in processes and s == size:
             x.append(p)
@@ -83,7 +74,6 @@ def processes_time_fixed_size(data, size, name=None, processes=None, label=None)
 
     if name == None:
         name = f"images/processes_time_{size}"
-    # name = "images"
     sns.set_theme(style="ticks", palette="pastel")
     ax = sns.boxplot(x="x", y="y", data=result)
     label = label.replace("_", " ")
@@ -94,6 +84,42 @@ def processes_time_fixed_size(data, size, name=None, processes=None, label=None)
     # plt.savefig(f"{name}.pdf")
     plt.show()
     plt.close()
+
+def avg_processes_time_fixed_size(data1, data2, size, name=None, processes=None, label=None):
+    """creates image from averaged data with processes and time while keeping size constant"""
+
+    x1 = []
+    y1 = []
+
+    for entry in data1:
+        label, p, s, count, t, total, host, user = entry
+        if processes is None or p in processes and s == size:
+            x1.append(p)
+            y1.append(t)
+
+    sns.set_theme(style="darkgrid")
+    df1 = pd.DataFrame({'processes': x1, 'time': y1})
+    avg1 = df1.groupby(['processes']).mean()
+    sns.lineplot(x = "processes", y = "time", data = avg1)
+    plt.show()
+
+
+    """pprint(x)
+    pprint(y)
+
+    if name == None:
+        name = f"images/processes_time_{size}"
+    # name = "images"
+    sns.set_theme(style="ticks", palette="pastel")
+    ax = sns.boxplot(x="x", y="y", data=result)
+    label = label.replace("_", " ")
+    ax.set_title(f"{label}, size={size}")
+    ax.set_ylabel("time/s")
+    ax.set_xlabel("processes")
+    # plt.savefig(f"{name}.png")
+    # plt.savefig(f"{name}.pdf")
+    plt.show()
+    plt.close()"""
 
 
 def speedup_fixed_size(data, size, name, processes):
@@ -168,14 +194,11 @@ def analysis(processes, size, repeat, log, debug, sort, x, y, info):
 
     f = open(log, "r")
     content = f.read().splitlines()
-    # print("content = ",end="")
-    # pprint(content)
     data = get_data(content, name=sort)
     for size in sizes:
-        processes_time_fixed_size(data, size, label=sort)
-    # speedup_fixed_size(data, size, sort, processes)
+        avg_processes_time_fixed_size(data, size, label=sort)
     if debug:
-        # print(content)
+        print(content)
         pprint(data)
 
     if info:
