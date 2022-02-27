@@ -49,8 +49,9 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
         if not c:
             return ""
 
-    t = psutil.cpu_count()
     p = psutil.cpu_count(logical=False)
+    t = psutil.cpu_count()
+    
 
     processes = processes.replace("p", str(p)).replace("t", str(t))
     processes = Parameter.expand(processes)
