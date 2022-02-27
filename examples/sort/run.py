@@ -41,6 +41,24 @@ from cloudmesh.common.util import banner
     default="multiprocessing_mergesort",
     help="sorting function to run and analyze")
 def run(p, t, log, user, node, sort):
+    """
+    run TBD
+
+    :param p:
+    :type p:
+    :param t:
+    :type t:
+    :param log:
+    :type log:
+    :param user:
+    :type user:
+    :param node:
+    :type node:
+    :param sort:
+    :type sort:
+    :return:
+    :rtype:
+    """
     if p:
         n = "p"
     else:

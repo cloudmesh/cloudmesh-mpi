@@ -5,7 +5,6 @@ import click
 import psutil
 
 from cloudmesh.common.Shell import Shell
-
 from cloudmesh.common.StopWatch import StopWatch
 from cloudmesh.common.parameter import Parameter
 from cloudmesh.common.util import yn_choice
@@ -26,23 +25,79 @@ def get_label(name, p, n, i, tag=None):
         tag = os.uname().nodename
     return f"{tag}_{name}_{p}_{n}_{i}"
 
+
 username = Shell.run('whoami').strip()
 hostname = Shell.run('hostname').strip()
 
+
 @click.command()
-@click.option('--processes', default="[1]", help='Number of processes as array. [1-2,8,16]')
-@click.option('--size', default="[100]", help='Total size of the array to be sorted as array. [10, 100]')
-@click.option('--repeat', default=1, help='number of times an experiment with processes and size is repeated. 1')
-@click.option('--log', default="output.log", help='The logfile to which the '
-                                                  'experiments are appended')
-@click.option('--clear', default=False, help='Clears the logfile. Handle with care')
-@click.option('--debug', default=False, help='Switch on some debugging')
-@click.option('--sort', default="multiprocessing_mergesort", help="sorting function")
-@click.option('--tag', default=None, help="a prefix for the stopwatch timer name")
-@click.option('--user', default=username, help="a user for the stopwatch timer")
-@click.option('--node', default=hostname, help="a node name for the stopwatch timer")
+@click.option(
+    '--processes',
+    default="[1]",
+    help='Number of processes as array. [1-2,8,16]')
+@click.option(
+    '--size',
+    default="[100]",
+    help='Total size of the array to be sorted as array. [10, 100]')
+@click.option(
+    '--repeat',
+    default=1,
+    help='number of times an experiment with processes and size is repeated. 1')
+@click.option(
+    '--log',
+    default="output.log",
+    help='The logfile to which the experiments are appended')
+@click.option(
+    '--clear',
+    default=False,
+    help='Clears the logfile. Handle with care')
+@click.option(
+    '--debug',
+    default=False,
+    help='Switch on some debugging')
+@click.option(
+    '--sort',
+    default="multiprocessing_mergesort",
+    help="sorting function")
+@click.option(
+    '--tag',
+    default=None,
+    help="a prefix for the stopwatch timer name")
+@click.option(
+    '--user',
+    default=username,
+    help="a user for the stopwatch timer")
+@click.option(
+    '--node',
+    default=hostname,
+    help="a node name for the stopwatch timer")
 def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node):
-    """performance experiment."""
+    """
+    performance experiment.
+
+    :param processes:
+    :type processes:
+    :param size:
+    :type size:
+    :param repeat:
+    :type repeat:
+    :param log:
+    :type log:
+    :param clear:
+    :type clear:
+    :param debug:
+    :type debug:
+    :param sort:
+    :type sort:
+    :param tag:
+    :type tag:
+    :param user:
+    :type user:
+    :param node:
+    :type node:
+    :return:
+    :rtype:
+    """
 
     if clear:
         c = yn_choice("Would you like to clear the file {log} before running the experiements")
@@ -51,7 +106,6 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
 
     p = psutil.cpu_count(logical=False)
     t = psutil.cpu_count()
-    
 
     processes = processes.replace("p", str(p)).replace("t", str(t))
     processes = Parameter.expand(processes)

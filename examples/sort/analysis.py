@@ -14,16 +14,24 @@ from pprint import pprint
 
 import click
 import matplotlib.pyplot as plt
-import seaborn as sns
-
 import pandas as pd
-import numpy as np
+import seaborn as sns
 
 from cloudmesh.common.Shell import Shell
 from cloudmesh.common.parameter import Parameter
 
 
 def get_data(content, name="multiprocessing_mergesort"):
+    """
+    TBD
+
+    :param content:
+    :type content:
+    :param name:
+    :type name:
+    :return:
+    :rtype:
+    """
     found = []
     lines = [line for line in content if "# csv" in line]
 
@@ -31,12 +39,27 @@ def get_data(content, name="multiprocessing_mergesort"):
         entries = line.split(",")
         entry = [entries[a] for a in [1, 3, 4]]
         processes, size, count = entry[0].split(name)[1].split("_")[1:]
-        entry = [name, int(processes), int(size), int(count), float(entry[1]), float(entry[2]), entries[8], entries[9]]
+        entry = [name,
+                 int(processes),
+                 int(size),
+                 int(count),
+                 float(entry[1]),
+                 float(entry[2]),
+                 entries[8],
+                 entries[9]]
         found.append(entry)
     return found
 
 
 def get_ranges(data):
+    """
+    TBD
+
+    :param data:
+    :type data:
+    :return:
+    :rtype:
+    """
     processes = []
     sizes = []
     counts = []
@@ -53,7 +76,22 @@ def get_ranges(data):
 
 
 def processes_time_fixed_size(data, size, name=None, processes=None, label=None):
-    """creates image from data with processes and time while keeping size constant"""
+    """
+    creates image from data with processes and time while keeping size constant
+
+    :param data:
+    :type data:
+    :param size:
+    :type size:
+    :param name:
+    :type name:
+    :param processes:
+    :type processes:
+    :param label:
+    :type label:
+    :return:
+    :rtype:
+    """
     x = []
     y = []
     result = []
@@ -85,8 +123,24 @@ def processes_time_fixed_size(data, size, name=None, processes=None, label=None)
     plt.show()
     plt.close()
 
+
 def avg_processes_time_fixed_size(data1, size, name=None, processes=None, label=None):
-    """creates image from averaged data with processes and time while keeping size constant"""
+    """
+    creates image from averaged data with processes and time while keeping size constant
+
+    :param data1:
+    :type data1:
+    :param size:
+    :type size:
+    :param name:
+    :type name:
+    :param processes:
+    :type processes:
+    :param label:
+    :type label:
+    :return:
+    :rtype:
+    """
 
     x1 = []
     y1 = []
@@ -100,12 +154,25 @@ def avg_processes_time_fixed_size(data1, size, name=None, processes=None, label=
     sns.set_theme(style="darkgrid")
     df1 = pd.DataFrame({'processes': x1, 'time': y1})
     avg1 = df1.groupby(['processes']).mean()
-    sns.lineplot(x = "processes", y = "time", data = avg1)
+    sns.lineplot(x="processes", y="time", data=avg1)
     plt.show()
 
 
 def speedup_fixed_size(data, size, name, processes):
-    """creates image from data to show speedup with fixed size"""
+    """
+    creates image from data to show speedup with fixed size
+
+    :param data:
+    :type data:
+    :param size:
+    :type size:
+    :param name:
+    :type name:
+    :param processes:
+    :type processes:
+    :return:
+    :rtype:
+    """
     x = []
     y = []
     result = []
@@ -157,7 +224,30 @@ def speedup_fixed_size(data, size, name, processes):
 @click.option('--y', help="value for y axis", default=None)
 @click.option('--info', help="value for y axis", default=False)
 def analysis(processes, size, repeat, log, debug, sort, x, y, info):
-    """performance experiment."""
+    """
+    performance experiment.
+
+    :param processes:
+    :type processes:
+    :param size:
+    :type size:
+    :param repeat:
+    :type repeat:
+    :param log:
+    :type log:
+    :param debug:
+    :type debug:
+    :param sort:
+    :type sort:
+    :param x:
+    :type x:
+    :param y:
+    :type y:
+    :param info:
+    :type info:
+    :return:
+    :rtype:
+    """
 
     processes = Parameter.expand(processes)
     sizes = Parameter.expand(size)
