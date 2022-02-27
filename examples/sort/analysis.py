@@ -85,7 +85,7 @@ def processes_time_fixed_size(data, size, name=None, processes=None, label=None)
     plt.show()
     plt.close()
 
-def avg_processes_time_fixed_size(data1, data2, size, name=None, processes=None, label=None):
+def avg_processes_time_fixed_size(data1, size, name=None, processes=None, label=None):
     """creates image from averaged data with processes and time while keeping size constant"""
 
     x1 = []
@@ -102,24 +102,6 @@ def avg_processes_time_fixed_size(data1, data2, size, name=None, processes=None,
     avg1 = df1.groupby(['processes']).mean()
     sns.lineplot(x = "processes", y = "time", data = avg1)
     plt.show()
-
-
-    """pprint(x)
-    pprint(y)
-
-    if name == None:
-        name = f"images/processes_time_{size}"
-    # name = "images"
-    sns.set_theme(style="ticks", palette="pastel")
-    ax = sns.boxplot(x="x", y="y", data=result)
-    label = label.replace("_", " ")
-    ax.set_title(f"{label}, size={size}")
-    ax.set_ylabel("time/s")
-    ax.set_xlabel("processes")
-    # plt.savefig(f"{name}.png")
-    # plt.savefig(f"{name}.pdf")
-    plt.show()
-    plt.close()"""
 
 
 def speedup_fixed_size(data, size, name, processes):
