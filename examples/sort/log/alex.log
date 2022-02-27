@@ -17,14 +17,14 @@ Experiment 119       : size=100 processes=1 repeat=0Experiment 118       : size
 | cpu_count        | 12                                                                                                |
 | cpu_threads      | 12                                                                                                |
 | frequency        | scpufreq(current=2600, min=2600, max=2600)                                                        |
-| mem.active       | 12.5 GiB                                                                                          |
-| mem.available    | 13.0 GiB                                                                                          |
-| mem.free         | 513.3 MiB                                                                                         |
-| mem.inactive     | 12.5 GiB                                                                                          |
-| mem.percent      | 59.3 %                                                                                            |
+| mem.active       | 11.5 GiB                                                                                          |
+| mem.available    | 14.0 GiB                                                                                          |
+| mem.free         | 2.4 GiB                                                                                           |
+| mem.inactive     | 10.7 GiB                                                                                          |
+| mem.percent      | 56.2 %                                                                                            |
 | mem.total        | 32.0 GiB                                                                                          |
-| mem.used         | 17.9 GiB                                                                                          |
-| mem.wired        | 5.4 GiB                                                                                           |
+| mem.used         | 17.0 GiB                                                                                          |
+| mem.wired        | 5.5 GiB                                                                                           |
 | platform.version | 10.15.7                                                                                           |
 | python           | 3.10.1 (v3.10.1:2cd268a3a9, Dec  6 2021, 14:28:59) [Clang 13.0.0 (clang-1300.0.29.3)]             |
 | python.pip       | 22.0.3                                                                                            |
@@ -42,247 +42,247 @@ Experiment 119       : size=100 processes=1 repeat=0Experiment 118       : size
 +----------------------------------------------------+----------+--------+-------+---------------------+-------+-------+----------------------+--------+--------+-----------+
 | Name                                               | Status   |   Time |   Sum | Start               | tag   | msg   | Node                 | User   | OS     | Version   |
 |----------------------------------------------------+----------+--------+-------+---------------------+-------+-------+----------------------+--------+--------+-----------|
-| BL-UITS-NWLT005_multiprocessing_mergesort_1_100_0  | ok       |  0.418 | 0.418 | 2022-02-27 16:30:22 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_1_100_1  | ok       |  0.383 | 0.383 | 2022-02-27 16:30:22 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_1_100_2  | ok       |  0.374 | 0.374 | 2022-02-27 16:30:23 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_1_100_3  | ok       |  0.375 | 0.375 | 2022-02-27 16:30:23 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_1_100_4  | ok       |  0.364 | 0.364 | 2022-02-27 16:30:24 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_1_100_5  | ok       |  0.358 | 0.358 | 2022-02-27 16:30:24 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_1_100_6  | ok       |  0.382 | 0.382 | 2022-02-27 16:30:24 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_1_100_7  | ok       |  0.368 | 0.368 | 2022-02-27 16:30:25 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_1_100_8  | ok       |  0.368 | 0.368 | 2022-02-27 16:30:25 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_1_100_9  | ok       |  1.025 | 1.025 | 2022-02-27 16:30:25 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_2_100_0  | ok       |  0.368 | 0.368 | 2022-02-27 16:30:26 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_2_100_1  | ok       |  0.372 | 0.372 | 2022-02-27 16:30:27 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_2_100_2  | ok       |  0.365 | 0.365 | 2022-02-27 16:30:27 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_2_100_3  | ok       |  0.405 | 0.405 | 2022-02-27 16:30:28 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_2_100_4  | ok       |  0.376 | 0.376 | 2022-02-27 16:30:28 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_2_100_5  | ok       |  0.472 | 0.472 | 2022-02-27 16:30:28 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_2_100_6  | ok       |  0.384 | 0.384 | 2022-02-27 16:30:29 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_2_100_7  | ok       |  0.465 | 0.465 | 2022-02-27 16:30:29 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_2_100_8  | ok       |  0.357 | 0.357 | 2022-02-27 16:30:30 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_2_100_9  | ok       |  0.379 | 0.379 | 2022-02-27 16:30:30 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_3_100_0  | ok       |  0.392 | 0.392 | 2022-02-27 16:30:30 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_3_100_1  | ok       |  0.361 | 0.361 | 2022-02-27 16:30:31 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_3_100_2  | ok       |  0.375 | 0.375 | 2022-02-27 16:30:31 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_3_100_3  | ok       |  0.396 | 0.396 | 2022-02-27 16:30:32 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_3_100_4  | ok       |  0.389 | 0.389 | 2022-02-27 16:30:32 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_3_100_5  | ok       |  0.364 | 0.364 | 2022-02-27 16:30:32 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_3_100_6  | ok       |  0.427 | 0.427 | 2022-02-27 16:30:33 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_3_100_7  | ok       |  0.39  | 0.39  | 2022-02-27 16:30:33 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_3_100_8  | ok       |  0.391 | 0.391 | 2022-02-27 16:30:34 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_3_100_9  | ok       |  0.423 | 0.423 | 2022-02-27 16:30:34 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_4_100_0  | ok       |  0.406 | 0.406 | 2022-02-27 16:30:34 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_4_100_1  | ok       |  0.464 | 0.464 | 2022-02-27 16:30:35 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_4_100_2  | ok       |  0.46  | 0.46  | 2022-02-27 16:30:35 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_4_100_3  | ok       |  0.502 | 0.502 | 2022-02-27 16:30:36 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_4_100_4  | ok       |  0.449 | 0.449 | 2022-02-27 16:30:36 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_4_100_5  | ok       |  0.472 | 0.472 | 2022-02-27 16:30:37 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_4_100_6  | ok       |  0.437 | 0.437 | 2022-02-27 16:30:37 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_4_100_7  | ok       |  0.571 | 0.571 | 2022-02-27 16:30:38 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_4_100_8  | ok       |  0.438 | 0.438 | 2022-02-27 16:30:38 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_4_100_9  | ok       |  0.523 | 0.523 | 2022-02-27 16:30:39 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_5_100_0  | ok       |  0.479 | 0.479 | 2022-02-27 16:30:39 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_5_100_1  | ok       |  0.501 | 0.501 | 2022-02-27 16:30:40 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_5_100_2  | ok       |  0.526 | 0.526 | 2022-02-27 16:30:40 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_5_100_3  | ok       |  0.414 | 0.414 | 2022-02-27 16:30:41 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_5_100_4  | ok       |  0.398 | 0.398 | 2022-02-27 16:30:41 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_5_100_5  | ok       |  0.416 | 0.416 | 2022-02-27 16:30:41 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_5_100_6  | ok       |  0.404 | 0.404 | 2022-02-27 16:30:42 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_5_100_7  | ok       |  0.461 | 0.461 | 2022-02-27 16:30:42 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_5_100_8  | ok       |  0.473 | 0.473 | 2022-02-27 16:30:43 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_5_100_9  | ok       |  0.533 | 0.533 | 2022-02-27 16:30:43 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_6_100_0  | ok       |  0.448 | 0.448 | 2022-02-27 16:30:44 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_6_100_1  | ok       |  0.45  | 0.45  | 2022-02-27 16:30:44 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_6_100_2  | ok       |  0.447 | 0.447 | 2022-02-27 16:30:45 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_6_100_3  | ok       |  0.448 | 0.448 | 2022-02-27 16:30:45 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_6_100_4  | ok       |  0.544 | 0.544 | 2022-02-27 16:30:45 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_6_100_5  | ok       |  0.426 | 0.426 | 2022-02-27 16:30:46 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_6_100_6  | ok       |  0.431 | 0.431 | 2022-02-27 16:30:46 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_6_100_7  | ok       |  0.424 | 0.424 | 2022-02-27 16:30:47 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_6_100_8  | ok       |  0.418 | 0.418 | 2022-02-27 16:30:47 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_6_100_9  | ok       |  0.417 | 0.417 | 2022-02-27 16:30:48 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_7_100_0  | ok       |  0.479 | 0.479 | 2022-02-27 16:30:48 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_7_100_1  | ok       |  0.47  | 0.47  | 2022-02-27 16:30:49 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_7_100_2  | ok       |  0.465 | 0.465 | 2022-02-27 16:30:49 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_7_100_3  | ok       |  0.479 | 0.479 | 2022-02-27 16:30:50 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_7_100_4  | ok       |  0.453 | 0.453 | 2022-02-27 16:30:50 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_7_100_5  | ok       |  0.475 | 0.475 | 2022-02-27 16:30:50 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_7_100_6  | ok       |  0.472 | 0.472 | 2022-02-27 16:30:51 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_7_100_7  | ok       |  0.458 | 0.458 | 2022-02-27 16:30:51 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_7_100_8  | ok       |  0.459 | 0.459 | 2022-02-27 16:30:52 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_7_100_9  | ok       |  0.457 | 0.457 | 2022-02-27 16:30:52 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_8_100_0  | ok       |  0.495 | 0.495 | 2022-02-27 16:30:53 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_8_100_1  | ok       |  0.51  | 0.51  | 2022-02-27 16:30:53 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_8_100_2  | ok       |  0.498 | 0.498 | 2022-02-27 16:30:54 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_8_100_3  | ok       |  0.494 | 0.494 | 2022-02-27 16:30:54 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_8_100_4  | ok       |  0.502 | 0.502 | 2022-02-27 16:30:55 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_8_100_5  | ok       |  0.5   | 0.5   | 2022-02-27 16:30:55 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_8_100_6  | ok       |  0.498 | 0.498 | 2022-02-27 16:30:56 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_8_100_7  | ok       |  0.524 | 0.524 | 2022-02-27 16:30:56 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_8_100_8  | ok       |  0.514 | 0.514 | 2022-02-27 16:30:57 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_8_100_9  | ok       |  0.506 | 0.506 | 2022-02-27 16:30:57 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_9_100_0  | ok       |  0.561 | 0.561 | 2022-02-27 16:30:58 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_9_100_1  | ok       |  0.605 | 0.605 | 2022-02-27 16:30:58 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_9_100_2  | ok       |  0.596 | 0.596 | 2022-02-27 16:30:59 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_9_100_3  | ok       |  0.581 | 0.581 | 2022-02-27 16:31:00 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_9_100_4  | ok       |  0.583 | 0.583 | 2022-02-27 16:31:00 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_9_100_5  | ok       |  0.605 | 0.605 | 2022-02-27 16:31:01 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_9_100_6  | ok       |  0.606 | 0.606 | 2022-02-27 16:31:01 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_9_100_7  | ok       |  0.584 | 0.584 | 2022-02-27 16:31:02 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_9_100_8  | ok       |  0.581 | 0.581 | 2022-02-27 16:31:03 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_9_100_9  | ok       |  0.637 | 0.637 | 2022-02-27 16:31:03 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_10_100_0 | ok       |  0.684 | 0.684 | 2022-02-27 16:31:04 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_10_100_1 | ok       |  0.716 | 0.716 | 2022-02-27 16:31:04 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_10_100_2 | ok       |  0.616 | 0.616 | 2022-02-27 16:31:05 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_10_100_3 | ok       |  0.683 | 0.683 | 2022-02-27 16:31:06 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_10_100_4 | ok       |  0.641 | 0.641 | 2022-02-27 16:31:06 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_10_100_5 | ok       |  0.667 | 0.667 | 2022-02-27 16:31:07 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_10_100_6 | ok       |  0.666 | 0.666 | 2022-02-27 16:31:08 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_10_100_7 | ok       |  0.64  | 0.64  | 2022-02-27 16:31:08 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_10_100_8 | ok       |  0.629 | 0.629 | 2022-02-27 16:31:09 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_10_100_9 | ok       |  0.662 | 0.662 | 2022-02-27 16:31:10 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_11_100_0 | ok       |  0.717 | 0.717 | 2022-02-27 16:31:10 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_11_100_1 | ok       |  0.734 | 0.734 | 2022-02-27 16:31:11 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_11_100_2 | ok       |  0.696 | 0.696 | 2022-02-27 16:31:12 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_11_100_3 | ok       |  0.737 | 0.737 | 2022-02-27 16:31:13 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_11_100_4 | ok       |  0.734 | 0.734 | 2022-02-27 16:31:13 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_11_100_5 | ok       |  0.738 | 0.738 | 2022-02-27 16:31:14 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_11_100_6 | ok       |  0.738 | 0.738 | 2022-02-27 16:31:15 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_11_100_7 | ok       |  0.724 | 0.724 | 2022-02-27 16:31:15 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_11_100_8 | ok       |  0.7   | 0.7   | 2022-02-27 16:31:16 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_11_100_9 | ok       |  0.735 | 0.735 | 2022-02-27 16:31:17 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_12_100_0 | ok       |  0.773 | 0.773 | 2022-02-27 16:31:18 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_12_100_1 | ok       |  0.759 | 0.759 | 2022-02-27 16:31:18 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_12_100_2 | ok       |  0.749 | 0.749 | 2022-02-27 16:31:19 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_12_100_3 | ok       |  0.744 | 0.744 | 2022-02-27 16:31:20 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_12_100_4 | ok       |  0.783 | 0.783 | 2022-02-27 16:31:21 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_12_100_5 | ok       |  0.785 | 0.785 | 2022-02-27 16:31:21 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_12_100_6 | ok       |  0.769 | 0.769 | 2022-02-27 16:31:22 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_12_100_7 | ok       |  0.767 | 0.767 | 2022-02-27 16:31:23 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_12_100_8 | ok       |  0.757 | 0.757 | 2022-02-27 16:31:24 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
-| BL-UITS-NWLT005_multiprocessing_mergesort_12_100_9 | ok       |  0.765 | 0.765 | 2022-02-27 16:31:25 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_1_100_0  | ok       |  0.389 | 0.389 | 2022-02-27 23:01:42 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_1_100_1  | ok       |  0.319 | 0.319 | 2022-02-27 23:01:42 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_1_100_2  | ok       |  0.322 | 0.322 | 2022-02-27 23:01:42 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_1_100_3  | ok       |  0.318 | 0.318 | 2022-02-27 23:01:43 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_1_100_4  | ok       |  0.315 | 0.315 | 2022-02-27 23:01:43 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_1_100_5  | ok       |  0.313 | 0.313 | 2022-02-27 23:01:43 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_1_100_6  | ok       |  0.318 | 0.318 | 2022-02-27 23:01:43 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_1_100_7  | ok       |  0.316 | 0.316 | 2022-02-27 23:01:44 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_1_100_8  | ok       |  0.316 | 0.316 | 2022-02-27 23:01:44 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_1_100_9  | ok       |  0.313 | 0.313 | 2022-02-27 23:01:44 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_2_100_0  | ok       |  0.303 | 0.303 | 2022-02-27 23:01:45 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_2_100_1  | ok       |  0.301 | 0.301 | 2022-02-27 23:01:45 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_2_100_2  | ok       |  0.304 | 0.304 | 2022-02-27 23:01:45 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_2_100_3  | ok       |  0.309 | 0.309 | 2022-02-27 23:01:46 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_2_100_4  | ok       |  0.306 | 0.306 | 2022-02-27 23:01:46 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_2_100_5  | ok       |  0.306 | 0.306 | 2022-02-27 23:01:46 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_2_100_6  | ok       |  0.305 | 0.305 | 2022-02-27 23:01:47 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_2_100_7  | ok       |  0.301 | 0.301 | 2022-02-27 23:01:47 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_2_100_8  | ok       |  0.302 | 0.302 | 2022-02-27 23:01:47 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_2_100_9  | ok       |  0.305 | 0.305 | 2022-02-27 23:01:47 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_3_100_0  | ok       |  0.308 | 0.308 | 2022-02-27 23:01:48 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_3_100_1  | ok       |  0.314 | 0.314 | 2022-02-27 23:01:48 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_3_100_2  | ok       |  0.311 | 0.311 | 2022-02-27 23:01:48 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_3_100_3  | ok       |  0.309 | 0.309 | 2022-02-27 23:01:49 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_3_100_4  | ok       |  0.309 | 0.309 | 2022-02-27 23:01:49 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_3_100_5  | ok       |  0.314 | 0.314 | 2022-02-27 23:01:49 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_3_100_6  | ok       |  0.308 | 0.308 | 2022-02-27 23:01:50 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_3_100_7  | ok       |  0.308 | 0.308 | 2022-02-27 23:01:50 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_3_100_8  | ok       |  0.311 | 0.311 | 2022-02-27 23:01:50 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_3_100_9  | ok       |  0.309 | 0.309 | 2022-02-27 23:01:51 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_4_100_0  | ok       |  0.324 | 0.324 | 2022-02-27 23:01:51 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_4_100_1  | ok       |  0.321 | 0.321 | 2022-02-27 23:01:51 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_4_100_2  | ok       |  0.325 | 0.325 | 2022-02-27 23:01:52 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_4_100_3  | ok       |  0.323 | 0.323 | 2022-02-27 23:01:52 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_4_100_4  | ok       |  0.319 | 0.319 | 2022-02-27 23:01:52 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_4_100_5  | ok       |  0.33  | 0.33  | 2022-02-27 23:01:53 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_4_100_6  | ok       |  0.32  | 0.32  | 2022-02-27 23:01:53 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_4_100_7  | ok       |  0.318 | 0.318 | 2022-02-27 23:01:53 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_4_100_8  | ok       |  0.33  | 0.33  | 2022-02-27 23:01:53 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_4_100_9  | ok       |  0.328 | 0.328 | 2022-02-27 23:01:54 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_5_100_0  | ok       |  0.341 | 0.341 | 2022-02-27 23:01:54 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_5_100_1  | ok       |  0.346 | 0.346 | 2022-02-27 23:01:54 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_5_100_2  | ok       |  0.343 | 0.343 | 2022-02-27 23:01:55 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_5_100_3  | ok       |  0.341 | 0.341 | 2022-02-27 23:01:55 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_5_100_4  | ok       |  0.343 | 0.343 | 2022-02-27 23:01:56 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_5_100_5  | ok       |  0.34  | 0.34  | 2022-02-27 23:01:56 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_5_100_6  | ok       |  0.335 | 0.335 | 2022-02-27 23:01:56 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_5_100_7  | ok       |  0.348 | 0.348 | 2022-02-27 23:01:57 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_5_100_8  | ok       |  0.337 | 0.337 | 2022-02-27 23:01:57 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_5_100_9  | ok       |  0.343 | 0.343 | 2022-02-27 23:01:57 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_6_100_0  | ok       |  0.376 | 0.376 | 2022-02-27 23:01:58 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_6_100_1  | ok       |  0.37  | 0.37  | 2022-02-27 23:01:58 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_6_100_2  | ok       |  0.378 | 0.378 | 2022-02-27 23:01:58 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_6_100_3  | ok       |  0.384 | 0.384 | 2022-02-27 23:01:59 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_6_100_4  | ok       |  0.379 | 0.379 | 2022-02-27 23:01:59 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_6_100_5  | ok       |  0.391 | 0.391 | 2022-02-27 23:01:59 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_6_100_6  | ok       |  0.383 | 0.383 | 2022-02-27 23:02:00 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_6_100_7  | ok       |  0.403 | 0.403 | 2022-02-27 23:02:00 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_6_100_8  | ok       |  0.395 | 0.395 | 2022-02-27 23:02:01 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_6_100_9  | ok       |  0.383 | 0.383 | 2022-02-27 23:02:01 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_7_100_0  | ok       |  0.415 | 0.415 | 2022-02-27 23:02:01 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_7_100_1  | ok       |  0.416 | 0.416 | 2022-02-27 23:02:02 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_7_100_2  | ok       |  0.414 | 0.414 | 2022-02-27 23:02:02 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_7_100_3  | ok       |  0.421 | 0.421 | 2022-02-27 23:02:03 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_7_100_4  | ok       |  0.42  | 0.42  | 2022-02-27 23:02:03 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_7_100_5  | ok       |  0.419 | 0.419 | 2022-02-27 23:02:03 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_7_100_6  | ok       |  0.428 | 0.428 | 2022-02-27 23:02:04 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_7_100_7  | ok       |  0.481 | 0.481 | 2022-02-27 23:02:04 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_7_100_8  | ok       |  0.435 | 0.435 | 2022-02-27 23:02:05 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_7_100_9  | ok       |  0.433 | 0.433 | 2022-02-27 23:02:05 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_8_100_0  | ok       |  0.474 | 0.474 | 2022-02-27 23:02:06 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_8_100_1  | ok       |  0.522 | 0.522 | 2022-02-27 23:02:06 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_8_100_2  | ok       |  0.55  | 0.55  | 2022-02-27 23:02:07 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_8_100_3  | ok       |  0.551 | 0.551 | 2022-02-27 23:02:07 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_8_100_4  | ok       |  0.572 | 0.572 | 2022-02-27 23:02:08 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_8_100_5  | ok       |  0.545 | 0.545 | 2022-02-27 23:02:08 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_8_100_6  | ok       |  0.563 | 0.563 | 2022-02-27 23:02:09 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_8_100_7  | ok       |  0.474 | 0.474 | 2022-02-27 23:02:09 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_8_100_8  | ok       |  0.478 | 0.478 | 2022-02-27 23:02:10 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_8_100_9  | ok       |  0.474 | 0.474 | 2022-02-27 23:02:10 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_9_100_0  | ok       |  0.506 | 0.506 | 2022-02-27 23:02:11 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_9_100_1  | ok       |  0.526 | 0.526 | 2022-02-27 23:02:11 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_9_100_2  | ok       |  0.527 | 0.527 | 2022-02-27 23:02:12 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_9_100_3  | ok       |  0.521 | 0.521 | 2022-02-27 23:02:12 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_9_100_4  | ok       |  0.521 | 0.521 | 2022-02-27 23:02:13 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_9_100_5  | ok       |  0.512 | 0.512 | 2022-02-27 23:02:13 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_9_100_6  | ok       |  0.53  | 0.53  | 2022-02-27 23:02:14 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_9_100_7  | ok       |  0.536 | 0.536 | 2022-02-27 23:02:15 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_9_100_8  | ok       |  0.598 | 0.598 | 2022-02-27 23:02:15 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_9_100_9  | ok       |  0.693 | 0.693 | 2022-02-27 23:02:16 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_10_100_0 | ok       |  0.779 | 0.779 | 2022-02-27 23:02:16 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_10_100_1 | ok       |  0.83  | 0.83  | 2022-02-27 23:02:17 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_10_100_2 | ok       |  0.688 | 0.688 | 2022-02-27 23:02:18 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_10_100_3 | ok       |  0.735 | 0.735 | 2022-02-27 23:02:19 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_10_100_4 | ok       |  0.743 | 0.743 | 2022-02-27 23:02:19 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_10_100_5 | ok       |  0.831 | 0.831 | 2022-02-27 23:02:20 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_10_100_6 | ok       |  0.768 | 0.768 | 2022-02-27 23:02:21 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_10_100_7 | ok       |  0.6   | 0.6   | 2022-02-27 23:02:22 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_10_100_8 | ok       |  0.585 | 0.585 | 2022-02-27 23:02:22 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_10_100_9 | ok       |  0.647 | 0.647 | 2022-02-27 23:02:23 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_11_100_0 | ok       |  0.685 | 0.685 | 2022-02-27 23:02:24 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_11_100_1 | ok       |  0.665 | 0.665 | 2022-02-27 23:02:24 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_11_100_2 | ok       |  0.691 | 0.691 | 2022-02-27 23:02:25 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_11_100_3 | ok       |  0.691 | 0.691 | 2022-02-27 23:02:26 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_11_100_4 | ok       |  0.7   | 0.7   | 2022-02-27 23:02:26 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_11_100_5 | ok       |  0.69  | 0.69  | 2022-02-27 23:02:27 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_11_100_6 | ok       |  0.707 | 0.707 | 2022-02-27 23:02:28 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_11_100_7 | ok       |  0.693 | 0.693 | 2022-02-27 23:02:28 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_11_100_8 | ok       |  0.706 | 0.706 | 2022-02-27 23:02:29 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_11_100_9 | ok       |  0.671 | 0.671 | 2022-02-27 23:02:30 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_12_100_0 | ok       |  0.747 | 0.747 | 2022-02-27 23:02:30 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_12_100_1 | ok       |  0.733 | 0.733 | 2022-02-27 23:02:31 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_12_100_2 | ok       |  0.736 | 0.736 | 2022-02-27 23:02:32 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_12_100_3 | ok       |  0.739 | 0.739 | 2022-02-27 23:02:33 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_12_100_4 | ok       |  0.767 | 0.767 | 2022-02-27 23:02:33 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_12_100_5 | ok       |  0.739 | 0.739 | 2022-02-27 23:02:34 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_12_100_6 | ok       |  0.746 | 0.746 | 2022-02-27 23:02:35 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_12_100_7 | ok       |  0.72  | 0.72  | 2022-02-27 23:02:36 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_12_100_8 | ok       |  0.772 | 0.772 | 2022-02-27 23:02:36 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
+| BL-UITS-NWLT005_multiprocessing_mergesort_12_100_9 | ok       |  0.728 | 0.728 | 2022-02-27 23:02:37 |       |       | macbookproi7_2400MHz | alex   | Darwin | 10.15.7   |
 +----------------------------------------------------+----------+--------+-------+---------------------+-------+-------+----------------------+--------+--------+-----------+
 
 # csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_1_100_0,ok,0.418,0.418,2022-02-27 16:30:22,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_1_100_1,ok,0.383,0.383,2022-02-27 16:30:22,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_1_100_2,ok,0.374,0.374,2022-02-27 16:30:23,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_1_100_3,ok,0.375,0.375,2022-02-27 16:30:23,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_1_100_4,ok,0.364,0.364,2022-02-27 16:30:24,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_1_100_5,ok,0.358,0.358,2022-02-27 16:30:24,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_1_100_6,ok,0.382,0.382,2022-02-27 16:30:24,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_1_100_7,ok,0.368,0.368,2022-02-27 16:30:25,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_1_100_8,ok,0.368,0.368,2022-02-27 16:30:25,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_1_100_9,ok,1.025,1.025,2022-02-27 16:30:25,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_2_100_0,ok,0.368,0.368,2022-02-27 16:30:26,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_2_100_1,ok,0.372,0.372,2022-02-27 16:30:27,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_2_100_2,ok,0.365,0.365,2022-02-27 16:30:27,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_2_100_3,ok,0.405,0.405,2022-02-27 16:30:28,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_2_100_4,ok,0.376,0.376,2022-02-27 16:30:28,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_2_100_5,ok,0.472,0.472,2022-02-27 16:30:28,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_2_100_6,ok,0.384,0.384,2022-02-27 16:30:29,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_2_100_7,ok,0.465,0.465,2022-02-27 16:30:29,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_2_100_8,ok,0.357,0.357,2022-02-27 16:30:30,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_2_100_9,ok,0.379,0.379,2022-02-27 16:30:30,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_3_100_0,ok,0.392,0.392,2022-02-27 16:30:30,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_3_100_1,ok,0.361,0.361,2022-02-27 16:30:31,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_3_100_2,ok,0.375,0.375,2022-02-27 16:30:31,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_3_100_3,ok,0.396,0.396,2022-02-27 16:30:32,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_3_100_4,ok,0.389,0.389,2022-02-27 16:30:32,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_3_100_5,ok,0.364,0.364,2022-02-27 16:30:32,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_3_100_6,ok,0.427,0.427,2022-02-27 16:30:33,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_3_100_7,ok,0.39,0.39,2022-02-27 16:30:33,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_3_100_8,ok,0.391,0.391,2022-02-27 16:30:34,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_3_100_9,ok,0.423,0.423,2022-02-27 16:30:34,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_4_100_0,ok,0.406,0.406,2022-02-27 16:30:34,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_4_100_1,ok,0.464,0.464,2022-02-27 16:30:35,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_4_100_2,ok,0.46,0.46,2022-02-27 16:30:35,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_4_100_3,ok,0.502,0.502,2022-02-27 16:30:36,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_4_100_4,ok,0.449,0.449,2022-02-27 16:30:36,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_4_100_5,ok,0.472,0.472,2022-02-27 16:30:37,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_4_100_6,ok,0.437,0.437,2022-02-27 16:30:37,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_4_100_7,ok,0.571,0.571,2022-02-27 16:30:38,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_4_100_8,ok,0.438,0.438,2022-02-27 16:30:38,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_4_100_9,ok,0.523,0.523,2022-02-27 16:30:39,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_5_100_0,ok,0.479,0.479,2022-02-27 16:30:39,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_5_100_1,ok,0.501,0.501,2022-02-27 16:30:40,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_5_100_2,ok,0.526,0.526,2022-02-27 16:30:40,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_5_100_3,ok,0.414,0.414,2022-02-27 16:30:41,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_5_100_4,ok,0.398,0.398,2022-02-27 16:30:41,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_5_100_5,ok,0.416,0.416,2022-02-27 16:30:41,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_5_100_6,ok,0.404,0.404,2022-02-27 16:30:42,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_5_100_7,ok,0.461,0.461,2022-02-27 16:30:42,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_5_100_8,ok,0.473,0.473,2022-02-27 16:30:43,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_5_100_9,ok,0.533,0.533,2022-02-27 16:30:43,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_6_100_0,ok,0.448,0.448,2022-02-27 16:30:44,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_6_100_1,ok,0.45,0.45,2022-02-27 16:30:44,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_6_100_2,ok,0.447,0.447,2022-02-27 16:30:45,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_6_100_3,ok,0.448,0.448,2022-02-27 16:30:45,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_6_100_4,ok,0.544,0.544,2022-02-27 16:30:45,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_6_100_5,ok,0.426,0.426,2022-02-27 16:30:46,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_6_100_6,ok,0.431,0.431,2022-02-27 16:30:46,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_6_100_7,ok,0.424,0.424,2022-02-27 16:30:47,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_6_100_8,ok,0.418,0.418,2022-02-27 16:30:47,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_6_100_9,ok,0.417,0.417,2022-02-27 16:30:48,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_7_100_0,ok,0.479,0.479,2022-02-27 16:30:48,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_7_100_1,ok,0.47,0.47,2022-02-27 16:30:49,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_7_100_2,ok,0.465,0.465,2022-02-27 16:30:49,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_7_100_3,ok,0.479,0.479,2022-02-27 16:30:50,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_7_100_4,ok,0.453,0.453,2022-02-27 16:30:50,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_7_100_5,ok,0.475,0.475,2022-02-27 16:30:50,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_7_100_6,ok,0.472,0.472,2022-02-27 16:30:51,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_7_100_7,ok,0.458,0.458,2022-02-27 16:30:51,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_7_100_8,ok,0.459,0.459,2022-02-27 16:30:52,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_7_100_9,ok,0.457,0.457,2022-02-27 16:30:52,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_8_100_0,ok,0.495,0.495,2022-02-27 16:30:53,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_8_100_1,ok,0.51,0.51,2022-02-27 16:30:53,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_8_100_2,ok,0.498,0.498,2022-02-27 16:30:54,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_8_100_3,ok,0.494,0.494,2022-02-27 16:30:54,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_8_100_4,ok,0.502,0.502,2022-02-27 16:30:55,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_8_100_5,ok,0.5,0.5,2022-02-27 16:30:55,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_8_100_6,ok,0.498,0.498,2022-02-27 16:30:56,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_8_100_7,ok,0.524,0.524,2022-02-27 16:30:56,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_8_100_8,ok,0.514,0.514,2022-02-27 16:30:57,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_8_100_9,ok,0.506,0.506,2022-02-27 16:30:57,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_9_100_0,ok,0.561,0.561,2022-02-27 16:30:58,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_9_100_1,ok,0.605,0.605,2022-02-27 16:30:58,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_9_100_2,ok,0.596,0.596,2022-02-27 16:30:59,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_9_100_3,ok,0.581,0.581,2022-02-27 16:31:00,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_9_100_4,ok,0.583,0.583,2022-02-27 16:31:00,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_9_100_5,ok,0.605,0.605,2022-02-27 16:31:01,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_9_100_6,ok,0.606,0.606,2022-02-27 16:31:01,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_9_100_7,ok,0.584,0.584,2022-02-27 16:31:02,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_9_100_8,ok,0.581,0.581,2022-02-27 16:31:03,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_9_100_9,ok,0.637,0.637,2022-02-27 16:31:03,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_10_100_0,ok,0.684,0.684,2022-02-27 16:31:04,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_10_100_1,ok,0.716,0.716,2022-02-27 16:31:04,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_10_100_2,ok,0.616,0.616,2022-02-27 16:31:05,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_10_100_3,ok,0.683,0.683,2022-02-27 16:31:06,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_10_100_4,ok,0.641,0.641,2022-02-27 16:31:06,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_10_100_5,ok,0.667,0.667,2022-02-27 16:31:07,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_10_100_6,ok,0.666,0.666,2022-02-27 16:31:08,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_10_100_7,ok,0.64,0.64,2022-02-27 16:31:08,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_10_100_8,ok,0.629,0.629,2022-02-27 16:31:09,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_10_100_9,ok,0.662,0.662,2022-02-27 16:31:10,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_11_100_0,ok,0.717,0.717,2022-02-27 16:31:10,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_11_100_1,ok,0.734,0.734,2022-02-27 16:31:11,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_11_100_2,ok,0.696,0.696,2022-02-27 16:31:12,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_11_100_3,ok,0.737,0.737,2022-02-27 16:31:13,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_11_100_4,ok,0.734,0.734,2022-02-27 16:31:13,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_11_100_5,ok,0.738,0.738,2022-02-27 16:31:14,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_11_100_6,ok,0.738,0.738,2022-02-27 16:31:15,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_11_100_7,ok,0.724,0.724,2022-02-27 16:31:15,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_11_100_8,ok,0.7,0.7,2022-02-27 16:31:16,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_11_100_9,ok,0.735,0.735,2022-02-27 16:31:17,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_0,ok,0.773,0.773,2022-02-27 16:31:18,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_1,ok,0.759,0.759,2022-02-27 16:31:18,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_2,ok,0.749,0.749,2022-02-27 16:31:19,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_3,ok,0.744,0.744,2022-02-27 16:31:20,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_4,ok,0.783,0.783,2022-02-27 16:31:21,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_5,ok,0.785,0.785,2022-02-27 16:31:21,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_6,ok,0.769,0.769,2022-02-27 16:31:22,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_7,ok,0.767,0.767,2022-02-27 16:31:23,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_8,ok,0.757,0.757,2022-02-27 16:31:24,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
-# csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_9,ok,0.765,0.765,2022-02-27 16:31:25,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_1_100_0,ok,0.389,0.389,2022-02-27 23:01:42,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_1_100_1,ok,0.319,0.319,2022-02-27 23:01:42,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_1_100_2,ok,0.322,0.322,2022-02-27 23:01:42,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_1_100_3,ok,0.318,0.318,2022-02-27 23:01:43,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_1_100_4,ok,0.315,0.315,2022-02-27 23:01:43,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_1_100_5,ok,0.313,0.313,2022-02-27 23:01:43,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_1_100_6,ok,0.318,0.318,2022-02-27 23:01:43,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_1_100_7,ok,0.316,0.316,2022-02-27 23:01:44,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_1_100_8,ok,0.316,0.316,2022-02-27 23:01:44,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_1_100_9,ok,0.313,0.313,2022-02-27 23:01:44,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_2_100_0,ok,0.303,0.303,2022-02-27 23:01:45,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_2_100_1,ok,0.301,0.301,2022-02-27 23:01:45,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_2_100_2,ok,0.304,0.304,2022-02-27 23:01:45,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_2_100_3,ok,0.309,0.309,2022-02-27 23:01:46,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_2_100_4,ok,0.306,0.306,2022-02-27 23:01:46,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_2_100_5,ok,0.306,0.306,2022-02-27 23:01:46,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_2_100_6,ok,0.305,0.305,2022-02-27 23:01:47,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_2_100_7,ok,0.301,0.301,2022-02-27 23:01:47,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_2_100_8,ok,0.302,0.302,2022-02-27 23:01:47,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_2_100_9,ok,0.305,0.305,2022-02-27 23:01:47,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_3_100_0,ok,0.308,0.308,2022-02-27 23:01:48,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_3_100_1,ok,0.314,0.314,2022-02-27 23:01:48,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_3_100_2,ok,0.311,0.311,2022-02-27 23:01:48,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_3_100_3,ok,0.309,0.309,2022-02-27 23:01:49,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_3_100_4,ok,0.309,0.309,2022-02-27 23:01:49,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_3_100_5,ok,0.314,0.314,2022-02-27 23:01:49,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_3_100_6,ok,0.308,0.308,2022-02-27 23:01:50,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_3_100_7,ok,0.308,0.308,2022-02-27 23:01:50,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_3_100_8,ok,0.311,0.311,2022-02-27 23:01:50,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_3_100_9,ok,0.309,0.309,2022-02-27 23:01:51,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_4_100_0,ok,0.324,0.324,2022-02-27 23:01:51,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_4_100_1,ok,0.321,0.321,2022-02-27 23:01:51,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_4_100_2,ok,0.325,0.325,2022-02-27 23:01:52,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_4_100_3,ok,0.323,0.323,2022-02-27 23:01:52,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_4_100_4,ok,0.319,0.319,2022-02-27 23:01:52,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_4_100_5,ok,0.33,0.33,2022-02-27 23:01:53,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_4_100_6,ok,0.32,0.32,2022-02-27 23:01:53,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_4_100_7,ok,0.318,0.318,2022-02-27 23:01:53,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_4_100_8,ok,0.33,0.33,2022-02-27 23:01:53,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_4_100_9,ok,0.328,0.328,2022-02-27 23:01:54,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_5_100_0,ok,0.341,0.341,2022-02-27 23:01:54,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_5_100_1,ok,0.346,0.346,2022-02-27 23:01:54,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_5_100_2,ok,0.343,0.343,2022-02-27 23:01:55,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_5_100_3,ok,0.341,0.341,2022-02-27 23:01:55,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_5_100_4,ok,0.343,0.343,2022-02-27 23:01:56,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_5_100_5,ok,0.34,0.34,2022-02-27 23:01:56,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_5_100_6,ok,0.335,0.335,2022-02-27 23:01:56,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_5_100_7,ok,0.348,0.348,2022-02-27 23:01:57,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_5_100_8,ok,0.337,0.337,2022-02-27 23:01:57,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_5_100_9,ok,0.343,0.343,2022-02-27 23:01:57,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_6_100_0,ok,0.376,0.376,2022-02-27 23:01:58,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_6_100_1,ok,0.37,0.37,2022-02-27 23:01:58,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_6_100_2,ok,0.378,0.378,2022-02-27 23:01:58,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_6_100_3,ok,0.384,0.384,2022-02-27 23:01:59,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_6_100_4,ok,0.379,0.379,2022-02-27 23:01:59,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_6_100_5,ok,0.391,0.391,2022-02-27 23:01:59,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_6_100_6,ok,0.383,0.383,2022-02-27 23:02:00,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_6_100_7,ok,0.403,0.403,2022-02-27 23:02:00,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_6_100_8,ok,0.395,0.395,2022-02-27 23:02:01,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_6_100_9,ok,0.383,0.383,2022-02-27 23:02:01,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_7_100_0,ok,0.415,0.415,2022-02-27 23:02:01,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_7_100_1,ok,0.416,0.416,2022-02-27 23:02:02,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_7_100_2,ok,0.414,0.414,2022-02-27 23:02:02,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_7_100_3,ok,0.421,0.421,2022-02-27 23:02:03,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_7_100_4,ok,0.42,0.42,2022-02-27 23:02:03,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_7_100_5,ok,0.419,0.419,2022-02-27 23:02:03,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_7_100_6,ok,0.428,0.428,2022-02-27 23:02:04,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_7_100_7,ok,0.481,0.481,2022-02-27 23:02:04,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_7_100_8,ok,0.435,0.435,2022-02-27 23:02:05,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_7_100_9,ok,0.433,0.433,2022-02-27 23:02:05,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_8_100_0,ok,0.474,0.474,2022-02-27 23:02:06,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_8_100_1,ok,0.522,0.522,2022-02-27 23:02:06,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_8_100_2,ok,0.55,0.55,2022-02-27 23:02:07,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_8_100_3,ok,0.551,0.551,2022-02-27 23:02:07,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_8_100_4,ok,0.572,0.572,2022-02-27 23:02:08,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_8_100_5,ok,0.545,0.545,2022-02-27 23:02:08,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_8_100_6,ok,0.563,0.563,2022-02-27 23:02:09,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_8_100_7,ok,0.474,0.474,2022-02-27 23:02:09,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_8_100_8,ok,0.478,0.478,2022-02-27 23:02:10,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_8_100_9,ok,0.474,0.474,2022-02-27 23:02:10,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_9_100_0,ok,0.506,0.506,2022-02-27 23:02:11,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_9_100_1,ok,0.526,0.526,2022-02-27 23:02:11,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_9_100_2,ok,0.527,0.527,2022-02-27 23:02:12,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_9_100_3,ok,0.521,0.521,2022-02-27 23:02:12,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_9_100_4,ok,0.521,0.521,2022-02-27 23:02:13,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_9_100_5,ok,0.512,0.512,2022-02-27 23:02:13,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_9_100_6,ok,0.53,0.53,2022-02-27 23:02:14,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_9_100_7,ok,0.536,0.536,2022-02-27 23:02:15,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_9_100_8,ok,0.598,0.598,2022-02-27 23:02:15,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_9_100_9,ok,0.693,0.693,2022-02-27 23:02:16,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_10_100_0,ok,0.779,0.779,2022-02-27 23:02:16,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_10_100_1,ok,0.83,0.83,2022-02-27 23:02:17,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_10_100_2,ok,0.688,0.688,2022-02-27 23:02:18,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_10_100_3,ok,0.735,0.735,2022-02-27 23:02:19,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_10_100_4,ok,0.743,0.743,2022-02-27 23:02:19,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_10_100_5,ok,0.831,0.831,2022-02-27 23:02:20,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_10_100_6,ok,0.768,0.768,2022-02-27 23:02:21,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_10_100_7,ok,0.6,0.6,2022-02-27 23:02:22,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_10_100_8,ok,0.585,0.585,2022-02-27 23:02:22,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_10_100_9,ok,0.647,0.647,2022-02-27 23:02:23,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_11_100_0,ok,0.685,0.685,2022-02-27 23:02:24,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_11_100_1,ok,0.665,0.665,2022-02-27 23:02:24,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_11_100_2,ok,0.691,0.691,2022-02-27 23:02:25,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_11_100_3,ok,0.691,0.691,2022-02-27 23:02:26,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_11_100_4,ok,0.7,0.7,2022-02-27 23:02:26,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_11_100_5,ok,0.69,0.69,2022-02-27 23:02:27,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_11_100_6,ok,0.707,0.707,2022-02-27 23:02:28,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_11_100_7,ok,0.693,0.693,2022-02-27 23:02:28,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_11_100_8,ok,0.706,0.706,2022-02-27 23:02:29,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_11_100_9,ok,0.671,0.671,2022-02-27 23:02:30,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_0,ok,0.747,0.747,2022-02-27 23:02:30,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_1,ok,0.733,0.733,2022-02-27 23:02:31,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_2,ok,0.736,0.736,2022-02-27 23:02:32,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_3,ok,0.739,0.739,2022-02-27 23:02:33,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_4,ok,0.767,0.767,2022-02-27 23:02:33,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_5,ok,0.739,0.739,2022-02-27 23:02:34,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_6,ok,0.746,0.746,2022-02-27 23:02:35,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_7,ok,0.72,0.72,2022-02-27 23:02:36,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_8,ok,0.772,0.772,2022-02-27 23:02:36,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
+# csv,BL-UITS-NWLT005_multiprocessing_mergesort_12_100_9,ok,0.728,0.728,2022-02-27 23:02:37,,None,macbookproi7_2400MHz,alex,Darwin,10.15.7
 
