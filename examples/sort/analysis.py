@@ -21,6 +21,78 @@ from cloudmesh.common.Shell import Shell
 from cloudmesh.common.parameter import Parameter
 
 
+def read_data(log, sort="multiprocessing_mergesort"):
+    f = open(log, "r")
+    content = f.read().splitlines()
+    data = get_simple_data(content, name=sort)
+    return data
+
+def avg_simple_processes_time_fixed_size(data1, size, name=None, processes=None, label=None):
+    """
+    creates image from averaged data with processes and time while keeping size constant
+
+    :param data1:
+    :type data1:
+    :param size:
+    :type size:
+    :param name:
+    :type name:
+    :param processes:
+    :type processes:
+    :param label:
+    :type label:
+    :return:
+    :rtype:
+    """
+
+    x = []
+    y = []
+
+    for entry in data1:
+        p, s, count, t = entry
+        if processes is None or p in processes and s == size:
+            x.append(p)
+            y.append(t)
+    return x, y
+
+def format_plot():
+    sns.set_theme(style="darkgrid")
+    df1 = pd.DataFrame({'processes': x1, 'time': y1})
+    avg1 = df1.groupby(['processes']).mean()
+    sns.lineplot(x="processes", y="time", data=avg1)
+    plt.show()
+
+
+
+def get_simple_data(content, name="multiprocessing_mergesort"):
+    """
+    TBD
+
+    :param content:
+    :type content:
+    :param name:
+    :type name:
+    :return:
+    :rtype:
+    """
+    found = []
+    lines = [line for line in content if "# csv" in line]
+
+    for line in lines[1:]:
+        entries = line.split(",")
+        entry = [entries[a] for a in [1, 3, 4]]
+        processes, size, count = entry[0].split(name)[1].split("_")[1:]
+        entry = [
+                 int(processes),
+                 int(size),
+                 int(count),
+                 float(entry[1]),
+                 ]
+        found.append(entry)
+    return found
+
+
+
 def get_data(content, name="multiprocessing_mergesort"):
     """
     TBD
