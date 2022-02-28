@@ -2,7 +2,10 @@
 
 """
 run with:
-    ./run.py --log="log/[user-size].log" --user=[user name] --node=[node name for stopwatch] --sort=[sort algorithm]
+    ./run.py --user=[user name] --node=[node name for stopwatch] --sort=[sort algorithm]
+
+    Example:
+        ./run.py  --user=gregor --node=5950x
 
 """
 
@@ -26,8 +29,7 @@ from cloudmesh.common.util import banner
     help="logical CPUs: # of physical cores times number of threads on each core")
 @click.option(
     '--log',
-    default=
-    "output.log")
+    default=None)
 @click.option(
     '--user',
     default=None,
@@ -72,12 +74,15 @@ def run(p, t, log, user, node, sort, size, repeat):
     else:
         n = "t"
 
+    if log is None:
+        log = f"log/{user}-{size}.log"
+
     # run experiment.py to generate data from specified sort {sort}
     # data is stored in specified log file {log}
     # default size of array to be sorted is 100
 
     run_experiment = \
-        f'python ./experiment.py --user={user} --node={node} --log={user}-{size}.log' \
+        f'python ./experiment.py --user={user} --node={node} --log={log}' \
         f' --processes="[1-{n}]" --size="[{size}]" --repeat={repeat} --sort={sort} |tee {log}'
     banner(run_experiment)
     os.system(run_experiment)
@@ -85,6 +90,7 @@ def run(p, t, log, user, node, sort, size, repeat):
     # run analysis.py on data generated from experiment.py
     # currently outputs graph of processes and time 
     run_analysis = f"python ./analysis.py --log={log} --size={size} --sort={sort}"
+    banner(run_analysis)
     os.system(run_analysis)
 
 

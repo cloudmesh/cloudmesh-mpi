@@ -21,19 +21,65 @@ from cloudmesh.common.Shell import Shell
 from cloudmesh.common.parameter import Parameter
 
 
-def read_named_data(log, sort="multiprocessing_mergesort"):
+def get_data(content, tag="multiprocessing_mergesort", size=None):
+    """
+    TBD
+
+    :param content:
+    :type content:
+    :param name:
+    :type name:
+    :return:
+    :rtype:
+    """
+    found = []
+    lines = [line for line in content if "# csv" in line]
+
+    for line in lines[1:]:
+        entries = line.split(",")
+        entry = [entries[a] for a in [1, 3, 9]]
+        time = entry[1]
+        name = entry[2]
+        processes, size, count = entry[0].split(tag)[1].split("_")[1:]
+
+        entry = [
+            int(processes),
+            # int(count),
+            float(time),
+            int(size),
+            name,
+            tag
+        ]
+        found.append(entry)
+    return found
+
+def read_log(log, size=None, tag="multiprocessing_mergesort"):
+    if ".log" not in log:
+        log = f"log/{log}-{size}.log"
     f = open(log, "r")
     content = f.read().splitlines()
-    data = get_simple_data(content, name=sort)
+    data = get_data(content, tag=tag, size=size)
+    return data
+
+def read_logs(files=["alex", "gregor"], size =[100], tags=["multiprocessing_mergesort"]):
+    data = []
+    for tag in tags:
+        for file in files:
+            for s in size:
+                content = read_log(file, size=s, tag="multiprocessing_mergesort")
+                data = data + content
+
     return data
 
 
-def read_data(log, sort="multiprocessing_mergesort"):
-    f = open(log, "r")
-    content = f.read().splitlines()
-    data = get_simple_data(content, name=sort)
-    return data
 
+# NOT USED in notebook
+def generate_average(df, tag, size):
+    pass
+
+
+
+# NOT USED in notebook
 def avg_simple_processes_time_fixed_size(data1, size, name=None, processes=None, label=None):
     """
     creates image from averaged data with processes and time while keeping size constant
@@ -62,6 +108,7 @@ def avg_simple_processes_time_fixed_size(data1, size, name=None, processes=None,
             y.append(t)
     return x, y
 
+# NOT USED in notebook
 def format_plot():
     sns.set_theme(style="darkgrid")
     df1 = pd.DataFrame({'processes': x1, 'time': y1})
@@ -69,95 +116,7 @@ def format_plot():
     sns.lineplot(x="processes", y="time", data=avg1)
     plt.show()
 
-
-
-def get_simple_data(content, name="multiprocessing_mergesort"):
-    """
-    TBD
-
-    :param content:
-    :type content:
-    :param name:
-    :type name:
-    :return:
-    :rtype:
-    """
-    found = []
-    lines = [line for line in content if "# csv" in line]
-
-    for line in lines[1:]:
-        entries = line.split(",")
-        entry = [entries[a] for a in [1, 3, 4]]
-        processes, size, count = entry[0].split(name)[1].split("_")[1:]
-        entry = [
-                 int(processes),
-                 int(size),
-                 int(count),
-                 float(entry[1]),
-                 ]
-        found.append(entry)
-    return found
-
-def get_simple_named_data(content, name="data", sort="multiprocessing_mergesort"):
-    """
-    TBD
-
-    :param content:
-    :type content:
-    :param name:
-    :type name:
-    :return:
-    :rtype:
-    """
-    found = []
-    lines = [line for line in content if "# csv" in line]
-
-    for line in lines[1:]:
-        entries = line.split(",")
-        entry = [entries[a] for a in [1, 3, 4]]
-        processes, size, count = entry[0].split(sort)[1].split("_")[1:]
-        entry = [
-                 name,
-                 int(processes),
-                 int(size),
-                 int(count),
-                 float(entry[1]),
-                 ]
-        found.append(entry)
-    return found
-
-
-
-def get_data(content, name="multiprocessing_mergesort"):
-    """
-    TBD
-
-    :param content:
-    :type content:
-    :param name:
-    :type name:
-    :return:
-    :rtype:
-    """
-    found = []
-    lines = [line for line in content if "# csv" in line]
-
-    for line in lines[1:]:
-        entries = line.split(",")
-        entry = [entries[a] for a in [1, 3, 4]]
-        processes, size, count = entry[0].split(name)[1].split("_")[1:]
-        entry = [name,
-                 int(processes),
-                 int(size),
-                 int(count),
-                 float(entry[1]),
-                 float(entry[2]),
-                 entries[8],
-                 entries[9]]
-        found.append(entry)
-    return found
-
-
+# NOT USED in notebook
 def get_ranges(data):
     """
     TBD
@@ -181,7 +140,7 @@ def get_ranges(data):
         "counts": len(list(set(counts)))
     }
 
-
+# NOT USED in notebook
 def processes_time_fixed_size(data, size, name=None, processes=None, label=None):
     """
     creates image from data with processes and time while keeping size constant
@@ -230,7 +189,7 @@ def processes_time_fixed_size(data, size, name=None, processes=None, label=None)
     plt.show()
     plt.close()
 
-
+# NOT USED in notebook
 def avg_processes_time_fixed_size(data1, size, name=None, processes=None, label=None):
     """
     creates image from averaged data with processes and time while keeping size constant
@@ -267,7 +226,7 @@ def avg_processes_time_fixed_size(data1, size, name=None, processes=None, label=
     ax.set_xlabel("Processes")
     plt.show()
 
-
+# NOT USED in notebook
 def speedup_fixed_size(data, size, name, processes):
     """
     creates image from data to show speedup with fixed size
