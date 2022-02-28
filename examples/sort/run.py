@@ -75,7 +75,7 @@ def run(p, t, log, user, node, sort):
 
     # run analysis.py on data generated from experiment.py
     # currently outputs graph of processes and time 
-    run_analysis = f"python ./analysis.py --log={log}"
+    run_analysis = f"python ./analysis.py --log={log} --sort={sort}"
     os.system(run_analysis)
 
 
