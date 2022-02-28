@@ -5,7 +5,7 @@ run with:
     ./run.py --user=[user name] --node=[node name for stopwatch] --sort=[sort algorithm]
 
     Example:
-        ./run.py  --user=gregor --node=5950x
+        ./run.py  --size=10000000 --repeat=1 --user=gregor --node=5950x
 
 """
 
@@ -87,11 +87,11 @@ def run(p, t, log, user, node, sort, size, repeat):
     banner(run_experiment)
     os.system(run_experiment)
 
-    # run analysis.py on data generated from experiment.py
-    # currently outputs graph of processes and time 
-    run_analysis = f"python ./analysis.py --log={log} --size={size} --sort={sort}"
-    banner(run_analysis)
-    os.system(run_analysis)
+    ## run analysis.py on data generated from experiment.py
+    ## currently outputs graph of processes and time
+    # run_analysis = f"python ./analysis.py --log={log} --size={size} --sort={sort}"
+    # banner(run_analysis)
+    # os.system(run_analysis)
 
 
 if __name__ == '__main__':
