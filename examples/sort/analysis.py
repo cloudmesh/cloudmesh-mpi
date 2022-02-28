@@ -21,6 +21,13 @@ from cloudmesh.common.Shell import Shell
 from cloudmesh.common.parameter import Parameter
 
 
+def read_named_data(log, sort="multiprocessing_mergesort"):
+    f = open(log, "r")
+    content = f.read().splitlines()
+    data = get_simple_data(content, name=sort)
+    return data
+
+
 def read_data(log, sort="multiprocessing_mergesort"):
     f = open(log, "r")
     content = f.read().splitlines()
@@ -83,6 +90,34 @@ def get_simple_data(content, name="multiprocessing_mergesort"):
         entry = [entries[a] for a in [1, 3, 4]]
         processes, size, count = entry[0].split(name)[1].split("_")[1:]
         entry = [
+                 int(processes),
+                 int(size),
+                 int(count),
+                 float(entry[1]),
+                 ]
+        found.append(entry)
+    return found
+
+def get_simple_named_data(content, name="data", sort="multiprocessing_mergesort"):
+    """
+    TBD
+
+    :param content:
+    :type content:
+    :param name:
+    :type name:
+    :return:
+    :rtype:
+    """
+    found = []
+    lines = [line for line in content if "# csv" in line]
+
+    for line in lines[1:]:
+        entries = line.split(",")
+        entry = [entries[a] for a in [1, 3, 4]]
+        processes, size, count = entry[0].split(sort)[1].split("_")[1:]
+        entry = [
+                 name,
                  int(processes),
                  int(size),
                  int(count),
