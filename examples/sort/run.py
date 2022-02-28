@@ -2,7 +2,7 @@
 
 """
 run with:
-    ./run.py --log="log/[logfile name].log" --user=[user name] --node=[node name for stopwatch] --sort=[sort algorithm]
+    ./run.py --log="log/[user-size].log" --user=[user name] --node=[node name for stopwatch] --sort=[sort algorithm]
 
 """
 
@@ -40,7 +40,11 @@ from cloudmesh.common.util import banner
     '--sort',
     default="multiprocessing_mergesort",
     help="sorting function to run and analyze")
-def run(p, t, log, user, node, sort):
+@click.option(
+    '--size',
+    default="100",
+    help="size")
+def run(p, t, log, user, node, sort, size):
     """
     run TBD
 
@@ -67,15 +71,16 @@ def run(p, t, log, user, node, sort):
     # run experiment.py to generate data from specified sort {sort}
     # data is stored in specified log file {log}
     # default size of array to be sorted is 100
+
     run_experiment = \
-        f'python ./experiment.py --user={user} --node={node} --log={log}' \
-        f' --processes="[1-{n}]" --size="[100]" --repeat=10 --sort={sort} |tee {log}'
+        f'python ./experiment.py --user={user} --node={node} --log={user}-{size}.log' \
+        f' --processes="[1-{n}]" --size="[{size}]" --repeat=10 --sort={sort} |tee {log}'
     banner(run_experiment)
     os.system(run_experiment)
 
     # run analysis.py on data generated from experiment.py
     # currently outputs graph of processes and time 
-    run_analysis = f"python ./analysis.py --log={log} --sort={sort}"
+    run_analysis = f"python ./analysis.py --log={log} --size={size} --sort={sort}"
     os.system(run_analysis)
 
 
