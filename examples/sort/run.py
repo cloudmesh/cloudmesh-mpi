@@ -44,7 +44,11 @@ from cloudmesh.common.util import banner
     '--size',
     default="100",
     help="size")
-def run(p, t, log, user, node, sort, size):
+@click.option(
+    '--repeat',
+    default="10",
+    help="repeat")
+def run(p, t, log, user, node, sort, size, repeat):
     """
     run TBD
 
@@ -74,7 +78,7 @@ def run(p, t, log, user, node, sort, size):
 
     run_experiment = \
         f'python ./experiment.py --user={user} --node={node} --log={user}-{size}.log' \
-        f' --processes="[1-{n}]" --size="[{size}]" --repeat=10 --sort={sort} |tee {log}'
+        f' --processes="[1-{n}]" --size="[{size}]" --repeat={repeat} --sort={sort} |tee {log}'
     banner(run_experiment)
     os.system(run_experiment)
 

@@ -118,6 +118,8 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
 
     print("Starting experiment")
 
+    #processes = processes.reverse()
+    processes.sort(reverse=True)
     print(f"Log:       {log}")
     print(f"Processes: {processes}")
     print(f"Size:      {sizes}")
@@ -130,18 +132,22 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
 
     sort_algorithm = get_sort_by_name(sort)
 
+    last_time = "undefined"
     c = 0
     for p in processes:
         for n in sizes:
             for i in range(repeat):
                 c = c + 1
                 progress = total - c
-                print(f"Experiment {progress:<10}: size={n} processes={p} repeat={i}", end="\r")
+                print(f"Experiment {progress:<10}: size={n} processes={p} repeat={i} last_time={last_time}"
+                      "                     ",
+                      end="\r")
                 label = get_label(sort, p, n, i, tag)
                 a = generate_random(n)
                 StopWatch.start(label)
                 a = sort_algorithm(a, p)
                 StopWatch.stop(label)
+                last_time = StopWatch.get(label)
                 assert verify("ascending", a)
 
     StopWatch.benchmark(user=user, node=node)
