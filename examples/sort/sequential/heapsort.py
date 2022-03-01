@@ -1,8 +1,5 @@
 import math
 
-from generate import Generator
-from cloudmesh.common.StopWatch import StopWatch
-
 # heap sort
 
 # using binary tree
@@ -48,7 +45,7 @@ def min_heapify(arr, n, i):
         min_heapify(arr, n, m)
 
 
-def heap_sort(order, arr):
+def heapsort(order, arr):
     n = len(arr)
     if order in ["ascending", "<"]:
         # build max heap from bottom up
@@ -71,14 +68,4 @@ def heap_sort(order, arr):
             # swap max of current heap to position i and remove from heap
             (arr[i], arr[0]) = (arr[0], arr[i])
             min_heapify(arr, i, 0)
-
-
-if __name__ == "__main__":
-    n = 100
-    a = Generator.random(n)
-    StopWatch.start(f"heap_sort {n}")
-    heap_sort("<", a)
-    StopWatch.stop(f"heap_sort {n}")
-    print(a)
-    StopWatch.benchmark()
 

@@ -1,9 +1,7 @@
 # merge sort
 # https://www.educative.io/edpresso/merge-sort-in-python
-from generate import Generator
-from cloudmesh.common.Shell import StopWatch
 
-def sequential_mergesort(arr):
+def mergesort(arr):
     n = len(arr)
     if n > 1:
         # split array into left and right half
@@ -12,8 +10,8 @@ def sequential_mergesort(arr):
         r = arr[mid:]
 
         # sort left and right halves individually
-        sequential_mergesort(l)
-        sequential_mergesort(r)
+        mergesort(l)
+        mergesort(r)
 
         # i for left half, j for right half, k for arr
         i = j = k = 0
@@ -39,11 +37,3 @@ def sequential_mergesort(arr):
             k += 1
 
 
-if __name__ == "__main__":
-    n = 100
-    a = Generator.random(n)
-    StopWatch.start(f"sequential_mergesort_sort {n}")
-    sequential_mergesort("<", a)
-    StopWatch.stop(f"sequential_mergesort_sort {n}")
-    print(a)
-    StopWatch.benchmark()
