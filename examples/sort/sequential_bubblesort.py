@@ -1,7 +1,5 @@
-from performance import assess
-
 from cloudmesh.common.StopWatch import StopWatch
-from generate import generate_shuffle
+from generate import Generator
 
 
 # bubble sort
@@ -24,11 +22,10 @@ def bubble_sort(order, arr):
 
 
 if __name__ == "__main__":
-    # test and input
-    a = []
-    # assert verify("descending", a)
-    assess(bubble_sort, "bubble_sort")
-
-    a = generate_shuffle("ascending", 10, 1)
+    n = 100
+    a = Generator.random(n)
+    StopWatch.start(f"bubble_sort {n}")
+    bubble_sort("<", a)
+    StopWatch.stop(f"bubble_sort {n}")
     print(a)
     StopWatch.benchmark()

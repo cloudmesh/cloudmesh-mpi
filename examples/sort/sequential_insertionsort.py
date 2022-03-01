@@ -1,8 +1,6 @@
-from performance import assess
+from cloudmesh.common.StopWatch import StopWatch
 
-from generate import generate_random
-from verify import verify
-
+from generate import Generator
 
 # insertion sort
 
@@ -32,10 +30,10 @@ def insertion_sort(order, arr):
 
 # test and input
 if __name__ == "__main__":
-    a = []
-    a = generate_random(20)
-    insertion_sort(">", a)
-    print(verify("ascending", a))
+    n = 100
+    a = Generator.random(n)
+    StopWatch.start(f"insertion_sort {n}")
+    insertion_sort("<", a)
+    StopWatch.stop(f"insertion_sort {n}")
     print(a)
-
-    assess(insertion_sort, "insertion_sort")
+    StopWatch.benchmark()

@@ -1,3 +1,7 @@
+from generate import Generator
+from cloudmesh.common.StopWatch import StopWatch
+
+
 # quicksort
 # https://www.geeksforgeeks.org/python-program-for-quicksort/
 
@@ -25,7 +29,11 @@ def split(arr, l, r):
     return j
 
 
-def quicksort(arr, l, r):
+def quicksort(arr, l=None, r=None):
+    if l is None:
+        l = 0
+    if r is None:
+        r = len(a) - 1
     if l >= r:
         return
     k = split(arr, l, r)
@@ -35,10 +43,10 @@ def quicksort(arr, l, r):
 
 
 if __name__ == "__main__":
-    a = []
-    n = int(input())
-    for i in range(n):
-        x = int(input())
-        a.append(x)
-    quicksort(a, 0, n - 1)
+    n = 100
+    a = Generator.random(n)
+    StopWatch.start(f"bubble_sort {n}")
+    quicksort("<", a)
+    StopWatch.stop(f"bubble_sort {n}")
     print(a)
+    StopWatch.benchmark()

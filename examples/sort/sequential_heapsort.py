@@ -1,10 +1,7 @@
-from generate import generate_random
 import math
 
-from performance import assess
-
-from generate import generate_random
-
+from generate import Generator
+from cloudmesh.common.StopWatch import StopWatch
 
 # heap sort
 
@@ -14,7 +11,6 @@ from generate import generate_random
 # parent of node i = (i - 1) / 2
 
 
-# build max heap
 def max_heapify(arr, n, i):
     big = i
     # node i's two children
@@ -78,8 +74,11 @@ def heap_sort(order, arr):
 
 
 if __name__ == "__main__":
-    a = []
-    a = generate_random(20)
-    heap_sort(">", a)
+    n = 100
+    a = Generator.random(n)
+    StopWatch.start(f"heap_sort {n}")
+    heap_sort("<", a)
+    StopWatch.stop(f"heap_sort {n}")
     print(a)
-    assess(heap_sort, "heap_sort")
+    StopWatch.benchmark()
+
