@@ -94,8 +94,8 @@ tutorial.[^mpi]
 
 You will need the following:
 
-* Computer/Laptop with Windows 10, macOS, or Linux
-
+* Computer/Laptop with Windows 10, macOS, or Linux, which we refer to as
+the host computer
 * Pi you dedicate as a manager, which we will name `red`, and cloudmesh 
   installed (with Python version >= 3.9, and Raspbian OS version Buster)
 * Any number of worker Pis with Raspbian OS version Buster
@@ -124,7 +124,7 @@ For parts for different Pi cluster configurations, please see our
 links on
 [piplanet.org](https://cloudmesh.github.io/pi/docs/hardware/parts/)
 
-## 3. Installing Cloudmesh on the Manager (numbers need to be updated)
+## 3. Installing Cloudmesh on the Manager
 
 To start, we install cloudmesh, which significantly simplifies the 
 installation:
@@ -140,24 +140,22 @@ pi@red $ curl -Ls https://raw.githubusercontent.com/cloudmesh/get/main/pi/index.
 
 ## 4. Installing SLURM
 
-Next, we wil install SLURM. First, 
+Next, we will install SLURM. First, 
 `ssh` into the manager node (in our case, `red`) via this command:
 
 ```bash
 (ENV3) you@yourhostcomputer $ ssh red
 ```
 
-
-Now download and run the script:
+Now we must download the script through the cloudmesh repository. We
+will run this script several times after necessary reboots of the 
+cluster. First, to download and execute the scripts, run these commands:
 
 ```bash
-(ENV3) pi@red:~ $ curl -L https://raw.githubusercontent.com/cloudmesh/get/main/pi/slurm/index.html --output slurm.py
-(ENV3) pi@red:~ $ python3 slurm.py
+(ENV3) pi@red:~ $ curl -L https://raw.githubusercontent.com/cloudmesh/get/main/pi/slurm/index.html --output install_slurm.py
+(ENV3) pi@red:~ $ chmod +x install_slurm.py
+(ENV3) pi@red:~ $ ./install_slurm.py
 ```
-
-TODO: The rerunning of the script must be much better explained.e.g
-reboots necessary
-
 
 The first step will prompt the user to input the worker Pis' naming
 schema. For example, if the setup has three workers named `red01`,
@@ -168,19 +166,15 @@ come back online, `ssh` into manager again, and rerun script:
 
 ```bash
 (ENV3) you@yourhostcomputer $ ssh red
-(ENV3) pi@red:~ $ python3 slurm.py
+(ENV3) pi@red:~ $ ./install_slurm.py
 ```
-
-TODO: slurm.py shoudl be executable, than we can say ./slurm.py
-we may want to rename to install_slurm.py
-
 
 This will run the second step, which will prompt the user to insert a
 blank USB in the top, blue USB3.0 port of the manager Pi. The user
 must also input the correct path to the USB from the list shown. Then,
 the script will format the USB.  **Everything on the USB will be
 deleted. Make sure there is nothing important on it.** The script will
-create a shared file system with the USB for all of the Pis.
+create a shared file system with the USB for all the Pis.
 
 Furthermore, Step 2 retrieves the UUID of the USB and edits system
 config files so it mounts on boot. It also downloads the packages for
@@ -191,7 +185,7 @@ After reboot completes, `ssh` into manager again and rerun script:
 
 ```bash
 (ENV3) you@yourhostcomputer $ ssh red
-(ENV3) pi@red:~ $ python3 slurm.py
+(ENV3) pi@red:~ $ ./install_slurm.py
 ```
 
 This will run the third step, which starts the nfs service and uses
@@ -205,7 +199,7 @@ the last step:
 
 ```bash
 (ENV3) you@yourhostcomputer $ ssh red
-(ENV3) pi@red:~ $ python3 slurm.py
+(ENV3) pi@red:~ $ ./install_slurm.py
 ```
 
 Step 4 copies the munge key and reboots the cluster. 
@@ -229,7 +223,7 @@ hostnames. This may take a minute.
 ## 5. Using SLURM
 
 Now we want to demonstrate how to use your new cluster. For this we
-introduce you to the commands `srun and `sbatch`.
+introduce you to the commands `srun` and `sbatch`.
 
 
 ### 5.1 Using `srun`
