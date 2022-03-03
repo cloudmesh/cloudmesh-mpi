@@ -247,23 +247,18 @@ red03
 user does not have to run numerous `srun` commands and can simply use
 a text file to run jobs.
 
-To test `sbatch`, Create a new file called `sort.slurm`. Take note
+To test `sbatch`, download our batch file named `sort.slurm`. Take note
 that the filename nor the file extension do not really matter. We are
-simply creating a file with text inside. (we use here the editor nano
-as it is available on the RasberryOS.
+simply retrieving a file with text inside. 
 
 ```bash
-(ENV3) pi@red:~ $ sudo nano sort.slurm
+(ENV3) pi@red:~ $ wget https://raw.githubusercontent.com/cloudmesh/cloudmesh-mpi/main/doc/chapters/slurm/configs/sort.slurm
 ```
 
-Paste the following contents inside the nano interface by copying the
-following and then by pressing `Shift + Insert` inside the
-terminal. You can also change the number after `--nodes=` accordingly
-if you have more than or less than 3 workers.
-
-TODO: use a wget command, in reality the exampel shoudl be in a
-directory and we can just cd to it. This way de do not have to explain
-nano.
+You can also change the number after `--nodes=` accordingly
+if you have more than or less than 3 workers. We use the nano editor
+as it is available on the Raspberry Pi OS. If you need to edit the nodes
+parameter, issue `sudo nano sort.slurm`. The file is as follows:
 
 ```bash
 #!/bin/sh
@@ -274,8 +269,7 @@ nano.
 srun hostname | sort
 ```
 
-After pasting the contents, exit nano by using `Ctrl + X` and type `y`
-and press `Enter`.  You can execute the batch script by running the
+You can execute the batch script by running the
 following:
 
 ```bash
