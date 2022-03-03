@@ -295,18 +295,25 @@ red03
 ### 5.3 Using `sbatch` in a for loop
 
 For a more extensive script with a for loop, which will execute
-numerous `srun` commands, make a new file called forloop.py on manager
-Pi (you can use nano), and paste in the following:
+numerous `srun` commands, download our Python script `forloop.py` by
+issuing the following:
+
+```bash
+(ENV3) pi@red:~ $ wget https://raw.githubusercontent.com/cloudmesh/cloudmesh-mpi/main/doc/chapters/slurm/configs/forloop.py
+```
+
+`forloop.py` has the following contents, which run numerous `sbatch` commands
+that, in and of themselves, run `sort.slurm`:
 
 ```python
 import os
 count = 5
 scriptname = "sort.slurm"
 for i in range(count):
-	os.system(f"sbatch {scriptname}")
+    os.system(f"sbatch {scriptname}")
 ```
 
-Then issue `python3 forloop.py` and the outputs will be available on
+Issue `python3 forloop.py` and the outputs will be available on
 the first worker node.
 
 ### 5.4 Using `squeue`
@@ -327,6 +334,9 @@ configuration, there were only 3 workers when the job needs 4).
 
 ### 5.5 Using MPI with SLURM
 
+MPI, which stands for Message Passing Interface, takes advantage of the
+cores of the computer to run parallel computing. We can extend this
+functionality further by using MPI in conjunction with SLURM.
 
 TODO: explanation missing
 
@@ -365,8 +375,8 @@ have demo ready ....
 ## 6. Known Issues
 
 In case you have limited network bandwidth or the code mirrors are
-busy the script may encounter issues downloading packages. However,
-if you can repeatedly attempted to run the script, you will eventually
+busy, the script may encounter issues downloading packages. However,
+if you can repeatedly attempt to run the script, you will eventually
 succeed.
 
 We also know that there could be an issue resulting from our use of
