@@ -92,13 +92,17 @@ tutorial.[^mpi]
 
 ## 2. Pre-requisites
 
+For a list of hardware parts for different Pi cluster configurations, 
+please see our links at
+[piplanet.org](https://cloudmesh.github.io/pi/docs/hardware/parts/).
+
 You will need the following:
 
 * Computer/Laptop with Windows 10, macOS, or Linux, which we refer to as
 the host computer
 * Pi you dedicate as a manager, which we will name `red`, and cloudmesh 
-  installed (with Python version >= 3.9, and Raspbian OS version Buster)
-* Any number of worker Pis with Raspbian OS version Buster
+  installed (with Python version >= 3.9, and Raspbian OS version v10 Buster)
+* Any number of worker Pis with Raspbian OS version v10 Buster
 * The cluster of manager Pi and worker Pi(s) must be preconfigured
   with login access to each node; they must also have Internet access
 
@@ -106,23 +110,16 @@ At present, we require Raspberry Pi OS Buster (v10) as SLURM is
 easiest to install on it.
 
 If you have not yet set up your cluster to communicate with each other
-and would like an automated process, please see
-<https://cloudmesh.github.io/pi/tutorial/raspberry-burn-windows/> for
+and would like an automated process, please see the following Windows tutorial
+at <https://cloudmesh.github.io/pi/tutorial/raspberry-burn-windows/> for
 automated burning of SD cards to create a quick configured cluster.
-Burning such a cluster can also be done from Linux and MacOS.
-
-TODO: links missing
+Burning such a cluster can also be done from Linux and macOS at the
+following link: <https://cloudmesh.github.io/pi/tutorial/raspberry-burn/>
 
 We strongly recommend using the burn program to configure the cluster
 because it will automate the process and enable the SLURM script to
 work without having to input SSH passwords for each node at every
 step.
-
-TODO: next sentence should go into requirements:
-
-For parts for different Pi cluster configurations, please see our
-links on
-[piplanet.org](https://cloudmesh.github.io/pi/docs/hardware/parts/)
 
 ## 3. Installing Cloudmesh on the Manager
 
@@ -172,7 +169,7 @@ come back online, `ssh` into manager again, and rerun script:
 This will run the second step, which will prompt the user to insert a
 blank USB in the top, blue USB3.0 port of the manager Pi. The user
 must also input the correct path to the USB from the list shown. Then,
-the script will format the USB.  **Everything on the USB will be
+the script will format the USB. **Everything on the USB will be
 deleted. Make sure there is nothing important on it.** The script will
 create a shared file system with the USB for all the Pis.
 
@@ -224,7 +221,6 @@ hostnames. This may take a minute.
 
 Now we want to demonstrate how to use your new cluster. For this we
 introduce you to the commands `srun` and `sbatch`.
-
 
 ### 5.1 Using `srun`
 
@@ -336,7 +332,8 @@ configuration, there were only 3 workers when the job needs 4).
 
 MPI, which stands for Message Passing Interface, takes advantage of the
 cores of the computer to run parallel computing. We can extend this
-functionality further by using MPI in conjunction with SLURM.
+functionality further by using MPI in conjunction with SLURM, which
+leads to efficient, faster workloads.
 
 TODO: explanation missing
 
