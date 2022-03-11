@@ -101,12 +101,12 @@ You will need the following:
 * Computer/Laptop with Windows 10, macOS, or Linux, which we refer to as
 the host computer
 * Pi you dedicate as a manager, which we will name `red`, and cloudmesh 
-  installed (with Python version >= 3.9, and Raspbian OS version v10 Buster)
+  installed (with Python version >= 3.9, and Raspbian OS version v10 (Buster))
 * Any number of worker Pis with Raspbian OS version v10 Buster
 * The cluster of manager Pi and worker Pi(s) must be preconfigured
   with login access to each node; they must also have Internet access
 
-At present, we require Raspberry Pi OS Buster (v10) as SLURM is
+At present, we require Raspberry Pi OS v10 (Buster) as SLURM is
 easiest to install on it.
 
 If you have not yet set up your cluster to communicate with each other
@@ -132,7 +132,7 @@ Pi and issue this command after you SSH into it:
 
 ```bash
 (ENV3) you@yourhostcomputer $ ssh red
-pi@red $ curl -Ls https://raw.githubusercontent.com/cloudmesh/get/main/pi/index.html | sh -
+pi@red $ curl -Ls http://cloudmesh.github.io/get/pi | sh -
 ```
 
 ## 4. Installing SLURM
@@ -149,7 +149,7 @@ will run this script several times after necessary reboots of the
 cluster. First, to download and execute the scripts, run these commands:
 
 ```bash
-(ENV3) pi@red:~ $ curl -L https://raw.githubusercontent.com/cloudmesh/get/main/pi/slurm/index.html --output install_slurm.py
+(ENV3) pi@red:~ $ curl -L http://cloudmesh.github.io/get/pi/slurm --output install_slurm.py
 (ENV3) pi@red:~ $ chmod +x install_slurm.py
 (ENV3) pi@red:~ $ ./install_slurm.py
 ```
@@ -248,7 +248,7 @@ that the filename nor the file extension do not really matter. We are
 simply retrieving a file with text inside. 
 
 ```bash
-(ENV3) pi@red:~ $ wget https://raw.githubusercontent.com/cloudmesh/cloudmesh-mpi/main/doc/chapters/slurm/configs/sort.slurm
+(ENV3) pi@red:~ $ wget http://cloudmesh.github.io/get/pi/slurm-example/ -O sort.slurm
 ```
 
 You can also change the number after `--nodes=` accordingly
@@ -339,6 +339,23 @@ TODO: explanation missing
 
 * run with srun 
 * run with sbatch
+
+To execute `srun` commands with MPI, SLURM must be installed from source with
+the `--with-pmix` configure parameter:
+
+```bash
+# may be different version number. check https://www.open-mpi.org/software/ for latest.
+(ENV3) pi@red:~ $ wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.2.tar.gz
+(ENV3) pi@red:~ $ gunzip -c openmpi-4.1.2.tar.gz | tar xf -
+# may be different version number
+(ENV3) pi@red:~ $ cd openmpi-4.1.2
+(ENV3) pi@red:~/openmpi-4.1.2 $ ./configure --prefix=/usr/local --with-slurm
+(ENV3) pi@red:~/openmpi-4.1.2 $ make all install
+(ENV3) pi@red:~/openmpi-4.1.2 $ cd ../
+(ENV3) pi@red:~ $ git clone https://github.com/SchedMD/slurm
+(ENV3) pi@red:~ $ cd slurm
+(ENV3) pi@red:~/slurm $ ./configure --enable-debug --with-pmix
+```
 
 To run MPI on SLURM, ensure that Open MPI is installed. To install
 this, you can run the slurm.py script again with `python3 slurm.py` on
