@@ -365,9 +365,17 @@ Hello, World! I am process 3 of 4 on red04.
 salloc: Relinquishing job allocation 26
 ```
 
-TODO: explain how to use git clone ....
-cd ...
-have demo ready ....
+To make use of our many MPI examples, download our cloudmesh-mpi repository
+by executing the following commands:
+```bash
+# if you do not already have a cm folder, you can make one by issuing $ sudo mkdir cm
+(ENV3) pi@red:~ $ cd cm
+(ENV3) pi@red:~/cm $ git clone https://github.com/cloudmesh/cloudmesh-mpi.git
+# once it is done, cd to folder
+(ENV3) pi@red:~/cm $ cd cloudmesh-mpi/
+(ENV3) pi@red:~/cm/cloudmesh-mpi $ cd examples
+```
+
 
 ## 6. Known Issues
 

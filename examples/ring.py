@@ -7,7 +7,7 @@ from cloudmesh.common.StopWatch import StopWatch
 @click.command()
 @click.option('--count', default=1, help='Number of messages send.')
 @click.option('--debug', default=False, help='Set debug.')
-def ring(count=1, debug=Fasle):
+def ring(count=1, debug=False):
     comm = MPI.COMM_WORLD   # Communicator
     rank = comm.Get_rank()  # Get the rank of the current process 
     size = comm.Get_size()  # Get the size of the communicator group
@@ -16,7 +16,7 @@ def ring(count=1, debug=Fasle):
         data = int(input('Enter an integer to transmit: '))  # Input the data
         data += 1                                            # Data is modified
     if rank == 0:  # ONly processor 0 uses the stopwatch
-        Stopwatch.start(f"ring {size} {count}")        
+        StopWatch.start(f"ring {size} {count}")
     for i in range(0, count):
         if rank == 0:        
             comm.send(data, dest=rank + 1)  # send data to neighbor
@@ -35,8 +35,8 @@ def ring(count=1, debug=Fasle):
         print(f'Final data received in process 0: {data}')
         assert data == count * size          # verify
     if rank == 0:
-        Stopwatch.stop(f"ring {size} {count}")  #print the time
-        Stopwatch.benchmark()
+        StopWatch.stop(f"ring {size} {count}")  #print the time
+        StopWatch.benchmark()
         
 if __name__ == '__main__':
     ring()
