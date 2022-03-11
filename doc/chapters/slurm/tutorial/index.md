@@ -149,7 +149,7 @@ will run this script several times after necessary reboots of the
 cluster. First, to download and execute the scripts, run these commands:
 
 ```bash
-(ENV3) pi@red:~ $ curl -L http://cloudmesh.github.io/get/pi/slurm --output install_slurm.py
+(ENV3) pi@red:~ $ curl -L http://cloudmesh.github.io/get/pi/slurm/install --output install_slurm.py
 (ENV3) pi@red:~ $ chmod +x install_slurm.py
 (ENV3) pi@red:~ $ ./install_slurm.py
 ```
@@ -248,7 +248,7 @@ that the filename nor the file extension do not really matter. We are
 simply retrieving a file with text inside. 
 
 ```bash
-(ENV3) pi@red:~ $ wget http://cloudmesh.github.io/get/pi/slurm-example/ -O sort.slurm
+(ENV3) pi@red:~ $ curl -L http://cloudmesh.github.io/get/pi/slurm/example/sort.slurm --output sort.slurm
 ```
 
 You can also change the number after `--nodes=` accordingly
@@ -295,7 +295,7 @@ numerous `srun` commands, download our Python script `forloop.py` by
 issuing the following:
 
 ```bash
-(ENV3) pi@red:~ $ wget https://raw.githubusercontent.com/cloudmesh/cloudmesh-mpi/main/doc/chapters/slurm/configs/forloop.py
+(ENV3) pi@red:~ $ curl -L http://cloudmesh.github.io/get/pi/slurm/example/forloop.py --output forloop.py
 ```
 
 `forloop.py` has the following contents, which run numerous `sbatch` commands
