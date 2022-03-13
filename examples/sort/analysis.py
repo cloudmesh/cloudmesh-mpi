@@ -91,28 +91,28 @@ def generate_average(df, tag=None, size=None, name=None):
 @click.option('--info', help="value for y axis", default=False)
 def analysis(processes, size, repeat, log, debug, sort, x, y, info):
     """
-    performance experiment.
+    processes data output by experiment.py from specified sort
 
-    :param processes:
-    :type processes:
-    :param size:
-    :type size:
-    :param repeat:
-    :type repeat:
-    :param log:
-    :type log:
-    :param debug:
-    :type debug:
-    :param sort:
-    :type sort:
-    :param x:
-    :type x:
-    :param y:
-    :type y:
+    :param processes: processes to run multiprocessing sort on
+    :type processes: int array
+    :param size: sizes to run sort on 
+    :type size: int array
+    :param repeat: number of times an experiment with processes and size is repeated
+    :type repeat: int
+    :param log: logfile in which data is stored
+    :type log: string
+    :param debug: debugging mode
+    :type debug: bool
+    :param sort: type of sort to be run 
+    :type sort: string
+    :param x: x axis label (on graph)
+    :type x: string
+    :param y: y axis label (on graph)
+    :type y: string
     :param info:
     :type info:
-    :return:
-    :rtype:
+    :return: none
+    :rtype: none
     """
 
     processes = Parameter.expand(processes)
