@@ -8,8 +8,7 @@ from cloudmesh.common.Shell import Shell
 from cloudmesh.common.StopWatch import StopWatch
 from cloudmesh.common.parameter import Parameter
 from cloudmesh.common.util import yn_choice
-from generate import generate_random
-from verify import verify
+from generate import Generator
 
 
 def get_sort_by_name(name="multiprocessing_mergesort"):
@@ -143,12 +142,12 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
                       "                     ",
                       end="\r")
                 label = get_label(sort, p, n, i, tag)
-                a = generate_random(n)
+                a = Generator().generate_random(n)
                 StopWatch.start(label)
                 a = sort_algorithm(a, p)
                 StopWatch.stop(label)
                 last_time = StopWatch.get(label)
-                assert verify("ascending", a)
+                #assert verify("ascending", a)
 
     StopWatch.benchmark(user=user, node=node)
 
