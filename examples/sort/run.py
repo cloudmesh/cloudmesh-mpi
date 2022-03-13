@@ -52,22 +52,20 @@ from cloudmesh.common.util import banner
     help="repeat")
 def run(p, t, log, user, node, sort, size, repeat):
     """
-    run TBD
-
-    :param p:
-    :type p:
-    :param t:
-    :type t:
-    :param log:
-    :type log:
-    :param user:
-    :type user:
-    :param node:
-    :type node:
-    :param sort:
-    :type sort:
-    :return:
-    :rtype:
+    :param p: number of physical cores on computer
+    :type p: int
+    :param t: number of logical CPUs (# of physical cores x number of threads on each core)
+    :type t: int
+    :param log: data is storted in log file
+    :type log: string
+    :param user: user name
+    :type user: string
+    :param node: node name
+    :type node: string
+    :param sort: type of sort being run
+    :type sort: string
+    :return: none
+    :rtype: none
     """
     if p:
         n = "p"
