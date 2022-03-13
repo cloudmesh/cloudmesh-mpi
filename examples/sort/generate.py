@@ -13,7 +13,7 @@ class Generator:
         return a
 
     @staticmethod
-    def random(n):
+    def generate_random(n):
         a = []
         for i in range(n):
             x = random.randint(0, n)
