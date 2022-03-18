@@ -386,7 +386,7 @@ by executing the following commands:
 In case you have limited network bandwidth or the code mirrors are
 busy, the script may encounter issues downloading packages. However,
 if you can repeatedly attempt to run the script, you will eventually
-succeed.
+succeed. The script is specifically built to retry until success.
 
 We also know that there could be an issue resulting from our use of
 static IP configuration as discussed in this thread:
