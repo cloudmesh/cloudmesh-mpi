@@ -341,26 +341,13 @@ TODO: explanation missing
 * run with sbatch
 
 To execute `srun` commands with MPI, SLURM must be installed from source with
-the `--with-pmix` configure parameter:
+the `--with-pmix` configure parameter. This is automated within the script
+by running the script a fifth time, beginning step 5.
 
 ```bash
-# may be different version number. check https://www.open-mpi.org/software/ for latest.
-(ENV3) pi@red:~ $ wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.2.tar.gz
-(ENV3) pi@red:~ $ gunzip -c openmpi-4.1.2.tar.gz | tar xf -
-# may be different version number
-(ENV3) pi@red:~ $ cd openmpi-4.1.2
-(ENV3) pi@red:~/openmpi-4.1.2 $ ./configure --prefix=/usr/local --with-slurm
-(ENV3) pi@red:~/openmpi-4.1.2 $ make all install
-(ENV3) pi@red:~/openmpi-4.1.2 $ cd ../
-(ENV3) pi@red:~ $ git clone https://github.com/SchedMD/slurm
-(ENV3) pi@red:~ $ cd slurm
-(ENV3) pi@red:~/slurm $ ./configure --enable-debug --with-pmix
+(ENV3) pi@red:~ $ ./install_slurm.py
 ```
 
-To run MPI on SLURM, ensure that Open MPI is installed. To install
-this, you can run the slurm.py script again with `python3 slurm.py` on
-the manager node.  This will execute step 5 of the script, which
-creates a Python virtual environment and installs mpi4py.
 Additionally, you can consult the following documentation to install
 MPI manually. The first link is to the entire PDF and the second link
 is to the specific installation section.
