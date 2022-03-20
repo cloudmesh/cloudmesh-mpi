@@ -121,7 +121,7 @@ def try_installing_package(command_for_package, listOfWorkers):
                                command=command_for_package)
             print(Printer.write(results))
             for entry in results:
-                if 'Could not connect to' in str(entry["stdout"]):
+                if ('Could not connect to' in str(entry["stdout"])) or ('Failed to fetch' in str(entry["stdout"])):
                     msg = f"The SLURM script could not install needed packages, but will try again. " \
                           f"This is expected behavior and it should fix itself within a few minutes. " \
                           f"Currently fixing {worker}."
@@ -383,6 +383,28 @@ def step3():
             sudo mount -a
             """)
     hostexecute(script, manager)
+    StopWatch.stop("Current section time")
+    StopWatch.benchmark()
+    tell_user_rebooting()
+
+def step4():
+    StopWatch.start("Current section time")
+    banner("Initializing Step 4 now.")
+
+    manager = managerNamer()
+    # getting ip in case step 2 has not run
+    trueIP = get_IP(manager)
+
+    # executing reading of workers
+    workers = read_user_input_workers(manager)
+
+    hosts = hostsVariable(manager, workers)
+
+    listOfWorkers = Parameter.expand(workers)
+    print(listOfWorkers)
+    print(hosts)
+    listOfManager = [manager]
+    trueIP = get_IP(manager)
     results = Host.ssh(hosts=manager, command='sudo cp -R /usr/lib/pmix /clusterfs')
     print(Printer.write(results))
     results = Host.ssh(hosts=workers, command='sudo cp -R /clusterfs/pmix /usr/lib')
