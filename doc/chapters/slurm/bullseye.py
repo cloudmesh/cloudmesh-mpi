@@ -414,6 +414,18 @@ def step4():
                                             '--prefix=/usr/local && '
                                             'sudo make -j install >/dev/null')
     print(Printer.write(results))
+    results = Host.ssh(hosts=hosts, command='wget '
+                                            'https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.2.tar.gz')
+    print(Printer.write(results))
+    results = Host.ssh(hosts=hosts, command='gunzip -c openmpi-4.1.2.tar.gz | tar xf -')
+    print(Printer.write(results))
+    results = Host.ssh(hosts=hosts, command='cd openmpi-4.1.2 && sudo ./configure --prefix=/usr/local --with-slurm && '
+                                            'sudo make all install')
+    print(Printer.write(results))
+    results = Host.ssh(hosts=hosts, command='sudo rm -rf openmpi-4.1.2')
+    print(Printer.write(results))
+    results = Host.ssh(hosts=hosts, command='sudo rm openmpi-4.1.2.tar.gz')
+    print(Printer.write(results))
 
     results = Host.ssh(hosts=manager, command='git clone https://github.com/SchedMD/slurm && sudo cp -R slurm '
                                               '/clusterfs')
