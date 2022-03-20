@@ -415,7 +415,7 @@ def step4():
                                             'sudo make -j install >/dev/null')
     print(Printer.write(results))
 
-    results = Host.ssh(hosts=manager, command='git clone https://github.com/SchedMD/slurm && cp -R slurm '
+    results = Host.ssh(hosts=manager, command='git clone https://github.com/SchedMD/slurm && sudo cp -R slurm '
                                               '/clusterfs')
     print(Printer.write(results))
     results = Host.ssh(hosts=workers, command='sudo cp -R /clusterfs/slurm ~')
