@@ -476,13 +476,6 @@ def step4():
     script = textwrap.dedent(
         f"""
         echo "PartitionName=mycluster Nodes={workers} Default=YES MaxTime=INFINITE State=UP" | sudo tee /usr/local/etc/slurm.conf -a
-        sudo curl -L https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/slurm/configs/cgroup.conf > ~/cgroup.conf
-        sudo curl -L https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/slurm/configs/cgroup_allowed_devices_file.conf > ~/cgroup_allowed_devices_file.conf
-        sudo cp ~/cgroup.conf /usr/local/etc/cgroup.conf
-        sudo cp ~/cgroup_allowed_devices_file.conf /usr/local/etc/cgroup_allowed_devices_file.conf
-        sudo rm ~/cgroup.conf
-        sudo rm ~/cgroup_allowed_devices_file.conf
-        sudo cp /usr/local/etc/slurm.conf /usr/local/etc/cgroup.conf /usr/local/etc/cgroup_allowed_devices_file.conf /clusterfs
         sudo cp /etc/munge/munge.key /clusterfs
         sudo systemctl enable munge
         sudo systemctl start munge
