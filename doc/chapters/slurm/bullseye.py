@@ -525,7 +525,8 @@ hosts = hostsVariable(manager, workers)
 steps = [
     (1, step1),
     (2, step2),
-    (3, step3)
+    (3, step3),
+    (4, step4)
 ]
 
 for i, step in steps:
