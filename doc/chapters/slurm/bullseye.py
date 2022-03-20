@@ -367,9 +367,9 @@ def step3():
     try_installing_package("sudo apt-get install openmpi-bin -y", listOfWorkers)
     results = Host.ssh(hosts=workers, command='ENV3/bin/pip install mpi4py')
     print(Printer.write(results))
-    try_installing_package("sudo apt install libevent-dev autoconf git libtool flex libmunge-dev -y",
+    try_installing_package("sudo apt install libevent-dev autoconf git libtool flex libmunge-dev munge -y",
                            listOfManager)
-    try_installing_package("sudo apt install libevent-dev autoconf git libtool flex libmunge-dev -y",
+    try_installing_package("sudo apt install libevent-dev autoconf git libtool flex libmunge-dev munge -y",
                            listOfWorkers)
     results = Host.ssh(hosts=hosts, command='sudo mkdir -p /usr/lib/pmix/build/2.1 /usr/lib/pmix/install/2.1')
     print(Printer.write(results))
@@ -407,6 +407,8 @@ def step4():
     print(hosts)
     listOfManager = [manager]
     trueIP = get_IP(manager)
+    results = Host.ssh(hosts=hosts, command='sudo useradd slurm')
+    print(Printer.write(results))
     results = Host.ssh(hosts=manager, command='sudo cp -R /usr/lib/pmix /clusterfs')
     print(Printer.write(results))
     results = Host.ssh(hosts=workers, command='sudo cp -R /clusterfs/pmix /usr/lib')
@@ -485,9 +487,17 @@ def step4():
     print(Printer.write(results))
     results = Host.ssh(hosts=workers, command='sudo chown -R slurm:slurm /var/spool/')
     print(Printer.write(results))
+    results = Host.ssh(hosts=workers, command='cd ~/slurm/etc/ && sudo cp slurmd.service /etc/systemd/system/')
+    print(Printer.write(results))
+    results = Host.ssh(hosts=manager, command='cd ~/slurm/etc/ && sudo cp slurmctld.service /etc/systemd/system/')
+    print(Printer.write(results))
     results = Host.ssh(hosts=workers, command='sudo systemctl enable slurmd')
     print(Printer.write(results))
     results = Host.ssh(hosts=workers, command='sudo systemctl start slurmd')
+    print(Printer.write(results))
+    results = Host.ssh(hosts=manager, command='sudo systemctl enable slurmctld')
+    print(Printer.write(results))
+    results = Host.ssh(hosts=manager, command='sudo systemctl start slurmctld')
     print(Printer.write(results))
     results = Host.ssh(hosts=hosts, command="touch step4")
     print(Printer.write(results))
