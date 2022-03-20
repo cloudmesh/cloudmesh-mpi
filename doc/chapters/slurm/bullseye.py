@@ -383,6 +383,8 @@ def step3():
             sudo mount -a
             """)
     hostexecute(script, manager)
+    results = Host.ssh(hosts=hosts, command="touch step3")
+    print(Printer.write(results))
     StopWatch.stop("Current section time")
     StopWatch.benchmark()
     tell_user_rebooting()
@@ -494,7 +496,7 @@ def step4():
     print(Printer.write(results))
     results = Host.ssh(hosts=workers, command='sudo systemctl start slurmd')
     print(Printer.write(results))
-    results = Host.ssh(hosts=hosts, command="touch step3")
+    results = Host.ssh(hosts=hosts, command="touch step4")
     print(Printer.write(results))
     StopWatch.stop("Current section time")
     StopWatch.benchmark()
