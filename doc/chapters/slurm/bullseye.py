@@ -421,7 +421,7 @@ def step4():
     results = Host.ssh(hosts=workers, command='sudo cp -R /clusterfs/slurm ~')
     print(Printer.write(results))
     results = Host.ssh(hosts=hosts, command='cd slurm && sudo ./configure --enable-debug --with-pmix '
-                                            '--enable-deprecated --with-munge')
+                                            '--with-munge')
     print(Printer.write(results))
     results = Host.ssh(hosts=hosts, command='cd slurm && sudo make -j install > /dev/null')
     print(Printer.write(results))
