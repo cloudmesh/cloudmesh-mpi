@@ -478,6 +478,8 @@ def step4():
     script = textwrap.dedent(
         f"""
         echo "PartitionName=mycluster Nodes={workers} Default=YES MaxTime=INFINITE State=UP" | sudo tee /usr/local/etc/slurm.conf -a
+        sudo rm /clusterfs/slurm.conf
+        sudo cp /usr/local/etc/slurm.conf /clusterfs
         sudo cp /etc/munge/munge.key /clusterfs
         sudo systemctl enable munge
         sudo systemctl start munge
