@@ -392,11 +392,7 @@ def step3():
 def step4():
     StopWatch.start("Current section time")
     banner("Initializing Step 4 now.")
-
     manager = managerNamer()
-    # getting ip in case step 2 has not run
-    trueIP = get_IP(manager)
-
     # executing reading of workers
     workers = read_user_input_workers(manager)
 
@@ -405,7 +401,7 @@ def step4():
     listOfWorkers = Parameter.expand(workers)
     print(listOfWorkers)
     print(hosts)
-    listOfManager = [manager]
+
     trueIP = get_IP(manager)
     results = Host.ssh(hosts=hosts, command='sudo useradd slurm')
     print(Printer.write(results))
@@ -487,11 +483,17 @@ def step4():
     hostexecute(script, manager)
     results = Host.ssh(hosts=workers, command='sudo cp /clusterfs/slurm.conf /usr/local/etc/slurm.conf')
     print(Printer.write(results))
-    results = Host.ssh(hosts=workers, command='sudo chown -R slurm:slurm /var/spool/')
+    results = Host.ssh(hosts=hosts, command='sudo chown -R slurm:slurm /var/spool/')
     print(Printer.write(results))
     results = Host.ssh(hosts=workers, command='cd ~/slurm/etc/ && sudo cp slurmd.service /etc/systemd/system/')
     print(Printer.write(results))
     results = Host.ssh(hosts=manager, command='cd ~/slurm/etc/ && sudo cp slurmctld.service /etc/systemd/system/')
+    print(Printer.write(results))
+    results = Host.ssh(hosts=workers, command='sudo cp /clusterfs/munge.key /etc/munge/munge.key')
+    print(Printer.write(results))
+    results = Host.ssh(hosts=workers, command='sudo systemctl enable munge')
+    print(Printer.write(results))
+    results = Host.ssh(hosts=workers, command='sudo systemctl start munge')
     print(Printer.write(results))
     results = Host.ssh(hosts=workers, command='sudo systemctl enable slurmd')
     print(Printer.write(results))
