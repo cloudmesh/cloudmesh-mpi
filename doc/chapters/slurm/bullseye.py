@@ -354,20 +354,16 @@ def step3():
     print(hosts)
     listOfManager = [manager]
     trueIP = get_IP(manager)
-    if not yn_choice('The script will now install SLURM and MPI. '
-                     'The process may take upwards of half an hour '
-                     'with 4 workers. Press y and Enter when ready to continue...\n'):
-        Console.error("You pressed no but the script is continuing as normal...")
-        return ""
-    banner("This will take a while...")
-    try_installing_package("sudo apt-get install python3-venv python3-wheel python3-dev build-essential "
+    try_installing_package("sudo apt-get install python3-venv python3-wheel python3-dev build-essential libopenmpi-dev "
                            "-y",
                            listOfWorkers)
+    try_installing_package("sudo apt-get install python3-venv python3-wheel python3-dev build-essential libopenmpi-dev "
+                           "-y",
+                           listOfManager)
     results = Host.ssh(hosts=workers, command='python3 -m venv ~/ENV3')
     print(Printer.write(results))
-    '''
     try_installing_package("sudo apt-get install openmpi-bin -y", listOfWorkers)
-    '''
+    try_installing_package("sudo apt-get install openmpi-bin -y", listOfManager)
     results = Host.ssh(hosts=hosts, command='sudo ldconfig')
     print(Printer.write(results))
     results = Host.ssh(hosts=hosts, command='ENV3/bin/pip install mpi4py')
@@ -408,6 +404,14 @@ def step4():
     print(hosts)
 
     trueIP = get_IP(manager)
+
+    if not yn_choice('The script will now install SLURM and MPI. '
+                     'The process may take upwards of half an hour '
+                     'with 4 workers. Press y and Enter when ready to continue...\n'):
+        Console.error("You pressed no but the script is continuing as normal...")
+        return ""
+    banner("This will take a while...")
+
     results = Host.ssh(hosts=hosts, command='sudo useradd slurm')
     print(Printer.write(results))
     results = Host.ssh(hosts=manager, command='sudo cp -R /usr/lib/pmix /clusterfs')
@@ -430,7 +434,7 @@ def step4():
     print(Printer.write(results))
     results = Host.ssh(hosts=hosts, command='cd slurm && sudo make -j install > /dev/null')
     print(Printer.write(results))
-
+    '''
     results = Host.ssh(hosts=hosts, command='wget '
                                             'https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.2.tar.gz')
     print(Printer.write(results))
@@ -443,7 +447,7 @@ def step4():
     print(Printer.write(results))
     results = Host.ssh(hosts=hosts, command='sudo rm openmpi-4.1.2.tar.gz')
     print(Printer.write(results))
-
+    '''
     script = textwrap.dedent(
         f"""
         sudo curl -L https://raw.githubusercontent.com/cloudmesh/cloudmesh-mpi/main/doc/chapters/slurm/configs/slurm.conf > ~/slurm.conf
