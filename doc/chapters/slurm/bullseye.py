@@ -360,12 +360,15 @@ def step3():
         Console.error("You pressed no but the script is continuing as normal...")
         return ""
     banner("This will take a while...")
-    try_installing_package("sudo apt-get install python3-venv python3-wheel python3-dev build-essential -y",
+    try_installing_package("sudo apt-get install python3-venv python3-wheel python3-dev build-essential libopenmpi-dev "
+                           "-y",
                            listOfWorkers)
     results = Host.ssh(hosts=workers, command='python3 -m venv ~/ENV3')
     print(Printer.write(results))
     try_installing_package("sudo apt-get install openmpi-bin -y", listOfWorkers)
-    results = Host.ssh(hosts=workers, command='ENV3/bin/pip install mpi4py')
+    results = Host.ssh(hosts=hosts, command='sudo ldconfig')
+    print(Printer.write(results))
+    results = Host.ssh(hosts=hosts, command='ENV3/bin/pip install mpi4py')
     print(Printer.write(results))
     try_installing_package("sudo apt install libevent-dev autoconf git libtool flex libmunge-dev munge -y",
                            listOfManager)
