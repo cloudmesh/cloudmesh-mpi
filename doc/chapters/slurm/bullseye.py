@@ -354,9 +354,9 @@ def step3():
     print(hosts)
     listOfManager = [manager]
     trueIP = get_IP(manager)
-    if not yn_choice('The script will now install virtual Python environment on each worker'
-                     ' node. This is necessary to use MPI with SLURM. The process may take upwards of half an hour'
-                     ' with 4 workers. Press y and Enter when ready to continue...\n'):
+    if not yn_choice('The script will now install SLURM and MPI. '
+                     'The process may take upwards of half an hour '
+                     'with 4 workers. Press y and Enter when ready to continue...\n'):
         Console.error("You pressed no but the script is continuing as normal...")
         return ""
     banner("This will take a while...")
