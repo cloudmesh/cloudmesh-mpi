@@ -360,12 +360,14 @@ def step3():
         Console.error("You pressed no but the script is continuing as normal...")
         return ""
     banner("This will take a while...")
-    try_installing_package("sudo apt-get install python3-venv python3-wheel python3-dev build-essential libopenmpi-dev "
+    try_installing_package("sudo apt-get install python3-venv python3-wheel python3-dev build-essential "
                            "-y",
                            listOfWorkers)
     results = Host.ssh(hosts=workers, command='python3 -m venv ~/ENV3')
     print(Printer.write(results))
+    '''
     try_installing_package("sudo apt-get install openmpi-bin -y", listOfWorkers)
+    '''
     results = Host.ssh(hosts=hosts, command='sudo ldconfig')
     print(Printer.write(results))
     results = Host.ssh(hosts=hosts, command='ENV3/bin/pip install mpi4py')
@@ -417,6 +419,18 @@ def step4():
                                             '--prefix=/usr/local && '
                                             'sudo make -j install >/dev/null')
     print(Printer.write(results))
+
+    results = Host.ssh(hosts=manager, command='git clone https://github.com/SchedMD/slurm && sudo cp -R slurm '
+                                              '/clusterfs')
+    print(Printer.write(results))
+    results = Host.ssh(hosts=workers, command='sudo cp -R /clusterfs/slurm ~')
+    print(Printer.write(results))
+    results = Host.ssh(hosts=hosts, command='cd slurm && sudo ./configure --enable-debug --with-pmix '
+                                            '--with-munge')
+    print(Printer.write(results))
+    results = Host.ssh(hosts=hosts, command='cd slurm && sudo make -j install > /dev/null')
+    print(Printer.write(results))
+
     results = Host.ssh(hosts=hosts, command='wget '
                                             'https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.2.tar.gz')
     print(Printer.write(results))
@@ -428,17 +442,6 @@ def step4():
     results = Host.ssh(hosts=hosts, command='sudo rm -rf openmpi-4.1.2')
     print(Printer.write(results))
     results = Host.ssh(hosts=hosts, command='sudo rm openmpi-4.1.2.tar.gz')
-    print(Printer.write(results))
-
-    results = Host.ssh(hosts=manager, command='git clone https://github.com/SchedMD/slurm && sudo cp -R slurm '
-                                              '/clusterfs')
-    print(Printer.write(results))
-    results = Host.ssh(hosts=workers, command='sudo cp -R /clusterfs/slurm ~')
-    print(Printer.write(results))
-    results = Host.ssh(hosts=hosts, command='cd slurm && sudo ./configure --enable-debug --with-pmix '
-                                            '--with-munge')
-    print(Printer.write(results))
-    results = Host.ssh(hosts=hosts, command='cd slurm && sudo make -j install > /dev/null')
     print(Printer.write(results))
 
     script = textwrap.dedent(
@@ -522,7 +525,11 @@ def step4():
     print(Printer.write(results))
     StopWatch.stop("Current section time")
     StopWatch.benchmark()
-    tell_user_rebooting()
+    print("Rebooting cluster now.")
+    banner("After successful reboot, ssh back into manager and test SLURM by issuing $ srun --nodes=3 hostname "
+           "(change 3 to number of nodes if necessary). If it does not work right away, wait a minute for the "
+           "nodes to come back online.\n")
+    os.system("cms host reboot " + hosts)
 
 
 # a = readfile("test1")
