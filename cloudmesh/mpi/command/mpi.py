@@ -2,7 +2,7 @@ from cloudmesh.shell.command import command
 from cloudmesh.shell.command import PluginCommand
 from cloudmesh.common.debug import VERBOSE
 from cloudmesh.common.util import banner
-from cloudmesh.mpi.command.deploy import Deploy
+from cloudmesh.mpi.deploy import Deploy
 from cloudmesh.common.parameter import Parameter
 
 
