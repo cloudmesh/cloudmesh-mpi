@@ -102,7 +102,7 @@ MPI 4.0 (June 2021).
 Multiple implementations following the standard exist, including the two
 most popular MPICH [@www-mpich] and OpenMPI [@www-openmpi]. However,
 other free or commercial implementations exist
-[@www-intelmpi][@www-msmpi][@www-nvidiampi].
+\[@www-intelmpi\]\[@www-msmpi\][@www-nvidiampi].
 
 Additionally, MPI is a language-independent interface. Although support
 for C and Fortran is included as part of the standard, multiple
@@ -1507,27 +1507,39 @@ StopWatch.stop("Overall time")
 StopWatch.benchmark()
 ```
 
-  No Jit      1 Worker   2 Workers   6 Workers   12 Workers   20 Workers
-  ----------- ---------- ----------- ----------- ------------ ------------
-  640x480     22.470 s   12.220 s    4.946 s     4.384 s      5.257 s
-  1280x960    45.951 s   23.702 s    8.982 s     6.258 s      6.523 s
-  1920x1440   68.779 s   34.652 s    12.933 s    8.385 s      8.042 s
+  ------------------------------------------------------------------------
+  No Jit      1 Worker  2 Workers    6 Workers   12 Workers   20 Workers
+  ----------- --------- ------------ ----------- ------------ ------------
+  640x480     22.470 s  12.220 s     4.946 s     4.384 s      5.257 s
 
-  Jit Enabled   1 Worker   2 Workers   6 Workers   12 Workers   20 Workers
-  ------------- ---------- ----------- ----------- ------------ ------------
-  640x480       24.551 s   12.499 s    5.632 s     5.054 s      6.616 s
-  1280x960      46.183 s   23.406 s    9.543 s     7.190 s      8.226 s
-  1920x1440     68.366 s   34.569 s    12.938 s    9.278 s      8.854 s
+  1280x960    45.951 s  23.702 s     8.982 s     6.258 s      6.523 s
+
+  1920x1440   68.779 s  34.652 s     12.933 s    8.385 s      8.042 s
+  ------------------------------------------------------------------------
+
+  -------------------------------------------------------------------------
+  Jit Enabled 1 Worker   2 Workers    6 Workers   12 Workers   20 Workers
+  ----------- ---------- ------------ ----------- ------------ ------------
+  640x480     24.551 s   12.499 s     5.632 s     5.054 s      6.616 s
+
+  1280x960    46.183 s   23.406 s     9.543 s     7.190 s      8.226 s
+
+  1920x1440   68.366 s   34.569 s     12.938 s    9.278 s      8.854 s
+  -------------------------------------------------------------------------
 
 -   These benchmark times were generated using a Ryzen 5 3600 CPU with
     16 GB RAM on a Windows 10 computer. The Ryzen 5 3600 is a 6-core,
     12-thread processor.
 
-  No Jit      1 Worker   2 Workers   3 Workers   4 Workers
-  ----------- ---------- ----------- ----------- -----------
-  640x480     51.555 s   49.103 s    48.501 s    48.983 s
-  1280x960    66.044 s   56.652 s    53.693 s    52.929 s
-  1920x1440   87.918 s   68.069 s    61.836 s    59.414 s
+  -----------------------------------------------------------------------
+  No Jit      1 Worker     2 Workers       3 Workers      4 Workers
+  ----------- ------------ --------------- -------------- ---------------
+  640x480     51.555 s     49.103 s        48.501 s       48.983 s
+
+  1280x960    66.044 s     56.652 s        53.693 s       52.929 s
+
+  1920x1440   87.918 s     68.069 s        61.836 s       59.414 s
+  -----------------------------------------------------------------------
 
 -   These benchmark times were generated using a Raspberry Pi 4 Model B
     2018 with 8 GB RAM on a Raspbian 10 (codename buster) OS. It uses an
@@ -1588,7 +1600,7 @@ from cloudmesh.common.StopWatch import StopWatch
 @click.command()
 @click.option('--count', default=1, help='Number of messages send.')
 @click.option('--debug', default=False, help='Set debug.')
-def ring(count=1, debug=Fasle):
+def ring(count=1, debug=False):
     comm = MPI.COMM_WORLD   # Communicator
     rank = comm.Get_rank()  # Get the rank of the current process 
     size = comm.Get_size()  # Get the size of the communicator group
@@ -1597,7 +1609,7 @@ def ring(count=1, debug=Fasle):
         data = int(input('Enter an integer to transmit: '))  # Input the data
         data += 1                                            # Data is modified
     if rank == 0:  # ONly processor 0 uses the stopwatch
-        Stopwatch.start(f"ring {size} {count}")        
+        StopWatch.start(f"ring {size} {count}")
     for i in range(0, count):
         if rank == 0:        
             comm.send(data, dest=rank + 1)  # send data to neighbor
@@ -1616,8 +1628,8 @@ def ring(count=1, debug=Fasle):
         print(f'Final data received in process 0: {data}')
         assert data == count * size          # verify
     if rank == 0:
-        Stopwatch.stop(f"ring {size} {count}")  #print the time
-        Stopwatch.benchmark()
+        StopWatch.stop(f"ring {size} {count}")  #print the time
+        StopWatch.benchmark()
         
 if __name__ == '__main__':
     ring()
@@ -2063,14 +2075,22 @@ execute the numba version of the Monte Carlo program:
 $ mpiexec -n 4 python parallel_pi_numba.py
 ```
 
-  Cores   parallel_pi.py execution time   parallel_pi_numba.py execution time
-  ------- ------------------------------- -------------------------------------
-  6       237.873 s                       169.678 s
-  5       257.720 s                       199.572 s
-  4       326.811 s                       239.160 s
-  3       383.343 s                       289.433 s
-  2       545.500 s                       403.289 s
-  1       1075.68 s                       810.525 s
+  ---------------------------------------------------------------------
+  Cores   parallel_pi.py execution    parallel_pi_numba.py execution
+          time                        time
+  ------- --------------------------- ---------------------------------
+  6       237.873 s                   169.678 s
+
+  5       257.720 s                   199.572 s
+
+  4       326.811 s                   239.160 s
+
+  3       383.343 s                   289.433 s
+
+  2       545.500 s                   403.289 s
+
+  1       1075.68 s                   810.525 s
+  ---------------------------------------------------------------------
 
 -   These benchmark times were generated using a Ryzen 5 3600 CPU with
     16 GB RAM on a Windows 10 computer.
@@ -2383,7 +2403,7 @@ $ N=2; python environment-parameter.py
 It allows us to execute the programs sequentially in the file with
 
 ``` bash
-$ sh run.sh
+$ sh run.py
 ```
 
 In our case, we are also using cloudmesh.StopWatch to allow us easily to

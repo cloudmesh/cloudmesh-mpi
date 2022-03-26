@@ -61,36 +61,38 @@ RUN unset DEBIAN_FRONTEND
 RUN apt-get -y install biber
 
 #
-# INSTALL PYTHON 3.9 FROM SOURCE
+# INSTALL PYTHON 3.10 FROM SOURCE
 #
 WORKDIR /usr/src
-ENV PYTHON_VERSION=3.9.7
+ENV PYTHON_VERSION=3.10.4
 
 RUN wget https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz
 RUN tar xzf Python-${PYTHON_VERSION}.tgz
 WORKDIR /usr/src/Python-${PYTHON_VERSION}
 RUN ./configure --enable-optimizations
-RUN make altinstall
-RUN update-alternatives --install /usr/bin/python python /usr/local/bin/python3.9 10
+RUN make -j8 build_all
+RUN make -j8 altinstall
+RUN update-alternatives --install /usr/bin/python python /usr/local/bin/python3.10 20
 RUN update-alternatives --config python
-RUN update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip3.9 10
+RUN update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip3.10 20
 RUN update-alternatives --config pip
 RUN yes '' | update-alternatives --force --all
-ENV PATH="/usr/local/bin:${PATH}"
+ENV PATH="/usr/bin:/usr/local/bin:${PATH}"
 
 WORKDIR /usr/local/code
 
 #
 # INSTALL PANDOC
 #
-# https://github.com/jgm/pandoc/releases/download/2.14.2/pandoc-2.14.2-1-amd64.deb
-ENV PANDOC_VERSION=2.14.2
+# https://github.com/jgm/pandoc/releases/download/2.17.1.1/pandoc-2.17.1.1-1-amd64.deb
+
+ENV PANDOC_VERSION=2.17.1.1
 RUN wget -q https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb
 RUN dpkg -i pandoc-${PANDOC_VERSION}-1-amd64.deb
 RUN pandoc --version
 
-# https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.12.0c/pandoc-crossref-Linux.tar.xz
-ENV CROSSREF_VERSION=v0.3.12.0c
+# https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.12.2a/pandoc-crossref-Linux.tar.xz
+ENV CROSSREF_VERSION=v0.3.12.2a
 RUN wget https://github.com/lierdakil/pandoc-crossref/releases/download/${CROSSREF_VERSION}/pandoc-crossref-Linux.tar.xz
 RUN tar xvf pandoc-crossref-Linux.tar.xz
 

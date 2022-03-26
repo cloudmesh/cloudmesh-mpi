@@ -19,7 +19,10 @@ endef
 
 .PHONY: clean
 
-all: pdf-mpi epub-mpi pdf-group clean
+all: install pdf-mpi epub-mpi pdf-group clean
+
+install:
+	pip install cyberaide-bookmanager
 
 md-mpi: ${MPI}
 	$(call banner, "CREATE MPI MARKDOWN DOCUMENT")
