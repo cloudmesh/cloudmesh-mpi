@@ -340,23 +340,7 @@ TODO: explanation missing
 * run with srun 
 * run with sbatch
 
-To execute `srun` commands with MPI, SLURM must be installed from source with
-the `--with-pmix` configure parameter. This is automated within the script
-by running the script a fifth time, beginning step 5.
-
-```bash
-(ENV3) pi@red:~ $ ./install_slurm.py
-```
-
-Additionally, you can consult the following documentation to install
-MPI manually. The first link is to the entire PDF and the second link
-is to the specific installation section.
-
-* <https://cloudmesh.github.io/cloudmesh-mpi/report-mpi.pdf> 
-
-* <https://github.com/cloudmesh/cloudmesh-mpi/blob/main/doc/chapters/report-mpi.md#installation>
-
-After installing Open MPI, test the following command:
+To test MPI with SLURM, run the following command:
 
 ```bash
 # Allocate a Slurm job with 4 nodes and run your MPI application in it
