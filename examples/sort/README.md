@@ -1,4 +1,58 @@
-# Notes
+# Multiprocessing Mergesort
+
+Put intro here.
+- what
+- how
+
+## Source Code
+
+The source code is located in GitHub at the following location:
+
+* <https://github.com/cloudmesh/cloudmesh-mpi/tree/main/examples/sort>
+
+We distinguish the following important files:
+
+* [sandra.ipynb](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/sandra.ipynb)
+* 
+## Installation
+
+- how to install
+- ENV3
+- MPI directory cloning & compiling
+- verify correctness
+  
+### ENV3
+
+- Mac 
+```bash
+python -m venv ~/ENV3
+source ~/ENV3/bin/activate
+```
+
+### Clone
+
+To download our code, please follow the instructions:
+
+```bash
+mkdir cm
+cd cm
+git clone git@github.com:cloudmesh/cloudmesh-mpi.git
+```
+
+
+## Benchmark
+
+- created using program ...
+- recreate using ...
+
+![multiprocessing mergesort size = 10000000](images/by-size-10000000-multiprocessing_mergesort-alex-gregor.png)
+
+**Figure 1:** Multiprocessing Mergesort size = 10000000
+
+In Figure 1 we show...
+
+
+## Old Notes
 
 ## Gregors new experiment.py
 
