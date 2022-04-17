@@ -3,7 +3,7 @@
 This project implements a multiprocessing mergesort algorithm. It then analyzes the algorithm using 
 factors like input size, number of processors, speedup, and efficiency.
 
-- how
+Packages used: Numpy, Pandas, Seaborn, Matplot
 
 ## Source Code
 
@@ -14,20 +14,14 @@ The source code is located in GitHub at the following location:
 We distinguish the following important files:
 
 * [sandra.ipynb](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/sandra.ipynb)
-* 
+  
+
 ## Installation
 
-- how to install
-- ENV3
-- MPI directory cloning & compiling
-- verify correctness
-  
-### ENV3
-
-- Mac 
+### ENV3 (for macOS)
 ```bash
-python -m venv ~/ENV3
-source ~/ENV3/bin/activate
+$ python -m venv ~/ENV3
+$ source ~/ENV3/bin/activate
 ```
 
 ### Clone
@@ -35,10 +29,39 @@ source ~/ENV3/bin/activate
 To download our code, please follow the instructions:
 
 ```bash
-mkdir cm
-cd cm
-git clone git@github.com:cloudmesh/cloudmesh-mpi.git
+$ mkdir cm
+$ cd cm
+$ git clone git@github.com:cloudmesh/cloudmesh-mpi.git
 ```
+
+### Verification
+
+Go to the [Github](https://github.com/cloudmesh/cloudmesh-mpi) to verify that the correct repository has been cloned. 
+
+## Overview
+
+This project uses Python to implement a multiprocessing mergesort algorithm (linked [here](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/multiprocessing_mergesort.py)). The algorithm is then run and evaluated in [sandra.ipynb](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/sandra.ipynb). 
+
+### Running the Algorithm
+
+Running of the algorithm is controlled by [run.py](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/run.py). This can be run using the command
+```bash
+$ ./run.py --user=[user name] --node=[node name for stopwatch] --sort=[sort algorithm]
+```
+
+An example command:
+```bash
+$ ./run.py  --size=10000000 --repeat=1 --user=gregor --node=5950x
+```
+
+This would run the multiprocessing mergesort algorithm on arrays of size 10000000 for the user gregor. run.py will automatically calculate the number of processors $n$ for the user and run $repeat$ times using each number 1 to $n$ of processors. 
+
+In the example above, $repeat = 1$, so the algorithm will run only once on for each number of processors from 1 to $n$. Note that the algorithm will run a total of $n \times repeat$ times. 
+
+run.py runs the mergesort to generate data, which is collected using StopWatch. This data is stored in a specified log file named after the user. 
+
+### Analyzing the Data
+
 
 
 ## Benchmark
