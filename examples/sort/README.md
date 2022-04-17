@@ -1,7 +1,8 @@
 # Multiprocessing Mergesort
 
-Put intro here.
-- what
+This project implements a multiprocessing mergesort algorithm. It then analyzes the algorithm using 
+factors like input size, number of processors, speedup, and efficiency.
+
 - how
 
 ## Source Code
