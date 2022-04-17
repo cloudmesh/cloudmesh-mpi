@@ -56,7 +56,7 @@ $ ./run.py  --size=10000000 --repeat=1 --user=gregor --node=5950x
 
 This would run the multiprocessing mergesort algorithm on arrays of size 10000000 for the user gregor. run.py will automatically calculate the number of processors $n$ for the user and run $repeat$ times using each number 1 to $n$ of processors. 
 
-In the example above, $repeat = 1$, so the algorithm will run only once on for each number of processors from 1 to $n$. Note that the algorithm will run a total of $n \times repeat$ times. 
+In the example above, $`repeat = 1`$, so the algorithm will run only once on for each number of processors from 1 to $n$. Note that the algorithm will run a total of $n \times repeat$ times. 
 
 run.py runs the mergesort to generate data, which is collected using StopWatch. This data is stored in a specified log file named after the user. 
 
