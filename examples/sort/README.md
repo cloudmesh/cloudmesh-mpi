@@ -106,14 +106,11 @@ Another important function is _calculate_efficiency_. Effiency is defined as _S(
 
 ## Benchmark
 
-- created using program ...
-- recreate using ...
-
 ![multiprocessing mergesort size = 10000000](images/by-size-10000000-multiprocessing_mergesort-alex-gregor.png)
 
 **Figure 1:** Multiprocessing Mergesort size = 10000000
 
-In Figure 1 we show...
+In Figure 1 we show the graph with efficiency as y-axis and number of processors as x-axis for sets of size 10000000 for users alex (blue) and gregor (orange). One can see that efficiency for alex continously decreases as the number of processors increases, while the efficiency for gregor increases slightly near the beginning and then decreases. 
 
 
 ## Old Notes
