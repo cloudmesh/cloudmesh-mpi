@@ -115,8 +115,6 @@ In Figure 1 we show the graph with efficiency as y-axis and number of processors
 
 ## Old Notes
 
-
-
 1. install
 
     - do once
@@ -152,5 +150,3 @@ def sort_alg(a)
 	# do sorting of a
 	return a
 ```
-
-## User Manual
