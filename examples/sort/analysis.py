@@ -25,12 +25,10 @@ def get_data(content, tag="multiprocessing_mergesort", size=None):
     """
     TBD
 
-    :param content:
-    :type content:
-    :param name:
-    :type name:
-    :return:
-    :rtype:
+    :param content: data output from running mergesort
+    :type content: string
+    :return: none
+    :rtype: none
     """
     found = []
     lines = [line for line in content if "# csv" in line]
