@@ -38,6 +38,34 @@ $ git clone git@github.com:cloudmesh/cloudmesh-mpi.git
 
 Go to the [Github](https://github.com/cloudmesh/cloudmesh-mpi) to verify that the correct repository has been cloned. 
 
+### Updating
+
+1. Update local version
+
+   ```bash
+   git pull
+   ```
+
+2. To add file (only do once)
+
+   ```bash
+   git add filename
+   ```
+
+3. Once file is changed, do
+
+   ```bash
+   git commit -m "this is my comment" filename
+   ```
+
+4. Remote upload
+
+   ```bash
+   git push
+   ```
+
+
+
 ## Overview
 
 This project uses Python to implement a multiprocessing mergesort algorithm (linked [here](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/multiprocessing_mergesort.py)). The algorithm is then run and evaluated in [sandra.ipynb](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/sandra.ipynb). 
@@ -62,7 +90,19 @@ run.py runs the mergesort to generate data, which is collected using StopWatch. 
 
 ### Analyzing the Data
 
+Analysis of the algorithm is controlled by [sandra.ipynb](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/sandra.ipynb). Functions _read_log_ and _get_average_ are imported from [analysis.py](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/analysis.py). These functions are used to streamline the outputted data and collect the relevant information from each line of data. 
 
+The function _plot_benchmark_by_size_ plots a specified benchmark by each possible number of processers for a constant size of array to be sorted for each user on the same graph. 
+
+Note that for maximum accuracy, each run can be repeated multiple times and the results can be averaged to prevent luck from skewing the experimental times. 
+
+#### Calculating Speedup
+
+One important function is _calculate_speedup_. Speedup is defined as _T(1) / T(n)_, where _T(1)_ is the time the algorithm takes on just one processor, and _T(n)_ is the time taken using _n_ processors. 
+
+### Calculating Efficiency
+
+Another important function is _calculate_efficiency_. Effiency is defined as _S(n) / n_, where _S(n)_ is the speedup of _n_. 
 
 ## Benchmark
 
@@ -78,67 +118,9 @@ In Figure 1 we show...
 
 ## Old Notes
 
-## Gregors new experiment.py
-
-Example:
-
-```bash
-./experiment.py --processes="[1-5,8]" --size="[100]" --repeat=10 
-```
-
-Help:
-
-```bash
-./experiment.py --help 
-```
-
-Bug:
-
-At this time the log file parameter is not implemented. We may remove it.
-
-## Simple use of git
-
-0. download
-    - do once
-
-   ```bash
-   mkdir cm
-   cd cm
-   git clone git@github.com:cloudmesh/cloudmesh-mpi.git
-   ```
-
-1. update
-
-   ```bash
-   git pull
-   ```
-
-2. local upload
 
 
-1. to add file, do once
-
-   ```bash
-   git add filename
-   ```
-
-2. once changed file, do
-
-   ```bash
-   git commit -m "this is my comment" filename
-   ```
-
-3. remote upload
-
-   ```bash
-   git push
-   ```
-
-3. verify
-
-   go to the web page and look att the file you modified
-
-4. install
+1. install
 
     - do once
 
@@ -149,7 +131,6 @@ At this time the log file parameter is not implemented. We may remove it.
    pip install -r requirements.txt
    ```
 
-Never modify anythin in docs, Only Gregor does this!!!
 
 ## List of sort algorithms in python
 
