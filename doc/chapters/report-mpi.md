@@ -1509,7 +1509,7 @@ You can manually set the variable in git bash in the same line as you open the .
 $ python click-parameter.py --n=3
 ```
 
-# SLURM
+## SLURM
 
 Pairing the Message Passing Interface with SLURM, a Linux workload manager, achieves a unique
 processing power that replaces the use of individual computer threads with entire computers
@@ -1517,7 +1517,7 @@ in and of themselves.
 
 We can install SLURM on a cluster of Raspberry Pi computers.
 
-## 1.0 Installation
+### Installation
 
 The installation takes around an hour on a
 cluster of four Raspberry Pi 4 Model B computers.
@@ -1558,7 +1558,7 @@ tutorial](https://cloudmesh.github.io/pi/tutorial/raspberry-burn-windows/)
 and ensuring that the cluster is online, you have two methods of
 installing SLURM.
 
-## 2.0 Method 1 - Install from Host
+#### Method 1 - Install from Host
 
 You can install SLURM on a cluster by executing commands from the host
 computer. The host computer is the same computer that is previously 
