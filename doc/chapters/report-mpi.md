@@ -1607,9 +1607,9 @@ red03
 
 The nodes may be out of order. That is okay and normal.
 
-## 3.0 Method 2 - Install on Manager
+#### Method 2 - Install on Manager
 
-### 3.1 Install cloudmesh
+##### Install cloudmesh
 
 This method involves the user logging into the manager via `ssh` and 
 first installing cloudmesh in the manager with:
@@ -1643,7 +1643,7 @@ pi@red:~/cm/cloudmesh-slurm $ cms help
 
 The slurm command should appear in the list.
 
-### 3.2 Install SLURM Directly on Pi
+##### Install SLURM Directly on Pi
 
 Run this command to begin SLURM installation:
 
@@ -1679,7 +1679,7 @@ red03
 
 The nodes may be out of order. That is okay and normal.
 
-## 4.0 Install Single-Node
+### Install Single-Node
 
 To make job management simple, we can install SLURM on one computer.
 This one computer has no workers and is a manager to its own self.
@@ -1695,7 +1695,7 @@ and workers listed as the same hostname. In the following example,
 cms slurm pi install as host --hosts=red,red --mount=//dev//sda
 ```
 
-## 5.0 MPI Example
+### MPI Example
 
 To run a test MPI example, `ssh` into the manager and then use
 the `example` command. This is only possible if `cms` is installed
