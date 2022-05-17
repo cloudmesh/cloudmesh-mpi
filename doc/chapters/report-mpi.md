@@ -1509,6 +1509,221 @@ You can manually set the variable in git bash in the same line as you open the .
 $ python click-parameter.py --n=3
 ```
 
+# SLURM
+
+Pairing the Message Passing Interface with SLURM, a Linux workload manager, achieves a unique
+processing power that replaces the use of individual computer threads with entire computers
+in and of themselves.
+
+We can install SLURM on a cluster of Raspberry Pi computers.
+
+## 1.0 Installation
+
+The installation takes around an hour on a
+cluster of four Raspberry Pi 4 Model B computers.
+
+To use the cloudmesh SLURM command, one must have cloudmesh installed
+by using the following commands.
+
+We assume you are in a venv Python environment. Ours is called (ENV3)
+
+```bash
+(ENV3) you@yourlaptop $ mkdir ~/cm
+(ENV3) you@yourlaptop $ cd ~/cm
+(ENV3) you@yourlaptop $ pip install cloudmesh-installer
+(ENV3) you@yourlaptop $ cloudmesh-installer get pi
+```
+
+Initialize the cms command:
+
+```bash
+(ENV3) you@yourlaptop $ cms help
+```
+
+Then clone the cloudmesh-slurm repository:
+
+```bash
+(ENV3) you@yourlaptop $ cd ~/cm
+(ENV3) you@yourlaptop $ cloudmesh-installer get cmd5
+(ENV3) you@yourlaptop $ git clone https://github.com/cloudmesh/cloudmesh-slurm.git
+(ENV3) you@yourlaptop $ cd cloudmesh-slurm
+(ENV3) you@yourlaptop $ pip install -e .
+(ENV3) you@yourlaptop $ cms help
+```
+
+You may proceed if `slurm` shows in the documented commands.
+
+After following [the burn
+tutorial](https://cloudmesh.github.io/pi/tutorial/raspberry-burn-windows/)
+and ensuring that the cluster is online, you have two methods of
+installing SLURM.
+
+## 2.0 Method 1 - Install from Host
+
+You can install SLURM on a cluster by executing commands from the host
+computer. The host computer is the same computer that is previously 
+burned your SD Cards and is referred to as `you@yourlaptop`. This 
+machine can be used to `ssh` into each of the Pis.
+
+
+To install it, use the command:
+
+```bash
+cms slurm pi install as host --hosts=red,red0[1-3] --mount=//dev//sda
+```
+
+The mount parameter is meant to have double slashes no matter the OS of the host.
+
+The `--hosts` parameter needs to include the hostnames of your cluster, including
+manager and workers, separated by comma using a parameterized naming scheme.
+
+The `--mount` parameter points to the mount place of your USB,
+inserted in the top-most blue USB3.0 port (on Pi 4's) on your manager PI. 
+
+WARNING: This USB drive ***will be formatted*** and all data on it will be erased.
+
+The command will take a long time to finish. It may appear to not progress 
+at certain points, but please be patient. However they will last hopefully not longer 
+than 45 minutes. The reason this takes such a long time is that at time of writing 
+of this tutorial, the prebuilt SLURM
+packages did not work, so we compile it from source.
+
+Once the script completes, you can check if SLURM is installed by issuing
+on the manager:
+
+`srun --nodes=3 hostname`
+
+and replacing the `--nodes` parameter with the number of workers.
+
+You will see an output similar to
+
+```bash
+(ENV3) pi@red:~ $ srun --nodes=3 hostname
+red01
+red02
+red03
+(ENV3) pi@red:~ $
+```
+
+The nodes may be out of order. That is okay and normal.
+
+## 3.0 Method 2 - Install on Manager
+
+### 3.1 Install cloudmesh
+
+This method involves the user logging into the manager via `ssh` and 
+first installing cloudmesh in the manager with:
+
+```bash
+(ENV3) you@yourhostcomputer $ ssh red
+pi@red $ curl -Ls http://cloudmesh.github.io/get/pi | sh -
+```
+
+This output is printed upon successful installation.
+
+```bash
+Please activate with
+
+    source ~/ENV3/bin/activate
+
+Followed by a reboot
+```
+
+After activating venv with the source command and rebooting 
+via `sudo reboot`, issue the commands:
+
+```bash
+(ENV3) you@yourhostcomputer $ ssh red
+pi@red:~ $ cd ~/cm
+pi@red:~/cm $ git clone https://github.com/cloudmesh/cloudmesh-slurm.git
+pi@red:~/cm $ cd cloudmesh-slurm
+pi@red:~/cm/cloudmesh-slurm $ pip install -e .
+pi@red:~/cm/cloudmesh-slurm $ cms help
+```
+
+The slurm command should appear in the list.
+
+### 3.2 Install SLURM Directly on Pi
+
+Run this command to begin SLURM installation:
+
+```bash
+pi@red:~/cm/cloudmesh-slurm $ cms slurm pi install --workers=red0[1-3] --mount=/dev/sda
+```
+
+The user must `ssh` back into the manager after the cluster reboots
+and perform the last command (cms slurm pi install...)  3 more
+times. The script will inform the user when this is no longer
+necessary and SLURM is fully installed.
+
+Notice this method does not need two forward slashes in `--mount`
+because it is done on Raspberry Pi OS and not Windows. It can only
+be done on Raspberry Pi OS because the method is purposefully
+done on the manager Pi, to begin with.
+
+You can check if SLURM is installed by issuing on the manager:
+
+`srun --nodes=3 hostname`
+
+and replacing the `--nodes` parameter with the number of workers.
+
+You will see an output similar to
+
+```bash
+(ENV3) pi@red:~ $ srun --nodes=3 hostname
+red01
+red02
+red03
+(ENV3) pi@red:~ $
+```
+
+The nodes may be out of order. That is okay and normal.
+
+## 4.0 Install Single-Node
+
+To make job management simple, we can install SLURM on one computer.
+This one computer has no workers and is a manager to its own self.
+The user can make and automate jobs for simplicity's sake, and the
+same computer will carry out those jobs.
+
+Single-node installation, which is a SLURM cluster with only one node,
+can be easily configured by using the host command with the manager
+and workers listed as the same hostname. In the following example,
+`red` is the single-node.
+
+```bash
+cms slurm pi install as host --hosts=red,red --mount=//dev//sda
+```
+
+## 5.0 MPI Example
+
+To run a test MPI example, `ssh` into the manager and then use
+the `example` command. This is only possible if `cms` is installed
+on the Pi; if you have not done this because you installed SLURM
+via the host method, then refer to section 3.1 to install cloudmesh on Pi.
+Then run the following (change the number
+after `--n` to the number of nodes):
+
+```bash
+(ENV3) you@yourhostcomputer $ ssh red
+pi@red:~ $ cms slurm pi example --n=3
+```
+
+This `cms slurm` command runs `salloc -N 3 mpiexec python -m mpi4py.bench helloworld`
+but the number after `-N` is altered to whatever is input for the `--n` parameter.
+Do not run the `salloc` command. It is unnecessary when we have already implemented
+it within the aforementioned `cms slurm pi example` command. It is just listed here
+for reference.
+The output will be similar to:
+
+```bash
+pi@red:~ $ cms slurm pi example --n=3
+salloc: Granted job allocation 17
+Hello, World! I am process 0 of 3 on red01.
+Hello, World! I am process 1 of 3 on red02.
+Hello, World! I am process 2 of 3 on red03.
+salloc: Relinquishing job allocation 17
+```
 
 ## Links to Other Documents
 
