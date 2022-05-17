@@ -119,8 +119,11 @@ in the creation of high-performance and parallel computing programs.
 
 # Installation
 
-Next, we discuss how to install mpi4py on various systems. We will focus on installing it on a single computer
-using multiple cores. 
+Next, we discuss how to install mpi4py on various systems. We will focus on installing it 
+on a single computer using multiple cores.
+
+This Installation section does not cover the installation of SLURM, which is covered in
+a later section.
 
 ## Python Version
 
@@ -1511,13 +1514,17 @@ $ python click-parameter.py --n=3
 
 ## SLURM
 
-Pairing the Message Passing Interface with SLURM, a Linux workload manager, achieves a unique
-processing power that replaces the use of individual computer threads with entire computers
-in and of themselves.
+We also describe how to use mpi4py from a batch queueing system such as SLURM. 
+Slurm stands for **S**imple **L**inux **U**tility for **R**esource **M**anagement. 
+It is an open-source job scheduler for a compute cluster to carry out tasks 
+efficiently and in a particular order while using the cluster's resources. SLURM
+supports batch jobs but also allows the use of resources in interactive mode. 
+SLURM is a popular batch queueing system used on many advanced supercomputers. 
+However, it is possible to install and use SLURM on a cluster of Raspberry Pis.
+SLURM can utilize mpi4py to achieve a unique processing power that replaces 
+the use of individual computer threads with entire computers in and of themselves.
 
-We can install SLURM on a cluster of Raspberry Pi computers.
-
-### Installation
+### Installation of SLURM on a Raspberry Pi Cluster
 
 The installation takes around an hour on a
 cluster of four Raspberry Pi 4 Model B computers.
@@ -1609,7 +1616,18 @@ The nodes may be out of order. That is okay and normal.
 
 #### Method 2 - Install on Manager
 
-##### Install cloudmesh
+The manager Pi is the designated Raspberry Pi computer that will
+act as the central headquarters of the entire cluster. The manager
+runs the slurmctld daemon, which is the controller of all the nodes
+and their jobs. In our documentation, our example manager is named `red`.
+
+This method is for those who do not want to use a host computer to
+facilitate the installation; instead, the installation is run directly
+on the manager Pi. However, this method is more tedious as the user must
+reconnect to the Pi after it reboots to rerun the script (three times in
+total).
+
+##### Install cloudmesh on Manager Pi
 
 This method involves the user logging into the manager via `ssh` and 
 first installing cloudmesh in the manager with:
@@ -1643,7 +1661,7 @@ pi@red:~/cm/cloudmesh-slurm $ cms help
 
 The slurm command should appear in the list.
 
-##### Install SLURM Directly on Pi
+##### Install SLURM on Manager Pi
 
 Run this command to begin SLURM installation:
 
@@ -1679,9 +1697,11 @@ red03
 
 The nodes may be out of order. That is okay and normal.
 
-### Install Single-Node
+### Install SLURM on a Single Raspberry Pi
 
-To make job management simple, we can install SLURM on one computer.
+Instead of installing SLURM on an entire cluster, let us now consider
+the case in which you only have one Raspberry Pi. To make job management 
+simple on this Pi, we can install SLURM on that one computer.
 This one computer has no workers and is a manager to its own self.
 The user can make and automate jobs for simplicity's sake, and the
 same computer will carry out those jobs.
