@@ -43,31 +43,6 @@ and `red03`. You may have additional workers, which is okay because the script i
 the user must enter the workers naming schema accordingly. For example, someone with four workers (`red01`, `red02`,
 `red03`, and `red04`) will enter `red0[1-4]` at the beginning of the script's execution, when prompted.
 
-## 2.1 Raspberry Pi OS Compatibility
-
-WARNING: As of January 13, 2022, SLURM can presently only be run on a previous version of Raspberry Pi OS. This version is known as Buster and has the version number `10`.
-
-Note: if you want to burn the legacy version (codename buster) of Raspberry OS use the following series of commands instead. This creates a default cluster configuration, and then changes the OS tag to latest-lite-legacy. Currently (2/6/22) the legacy version is based on Debian Buster while the latest version is based on Debian Bullseye. The Raspberry Pi team released the legacy OS to solve compatibility issues that arose during their upgrade to the Bullseye image. You must research to see which OS your application supports.
-
-```bash
-cms burn image versions --refresh  
-cms inventory add cluster "red,red0[1-3]"
-cms inventory set "red,red0[1-3]" tag to latest-lite-legacy --inventory="inventory-red.yaml"
-cms burn raspberry "red,red0[1-3]" --device=/dev/sdb --inventory="inventory-red.yaml" 
-```
-
-or on windows, use
-
-```bash
-(ENV3) (admin) you@yourlaptop $ cms burn image versions --refresh
-(ENV3) (admin) you@yourlaptop $ cms burn image get latest-lite-legacy
-(ENV3) (admin) you@yourlaptop $ cms inventory add cluster "red,red0[1-3]"
-(ENV3) (admin) you@yourlaptop $ cms inventory set "red,red0[1-3]" tag to latest-lite-legacy --inventory="inventory-red.yaml"
-(ENV3) (admin) you@yourlaptop $ cms burn raspberry "red,red0[1-3]" --password=myloginpassword --disk=4 --locale=en_US.UTF-8 --timezone="America-New_York" "--ssid='Net Work'" --wifipassword=mywifipassword
-```
-
-If burning latest 64 bit instead, change `latest-lite-legacy` to `latest-lite-64` (or `latest-full-64` for desktop environment) where appropriate in the aforementioned commands. However, doing this will likely result in a loss of functionality for SLURM.
-
 ## 3. Installation
 
 Next, we will complete the setup, which uses the following steps:
