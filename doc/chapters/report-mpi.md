@@ -1725,7 +1725,8 @@ cms slurm pi install as host --hosts=red,red --mount=//dev//sda
 To run a test MPI example, `ssh` into the manager and then use
 the `example` command. This is only possible if `cms` is installed
 on the Pi; if you have not done this because you installed SLURM
-via the host method, then refer to section 3.1 to install cloudmesh on Pi.
+via the host method, then refer to the "Install cloudmesh on Manager Pi"
+section to install cloudmesh on the Pi.
 Then run the following (change the number
 after `--n` to the number of nodes):
 
