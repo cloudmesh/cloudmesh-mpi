@@ -127,27 +127,30 @@ a later section.
 
 ## Python Version
 
-In most cases you can probably use the neweste version of Python and then add MPI4Python. However, we have currently only tested it for Python version 3.9. If you have tested it on newer versions, please let us know so we add it here to our compatibility list.
+In most cases you can probably use the newest version of Python and then add MPI4Python. However, we have currently only tested it for Python version 3.10.4. If you have tested it on newer versions, please let us know so we add it here to our compatibility list.
 
-| Python Version | OS            | Tested     | Processor | 
-|----------------|---------------|------------|-----------|
-| 3.9            | Mac           | yes        | Intel     |
-| 3.9            | Windows       | yes        | Intel     |
-| 3.9.7          | Ubuntu 20.04  | yes        | AMD       |
-| 3.9.7          | Ubuntu 20.04  | yes        | Intel     |
-| 3.9            | RaspberryOS   | yes        | ARM       |
+| Python Version | OS             | Tested     | Processor | 
+|----------------|----------------|------------|-----------|
+| 3.10.4         | Windows 10     | yes        | AMD       |
+| 3.10.4         | Windows 10     | yes        | Intel     |
+| 3.9            | Windows 10     | yes        | Intel     |
+| 3.9            | Mac            | yes        | Intel     |
+| 3.9.7          | Ubuntu 20.04   | yes        | AMD       |
+| 3.9.7          | Ubuntu 20.04   | yes        | Intel     |
+| 3.10.4         | RaspberryOS 11 | yes        | ARM       |
+| 3.9.2          | RaspberryOS 11 | yes        | ARM       |
 
 
 ## Operating Systems and MPI Versions
 
 The following table shows which operating systems use which version of MPI:
 
-| Operating System | MPI Version  |
-|--------------|------------------|
-| Windows      | MS-MPI v10.1.2   |
-| macOS        | Open MPI v4.1.1  |
-| Ubuntu       | MPICH v3.3.2     |
-| Raspberry Pi | Open MPI v3.1.3  |
+| Operating System | MPI Version      |
+|-====-------------|------------------|
+| Windows          | MS-MPI v10.1.2   |
+| macOS            | Open MPI v4.1.1  |
+| Ubuntu           | MPICH v3.3.2     |
+| Raspberry Pi     | Open MPI v4.1.0  |
 
 ## Getting the CPU Count
 
