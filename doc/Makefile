@@ -35,17 +35,16 @@ md-mpi: ${MPI}
 
 pdf-mpi-simple: ${MPI} md-mpi
 	$(call banner, "CREATE MPI PDF DOCUMENT")
-	${PANDOC} cloudmesh/pandoc -s \
+	${PANDOC} cloudmesh/pandoc -s --toc \
                 --include-in-header listings-setup.tex \
 		-t latex -V geometry:margin=1in --number-sections \
 		--listings \
-		--toc \
 		chapters/metadata-mpi.yaml tmp-3.md \
 		-o ../docs/report-mpi.pdf
 
 pdf-mpi: ${MPI} md-mpi
 	$(call banner, "CREATE MPI PDF DOCUMENT")
-	${PANDOC} cloudmesh/pandoc -s \
+	${PANDOC} cloudmesh/pandoc -s --toc \
 		title-latex.md tmp-3.md -o ../docs/report-mpi.pdf --template ./format/eisvogel/eisvogel --listings --number-sections --csl=format/ieee-with-url.csl --citeproc --bibliography references.bib  
 
 

@@ -1074,20 +1074,10 @@ explanation of numba, please see the Monte Carlo section of this document.
 Jit does not appear to shorten the program runtimes, causing it to be longer in most instances
 except for a few higher resolution outputs.
 
-# Simple MPI Example Programs
+# MPI Example Programs
 
 In this section, we will showcase to you some simple MPI example programs.
 
-## GPU Programming with MPI
-
-In case you have access to computers with GPUs, you can naturally
-utilize them accordingly from Python with the appropriate GPU drivers.
-
-In case not all have a GPU, you can use rankfiles to control the
-access and introduce through conditional programming based on rank
-access to the GPUs.
-
-# Examples
 
 ## MPI Ring Example
 
@@ -1383,6 +1373,15 @@ become a co-author or get acknowledged.
 
   * <https://medium.com/@hyeamykim/parallel-k-means-from-scratch-2b297466fdcd>
 
+## GPU Programming with MPI
+
+In case you have access to computers with GPUs, you can naturally
+utilize them accordingly from Python with the appropriate GPU drivers.
+
+In case not all have a GPU, you can use rankfiles to control the
+access and introduce through conditional programming based on rank
+access to the GPUs.
+
 # Parameter Management
 
 Although this next topic is not directly related to MPI and mpi4py, it
@@ -1498,7 +1497,6 @@ $ sh run.sh
 $ sh run.sh | fgrep "csv,processors"
 ```
 
-
 ### Using click to pass parameters
 
 Click is a convenient mechanism to define parameters that can be
@@ -1515,7 +1513,8 @@ You can manually set the variable in git bash in the same line as you open the .
 $ python click-parameter.py --n=3
 ```
 
-## SLURM
+
+# SLURM
 
 We also describe how to use mpi4py from a batch queueing system such as SLURM. 
 Slurm stands for **S**imple **L**inux **U**tility for **R**esource **M**anagement. 
@@ -1527,7 +1526,7 @@ However, it is possible to install and use SLURM on a cluster of Raspberry Pis.
 SLURM can utilize mpi4py to achieve a unique processing power that replaces 
 the use of individual computer threads with entire computers in and of themselves.
 
-### Installation of SLURM on a Raspberry Pi Cluster
+## Installation of SLURM on a Raspberry Pi Cluster
 
 The installation takes around an hour on a
 cluster of four Raspberry Pi 4 Model B computers.
@@ -1568,7 +1567,7 @@ tutorial](https://cloudmesh.github.io/pi/tutorial/raspberry-burn-windows/)
 and ensuring that the cluster is online, you have two methods of
 installing SLURM.
 
-#### Method 1 - Install from Host
+### Method 1 - Install from Host
 
 You can install SLURM on a cluster by executing commands from the host
 computer. The host computer is the same computer that is previously 
@@ -1617,7 +1616,7 @@ red03
 
 The nodes may be out of order. That is okay and normal.
 
-#### Method 2 - Install on Manager
+### Method 2 - Install on Manager
 
 The manager Pi is the designated Raspberry Pi computer that will
 act as the central headquarters of the entire cluster. The manager
@@ -1630,7 +1629,7 @@ on the manager Pi. However, this method is more tedious as the user must
 reconnect to the Pi after it reboots to rerun the script (three times in
 total).
 
-##### Install cloudmesh on Manager Pi
+#### Install cloudmesh on Manager Pi
 
 This method involves the user logging into the manager via `ssh` and 
 first installing cloudmesh in the manager with:
@@ -1664,7 +1663,7 @@ pi@red:~/cm/cloudmesh-slurm $ cms help
 
 The slurm command should appear in the list.
 
-##### Install SLURM on Manager Pi
+#### Install SLURM on Manager Pi
 
 Run this command to begin SLURM installation:
 
@@ -1700,7 +1699,7 @@ red03
 
 The nodes may be out of order. That is okay and normal.
 
-### Install SLURM on a Single Raspberry Pi
+## Install SLURM on a Single Raspberry Pi
 
 Instead of installing SLURM on an entire cluster, let us now consider
 the case in which you only have one Raspberry Pi. To make job management 
@@ -1718,7 +1717,7 @@ and workers listed as the same hostname. In the following example,
 cms slurm pi install as host --hosts=red,red --mount=//dev//sda
 ```
 
-### MPI Example
+## MPI Example
 
 To run a test MPI example, `ssh` into the manager and then use
 the `example` command. This is only possible if `cms` is installed
@@ -1748,7 +1747,7 @@ Hello, World! I am process 2 of 3 on red03.
 salloc: Relinquishing job allocation 17
 ```
 
-## Links to Other Documents
+# Links to Other Documents
 
 Here are a couple of links that may be useful. We have not yet looked over them but include them.
 
@@ -1759,7 +1758,7 @@ Here are a couple of links that may be useful. We have not yet looked over them 
 * <http://www.ceci-hpc.be/assets/training/mpi4py.pdf>
 * <https://www.csc.fi/documents/200270/224366/mpi4py.pdf/825c582a-9d6d-4d18-a4ad-6cb6c43fefd8>
 
-### Assignment
+## Assignment
 
 1. Review the resources and provide a short summary that we add to
 this document above the appropriate link
