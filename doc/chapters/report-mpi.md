@@ -127,7 +127,8 @@ a later section.
 
 ## Python Version
 
-In most cases you can probably use the newest version of Python and then add MPI4Python. However, we have currently only tested it for Python version 3.10.4. If you have tested it on newer versions, please let us know so we add it here to our compatibility list.
+In most cases you can probably use the newest version of Python and then add MPI for Python. However, we have currently only tested it for Python version 3.10.4. If you have tested it on newer versions, please let us know so we add it here to our compatibility list. We do not anticipate any issues
+running mpi4py on Windows 11.
 
 | Python Version | OS             | Tested     | Processor | 
 |----------------|----------------|------------|-----------|
