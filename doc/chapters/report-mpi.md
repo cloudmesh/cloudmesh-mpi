@@ -1516,7 +1516,10 @@ $ python click-parameter.py --n=3
 
 # SLURM
 
-We also describe how to use mpi4py from a batch queueing system such as SLURM. 
+In case you run long running jobs it is often useful to have access to a batch queuing system. 
+Such a batch queue enables one to submit the jobs to a queue nd they are scheduled for execution 
+based on a sceheduling policy. One such framework is SLURM. We describe how to use mpi4py from a 
+batch queueing system with SLURM. 
 Slurm stands for **S**imple **L**inux **U**tility for **R**esource **M**anagement. 
 It is an open-source job scheduler for a compute cluster to carry out tasks 
 efficiently and in a particular order while using the cluster's resources. SLURM
