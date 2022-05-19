@@ -146,7 +146,7 @@ In most cases you can probably use the newest version of Python and then add MPI
 The following table shows which operating systems use which version of MPI:
 
 | Operating System | MPI Version      |
-|-====-------------|------------------|
+|------------------|------------------|
 | Windows          | MS-MPI v10.1.2   |
 | macOS            | Open MPI v4.1.1  |
 | Ubuntu           | MPICH v3.3.2     |
