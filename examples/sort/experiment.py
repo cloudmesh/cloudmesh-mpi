@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+import platform
 
 import click
 import psutil
@@ -8,6 +9,7 @@ from cloudmesh.common.Shell import Shell
 from cloudmesh.common.StopWatch import StopWatch
 from cloudmesh.common.parameter import Parameter
 from cloudmesh.common.util import yn_choice
+from cloudmesh.common.systeminfo import os_is_windows
 from generate import Generator
 
 
@@ -21,7 +23,10 @@ def get_sort_by_name(name="multiprocessing_mergesort"):
 
 def get_label(name, p, n, i, tag=None):
     if tag is None:
-        tag = os.uname().nodename
+        if not os_is_windows:
+            tag = os.uname().nodename
+        else:
+            tag = platform.uname().node
     return f"{tag}_{name}_{p}_{n}_{i}"
 
 
