@@ -182,6 +182,67 @@ TODO: explain how queue start works here.
 
 TODO: explain how to kill job in slurm
 
+## 5.0 SLURM Variables
+[
+Some common slurm variables include
+
++---------------------------+------------------------------------------+
+| Slurm Environment         | Description                              |
+| Variable                  |                                          |
++===========================+==========================================+
+| SLURM_CLUSTER_NAME        | Name of the cluster on which the job is  executing.                               |
++---------------------------+------------------------------------------+
+| SLURM_CPUS_ON_NODE        | Number of CPUs on the allocated node.    |
++---------------------------+------------------------------------------+
+| SLURM_CPUS_PER_TASK       | Number of CPUs requested per task.       |
++---------------------------+------------------------------------------+
+| SLURM_GPUS                | Number of GPUs requested.                |
++---------------------------+------------------------------------------+
+| SLURM_GPUS_PER_NODE       | Requested GPU count per allocated node.  |
++---------------------------+------------------------------------------+
+| SLURM_GPUS_PER_TASK       | Requested GPU count per allocated task.  |
++---------------------------+------------------------------------------+
+| SLURM_JOB_ID              | The ID of the job allocation.            |
++---------------------------+------------------------------------------+
+| SLURM_JOB_CPUS_PER_NODE   | Count of processors available to the job |on this node.                            |
++---------------------------+------------------------------------------+
+| SLURM_JOB_NAME            | Name of the job.                         |
++---------------------------+------------------------------------------+
+| SLURM_JOB_NODELIST        | List of nodes allocated to the job.      |
++---------------------------+------------------------------------------+
+| SLURM_JOB_NUM_NODES       | Total number of nodes in the job's       resource allocation.                     |
++---------------------------+------------------------------------------+
+| SLURM_JOB_PARTITION       | Name of the partition in which the job   is running.                              |
++---------------------------+------------------------------------------+
+| SLURM_MEM_PER_CPU         | Minimum memory required per allocated    CPU.                                     |
++---------------------------+------------------------------------------+
+| SLURM_MEM_PER_GPU         | Requested memory per allocated GPU.      |
++---------------------------+------------------------------------------+
+| SLURM_MEM_PER_NODE        | Total amount of memory per node that the job needs                              |
++---------------------------+------------------------------------------+
+| SLURM_NODELIST            | List of nodes allocated to the job.      |
++---------------------------+------------------------------------------+
+| SLURM_NPROCS              | Total number of CPUs allocated           |
++---------------------------+------------------------------------------+
+| SLURM_NTASKS              | Maximum number of MPI tasks/processes                              |
++---------------------------+------------------------------------------+
+| SLURM_NTASKS_PER_CORE     | Number of tasks requested per core.      |
++---------------------------+------------------------------------------+
+| SLURM_NTASKS_PER_GPU      | Number of tasks requested per GPU.       |
++---------------------------+------------------------------------------+
+| SLURM_NTASKS_PER_NODE     | Number of tasks requested per node.      |
++---------------------------+------------------------------------------+
+| SLURM_PRIO_PROCESS        | The scheduling priority (nice value) at  the time of job submission. This value   |is propagated to the spawned processes.  |
++---------------------------+------------------------------------------+
+| SLURM_PROCID              | The MPI rank (or relative process ID) of the current process.                     |
++---------------------------+------------------------------------------+
+| SLURM_SUBMIT_DIR          | The directory from which SBATCH was invoked.                                 |
++---------------------------+------------------------------------------+
+| SLURM_SUBMIT_HOST         | The Hostname of the computer from which SBATCH was invoked.                      |
++---------------------------+------------------------------------------+
+| SLURM_TASK_PID            | The process ID of the corresponding task.                                    |
++---------------------------+------------------------------------------+
+
 # Acknowledgment
 
 This work is based on a tutorial published at [^www-slurm]. However, it is heavily modified to leverage the much more convenient cluster set up of cloudmesh, as well as the much more convenient configuration of Slurm that hides many of the setup complexity.
