@@ -1,4 +1,4 @@
-# NEW: Installing Slurm on a Raspberry Pi Cluster using Python Script
+# Installing Slurm on a Raspberry Pi Cluster using Python Script
 
 ## 1. Introduction
 
