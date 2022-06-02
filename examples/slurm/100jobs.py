@@ -10,13 +10,19 @@ from cloudmesh.common.util import writefile
 n = number_of_jobs = 5
 maximum_time=10
 
+# SBATCH output /home/pi/{name}-%j-%N.out
+# SBATCH output /home/pi/{name}-%j-%N.err
+
+# SBATCH output /nfs/pi/{name}-%j-%N.out
+# SBATCH output /nfs/pi/{name}-%j-%N.err
+
 def create_job(name, delay):
     script = \
         f"""
-        #BATCH ...
-        #BATCH output {name}.out
-        #BATCH output {name}.err
-        
+        #SBATCH ...
+        #SBATCH output {name}-%j-%N.out
+        #SBATCH output {name}-%j-%N.err
+
         # hostname
         # echo ${name}
         sleep {delay}
