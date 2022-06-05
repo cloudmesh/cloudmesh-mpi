@@ -5,16 +5,15 @@ comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 size = comm.Get_size()
 status = MPI.Status()
-assert comm.size == 2
 
-if comm.rank == 0:
-    sendmsg = 777
-    print("0", sendmsg)
-    comm.send(sendmsg, dest=1, tag=77)
-    recvmsg = comm.recv(source=1, tag=55)
-    print("0", sendmsg)
-else:
-    recvmsg = comm.recv(source=0, tag=77)
-    sendmsg = "abc"
-    comm.send(sendmsg, dest=0, tag=55)
-print(sendmsg)
+if rank == 0:
+    data = {'size': [1, 3, 8],
+            'name': ['disk1', 'disk2', 'disk3']}
+else: 
+    data = None
+
+print(f'before broadcast, data on rank {rank} is: {data}')
+
+data = comm.bcast(data, root=0)
+
+print(f'after broadcast, data on rank {rank} is: {data}')
