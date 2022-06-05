@@ -1,12 +1,16 @@
 # Organizing Collaboration in Open Source Teams
 
-Gregor von Laszewski, Fidel Leal, Erin Seliger, Cooper Young, Agness
-Lungua, Jacques Fleischer
+Editor: Gregor von Laszewski
+
+## Acknowlegments
+
+The following persons have contributed to this document
+Fidel Leal, Erin Seliger, Cooper Young, Agness
+Lungua, and Jacques Fleischer.
 
 For more information, please contact: <laszewski@gmail.com>
 
-> **Note:** Do not modify the report.md file, instead modify only files
-> in in the chapters dir
+See Also: [Article on medium.com](https://laszewski.medium.com/simple-collaboration-tools-for-open-source-teams-aead3a0c46ae)
 
 # Organizing Collaborative Research Teams
 
@@ -458,4 +462,4 @@ command.
 
 >     $ git push
 
-# Appendix
+## Appendix
