@@ -681,6 +681,26 @@ there are only two ranks: 0 and 1), `abc` is sent to destination 0. The destinat
 to the ranks and the program leaves printing the sendmsg for last (after the `send()` and `recv()` methods
 have determined the variable values). This explains the output.
 
+
+#### Ping Pong with StopWatch
+
+This example program uses the aforementioned `send()` and `recv()` methods
+to print a variable, `sendmsg`, depending on which rank the MPI program is
+presently working with.
+
+```python
+!include ../examples/pingpong-stopwatch.py
+```
+
+This program can only be executed using `mpiexec -n 2 python pingpong-stopwatch.py`, which yields
+
+```bash
+abc
+777
+```
+
+This example is the same as the previous example, but augmented by the use of StopWatch. 
+
 ## Collective Communication
 
 ### Broadcast
