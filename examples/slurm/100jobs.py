@@ -8,6 +8,7 @@ from cloudmesh.common.Shell import Shell
 from cloudmesh.common.util import writefile
 from cloudmesh.common.StopWatch import StopWatch
 import random
+import textwrap
 
 n = number_of_jobs = 5
 maximum_time=10
@@ -19,11 +20,11 @@ maximum_time=10
 # SBATCH output /nfs/pi/{name}-%j-%N.err
 
 def create_job(name, delay):
-    script = \
+    script = textwrap.dedent(
         f"""
         #!/bin/bash
-        #SBATCH -o {name}-%j-%N.out
-        #SBATCH -e {name}-%j-%N.err
+        #SBATCH -o {name}.out
+        #SBATCH -e {name}.err
 
         hostname
         echo $SLURM_JOB_NAME
@@ -33,7 +34,7 @@ def create_job(name, delay):
         
         cp ${{NAME}}.out /nfs/tmp/
         cp ${{NAME}}.err /nfs/tmp/
-        """.strip()
+        """.strip())
 
     print(f'here is name {name}')
     print(f'here is writefile {name}.slurm')
