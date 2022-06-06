@@ -22,8 +22,8 @@ def create_job(name, delay):
     script = \
         f"""
         #SBATCH ...
-        #SBATCH --output=/nfs/{name}-%j-%N.out
-        #SBATCH --output=/nfs/{name}-%j-%N.err
+        #SBATCH --output={name}-%j-%N.out
+        #SBATCH --output={name}-%j-%N.err
 
         # hostname
         # echo ${name}
@@ -36,7 +36,7 @@ if __name__ == '__main__':
     total = 0.0
     StopWatch.start(f"{n}-jobs")
     for i in range (100):
-        name = f"job-{i}.slurm"
+        name = f"job-{i}"
         t = random.random() * maximum_time
         total = total + t
         create_job(name, t)
