@@ -21,12 +21,10 @@ maximum_time=10
 def create_job(name, delay):
     script = \
         f"""
-        #SBATCH ...
-        #SBATCH --output={name}-%j-%N.out
-        #SBATCH --output={name}-%j-%N.err
+        #SBATCH -o {name}-%j-%N.out
+        #SBATCH -e {name}-%j-%N.err
 
-        # hostname
-        # echo ${name}
+        hostname
         sleep {delay}
         """.strip()
     writefile(f"{name}.slurm", script)
