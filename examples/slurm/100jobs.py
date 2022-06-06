@@ -44,9 +44,9 @@ if __name__ == '__main__':
     # look ofe 100 and check if all were executed
     # are all output files generated (100)
 
-    do other stuff
+    # do other stuff
 
-    StopWatch.stop("100-jobs")
-    StopWatch.nemchmark()
+    StopWatch.stop(f"{n}-jobs")
+    StopWatch.benchmark()
 
-    print (total)
+    print(total)
