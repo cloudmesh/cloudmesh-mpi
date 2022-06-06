@@ -6,6 +6,8 @@ comm = MPI.COMM_WORLD
 assert comm.size == 2
 StopWatch.stop("MPI.COMM_WORLD")
 
+StopWatch.benchmark()
+
 StopWatch.start(f"Rank {comm.rank}")
 if comm.rank == 0:
     StopWatch.start(f"Rank internal 0 {comm.rank}")
@@ -21,5 +23,7 @@ else:
     StopWatch.stop(f"Rank internal n {comm.rank}")
     
 StopWatch.stop(f"Rank {comm.rank}")
+
+StopWatch.benchmark()
 
 print(sendmsg)
