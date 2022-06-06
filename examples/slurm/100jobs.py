@@ -42,7 +42,7 @@ if __name__ == '__main__':
         total = total + t
         create_job(name, t)
         print(f"here is sbatch {name}")
-        result = Shell.run(f"sbatch {name}")
+        result = Shell.run(f"sbatch {name}.slurm")
         print()
 
     # look ofe 100 and check if all were executed
