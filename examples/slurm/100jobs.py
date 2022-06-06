@@ -26,14 +26,21 @@ def create_job(name, delay):
         #SBATCH -e {name}-%j-%N.err
 
         hostname
+        echo $SLURM_JOB_NAME
         sleep {delay}
+        # figure out what the current name is
+        
+        # cp ${{SLURM_JOB_NAME}}.out /nfs/tmp/
+        # cp ${{SLURM_JOB_NAME}}.err /nfs/tmp/
         """.strip()
+
     print(f'here is name {name}')
     print(f'here is writefile {name}.slurm')
     writefile(f"{name}.slurm", script)
 
 
 if __name__ == '__main__':
+    Shell.run("mkdir -p /nfs/tmp/")
     total = 0.0
     StopWatch.start(f"{n}-jobs")
     for i in range (100):
@@ -41,7 +48,7 @@ if __name__ == '__main__':
         t = random.random() * maximum_time
         total = total + t
         create_job(name, t)
-        print(f"here is sbatch {name}")
+        print(f"here is sbatch {name}.slurm")
         result = Shell.run(f"sbatch {name}.slurm")
         print()
 
