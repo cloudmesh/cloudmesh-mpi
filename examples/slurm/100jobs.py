@@ -37,7 +37,7 @@ if __name__ == '__main__':
     StopWatch.start(f"{n}-jobs")
     for i in range (100):
         name = f"job-{i}.slurm"
-        t = random(0,1) * maximum_time
+        t = random.random(0,1) * maximum_time
         total = total + t
         create_job(name, t)
         result = Shell.run(f"sbatch {name}")
