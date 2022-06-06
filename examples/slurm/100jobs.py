@@ -44,7 +44,7 @@ def create_job(name, delay):
 
 if __name__ == '__main__':
     Shell.run("mkdir -p /nfs/tmp/")
-    variables = [v for v in os.environ() if v.name.startswith("SLURM_JOB_NAME")]
+    variables = [v for v in os.environ if v.name.startswith("SLURM_JOB_NAME")]
     total = 0.0
     StopWatch.start(f"{n}-jobs")
     for i in range (100):
