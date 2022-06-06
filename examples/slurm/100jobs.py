@@ -29,7 +29,7 @@ def create_job(name, delay):
         # echo ${name}
         sleep {delay}
         """.strip()
-    writefile(f"{name}.slurm")
+    writefile(f"{name}.slurm", script)
 
 
 if __name__ == '__main__':
