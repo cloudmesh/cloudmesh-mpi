@@ -22,8 +22,8 @@ def create_job(name, delay):
     script = \
         f"""
         #SBATCH ...
-        #SBATCH output {name}-%j-%N.out
-        #SBATCH output {name}-%j-%N.err
+        #SBATCH output /nfs/pi/{name}-%j-%N.out
+        #SBATCH output /nfs/pi/{name}-%j-%N.err
 
         # hostname
         # echo ${name}
