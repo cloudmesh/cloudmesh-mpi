@@ -21,12 +21,15 @@ maximum_time=10
 def create_job(name, delay):
     script = \
         f"""
+        #!/bin/bash
         #SBATCH -o {name}-%j-%N.out
         #SBATCH -e {name}-%j-%N.err
 
         hostname
         sleep {delay}
         """.strip()
+    print(f'here is name {name}')
+    print(f'here is writefile {name}.slurm')
     writefile(f"{name}.slurm", script)
 
 
@@ -38,6 +41,7 @@ if __name__ == '__main__':
         t = random.random() * maximum_time
         total = total + t
         create_job(name, t)
+        print(f"here is sbatch {name}")
         result = Shell.run(f"sbatch {name}")
         print()
 
