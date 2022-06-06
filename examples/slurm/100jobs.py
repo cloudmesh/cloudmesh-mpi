@@ -9,6 +9,7 @@ from cloudmesh.common.util import writefile
 from cloudmesh.common.StopWatch import StopWatch
 import random
 import textwrap
+import os
 
 n = number_of_jobs = 5
 maximum_time=10
@@ -43,10 +44,11 @@ def create_job(name, delay):
 
 if __name__ == '__main__':
     Shell.run("mkdir -p /nfs/tmp/")
+    variables = [v for v in os.environ() if v.name.startswith("SLURM_JOB_NAME")]
     total = 0.0
     StopWatch.start(f"{n}-jobs")
     for i in range (100):
-        name = f"job-{i}"
+        name = f"job-{variables[0]}"
         t = random.random() * maximum_time
         total = total + t
         create_job(name, t)
