@@ -30,10 +30,9 @@ def create_job(name, delay):
         NAME="${{SLURM_JOB_NAME%%.*}}"
         echo $NAME
         sleep {delay}
-        # figure out what the current name is
         
-        # cp ${{NAME}}.out /nfs/tmp/
-        # cp ${{NAME}}.err /nfs/tmp/
+        cp ${{NAME}}.out /nfs/tmp/
+        cp ${{NAME}}.err /nfs/tmp/
         """.strip()
 
     print(f'here is name {name}')
