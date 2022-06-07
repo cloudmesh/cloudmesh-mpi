@@ -43,14 +43,14 @@ def split(seq, num):
     return out
 
 def send_data():
-    
+    # add loop??
     comm.send(None, dest=0, tag=READY)
     task = []
     
     task = comm.recv(source=0, tag=MPI.ANY_TAG, status=status)
     tag = status.Get_tag()
 
-
+    # need to separate by tag
     task = sorted(task)
     comm.send(list(task), dest=0, tag=DONE)
 
