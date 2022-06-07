@@ -1,7 +1,12 @@
 #! (penv)
 """
 
-describe what this is
+this program must be run in
+the manager node's home directory.
+it creates 100 jobs to be run
+randomly distributed among the
+specified nodes, and puts the
+output in /nfs/tmp/.
 
 """
 from cloudmesh.common.Shell import Shell
@@ -12,7 +17,8 @@ import textwrap
 import os
 
 n = number_of_jobs = 5
-maximum_time=10
+maximum_time = 10
+
 
 # SBATCH output /home/pi/{name}-%j-%N.out
 # SBATCH output /home/pi/{name}-%j-%N.err
@@ -32,29 +38,24 @@ def create_job(name, delay):
         NAME="${{SLURM_JOB_NAME%%.*}}"
         echo $NAME
         sleep {delay}
-        
+
         cp ${{NAME}}.out /nfs/tmp/
         cp ${{NAME}}.err /nfs/tmp/
-        """.strip())
+        """).strip()
 
-    print(f'here is name {name}')
-    print(f'here is writefile {name}.slurm')
     writefile(f"{name}.slurm", script)
 
 
 if __name__ == '__main__':
     Shell.run("mkdir -p /nfs/tmp/")
-    variables = [v for v in os.environ if v.startswith("SLURM_JOB_NAME")]
     total = 0.0
     StopWatch.start(f"{n}-jobs")
-    for i in range (100):
-        name = f"job-{variables[0]}"
+    for i in range(100):
+        name = f"job-{i}"
         t = random.random() * maximum_time
         total = total + t
         create_job(name, t)
-        print(f"here is sbatch {name}.slurm")
         result = Shell.run(f"sbatch {name}.slurm")
-        print()
 
     # look ofe 100 and check if all were executed
     # are all output files generated (100)
