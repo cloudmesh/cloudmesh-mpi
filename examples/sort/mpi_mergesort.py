@@ -1,3 +1,5 @@
+# https://github.com/MuhammadMuneeb007/Cloud-Computing-Course---MPI-python-merge-sort-
+
 import numpy as np
 from mpi4py import MPI
 from mpi4py import MPI
@@ -12,7 +14,7 @@ size = comm.size
 rank = comm.rank
 status = MPI.Status()
 
-def sequential_merge(l,r):
+def sequential_merge_python(l, r):
     size_1 = len(l) 
     size_2 = len(r) 
   
@@ -29,7 +31,13 @@ def sequential_merge(l,r):
           j += 1
   
     res = res + l[i:] + r[j:]
-    return res 
+    return res
+
+def sequential_merge_fast(l, r):
+    return sorted(l + r)
+    # use to replace call to sequential merge
+    
+sequential_merge = sequential_merge_fast
 
 def split(seq, num):
     avg = len(seq) / float(num)
