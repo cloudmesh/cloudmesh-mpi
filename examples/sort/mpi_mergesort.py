@@ -1,4 +1,4 @@
-# https://github.com/MuhammadMuneeb007/Cloud-Computing-Course---MPI-python-merge-sort-
+# http://selkie-macalester.org/csinparallel/modules/MPIProgramming/build/html/mergeSort/mergeSort.html#parallel-algorithm
 
 from asyncio.windows_events import NULL
 import numpy as np
@@ -49,7 +49,7 @@ def mpi_mergesort(height, id, local_arr, size, comm, global_arr):
     res = []
 
     while cur_height < height:
-        parent = (id & (~(1 << cur_height)))
+        parent = (id & (~(1 << cur_height))) # switch with |
 
         if parent == id:
             right_child = (id | (1 << cur_height))
