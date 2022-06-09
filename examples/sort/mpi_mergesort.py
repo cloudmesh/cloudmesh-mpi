@@ -6,7 +6,9 @@ from mpi4py import MPI
 from mpi4py import MPI
 import random
 import numpy as np
+from generate import Generator
 from cloudmesh.common.StopWatch import StopWatch
+import math
 
 comm = MPI.COMM_WORLD
 size = comm.size
@@ -76,4 +78,18 @@ def mpi_mergesort(height, id, local_arr, size, comm, global_arr):
     return global_arr
 
 if __name__ == '__main__':
+    global_arr = []
+    num_procs = size
+    id = rank
+
+    n = 2 ** 20
+    height = math.log2(num_procs, 2)
+
+    if id == 0:
+        global_arr = a = Generator().generate_random(n)
     
+    sub_size = int(n / num_procs)
+    comm.scatter(global_arr, root=0)
+
+    if id == 0:
+        global_arr = mpi_mergesort(height, id, loca)
