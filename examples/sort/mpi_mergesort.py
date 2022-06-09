@@ -1,13 +1,12 @@
 # https://github.com/MuhammadMuneeb007/Cloud-Computing-Course---MPI-python-merge-sort-
 
+from asyncio.windows_events import NULL
 import numpy as np
 from mpi4py import MPI
 from mpi4py import MPI
 import random
 import numpy as np
 from cloudmesh.common.StopWatch import StopWatch
-
-READY, START, DONE, EXIT = 0, 1, 2, 3
 
 comm = MPI.COMM_WORLD
 size = comm.size
@@ -39,62 +38,42 @@ def sequential_merge_fast(l, r):
     
 sequential_merge = sequential_merge_fast
 
-def split(seq, num):
-    avg = len(seq) / float(num)
-    out = []
-    last = 0.0
+def mpi_mergesort(height, id, local_arr, size, comm, global_arr):
+    cur_height = 0
+    local_arr = sorted(local_arr)
 
-    while last < len(seq):
-        out.append(seq[int(last):int(last + avg)])
-        last += avg
+    half1 = local_arr
+    half2 = []
+    res = []
 
-    return out
+    while cur_height < height:
+        parent = (id & (~(1 << cur_height)))
 
-def send_data():
-    # add loop??
-    comm.send(None, dest=0, tag=READY)
-    task = []
-    
-    task = comm.recv(source=0, tag=MPI.ANY_TAG, status=status)
-    tag = status.Get_tag()
+        if parent == id:
+            right_child = (id | (1 << cur_height))
 
-    # need to separate by tag
-    task = sorted(task)
-    comm.send(list(task), dest=0, tag=DONE)
+            half2 = comm.recv(source=right_child) # may need to change
 
+            res = sequential_merge(half1, half2)
 
+            half1 = res
 
-def producer(chunk,process):
-    arraySize = 100000
-    data = np.arange(1,arraySize)
-    random.shuffle(data)
-    data = list(data)
-    smalldata = split(data, chunk)
+            size *= 2
 
-    finallist = []
-    start = 0
-    end = chunk
-    for i in range(1, process):
-        comm.send(smalldata[i-1], dest=i, tag=START)
-        #comm.send(1, dest=i, tag=START)
+            res = NULL
+
+            cur_height += 1
         
-    # need to merge all lists when done
+        else:
+            comm.send(half1, dest=parent)
+            if cur_height != 0:
+                half2 = []
+            cur_height = height
 
-    print(finallist)
-                
+    if id == 0:
+        global_arr = half1
+    
+    return global_arr
 
-if __name__=="__main__":
-    StopWatch.start("MPI merge sort")
-    if rank == 0:
-        chunk = 32
-        process = 4 
-        producer(chunk, process)
-        for loop in range(1,process):
-            comm.send(None, dest=loop, tag=EXIT)
-        StopWatch.stop("MPI merge sort")      
-    else:
-        send_data()
-
-    StopWatch.benchmark()
-
-  
+if __name__ == '__main__':
+    
