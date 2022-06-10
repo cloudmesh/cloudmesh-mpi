@@ -1,8 +1,6 @@
 # http://selkie-macalester.org/csinparallel/modules/MPIProgramming/build/html/mergeSort/mergeSort.html#parallel-algorithm
 
-from asyncio.windows_events import NULL
 import numpy as np
-from mpi4py import MPI
 from mpi4py import MPI
 import random
 import numpy as np
@@ -11,9 +9,10 @@ from cloudmesh.common.StopWatch import StopWatch
 import math
 
 comm = MPI.COMM_WORLD
-size = comm.size
-rank = comm.rank
+size = comm.Get_size()
+rank = comm.Get_rank()
 status = MPI.Status()
+n = 2 ** 10
 
 def sequential_merge_python(l, r):
     size_1 = len(l) 
@@ -35,6 +34,8 @@ def sequential_merge_python(l, r):
     return res
 
 def sequential_merge_fast(l, r):
+    print(f"L IS {l}")
+    print(f"R IS {r}")
     return sorted(l + r)
     # use to replace call to sequential merge
     
@@ -44,9 +45,9 @@ def mpi_mergesort(height, id, local_arr, size, comm, global_arr):
     cur_height = 0
     local_arr = sorted(local_arr)
 
-    half1 = local_arr
-    half2 = []
-    res = []
+    half1 = np.array(local_arr, dtype=int)
+    #half2 = np.zeros(size, dtype="int")
+    #res = np.zeros(size * 2, dtype="int")
 
     while cur_height < height:
         parent = (id & (~(1 << cur_height))) # switch with |
@@ -54,22 +55,27 @@ def mpi_mergesort(height, id, local_arr, size, comm, global_arr):
         if parent == id:
             right_child = (id | (1 << cur_height))
 
-            half2 = comm.recv(source=right_child) # may need to change
-
+            half2 = np.zeros(size, dtype="int")
+            comm.Recv([half2, MPI.INT], source=right_child) # may need to change
+            print(f"HALF2 {half2}")
+            res = np.zeros(size * 2, dtype="int")
             res = sequential_merge(half1, half2)
 
             half1 = res
-
             size *= 2
-
-            res = NULL
+            # do i have to free half2
+            res = None
 
             cur_height += 1
         
         else:
-            comm.send(half1, dest=parent)
+            print("HERE AT 72")
+            half1 = np.array(local_arr, dtype=int)
+
+            comm.Send([half1, MPI.INT], dest=parent)
             if cur_height != 0:
-                half2 = []
+                half1 = None
+                del half1
             cur_height = height
 
     if id == 0:
@@ -78,18 +84,26 @@ def mpi_mergesort(height, id, local_arr, size, comm, global_arr):
     return global_arr
 
 if __name__ == '__main__':
-    global_arr = []
     num_procs = size
     id = rank
+    height = math.log2(num_procs)
 
-    n = 2 ** 20
-    height = math.log2(num_procs, 2)
+    global_arr = np.zeros(n, dtype="int")
 
-    if id == 0:
-        global_arr = a = Generator().generate_random(n)
-    
+    if rank == 0:
+        global_arr = np.array(Generator().generate_random(n))
+        print(f"UNSORTED ARRAY: {global_arr}")
+
     sub_size = int(n / num_procs)
-    comm.scatter(global_arr, root=0)
+    local_arr = np.zeros(sub_size, dtype="int")
+
+    comm.Scatter(global_arr, local_arr, root=0)
 
     if id == 0:
-        global_arr = mpi_mergesort(height, id, loca)
+        global_arr = mpi_mergesort(height, id, local_arr, sub_size, comm, global_arr)
+    
+    else:
+        mpi_mergesort(height, id, local_arr, sub_size, comm, None)
+    
+    if id == 0:
+        print(f"SORTED ARRAY: {global_arr}")
