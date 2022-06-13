@@ -6,12 +6,20 @@ import random
 import numpy as np
 from generate import Generator
 from cloudmesh.common.StopWatch import StopWatch
+from cloudmesh.common.dotdict import dotdict
+
 import math
 
-user="gregor"
-host="5090X"
-logfile = f"{user}-{host}.log"
-debug = True
+config = dotdict({
+    # "algorithm": "sequential_merge_python",
+    "algorithm": "sequential_merge_fast",
+    "user": "gregor",
+    "host": "5090X",
+    "debug" "True"
+    }
+}
+
+config.logfile = f"{config.user}-{config.host}.log"
 
 comm = MPI.COMM_WORLD
 size = comm.Get_size()
@@ -39,13 +47,17 @@ def sequential_merge_python(l, r):
     return res
 
 def sequential_merge_fast(l, r):
-    if debug:
+    if config.debug:
         print(f"L IS {l}")
         print(f"R IS {r}")
     return sorted(l + r)
     # use to replace call to sequential merge
-    
-sequential_merge = sequential_merge_fast
+
+if config.algorithm=="sequential_merge_python":
+    sequential_merge = sequential_merge_python
+
+elif config.algorithm=="sequential_merge_fast":
+    sequential_merge = sequential_merge_fast
 
 def mpi_mergesort(height, id, local_arr, size, comm, global_arr):
     cur_height = 0
@@ -63,7 +75,7 @@ def mpi_mergesort(height, id, local_arr, size, comm, global_arr):
 
             half2 = np.zeros(size, dtype="int")
             comm.Recv([half2, MPI.INT], source=right_child) # may need to change
-            if debug:
+            if config.debug:
                 print(f"HALF2 {half2}")
             res = np.zeros(size * 2, dtype="int")
             res = sequential_merge(half1, half2)
@@ -117,5 +129,5 @@ if __name__ == '__main__':
         StopWatch.stop(f"total-{rank}")
         print(f"SORTED ARRAY: {global_arr}")
 
-    StopWatch.benchmark(user=user, host=host)
-    StopWatch.benchmark(logfile, user=user, host=host)
+    StopWatch.benchmark(user=config.user, host=config.host)
+    StopWatch.benchmark(config.logfile, user=config.user, host=config.host)
