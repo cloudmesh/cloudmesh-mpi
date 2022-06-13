@@ -1,3 +1,5 @@
+# run this program using mpiexec -n 4 python mpi_mergesort.py
+
 # http://selkie-macalester.org/csinparallel/modules/MPIProgramming/build/html/mergeSort/mergeSort.html#parallel-algorithm
 
 import numpy as np
