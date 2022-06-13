@@ -10,14 +10,12 @@ from cloudmesh.common.dotdict import dotdict
 
 import math
 
-config = dotdict({
-    # "algorithm": "sequential_merge_python",
-    "algorithm": "sequential_merge_fast",
-    "user": "gregor",
-    "host": "5090X",
-    "debug" "True"
-    }
-}
+config = dotdict()
+# config.algorithm = "sequential_merge_python",
+config.algorithm = "sequential_merge_fast"
+config.user = "gregor"
+config.host = "5090X"
+config.debug = "True"
 
 config.logfile = f"{config.user}-{config.host}.log"
 
