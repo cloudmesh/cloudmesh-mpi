@@ -8,6 +8,11 @@ from generate import Generator
 from cloudmesh.common.StopWatch import StopWatch
 import math
 
+user="gregor"
+host="5090X"
+logfile = f"{user}-{host}.log"
+debug = True
+
 comm = MPI.COMM_WORLD
 size = comm.Get_size()
 rank = comm.Get_rank()
@@ -34,8 +39,9 @@ def sequential_merge_python(l, r):
     return res
 
 def sequential_merge_fast(l, r):
-    print(f"L IS {l}")
-    print(f"R IS {r}")
+    if debug:
+        print(f"L IS {l}")
+        print(f"R IS {r}")
     return sorted(l + r)
     # use to replace call to sequential merge
     
@@ -57,7 +63,8 @@ def mpi_mergesort(height, id, local_arr, size, comm, global_arr):
 
             half2 = np.zeros(size, dtype="int")
             comm.Recv([half2, MPI.INT], source=right_child) # may need to change
-            print(f"HALF2 {half2}")
+            if debug:
+                print(f"HALF2 {half2}")
             res = np.zeros(size * 2, dtype="int")
             res = sequential_merge(half1, half2)
 
@@ -91,6 +98,7 @@ if __name__ == '__main__':
     global_arr = np.zeros(n, dtype="int")
 
     if rank == 0:
+        StopWatch.start(f"total-{rank}")
         global_arr = np.array(Generator().generate_random(n))
         print(f"UNSORTED ARRAY: {global_arr}")
 
@@ -106,4 +114,8 @@ if __name__ == '__main__':
         mpi_mergesort(height, id, local_arr, sub_size, comm, None)
     
     if id == 0:
+        StopWatch.stop(f"total-{rank}")
         print(f"SORTED ARRAY: {global_arr}")
+
+    StopWatch.benchmark(user=user, host=host)
+    StopWatch.benchmark(logfile, user=user, host=host)
