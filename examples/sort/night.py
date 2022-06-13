@@ -10,6 +10,15 @@ from generate import Generator
 from cloudmesh.common.StopWatch import StopWatch
 import math
 
+config = dotdict()
+# config.algorithm = "sequential_merge_python",
+config.algorithm = "sequential_merge_fast"
+config.user = "gregor"
+config.host = "5090X"
+config.debug = "True"
+
+config.logfile = f"{config.user}-{config.host}.log"
+
 comm = MPI.COMM_WORLD
 size = comm.Get_size()
 rank = comm.Get_rank()
@@ -46,8 +55,9 @@ def sequential_merge_python(a, b, l, m, r):
         a[k] = b[k]
 
 def sequential_merge_fast(l, r):
-    print(f"L IS {l}")
-    print(f"R IS {r}")
+    if config.debug:
+        print(f"L IS {l}")
+        print(f"R IS {r}")
     return sorted(l + r)
     # use to replace call to sequential merge
     
@@ -61,12 +71,19 @@ def merge_sort(a, b, l, r):
         merge_sort(a, b, m + 1, r)
         sequential_merge(a, b, l, m, r)
 
+if config.algorithm=="sequential_merge_python":
+    sequential_merge = sequential_merge_python
+
+elif config.algorithm=="sequential_merge_fast":
+    sequential_merge = sequential_merge_fast
+
 
 if __name__ == '__main__':
     global_arr = np.zeros(n, dtype="int")
     sub_size = int(n / size)
 
     if rank == 0:
+        StopWatch.start(f"total-{rank}")
         global_arr = np.array(Generator().generate_random(n))
         print(f"UNSORTED ARRAY: {global_arr}")
 
@@ -94,6 +111,8 @@ if __name__ == '__main__':
      
     comm.Gather(sub_arr, sorted, root=0)
     if rank == 0:
+        StopWatch.stop(f"total-{rank}")
         print(f'recvbuf in process 0 after gathering: \n{sorted}')
     
-
+StopWatch.benchmark(user=config.user, host=config.host)
+StopWatch.benchmark(config.logfile, user=config.user, host=config.host)
