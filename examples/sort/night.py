@@ -104,15 +104,15 @@ if __name__ == '__main__':
     # print(f'Buffer in process {rank} before gathering: {sub_arr}')
     # Gather sorted subarrays into one
     
-    step = size / 2
+    height = size / 2
     print(f"Rank: {rank}")
-    while step >= 1:
-        if rank >= step and rank < step * 2:
-            comm.Send(local_arr, rank - step, tag=0)
-        elif rank < step:
+    while height >= 1:
+        if rank >= height and rank < height * 2:
+            comm.Send(local_arr, rank - height, tag=0)
+        elif rank < height:
             local_tmp = np.zeros(local_arr.size, dtype="int")
             local_remain = np.zeros(2 * local_arr.size, dtype="int")
-            comm.Recv(local_tmp, rank + step, tag=0)
+            comm.Recv(local_tmp, rank + height, tag=0)
 
             i = 0
             j = 0
@@ -131,7 +131,11 @@ if __name__ == '__main__':
                     i += 1
             
             local_arr = local_remain
-        step = step / 2
+
+            print(f"LOCAL ARRAY: {local_arr}")
+            # print(f"LOCAL TEMP: {local_tmp}")
+            # print(f"LOCAL REMAIN: {local_remain}")
+        height = height / 2
 
     if rank == 0:
         StopWatch.stop(f"total-{rank}")
