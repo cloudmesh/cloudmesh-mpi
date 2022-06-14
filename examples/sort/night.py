@@ -1,4 +1,4 @@
-# run this program using mpiexec -n 4 python mpi_mergesort.py
+# run this program using mpiexec -n 4 python night.py
 
 import numpy as np
 from mpi4py import MPI
