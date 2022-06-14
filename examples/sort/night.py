@@ -100,6 +100,7 @@ if __name__ == '__main__':
 
     # Sort each subarray
     local_arr.sort()
+    # local_arr = sorted(local_arr)
 
     # print(f'Buffer in process {rank} before gathering: {sub_arr}')
     # Gather sorted subarrays into one
@@ -132,14 +133,14 @@ if __name__ == '__main__':
             
             local_arr = local_remain
 
-            print(f"LOCAL ARRAY: {local_arr}")
+            # print(f"LOCAL ARRAY: {local_arr}")
             # print(f"LOCAL TEMP: {local_tmp}")
-            # print(f"LOCAL REMAIN: {local_remain}")
+            print(f"LOCAL REMAIN: {local_remain}")
         height = height / 2
 
     if rank == 0:
         StopWatch.stop(f"total-{rank}")
         print(f"SORTED ARRAY: {local_arr}")
     
-StopWatch.benchmark(user=config.user)
-StopWatch.benchmark(config.logfile, user=config.user)
+StopWatch.benchmark(user=config.user, sysinfo=False)
+StopWatch.benchmark(filename=config.logfile, user=config.user, sysinfo=False)
