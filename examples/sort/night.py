@@ -7,22 +7,30 @@ import numpy as np
 from generate import Generator
 from cloudmesh.common.StopWatch import StopWatch
 from cloudmesh.common.dotdict import dotdict
-import math
+import sys
 
 config = dotdict()
 # config.algorithm = "sequential_merge_python",
 config.algorithm = "sequential_merge_fast"
 config.user = "gregor"
 config.host = "5090X"
-config.debug = "True"
+config.debug = False
+config.total = True
+config.n = 2 ** 22
+
+n = eval("2 ** 20")
+print(n)
 
 config.logfile = f"{config.user}-{config.host}.log"
+
+if config.total:
+    StopWatch.start("MPI total")
 
 comm = MPI.COMM_WORLD
 size = comm.Get_size()
 rank = comm.Get_rank()
 status = MPI.Status()
-n = 2 ** 8
+n = config.n
 
 def sequential_merge_python(a, b, l, m, r):
     h = l
@@ -86,11 +94,11 @@ if __name__ == '__main__':
     local_tmp = np.zeros(sub_size, dtype="int")
     local_remain = np.zeros(2 * sub_size, dtype="int")
 
+    StopWatch.start(f"{rank}-total")
     if rank == 0:
-        StopWatch.start(f"total-{rank}")
         unsorted_arr = np.array(Generator().generate_random(n))
-        print(f"UNSORTED ARRAY: {unsorted_arr}")
-
+        if config.debug:
+            print(f"UNSORTED ARRAY: {unsorted_arr}")
 
     # Send subarray to each process
     comm.Scatter(unsorted_arr, local_arr, root=0)
@@ -106,7 +114,8 @@ if __name__ == '__main__':
     # Gather sorted subarrays into one
     
     height = size / 2
-    print(f"Rank: {rank}")
+    if config.debug:
+        print(f"Rank: {rank}")
     while height >= 1:
         if rank >= height and rank < height * 2:
             comm.Send(local_arr, rank - height, tag=0)
@@ -133,14 +142,24 @@ if __name__ == '__main__':
             
             local_arr = local_remain
 
-            # print(f"LOCAL ARRAY: {local_arr}")
-            # print(f"LOCAL TEMP: {local_tmp}")
-            print(f"LOCAL REMAIN: {local_remain}")
+            if config.debug:
+                # print(f"LOCAL ARRAY: {local_arr}")
+                # print(f"LOCAL TEMP: {local_tmp}")
+                print(f"LOCAL REMAIN: {local_remain}")
         height = height / 2
 
+    StopWatch.stop(f"{rank}-total")
+    s = StopWatch.__str__()
+    print(s)
+
     if rank == 0:
-        StopWatch.stop(f"total-{rank}")
+        # StopWatch.stop(f"{rank}-total")
+        print(f"SIZE OF ARRAY: {config.n}")
         print(f"SORTED ARRAY: {local_arr}")
     
-StopWatch.benchmark(user=config.user, sysinfo=False)
-StopWatch.benchmark(filename=config.logfile, user=config.user, sysinfo=False)
+        # StopWatch.benchmark(user=config.user, sysinfo=False)
+        # StopWatch.benchmark(filename=config.logfile, user=config.user, sysinfo=False)
+
+if config.total:
+    StopWatch.stop("MPI total")
+    StopWatch.benchmark(user=config.user, sysinfo=False)
