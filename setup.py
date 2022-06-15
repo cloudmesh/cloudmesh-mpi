@@ -33,6 +33,7 @@ cloudmesh-sys
 cloudmesh-inventory
 cloudmesh-configuration
 pandoc-fignos
+mpi4py
 """.split("\n")
 
 # dependency_links = ['http://github.com/nicolaiarocci/eve.git@develop']
