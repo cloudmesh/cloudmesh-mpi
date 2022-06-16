@@ -69,14 +69,6 @@ def sequential_merge_fast(l, r):
     
 sequential_merge = sequential_merge_fast
 
-def merge_sort(a, b, l, r):
-    if l < r:
-        m = int((l + r) / 2)
-
-        merge_sort(a, b, l, m)
-        merge_sort(a, b, m + 1, r)
-        sequential_merge(a, b, l, m, r)
-
 if config.algorithm=="sequential_merge_python":
     sequential_merge = sequential_merge_python
 
@@ -96,7 +88,7 @@ if __name__ == '__main__':
     local_tmp = np.zeros(sub_size, dtype="int")
     local_remain = np.zeros(2 * sub_size, dtype="int")
 
-    StopWatch.start(f"{rank}-total")
+    StopWatch.start(f"{rank}-{n}-total")
     if rank == 0:
         unsorted_arr = np.array(Generator().generate_random(n))
         if config.debug:
@@ -150,7 +142,7 @@ if __name__ == '__main__':
                 print(f"LOCAL REMAIN: {local_remain}")
         height = height / 2
 
-    StopWatch.stop(f"{rank}-total")
+    StopWatch.stop(f"{rank}-{n}-total")
     s = StopWatch.__str__()
     print(s)
 
