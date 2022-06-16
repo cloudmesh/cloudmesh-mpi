@@ -1,25 +1,25 @@
 # run this program using mpiexec -n 4 python night.py
 
+from inspect import Parameter
 import numpy as np
 from mpi4py import MPI
 import random
 import numpy as np
 from generate import Generator
 from cloudmesh.common.StopWatch import StopWatch
+from cloudmesh.common.parameter import Parameter
 from cloudmesh.common.dotdict import dotdict
-import sys
+import os
 
 config = dotdict()
-# config.algorithm = "sequential_merge_python",
 config.algorithm = "sequential_merge_fast"
 config.user = "gregor"
 config.host = "5090X"
 config.debug = False
 config.total = True
-config.n = 2 ** 22
 
-n = eval("2 ** 20")
-print(n)
+n = None
+
 
 config.logfile = f"{config.user}-{config.host}.log"
 
@@ -30,7 +30,6 @@ comm = MPI.COMM_WORLD
 size = comm.Get_size()
 rank = comm.Get_rank()
 status = MPI.Status()
-n = config.n
 
 def sequential_merge_python(a, b, l, m, r):
     h = l
@@ -86,6 +85,9 @@ elif config.algorithm=="sequential_merge_fast":
 
 
 if __name__ == '__main__':
+    n = int(os.environ["SIZE"])
+    print(f"SIZE: {n}")
+    
     unsorted_arr = np.zeros(n, dtype="int")
     sorted_arr = np.zeros(n, dtype="int")
 
