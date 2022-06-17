@@ -1,15 +1,14 @@
+###########################################################
 # run this program using mpiexec -n 4 python night.py
+###########################################################
+import os
 
-from inspect import Parameter
 import numpy as np
 from mpi4py import MPI
-import random
-import numpy as np
-from generate import Generator
+
 from cloudmesh.common.StopWatch import StopWatch
-from cloudmesh.common.parameter import Parameter
 from cloudmesh.common.dotdict import dotdict
-import os
+from generate import Generator
 
 config = dotdict()
 config.algorithm = "sequential_merge_fast"
@@ -17,19 +16,23 @@ config.algorithm = "sequential_merge_fast"
 config.user = "gregor"
 config.node = "5090X"
 config.debug = False
-config.total = True
+config.benchmark = True
+config.filename = __name__
 
 n = None
 
-config.logfile = f"{config.user}-{config.node}.log"
+label = "{config.user}-{config.node}-{config.filename}"
 
-if config.total:
-    StopWatch.start("MPI total")
+config.logfile = f"{label}.log"
+
+if config.benchmark:
+    StopWatch.start(f"{label}-total")
 
 comm = MPI.COMM_WORLD
 size = comm.Get_size()
 rank = comm.Get_rank()
 status = MPI.Status()
+
 
 def sequential_merge_python(a, b, l, m, r):
     h = l
@@ -37,49 +40,50 @@ def sequential_merge_python(a, b, l, m, r):
     j = m + 1
 
     while h <= m and j <= r:
-        if a[h] <= a[j]: 
+        if a[h] <= a[j]:
             b[i] = a[h]
             h += 1
-            
+
         else:
             b[i] = a[j]
             j += 1
-            
+
         i += 1
-        
+
     if m < h:
         for k in range(j, r + 1):
             b[i] = a[k]
             i += 1
-            
+
     else:
         for k in range(h, m + 1):
             b[i] = a[k]
             i += 1
-            
+
     for k in range(l, r + 1):
         a[k] = b[k]
 
-def sequential_merge_fast(l, r):
+
+def sequential_merge_fast(left, right):
     if config.debug:
-        print(f"L IS {l}")
-        print(f"R IS {r}")
-    return sorted(l + r)
+        print(f"L IS {left}")
+        print(f"R IS {right}")
+    return sorted(left + right)
     # use to replace call to sequential merge
-    
+
+
 sequential_merge = sequential_merge_fast
 
-if config.algorithm=="sequential_merge_python":
+if config.algorithm == "sequential_merge_python":
     sequential_merge = sequential_merge_python
 
-elif config.algorithm=="sequential_merge_fast":
+elif config.algorithm == "sequential_merge_fast":
     sequential_merge = sequential_merge_fast
-
 
 if __name__ == '__main__':
     n = int(os.environ["SIZE"])
     print(f"SIZE: {n}")
-    
+
     unsorted_arr = np.zeros(n, dtype="int")
     sorted_arr = np.zeros(n, dtype="int")
 
@@ -88,7 +92,8 @@ if __name__ == '__main__':
     local_tmp = np.zeros(sub_size, dtype="int")
     local_remain = np.zeros(2 * sub_size, dtype="int")
 
-    StopWatch.start(f"{rank}-{n}-total")
+    if config.benchmark:
+        StopWatch.start(f"{label}-process-{rank}-{n}")
     if rank == 0:
         unsorted_arr = np.array(Generator().generate_random(n))
         if config.debug:
@@ -106,12 +111,12 @@ if __name__ == '__main__':
 
     # print(f'Buffer in process {rank} before gathering: {sub_arr}')
     # Gather sorted subarrays into one
-    
+
     height = size / 2
     if config.debug:
         print(f"Rank: {rank}")
     while height >= 1:
-        if rank >= height and rank < height * 2:
+        if height <= rank < height * 2:
             comm.Send(local_arr, rank - height, tag=0)
         elif rank < height:
             local_tmp = np.zeros(local_arr.size, dtype="int")
@@ -133,7 +138,7 @@ if __name__ == '__main__':
                 else:
                     local_remain[k] = local_arr[i]
                     i += 1
-            
+
             local_arr = local_remain
 
             if config.debug:
@@ -142,7 +147,7 @@ if __name__ == '__main__':
                 print(f"LOCAL REMAIN: {local_remain}")
         height = height / 2
 
-    StopWatch.stop(f"{rank}-{n}-total")
+    StopWatch.start(f"{label}-process-{rank}-{n}")
     s = StopWatch.__str__()
     print(s)
 
@@ -150,10 +155,10 @@ if __name__ == '__main__':
         # StopWatch.stop(f"{rank}-total")
         print(f"SIZE OF ARRAY: {config.n}")
         print(f"SORTED ARRAY: {local_arr}")
-    
+
         # StopWatch.benchmark(user=config.user, sysinfo=False)
         # StopWatch.benchmark(filename=config.logfile, user=config.user, sysinfo=False)
 
-if config.total:
-    StopWatch.stop("MPI total")
+if config.benchmark:
+    StopWatch.stop(f"{label}-total")
     StopWatch.benchmark(user=config.user, node=config.node, sysinfo=False)
