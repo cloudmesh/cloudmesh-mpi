@@ -13,15 +13,15 @@ import os
 
 config = dotdict()
 config.algorithm = "sequential_merge_fast"
+
 config.user = "gregor"
-config.host = "5090X"
+config.node = "5090X"
 config.debug = False
 config.total = True
 
 n = None
 
-
-config.logfile = f"{config.user}-{config.host}.log"
+config.logfile = f"{config.user}-{config.node}.log"
 
 if config.total:
     StopWatch.start("MPI total")
@@ -156,4 +156,4 @@ if __name__ == '__main__':
 
 if config.total:
     StopWatch.stop("MPI total")
-    StopWatch.benchmark(user=config.user, sysinfo=False)
+    StopWatch.benchmark(user=config.user, node=config.node, sysinfo=False)

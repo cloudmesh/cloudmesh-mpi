@@ -129,5 +129,6 @@ if __name__ == '__main__':
         StopWatch.stop(f"total-{rank}")
         print(f"SORTED ARRAY: {global_arr}")
 
+
     StopWatch.benchmark(user=config.user, host=config.host)
     StopWatch.benchmark(config.logfile, user=config.user, host=config.host)
