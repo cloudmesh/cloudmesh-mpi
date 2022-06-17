@@ -15,15 +15,15 @@ from cloudmesh.common.util import banner
 @click.option(
     '--node',
     default=None,
-    help="a node name for the stopwatch timer")
+    help="node name for the stopwatch timer")
 @click.option(
     '--size',
     default="100",
-    help="size of array to be sorted")
+    help="size of array to be sorted as a comma separated string without spaces: 100,200")
 @click.option(
     '--repeat',
     default="10",
-    help="repeat sorting how many times")
+    help="repeat the experiment the specified number of times")
 def run(log, user, node, size, repeat):
     """
     :param log: data is storted in log file
@@ -35,24 +35,24 @@ def run(log, user, node, size, repeat):
     :return: none
     :rtype: none
     """
-
     if log is None:
         log = f"log/{node}-{user}-{size}.log"
 
+    repeat = int(repeat)
+    sizes = size.split(",")
+    sizes = [int(x) for x in sizes]
     # run experiment.py to generate data from specified sort {sort}
     # data is stored in specified log file {log}
     # default size of array to be sorted is 100
 
-    run_sort = \
-        f'SIZE={size} mpiexec -n 4 python night.py | tee {log}'
-    banner(run_sort)
-    os.system(run_sort)
-
-    run_sort = \
-        f'SIZE={size} mpiexec -n 4 python night.py | tee -a {log}'
-    for i in range(int(repeat) - 1):
-            banner(run_sort)
-            os.system(run_sort)
+    os.remove(log)
+    os.system(f"touch {log}")
+    for size in sizes:
+        for i in range(int(repeat)):
+            command = \
+                f'SIZE={size} REPEAT={i} mpiexec -n 4 python night.py | tee -a {log}'
+            banner(command)
+            os.system(command)
 
     ## run analysis.py on data generated from experiment.py
     ## currently outputs graph of processes and time
