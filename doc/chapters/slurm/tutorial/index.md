@@ -1,7 +1,7 @@
 ---
 date: 2022-02-10
-title: "DRAFT: Installing SLURM on Pre-configured Pi Cluster"
-linkTitle: "DRAFT: SLURM on Pi Cluster"
+title: "Installing SLURM on Pre-configured Pi Cluster"
+linkTitle: "SLURM on Pi Cluster"
 description: "A comprehensive tutorial to install SLURM on a connected Pi Cluster"
 author: Jacques Fleischer [github.com/jpfleischer](https://github.com/jpfleischer), Gregor von Laszewski ([laszewski@gmail.com](mailto:laszewski@gmail.com)) [laszewski.github.io](https://laszewski.github.io)
 draft: True
