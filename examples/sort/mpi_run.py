@@ -45,12 +45,13 @@ def run(log, user, node, size, repeat):
     # data is stored in specified log file {log}
     # default size of array to be sorted is 100
 
-    os.remove(log)
+    if os.path.exists(log):
+        os.remove(log)
     os.system(f"touch {log}")
     for size in sizes:
         for i in range(int(repeat)):
             command = \
-                f'SIZE={size} REPEAT={i} mpiexec -n 4 python night.py | tee -a {log}'
+                f'n={size} node={node} user={user} REPEAT={i} mpiexec -n 4 python night.py | tee -a {log}'
             banner(command)
             os.system(command)
 
