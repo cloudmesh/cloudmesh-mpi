@@ -10,7 +10,6 @@ from mpi4py import MPI
 from cloudmesh.common.StopWatch import StopWatch
 from cloudmesh.common.dotdict import dotdict
 from generate import Generator
-from generate import Generator
 
 config = dotdict()
 config.algorithm = "sequential_merge_fast"
@@ -24,12 +23,15 @@ config.id = 0
 n = config.size = 10000
 
 for arg in sys.argv[1:]:
+    print("HERE")
     if arg.startswith("node="):
+        print(28)
         config.node = arg.split("=")[1]
     elif arg.startswith("user="):
         config.user = arg.split("=")[1]
     elif arg.startswith("n="):
-        config.n = int(arg.split("=")[1])
+        config.size = int(arg.split("=")[1])
+        print(34)
     elif arg.startswith("id="):
         config.id = int(arg.split("=")[1])
 
@@ -107,6 +109,8 @@ local_arr = np.zeros(sub_size, dtype="int")
 local_tmp = np.zeros(sub_size, dtype="int")
 local_remain = np.zeros(2 * sub_size, dtype="int")
 
+StopWatch.start(f"{rank}-time")
+
 if rank == 0:
     unsorted_arr = np.array(Generator().generate_random(n))
     if config.debug:
@@ -160,10 +164,18 @@ while height >= 1:
             print(f"LOCAL REMAIN: {local_remain}")
     height = height / 2
 
+StopWatch.stop(f"{rank}-time")
+info = StopWatch.__str__()
+# print(info)
+
+total_info = comm.gather(info, root=0)
+
 if rank == 0:
     StopWatch.stop(f"{label}-total")
     StopWatch.benchmark(user=config.user, node=config.node, sysinfo=False)
 
-    print("SIZE OF ARRAY:", config.n)
+    print(total_info)
+    print("SIZE OF ARRAY:", config.size)
     print("IS SORTED:", is_sorted(local_arr))
     # print(f"SORTED ARRAY: {local_arr}")
+
