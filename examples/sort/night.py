@@ -37,7 +37,38 @@ label = f"{config.user}-{config.node}-{config.filename}-{config.id}"
 
 config.logfile = f"{label}.log"
 
+def sequential_merge_python(local_arr, local_tmp, res):
+    i = 0
+    j = 0
+    for k in range(0, local_arr.size):
+        if i >= local_arr.size:
+            res[k] = local_tmp[j]
+            j += 1
+        elif j >= local_arr.size:
+            res[k] = local_arr[i]
+            i += 1
+        elif local_arr[i] > local_tmp[j]:
+            res[k] = local_tmp[j]
+            j += 1
+        else:
+            res[k] = local_arr[i]
+            i += 1
+    return res
 
+def sequential_merge_fast(left, right):
+    if config.debug:
+        print(f"L IS {left}")
+        print(f"R IS {right}")
+    return sorted(left + right)
+    # use to replace call to sequential merge
+
+sequential_merge = sequential_merge_fast
+
+if config.algorithm == "sequential_merge_python":
+    sequential_merge = sequential_merge_python
+
+elif config.algorithm == "sequential_merge_fast":
+    sequential_merge = sequential_merge_fast
 
 def is_sorted(l):
     return all(l[i] <= l[i + 1] for i in range(len(l) - 1))
@@ -60,7 +91,7 @@ sorted_arr = np.zeros(n, dtype="int")
 sub_size = int(n / size)
 local_arr = np.zeros(sub_size, dtype="int")
 local_tmp = np.zeros(sub_size, dtype="int")
-local_remain = np.zeros(2 * sub_size, dtype="int")
+local_result = np.zeros(2 * sub_size, dtype="int")
 
 StopWatch.start(f"{rank}-time")
 
@@ -84,46 +115,32 @@ local_arr.sort()
 # print(f'Buffer in process {rank} before gathering: {sub_arr}')
 # Gather sorted subarrays into one
 
-height = size / 2
+split = size / 2
 if config.debug:
     print(f"Rank: {rank}")
-while height >= 1:
-    if height <= rank < height * 2:
-        comm.Send(local_arr, rank - height, tag=0)
-    elif rank < height:
+while split >= 1:
+    if split <= rank < split * 2:
+        comm.Send(local_arr, rank - split, tag=0)
+    elif rank < split:
         local_tmp = np.zeros(local_arr.size, dtype="int")
-        local_remain = np.zeros(2 * local_arr.size, dtype="int")
-        comm.Recv(local_tmp, rank + height, tag=0)
+        local_result = np.zeros(2 * local_arr.size, dtype="int")
+        comm.Recv(local_tmp, rank + split, tag=0)
 
-        i = 0
-        j = 0
-        for k in range(0, 2 * local_arr.size):
-            if i >= local_arr.size:
-                local_remain[k] = local_tmp[j]
-                j += 1
-            elif j >= local_arr.size:
-                local_remain[k] = local_arr[i]
-                i += 1
-            elif local_arr[i] > local_tmp[j]:
-                local_remain[k] = local_tmp[j]
-                j += 1
-            else:
-                local_remain[k] = local_arr[i]
-                i += 1
+        local_result = sequential_merge(local_arr, local_tmp)
 
-        local_arr = local_remain
+        local_arr = np.array(local_result)
 
         if config.debug:
             # print(f"LOCAL ARRAY: {local_arr}")
             # print(f"LOCAL TEMP: {local_tmp}")
-            print(f"LOCAL REMAIN: {local_remain}")
-    height = height / 2
+            print(f"LOCAL REMAIN: {local_result}")
+    split = split / 2
 
 StopWatch.stop(f"{rank}-time")
 info = StopWatch.__str__()
 # print(info)
 
-# total_info = comm.gather(info, root=0)
+total_info = comm.gather(info, root=0)
 
 if rank == 0:
     StopWatch.stop(f"{label}-total")
