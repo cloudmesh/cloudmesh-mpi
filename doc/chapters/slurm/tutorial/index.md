@@ -301,10 +301,11 @@ we can run an `srun` command to get the hostnames of all the worker
 nodes:
 
 ```bash
-(ENV3) pi@red:~ $ srun --nodes=3 hostname | sort
+(ENV3) pi@red:~ $ srun --nodes=4 hostname | sort
 red01
 red02
 red03
+red04
 ```
 
 ### 7.2 Using `sbatch`
@@ -322,7 +323,7 @@ simply retrieving a file with text inside.
 ```
 
 You can also change the number after `--nodes=` accordingly
-if you have more than or less than 3 workers. We use the nano editor
+if you have more than or less than 4 workers. We use the nano editor
 as it is available on the Raspberry Pi OS. If you need to edit the nodes
 parameter, issue `sudo nano sort.slurm`. The file is as follows:
 
@@ -330,7 +331,7 @@ parameter, issue `sudo nano sort.slurm`. The file is as follows:
 #!/bin/sh
 #SBATCH -p mycluster
 #SBATCH --time=1
-#SBATCH --nodes=3
+#SBATCH --nodes=4
 
 srun hostname | sort
 ```
