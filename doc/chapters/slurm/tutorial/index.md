@@ -437,7 +437,7 @@ by executing the following commands:
 
 ## 8.0 Timing and Benchmark
 
-The SLURM installation script takes around an hour on a cluster of five Pis.
+The SLURM installation script takes around an hour on a cluster of four Pis.
 The Internet speed was 30 Mbps for download and 2.5 Mbps for upload.
 
 ## 9.0 References 
