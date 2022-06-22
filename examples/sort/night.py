@@ -9,6 +9,7 @@ from mpi4py import MPI
 
 from cloudmesh.common.StopWatch import StopWatch
 from cloudmesh.common.dotdict import dotdict
+from sequential.mergesort import mergesort
 from generate import Generator
 
 config = dotdict()
@@ -23,15 +24,12 @@ config.id = 0
 n = config.size = 10000
 
 for arg in sys.argv[1:]:
-    print("HERE")
     if arg.startswith("node="):
-        print(28)
         config.node = arg.split("=")[1]
     elif arg.startswith("user="):
         config.user = arg.split("=")[1]
     elif arg.startswith("n="):
         config.size = int(arg.split("=")[1])
-        print(34)
     elif arg.startswith("id="):
         config.id = int(arg.split("=")[1])
 
@@ -52,54 +50,9 @@ size = comm.Get_size()
 rank = comm.Get_rank()
 status = MPI.Status()
 
-def sequential_merge_python(a, b, l, m, r):
-    h = l
-    i = l
-    j = m + 1
-
-    while h <= m and j <= r:
-        if a[h] <= a[j]:
-            b[i] = a[h]
-            h += 1
-
-        else:
-            b[i] = a[j]
-            j += 1
-
-        i += 1
-
-    if m < h:
-        for k in range(j, r + 1):
-            b[i] = a[k]
-            i += 1
-
-    else:
-        for k in range(h, m + 1):
-            b[i] = a[k]
-            i += 1
-
-    for k in range(l, r + 1):
-        a[k] = b[k]
-
-
-def sequential_merge_fast(left, right):
-    if config.debug:
-        print(f"L IS {left}")
-        print(f"R IS {right}")
-    return sorted(left + right)
-    # use to replace call to sequential merge
-
-
-sequential_merge = sequential_merge_fast
-
-if config.algorithm == "sequential_merge_python":
-    sequential_merge = sequential_merge_python
-
-elif config.algorithm == "sequential_merge_fast":
-    sequential_merge = sequential_merge_fast
-
-
 n = config.size
+
+# Create necessary arrays
 
 unsorted_arr = np.zeros(n, dtype="int")
 sorted_arr = np.zeros(n, dtype="int")
@@ -111,6 +64,8 @@ local_remain = np.zeros(2 * sub_size, dtype="int")
 
 StopWatch.start(f"{rank}-time")
 
+# Generate unsorted array
+
 if rank == 0:
     unsorted_arr = np.array(Generator().generate_random(n))
     if config.debug:
@@ -120,7 +75,7 @@ if rank == 0:
 comm.Scatter(unsorted_arr, local_arr, root=0)
 
 # print(sub_size)
-# print(f'Buffer in process {rank} contains: {sub_arr}')
+# print(f'Buffer in process {rank} contains: {local_arr}, size = {len(local_arr)}')
 
 # Sort each subarray
 local_arr.sort()
@@ -168,13 +123,14 @@ StopWatch.stop(f"{rank}-time")
 info = StopWatch.__str__()
 # print(info)
 
-total_info = comm.gather(info, root=0)
+# total_info = comm.gather(info, root=0)
 
 if rank == 0:
     StopWatch.stop(f"{label}-total")
     StopWatch.benchmark(user=config.user, node=config.node, sysinfo=False)
 
-    print(total_info)
+    # for s in total_info:
+        # print(s)
     print("SIZE OF ARRAY:", config.size)
     print("IS SORTED:", is_sorted(local_arr))
     # print(f"SORTED ARRAY: {local_arr}")
