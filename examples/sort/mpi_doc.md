@@ -63,6 +63,13 @@ Go to the [Github](https://github.com/cloudmesh/cloudmesh-mpi) to verify that th
    git push
    ```
 
+## Running the Program
+
+Run the program using the command
+
+   ```bash
+   mpiexec -n 4 python night.py user=username node=nodename n=size
+   ```
 
 
 ## Overview
