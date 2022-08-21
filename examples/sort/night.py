@@ -36,6 +36,7 @@ for arg in sys.argv[1:]:
 label = f"{config.user}-{config.node}-{config.filename}-{config.id}"
 
 config.logfile = f"{label}.log"
+print(f"LOGFILE: {config.logfile}")
 
 def sequential_merge_python(local_arr, local_tmp, res):
     i = 0
@@ -138,7 +139,7 @@ while split >= 1:
 
 StopWatch.stop(f"{rank}-time")
 info = StopWatch.__str__()
-# print(info)
+print(info)
 
 total_info = comm.gather(info, root=0)
 
