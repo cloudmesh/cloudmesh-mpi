@@ -34,9 +34,8 @@ for arg in sys.argv[1:]:
         config.id = int(arg.split("=")[1])
 
 label = f"{config.user}-{config.node}-{config.filename}-{config.id}"
-
 config.logfile = f"{label}.log"
-print(f"LOGFILE: {config.logfile}")
+# print(f"LOGFILE: {config.logfile}")
 
 def sequential_merge_python(local_arr, local_tmp, res):
     i = 0
@@ -139,17 +138,21 @@ while split >= 1:
 
 StopWatch.stop(f"{rank}-time")
 info = StopWatch.__str__()
-print(info)
+# print(info)
 
-total_info = comm.gather(info, root=0)
+all_info = comm.gather(info, root=0)
 
 if rank == 0:
     StopWatch.stop(f"{label}-total")
-    StopWatch.benchmark(user=config.user, node=config.node, sysinfo=False)
+    total_time = StopWatch.__str__()
+    if config.debug:
+        print(f"TOTAL: {total_time}")
+    # StopWatch.benchmark(user=config.user, node=config.node, sysinfo=False)
 
-    # for s in total_info:
-        # print(s)
-    print("SIZE OF ARRAY:", config.size)
-    print("IS SORTED:", is_sorted(local_arr))
-    # print(f"SORTED ARRAY: {local_arr}")
+    if config.debug:
+        for s in all_info:
+            print(s)
+        print("SIZE OF ARRAY:", config.size)
+        print("IS SORTED:", is_sorted(local_arr))
+        print(f"SORTED ARRAY: {local_arr}")
 
