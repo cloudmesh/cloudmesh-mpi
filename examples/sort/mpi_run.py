@@ -17,6 +17,10 @@ from cloudmesh.common.util import banner
     default=None,
     help="node name for the stopwatch timer")
 @click.option(
+    '--sort',
+    default="mpi_mergesort",
+    help="sorting function to run and analyze")
+@click.option(
     '--size',
     default="100",
     help="size of array to be sorted as a comma separated string without spaces: 100,200")
@@ -24,7 +28,7 @@ from cloudmesh.common.util import banner
     '--repeat',
     default="10",
     help="repeat the experiment the specified number of times")
-def run(log, user, node, size, repeat):
+def run(log, user, node, sort, size, repeat):
     """
     :param log: data is storted in log file
     :type log: string
@@ -35,12 +39,8 @@ def run(log, user, node, size, repeat):
     :return: none
     :rtype: none
     """
-    if log is None:
-        log = f"log/{node}-{user}-{size}.log"
+    log = f"log/{sort}-{node}-{user}-{size}.log"
 
-    repeat = int(repeat)
-    sizes = size.split(",")
-    sizes = [int(x) for x in sizes]
     # run experiment.py to generate data from specified sort {sort}
     # data is stored in specified log file {log}
     # default size of array to be sorted is 100
@@ -48,18 +48,16 @@ def run(log, user, node, size, repeat):
     if os.path.exists(log):
         os.remove(log)
     os.system(f"touch {log}")
-    for size in sizes:
-        for i in range(int(repeat)):
-            command = \
-                f'n={size} node={node} user={user} REPEAT={i} mpiexec -n 4 python night.py | tee -a {log}'
-            banner(command)
-            os.system(command)
+    run_experiment = \
+        f'./mpi_experiment.py --log={log} --size={size} --user={user} --node={node} --repeat={repeat} --sort={sort} | tee {log}'
+    banner(run_experiment)
+    os.system(run_experiment)
 
     ## run analysis.py on data generated from experiment.py
     ## currently outputs graph of processes and time
-    run_analysis = f"python ./analysis.py --log={log} --size={size} --sort={sort}"
-    banner(run_analysis)
-    os.system(run_analysis)
+    # run_analysis = f"python ./analysis.py --log={log} --size={size} --sort={sort}"
+    # banner(run_analysis)
+    # os.system(run_analysis)
 
 
 if __name__ == '__main__':
