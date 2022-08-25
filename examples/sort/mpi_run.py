@@ -57,9 +57,9 @@ def run(log, user, node, size, repeat):
 
     ## run analysis.py on data generated from experiment.py
     ## currently outputs graph of processes and time
-    # run_analysis = f"python ./analysis.py --log={log} --size={size} --sort={sort}"
-    # banner(run_analysis)
-    # os.system(run_analysis)
+    run_analysis = f"python ./analysis.py --log={log} --size={size} --sort={sort}"
+    banner(run_analysis)
+    os.system(run_analysis)
 
 
 if __name__ == '__main__':
