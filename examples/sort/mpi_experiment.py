@@ -109,8 +109,7 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
         if not c:
             return ""
     
-    if log is None:
-        log = f"log/{node}-{user}-{size}.log"
+    log = f"log/{sort}-{node}-{user}-{size}.log"
 
     # CHECK
     processes = [4]
