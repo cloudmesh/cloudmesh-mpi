@@ -28,7 +28,11 @@ from cloudmesh.common.util import banner
     '--repeat',
     default="10",
     help="repeat the experiment the specified number of times")
-def run(log, user, node, sort, size, repeat):
+@click.option(
+    '--id',
+    default="0",
+    help="specify which merge sort to use")
+def run(log, user, node, sort, size, repeat, id):
     """
     :param log: data is storted in log file
     :type log: string
@@ -39,7 +43,7 @@ def run(log, user, node, sort, size, repeat):
     :return: none
     :rtype: none
     """
-    log = f"log/{sort}-{node}-{user}-{size}.log"
+    log = f"log/{sort}-{node}-{user}-{id}-{size}.log"
 
     # run experiment.py to generate data from specified sort {sort}
     # data is stored in specified log file {log}
@@ -49,7 +53,7 @@ def run(log, user, node, sort, size, repeat):
         os.remove(log)
     os.system(f"touch {log}")
     run_experiment = \
-        f'./mpi_experiment.py --log={log} --size={size} --user={user} --node={node} --repeat={repeat} --sort={sort} | tee {log}'
+        f'./mpi_experiment.py --log={log} --size={size} --id={id} --user={user} --node={node} --repeat={repeat} --sort={sort} | tee {log}'
     banner(run_experiment)
     os.system(run_experiment)
 
