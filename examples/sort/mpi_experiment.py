@@ -22,13 +22,13 @@ def get_sort_by_name(name="multiprocessing_mergesort"):
         return None
 
 
-def get_label(name, p, n, i, tag=None):
+def get_label(name, p, n, i, id, tag=None):
     if tag is None:
         if not os_is_windows:
             tag = os.uname().nodename
         else:
             tag = platform.uname().node
-    return f"{tag}_{name}_{p}_{n}_{i}"
+    return f"{tag}_{name}_{p}_{n}_{id}_{i}"
 
 
 username = Shell.run('whoami').strip()
@@ -76,7 +76,11 @@ hostname = Shell.run('hostname').strip()
     '--node',
     default=hostname,
     help="a node name for the stopwatch timer")
-def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node):
+@click.option(
+    '--id',
+    default=0,
+    help="specify which merge sort to use")
+def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node, id):
     """
     performance experiment.
 
@@ -108,8 +112,8 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
         c = yn_choice("Would you like to clear the file {log} before running the experiements")
         if not c:
             return ""
-    
-    log = f"log/{sort}-{node}-{user}-{size}.log"
+    if log is None:
+        log = f"log/{sort}-{node}-{user}-{id}-{size}.log"
 
     # CHECK
     processes = [4]
@@ -132,6 +136,7 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
     print(f"Clear:     {clear}")
     print(f"Debug:     {debug}")
     print(f"Algorithm: {sort}")
+    print(f"ID:        {id}")
     print(f"Tag:       {tag}")
     print(f"Total:     {total}")
 
@@ -144,14 +149,24 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
             for i in range(repeat):
                 c = c + 1
                 progress = total - c
-                print(f"Experiment {progress:<10}: size={n} processes={p} repeat={i} last_time={last_time}"
+                print(f"Experiment {progress:<10}: size={n} processes={p} id={id} repeat={i} last_time={last_time}"
                       "                     ",
                       end="\n")
-                label = get_label(sort, p, n, i, tag)
+                label = get_label(sort, p, n, i, id, tag)
                 a = Generator().generate_random(n)
 
+                algorithm = "sequential_merge_fast"
+                if id == 0:
+                    # print("162")
+                    algorithm = "sequential_merge_fast"
+                elif id == 1:
+                    # print("DEBUGDEBUGDEBUGDEBUGDEBUGDEBUGDEBUG")
+                    algorithm = "sequential_merge_python"
+                elif id == 2:
+                    algorithm = "multiprocessing_mergesort"
+
                 command = \
-                    f'mpiexec -n 4 python night.py n={n} node={node} user={user} REPEAT={i}'
+                    f'mpiexec -n 4 python night.py n={n} node={node} user={user} alg={algorithm} REPEAT={i}'
 
                 StopWatch.start(label)
                 # banner(command)
