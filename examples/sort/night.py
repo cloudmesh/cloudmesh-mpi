@@ -3,12 +3,14 @@
 ###########################################################
 import os
 import sys
+from threading import local
 
 import numpy as np
 from mpi4py import MPI
 
 from cloudmesh.common.StopWatch import StopWatch
 from cloudmesh.common.dotdict import dotdict
+# from examples.sort.multiprocessing_mergesort import multiprocessing_mergesort
 from sequential.mergesort import mergesort
 from generate import Generator
 
@@ -32,12 +34,16 @@ for arg in sys.argv[1:]:
         config.size = int(arg.split("=")[1])
     elif arg.startswith("id="):
         config.id = int(arg.split("=")[1])
+    elif arg.startswith("alg="):
+         config.algorithm = arg.split("=")[1]
 
 label = f"{config.user}-{config.node}-{config.filename}-{config.id}"
 config.logfile = f"{label}.log"
 # print(f"LOGFILE: {config.logfile}")
 
-def sequential_merge_python(local_arr, local_tmp, res):
+def sequential_merge_python(local_arr, local_tmp):
+    n = local_arr.size + local_tmp.size
+    res = np.zeros(n)
     i = 0
     j = 0
     for k in range(0, local_arr.size):
@@ -62,13 +68,19 @@ def sequential_merge_fast(left, right):
     return sorted(left + right)
     # use to replace call to sequential merge
 
-sequential_merge = sequential_merge_fast
+# def multiprocessing_merge(left, right):
+
+
+merge = sequential_merge_fast
 
 if config.algorithm == "sequential_merge_python":
-    sequential_merge = sequential_merge_python
+    merge = sequential_merge_python
 
 elif config.algorithm == "sequential_merge_fast":
-    sequential_merge = sequential_merge_fast
+    merge = sequential_merge_fast
+
+# elif config.algorithm == "multiprocessing_mergsort":
+    # merge = multiprocessing_merge
 
 def is_sorted(l):
     return all(l[i] <= l[i + 1] for i in range(len(l) - 1))
@@ -126,7 +138,7 @@ while split >= 1:
         local_result = np.zeros(2 * local_arr.size, dtype="int")
         comm.Recv(local_tmp, rank + split, tag=0)
 
-        local_result = sequential_merge(local_arr, local_tmp)
+        local_result = merge(local_arr, local_tmp)
 
         local_arr = np.array(local_result)
 
