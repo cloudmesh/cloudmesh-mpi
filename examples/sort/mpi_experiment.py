@@ -163,7 +163,7 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
                     # print("DEBUGDEBUGDEBUGDEBUGDEBUGDEBUGDEBUG")
                     algorithm = "sequential_merge_python"
                 elif id == 2:
-                    algorithm = "multiprocessing_mergesort"
+                    algorithm = "adaptive_merge"
 
                 command = \
                     f'mpiexec -n 4 python night.py n={n} node={node} user={user} alg={algorithm} REPEAT={i}'

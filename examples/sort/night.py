@@ -13,6 +13,7 @@ from cloudmesh.common.dotdict import dotdict
 # from examples.sort.multiprocessing_mergesort import multiprocessing_mergesort
 from sequential.mergesort import mergesort
 from generate import Generator
+from adaptive_merge import adaptive_merge
 
 config = dotdict()
 config.algorithm = "sequential_merge_fast"
@@ -78,6 +79,9 @@ if config.algorithm == "sequential_merge_python":
 
 elif config.algorithm == "sequential_merge_fast":
     merge = sequential_merge_fast
+
+elif config.algorithm == "adaptive_merge":
+    merge = adaptive_merge
 
 # elif config.algorithm == "multiprocessing_mergsort":
     # merge = multiprocessing_merge

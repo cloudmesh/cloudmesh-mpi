@@ -30,7 +30,7 @@ from cloudmesh.common.util import banner
     help="repeat the experiment the specified number of times")
 @click.option(
     '--id',
-    default="0",
+    default=0,
     help="specify which merge sort to use")
 def run(log, user, node, sort, size, repeat, id):
     """
