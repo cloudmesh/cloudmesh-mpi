@@ -14,6 +14,7 @@ from cloudmesh.common.dotdict import dotdict
 from sequential.mergesort import mergesort
 from generate import Generator
 from adaptive_merge import adaptive_merge
+from timsort import timSort
 
 config = dotdict()
 config.algorithm = "sequential_merge_fast"
@@ -82,6 +83,9 @@ elif config.algorithm == "sequential_merge_fast":
 
 elif config.algorithm == "adaptive_merge":
     merge = adaptive_merge
+
+elif config.algorithm == "timsort":
+    merge = timSort
 
 # elif config.algorithm == "multiprocessing_mergsort":
     # merge = multiprocessing_merge
