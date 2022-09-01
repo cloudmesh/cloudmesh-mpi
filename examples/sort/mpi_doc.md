@@ -68,13 +68,31 @@ Go to the [Github](https://github.com/cloudmesh/cloudmesh-mpi) to verify that th
 Run the program using the command
 
    ```bash
-   mpiexec -n 4 python night.py user=username node=nodename n=size
+   ./mpi_run.py --user={username} --node={node} --sort={mpi_mergesort }--size={size} --repeat={repeat} --id={id}
    ```
+
+   Please read the Input section for specific documentation on each option.
 
 
 ## Overview
 
 This project uses Python to implement an MPI mergesort algorithm (linked [here](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/night.py)). The algorithm is then run and evaluated in [mpi_run.py](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/mpi_run.py). 
+
+### Input
+
+_mpi_run.py_ has several inputs.
+
+_user_: specify the username of whoever is running the program\
+_node_: name of computer node on which program is being run\
+_sort_: type of sort that is being run. Use "mpi_mergesort".\
+_size_: size of array to sort\
+_repeat_: number of times to run sorting algorithm. 
+Final time will be the average of all runs.\
+_id_: specifies which sorting algorithm to use on each process.\
+0: built-in Python _sorted_\
+1: sequential merge\
+2: adaptive merge
+
 
 ### Mergesort
 
