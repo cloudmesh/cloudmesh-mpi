@@ -88,12 +88,12 @@ _sort_: type of sort that is being run. Use "mpi_mergesort".\
 _size_: size of array to sort\
 _repeat_: number of times to run sorting algorithm. 
 Final time will be the average of all runs.\
-_id_: specifies which sorting algorithm to use on each process.\
+_id_: specifies the sorting algorithm that is used to sort the arrays once they've been distributed to each of the processes, also known as the sub-sort algorithm. Each id number corresponds to a specific algorithm. \
 0: built-in Python _sorted_\
 1: sequential merge\
 2: adaptive merge
 
-For example, if John would like to run the MPI mergesort on his Raspberry Pi 4, and he would like to use an array of size 200, repeating 10 times, and use an adaptive merge to combine the the arrays on each process, he would use the command
+For example, if John would like to run the MPI mergesort on his Raspberry Pi 4, and he would like to use an array of size 200, repeating 10 times, and use an adaptive merge to combine the the arrays on each individual process, he would use the command
 
 ```bash
 ./mpi_run.py --user=john --node=pi4 --sort=mpi_mergesort --size=200 --repeat=10 --id=2
@@ -110,7 +110,8 @@ In order to merge the sorted subarrays, we can visualize the processors as being
 
 If the rank of the processor is in the second half (between _split_ and _split_ * 2), then it will send its sorted subarray to its "left" partner to be merged. Otherwise, if the rank of the processor is in the first half (between 0 and _split_), it will recieve a sorted subarray from its "right" partner and then merge it with the subarray that it currently contains. When a subarray is sent, it is sent to the processor with rank _rank - split_, ensuring that the processor that it is sent to has a rank between 0 and _split_. This guarantees that each subarray that is sent gets sent to a merging processor. Similarly, when a subarray is received, it is received from a processor with rank _rank + split_, ensuring that the subarray is a sorted array to be merged. This mapping guarantees a unique pairing between left and right child. 
 
-Once received, the subarrays are merged together. The merging algorithm can be defined by the user. There are currently two merging algorithms that can be used: a sequential merge that uses the well-known technique of using appending the smaller of two array elements to a third array, or a "fast" merge that simply combines the two arrays using the built-in Python _sorted_ function. 
+Once received, the subarrays are merged together. The merging algorithm can be defined by the user, and will be referred to as the **sub-sort algorithm**. 
+There are currently two merging algorithms that can be used: a sequential merge that uses the well-known technique of using appending the smaller of two array elements to a third array, or a "fast" merge that simply combines the two arrays using the built-in Python _sorted_ function. 
 
 Then, each individual send/recieve operates as following:
 
@@ -125,4 +126,6 @@ This loop continues until the tree reaches the height that guarantees us a singl
 
 ### Output
 
-The output of the program is generated and logged in [mpi_experiment.py](hhttps://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/mpi_experiment.py). This file runs the 
+The output of the program is generated and logged in [mpi_experiment.py](hhttps://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/mpi_experiment.py). This file runs the sort according to user specifications. Three of the most important things it does:
+1. The specific algorithm is run _repeat_ times. Note that the larger _repeat_ is, the more accurate the final mean time will be. The mean time is not calculated here. Rather, all times from each repeat will be outputted.
+2. Maps id numbers to sort types. It's important to be able to differentiate between data outputted by each 
