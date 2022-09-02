@@ -68,7 +68,7 @@ Go to the [Github](https://github.com/cloudmesh/cloudmesh-mpi) to verify that th
 Run the program using the command
 
    ```bash
-   ./mpi_run.py --user={username} --node={node} --sort={mpi_mergesort }--size={size} --repeat={repeat} --id={id}
+   ./mpi_run.py --user={username} --node={node} --sort={mpi_mergesort}--size={size} --repeat={repeat} --id={id}
    ```
 
    Please read the Input section for specific documentation on each option.
@@ -93,6 +93,12 @@ _id_: specifies which sorting algorithm to use on each process.\
 1: sequential merge\
 2: adaptive merge
 
+For example, if John would like to run the MPI mergesort on his Raspberry Pi 4, and he would like to use an array of size 200, repeating 10 times, and use an adaptive merge to combine the the arrays on each process, he would use the command
+
+```bash
+./mpi_run.py --user=john --node=pi4 --sort=mpi_mergesort --size=200 --repeat=10 --id=2
+```
+
 
 ### Mergesort
 
@@ -116,3 +122,7 @@ Then, each individual send/recieve operates as following:
 6. Right child assigns _local_arr_ to point to _local_result_
 
 This loop continues until the tree reaches the height that guarantees us a single sorted list. Each time, the number of nodes is halved (since two have been merged into one). 
+
+### Output
+
+The output of the program is generated and logged in [mpi_experiment.py](hhttps://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/mpi_experiment.py). This file runs the 
