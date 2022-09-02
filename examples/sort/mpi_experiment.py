@@ -14,14 +14,7 @@ from cloudmesh.common.systeminfo import os_is_windows
 from generate import Generator
 
 
-def get_sort_by_name(name="multiprocessing_mergesort"):
-    if name in ["mp-mergesort", "multiprocessing_mergesort"]:
-        from multiprocessing_mergesort import multiprocessing_mergesort
-        return multiprocessing_mergesort
-    else:
-        return None
-
-
+# generates label for this experiment
 def get_label(name, p, n, i, id, tag=None):
     if tag is None:
         if not os_is_windows:
@@ -34,7 +27,7 @@ def get_label(name, p, n, i, id, tag=None):
 username = Shell.run('whoami').strip()
 hostname = Shell.run('hostname').strip()
 
-
+# provides terminal line options
 @click.command()
 @click.option(
     '--processes',
@@ -80,13 +73,14 @@ hostname = Shell.run('hostname').strip()
     '--id',
     default=0,
     help="specify which merge sort to use")
+
 def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node, id):
     """
     performance experiment.
 
-    :param processes:
-    :type processes:
-    :param size:
+    :param processes: number of processes to use
+    :type processes: hardcoded
+    :param size: 
     :type size:
     :param repeat:
     :type repeat:
@@ -116,8 +110,8 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
         log = f"log/{sort}-{node}-{user}-{id}-{size}.log"
 
     # CHECK
-    processes = [4]
-    # processes = Parameter.expand(processes)
+    # processes = [4]
+    processes = Parameter.expand(processes)
     sizes = Parameter.expand(size)
 
     processes = [int(number) for number in processes]
@@ -125,6 +119,7 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
 
     total = len(processes) * len(sizes) * repeat
 
+    # begin running experiment
     print("Starting experiment")
 
     #processes = processes.reverse()
@@ -140,8 +135,6 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
     print(f"Tag:       {tag}")
     print(f"Total:     {total}")
 
-    # sort_algorithm = get_sort_by_name(sort)
-
     last_time = "undefined"
     c = 0
     for p in processes:
@@ -153,30 +146,32 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
                       "                     ",
                       end="\n")
                 label = get_label(sort, p, n, i, id, tag)
+
+                # generate unsorted array
                 a = Generator().generate_random(n)
 
+                # map from id number to sub sort type
                 algorithm = "sequential_merge_fast"
                 if id == 0:
-                    # print("162")
                     algorithm = "sequential_merge_fast"
                 elif id == 1:
-                    # print("DEBUGDEBUGDEBUGDEBUGDEBUGDEBUGDEBUG")
                     algorithm = "sequential_merge_python"
                 elif id == 2:
                     algorithm = "adaptive_merge"
-                elif id == 3:
-                    algorithm = "timsort"
 
+                # terminal command to run sort program
                 command = \
                     f'mpiexec -n 4 python night.py n={n} node={node} user={user} alg={algorithm} REPEAT={i}'
 
+                # start timer
                 StopWatch.start(label)
-                # banner(command)
+                # run command
                 os.system(command)
+                # stop timer
                 StopWatch.stop(label)
                 last_time = StopWatch.get(label)
-                #assert verify("ascending", a)
 
+    # print out collected information
     StopWatch.benchmark(user=user, node=node)
 
 
