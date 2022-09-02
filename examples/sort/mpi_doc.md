@@ -110,8 +110,10 @@ In order to merge the sorted subarrays, we can visualize the processors as being
 
 If the rank of the processor is in the second half (between _split_ and _split_ * 2), then it will send its sorted subarray to its "left" partner to be merged. Otherwise, if the rank of the processor is in the first half (between 0 and _split_), it will recieve a sorted subarray from its "right" partner and then merge it with the subarray that it currently contains. When a subarray is sent, it is sent to the processor with rank _rank - split_, ensuring that the processor that it is sent to has a rank between 0 and _split_. This guarantees that each subarray that is sent gets sent to a merging processor. Similarly, when a subarray is received, it is received from a processor with rank _rank + split_, ensuring that the subarray is a sorted array to be merged. This mapping guarantees a unique pairing between left and right child. 
 
-Once received, the subarrays are merged together. The merging algorithm can be defined by the user, and will be referred to as the **sub-sort algorithm**. 
-There are currently two merging algorithms that can be used: a sequential merge that uses the well-known technique of using appending the smaller of two array elements to a third array, or a "fast" merge that simply combines the two arrays using the built-in Python _sorted_ function. 
+Once received, the subarrays are merged together. The merging algorithm can be defined by the user, and will be referred to as the **sub-sort algorithm**. There are currently three merging algorithms that can be used. 
+1. **sequential_merge_fast**, a "fast" merge that simply combines the two arrays using the built-in Python _sorted_ function. Note that sorting algorithms can also be used to merge. 
+2. **sequential_merge_python**, a merge that uses the well-known technique of appending the smaller of two array elements to a third array
+3. **adaptive_merge**, a custom sorting algorithm that takes advantage of pre-existing order in the sequence. It is described in more detail [here](#adaptivesort)
 
 Then, each individual send/recieve operates as following:
 
@@ -129,3 +131,5 @@ This loop continues until the tree reaches the height that guarantees us a singl
 The output of the program is generated and logged in [mpi_experiment.py](hhttps://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/mpi_experiment.py). This file runs the sort according to user specifications. Three of the most important things it does:
 1. The specific algorithm is run _repeat_ times. Note that the larger _repeat_ is, the more accurate the final mean time will be. The mean time is not calculated here. Rather, all times from each repeat will be outputted.
 2. Maps id numbers to sort types. It's important to be able to differentiate between data outputted by each 
+
+## Adaptive Sort
