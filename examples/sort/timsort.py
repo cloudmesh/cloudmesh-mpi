@@ -9,6 +9,7 @@ MIN_MERGE = 32
 def calcMinRun(n):
 	r = 0
 	while n >= MIN_MERGE:
+		print(r)
 		r |= n & 1
 		n >>= 1
 	return n + r
