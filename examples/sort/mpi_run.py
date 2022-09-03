@@ -4,6 +4,7 @@ import os
 import click
 from cloudmesh.common.util import banner
 
+# take in user input
 @click.command()
 @click.option(
     '--log',
@@ -43,6 +44,7 @@ def run(log, user, node, sort, size, repeat, id):
     :return: none
     :rtype: none
     """
+    # logfile name - where output will be stored
     log = f"log/{sort}-{node}-{user}-{id}-{size}.log"
 
     # run experiment.py to generate data from specified sort {sort}
@@ -52,17 +54,13 @@ def run(log, user, node, sort, size, repeat, id):
     if os.path.exists(log):
         os.remove(log)
     os.system(f"touch {log}")
+    # command to run mpi_experiment.py with given user input
     run_experiment = \
         f'./mpi_experiment.py --log={log} --size={size} --id={id} --user={user} --node={node} --repeat={repeat} --sort={sort} | tee {log}'
+    # print command
     banner(run_experiment)
+    # run command
     os.system(run_experiment)
-
-    ## run analysis.py on data generated from experiment.py
-    ## currently outputs graph of processes and time
-    # run_analysis = f"python ./analysis.py --log={log} --size={size} --sort={sort}"
-    # banner(run_analysis)
-    # os.system(run_analysis)
-
 
 if __name__ == '__main__':
     run()

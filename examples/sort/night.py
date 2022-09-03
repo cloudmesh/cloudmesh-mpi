@@ -10,11 +10,9 @@ from mpi4py import MPI
 
 from cloudmesh.common.StopWatch import StopWatch
 from cloudmesh.common.dotdict import dotdict
-# from examples.sort.multiprocessing_mergesort import multiprocessing_mergesort
 from sequential.mergesort import mergesort
 from generate import Generator
 from adaptive_merge import adaptive_merge
-from timsort import timSort
 
 config = dotdict()
 config.algorithm = "sequential_merge_fast"
@@ -27,6 +25,7 @@ config.filename = sys.argv[0].replace(".py", "")
 config.id = 0
 n = config.size = 10000
 
+# take in input from user
 for arg in sys.argv[1:]:
     if arg.startswith("node="):
         config.node = arg.split("=")[1]
@@ -39,22 +38,25 @@ for arg in sys.argv[1:]:
     elif arg.startswith("alg="):
          config.algorithm = arg.split("=")[1]
 
+# generate label for stopwatches
 label = f"{config.user}-{config.node}-{config.filename}-{config.id}"
 config.logfile = f"{label}.log"
-# print(f"LOGFILE: {config.logfile}")
 
+# define sequential merge
 def sequential_merge_python(local_arr, local_tmp):
     n = local_arr.size + local_tmp.size
     res = np.zeros(n)
     i = 0
     j = 0
     for k in range(0, local_arr.size):
+        # one array is done, take all values from the other array
         if i >= local_arr.size:
             res[k] = local_tmp[j]
             j += 1
         elif j >= local_arr.size:
             res[k] = local_arr[i]
             i += 1
+        # take the smaller value from the front of the arrays
         elif local_arr[i] > local_tmp[j]:
             res[k] = local_tmp[j]
             j += 1
@@ -63,39 +65,34 @@ def sequential_merge_python(local_arr, local_tmp):
             i += 1
     return res
 
+# define fast merge
 def sequential_merge_fast(left, right):
     if config.debug:
         print(f"L IS {left}")
         print(f"R IS {right}")
+    # use python builtin sort
     return sorted(left + right)
     # use to replace call to sequential merge
 
-# def multiprocessing_merge(left, right):
-
-
+# set merge algorithm based on user input
 merge = sequential_merge_fast
-
 if config.algorithm == "sequential_merge_python":
     merge = sequential_merge_python
-
 elif config.algorithm == "sequential_merge_fast":
     merge = sequential_merge_fast
-
 elif config.algorithm == "adaptive_merge":
     merge = adaptive_merge
-
 elif config.algorithm == "timsort":
     merge = timSort
 
-# elif config.algorithm == "multiprocessing_mergsort":
-    # merge = multiprocessing_merge
-
+# check if array is sorted
 def is_sorted(l):
     return all(l[i] <= l[i + 1] for i in range(len(l) - 1))
 
 if config.benchmark:
     StopWatch.start(f"{label}-total")
 
+# initialize MPI
 comm = MPI.COMM_WORLD
 size = comm.Get_size()
 rank = comm.Get_rank()
@@ -103,34 +100,33 @@ status = MPI.Status()
 
 n = config.size
 
-# Create necessary arrays
-
+# create necessary arrays
 unsorted_arr = np.zeros(n, dtype="int")
 sorted_arr = np.zeros(n, dtype="int")
 
-sub_size = int(n / size)
-local_arr = np.zeros(sub_size, dtype="int")
+sub_size = int(n / size) # size of each subarray
+local_arr = np.zeros(sub_size, dtype="int") # array for each process
 local_tmp = np.zeros(sub_size, dtype="int")
 local_result = np.zeros(2 * sub_size, dtype="int")
 
+# begin stopwatch for each rank
 StopWatch.start(f"{rank}-time")
 
-# Generate unsorted array
-
+# generate unsorted array on rank 0
 if rank == 0:
     unsorted_arr = np.array(Generator().generate_random(n))
     if config.debug:
         print(f"UNSORTED ARRAY: {unsorted_arr}")
 
-# Send subarray to each process
+# send subarray to each process
 comm.Scatter(unsorted_arr, local_arr, root=0)
 
-# print(sub_size)
-# print(f'Buffer in process {rank} contains: {local_arr}, size = {len(local_arr)}')
+if config.debug:
+    print(f'Buffer in process {rank} contains: {local_arr}, size = {len(local_arr)}')
 
-# Sort each subarray
-local_arr.sort()
-# local_arr = sorted(local_arr)
+# sort each subarray
+# local_arr.sort()
+local_arr = np.array(sorted(local_arr))
 
 # print(f'Buffer in process {rank} before gathering: {sub_arr}')
 # Gather sorted subarrays into one
