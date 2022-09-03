@@ -21,7 +21,7 @@ Epub for the group is not avaliable yet:
 
 The material is copyrighted by Gregor von Laszewski but can be distributed freely as PDF document.
 
-## Acknowledgements
+## Acknowledgments
 
 Work conducted to publish this activity was funded by the NSF
 CyberTraining: CIC: CyberTraining for Students and Technologies
