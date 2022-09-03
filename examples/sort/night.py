@@ -82,8 +82,6 @@ elif config.algorithm == "sequential_merge_fast":
     merge = sequential_merge_fast
 elif config.algorithm == "adaptive_merge":
     merge = adaptive_merge
-elif config.algorithm == "timsort":
-    merge = timSort
 
 # check if array is sorted
 def is_sorted(l):
