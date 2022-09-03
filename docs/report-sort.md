@@ -410,7 +410,7 @@ generates the name, title, and graphs the given data by whichever
 specific attribute the user would like.
 
 ![Performance comparision of different sorting
-Algorithms](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/mpi-mpi_mergesort-0-1-2.png){width="50%"}
+Algorithms](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/mpi-mpi_mergesort-0-1-2.png){width="50%"}
 
 The above figure shows the relationship between increasing size of array
 and time of sorting for three different merging algorithms. Recall that

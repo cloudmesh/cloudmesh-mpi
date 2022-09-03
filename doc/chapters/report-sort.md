@@ -284,6 +284,6 @@ The function _get_data_ extracts data from the logfiles. It specifically gets th
 
 We can then plot the data using _plot_benchmark_by_size_. This function generates the name, title, and graphs the given data by whichever specific attribute the user would like. 
 
-![Performance comparision of different sorting Algorithms](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/images/mpi-mpi_mergesort-0-1-2.png){ width=50% }
+![Performance comparision of different sorting Algorithms](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/mpi-mpi_mergesort-0-1-2.png){ width=50% }
 
 The above figure shows the relationship between increasing size of array and time of sorting for three different merging algorithms. Recall that 0 is the Python builtin sort, 1 is the iterative merge, and 2 is the adaptive sort. The sizes of the arrays used are [100, 1000, 10000, 100000, 1000000, 5000000, 7000000, 10000000]. We can see that for the first half of sizes, all three sorts appear to perform roughly the same. However, once we pass that point, the builtin Python sort performs much better than the other two. We can also see that while the adaptive merge always performs better than the iterative merge, it is still slower than the builtin Python sort. Lastly, we can observe the very low variability of the Python builtin sort, even as array size increases. Both the other two sorts have a great deal of variation, but the builtin sort stays relatively precise. 

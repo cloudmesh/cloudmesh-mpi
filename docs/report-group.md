@@ -6,7 +6,7 @@ Lungua, Jacques Fleischer
 For more information, please contact: <laszewski@gmail.com>
 
 > **Note:** Do not modify the report.md file, instead modify only files
-> in in the chapters dir
+> in the chapters dir
 
 # Organizing Collaborative Research Teams
 
