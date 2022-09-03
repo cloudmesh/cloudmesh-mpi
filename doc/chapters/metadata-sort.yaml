@@ -1,0 +1,16 @@
+---
+title: Sorting with MPI Python
+author: Sandra Yang and Gregor von Laszewski <laszewski@gmail.com>
+header-includes: |
+    \usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \usepackage{tcolorbox}
+    \hypersetup{colorlinks,linkcolor=blue,urlcolor=blue}
+    \newtcolorbox{myquote}{colback=gray!5!white, colframe=gray!75!black}
+    \renewenvironment{quote}{\begin{myquote}}{\end{myquote}}
+abstract: |
+	  In this document we discuss some simple MPI sorting 
+	  algorithms using Python. We compare the performance with system available
+	  Python sorting algorithms. 
+	  For more information, please contact: <laszewski@gmail.com>
+---

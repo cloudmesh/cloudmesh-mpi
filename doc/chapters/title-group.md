@@ -4,4 +4,4 @@ Gregor von Laszewski, Fidel Leal, Erin Seliger, Cooper Young, Agness Lungua, Jac
 
 For more information, please contact: <laszewski@gmail.com>
 
-> **Note:** Do not modify the report.md file, instead modify only files in in the chapters dir
+> **Note:** Do not modify the report.md file, instead modify only files in the chapters dir

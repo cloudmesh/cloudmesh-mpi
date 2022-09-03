@@ -7,6 +7,8 @@ PANDOC-NATIVE=pandoc
 
 MPI=chapters/report-mpi.md ../docs/report-mpi.pdf 
 GROUP=chapters/management.md chapters/hardware.md ../docs/report-group.pdf
+SORT=chapters/report-sort.md ../docs/report-sort.pdf
+
 
 define banner
 	@echo
@@ -19,7 +21,7 @@ endef
 
 .PHONY: clean
 
-all: install pdf-mpi epub-mpi pdf-group clean
+all: install pdf-mpi epub-mpi pdf-group pdf-sort clean
 
 install:
 	pip install cyberaide-bookmanager
@@ -74,6 +76,29 @@ md-group: ${GROUP}
 pdf-group: ${GROUP} md-group
 	$(call banner, "CREATE GROUP PDF DOCUMENT")
 	${PANDOC} cloudmesh/pandoc -s -t latex --toc-depth=6 -V geometry:margin=1in --number-sections --toc chapters/metadata-group.yaml tmp-3.md -o ../docs/report-group.pdf
+
+md-sort: ${SORT}
+	$(call banner, "CREATE SORT MARKDOWN DOCUMENT")
+	${PANDOC} cloudmesh/pandoc ${OPTIONS} ./chapters/report-sort.md -o tmp-1.md
+	${PANDOC} cloudmesh/pandoc ${OPTIONS} tmp-1.md -o tmp-2.md
+	${PANDOC} cloudmesh/pandoc ${OPTIONS} tmp-2.md -o tmp-3.md
+	${PANDOC} cloudmesh/pandoc ${OPTIONS} \
+		--number-sections tmp-3.md \
+		-o ../docs/report-sort.md
+
+pdf-sort-simple: ${SORT} md-sort
+	$(call banner, "CREATE SORT PDF DOCUMENT")
+	${PANDOC} cloudmesh/pandoc -s --toc \
+                --include-in-header listings-setup.tex \
+		-t latex -V geometry:margin=1in --number-sections \
+		--listings \
+		chapters/metadata-sort.yaml tmp-3.md \
+		-o ../docs/report-sort.pdf
+
+pdf-sort: ${SORT} md-sort
+	$(call banner, "CREATE SORT PDF DOCUMENT")
+	${PANDOC} cloudmesh/pandoc -s --toc \
+		title-latex.md tmp-3.md -o ../docs/report-sort.pdf --template ./format/eisvogel/eisvogel --listings --number-sections --csl=format/ieee-with-url.csl --citeproc --bibliography references.bib
 
 shell:
 	${PANDOC} -it -u root --entrypoint bash cloudmesh/pandoc:latest
