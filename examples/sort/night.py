@@ -11,6 +11,7 @@ from cloudmesh.common.StopWatch import StopWatch
 from cloudmesh.common.dotdict import dotdict
 from generate import Generator
 from generate import Generator
+from pprint import pprint
 
 config = dotdict()
 config.algorithm = "sequential_merge_fast"
@@ -42,13 +43,17 @@ config.logfile = f"{label}.log"
 def is_sorted(l):
     return all(l[i] <= l[i + 1] for i in range(len(l) - 1))
 
-if config.benchmark:
-    StopWatch.start(f"{label}-total")
 
 comm = MPI.COMM_WORLD
 size = comm.Get_size()
 rank = comm.Get_rank()
 status = MPI.Status()
+
+if config.benchmark and rank == 0:
+    pprint(config)
+
+    StopWatch.start(f"{label}-total")
+
 
 def sequential_merge_python(a, b, l, m, r):
     h = l
@@ -160,10 +165,14 @@ while height >= 1:
             print(f"LOCAL REMAIN: {local_remain}")
     height = height / 2
 
-if rank == 0:
+# get finish msg form each worker on rank 0 and only then continue
+
+
+if config.benchamrk and rank == 0:
     StopWatch.stop(f"{label}-total")
     StopWatch.benchmark(user=config.user, node=config.node, sysinfo=False)
 
     print("SIZE OF ARRAY:", config.n)
     print("IS SORTED:", is_sorted(local_arr))
-    # print(f"SORTED ARRAY: {local_arr}")
+
+# MPI.Finalize()
