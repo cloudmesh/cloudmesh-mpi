@@ -1536,10 +1536,11 @@ $ python click-parameter.py --n=3
 
 # SLURM
 
-In case you run long running jobs it is often useful to have access to a batch queuing system. 
+In case you run long running jobs, it is often useful to have access to a batch queuing system. 
 Such a batch queue enables one to submit the jobs to a queue nd they are scheduled for execution 
 based on a sceheduling policy. One such framework is SLURM. We describe how to use mpi4py from a 
-batch queueing system with SLURM. 
+batch queueing system with SLURM.
+
 Slurm stands for **S**imple **L**inux **U**tility for **R**esource **M**anagement. 
 It is an open-source job scheduler for a compute cluster to carry out tasks 
 efficiently and in a particular order while using the cluster's resources. SLURM
@@ -1601,40 +1602,38 @@ machine can be used to `ssh` into each of the Pis.
 To install it, use the command:
 
 ```bash
-cms slurm pi install as host --hosts=red,red0[1-3] --mount=//dev//sda
+(ENV3) you@yourlaptop $ cms slurm pi install as host --hosts=red,red0[1-4]
 ```
 
-The mount parameter is meant to have double slashes no matter the OS of the host.
+The `--hosts` parameter needs to include the hostnames of your
+cluster, including manager and workers, separated by comma using a
+parameterized naming scheme.
 
-The `--hosts` parameter needs to include the hostnames of your cluster, including
-manager and workers, separated by comma using a parameterized naming scheme.
+The user can also specify a `--partition` parameter, as in
+`--partition=mycluster`, to personalize the name of the partition.
 
-The `--mount` parameter points to the mount place of your USB,
-inserted in the top-most blue USB3.0 port (on Pi 4's) on your manager PI. 
+The command will take a long time to finish. It may appear to not
+progress at certain points, but please be patient. However they will
+last hopefully not longer than 45 minutes. The reason this takes such
+a long time is that at time of writing of this tutorial, the prebuilt
+SLURM packages did not work, so we compile it from source.
 
-WARNING: This USB drive ***will be formatted*** and all data on it will be erased.
+Once the script completes, you can check if SLURM is installed by
+issuing on the manager:
 
-The command will take a long time to finish. It may appear to not progress 
-at certain points, but please be patient. However they will last hopefully not longer 
-than 45 minutes. The reason this takes such a long time is that at time of writing 
-of this tutorial, the prebuilt SLURM
-packages did not work, so we compile it from source.
-
-Once the script completes, you can check if SLURM is installed by issuing
-on the manager:
-
-`srun --nodes=3 hostname`
+`(ENV3) pi@red:~ $ srun --nodes=4 hostname`
 
 and replacing the `--nodes` parameter with the number of workers.
 
 You will see an output similar to
 
 ```bash
-(ENV3) pi@red:~ $ srun --nodes=3 hostname
+(ENV3) you@yourlaptop $ ssh red
+(ENV3) pi@red:~ $ srun --nodes=4 hostname
 red01
 red02
 red03
-(ENV3) pi@red:~ $
+red04
 ```
 
 The nodes may be out of order. That is okay and normal.
@@ -1691,33 +1690,31 @@ The slurm command should appear in the list.
 Run this command to begin SLURM installation:
 
 ```bash
-pi@red:~/cm/cloudmesh-slurm $ cms slurm pi install --workers=red0[1-3] --mount=/dev/sda
+pi@red:~/cm/cloudmesh-slurm $ cms slurm pi install --workers=red0[1-4]
 ```
 
+The user can also specify a `--partition` parameter, as in
+`--partition=mycluster`, to personalize the name of the partition.
+
 The user must `ssh` back into the manager after the cluster reboots
-and perform the last command (cms slurm pi install...)  3 more
+and perform the last command (cms slurm pi install...) 3 more
 times. The script will inform the user when this is no longer
 necessary and SLURM is fully installed.
 
-Notice this method does not need two forward slashes in `--mount`
-because it is done on Raspberry Pi OS and not Windows. It can only
-be done on Raspberry Pi OS because the method is purposefully
-done on the manager Pi, to begin with.
-
 You can check if SLURM is installed by issuing on the manager:
 
-`srun --nodes=3 hostname`
+`srun --nodes=4 hostname`
 
 and replacing the `--nodes` parameter with the number of workers.
 
 You will see an output similar to
 
 ```bash
-(ENV3) pi@red:~ $ srun --nodes=3 hostname
+(ENV3) pi@red:~ $ srun --nodes=4 hostname
 red01
 red02
 red03
-(ENV3) pi@red:~ $
+red04
 ```
 
 The nodes may be out of order. That is okay and normal.
@@ -1737,7 +1734,7 @@ and workers listed as the same hostname. In the following example,
 `red` is the single-node.
 
 ```bash
-cms slurm pi install as host --hosts=red,red --mount=//dev//sda
+cms slurm pi install as host --hosts=red,red
 ```
 
 ## MPI Example
@@ -1752,10 +1749,10 @@ after `--n` to the number of nodes):
 
 ```bash
 (ENV3) you@yourhostcomputer $ ssh red
-pi@red:~ $ cms slurm pi example --n=3
+pi@red:~ $ cms slurm pi example --n=4
 ```
 
-This `cms slurm` command runs `salloc -N 3 mpiexec python -m mpi4py.bench helloworld`
+This `cms slurm` command runs `salloc -N 4 mpiexec python -m mpi4py.bench helloworld`
 but the number after `-N` is altered to whatever is input for the `--n` parameter.
 Do not run the `salloc` command. It is unnecessary when we have already implemented
 it within the aforementioned `cms slurm pi example` command. It is just listed here
@@ -1763,11 +1760,12 @@ for reference.
 The output will be similar to:
 
 ```bash
-pi@red:~ $ cms slurm pi example --n=3
+pi@red:~ $ cms slurm pi example --n=4
 salloc: Granted job allocation 17
-Hello, World! I am process 0 of 3 on red01.
-Hello, World! I am process 1 of 3 on red02.
-Hello, World! I am process 2 of 3 on red03.
+Hello, World! I am process 0 of 4 on red01.
+Hello, World! I am process 1 of 4 on red02.
+Hello, World! I am process 2 of 4 on red03.
+Hello, World! I am process 3 of 4 on red04.
 salloc: Relinquishing job allocation 17
 ```
 

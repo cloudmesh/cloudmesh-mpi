@@ -4,6 +4,7 @@ import os
 import click
 from cloudmesh.common.util import banner
 
+# take in user input
 @click.command()
 @click.option(
     '--log',
@@ -17,6 +18,10 @@ from cloudmesh.common.util import banner
     default=None,
     help="node name for the stopwatch timer")
 @click.option(
+    '--sort',
+    default="mpi_mergesort",
+    help="sorting function to run and analyze")
+@click.option(
     '--size',
     default="100",
     help="size of array to be sorted as a comma separated string without spaces: 100,200")
@@ -24,7 +29,11 @@ from cloudmesh.common.util import banner
     '--repeat',
     default="10",
     help="repeat the experiment the specified number of times")
-def run(log, user, node, size, repeat):
+@click.option(
+    '--id',
+    default=0,
+    help="specify which merge sort to use")
+def run(log, user, node, sort, size, repeat, id):
     """
     :param log: data is storted in log file
     :type log: string
@@ -35,31 +44,23 @@ def run(log, user, node, size, repeat):
     :return: none
     :rtype: none
     """
-    if log is None:
-        log = f"log/{node}-{user}-{size}.log"
+    # logfile name - where output will be stored
+    log = f"log/{sort}-{node}-{user}-{id}-{size}.log"
 
-    repeat = int(repeat)
-    sizes = size.split(",")
-    sizes = [int(x) for x in sizes]
     # run experiment.py to generate data from specified sort {sort}
     # data is stored in specified log file {log}
     # default size of array to be sorted is 100
 
-    os.remove(log)
+    if os.path.exists(log):
+        os.remove(log)
     os.system(f"touch {log}")
-    for size in sizes:
-        for i in range(int(repeat)):
-            command = \
-                f'SIZE={size} REPEAT={i} mpiexec -n 4 python night.py | tee -a {log}'
-            banner(command)
-            os.system(command)
-
-    ## run analysis.py on data generated from experiment.py
-    ## currently outputs graph of processes and time
-    # run_analysis = f"python ./analysis.py --log={log} --size={size} --sort={sort}"
-    # banner(run_analysis)
-    # os.system(run_analysis)
-
+    # command to run mpi_experiment.py with given user input
+    run_experiment = \
+        f'./mpi_experiment.py --log={log} --size={size} --id={id} --user={user} --node={node} --repeat={repeat} --sort={sort} | tee {log}'
+    # print command
+    banner(run_experiment)
+    # run command
+    os.system(run_experiment)
 
 if __name__ == '__main__':
     run()

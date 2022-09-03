@@ -1,0 +1,78 @@
+Starting experiment
+Log:       log/mpi_mergesort-2400MHz-alex-1-1000000.log
+Processes: [4]
+Size:      [1000000]
+Repeat:    10
+Clear:     False
+Debug:     False
+Algorithm: mpi_mergesort
+ID:        1
+Tag:       None
+Total:     10
+Experiment 9         : size=1000000 processes=4 id=1 repeat=0 last_time=undefined                     
+[0m[0m[0m[0mExperiment 8         : size=1000000 processes=4 id=1 repeat=1 last_time=2.1062                     
+[0m[0m[0m[0mExperiment 7         : size=1000000 processes=4 id=1 repeat=2 last_time=2.0952                     
+[0m[0m[0m[0mExperiment 6         : size=1000000 processes=4 id=1 repeat=3 last_time=2.2881                     
+[0m[0m[0m[0mExperiment 5         : size=1000000 processes=4 id=1 repeat=4 last_time=2.2419                     
+[0m[0m[0m[0mExperiment 4         : size=1000000 processes=4 id=1 repeat=5 last_time=2.1134                     
+[0m[0m[0m[0mExperiment 3         : size=1000000 processes=4 id=1 repeat=6 last_time=2.017                     
+[0m[0m[0m[0mExperiment 2         : size=1000000 processes=4 id=1 repeat=7 last_time=2.099                     
+[0m[0m[0m[0mExperiment 1         : size=1000000 processes=4 id=1 repeat=8 last_time=2.133                     
+[0m[0m[0m[0mExperiment 0         : size=1000000 processes=4 id=1 repeat=9 last_time=2.1088                     
+[0m[0m[0m[0m
++------------------+--------------------------------------------------------------------------------------------------+
+| Attribute        | Value                                                                                            |
+|------------------+--------------------------------------------------------------------------------------------------|
+| cpu              | Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz                                                         |
+| cpu_cores        | 6                                                                                                |
+| cpu_count        | 12                                                                                               |
+| cpu_threads      | 12                                                                                               |
+| frequency        | scpufreq(current=2600, min=2600, max=2600)                                                       |
+| mem.active       | 13.2 GiB                                                                                         |
+| mem.available    | 13.8 GiB                                                                                         |
+| mem.free         | 364.7 MiB                                                                                        |
+| mem.inactive     | 13.4 GiB                                                                                         |
+| mem.percent      | 56.9 %                                                                                           |
+| mem.total        | 32.0 GiB                                                                                         |
+| mem.used         | 17.1 GiB                                                                                         |
+| mem.wired        | 3.9 GiB                                                                                          |
+| platform.version | 12.4                                                                                             |
+| python           | 3.10.5 (v3.10.5:f377153967, Jun  6 2022, 12:36:10) [Clang 13.0.0 (clang-1300.0.29.30)]           |
+| python.pip       | 22.1.2                                                                                           |
+| python.version   | 3.10.5                                                                                           |
+| sys.platform     | darwin                                                                                           |
+| uname.machine    | x86_64                                                                                           |
+| uname.node       | 2400MHz                                                                                          |
+| uname.processor  | i386                                                                                             |
+| uname.release    | 21.5.0                                                                                           |
+| uname.system     | Darwin                                                                                           |
+| uname.version    | Darwin Kernel Version 21.5.0: Tue Apr 26 21:08:22 PDT 2022; root:xnu-8020.121.3~4/RELEASE_X86_64 |
+| user             | alex                                                                                             |
++------------------+--------------------------------------------------------------------------------------------------+
+
++---------------------------------------------+----------+--------+-------+---------------------+-------+-------+---------+--------+--------+-----------+
+| Name                                        | Status   |   Time |   Sum | Start               | tag   | msg   | Node    | User   | OS     |   Version |
+|---------------------------------------------+----------+--------+-------+---------------------+-------+-------+---------+--------+--------+-----------|
+| BL-UITS-NWLT005_mpi_mergesort_4_1000000_1_0 | ok       |  2.106 | 2.106 | 2022-08-26 02:24:05 |       |       | 2400MHz | alex   | Darwin |      12.4 |
+| BL-UITS-NWLT005_mpi_mergesort_4_1000000_1_1 | ok       |  2.095 | 2.095 | 2022-08-26 02:24:08 |       |       | 2400MHz | alex   | Darwin |      12.4 |
+| BL-UITS-NWLT005_mpi_mergesort_4_1000000_1_2 | ok       |  2.288 | 2.288 | 2022-08-26 02:24:11 |       |       | 2400MHz | alex   | Darwin |      12.4 |
+| BL-UITS-NWLT005_mpi_mergesort_4_1000000_1_3 | ok       |  2.242 | 2.242 | 2022-08-26 02:24:14 |       |       | 2400MHz | alex   | Darwin |      12.4 |
+| BL-UITS-NWLT005_mpi_mergesort_4_1000000_1_4 | ok       |  2.113 | 2.113 | 2022-08-26 02:24:17 |       |       | 2400MHz | alex   | Darwin |      12.4 |
+| BL-UITS-NWLT005_mpi_mergesort_4_1000000_1_5 | ok       |  2.017 | 2.017 | 2022-08-26 02:24:19 |       |       | 2400MHz | alex   | Darwin |      12.4 |
+| BL-UITS-NWLT005_mpi_mergesort_4_1000000_1_6 | ok       |  2.099 | 2.099 | 2022-08-26 02:24:22 |       |       | 2400MHz | alex   | Darwin |      12.4 |
+| BL-UITS-NWLT005_mpi_mergesort_4_1000000_1_7 | ok       |  2.133 | 2.133 | 2022-08-26 02:24:25 |       |       | 2400MHz | alex   | Darwin |      12.4 |
+| BL-UITS-NWLT005_mpi_mergesort_4_1000000_1_8 | ok       |  2.109 | 2.109 | 2022-08-26 02:24:28 |       |       | 2400MHz | alex   | Darwin |      12.4 |
+| BL-UITS-NWLT005_mpi_mergesort_4_1000000_1_9 | ok       |  2.208 | 2.208 | 2022-08-26 02:24:30 |       |       | 2400MHz | alex   | Darwin |      12.4 |
++---------------------------------------------+----------+--------+-------+---------------------+-------+-------+---------+--------+--------+-----------+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,BL-UITS-NWLT005_mpi_mergesort_4_1000000_1_0,ok,2.106,2.106,2022-08-26 02:24:05,,None,2400MHz,alex,Darwin,12.4
+# csv,BL-UITS-NWLT005_mpi_mergesort_4_1000000_1_1,ok,2.095,2.095,2022-08-26 02:24:08,,None,2400MHz,alex,Darwin,12.4
+# csv,BL-UITS-NWLT005_mpi_mergesort_4_1000000_1_2,ok,2.288,2.288,2022-08-26 02:24:11,,None,2400MHz,alex,Darwin,12.4
+# csv,BL-UITS-NWLT005_mpi_mergesort_4_1000000_1_3,ok,2.242,2.242,2022-08-26 02:24:14,,None,2400MHz,alex,Darwin,12.4
+# csv,BL-UITS-NWLT005_mpi_mergesort_4_1000000_1_4,ok,2.113,2.113,2022-08-26 02:24:17,,None,2400MHz,alex,Darwin,12.4
+# csv,BL-UITS-NWLT005_mpi_mergesort_4_1000000_1_5,ok,2.017,2.017,2022-08-26 02:24:19,,None,2400MHz,alex,Darwin,12.4
+# csv,BL-UITS-NWLT005_mpi_mergesort_4_1000000_1_6,ok,2.099,2.099,2022-08-26 02:24:22,,None,2400MHz,alex,Darwin,12.4
+# csv,BL-UITS-NWLT005_mpi_mergesort_4_1000000_1_7,ok,2.133,2.133,2022-08-26 02:24:25,,None,2400MHz,alex,Darwin,12.4
+# csv,BL-UITS-NWLT005_mpi_mergesort_4_1000000_1_8,ok,2.109,2.109,2022-08-26 02:24:28,,None,2400MHz,alex,Darwin,12.4
+# csv,BL-UITS-NWLT005_mpi_mergesort_4_1000000_1_9,ok,2.208,2.208,2022-08-26 02:24:30,,None,2400MHz,alex,Darwin,12.4
+
