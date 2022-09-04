@@ -5,6 +5,47 @@ algorithm.
 
 Packages used: Numpy, Pandas, Seaborn, Matplot
 
+## Proposed Outline
+
+- define outline
+- Preface
+  - Acknowledgement
+  - Bookmanager
+- Introduction
+  - What this is doing
+  - Why it matters
+  - Related Research
+    - List references
+    - Explain what others have done
+- Installation
+  - Python virtual environment
+  - Installation of mpi4py
+  - Installation of NumPy and Jax
+  - Cloudmesh
+    - Cloudmesh.StopWatch
+- Sequential sorting
+  - Overview of sequential sorting algorithms
+  - Algorithms/implementations
+    - Sequential merge sort
+    - Insertion sort
+    - Bubble sort
+    - Quick sort
+- Parallel sorting
+  - Related algorithms
+    - Bitonic sort
+  - Multiprocessing merge sort
+  - MPI merge sort
+    - MPI builtin merge sort
+    - MPI sequential merge sort
+    - MPI adaptive merge sort
+      - One way bitonic sort?
+- Sorting on GPU
+  - Jax NumPy
+- Performance comparision
+- Visualization
+  - Automated Jupyter notebooks for performance comparison
+- Conclusion
+
 ## Source Code
 
 The source code is located in GitHub at the following location:
