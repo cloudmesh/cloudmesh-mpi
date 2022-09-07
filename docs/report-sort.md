@@ -1,11 +1,4 @@
-# MPI Mergesort
-
-This project implements an MPI (Message Passing Interface) mergesort
-algorithm.
-
-Packages used: Numpy, Pandas, Seaborn, Matplot
-
-## Proposed Outline
+# Proposed Outline
 
 - define outline
 - Preface
@@ -45,6 +38,26 @@ Packages used: Numpy, Pandas, Seaborn, Matplot
 - Visualization
   - Automated Jupyter notebooks for performance comparison
 - Conclusion
+
+# Preface
+
+# Introduction
+
+# Installation
+
+# Sequential Sorting
+
+# Parallel Sorting
+
+# Sorting on GPU
+
+# Performance Comparison
+
+# Visualization
+
+# Conclusion
+
+
 
 ## Source Code
 
