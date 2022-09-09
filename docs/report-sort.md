@@ -47,7 +47,77 @@
 
 # Sequential Sorting
 
+## Recursive Merge Sort
+
+Recursive merge sort is a standard example of a divide-and-conquer algorithm. The algorithm can be split into two parts: splitting and merging. 
+
+Merging describes the merging of two sorted lists into one sorted list. Two ways of doing so are described below. 
+
+**Method 1: Iterative Method**
+
+Assign indexes to the beginning of each array. Check for the smaller of each element at the current index and add it to the end of the sorted list. Increment the index of the list whose number was found. Once one array is empty, we can simply append the other one onto the end of the sorted list. 
+
+```python
+# python3 code to demonstrate merging two sorted lists using the iterative method
+
+right = [1, 2, 6, 7, 15]
+left = [3, 4, 5, 8, 13]
+
+res = []
+# left and right indexes
+i, j = 0, 0
+
+while i < len(left) and j < len(right):
+    # find the smallest value at either index 
+    # and append it to the sorted list
+	if left[i] < right[j]:
+        res.append(left[i])
+        i += 1
+	else:
+        res.append(right[j])
+        j += 1
+
+# at least one array is empty
+# append both onto the end of the sorted list
+res = res + left[i:] + right[j:]
+```
+**Method 2: Using *sorted()***
+
+By using the built-in Python function *sorted()*, we can merge the two lists in one line. 
+
+```python
+right = [1, 2, 6, 7, 15]
+left = [3, 4, 5, 8, 13]
+
+# concatenate and sort
+res = sorted(left + right)
+```
+
+Once we can merge two sorted arrays, the rest of mergesort follows as such:
+
+Given an array of length n, 
+1. If n > 1, divide the array into two halves, or subarrays;
+2. Use mergesort to sort each of the two subarrays;
+3. Merge the two sorted subarrays into one sorted array.
+
+```python
+def sequential_mergesort(array):
+    n = len(arr)
+    if n > 1:
+        left = array[:n / 2]
+        right = array[n / 2:]
+
+        sequential_mergesort(left)
+        sequential_mergesort(right)
+
+        merge(left, right)
+```
+
+A variant on this approach is to 
+small arrays greater than size 1, use antoehr sort to sort and then merge
 # Parallel Sorting
+
+Parallel programming describes breaking down a task into smaller subtasks that can be run simultaneously. 
 
 # Sorting on GPU
 
