@@ -153,7 +153,7 @@ Parallel programming describes breaking down a task into smaller subtasks that c
 
 The theory of merge sort parallelization has been studied in the past. Cole (1998) presents a parallel implementation of the merge sort algorithm with O(log n) time complexity on a CREW PRAM, a shared memory abstract machine which neglects synchronization and communication, but provides any number of processors. Furthermore, Jeon and Kim (2002) explore a load-balanced merge sort that evenly distributes data to all processors in each stage. They achieve a speedup of 9.6 compared to a sequential merge sort on a Cray T3E with their algorithm. 
 
-On MPI, Randenski (2011) describes three parallel merge sorts: shared memory merge sort with OpenMP, message passing merge sort with MPI, and a hybrid merge sort that uses both OpenMP and MPI. 
+On MPI, Randenski (2011) describes three parallel merge sorts: shared memory merge sort with OpenMP, message passing merge sort with MPI, and a hybrid merge sort that uses both OpenMP and MPI. They conclude that the shared memory merge sort runs faster than the message-passsing merge sort. The hybrid merge sort, while slower than the shared memory merge sort, is faster than message-passing merge sort. However, they also mention that these relations may not hold for very large arrays that significantly exceed RAM capacity. 
 
 https://www.researchgate.net/publication/220091378_Parallel_Merge_Sort_with_Load_Balancing 
 
