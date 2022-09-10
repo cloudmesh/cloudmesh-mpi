@@ -10,7 +10,7 @@ Raspberry Pis.
 
 This tutorial will use a cluster of four Raspberry Pi 4 Model B computers running Raspbian OS 10 (codename buster). We 
 use 64 GB SD cards on each of the Pis. In addition, we also use a single USB stick connected to the manager Pi, which 
-serves as shared storage between all of the Pis. This USB stick can be a standard flash drive, a USB SD card adapter 
+serves as shared storage between all the Pis. This USB stick can be a standard flash drive, a USB SD card adapter 
 with an SD card inside, or it can even be replaced by a NAS box connected to the network. All that matters is that it 
 must be mountable, and it must be greater than 34 MB so we can share the configuration files.  For simplicity, we use 
 a USB card or dongle with 8GB and ensure we do not run out of space. We must also have a power supply to power these 
@@ -42,100 +42,7 @@ the user must enter the workers naming schema accordingly. For example, someone 
 
 ## 3. Installation
 
-Next, we will complete the setup, which uses the following steps:
-(a) verify the cluster setup
-(b) prepare the shared file space and make them accessible to the workers
-(c) install and run Slurm.
-
-### 3.1 Verify Proper Cluster Setup
-
-Turn on your Pis and wait for them to boot. To be sure that `cms` is installed properly from the burn tutorial, issue this command in Git
-Bash on the host computer:
-
-```bash
-(ENV3) you@yourhostcomputer $ eval `ssh-agent`
-(ENV3) you@yourhostcomputer $ eval `ssh-add`
-```
-
-Enter your ssh password and then issue the command:
-
-```bash
-(ENV3) you@yourhostcomputer $ cms pi temp "red,red0[1-3]"
-pi temp red,red0[1-3]
-+--------+--------+-------+----------------------------+
-| host   |    cpu |   gpu | date                       |
-|--------+--------+-------+----------------------------|
-| red    | 50.147 |  50.6 | 2021-10-10 20:27:49.670815 |
-| red01  | 48.686 |  49.1 | 2021-10-10 20:27:48.991141 |
-| red02  | 50.147 |  50.6 | 2021-10-10 20:27:49.007155 |
-| red03  | 55.017 |  55   | 2021-10-10 20:27:52.193808 |
-+--------+--------+-------+----------------------------+
-Timer: 5.9208s Load: 0.2612s pi temp red,red0[1-3]
-```
-
-If some of the temperatures are 0 (zero), then there is likely an issue with connecting to
-one of the Pis; if so, we suggest you reburn using the tutorials in the Preparation section of this tutorial.
-
-### 3.2 Download and Run Scripts
-
-ssh into the manager node (in our case, `red`) via this command:
-
-```bash
-(ENV3) you@yourhostcomputer $ ssh red
-```
-
-Now download and run the script (make sure that cloudmesh is installed on the Pi, perhaps by following this tutorial: <https://cloudmesh.github.io/pi/tutorial/raspberry-burn-windows/#64-installing-cms-on-a-pi>):
-
-```bash
-(ENV3) pi@red:~ $ curl -L https://raw.githubusercontent.com/cloudmesh/get/main/pi/slurm/index.html --output slurm.py
-(ENV3) pi@red:~ $ python3 slurm.py
-```
-
-The first step will prompt the user to input the worker Pis' naming schema. For example, if the setup has three workers named `red01`, `red02`, and so on, then the user would input `red0[1-3]`. Then the script will install needed packages such as ntpdate and reboot at the end. Once the reboot is executed,
-wait two minutes for the cluster to come back online, ssh into manager again, and rerun script:
-
-```bash
-(ENV3) you@yourhostcomputer $ ssh red
-(ENV3) pi@red:~ $ python3 slurm.py
-```
-
-This will run the second step, which will prompt the user to insert a blank USB in the top, blue USB3.0 port
-of the manager Pi. The user must also input the correct path to the USB from the list shown. Then, the script will format the USB.
-**Everything on the USB will be deleted. Make sure there is nothing important on it.**
-The script will create a shared file system with the USB for all of the Pis.
-
-Furthermore, step 2 retrieves the UUID of the USB and edits system config files so it mounts on boot. It also downloads
-the packages for nfs server and points the workers to the private IP address of the manager, where the nfs is located.
-
-After reboot completes, ssh into manager again and rerun script:
-
-```bash
-(ENV3) you@yourhostcomputer $ ssh red
-(ENV3) pi@red:~ $ python3 slurm.py
-```
-
-This will run the third step, which starts the nfs service and uses the nfs to copy Slurm configuration files which
-are already set up with the list of workers (red01, red02, red03) and the manager (red). This step also starts
-munge (slurm's authentication service) and slurm services.
-
-After reboot completes, ssh into manager again and rerun script for the last step:
-
-```bash
-(ENV3) you@yourhostcomputer $ ssh red
-(ENV3) pi@red:~ $ python3 slurm.py
-```
-
-Step 4 copies the munge key and reboots the cluster. 
-
-`ssh` back into the manager Pi and try to run slurm by issuing command `srun --nodes=3 hostname` (or the number for --nodes can be changed according to the number of workers). If slurm runs successfully, the output should have the names of the workers, in any order:
-
-```bash
-red02
-red01
-red03
-```
-
-If this does not happen, wait a few seconds in case the other nodes are still booting. Once they become available, SLURM should detect the newly allocated resources and proceed with printing the hostnames. This may take a minute.
+The installation manual can be found at <https://github.com/cloudmesh/cloudmesh-slurm#10-installation>
 
 ## 4. Using SLURM
 
