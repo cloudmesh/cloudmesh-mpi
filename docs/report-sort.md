@@ -113,8 +113,34 @@ def sequential_mergesort(array):
         merge(left, right)
 ```
 
-A variant on this approach is to 
-small arrays greater than size 1, use antoehr sort to sort and then merge
+A variant on this approach is to stop splitting the array once the size of the subarrays gets small enough. Once the subarrays get small enough, it may become more efficient to use other methods of sorting them, like the built-in Python *sorted()* function instead of recursing all the way down to size 1. 
+
+
+```python
+def sequential_mergesort(array):
+    n = len(arr)
+    if n < SMALLEST_ARRAY_SIZE:
+        array = sorted(array)
+        return
+        
+    left = array[:n / 2]
+    right = array[n / 2:]
+
+    sequential_mergesort(left)
+    sequential_mergesort(right)
+
+    merge(left, right)
+```
+
+| Sort           | Average Time Complexity | Best Time Complexity | Worst Time Complexity |
+|----------------|-------------------------|----------------------|-----------------------|
+| Bubble sort    | O(n^2)                  | O(n)                 | O(n^2)                |
+| Insertion sort | O(n^2)                  | O(n)                 | O(n^2)                |
+| Selection sort | O(n^2)                  | O(n^2)               | O(n^2)                |
+| Heap sort      | O(nlogn)                | O(nlogn)             | O(nlogn)              |
+| Quick sort     | O(nlogn)                | O(nlogn)             | O(nlogn)              |
+| Merge sort     | O(nlogn)                | O(nlogn)             | O(nlogn)              |
+
 # Parallel Sorting
 
 Parallel programming describes breaking down a task into smaller subtasks that can be run simultaneously. 
