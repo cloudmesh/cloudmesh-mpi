@@ -132,6 +132,10 @@ def sequential_mergesort(array):
     merge(left, right)
 ```
 
+The average time complexity of classic merge sort is O(n logn), which is the same as quick sort and heap sort. Additionally, the best and worst case time complexity of merge sort is also O(n log n), which is the also same as quick sort and heap sort. As a result, classical merge sort is generally unaffected by factors in the initial array. 
+
+However, classical merge sort uses O(n) space, since additional memory is required when merging. Quicksort also has this space complexity, while heap sort takes O(1) space, since it is an in-place method with no other memory requirements. 
+
 | Sort           | Average Time Complexity | Best Time Complexity | Worst Time Complexity |
 |----------------|-------------------------|----------------------|-----------------------|
 | Bubble sort    | O(n^2)                  | O(n)                 | O(n^2)                |
@@ -143,7 +147,86 @@ def sequential_mergesort(array):
 
 # Parallel Sorting
 
-Parallel programming describes breaking down a task into smaller subtasks that can be run simultaneously. 
+Parallel programming describes breaking down a task into smaller subtasks that can be run simultaneously. Since merge sort is a classic and well-known example of the divide-and-conquer approach, we use merge sort as a test method to explore parallelization methods that may be generalizable to other divide-and-conquer methods. 
+
+## Related Research
+
+The theory of merge sort parallelization has been studied in the past. Cole (1998) presents a parallel implementation of the merge sort algorithm with O(log n) time complexity on a CREW PRAM, a shared memory abstract machine which neglects synchronization and communication, but provides any number of processors. Furthermore, Jeon and Kim (2002) explore a load-balanced merge sort that evenly distributes data to all processors in each stage. They achieve a speedup of 9.6 compared to a sequential merge sort on a Cray T3E with their algorithm. 
+
+On MPI, Randenski (2011) describes three parallel merge sorts: shared memory merge sort with OpenMP, message passing merge sort with MPI, and a hybrid merge sort that uses both OpenMP and MPI. 
+
+https://www.researchgate.net/publication/220091378_Parallel_Merge_Sort_with_Load_Balancing 
+
+http://www.inf.fu-berlin.de/lehre/SS10/SP-Par/download/parmerge1.pdf
+
+https://charm.cs.illinois.edu/newPapers/09-10/paper.pdf
+
+
+## Multiprocessing Merge Sort
+
+*multiprocessing* is a package that supports, on Windows and Unix, programming using multiple processors on a given machine. Python's Global Interpreter Lock (GIL) only allows one thread to be run at a time under the interpreter, which means multithreading cannot be used when the Python interpreter is required. However, the *multiprocessing* package side-steps this issue by using subprocesses instead of threads. Because each process has its own interpreter with a separate GIL that carries out its given instructions, multiple processes can be run in parallel. 
+
+The docs for the *multiprocessing* package can be read [here](https://docs.python.org/3/library/multiprocessing.html). 
+
+### Overview
+
+We use Python to implement a multiprocessing mergesort algorithm (linked [here](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/multiprocessing_mergesort.py)). The algorithm is then run and evaluated in [sandra.ipynb](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/sandra.ipynb). 
+
+### Algorithm
+
+We define a merge function that supports explicit left/right arguments, as well as a two-item tuple, which works more cleanly with multiprocessing. We also define a classic merge sort that splits the array into halves, sorts both halves recursively, and then merges them back together. 
+
+Once both are defined, we can then use multiprocessing to sort the array.
+
+First, we get the number of processes and create a pool of worker processes, one per CPU core. 
+
+```python
+processes = multiprocessing.cpu_count()
+pool = multiprocessing.Pool(processes=processes)
+```
+
+Then, we split the intial given array into subarrays, sized equally per process, and perform a regular merge sort on each subarray. Note that all merge sorts are performed concurrently, as each subarray has been mapped to an idividual process.  
+
+```python
+size = int(math.ceil(float(len(data)) / processes))
+data = [data[i * size:(i + 1) * size] for i in range(processes)]
+data = pool.map(merge_sort, data)
+```
+
+Each subarray is now sorted. Now, we merge pairs of these subarrays together using the worker pool, until the subarrays are reduced down to a single sorted result. 
+
+```python
+while len(data) > 1:
+    extra = data.pop() if len(data) % 2 == 1 else None
+    data = [(data[i], data[i + 1]) for i in range(0, len(data), 2)]
+    data = pool.map(merge, data) + ([extra] if extra else [])
+```
+
+If the number of subarrays left is odd, we pop off the last one and append it back after one iteration of the loop, since we're only interested in merging pairs of subarrays. 
+
+Entirely, the parallel merge sort looks like this:
+
+```python
+def merge_sort_parallel(data):
+    processes = multiprocessing.cpu_count()
+    pool = multiprocessing.Pool(processes=processes)
+
+    size = int(math.ceil(float(len(data)) / processes))
+    data = [data[i * size:(i + 1) * size] for i in range(processes)]
+    data = pool.map(merge_sort, data)
+
+    while len(data) > 1:
+        extra = data.pop() if len(data) % 2 == 1 else None
+        data = [(data[i], data[i + 1]) for i in range(0, len(data), 2)]
+        data = pool.map(merge, data) + ([extra] if extra else [])
+
+    return data[0]
+```
+## MPI Merge Sort
+
+MPI for Python, also known as mpi4py, is an object oriented approach to message passing in Python. It closely follows the MPI-2 C++ bindings. 
+
+[Linked](https://mpi4py.readthedocs.io/en/stable/index.html)
 
 # Sorting on GPU
 
