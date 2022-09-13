@@ -73,7 +73,7 @@ def run(p, t, log, user, node, sort, size, repeat):
         n = "t"
 
     if log is None:
-        log = f"log/{node}-{user}-{size}.log"
+        log = f"log/{sort}-{node}-{user}-{size}.log"
 
     # run experiment.py to generate data from specified sort {sort}
     # data is stored in specified log file {log}
