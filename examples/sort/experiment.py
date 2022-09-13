@@ -17,6 +17,9 @@ def get_sort_by_name(name="multiprocessing_mergesort"):
     if name in ["mp-mergesort", "multiprocessing_mergesort"]:
         from multiprocessing_mergesort import multiprocessing_mergesort
         return multiprocessing_mergesort
+    elif name in ["seq-merge", "sequential_merge", "sequential_mergesort"]:
+        from sequential.mergesort import merge_sort
+        return merge_sort
     else:
         return None
 
