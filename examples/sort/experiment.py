@@ -111,8 +111,12 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
         if not c:
             return ""
 
-    p = psutil.cpu_count(logical=False)
-    t = psutil.cpu_count()
+    if sort in ["mp-mergesort", "multiprocessing_mergesort"]:
+        p = psutil.cpu_count(logical=False)
+        t = psutil.cpu_count()
+    else:
+        p = 1
+        t = 1
 
     processes = processes.replace("p", str(p)).replace("t", str(t))
     processes = Parameter.expand(processes)
