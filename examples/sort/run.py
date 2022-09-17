@@ -44,7 +44,7 @@ from cloudmesh.common.util import banner
     help="sorting function to run and analyze")
 @click.option(
     '--size',
-    default="100",
+    default="[100]",
     help="size")
 @click.option(
     '--repeat',
@@ -81,7 +81,7 @@ def run(p, t, log, user, node, sort, size, repeat):
 
     run_experiment = \
         f'python ./experiment.py --user={user} --node={node} --log={log}' \
-        f' --processes="[1-{n}]" --size="[{size}]" --repeat={repeat} --sort={sort} |tee {log}'
+        f' --processes="[1-{n}]" --size="{size}" --repeat={repeat} --sort={sort} |tee {log}'
     banner(run_experiment)
     os.system(run_experiment)
 

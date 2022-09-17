@@ -1,5 +1,4 @@
 Starting experiment
-Log:       log/seq-merge-2400MHz-alex-100000.log
 Processes: [1]
 Size:      [100000]
 Repeat:    10
@@ -8,7 +7,8 @@ Debug:     False
 Algorithm: seq-merge
 Tag:       None
 Total:     10
-Experiment 9         : size=100000 processes=1 repeat=0 last_time=undefined                     Experiment 8         : size=100000 processes=1 repeat=1 last_time=0.4426                     Experiment 7         : size=100000 processes=1 repeat=2 last_time=0.4398                     Experiment 6         : size=100000 processes=1 repeat=3 last_time=0.4416                     Experiment 5         : size=100000 processes=1 repeat=4 last_time=0.4355                     Experiment 4         : size=100000 processes=1 repeat=5 last_time=0.4674                     Experiment 3         : size=100000 processes=1 repeat=6 last_time=0.4391                     Experiment 2         : size=100000 processes=1 repeat=7 last_time=0.4424                     Experiment 1         : size=100000 processes=1 repeat=8 last_time=0.4347                     Experiment 0         : size=100000 processes=1 repeat=9 last_time=0.4557                     
+Log:       log/seq-merge-2400MHz-alex-100000.log
+Experiment 9         : size=100000 processes=1 repeat=0 last_time=undefined                     Experiment 8         : size=100000 processes=1 repeat=1 last_time=0.4979                     Experiment 7         : size=100000 processes=1 repeat=2 last_time=0.5442                     Experiment 6         : size=100000 processes=1 repeat=3 last_time=0.6167                     Experiment 5         : size=100000 processes=1 repeat=4 last_time=0.4602                     Experiment 4         : size=100000 processes=1 repeat=5 last_time=0.5501                     Experiment 3         : size=100000 processes=1 repeat=6 last_time=0.5246                     Experiment 2         : size=100000 processes=1 repeat=7 last_time=0.4744                     Experiment 1         : size=100000 processes=1 repeat=8 last_time=0.4507                     Experiment 0         : size=100000 processes=1 repeat=9 last_time=0.6242                     
 +------------------+--------------------------------------------------------------------------------------------------+
 | Attribute        | Value                                                                                            |
 |------------------+--------------------------------------------------------------------------------------------------|
@@ -17,14 +17,14 @@ Experiment 9         : size=100000 processes=1 repeat=0 last_time=undefined     
 | cpu_count        | 12                                                                                               |
 | cpu_threads      | 12                                                                                               |
 | frequency        | scpufreq(current=2600, min=2600, max=2600)                                                       |
-| mem.active       | 13.3 GiB                                                                                         |
-| mem.available    | 13.6 GiB                                                                                         |
-| mem.free         | 343.7 MiB                                                                                        |
-| mem.inactive     | 13.0 GiB                                                                                         |
-| mem.percent      | 57.5 %                                                                                           |
+| mem.active       | 12.8 GiB                                                                                         |
+| mem.available    | 14.1 GiB                                                                                         |
+| mem.free         | 1.3 GiB                                                                                          |
+| mem.inactive     | 12.5 GiB                                                                                         |
+| mem.percent      | 55.9 %                                                                                           |
 | mem.total        | 32.0 GiB                                                                                         |
-| mem.used         | 18.1 GiB                                                                                         |
-| mem.wired        | 4.8 GiB                                                                                          |
+| mem.used         | 17.7 GiB                                                                                         |
+| mem.wired        | 4.9 GiB                                                                                          |
 | platform.version | 12.4                                                                                             |
 | python           | 3.10.5 (v3.10.5:f377153967, Jun  6 2022, 12:36:10) [Clang 13.0.0 (clang-1300.0.29.30)]           |
 | python.pip       | 22.1.2                                                                                           |
@@ -42,26 +42,26 @@ Experiment 9         : size=100000 processes=1 repeat=0 last_time=undefined     
 +--------------------------------------+----------+--------+-------+---------------------+-------+-------+---------+--------+--------+-----------+
 | Name                                 | Status   |   Time |   Sum | Start               | tag   | msg   | Node    | User   | OS     |   Version |
 |--------------------------------------+----------+--------+-------+---------------------+-------+-------+---------+--------+--------+-----------|
-| BL-UITS-NWLT005_seq-merge_1_100000_0 | ok       |  0.443 | 0.443 | 2022-09-15 14:39:09 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_seq-merge_1_100000_1 | ok       |  0.44  | 0.44  | 2022-09-15 14:39:09 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_seq-merge_1_100000_2 | ok       |  0.442 | 0.442 | 2022-09-15 14:39:10 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_seq-merge_1_100000_3 | ok       |  0.435 | 0.435 | 2022-09-15 14:39:10 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_seq-merge_1_100000_4 | ok       |  0.467 | 0.467 | 2022-09-15 14:39:11 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_seq-merge_1_100000_5 | ok       |  0.439 | 0.439 | 2022-09-15 14:39:11 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_seq-merge_1_100000_6 | ok       |  0.442 | 0.442 | 2022-09-15 14:39:12 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_seq-merge_1_100000_7 | ok       |  0.435 | 0.435 | 2022-09-15 14:39:13 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_seq-merge_1_100000_8 | ok       |  0.456 | 0.456 | 2022-09-15 14:39:13 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_seq-merge_1_100000_9 | ok       |  0.436 | 0.436 | 2022-09-15 14:39:14 |       |       | 2400MHz | alex   | Darwin |      12.4 |
+| BL-UITS-NWLT005_seq-merge_1_100000_0 | ok       |  0.498 | 0.498 | 2022-09-15 18:00:12 |       |       | 2400MHz | alex   | Darwin |      12.4 |
+| BL-UITS-NWLT005_seq-merge_1_100000_1 | ok       |  0.544 | 0.544 | 2022-09-15 18:00:12 |       |       | 2400MHz | alex   | Darwin |      12.4 |
+| BL-UITS-NWLT005_seq-merge_1_100000_2 | ok       |  0.617 | 0.617 | 2022-09-15 18:00:13 |       |       | 2400MHz | alex   | Darwin |      12.4 |
+| BL-UITS-NWLT005_seq-merge_1_100000_3 | ok       |  0.46  | 0.46  | 2022-09-15 18:00:14 |       |       | 2400MHz | alex   | Darwin |      12.4 |
+| BL-UITS-NWLT005_seq-merge_1_100000_4 | ok       |  0.55  | 0.55  | 2022-09-15 18:00:14 |       |       | 2400MHz | alex   | Darwin |      12.4 |
+| BL-UITS-NWLT005_seq-merge_1_100000_5 | ok       |  0.525 | 0.525 | 2022-09-15 18:00:15 |       |       | 2400MHz | alex   | Darwin |      12.4 |
+| BL-UITS-NWLT005_seq-merge_1_100000_6 | ok       |  0.474 | 0.474 | 2022-09-15 18:00:15 |       |       | 2400MHz | alex   | Darwin |      12.4 |
+| BL-UITS-NWLT005_seq-merge_1_100000_7 | ok       |  0.451 | 0.451 | 2022-09-15 18:00:16 |       |       | 2400MHz | alex   | Darwin |      12.4 |
+| BL-UITS-NWLT005_seq-merge_1_100000_8 | ok       |  0.624 | 0.624 | 2022-09-15 18:00:16 |       |       | 2400MHz | alex   | Darwin |      12.4 |
+| BL-UITS-NWLT005_seq-merge_1_100000_9 | ok       |  0.511 | 0.511 | 2022-09-15 18:00:17 |       |       | 2400MHz | alex   | Darwin |      12.4 |
 +--------------------------------------+----------+--------+-------+---------------------+-------+-------+---------+--------+--------+-----------+
 # csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
-# csv,BL-UITS-NWLT005_seq-merge_1_100000_0,ok,0.443,0.443,2022-09-15 14:39:09,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_seq-merge_1_100000_1,ok,0.44,0.44,2022-09-15 14:39:09,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_seq-merge_1_100000_2,ok,0.442,0.442,2022-09-15 14:39:10,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_seq-merge_1_100000_3,ok,0.435,0.435,2022-09-15 14:39:10,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_seq-merge_1_100000_4,ok,0.467,0.467,2022-09-15 14:39:11,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_seq-merge_1_100000_5,ok,0.439,0.439,2022-09-15 14:39:11,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_seq-merge_1_100000_6,ok,0.442,0.442,2022-09-15 14:39:12,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_seq-merge_1_100000_7,ok,0.435,0.435,2022-09-15 14:39:13,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_seq-merge_1_100000_8,ok,0.456,0.456,2022-09-15 14:39:13,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_seq-merge_1_100000_9,ok,0.436,0.436,2022-09-15 14:39:14,,None,2400MHz,alex,Darwin,12.4
+# csv,BL-UITS-NWLT005_seq-merge_1_100000_0,ok,0.498,0.498,2022-09-15 18:00:12,,None,2400MHz,alex,Darwin,12.4
+# csv,BL-UITS-NWLT005_seq-merge_1_100000_1,ok,0.544,0.544,2022-09-15 18:00:12,,None,2400MHz,alex,Darwin,12.4
+# csv,BL-UITS-NWLT005_seq-merge_1_100000_2,ok,0.617,0.617,2022-09-15 18:00:13,,None,2400MHz,alex,Darwin,12.4
+# csv,BL-UITS-NWLT005_seq-merge_1_100000_3,ok,0.46,0.46,2022-09-15 18:00:14,,None,2400MHz,alex,Darwin,12.4
+# csv,BL-UITS-NWLT005_seq-merge_1_100000_4,ok,0.55,0.55,2022-09-15 18:00:14,,None,2400MHz,alex,Darwin,12.4
+# csv,BL-UITS-NWLT005_seq-merge_1_100000_5,ok,0.525,0.525,2022-09-15 18:00:15,,None,2400MHz,alex,Darwin,12.4
+# csv,BL-UITS-NWLT005_seq-merge_1_100000_6,ok,0.474,0.474,2022-09-15 18:00:15,,None,2400MHz,alex,Darwin,12.4
+# csv,BL-UITS-NWLT005_seq-merge_1_100000_7,ok,0.451,0.451,2022-09-15 18:00:16,,None,2400MHz,alex,Darwin,12.4
+# csv,BL-UITS-NWLT005_seq-merge_1_100000_8,ok,0.624,0.624,2022-09-15 18:00:16,,None,2400MHz,alex,Darwin,12.4
+# csv,BL-UITS-NWLT005_seq-merge_1_100000_9,ok,0.511,0.511,2022-09-15 18:00:17,,None,2400MHz,alex,Darwin,12.4
 
