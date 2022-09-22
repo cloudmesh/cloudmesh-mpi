@@ -1,0 +1,84 @@
+Starting experiment
+Processes: [1]
+Size:      [100000]
+Repeat:    10
+Clear:     False
+Debug:     False
+Algorithm: seq-merge
+Tag:       None
+Total:     10
+Log:       log/seq-merge-v100-alex-100000.log
+Experiment 9         : size=100000 processes=1 repeat=0 last_time=undefined                     Experiment 8         : size=100000 processes=1 repeat=1 last_time=0.4246                     Experiment 7         : size=100000 processes=1 repeat=2 last_time=0.4247                     Experiment 6         : size=100000 processes=1 repeat=3 last_time=0.4353                     Experiment 5         : size=100000 processes=1 repeat=4 last_time=0.421                     Experiment 4         : size=100000 processes=1 repeat=5 last_time=0.4216                     Experiment 3         : size=100000 processes=1 repeat=6 last_time=0.4408                     Experiment 2         : size=100000 processes=1 repeat=7 last_time=0.4334                     Experiment 1         : size=100000 processes=1 repeat=8 last_time=0.4211                     Experiment 0         : size=100000 processes=1 repeat=9 last_time=0.4234                     
++---------------------------------+------------------------------------------------+
+| Attribute                       | Value                                          |
+|---------------------------------+------------------------------------------------|
+| ANSI_COLOR                      | "0;31"                                         |
+| BUG_REPORT_URL                  | "https://bugzilla.redhat.com/"                 |
+| CPE_NAME                        | "cpe:/o:redhat:enterprise_linux:7.9:GA:server" |
+| HOME_URL                        | "https://www.redhat.com/"                      |
+| ID                              | "rhel"                                         |
+| ID_LIKE                         | "fedora"                                       |
+| NAME                            | "Red Hat Enterprise Linux Server"              |
+| PRETTY_NAME                     | "Red Hat Enterprise Linux Server 7.9 (Maipo)"  |
+| REDHAT_BUGZILLA_PRODUCT         | "Red Hat Enterprise Linux 7"                   |
+| REDHAT_BUGZILLA_PRODUCT_VERSION | 7.9                                            |
+| REDHAT_SUPPORT_PRODUCT          | "Red Hat Enterprise Linux"                     |
+| REDHAT_SUPPORT_PRODUCT_VERSION  | "7.9"                                          |
+| VARIANT                         | "Server"                                       |
+| VARIANT_ID                      | "server"                                       |
+| VERSION                         | "7.9 (Maipo)"                                  |
+| VERSION_ID                      | "7.9"                                          |
+| cpu                             | Intel(R) Xeon(R) Gold 6248 CPU @ 2.50GHz       |
+| cpu_cores                       | 40                                             |
+| cpu_count                       | 40                                             |
+| cpu_threads                     | 40                                             |
+| date                            | 2022-09-18 23:03:17.862811                     |
+| frequency                       | scpufreq(current=2500.0, min=0.0, max=0.0)     |
+| mem.active                      | 6.8 GiB                                        |
+| mem.available                   | 733.1 GiB                                      |
+| mem.free                        | 734.3 GiB                                      |
+| mem.inactive                    | 1.2 GiB                                        |
+| mem.percent                     | 2.9 %                                          |
+| mem.total                       | 755.4 GiB                                      |
+| mem.used                        | 13.4 GiB                                       |
+| platform.version                | #1 SMP Tue Jul 26 14:15:37 UTC 2022            |
+| python                          | 3.9.8 (main, Feb  8 2022, 08:35:13)            |
+|                                 | [GCC 6.3.0]                                    |
+| python.pip                      | 21.2.4                                         |
+| python.version                  | 3.9.8                                          |
+| sys.platform                    | linux                                          |
+| uname.machine                   | x86_64                                         |
+| uname.node                      | v100                                           |
+| uname.processor                 | x86_64                                         |
+| uname.release                   | 3.10.0-1160.76.1.el7.x86_64                    |
+| uname.system                    | Linux                                          |
+| uname.version                   | #1 SMP Tue Jul 26 14:15:37 UTC 2022            |
+| user                            | alex                                           |
++---------------------------------+------------------------------------------------+
+
++-------------------------+----------+--------+-------+---------------------+-------+-------+--------+--------+-------+-------------------------------------+
+| Name                    | Status   |   Time |   Sum | Start               | tag   | msg   | Node   | User   | OS    | Version                             |
+|-------------------------+----------+--------+-------+---------------------+-------+-------+--------+--------+-------+-------------------------------------|
+| g1_seq-merge_1_100000_0 | ok       |  0.425 | 0.425 | 2022-09-18 23:03:12 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| g1_seq-merge_1_100000_1 | ok       |  0.425 | 0.425 | 2022-09-18 23:03:13 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| g1_seq-merge_1_100000_2 | ok       |  0.435 | 0.435 | 2022-09-18 23:03:13 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| g1_seq-merge_1_100000_3 | ok       |  0.421 | 0.421 | 2022-09-18 23:03:14 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| g1_seq-merge_1_100000_4 | ok       |  0.422 | 0.422 | 2022-09-18 23:03:14 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| g1_seq-merge_1_100000_5 | ok       |  0.441 | 0.441 | 2022-09-18 23:03:15 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| g1_seq-merge_1_100000_6 | ok       |  0.433 | 0.433 | 2022-09-18 23:03:15 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| g1_seq-merge_1_100000_7 | ok       |  0.421 | 0.421 | 2022-09-18 23:03:16 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| g1_seq-merge_1_100000_8 | ok       |  0.423 | 0.423 | 2022-09-18 23:03:16 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| g1_seq-merge_1_100000_9 | ok       |  0.432 | 0.432 | 2022-09-18 23:03:17 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
++-------------------------+----------+--------+-------+---------------------+-------+-------+--------+--------+-------+-------------------------------------+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,g1_seq-merge_1_100000_0,ok,0.425,0.425,2022-09-18 23:03:12,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,g1_seq-merge_1_100000_1,ok,0.425,0.425,2022-09-18 23:03:13,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,g1_seq-merge_1_100000_2,ok,0.435,0.435,2022-09-18 23:03:13,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,g1_seq-merge_1_100000_3,ok,0.421,0.421,2022-09-18 23:03:14,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,g1_seq-merge_1_100000_4,ok,0.422,0.422,2022-09-18 23:03:14,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,g1_seq-merge_1_100000_5,ok,0.441,0.441,2022-09-18 23:03:15,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,g1_seq-merge_1_100000_6,ok,0.433,0.433,2022-09-18 23:03:15,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,g1_seq-merge_1_100000_7,ok,0.421,0.421,2022-09-18 23:03:16,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,g1_seq-merge_1_100000_8,ok,0.423,0.423,2022-09-18 23:03:16,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,g1_seq-merge_1_100000_9,ok,0.432,0.432,2022-09-18 23:03:17,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+
