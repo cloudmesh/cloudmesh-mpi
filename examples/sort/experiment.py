@@ -11,6 +11,7 @@ from cloudmesh.common.parameter import Parameter
 from cloudmesh.common.util import yn_choice
 from cloudmesh.common.systeminfo import os_is_windows
 from generate import Generator
+from numba import jit, cuda
 
 
 def get_sort_by_name(name="multiprocessing_mergesort"):
@@ -78,6 +79,7 @@ hostname = Shell.run('hostname').strip()
     '--node',
     default=hostname,
     help="a node name for the stopwatch timer")
+@jit(target_backend='cuda')
 def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node):
     """
     performance experiment.

@@ -2,7 +2,8 @@
 # and https://gist.github.com/stephenmcd/39ded69946155930c347
 import math
 import multiprocessing
-
+from numba import jit, cuda
+import numpy as np
 
 def sequential_merge(*args):
     l = []
@@ -41,7 +42,7 @@ def sequential_mergesort(arr):
         return sequential_merge(l, r)
     return arr
 
-
+@jit(target_backend='cuda')
 def multiprocessing_mergesort(arr, processes):
     pool = multiprocessing.Pool(processes=processes)
     size = int(math.ceil(float(len(arr)) / processes))

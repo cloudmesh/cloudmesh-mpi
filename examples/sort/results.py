@@ -7,13 +7,17 @@ from cloudmesh.common.util import banner
 from analysis import get_data
 from analysis import read_log, read_logs
 from analysis import generate_average
+from numba import jit, cuda
+
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 user = "alex"
 node = "v100"
-sorts = ["seq-merge", "mp-mergesort"]
+sorts = ["mp-mergesort"]
 sort = "mp-mergesort"
 
-sizes = [100, 1000, 10e3, 10e4, 10e5, 10e6, 5*10e6, 10e7, 5*10e7, 10e8]
+sizes = [100, 1000, 1e3, 1e4, 1e5, 1e6, 5*1e6, 1e7, 1e8]
 sizes = [int(size) for size in sizes]
 
 # this will take a long time. 
@@ -25,30 +29,6 @@ for sort in sorts:
         os.system(run_cmd)
 
 
-files = ["alex"]
-sorts = ["seq-merge", "mp-mergesort"]
+# files = ["alex"]
+# sorts = ["seq-merge", "mp-mergesort"]
 
-frames = []
-for file in files:
-    for sort in sorts:
-        frame = []
-        for size in sizes: 
-            size = int(size)
-            log = f'{sort}-{node}-{file}'
-            _frame = read_log(log, size=size, tag=sort)
-            frame = frame + _frame
-        frames.append(frame)
-# print(frames)
-
-
-df = pd.DataFrame()
-for frame in frames:
-    _df = pd.DataFrame(data=frame,
-                columns=["processes", "time", "size", "name", "tag"])
-    df = pd.concat([df, _df], ignore_index=True)
-# plot_benchmark_by_size(df, "name", tag=sort, files=files, x="size", y="time")
-
-df = df.pivot_table(
-    values='time', index=['tag', 'processes'], columns=['name', 'size'], fill_value=0, aggfunc='mean')
-speedup = df.rdiv(df.loc['seq-merge'].iloc[0])
-print(speedup)
