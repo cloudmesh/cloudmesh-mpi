@@ -75,10 +75,10 @@ while i < len(left) and j < len(right):
     # and append it to the sorted list
     if left[i] < right[j]:
         res.append(left[i])
-    i += 1
+        i += 1
     else:
-    res.append(right[j])
-    j += 1
+        res.append(right[j])
+        j += 1
 
 # at least one array is empty
 # append both onto the end of the sorted list
@@ -192,8 +192,8 @@ The docs for the *multiprocessing* package can be read [here](https://docs.pytho
 
 ### Overview
 
-We use Python to implement a multiprocessing mergesort algorithm (
-linked [here](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/multiprocessing_mergesort.py)). The
+We use Python to implement a multiprocessing mergesort algorithm
+(linked [here](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/multiprocessing_mergesort.py)). The
 algorithm is then run and evaluated
 in [sandra.ipynb](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/sandra.ipynb).
 
