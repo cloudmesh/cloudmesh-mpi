@@ -2,41 +2,41 @@
 
 - define outline
 - Preface
-  - Acknowledgement
-  - Bookmanager
+    - Acknowledgement
+    - Bookmanager
 - Introduction
-  - What this is doing
-  - Why it matters
-  - Related Research
-    - List references
-    - Explain what others have done
+    - What this is doing
+    - Why it matters
+    - Related Research
+        - List references
+        - Explain what others have done
 - Installation
-  - Python virtual environment
-  - Installation of mpi4py
-  - Installation of NumPy and Jax
-  - Cloudmesh
-    - Cloudmesh.StopWatch
+    - Python virtual environment
+    - Installation of mpi4py
+    - Installation of NumPy and Jax
+    - Cloudmesh
+        - Cloudmesh.StopWatch
 - Sequential sorting
-  - Overview of sequential sorting algorithms
-  - Algorithms/implementations
-    - Sequential merge sort
-    - Insertion sort
-    - Bubble sort
-    - Quick sort
+    - Overview of sequential sorting algorithms
+    - Algorithms/implementations
+        - Sequential merge sort
+        - Insertion sort
+        - Bubble sort
+        - Quick sort
 - Parallel sorting
-  - Related algorithms
-    - Bitonic sort
-  - Multiprocessing merge sort
-  - MPI merge sort
-    - MPI builtin merge sort
-    - MPI sequential merge sort
-    - MPI adaptive merge sort
-      - One way bitonic sort?
+    - Related algorithms
+        - Bitonic sort
+    - Multiprocessing merge sort
+    - MPI merge sort
+        - MPI builtin merge sort
+        - MPI sequential merge sort
+        - MPI adaptive merge sort
+            - One way bitonic sort?
 - Sorting on GPU
-  - Jax NumPy
+    - Jax NumPy
 - Performance comparision
 - Visualization
-  - Automated Jupyter notebooks for performance comparison
+    - Automated Jupyter notebooks for performance comparison
 - Conclusion
 
 # Preface
@@ -49,13 +49,16 @@
 
 ## Recursive Merge Sort
 
-Recursive merge sort is a standard example of a divide-and-conquer algorithm. The algorithm can be split into two parts: splitting and merging. 
+Recursive merge sort is a standard example of a divide-and-conquer algorithm. The algorithm can be split into two parts:
+splitting and merging.
 
-Merging describes the merging of two sorted lists into one sorted list. Two ways of doing so are described below. 
+Merging describes the merging of two sorted lists into one sorted list. Two ways of doing so are described below.
 
 **Method 1: Iterative Method**
 
-Assign indexes to the beginning of each array. Check for the smaller of each element at the current index and add it to the end of the sorted list. Increment the index of the list whose number was found. Once one array is empty, we can simply append the other one onto the end of the sorted list. 
+Assign indexes to the beginning of each array. Check for the smaller of each element at the current index and add it to
+the end of the sorted list. Increment the index of the list whose number was found. Once one array is empty, we can
+simply append the other one onto the end of the sorted list.
 
 ```python
 # python3 code to demonstrate merging two sorted lists using the iterative method
@@ -70,20 +73,21 @@ i, j = 0, 0
 while i < len(left) and j < len(right):
     # find the smallest value at either index 
     # and append it to the sorted list
-	if left[i] < right[j]:
+    if left[i] < right[j]:
         res.append(left[i])
-        i += 1
-	else:
-        res.append(right[j])
-        j += 1
+    i += 1
+    else:
+    res.append(right[j])
+    j += 1
 
 # at least one array is empty
 # append both onto the end of the sorted list
 res = res + left[i:] + right[j:]
 ```
+
 **Method 2: Using *sorted()***
 
-By using the built-in Python function *sorted()*, we can merge the two lists in one line. 
+By using the built-in Python function *sorted()*, we can merge the two lists in one line.
 
 ```python
 right = [1, 2, 6, 7, 15]
@@ -95,7 +99,8 @@ res = sorted(left + right)
 
 Once we can merge two sorted arrays, the rest of mergesort follows as such:
 
-Given an array of length n, 
+Given an array of length n,
+
 1. If n > 1, divide the array into two halves, or subarrays;
 2. Use mergesort to sort each of the two subarrays;
 3. Merge the two sorted subarrays into one sorted array.
@@ -113,8 +118,9 @@ def sequential_mergesort(array):
         merge(left, right)
 ```
 
-A variant on this approach is to stop splitting the array once the size of the subarrays gets small enough. Once the subarrays get small enough, it may become more efficient to use other methods of sorting them, like the built-in Python *sorted()* function instead of recursing all the way down to size 1. 
-
+A variant on this approach is to stop splitting the array once the size of the subarrays gets small enough. Once the
+subarrays get small enough, it may become more efficient to use other methods of sorting them, like the built-in
+Python *sorted()* function instead of recursing all the way down to size 1.
 
 ```python
 def sequential_mergesort(array):
@@ -122,7 +128,7 @@ def sequential_mergesort(array):
     if n < SMALLEST_ARRAY_SIZE:
         array = sorted(array)
         return
-        
+
     left = array[:n / 2]
     right = array[n / 2:]
 
@@ -132,9 +138,12 @@ def sequential_mergesort(array):
     merge(left, right)
 ```
 
-The average time complexity of classic merge sort is O(n logn), which is the same as quick sort and heap sort. Additionally, the best and worst case time complexity of merge sort is also O(n log n), which is the also same as quick sort and heap sort. As a result, classical merge sort is generally unaffected by factors in the initial array. 
+The average time complexity of classic merge sort is O(n logn), which is the same as quick sort and heap sort.
+Additionally, the best and worst case time complexity of merge sort is also O(n log n), which is the also same as quick
+sort and heap sort. As a result, classical merge sort is generally unaffected by factors in the initial array.
 
-However, classical merge sort uses O(n) space, since additional memory is required when merging. Quicksort also has this space complexity, while heap sort takes O(1) space, since it is an in-place method with no other memory requirements. 
+However, classical merge sort uses O(n) space, since additional memory is required when merging. Quicksort also has this
+space complexity, while heap sort takes O(1) space, since it is an in-place method with no other memory requirements.
 
 | Sort           | Average Time Complexity | Best Time Complexity | Worst Time Complexity |
 |----------------|-------------------------|----------------------|-----------------------|
@@ -147,45 +156,65 @@ However, classical merge sort uses O(n) space, since additional memory is requir
 
 # Parallel Sorting
 
-Parallel programming describes breaking down a task into smaller subtasks that can be run simultaneously. Since merge sort is a classic and well-known example of the divide-and-conquer approach, we use merge sort as a test method to explore parallelization methods that may be generalizable to other divide-and-conquer methods. 
+Parallel programming describes breaking down a task into smaller subtasks that can be run simultaneously. Since merge
+sort is a classic and well-known example of the divide-and-conquer approach, we use merge sort as a test method to
+explore parallelization methods that may be generalizable to other divide-and-conquer methods.
 
 ## Related Research
 
-The theory of merge sort parallelization has been studied in the past. Cole (1998) presents a parallel implementation of the merge sort algorithm with O(log n) time complexity on a CREW PRAM, a shared memory abstract machine which neglects synchronization and communication, but provides any number of processors. Furthermore, Jeon and Kim (2002) explore a load-balanced merge sort that evenly distributes data to all processors in each stage. They achieve a speedup of 9.6 compared to a sequential merge sort on a Cray T3E with their algorithm. 
+The theory of merge sort parallelization has been studied in the past. Cole (1998) presents a parallel implementation of
+the merge sort algorithm with O(log n) time complexity on a CREW PRAM, a shared memory abstract machine which neglects
+synchronization and communication, but provides any number of processors. Furthermore, Jeon and Kim (2002) explore a
+load-balanced merge sort that evenly distributes data to all processors in each stage. They achieve a speedup of 9.6
+compared to a sequential merge sort on a Cray T3E with their algorithm.
 
-On MPI, Randenski (2011) describes three parallel merge sorts: shared memory merge sort with OpenMP, message passing merge sort with MPI, and a hybrid merge sort that uses both OpenMP and MPI. They conclude that the shared memory merge sort runs faster than the message-passsing merge sort. The hybrid merge sort, while slower than the shared memory merge sort, is faster than message-passing merge sort. However, they also mention that these relations may not hold for very large arrays that significantly exceed RAM capacity. 
+On MPI, Randenski (2011) describes three parallel merge sorts: shared memory merge sort with OpenMP, message passing
+merge sort with MPI, and a hybrid merge sort that uses both OpenMP and MPI. They conclude that the shared memory merge
+sort runs faster than the message-passsing merge sort. The hybrid merge sort, while slower than the shared memory merge
+sort, is faster than message-passing merge sort. However, they also mention that these relations may not hold for very
+large arrays that significantly exceed RAM capacity.
 
-https://www.researchgate.net/publication/220091378_Parallel_Merge_Sort_with_Load_Balancing 
+https://www.researchgate.net/publication/220091378_Parallel_Merge_Sort_with_Load_Balancing
 
 http://www.inf.fu-berlin.de/lehre/SS10/SP-Par/download/parmerge1.pdf
 
 https://charm.cs.illinois.edu/newPapers/09-10/paper.pdf
 
-
 ## Multiprocessing Merge Sort
 
-*multiprocessing* is a package that supports, on Windows and Unix, programming using multiple processors on a given machine. Python's Global Interpreter Lock (GIL) only allows one thread to be run at a time under the interpreter, which means multithreading cannot be used when the Python interpreter is required. However, the *multiprocessing* package side-steps this issue by using subprocesses instead of threads. Because each process has its own interpreter with a separate GIL that carries out its given instructions, multiple processes can be run in parallel. 
+*multiprocessing* is a package that supports, on Windows and Unix, programming using multiple processors on a given
+machine. Python's Global Interpreter Lock (GIL) only allows one thread to be run at a time under the interpreter, which
+means multithreading cannot be used when the Python interpreter is required. However, the *multiprocessing* package
+side-steps this issue by using subprocesses instead of threads. Because each process has its own interpreter with a
+separate GIL that carries out its given instructions, multiple processes can be run in parallel.
 
-The docs for the *multiprocessing* package can be read [here](https://docs.python.org/3/library/multiprocessing.html). 
+The docs for the *multiprocessing* package can be read [here](https://docs.python.org/3/library/multiprocessing.html).
 
 ### Overview
 
-We use Python to implement a multiprocessing mergesort algorithm (linked [here](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/multiprocessing_mergesort.py)). The algorithm is then run and evaluated in [sandra.ipynb](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/sandra.ipynb). 
+We use Python to implement a multiprocessing mergesort algorithm (
+linked [here](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/multiprocessing_mergesort.py)). The
+algorithm is then run and evaluated
+in [sandra.ipynb](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/sandra.ipynb).
 
 ### Algorithm
 
-We define a merge function that supports explicit left/right arguments, as well as a two-item tuple, which works more cleanly with multiprocessing. We also define a classic merge sort that splits the array into halves, sorts both halves recursively, and then merges them back together. 
+We define a merge function that supports explicit left/right arguments, as well as a two-item tuple, which works more
+cleanly with multiprocessing. We also define a classic merge sort that splits the array into halves, sorts both halves
+recursively, and then merges them back together.
 
 Once both are defined, we can then use multiprocessing to sort the array.
 
-First, we get the number of processes and create a pool of worker processes, one per CPU core. 
+First, we get the number of processes and create a pool of worker processes, one per CPU core.
 
 ```python
 processes = multiprocessing.cpu_count()
 pool = multiprocessing.Pool(processes=processes)
 ```
 
-Then, we split the intial given array into subarrays, sized equally per process, and perform a regular merge sort on each subarray. Note that all merge sorts are performed concurrently, as each subarray has been mapped to an idividual process.  
+Then, we split the intial given array into subarrays, sized equally per process, and perform a regular merge sort on
+each subarray. Note that all merge sorts are performed concurrently, as each subarray has been mapped to an idividual
+process.
 
 ```python
 size = int(math.ceil(float(len(data)) / processes))
@@ -193,7 +222,8 @@ data = [data[i * size:(i + 1) * size] for i in range(processes)]
 data = pool.map(merge_sort, data)
 ```
 
-Each subarray is now sorted. Now, we merge pairs of these subarrays together using the worker pool, until the subarrays are reduced down to a single sorted result. 
+Each subarray is now sorted. Now, we merge pairs of these subarrays together using the worker pool, until the subarrays
+are reduced down to a single sorted result.
 
 ```python
 while len(data) > 1:
@@ -202,7 +232,8 @@ while len(data) > 1:
     data = pool.map(merge, data) + ([extra] if extra else [])
 ```
 
-If the number of subarrays left is odd, we pop off the last one and append it back after one iteration of the loop, since we're only interested in merging pairs of subarrays. 
+If the number of subarrays left is odd, we pop off the last one and append it back after one iteration of the loop,
+since we're only interested in merging pairs of subarrays.
 
 Entirely, the parallel merge sort looks like this:
 
@@ -222,13 +253,28 @@ def merge_sort_parallel(data):
 
     return data[0]
 ```
+
 ## MPI Merge Sort
 
-MPI for Python, also known as mpi4py, is an object oriented approach to message passing in Python. It closely follows the MPI-2 C++ bindings. 
+BOGO describe MPI
+MPI for Python, also known as mpi4py, is an object oriented approach to message passing in Python. It closely follows
+the MPI-2 C++ bindings.
 
 [Linked](https://mpi4py.readthedocs.io/en/stable/index.html)
 
+### Overview
+
+This project uses Python to implement an MPI mergesort algorithm (linked
+[here](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/night.py)).
+The algorithm is then run and evaluated in
+[mpi_run.py](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/mpi_run.py).
+
 # Sorting on GPU
+
+We measure the performance of our multiprocessing and MPI mergesort algorithms on the Carbonate GPU partition. Each node
+is equipped with two Intel 6248 2.5 GHz 20-core CPUs, four NVIDIA Tesla V100 PCle 32 GB GPUs, one 1.92 TB solid-state
+drive, and 768 GB of RAM. We execute our merge sorts with randomly generated arrays of up to 10^8 integer elements. Note
+that memory constraints allowed us to experiment with arrays of up to BOGO integer elements.
 
 # Performance Comparison
 
@@ -236,17 +282,15 @@ MPI for Python, also known as mpi4py, is an object oriented approach to message 
 
 # Conclusion
 
-
-
 ## Source Code
 
 The source code is located in GitHub at the following location:
 
--   <https://github.com/cloudmesh/cloudmesh-mpi/tree/main/examples/sort>
+- <https://github.com/cloudmesh/cloudmesh-mpi/tree/main/examples/sort>
 
 We distinguish the following important files:
 
--   [night.py](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/night.py)
+- [night.py](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/night.py)
 
 ## Installation
 
@@ -274,29 +318,29 @@ that the correct repository has been cloned.
 
 ### Updating
 
-1.  Update local version
+1. Update local version
 
-    ``` bash
-    git pull
-    ```
+   ``` bash
+   git pull
+   ```
 
-2.  To add file (only do once)
+2. To add file (only do once)
 
-    ``` bash
-    git add filename
-    ```
+   ``` bash
+   git add filename
+   ```
 
-3.  Once file is changed, do
+3. Once file is changed, do
 
-    ``` bash
-    git commit -m "this is my comment" filename
-    ```
+   ``` bash
+   git commit -m "this is my comment" filename
+   ```
 
-4.  Remote upload
+4. Remote upload
 
-    ``` bash
-    git push
-    ```
+   ``` bash
+   git push
+   ```
 
 ## Running the Program
 
@@ -390,14 +434,14 @@ pre-existing order in the sequence. It is described in more detail
 
 Then, each individual send/recieve operates as following:
 
-1.  Left child sends sorted subarray
-2.  Right child allocates memory for recieving subarray from left child
-    (*local_tmp*)
-3.  Right child allocates memory for array to store merged result
-    (*local_result*)
-4.  Right child receives subarray
-5.  Right child merges received subarray with its own subarray
-6.  Right child assigns *local_arr* to point to *local_result*
+1. Left child sends sorted subarray
+2. Right child allocates memory for recieving subarray from left child
+   (*local_tmp*)
+3. Right child allocates memory for array to store merged result
+   (*local_result*)
+4. Right child receives subarray
+5. Right child merges received subarray with its own subarray
+6. Right child assigns *local_arr* to point to *local_result*
 
 This loop continues until the tree reaches the height that guarantees us
 a single sorted list. Each time, the number of nodes is halved (since
@@ -425,7 +469,7 @@ timers inside the program wouldn't be able to do.
 
 ### Final Run Method
 
-This is the outermost run program, i.e. the one that a user will run.
+This is the outermost run program, i.e. the one that a user will run.
 See the above Input section for an example of how to run this.
 [mpi_run.py](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/mpi_run.py)
 generates a log file and runs
@@ -614,14 +658,14 @@ eval(to_check)
 Doing this allows us to have both "\<" and "\>" statements, depending on
 which one is inputted.
 
-2.  **Reversing the array.** If the *ineq* = "\<" and the array is
-    increasing, this function will never work, since we always take the
-    upper half of the array when the check statement is true. However,
-    if the array is decreasing, then taking the upper half works: those
-    values are the ones that are less than *val*, and the ones we want
-    to continue to search in. At the end, we can reverse the array, and
-    flip the answer to the reversed index, i.e. 2 would become the 2nd
-    index from the end.
+2. **Reversing the array.** If the *ineq* = "\<" and the array is
+   increasing, this function will never work, since we always take the
+   upper half of the array when the check statement is true. However,
+   if the array is decreasing, then taking the upper half works: those
+   values are the ones that are less than *val*, and the ones we want
+   to continue to search in. At the end, we can reverse the array, and
+   flip the answer to the reversed index, i.e. 2 would become the 2nd
+   index from the end.
 
 ``` python
 arr = np.flip(arr)
@@ -643,7 +687,8 @@ generates the name, title, and graphs the given data by whichever
 specific attribute the user would like.
 
 ![Performance comparision of different sorting
-Algorithms](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/mpi-mpi_mergesort-0-1-2.png){width="50%"}
+Algorithms](https://github.com/cloudmesh/cloudmesh-mpi/raw/main/doc/chapters/images/mpi-mpi_mergesort-0-1-2.png){width="
+50%"}
 
 The above figure shows the relationship between increasing size of array
 and time of sorting for three different merging algorithms. Recall that
