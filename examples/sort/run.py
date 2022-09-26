@@ -14,7 +14,6 @@ import os
 import click
 
 from cloudmesh.common.util import banner
-from numba import jit, cuda
 
 
 @click.command()
@@ -52,7 +51,6 @@ from numba import jit, cuda
     default="10",
     help="repeat")
 
-@jit(target_backend='cuda')
 def run(p, t, log, user, node, sort, size, repeat):
     """
     :param p: number of physical cores on computer

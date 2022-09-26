@@ -7,10 +7,6 @@ from cloudmesh.common.util import banner
 from analysis import get_data
 from analysis import read_log, read_logs
 from analysis import generate_average
-from numba import jit, cuda
-
-os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 user = "alex"
 node = "v100"
