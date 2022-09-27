@@ -10,10 +10,9 @@ from analysis import generate_average
 
 user = "alex"
 node = "v100"
-sorts = ["mp-mergesort"]
-sort = "mp-mergesort"
+sorts = ["seq-mergesort", "mp-mergesort"]
 
-sizes = [100, 1000, 1e3, 1e4, 1e5, 1e6, 5*1e6, 1e7, 1e8]
+sizes = [100, 1000, 1e3, 1e4, 1e5, 1e6]
 sizes = [int(size) for size in sizes]
 
 # this will take a long time. 
