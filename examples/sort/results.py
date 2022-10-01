@@ -12,7 +12,7 @@ user = "alex"
 node = "v100"
 sorts = ["seq-mergesort", "mp-mergesort"]
 
-sizes = [100, 1000, 1e3, 1e4, 1e5, 1e6]
+sizes = [1000, 10000]
 sizes = [int(size) for size in sizes]
 
 # this will take a long time. 
