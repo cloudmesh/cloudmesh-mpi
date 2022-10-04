@@ -1,864 +1,144 @@
 Starting experiment
-Processes: [40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+Processes: [4, 3, 2, 1]
 Size:      [10000000]
 Repeat:    10
 Clear:     False
 Debug:     False
 Algorithm: mp-mergesort
 Tag:       None
-Total:     400
+Total:     40
 Log:       log/mp-mergesort-v100-alex-10000000.log
-Experiment 399       : size=10000000 processes=40 repeat=0 last_time=undefined                     Experiment 398       : size=10000000 processes=40 repeat=1 last_time=89.9029                     Experiment 397       : size=10000000 processes=40 repeat=2 last_time=82.1486                     Experiment 396       : size=10000000 processes=40 repeat=3 last_time=83.1211                     Experiment 395       : size=10000000 processes=40 repeat=4 last_time=82.3866                     Experiment 394       : size=10000000 processes=40 repeat=5 last_time=82.3471                     Experiment 393       : size=10000000 processes=40 repeat=6 last_time=81.5439                     Experiment 392       : size=10000000 processes=40 repeat=7 last_time=82.3848                     Experiment 391       : size=10000000 processes=40 repeat=8 last_time=82.1673                     Experiment 390       : size=10000000 processes=40 repeat=9 last_time=82.1514                     Experiment 389       : size=10000000 processes=39 repeat=0 last_time=82.0273                     Experiment 388       : size=10000000 processes=39 repeat=1 last_time=82.1583                     Experiment 387       : size=10000000 processes=39 repeat=2 last_time=81.6978                     Experiment 386       : size=10000000 processes=39 repeat=3 last_time=82.588                     Experiment 385       : size=10000000 processes=39 repeat=4 last_time=81.8449                     Experiment 384       : size=10000000 processes=39 repeat=5 last_time=82.1187                     Experiment 383       : size=10000000 processes=39 repeat=6 last_time=81.9106                     Experiment 382       : size=10000000 processes=39 repeat=7 last_time=82.2454                     Experiment 381       : size=10000000 processes=39 repeat=8 last_time=82.381                     Experiment 380       : size=10000000 processes=39 repeat=9 last_time=83.0041                     Experiment 379       : size=10000000 processes=38 repeat=0 last_time=82.7593                     Experiment 378       : size=10000000 processes=38 repeat=1 last_time=83.6078                     Experiment 377       : size=10000000 processes=38 repeat=2 last_time=80.4679                     Experiment 376       : size=10000000 processes=38 repeat=3 last_time=84.0129                     Experiment 375       : size=10000000 processes=38 repeat=4 last_time=80.0935                     Experiment 374       : size=10000000 processes=38 repeat=5 last_time=83.3666                     Experiment 373       : size=10000000 processes=38 repeat=6 last_time=80.4808                     Experiment 372       : size=10000000 processes=38 repeat=7 last_time=83.7594                     Experiment 371       : size=10000000 processes=38 repeat=8 last_time=80.6942                     Experiment 370       : size=10000000 processes=38 repeat=9 last_time=83.4098                     Experiment 369       : size=10000000 processes=37 repeat=0 last_time=84.4528                     Experiment 368       : size=10000000 processes=37 repeat=1 last_time=81.0293                     Experiment 367       : size=10000000 processes=37 repeat=2 last_time=81.0508                     Experiment 366       : size=10000000 processes=37 repeat=3 last_time=81.1147                     Experiment 365       : size=10000000 processes=37 repeat=4 last_time=80.9551                     Experiment 364       : size=10000000 processes=37 repeat=5 last_time=84.6323                     Experiment 363       : size=10000000 processes=37 repeat=6 last_time=80.9203                     Experiment 362       : size=10000000 processes=37 repeat=7 last_time=81.1505                     Experiment 361       : size=10000000 processes=37 repeat=8 last_time=84.0916                     Experiment 360       : size=10000000 processes=37 repeat=9 last_time=81.6586                     Experiment 359       : size=10000000 processes=36 repeat=0 last_time=81.9792                     Experiment 358       : size=10000000 processes=36 repeat=1 last_time=81.1534                     Experiment 357       : size=10000000 processes=36 repeat=2 last_time=81.2589                     Experiment 356       : size=10000000 processes=36 repeat=3 last_time=81.7239                     Experiment 355       : size=10000000 processes=36 repeat=4 last_time=84.5048                     Experiment 354       : size=10000000 processes=36 repeat=5 last_time=81.631                     Experiment 353       : size=10000000 processes=36 repeat=6 last_time=82.0088                     Experiment 352       : size=10000000 processes=36 repeat=7 last_time=81.7923                     Experiment 351       : size=10000000 processes=36 repeat=8 last_time=81.5989                     Experiment 350       : size=10000000 processes=36 repeat=9 last_time=81.8554                     Experiment 349       : size=10000000 processes=35 repeat=0 last_time=81.7879                     Experiment 348       : size=10000000 processes=35 repeat=1 last_time=81.8519                     Experiment 347       : size=10000000 processes=35 repeat=2 last_time=85.7737                     Experiment 346       : size=10000000 processes=35 repeat=3 last_time=81.6099                     Experiment 345       : size=10000000 processes=35 repeat=4 last_time=81.9874                     Experiment 344       : size=10000000 processes=35 repeat=5 last_time=82.2794                     Experiment 343       : size=10000000 processes=35 repeat=6 last_time=81.8854                     Experiment 342       : size=10000000 processes=35 repeat=7 last_time=82.3926                     Experiment 341       : size=10000000 processes=35 repeat=8 last_time=82.7694                     Experiment 340       : size=10000000 processes=35 repeat=9 last_time=82.2278                     Experiment 339       : size=10000000 processes=34 repeat=0 last_time=82.2466                     Experiment 338       : size=10000000 processes=34 repeat=1 last_time=82.5593                     Experiment 337       : size=10000000 processes=34 repeat=2 last_time=82.8085                     Experiment 336       : size=10000000 processes=34 repeat=3 last_time=82.58                     Experiment 335       : size=10000000 processes=34 repeat=4 last_time=82.65                     Experiment 334       : size=10000000 processes=34 repeat=5 last_time=83.1393                     Experiment 333       : size=10000000 processes=34 repeat=6 last_time=83.086                     Experiment 332       : size=10000000 processes=34 repeat=7 last_time=81.9378                     Experiment 331       : size=10000000 processes=34 repeat=8 last_time=85.2203                     Experiment 330       : size=10000000 processes=34 repeat=9 last_time=84.1879                     Experiment 329       : size=10000000 processes=33 repeat=0 last_time=86.8854                     Experiment 328       : size=10000000 processes=33 repeat=1 last_time=86.8882                     Experiment 327       : size=10000000 processes=33 repeat=2 last_time=84.3006                     Experiment 326       : size=10000000 processes=33 repeat=3 last_time=83.3486                     Experiment 325       : size=10000000 processes=33 repeat=4 last_time=82.8702                     Experiment 324       : size=10000000 processes=33 repeat=5 last_time=82.8573                     Experiment 323       : size=10000000 processes=33 repeat=6 last_time=83.0976                     Experiment 322       : size=10000000 processes=33 repeat=7 last_time=82.84                     Experiment 321       : size=10000000 processes=33 repeat=8 last_time=82.5207                     Experiment 320       : size=10000000 processes=33 repeat=9 last_time=83.5886                     Experiment 319       : size=10000000 processes=32 repeat=0 last_time=82.1277                     Experiment 318       : size=10000000 processes=32 repeat=1 last_time=81.8054                     Experiment 317       : size=10000000 processes=32 repeat=2 last_time=79.6112                     Experiment 316       : size=10000000 processes=32 repeat=3 last_time=79.1526                     Experiment 315       : size=10000000 processes=32 repeat=4 last_time=79.6534                     Experiment 314       : size=10000000 processes=32 repeat=5 last_time=79.8419                     Experiment 313       : size=10000000 processes=32 repeat=6 last_time=80.3406                     Experiment 312       : size=10000000 processes=32 repeat=7 last_time=82.2933                     Experiment 311       : size=10000000 processes=32 repeat=8 last_time=83.6225                     Experiment 310       : size=10000000 processes=32 repeat=9 last_time=83.6223                     Experiment 309       : size=10000000 processes=31 repeat=0 last_time=83.5625                     Experiment 308       : size=10000000 processes=31 repeat=1 last_time=83.6437                     Experiment 307       : size=10000000 processes=31 repeat=2 last_time=79.7437                     Experiment 306       : size=10000000 processes=31 repeat=3 last_time=83.6571                     Experiment 305       : size=10000000 processes=31 repeat=4 last_time=79.7432                     Experiment 304       : size=10000000 processes=31 repeat=5 last_time=84.1194                     Experiment 303       : size=10000000 processes=31 repeat=6 last_time=79.6166                     Experiment 302       : size=10000000 processes=31 repeat=7 last_time=83.5518                     Experiment 301       : size=10000000 processes=31 repeat=8 last_time=83.455                     Experiment 300       : size=10000000 processes=31 repeat=9 last_time=79.2896                     Experiment 299       : size=10000000 processes=30 repeat=0 last_time=83.7824                     Experiment 298       : size=10000000 processes=30 repeat=1 last_time=80.0904                     Experiment 297       : size=10000000 processes=30 repeat=2 last_time=84.1674                     Experiment 296       : size=10000000 processes=30 repeat=3 last_time=80.0536                     Experiment 295       : size=10000000 processes=30 repeat=4 last_time=84.3692                     Experiment 294       : size=10000000 processes=30 repeat=5 last_time=80.1069                     Experiment 293       : size=10000000 processes=30 repeat=6 last_time=83.8593                     Experiment 292       : size=10000000 processes=30 repeat=7 last_time=79.8575                     Experiment 291       : size=10000000 processes=30 repeat=8 last_time=84.2251                     Experiment 290       : size=10000000 processes=30 repeat=9 last_time=79.6331                     Experiment 289       : size=10000000 processes=29 repeat=0 last_time=84.3536                     Experiment 288       : size=10000000 processes=29 repeat=1 last_time=84.3774                     Experiment 287       : size=10000000 processes=29 repeat=2 last_time=80.0464                     Experiment 286       : size=10000000 processes=29 repeat=3 last_time=80.463                     Experiment 285       : size=10000000 processes=29 repeat=4 last_time=84.9063                     Experiment 284       : size=10000000 processes=29 repeat=5 last_time=80.6791                     Experiment 283       : size=10000000 processes=29 repeat=6 last_time=80.4375                     Experiment 282       : size=10000000 processes=29 repeat=7 last_time=84.489                     Experiment 281       : size=10000000 processes=29 repeat=8 last_time=80.1959                     Experiment 280       : size=10000000 processes=29 repeat=9 last_time=84.8266                     Experiment 279       : size=10000000 processes=28 repeat=0 last_time=80.2331                     Experiment 278       : size=10000000 processes=28 repeat=1 last_time=80.4726                     Experiment 277       : size=10000000 processes=28 repeat=2 last_time=84.647                     Experiment 276       : size=10000000 processes=28 repeat=3 last_time=80.042                     Experiment 275       : size=10000000 processes=28 repeat=4 last_time=84.3917                     Experiment 274       : size=10000000 processes=28 repeat=5 last_time=80.0252                     Experiment 273       : size=10000000 processes=28 repeat=6 last_time=84.2515                     Experiment 272       : size=10000000 processes=28 repeat=7 last_time=79.9374                     Experiment 271       : size=10000000 processes=28 repeat=8 last_time=84.5939                     Experiment 270       : size=10000000 processes=28 repeat=9 last_time=80.0263                     Experiment 269       : size=10000000 processes=27 repeat=0 last_time=85.0549                     Experiment 268       : size=10000000 processes=27 repeat=1 last_time=80.4559                     Experiment 267       : size=10000000 processes=27 repeat=2 last_time=80.4375                     Experiment 266       : size=10000000 processes=27 repeat=3 last_time=84.912                     Experiment 265       : size=10000000 processes=27 repeat=4 last_time=79.9958                     Experiment 264       : size=10000000 processes=27 repeat=5 last_time=84.8245                     Experiment 263       : size=10000000 processes=27 repeat=6 last_time=80.0956                     Experiment 262       : size=10000000 processes=27 repeat=7 last_time=80.2121                     Experiment 261       : size=10000000 processes=27 repeat=8 last_time=84.9312                     Experiment 260       : size=10000000 processes=27 repeat=9 last_time=79.9732                     Experiment 259       : size=10000000 processes=26 repeat=0 last_time=84.9082                     Experiment 258       : size=10000000 processes=26 repeat=1 last_time=80.1319                     Experiment 257       : size=10000000 processes=26 repeat=2 last_time=85.1305                     Experiment 256       : size=10000000 processes=26 repeat=3 last_time=80.717                     Experiment 255       : size=10000000 processes=26 repeat=4 last_time=80.4136                     Experiment 254       : size=10000000 processes=26 repeat=5 last_time=85.1398                     Experiment 253       : size=10000000 processes=26 repeat=6 last_time=80.3247                     Experiment 252       : size=10000000 processes=26 repeat=7 last_time=80.4685                     Experiment 251       : size=10000000 processes=26 repeat=8 last_time=85.2635                     Experiment 250       : size=10000000 processes=26 repeat=9 last_time=80.632                     Experiment 249       : size=10000000 processes=25 repeat=0 last_time=80.6829                     Experiment 248       : size=10000000 processes=25 repeat=1 last_time=80.8025                     Experiment 247       : size=10000000 processes=25 repeat=2 last_time=85.678                     Experiment 246       : size=10000000 processes=25 repeat=3 last_time=80.4648                     Experiment 245       : size=10000000 processes=25 repeat=4 last_time=80.7976                     Experiment 244       : size=10000000 processes=25 repeat=5 last_time=85.7143                     Experiment 243       : size=10000000 processes=25 repeat=6 last_time=80.8214                     Experiment 242       : size=10000000 processes=25 repeat=7 last_time=80.7849                     Experiment 241       : size=10000000 processes=25 repeat=8 last_time=80.7684                     Experiment 240       : size=10000000 processes=25 repeat=9 last_time=86.0962                     Experiment 239       : size=10000000 processes=24 repeat=0 last_time=81.0645                     Experiment 238       : size=10000000 processes=24 repeat=1 last_time=80.615                     Experiment 237       : size=10000000 processes=24 repeat=2 last_time=80.3822                     Experiment 236       : size=10000000 processes=24 repeat=3 last_time=85.4824                     Experiment 235       : size=10000000 processes=24 repeat=4 last_time=80.4431                     Experiment 234       : size=10000000 processes=24 repeat=5 last_time=80.6672                     Experiment 233       : size=10000000 processes=24 repeat=6 last_time=85.7521                     Experiment 232       : size=10000000 processes=24 repeat=7 last_time=80.4058                     Experiment 231       : size=10000000 processes=24 repeat=8 last_time=80.4077                     Experiment 230       : size=10000000 processes=24 repeat=9 last_time=85.6369                     Experiment 229       : size=10000000 processes=23 repeat=0 last_time=80.4385                     Experiment 228       : size=10000000 processes=23 repeat=1 last_time=80.3116                     Experiment 227       : size=10000000 processes=23 repeat=2 last_time=85.803                     Experiment 226       : size=10000000 processes=23 repeat=3 last_time=80.6137                     Experiment 225       : size=10000000 processes=23 repeat=4 last_time=80.6797                     Experiment 224       : size=10000000 processes=23 repeat=5 last_time=80.7474                     Experiment 223       : size=10000000 processes=23 repeat=6 last_time=86.1317                     Experiment 222       : size=10000000 processes=23 repeat=7 last_time=80.5735                     Experiment 221       : size=10000000 processes=23 repeat=8 last_time=80.4349                     Experiment 220       : size=10000000 processes=23 repeat=9 last_time=85.7635                     Experiment 219       : size=10000000 processes=22 repeat=0 last_time=80.7781                     Experiment 218       : size=10000000 processes=22 repeat=1 last_time=80.6269                     Experiment 217       : size=10000000 processes=22 repeat=2 last_time=80.6318                     Experiment 216       : size=10000000 processes=22 repeat=3 last_time=85.694                     Experiment 215       : size=10000000 processes=22 repeat=4 last_time=80.8486                     Experiment 214       : size=10000000 processes=22 repeat=5 last_time=80.7048                     Experiment 213       : size=10000000 processes=22 repeat=6 last_time=86.0018                     Experiment 212       : size=10000000 processes=22 repeat=7 last_time=80.9124                     Experiment 211       : size=10000000 processes=22 repeat=8 last_time=80.5725                     Experiment 210       : size=10000000 processes=22 repeat=9 last_time=80.7209                     Experiment 209       : size=10000000 processes=21 repeat=0 last_time=86.4353                     Experiment 208       : size=10000000 processes=21 repeat=1 last_time=81.3075                     Experiment 207       : size=10000000 processes=21 repeat=2 last_time=81.1569                     Experiment 206       : size=10000000 processes=21 repeat=3 last_time=80.8287                     Experiment 205       : size=10000000 processes=21 repeat=4 last_time=80.66                     Experiment 204       : size=10000000 processes=21 repeat=5 last_time=86.577                     Experiment 203       : size=10000000 processes=21 repeat=6 last_time=80.8483                     Experiment 202       : size=10000000 processes=21 repeat=7 last_time=80.9247                     Experiment 201       : size=10000000 processes=21 repeat=8 last_time=81.2242                     Experiment 200       : size=10000000 processes=21 repeat=9 last_time=81.2687                     Experiment 199       : size=10000000 processes=20 repeat=0 last_time=86.8957                     Experiment 198       : size=10000000 processes=20 repeat=1 last_time=81.1126                     Experiment 197       : size=10000000 processes=20 repeat=2 last_time=80.981                     Experiment 196       : size=10000000 processes=20 repeat=3 last_time=81.1959                     Experiment 195       : size=10000000 processes=20 repeat=4 last_time=81.1694                     Experiment 194       : size=10000000 processes=20 repeat=5 last_time=81.3357                     Experiment 193       : size=10000000 processes=20 repeat=6 last_time=86.7722                     Experiment 192       : size=10000000 processes=20 repeat=7 last_time=81.0526                     Experiment 191       : size=10000000 processes=20 repeat=8 last_time=81.2833                     Experiment 190       : size=10000000 processes=20 repeat=9 last_time=80.8924                     Experiment 189       : size=10000000 processes=19 repeat=0 last_time=81.1763                     Experiment 188       : size=10000000 processes=19 repeat=1 last_time=87.5506                     Experiment 187       : size=10000000 processes=19 repeat=2 last_time=81.846                     Experiment 186       : size=10000000 processes=19 repeat=3 last_time=81.9658                     Experiment 185       : size=10000000 processes=19 repeat=4 last_time=81.8192                     Experiment 184       : size=10000000 processes=19 repeat=5 last_time=82.1661                     Experiment 183       : size=10000000 processes=19 repeat=6 last_time=82.1483                     Experiment 182       : size=10000000 processes=19 repeat=7 last_time=82.064                     Experiment 181       : size=10000000 processes=19 repeat=8 last_time=81.9488                     Experiment 180       : size=10000000 processes=19 repeat=9 last_time=82.1029                     Experiment 179       : size=10000000 processes=18 repeat=0 last_time=82.154                     Experiment 178       : size=10000000 processes=18 repeat=1 last_time=81.8617                     Experiment 177       : size=10000000 processes=18 repeat=2 last_time=81.6927                     Experiment 176       : size=10000000 processes=18 repeat=3 last_time=81.5964                     Experiment 175       : size=10000000 processes=18 repeat=4 last_time=81.9127                     Experiment 174       : size=10000000 processes=18 repeat=5 last_time=82.4197                     Experiment 173       : size=10000000 processes=18 repeat=6 last_time=82.4103                     Experiment 172       : size=10000000 processes=18 repeat=7 last_time=82.5607                     Experiment 171       : size=10000000 processes=18 repeat=8 last_time=82.5034                     Experiment 170       : size=10000000 processes=18 repeat=9 last_time=82.36                     Experiment 169       : size=10000000 processes=17 repeat=0 last_time=82.3615                     Experiment 168       : size=10000000 processes=17 repeat=1 last_time=83.119                     Experiment 167       : size=10000000 processes=17 repeat=2 last_time=83.3096                     Experiment 166       : size=10000000 processes=17 repeat=3 last_time=83.0864                     Experiment 165       : size=10000000 processes=17 repeat=4 last_time=83.1296                     Experiment 164       : size=10000000 processes=17 repeat=5 last_time=83.4906                     Experiment 163       : size=10000000 processes=17 repeat=6 last_time=83.3453                     Experiment 162       : size=10000000 processes=17 repeat=7 last_time=83.2777                     Experiment 161       : size=10000000 processes=17 repeat=8 last_time=83.3175                     Experiment 160       : size=10000000 processes=17 repeat=9 last_time=82.8737                     Experiment 159       : size=10000000 processes=16 repeat=0 last_time=81.5938                     Experiment 158       : size=10000000 processes=16 repeat=1 last_time=83.144                     Experiment 157       : size=10000000 processes=16 repeat=2 last_time=84.0339                     Experiment 156       : size=10000000 processes=16 repeat=3 last_time=81.1102                     Experiment 155       : size=10000000 processes=16 repeat=4 last_time=80.1914                     Experiment 154       : size=10000000 processes=16 repeat=5 last_time=84.409                     Experiment 153       : size=10000000 processes=16 repeat=6 last_time=80.544                     Experiment 152       : size=10000000 processes=16 repeat=7 last_time=80.3732                     Experiment 151       : size=10000000 processes=16 repeat=8 last_time=85.0333                     Experiment 150       : size=10000000 processes=16 repeat=9 last_time=80.9183                     Experiment 149       : size=10000000 processes=15 repeat=0 last_time=80.6503                     Experiment 148       : size=10000000 processes=15 repeat=1 last_time=80.3369                     Experiment 147       : size=10000000 processes=15 repeat=2 last_time=85.0851                     Experiment 146       : size=10000000 processes=15 repeat=3 last_time=80.3335                     Experiment 145       : size=10000000 processes=15 repeat=4 last_time=80.0996                     Experiment 144       : size=10000000 processes=15 repeat=5 last_time=84.4146                     Experiment 143       : size=10000000 processes=15 repeat=6 last_time=80.6304                     Experiment 142       : size=10000000 processes=15 repeat=7 last_time=80.283                     Experiment 141       : size=10000000 processes=15 repeat=8 last_time=85.4973                     Experiment 140       : size=10000000 processes=15 repeat=9 last_time=80.3418                     Experiment 139       : size=10000000 processes=14 repeat=0 last_time=80.4556                     Experiment 138       : size=10000000 processes=14 repeat=1 last_time=84.9407                     Experiment 137       : size=10000000 processes=14 repeat=2 last_time=80.4995                     Experiment 136       : size=10000000 processes=14 repeat=3 last_time=80.0449                     Experiment 135       : size=10000000 processes=14 repeat=4 last_time=85.943                     Experiment 134       : size=10000000 processes=14 repeat=5 last_time=80.5147                     Experiment 133       : size=10000000 processes=14 repeat=6 last_time=80.5338                     Experiment 132       : size=10000000 processes=14 repeat=7 last_time=80.5537                     Experiment 131       : size=10000000 processes=14 repeat=8 last_time=85.69                     Experiment 130       : size=10000000 processes=14 repeat=9 last_time=80.7637                     Experiment 129       : size=10000000 processes=13 repeat=0 last_time=80.5914                     Experiment 128       : size=10000000 processes=13 repeat=1 last_time=80.5637                     Experiment 127       : size=10000000 processes=13 repeat=2 last_time=86.3952                     Experiment 126       : size=10000000 processes=13 repeat=3 last_time=80.5204                     Experiment 125       : size=10000000 processes=13 repeat=4 last_time=81.2215                     Experiment 124       : size=10000000 processes=13 repeat=5 last_time=80.3804                     Experiment 123       : size=10000000 processes=13 repeat=6 last_time=86.7831                     Experiment 122       : size=10000000 processes=13 repeat=7 last_time=80.5867                     Experiment 121       : size=10000000 processes=13 repeat=8 last_time=80.655                     Experiment 120       : size=10000000 processes=13 repeat=9 last_time=80.5959                     Experiment 119       : size=10000000 processes=12 repeat=0 last_time=80.7349                     Experiment 118       : size=10000000 processes=12 repeat=1 last_time=84.9191                     Experiment 117       : size=10000000 processes=12 repeat=2 last_time=79.8921                     Experiment 116       : size=10000000 processes=12 repeat=3 last_time=80.055                     Experiment 115       : size=10000000 processes=12 repeat=4 last_time=84.9925                     Experiment 114       : size=10000000 processes=12 repeat=5 last_time=79.797                     Experiment 113       : size=10000000 processes=12 repeat=6 last_time=80.2476                     Experiment 112       : size=10000000 processes=12 repeat=7 last_time=84.8594                     Experiment 111       : size=10000000 processes=12 repeat=8 last_time=80.0446                     Experiment 110       : size=10000000 processes=12 repeat=9 last_time=79.7457                     Experiment 109       : size=10000000 processes=11 repeat=0 last_time=84.3062                     Experiment 108       : size=10000000 processes=11 repeat=1 last_time=79.8556                     Experiment 107       : size=10000000 processes=11 repeat=2 last_time=86.0025                     Experiment 106       : size=10000000 processes=11 repeat=3 last_time=80.0382                     Experiment 105       : size=10000000 processes=11 repeat=4 last_time=86.0416                     Experiment 104       : size=10000000 processes=11 repeat=5 last_time=79.8123                     Experiment 103       : size=10000000 processes=11 repeat=6 last_time=79.8034                     Experiment 102       : size=10000000 processes=11 repeat=7 last_time=86.0481                     Experiment 101       : size=10000000 processes=11 repeat=8 last_time=80.6008                     Experiment 100       : size=10000000 processes=11 repeat=9 last_time=80.2114                     Experiment 99        : size=10000000 processes=10 repeat=0 last_time=86.664                     Experiment 98        : size=10000000 processes=10 repeat=1 last_time=80.5572                     Experiment 97        : size=10000000 processes=10 repeat=2 last_time=80.4225                     Experiment 96        : size=10000000 processes=10 repeat=3 last_time=86.6523                     Experiment 95        : size=10000000 processes=10 repeat=4 last_time=80.3876                     Experiment 94        : size=10000000 processes=10 repeat=5 last_time=80.5341                     Experiment 93        : size=10000000 processes=10 repeat=6 last_time=80.0468                     Experiment 92        : size=10000000 processes=10 repeat=7 last_time=87.0965                     Experiment 91        : size=10000000 processes=10 repeat=8 last_time=80.5625                     Experiment 90        : size=10000000 processes=10 repeat=9 last_time=80.4994                     Experiment 89        : size=10000000 processes=9 repeat=0 last_time=80.0847                     Experiment 88        : size=10000000 processes=9 repeat=1 last_time=88.0938                     Experiment 87        : size=10000000 processes=9 repeat=2 last_time=81.3741                     Experiment 86        : size=10000000 processes=9 repeat=3 last_time=81.2408                     Experiment 85        : size=10000000 processes=9 repeat=4 last_time=81.0311                     Experiment 84        : size=10000000 processes=9 repeat=5 last_time=87.6316                     Experiment 83        : size=10000000 processes=9 repeat=6 last_time=81.1706                     Experiment 82        : size=10000000 processes=9 repeat=7 last_time=81.2544                     Experiment 81        : size=10000000 processes=9 repeat=8 last_time=81.026                     Experiment 80        : size=10000000 processes=9 repeat=9 last_time=81.1362                     Experiment 79        : size=10000000 processes=8 repeat=0 last_time=81.1532                     Experiment 78        : size=10000000 processes=8 repeat=1 last_time=85.6062                     Experiment 77        : size=10000000 processes=8 repeat=2 last_time=85.7436                     Experiment 76        : size=10000000 processes=8 repeat=3 last_time=85.6532                     Experiment 75        : size=10000000 processes=8 repeat=4 last_time=83.8756                     Experiment 74        : size=10000000 processes=8 repeat=5 last_time=81.551                     Experiment 73        : size=10000000 processes=8 repeat=6 last_time=84.2007                     Experiment 72        : size=10000000 processes=8 repeat=7 last_time=85.8608                     Experiment 71        : size=10000000 processes=8 repeat=8 last_time=85.9548                     Experiment 70        : size=10000000 processes=8 repeat=9 last_time=86.3831                     Experiment 69        : size=10000000 processes=7 repeat=0 last_time=84.316                     Experiment 68        : size=10000000 processes=7 repeat=1 last_time=80.9253                     Experiment 67        : size=10000000 processes=7 repeat=2 last_time=83.1078                     Experiment 66        : size=10000000 processes=7 repeat=3 last_time=85.4758                     Experiment 65        : size=10000000 processes=7 repeat=4 last_time=86.0493                     Experiment 64        : size=10000000 processes=7 repeat=5 last_time=86.0852                     Experiment 63        : size=10000000 processes=7 repeat=6 last_time=85.5422                     Experiment 62        : size=10000000 processes=7 repeat=7 last_time=81.6424                     Experiment 61        : size=10000000 processes=7 repeat=8 last_time=83.3508                     Experiment 60        : size=10000000 processes=7 repeat=9 last_time=85.77                     Experiment 59        : size=10000000 processes=6 repeat=0 last_time=86.1144                     Experiment 58        : size=10000000 processes=6 repeat=1 last_time=85.8998                     Experiment 57        : size=10000000 processes=6 repeat=2 last_time=85.3308                     Experiment 56        : size=10000000 processes=6 repeat=3 last_time=82.196                     Experiment 55        : size=10000000 processes=6 repeat=4 last_time=82.3199                     Experiment 54        : size=10000000 processes=6 repeat=5 last_time=85.3053                     Experiment 53        : size=10000000 processes=6 repeat=6 last_time=85.9644                     Experiment 52        : size=10000000 processes=6 repeat=7 last_time=85.9128                     Experiment 51        : size=10000000 processes=6 repeat=8 last_time=86.0173                     Experiment 50        : size=10000000 processes=6 repeat=9 last_time=82.9517                     Experiment 49        : size=10000000 processes=5 repeat=0 last_time=81.3699                     Experiment 48        : size=10000000 processes=5 repeat=1 last_time=84.503                     Experiment 47        : size=10000000 processes=5 repeat=2 last_time=85.8253                     Experiment 46        : size=10000000 processes=5 repeat=3 last_time=85.7709                     Experiment 45        : size=10000000 processes=5 repeat=4 last_time=86.0746                     Experiment 44        : size=10000000 processes=5 repeat=5 last_time=83.8143                     Experiment 43        : size=10000000 processes=5 repeat=6 last_time=81.074                     Experiment 42        : size=10000000 processes=5 repeat=7 last_time=82.8341                     Experiment 41        : size=10000000 processes=5 repeat=8 last_time=85.8217                     Experiment 40        : size=10000000 processes=5 repeat=9 last_time=85.7819                     Experiment 39        : size=10000000 processes=4 repeat=0 last_time=85.713                     Experiment 38        : size=10000000 processes=4 repeat=1 last_time=84.6552                     Experiment 37        : size=10000000 processes=4 repeat=2 last_time=82.7769                     Experiment 36        : size=10000000 processes=4 repeat=3 last_time=80.3983                     Experiment 35        : size=10000000 processes=4 repeat=4 last_time=80.7049                     Experiment 34        : size=10000000 processes=4 repeat=5 last_time=82.5443                     Experiment 33        : size=10000000 processes=4 repeat=6 last_time=83.9348                     Experiment 32        : size=10000000 processes=4 repeat=7 last_time=84.8125                     Experiment 31        : size=10000000 processes=4 repeat=8 last_time=84.5574                     Experiment 30        : size=10000000 processes=4 repeat=9 last_time=84.6385                     Experiment 29        : size=10000000 processes=3 repeat=0 last_time=84.6824                     Experiment 28        : size=10000000 processes=3 repeat=1 last_time=91.3543                     Experiment 27        : size=10000000 processes=3 repeat=2 last_time=91.0282                     Experiment 26        : size=10000000 processes=3 repeat=3 last_time=91.1246                     Experiment 25        : size=10000000 processes=3 repeat=4 last_time=91.2667                     Experiment 24        : size=10000000 processes=3 repeat=5 last_time=90.7773                     Experiment 23        : size=10000000 processes=3 repeat=6 last_time=91.854                     Experiment 22        : size=10000000 processes=3 repeat=7 last_time=91.1451                     Experiment 21        : size=10000000 processes=3 repeat=8 last_time=91.3415                     Experiment 20        : size=10000000 processes=3 repeat=9 last_time=93.0359                     Experiment 19        : size=10000000 processes=2 repeat=0 last_time=91.1658                     Experiment 18        : size=10000000 processes=2 repeat=1 last_time=90.205                     Experiment 17        : size=10000000 processes=2 repeat=2 last_time=89.3798                     Experiment 16        : size=10000000 processes=2 repeat=3 last_time=90.1811                     Experiment 15        : size=10000000 processes=2 repeat=4 last_time=90.2509                     Experiment 14        : size=10000000 processes=2 repeat=5 last_time=90.1756                     Experiment 13        : size=10000000 processes=2 repeat=6 last_time=90.3452                     Experiment 12        : size=10000000 processes=2 repeat=7 last_time=90.4876                     Experiment 11        : size=10000000 processes=2 repeat=8 last_time=90.3792                     Experiment 10        : size=10000000 processes=2 repeat=9 last_time=90.4821                     Experiment 9         : size=10000000 processes=1 repeat=0 last_time=90.231                     Experiment 8         : size=10000000 processes=1 repeat=1 last_time=88.5284                     Experiment 7         : size=10000000 processes=1 repeat=2 last_time=88.658                     Experiment 6         : size=10000000 processes=1 repeat=3 last_time=87.2141                     Experiment 5         : size=10000000 processes=1 repeat=4 last_time=87.3752                     Experiment 4         : size=10000000 processes=1 repeat=5 last_time=88.4797                     Experiment 3         : size=10000000 processes=1 repeat=6 last_time=88.5536                     Experiment 2         : size=10000000 processes=1 repeat=7 last_time=86.4707                     Experiment 1         : size=10000000 processes=1 repeat=8 last_time=88.3617                     Experiment 0         : size=10000000 processes=1 repeat=9 last_time=88.5572                     
-+---------------------------------+------------------------------------------------+
-| Attribute                       | Value                                          |
-|---------------------------------+------------------------------------------------|
-| ANSI_COLOR                      | "0;31"                                         |
-| BUG_REPORT_URL                  | "https://bugzilla.redhat.com/"                 |
-| CPE_NAME                        | "cpe:/o:redhat:enterprise_linux:7.9:GA:server" |
-| HOME_URL                        | "https://www.redhat.com/"                      |
-| ID                              | "rhel"                                         |
-| ID_LIKE                         | "fedora"                                       |
-| NAME                            | "Red Hat Enterprise Linux Server"              |
-| PRETTY_NAME                     | "Red Hat Enterprise Linux Server 7.9 (Maipo)"  |
-| REDHAT_BUGZILLA_PRODUCT         | "Red Hat Enterprise Linux 7"                   |
-| REDHAT_BUGZILLA_PRODUCT_VERSION | 7.9                                            |
-| REDHAT_SUPPORT_PRODUCT          | "Red Hat Enterprise Linux"                     |
-| REDHAT_SUPPORT_PRODUCT_VERSION  | "7.9"                                          |
-| VARIANT                         | "Server"                                       |
-| VARIANT_ID                      | "server"                                       |
-| VERSION                         | "7.9 (Maipo)"                                  |
-| VERSION_ID                      | "7.9"                                          |
-| cpu                             | Intel(R) Xeon(R) Gold 6248 CPU @ 2.50GHz       |
-| cpu_cores                       | 40                                             |
-| cpu_count                       | 40                                             |
-| cpu_threads                     | 40                                             |
-| date                            | 2022-09-25 12:19:07.600094                     |
-| frequency                       | scpufreq(current=2500.0, min=0.0, max=0.0)     |
-| mem.active                      | 7.6 GiB                                        |
-| mem.available                   | 730.3 GiB                                      |
-| mem.free                        | 731.4 GiB                                      |
-| mem.inactive                    | 1.8 GiB                                        |
-| mem.percent                     | 3.3 %                                          |
-| mem.total                       | 755.4 GiB                                      |
-| mem.used                        | 15.6 GiB                                       |
-| platform.version                | #1 SMP Tue Jul 26 14:15:37 UTC 2022            |
-| python                          | 3.9.8 (main, Feb  8 2022, 08:35:13)            |
-|                                 | [GCC 6.3.0]                                    |
-| python.pip                      | 21.2.4                                         |
-| python.version                  | 3.9.8                                          |
-| sys.platform                    | linux                                          |
-| uname.machine                   | x86_64                                         |
-| uname.node                      | v100                                           |
-| uname.processor                 | x86_64                                         |
-| uname.release                   | 3.10.0-1160.76.1.el7.x86_64                    |
-| uname.system                    | Linux                                          |
-| uname.version                   | #1 SMP Tue Jul 26 14:15:37 UTC 2022            |
-| user                            | alex                                           |
-+---------------------------------+------------------------------------------------+
+Experiment 39        : size=10000000 processes=4 repeat=0 last_time=undefined                     Experiment 38        : size=10000000 processes=4 repeat=1 last_time=0.2225                     Experiment 37        : size=10000000 processes=4 repeat=2 last_time=0.1082                     Experiment 36        : size=10000000 processes=4 repeat=3 last_time=0.1094                     Experiment 35        : size=10000000 processes=4 repeat=4 last_time=0.1101                     Experiment 34        : size=10000000 processes=4 repeat=5 last_time=0.1092                     Experiment 33        : size=10000000 processes=4 repeat=6 last_time=0.1096                     Experiment 32        : size=10000000 processes=4 repeat=7 last_time=0.1113                     Experiment 31        : size=10000000 processes=4 repeat=8 last_time=0.11                     Experiment 30        : size=10000000 processes=4 repeat=9 last_time=0.11                     Experiment 29        : size=10000000 processes=3 repeat=0 last_time=0.1093                     Experiment 28        : size=10000000 processes=3 repeat=1 last_time=0.1093                     Experiment 27        : size=10000000 processes=3 repeat=2 last_time=0.11                     Experiment 26        : size=10000000 processes=3 repeat=3 last_time=0.1092                     Experiment 25        : size=10000000 processes=3 repeat=4 last_time=0.1097                     Experiment 24        : size=10000000 processes=3 repeat=5 last_time=0.1095                     Experiment 23        : size=10000000 processes=3 repeat=6 last_time=0.1096                     Experiment 22        : size=10000000 processes=3 repeat=7 last_time=0.1098                     Experiment 21        : size=10000000 processes=3 repeat=8 last_time=0.1099                     Experiment 20        : size=10000000 processes=3 repeat=9 last_time=0.1101                     Experiment 19        : size=10000000 processes=2 repeat=0 last_time=0.1098                     Experiment 18        : size=10000000 processes=2 repeat=1 last_time=0.1103                     Experiment 17        : size=10000000 processes=2 repeat=2 last_time=0.1099                     Experiment 16        : size=10000000 processes=2 repeat=3 last_time=0.1099                     Experiment 15        : size=10000000 processes=2 repeat=4 last_time=0.1105                     Experiment 14        : size=10000000 processes=2 repeat=5 last_time=0.1104                     Experiment 13        : size=10000000 processes=2 repeat=6 last_time=0.1098                     Experiment 12        : size=10000000 processes=2 repeat=7 last_time=0.1109                     Experiment 11        : size=10000000 processes=2 repeat=8 last_time=0.1104                     Experiment 10        : size=10000000 processes=2 repeat=9 last_time=0.1105                     Experiment 9         : size=10000000 processes=1 repeat=0 last_time=0.1099                     Experiment 8         : size=10000000 processes=1 repeat=1 last_time=0.1102                     Experiment 7         : size=10000000 processes=1 repeat=2 last_time=0.11                     Experiment 6         : size=10000000 processes=1 repeat=3 last_time=0.1104                     Experiment 5         : size=10000000 processes=1 repeat=4 last_time=0.111                     Experiment 4         : size=10000000 processes=1 repeat=5 last_time=0.1103                     Experiment 3         : size=10000000 processes=1 repeat=6 last_time=0.1101                     Experiment 2         : size=10000000 processes=1 repeat=7 last_time=0.1101                     Experiment 1         : size=10000000 processes=1 repeat=8 last_time=0.1101                     Experiment 0         : size=10000000 processes=1 repeat=9 last_time=0.1098                     
++---------------------+----------------------------------------------------------------------+
+| Attribute           | Value                                                                |
+|---------------------+----------------------------------------------------------------------|
+| BUG_REPORT_URL      | "https://bugs.launchpad.net/ubuntu/"                                 |
+| DISTRIB_CODENAME    | bionic                                                               |
+| DISTRIB_DESCRIPTION | "Ubuntu 18.04.6 LTS"                                                 |
+| DISTRIB_ID          | Ubuntu                                                               |
+| DISTRIB_RELEASE     | 18.04                                                                |
+| HOME_URL            | "https://www.ubuntu.com/"                                            |
+| ID                  | ubuntu                                                               |
+| ID_LIKE             | debian                                                               |
+| NAME                | "Ubuntu"                                                             |
+| PRETTY_NAME         | "Ubuntu 18.04.6 LTS"                                                 |
+| PRIVACY_POLICY_URL  | "https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"     |
+| SUPPORT_URL         | "https://help.ubuntu.com/"                                           |
+| UBUNTU_CODENAME     | bionic                                                               |
+| VERSION             | "18.04.6 LTS (Bionic Beaver)"                                        |
+| VERSION_CODENAME    | bionic                                                               |
+| VERSION_ID          | "18.04"                                                              |
+| cpu                 | Intel(R) Xeon(R) Platinum 8259CL CPU @ 2.50GHz                       |
+| cpu_cores           | 2                                                                    |
+| cpu_count           | 4                                                                    |
+| cpu_threads         | 4                                                                    |
+| date                | 2022-10-03 01:21:08.510727                                           |
+| frequency           | scpufreq(current=3109.8495000000003, min=0.0, max=0.0)               |
+| mem.active          | 935.7 MiB                                                            |
+| mem.available       | 14.3 GiB                                                             |
+| mem.free            | 13.5 GiB                                                             |
+| mem.inactive        | 616.2 MiB                                                            |
+| mem.percent         | 6.9 %                                                                |
+| mem.total           | 15.3 GiB                                                             |
+| mem.used            | 669.8 MiB                                                            |
+| platform.version    | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022                  |
+| python              | 3.7.10 | packaged by conda-forge | (default, Feb 19 2021, 16:07:37)  |
+|                     | [GCC 9.3.0]                                                          |
+| python.pip          | 22.2.2                                                               |
+| python.version      | 3.7.10                                                               |
+| sys.platform        | linux                                                                |
+| uname.machine       | x86_64                                                               |
+| uname.node          | v100                                                                 |
+| uname.processor     | x86_64                                                               |
+| uname.release       | 5.4.0-1085-aws                                                       |
+| uname.system        | Linux                                                                |
+| uname.version       | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022                  |
+| user                | alex                                                                 |
++---------------------+----------------------------------------------------------------------+
 
-+-------------------------------+----------+--------+--------+---------------------+-------+-------+--------+--------+-------+-------------------------------------+
-| Name                          | Status   |   Time |    Sum | Start               | tag   | msg   | Node   | User   | OS    | Version                             |
-|-------------------------------+----------+--------+--------+---------------------+-------+-------+--------+--------+-------+-------------------------------------|
-| g7_mp-mergesort_40_10000000_0 | ok       | 89.903 | 89.903 | 2022-09-25 02:08:53 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_40_10000000_1 | ok       | 82.149 | 82.149 | 2022-09-25 02:10:31 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_40_10000000_2 | ok       | 83.121 | 83.121 | 2022-09-25 02:12:01 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_40_10000000_3 | ok       | 82.387 | 82.387 | 2022-09-25 02:13:32 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_40_10000000_4 | ok       | 82.347 | 82.347 | 2022-09-25 02:15:02 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_40_10000000_5 | ok       | 81.544 | 81.544 | 2022-09-25 02:16:33 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_40_10000000_6 | ok       | 82.385 | 82.385 | 2022-09-25 02:18:02 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_40_10000000_7 | ok       | 82.167 | 82.167 | 2022-09-25 02:19:32 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_40_10000000_8 | ok       | 82.151 | 82.151 | 2022-09-25 02:21:02 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_40_10000000_9 | ok       | 82.027 | 82.027 | 2022-09-25 02:22:32 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_39_10000000_0 | ok       | 82.158 | 82.158 | 2022-09-25 02:24:02 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_39_10000000_1 | ok       | 81.698 | 81.698 | 2022-09-25 02:25:32 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_39_10000000_2 | ok       | 82.588 | 82.588 | 2022-09-25 02:27:02 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_39_10000000_3 | ok       | 81.845 | 81.845 | 2022-09-25 02:28:32 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_39_10000000_4 | ok       | 82.119 | 82.119 | 2022-09-25 02:30:02 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_39_10000000_5 | ok       | 81.911 | 81.911 | 2022-09-25 02:31:32 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_39_10000000_6 | ok       | 82.245 | 82.245 | 2022-09-25 02:33:02 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_39_10000000_7 | ok       | 82.381 | 82.381 | 2022-09-25 02:34:32 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_39_10000000_8 | ok       | 83.004 | 83.004 | 2022-09-25 02:36:02 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_39_10000000_9 | ok       | 82.759 | 82.759 | 2022-09-25 02:37:33 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_38_10000000_0 | ok       | 83.608 | 83.608 | 2022-09-25 02:39:04 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_38_10000000_1 | ok       | 80.468 | 80.468 | 2022-09-25 02:40:35 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_38_10000000_2 | ok       | 84.013 | 84.013 | 2022-09-25 02:42:04 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_38_10000000_3 | ok       | 80.094 | 80.094 | 2022-09-25 02:43:36 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_38_10000000_4 | ok       | 83.367 | 83.367 | 2022-09-25 02:45:04 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_38_10000000_5 | ok       | 80.481 | 80.481 | 2022-09-25 02:46:35 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_38_10000000_6 | ok       | 83.759 | 83.759 | 2022-09-25 02:48:03 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_38_10000000_7 | ok       | 80.694 | 80.694 | 2022-09-25 02:49:35 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_38_10000000_8 | ok       | 83.41  | 83.41  | 2022-09-25 02:51:03 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_38_10000000_9 | ok       | 84.453 | 84.453 | 2022-09-25 02:52:35 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_37_10000000_0 | ok       | 81.029 | 81.029 | 2022-09-25 02:54:07 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_37_10000000_1 | ok       | 81.051 | 81.051 | 2022-09-25 02:55:36 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_37_10000000_2 | ok       | 81.115 | 81.115 | 2022-09-25 02:57:05 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_37_10000000_3 | ok       | 80.955 | 80.955 | 2022-09-25 02:58:34 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_37_10000000_4 | ok       | 84.632 | 84.632 | 2022-09-25 03:00:03 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_37_10000000_5 | ok       | 80.92  | 80.92  | 2022-09-25 03:01:35 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_37_10000000_6 | ok       | 81.151 | 81.151 | 2022-09-25 03:03:04 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_37_10000000_7 | ok       | 84.092 | 84.092 | 2022-09-25 03:04:33 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_37_10000000_8 | ok       | 81.659 | 81.659 | 2022-09-25 03:06:05 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_37_10000000_9 | ok       | 81.979 | 81.979 | 2022-09-25 03:07:35 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_36_10000000_0 | ok       | 81.153 | 81.153 | 2022-09-25 03:09:05 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_36_10000000_1 | ok       | 81.259 | 81.259 | 2022-09-25 03:10:34 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_36_10000000_2 | ok       | 81.724 | 81.724 | 2022-09-25 03:12:03 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_36_10000000_3 | ok       | 84.505 | 84.505 | 2022-09-25 03:13:32 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_36_10000000_4 | ok       | 81.631 | 81.631 | 2022-09-25 03:15:05 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_36_10000000_5 | ok       | 82.009 | 82.009 | 2022-09-25 03:16:34 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_36_10000000_6 | ok       | 81.792 | 81.792 | 2022-09-25 03:18:04 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_36_10000000_7 | ok       | 81.599 | 81.599 | 2022-09-25 03:19:34 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_36_10000000_8 | ok       | 81.855 | 81.855 | 2022-09-25 03:21:03 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_36_10000000_9 | ok       | 81.788 | 81.788 | 2022-09-25 03:22:33 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_35_10000000_0 | ok       | 81.852 | 81.852 | 2022-09-25 03:24:03 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_35_10000000_1 | ok       | 85.774 | 85.774 | 2022-09-25 03:25:32 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_35_10000000_2 | ok       | 81.61  | 81.61  | 2022-09-25 03:27:06 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_35_10000000_3 | ok       | 81.987 | 81.987 | 2022-09-25 03:28:36 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_35_10000000_4 | ok       | 82.279 | 82.279 | 2022-09-25 03:30:05 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_35_10000000_5 | ok       | 81.885 | 81.885 | 2022-09-25 03:31:36 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_35_10000000_6 | ok       | 82.393 | 82.393 | 2022-09-25 03:33:05 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_35_10000000_7 | ok       | 82.769 | 82.769 | 2022-09-25 03:34:36 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_35_10000000_8 | ok       | 82.228 | 82.228 | 2022-09-25 03:36:06 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_35_10000000_9 | ok       | 82.247 | 82.247 | 2022-09-25 03:37:36 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_34_10000000_0 | ok       | 82.559 | 82.559 | 2022-09-25 03:39:06 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_34_10000000_1 | ok       | 82.809 | 82.809 | 2022-09-25 03:40:37 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_34_10000000_2 | ok       | 82.58  | 82.58  | 2022-09-25 03:42:08 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_34_10000000_3 | ok       | 82.65  | 82.65  | 2022-09-25 03:43:38 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_34_10000000_4 | ok       | 83.139 | 83.139 | 2022-09-25 03:45:08 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_34_10000000_5 | ok       | 83.086 | 83.086 | 2022-09-25 03:46:39 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_34_10000000_6 | ok       | 81.938 | 81.938 | 2022-09-25 03:48:11 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_34_10000000_7 | ok       | 85.22  | 85.22  | 2022-09-25 03:49:42 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_34_10000000_8 | ok       | 84.188 | 84.188 | 2022-09-25 03:51:19 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_34_10000000_9 | ok       | 86.885 | 86.885 | 2022-09-25 03:52:53 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_33_10000000_0 | ok       | 86.888 | 86.888 | 2022-09-25 03:54:28 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_33_10000000_1 | ok       | 84.301 | 84.301 | 2022-09-25 03:56:03 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_33_10000000_2 | ok       | 83.349 | 83.349 | 2022-09-25 03:57:35 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_33_10000000_3 | ok       | 82.87  | 82.87  | 2022-09-25 03:59:06 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_33_10000000_4 | ok       | 82.857 | 82.857 | 2022-09-25 04:00:37 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_33_10000000_5 | ok       | 83.098 | 83.098 | 2022-09-25 04:02:07 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_33_10000000_6 | ok       | 82.84  | 82.84  | 2022-09-25 04:03:38 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_33_10000000_7 | ok       | 82.521 | 82.521 | 2022-09-25 04:05:09 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_33_10000000_8 | ok       | 83.589 | 83.589 | 2022-09-25 04:06:39 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_33_10000000_9 | ok       | 82.128 | 82.128 | 2022-09-25 04:08:11 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_32_10000000_0 | ok       | 81.805 | 81.805 | 2022-09-25 04:09:43 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_32_10000000_1 | ok       | 79.611 | 79.611 | 2022-09-25 04:11:16 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_32_10000000_2 | ok       | 79.153 | 79.153 | 2022-09-25 04:12:48 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_32_10000000_3 | ok       | 79.653 | 79.653 | 2022-09-25 04:14:18 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_32_10000000_4 | ok       | 79.842 | 79.842 | 2022-09-25 04:15:50 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_32_10000000_5 | ok       | 80.341 | 80.341 | 2022-09-25 04:17:21 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_32_10000000_6 | ok       | 82.293 | 82.293 | 2022-09-25 04:18:53 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_32_10000000_7 | ok       | 83.623 | 83.623 | 2022-09-25 04:20:24 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_32_10000000_8 | ok       | 83.622 | 83.622 | 2022-09-25 04:21:56 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_32_10000000_9 | ok       | 83.562 | 83.562 | 2022-09-25 04:23:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_31_10000000_0 | ok       | 83.644 | 83.644 | 2022-09-25 04:24:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_31_10000000_1 | ok       | 79.744 | 79.744 | 2022-09-25 04:26:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_31_10000000_2 | ok       | 83.657 | 83.657 | 2022-09-25 04:27:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_31_10000000_3 | ok       | 79.743 | 79.743 | 2022-09-25 04:29:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_31_10000000_4 | ok       | 84.119 | 84.119 | 2022-09-25 04:30:57 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_31_10000000_5 | ok       | 79.617 | 79.617 | 2022-09-25 04:32:29 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_31_10000000_6 | ok       | 83.552 | 83.552 | 2022-09-25 04:33:57 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_31_10000000_7 | ok       | 83.455 | 83.455 | 2022-09-25 04:35:28 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_31_10000000_8 | ok       | 79.29  | 79.29  | 2022-09-25 04:37:00 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_31_10000000_9 | ok       | 83.782 | 83.782 | 2022-09-25 04:38:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_30_10000000_0 | ok       | 80.09  | 80.09  | 2022-09-25 04:39:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_30_10000000_1 | ok       | 84.167 | 84.167 | 2022-09-25 04:41:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_30_10000000_2 | ok       | 80.054 | 80.054 | 2022-09-25 04:42:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_30_10000000_3 | ok       | 84.369 | 84.369 | 2022-09-25 04:44:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_30_10000000_4 | ok       | 80.107 | 80.107 | 2022-09-25 04:45:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_30_10000000_5 | ok       | 83.859 | 83.859 | 2022-09-25 04:47:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_30_10000000_6 | ok       | 79.857 | 79.857 | 2022-09-25 04:48:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_30_10000000_7 | ok       | 84.225 | 84.225 | 2022-09-25 04:50:26 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_30_10000000_8 | ok       | 79.633 | 79.633 | 2022-09-25 04:51:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_30_10000000_9 | ok       | 84.354 | 84.354 | 2022-09-25 04:53:26 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_29_10000000_0 | ok       | 84.377 | 84.377 | 2022-09-25 04:54:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_29_10000000_1 | ok       | 80.046 | 80.046 | 2022-09-25 04:56:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_29_10000000_2 | ok       | 80.463 | 80.463 | 2022-09-25 04:57:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_29_10000000_3 | ok       | 84.906 | 84.906 | 2022-09-25 04:59:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_29_10000000_4 | ok       | 80.679 | 80.679 | 2022-09-25 05:00:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_29_10000000_5 | ok       | 80.438 | 80.438 | 2022-09-25 05:02:28 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_29_10000000_6 | ok       | 84.489 | 84.489 | 2022-09-25 05:03:56 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_29_10000000_7 | ok       | 80.196 | 80.196 | 2022-09-25 05:05:29 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_29_10000000_8 | ok       | 84.827 | 84.827 | 2022-09-25 05:06:57 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_29_10000000_9 | ok       | 80.233 | 80.233 | 2022-09-25 05:08:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_28_10000000_0 | ok       | 80.473 | 80.473 | 2022-09-25 05:09:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_28_10000000_1 | ok       | 84.647 | 84.647 | 2022-09-25 05:11:26 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_28_10000000_2 | ok       | 80.042 | 80.042 | 2022-09-25 05:12:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_28_10000000_3 | ok       | 84.392 | 84.392 | 2022-09-25 05:14:26 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_28_10000000_4 | ok       | 80.025 | 80.025 | 2022-09-25 05:15:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_28_10000000_5 | ok       | 84.251 | 84.251 | 2022-09-25 05:17:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_28_10000000_6 | ok       | 79.937 | 79.937 | 2022-09-25 05:18:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_28_10000000_7 | ok       | 84.594 | 84.594 | 2022-09-25 05:20:26 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_28_10000000_8 | ok       | 80.026 | 80.026 | 2022-09-25 05:21:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_28_10000000_9 | ok       | 85.055 | 85.055 | 2022-09-25 05:23:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_27_10000000_0 | ok       | 80.456 | 80.456 | 2022-09-25 05:25:00 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_27_10000000_1 | ok       | 80.438 | 80.438 | 2022-09-25 05:26:28 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_27_10000000_2 | ok       | 84.912 | 84.912 | 2022-09-25 05:27:56 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_27_10000000_3 | ok       | 79.996 | 79.996 | 2022-09-25 05:29:29 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_27_10000000_4 | ok       | 84.825 | 84.825 | 2022-09-25 05:30:57 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_27_10000000_5 | ok       | 80.096 | 80.096 | 2022-09-25 05:32:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_27_10000000_6 | ok       | 80.212 | 80.212 | 2022-09-25 05:33:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_27_10000000_7 | ok       | 84.931 | 84.931 | 2022-09-25 05:35:26 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_27_10000000_8 | ok       | 79.973 | 79.973 | 2022-09-25 05:36:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_27_10000000_9 | ok       | 84.908 | 84.908 | 2022-09-25 05:38:26 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_26_10000000_0 | ok       | 80.132 | 80.132 | 2022-09-25 05:39:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_26_10000000_1 | ok       | 85.13  | 85.13  | 2022-09-25 05:41:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_26_10000000_2 | ok       | 80.717 | 80.717 | 2022-09-25 05:43:00 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_26_10000000_3 | ok       | 80.414 | 80.414 | 2022-09-25 05:44:29 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_26_10000000_4 | ok       | 85.14  | 85.14  | 2022-09-25 05:45:57 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_26_10000000_5 | ok       | 80.325 | 80.325 | 2022-09-25 05:47:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_26_10000000_6 | ok       | 80.468 | 80.468 | 2022-09-25 05:48:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_26_10000000_7 | ok       | 85.263 | 85.263 | 2022-09-25 05:50:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_26_10000000_8 | ok       | 80.632 | 80.632 | 2022-09-25 05:52:00 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_26_10000000_9 | ok       | 80.683 | 80.683 | 2022-09-25 05:53:28 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_25_10000000_0 | ok       | 80.803 | 80.803 | 2022-09-25 05:54:57 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_25_10000000_1 | ok       | 85.678 | 85.678 | 2022-09-25 05:56:26 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_25_10000000_2 | ok       | 80.465 | 80.465 | 2022-09-25 05:57:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_25_10000000_3 | ok       | 80.798 | 80.798 | 2022-09-25 05:59:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_25_10000000_4 | ok       | 85.714 | 85.714 | 2022-09-25 06:00:56 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_25_10000000_5 | ok       | 80.821 | 80.821 | 2022-09-25 06:02:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_25_10000000_6 | ok       | 80.785 | 80.785 | 2022-09-25 06:03:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_25_10000000_7 | ok       | 80.768 | 80.768 | 2022-09-25 06:05:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_25_10000000_8 | ok       | 86.096 | 86.096 | 2022-09-25 06:06:56 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_25_10000000_9 | ok       | 81.065 | 81.065 | 2022-09-25 06:08:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_24_10000000_0 | ok       | 80.615 | 80.615 | 2022-09-25 06:09:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_24_10000000_1 | ok       | 80.382 | 80.382 | 2022-09-25 06:11:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_24_10000000_2 | ok       | 85.482 | 85.482 | 2022-09-25 06:12:55 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_24_10000000_3 | ok       | 80.443 | 80.443 | 2022-09-25 06:14:29 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_24_10000000_4 | ok       | 80.667 | 80.667 | 2022-09-25 06:15:57 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_24_10000000_5 | ok       | 85.752 | 85.752 | 2022-09-25 06:17:25 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_24_10000000_6 | ok       | 80.406 | 80.406 | 2022-09-25 06:18:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_24_10000000_7 | ok       | 80.408 | 80.408 | 2022-09-25 06:20:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_24_10000000_8 | ok       | 85.637 | 85.637 | 2022-09-25 06:21:56 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_24_10000000_9 | ok       | 80.438 | 80.438 | 2022-09-25 06:23:29 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_23_10000000_0 | ok       | 80.312 | 80.312 | 2022-09-25 06:24:57 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_23_10000000_1 | ok       | 85.803 | 85.803 | 2022-09-25 06:26:26 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_23_10000000_2 | ok       | 80.614 | 80.614 | 2022-09-25 06:27:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_23_10000000_3 | ok       | 80.68  | 80.68  | 2022-09-25 06:29:28 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_23_10000000_4 | ok       | 80.747 | 80.747 | 2022-09-25 06:30:56 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_23_10000000_5 | ok       | 86.132 | 86.132 | 2022-09-25 06:32:25 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_23_10000000_6 | ok       | 80.573 | 80.573 | 2022-09-25 06:33:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_23_10000000_7 | ok       | 80.435 | 80.435 | 2022-09-25 06:35:28 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_23_10000000_8 | ok       | 85.763 | 85.763 | 2022-09-25 06:36:56 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_23_10000000_9 | ok       | 80.778 | 80.778 | 2022-09-25 06:38:29 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_22_10000000_0 | ok       | 80.627 | 80.627 | 2022-09-25 06:39:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_22_10000000_1 | ok       | 80.632 | 80.632 | 2022-09-25 06:41:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_22_10000000_2 | ok       | 85.694 | 85.694 | 2022-09-25 06:42:55 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_22_10000000_3 | ok       | 80.849 | 80.849 | 2022-09-25 06:44:29 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_22_10000000_4 | ok       | 80.705 | 80.705 | 2022-09-25 06:45:57 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_22_10000000_5 | ok       | 86.002 | 86.002 | 2022-09-25 06:47:26 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_22_10000000_6 | ok       | 80.912 | 80.912 | 2022-09-25 06:49:00 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_22_10000000_7 | ok       | 80.573 | 80.573 | 2022-09-25 06:50:28 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_22_10000000_8 | ok       | 80.721 | 80.721 | 2022-09-25 06:51:57 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_22_10000000_9 | ok       | 86.435 | 86.435 | 2022-09-25 06:53:25 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_21_10000000_0 | ok       | 81.307 | 81.307 | 2022-09-25 06:55:00 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_21_10000000_1 | ok       | 81.157 | 81.157 | 2022-09-25 06:56:29 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_21_10000000_2 | ok       | 80.829 | 80.829 | 2022-09-25 06:57:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_21_10000000_3 | ok       | 80.66  | 80.66  | 2022-09-25 06:59:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_21_10000000_4 | ok       | 86.577 | 86.577 | 2022-09-25 07:00:55 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_21_10000000_5 | ok       | 80.848 | 80.848 | 2022-09-25 07:02:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_21_10000000_6 | ok       | 80.925 | 80.925 | 2022-09-25 07:03:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_21_10000000_7 | ok       | 81.224 | 81.224 | 2022-09-25 07:05:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_21_10000000_8 | ok       | 81.269 | 81.269 | 2022-09-25 07:06:56 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_21_10000000_9 | ok       | 86.896 | 86.896 | 2022-09-25 07:08:25 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_20_10000000_0 | ok       | 81.113 | 81.113 | 2022-09-25 07:10:00 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_20_10000000_1 | ok       | 80.981 | 80.981 | 2022-09-25 07:11:29 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_20_10000000_2 | ok       | 81.196 | 81.196 | 2022-09-25 07:12:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_20_10000000_3 | ok       | 81.169 | 81.169 | 2022-09-25 07:14:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_20_10000000_4 | ok       | 81.336 | 81.336 | 2022-09-25 07:15:56 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_20_10000000_5 | ok       | 86.772 | 86.772 | 2022-09-25 07:17:25 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_20_10000000_6 | ok       | 81.053 | 81.053 | 2022-09-25 07:19:00 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_20_10000000_7 | ok       | 81.283 | 81.283 | 2022-09-25 07:20:29 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_20_10000000_8 | ok       | 80.892 | 80.892 | 2022-09-25 07:21:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_20_10000000_9 | ok       | 81.176 | 81.176 | 2022-09-25 07:23:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_19_10000000_0 | ok       | 87.551 | 87.551 | 2022-09-25 07:24:56 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_19_10000000_1 | ok       | 81.846 | 81.846 | 2022-09-25 07:26:31 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_19_10000000_2 | ok       | 81.966 | 81.966 | 2022-09-25 07:28:01 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_19_10000000_3 | ok       | 81.819 | 81.819 | 2022-09-25 07:29:31 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_19_10000000_4 | ok       | 82.166 | 82.166 | 2022-09-25 07:31:01 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_19_10000000_5 | ok       | 82.148 | 82.148 | 2022-09-25 07:32:31 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_19_10000000_6 | ok       | 82.064 | 82.064 | 2022-09-25 07:34:01 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_19_10000000_7 | ok       | 81.949 | 81.949 | 2022-09-25 07:35:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_19_10000000_8 | ok       | 82.103 | 82.103 | 2022-09-25 07:37:00 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_19_10000000_9 | ok       | 82.154 | 82.154 | 2022-09-25 07:38:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_18_10000000_0 | ok       | 81.862 | 81.862 | 2022-09-25 07:40:00 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_18_10000000_1 | ok       | 81.693 | 81.693 | 2022-09-25 07:41:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_18_10000000_2 | ok       | 81.596 | 81.596 | 2022-09-25 07:43:00 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_18_10000000_3 | ok       | 81.913 | 81.913 | 2022-09-25 07:44:29 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_18_10000000_4 | ok       | 82.42  | 82.42  | 2022-09-25 07:45:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_18_10000000_5 | ok       | 82.41  | 82.41  | 2022-09-25 07:47:29 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_18_10000000_6 | ok       | 82.561 | 82.561 | 2022-09-25 07:48:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_18_10000000_7 | ok       | 82.503 | 82.503 | 2022-09-25 07:50:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_18_10000000_8 | ok       | 82.36  | 82.36  | 2022-09-25 07:52:00 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_18_10000000_9 | ok       | 82.361 | 82.361 | 2022-09-25 07:53:31 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_17_10000000_0 | ok       | 83.119 | 83.119 | 2022-09-25 07:55:01 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_17_10000000_1 | ok       | 83.31  | 83.31  | 2022-09-25 07:56:32 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_17_10000000_2 | ok       | 83.086 | 83.086 | 2022-09-25 07:58:03 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_17_10000000_3 | ok       | 83.13  | 83.13  | 2022-09-25 07:59:34 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_17_10000000_4 | ok       | 83.491 | 83.491 | 2022-09-25 08:01:05 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_17_10000000_5 | ok       | 83.345 | 83.345 | 2022-09-25 08:02:36 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_17_10000000_6 | ok       | 83.278 | 83.278 | 2022-09-25 08:04:08 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_17_10000000_7 | ok       | 83.318 | 83.318 | 2022-09-25 08:05:39 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_17_10000000_8 | ok       | 82.874 | 82.874 | 2022-09-25 08:07:11 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_17_10000000_9 | ok       | 81.594 | 81.594 | 2022-09-25 08:08:43 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_16_10000000_0 | ok       | 83.144 | 83.144 | 2022-09-25 08:10:16 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_16_10000000_1 | ok       | 84.034 | 84.034 | 2022-09-25 08:11:53 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_16_10000000_2 | ok       | 81.11  | 81.11  | 2022-09-25 08:13:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_16_10000000_3 | ok       | 80.191 | 80.191 | 2022-09-25 08:14:56 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_16_10000000_4 | ok       | 84.409 | 84.409 | 2022-09-25 08:16:24 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_16_10000000_5 | ok       | 80.544 | 80.544 | 2022-09-25 08:17:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_16_10000000_6 | ok       | 80.373 | 80.373 | 2022-09-25 08:19:26 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_16_10000000_7 | ok       | 85.033 | 85.033 | 2022-09-25 08:20:54 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_16_10000000_8 | ok       | 80.918 | 80.918 | 2022-09-25 08:22:29 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_16_10000000_9 | ok       | 80.65  | 80.65  | 2022-09-25 08:23:57 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_15_10000000_0 | ok       | 80.337 | 80.337 | 2022-09-25 08:25:26 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_15_10000000_1 | ok       | 85.085 | 85.085 | 2022-09-25 08:26:54 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_15_10000000_2 | ok       | 80.334 | 80.334 | 2022-09-25 08:28:29 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_15_10000000_3 | ok       | 80.1   | 80.1   | 2022-09-25 08:29:57 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_15_10000000_4 | ok       | 84.415 | 84.415 | 2022-09-25 08:31:25 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_15_10000000_5 | ok       | 80.63  | 80.63  | 2022-09-25 08:32:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_15_10000000_6 | ok       | 80.283 | 80.283 | 2022-09-25 08:34:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_15_10000000_7 | ok       | 85.497 | 85.497 | 2022-09-25 08:35:55 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_15_10000000_8 | ok       | 80.342 | 80.342 | 2022-09-25 08:37:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_15_10000000_9 | ok       | 80.456 | 80.456 | 2022-09-25 08:38:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_14_10000000_0 | ok       | 84.941 | 84.941 | 2022-09-25 08:40:26 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_14_10000000_1 | ok       | 80.499 | 80.499 | 2022-09-25 08:42:00 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_14_10000000_2 | ok       | 80.045 | 80.045 | 2022-09-25 08:43:28 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_14_10000000_3 | ok       | 85.943 | 85.943 | 2022-09-25 08:44:56 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_14_10000000_4 | ok       | 80.515 | 80.515 | 2022-09-25 08:46:31 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_14_10000000_5 | ok       | 80.534 | 80.534 | 2022-09-25 08:47:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_14_10000000_6 | ok       | 80.554 | 80.554 | 2022-09-25 08:49:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_14_10000000_7 | ok       | 85.69  | 85.69  | 2022-09-25 08:50:56 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_14_10000000_8 | ok       | 80.764 | 80.764 | 2022-09-25 08:52:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_14_10000000_9 | ok       | 80.591 | 80.591 | 2022-09-25 08:53:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_13_10000000_0 | ok       | 80.564 | 80.564 | 2022-09-25 08:55:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_13_10000000_1 | ok       | 86.395 | 86.395 | 2022-09-25 08:56:56 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_13_10000000_2 | ok       | 80.52  | 80.52  | 2022-09-25 08:58:31 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_13_10000000_3 | ok       | 81.221 | 81.221 | 2022-09-25 08:59:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_13_10000000_4 | ok       | 80.38  | 80.38  | 2022-09-25 09:01:28 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_13_10000000_5 | ok       | 86.783 | 86.783 | 2022-09-25 09:02:56 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_13_10000000_6 | ok       | 80.587 | 80.587 | 2022-09-25 09:04:31 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_13_10000000_7 | ok       | 80.655 | 80.655 | 2022-09-25 09:06:00 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_13_10000000_8 | ok       | 80.596 | 80.596 | 2022-09-25 09:07:28 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_13_10000000_9 | ok       | 80.735 | 80.735 | 2022-09-25 09:08:57 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_12_10000000_0 | ok       | 84.919 | 84.919 | 2022-09-25 09:10:25 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_12_10000000_1 | ok       | 79.892 | 79.892 | 2022-09-25 09:11:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_12_10000000_2 | ok       | 80.055 | 80.055 | 2022-09-25 09:13:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_12_10000000_3 | ok       | 84.993 | 84.993 | 2022-09-25 09:14:55 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_12_10000000_4 | ok       | 79.797 | 79.797 | 2022-09-25 09:16:29 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_12_10000000_5 | ok       | 80.248 | 80.248 | 2022-09-25 09:17:57 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_12_10000000_6 | ok       | 84.859 | 84.859 | 2022-09-25 09:19:25 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_12_10000000_7 | ok       | 80.045 | 80.045 | 2022-09-25 09:20:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_12_10000000_8 | ok       | 79.746 | 79.746 | 2022-09-25 09:22:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_12_10000000_9 | ok       | 84.306 | 84.306 | 2022-09-25 09:23:54 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_11_10000000_0 | ok       | 79.856 | 79.856 | 2022-09-25 09:25:28 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_11_10000000_1 | ok       | 86.003 | 86.003 | 2022-09-25 09:26:56 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_11_10000000_2 | ok       | 80.038 | 80.038 | 2022-09-25 09:28:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_11_10000000_3 | ok       | 86.042 | 86.042 | 2022-09-25 09:29:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_11_10000000_4 | ok       | 79.812 | 79.812 | 2022-09-25 09:31:32 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_11_10000000_5 | ok       | 79.803 | 79.803 | 2022-09-25 09:33:00 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_11_10000000_6 | ok       | 86.048 | 86.048 | 2022-09-25 09:34:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_11_10000000_7 | ok       | 80.601 | 80.601 | 2022-09-25 09:36:01 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_11_10000000_8 | ok       | 80.211 | 80.211 | 2022-09-25 09:37:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_11_10000000_9 | ok       | 86.664 | 86.664 | 2022-09-25 09:38:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_10_10000000_0 | ok       | 80.557 | 80.557 | 2022-09-25 09:40:32 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_10_10000000_1 | ok       | 80.422 | 80.422 | 2022-09-25 09:42:00 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_10_10000000_2 | ok       | 86.652 | 86.652 | 2022-09-25 09:43:29 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_10_10000000_3 | ok       | 80.388 | 80.388 | 2022-09-25 09:45:03 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_10_10000000_4 | ok       | 80.534 | 80.534 | 2022-09-25 09:46:31 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_10_10000000_5 | ok       | 80.047 | 80.047 | 2022-09-25 09:48:00 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_10_10000000_6 | ok       | 87.097 | 87.097 | 2022-09-25 09:49:28 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_10_10000000_7 | ok       | 80.562 | 80.562 | 2022-09-25 09:51:03 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_10_10000000_8 | ok       | 80.499 | 80.499 | 2022-09-25 09:52:31 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_10_10000000_9 | ok       | 80.085 | 80.085 | 2022-09-25 09:53:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_9_10000000_0  | ok       | 88.094 | 88.094 | 2022-09-25 09:55:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_9_10000000_1  | ok       | 81.374 | 81.374 | 2022-09-25 09:57:03 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_9_10000000_2  | ok       | 81.241 | 81.241 | 2022-09-25 09:58:32 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_9_10000000_3  | ok       | 81.031 | 81.031 | 2022-09-25 10:00:01 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_9_10000000_4  | ok       | 87.632 | 87.632 | 2022-09-25 10:01:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_9_10000000_5  | ok       | 81.171 | 81.171 | 2022-09-25 10:03:06 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_9_10000000_6  | ok       | 81.254 | 81.254 | 2022-09-25 10:04:35 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_9_10000000_7  | ok       | 81.026 | 81.026 | 2022-09-25 10:06:04 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_9_10000000_8  | ok       | 81.136 | 81.136 | 2022-09-25 10:07:33 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_9_10000000_9  | ok       | 81.153 | 81.153 | 2022-09-25 10:09:02 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_8_10000000_0  | ok       | 85.606 | 85.606 | 2022-09-25 10:10:31 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_8_10000000_1  | ok       | 85.744 | 85.744 | 2022-09-25 10:12:04 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_8_10000000_2  | ok       | 85.653 | 85.653 | 2022-09-25 10:13:38 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_8_10000000_3  | ok       | 83.876 | 83.876 | 2022-09-25 10:15:13 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_8_10000000_4  | ok       | 81.551 | 81.551 | 2022-09-25 10:16:50 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_8_10000000_5  | ok       | 84.201 | 84.201 | 2022-09-25 10:18:25 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_8_10000000_6  | ok       | 85.861 | 85.861 | 2022-09-25 10:19:59 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_8_10000000_7  | ok       | 85.955 | 85.955 | 2022-09-25 10:21:33 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_8_10000000_8  | ok       | 86.383 | 86.383 | 2022-09-25 10:23:07 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_8_10000000_9  | ok       | 84.316 | 84.316 | 2022-09-25 10:24:43 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_7_10000000_0  | ok       | 80.925 | 80.925 | 2022-09-25 10:26:20 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_7_10000000_1  | ok       | 83.108 | 83.108 | 2022-09-25 10:27:55 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_7_10000000_2  | ok       | 85.476 | 85.476 | 2022-09-25 10:29:28 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_7_10000000_3  | ok       | 86.049 | 86.049 | 2022-09-25 10:31:02 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_7_10000000_4  | ok       | 86.085 | 86.085 | 2022-09-25 10:32:36 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_7_10000000_5  | ok       | 85.542 | 85.542 | 2022-09-25 10:34:11 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_7_10000000_6  | ok       | 81.642 | 81.642 | 2022-09-25 10:35:49 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_7_10000000_7  | ok       | 83.351 | 83.351 | 2022-09-25 10:37:24 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_7_10000000_8  | ok       | 85.77  | 85.77  | 2022-09-25 10:38:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_7_10000000_9  | ok       | 86.114 | 86.114 | 2022-09-25 10:40:32 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_6_10000000_0  | ok       | 85.9   | 85.9   | 2022-09-25 10:42:06 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_6_10000000_1  | ok       | 85.331 | 85.331 | 2022-09-25 10:43:40 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_6_10000000_2  | ok       | 82.196 | 82.196 | 2022-09-25 10:45:17 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_6_10000000_3  | ok       | 82.32  | 82.32  | 2022-09-25 10:46:54 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_6_10000000_4  | ok       | 85.305 | 85.305 | 2022-09-25 10:48:27 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_6_10000000_5  | ok       | 85.964 | 85.964 | 2022-09-25 10:50:01 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_6_10000000_6  | ok       | 85.913 | 85.913 | 2022-09-25 10:51:35 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_6_10000000_7  | ok       | 86.017 | 86.017 | 2022-09-25 10:53:08 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_6_10000000_8  | ok       | 82.952 | 82.952 | 2022-09-25 10:54:45 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_6_10000000_9  | ok       | 81.37  | 81.37  | 2022-09-25 10:56:22 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_5_10000000_0  | ok       | 84.503 | 84.503 | 2022-09-25 10:57:56 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_5_10000000_1  | ok       | 85.825 | 85.825 | 2022-09-25 10:59:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_5_10000000_2  | ok       | 85.771 | 85.771 | 2022-09-25 11:01:04 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_5_10000000_3  | ok       | 86.075 | 86.075 | 2022-09-25 11:02:37 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_5_10000000_4  | ok       | 83.814 | 83.814 | 2022-09-25 11:04:13 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_5_10000000_5  | ok       | 81.074 | 81.074 | 2022-09-25 11:05:50 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_5_10000000_6  | ok       | 82.834 | 82.834 | 2022-09-25 11:07:25 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_5_10000000_7  | ok       | 85.822 | 85.822 | 2022-09-25 11:08:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_5_10000000_8  | ok       | 85.782 | 85.782 | 2022-09-25 11:10:32 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_5_10000000_9  | ok       | 85.713 | 85.713 | 2022-09-25 11:12:06 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_4_10000000_0  | ok       | 84.655 | 84.655 | 2022-09-25 11:13:39 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_4_10000000_1  | ok       | 82.777 | 82.777 | 2022-09-25 11:15:14 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_4_10000000_2  | ok       | 80.398 | 80.398 | 2022-09-25 11:16:49 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_4_10000000_3  | ok       | 80.705 | 80.705 | 2022-09-25 11:18:24 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_4_10000000_4  | ok       | 82.544 | 82.544 | 2022-09-25 11:19:57 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_4_10000000_5  | ok       | 83.935 | 83.935 | 2022-09-25 11:21:29 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_4_10000000_6  | ok       | 84.813 | 84.813 | 2022-09-25 11:23:02 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_4_10000000_7  | ok       | 84.557 | 84.557 | 2022-09-25 11:24:35 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_4_10000000_8  | ok       | 84.638 | 84.638 | 2022-09-25 11:26:07 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_4_10000000_9  | ok       | 84.682 | 84.682 | 2022-09-25 11:27:40 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_3_10000000_0  | ok       | 91.354 | 91.354 | 2022-09-25 11:29:15 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_3_10000000_1  | ok       | 91.028 | 91.028 | 2022-09-25 11:30:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_3_10000000_2  | ok       | 91.125 | 91.125 | 2022-09-25 11:32:36 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_3_10000000_3  | ok       | 91.267 | 91.267 | 2022-09-25 11:34:21 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_3_10000000_4  | ok       | 90.777 | 90.777 | 2022-09-25 11:36:01 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_3_10000000_5  | ok       | 91.854 | 91.854 | 2022-09-25 11:37:39 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_3_10000000_6  | ok       | 91.145 | 91.145 | 2022-09-25 11:39:25 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_3_10000000_7  | ok       | 91.341 | 91.341 | 2022-09-25 11:41:04 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_3_10000000_8  | ok       | 93.036 | 93.036 | 2022-09-25 11:42:47 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_3_10000000_9  | ok       | 91.166 | 91.166 | 2022-09-25 11:44:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_2_10000000_0  | ok       | 90.205 | 90.205 | 2022-09-25 11:46:09 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_2_10000000_1  | ok       | 89.38  | 89.38  | 2022-09-25 11:47:53 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_2_10000000_2  | ok       | 90.181 | 90.181 | 2022-09-25 11:49:32 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_2_10000000_3  | ok       | 90.251 | 90.251 | 2022-09-25 11:51:10 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_2_10000000_4  | ok       | 90.176 | 90.176 | 2022-09-25 11:52:55 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_2_10000000_5  | ok       | 90.345 | 90.345 | 2022-09-25 11:54:33 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_2_10000000_6  | ok       | 90.488 | 90.488 | 2022-09-25 11:56:13 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_2_10000000_7  | ok       | 90.379 | 90.379 | 2022-09-25 11:57:56 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_2_10000000_8  | ok       | 90.482 | 90.482 | 2022-09-25 11:59:35 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_2_10000000_9  | ok       | 90.231 | 90.231 | 2022-09-25 12:01:17 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_1_10000000_0  | ok       | 88.528 | 88.528 | 2022-09-25 12:02:58 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_1_10000000_1  | ok       | 88.658 | 88.658 | 2022-09-25 12:04:34 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_1_10000000_2  | ok       | 87.214 | 87.214 | 2022-09-25 12:06:12 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_1_10000000_3  | ok       | 87.375 | 87.375 | 2022-09-25 12:07:54 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_1_10000000_4  | ok       | 88.48  | 88.48  | 2022-09-25 12:09:30 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_1_10000000_5  | ok       | 88.554 | 88.554 | 2022-09-25 12:11:06 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_1_10000000_6  | ok       | 86.471 | 86.471 | 2022-09-25 12:12:46 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_1_10000000_7  | ok       | 88.362 | 88.362 | 2022-09-25 12:14:26 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_1_10000000_8  | ok       | 88.557 | 88.557 | 2022-09-25 12:16:02 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-| g7_mp-mergesort_1_10000000_9  | ok       | 88.567 | 88.567 | 2022-09-25 12:17:38 |       |       | v100   | alex   | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
-+-------------------------------+----------+--------+--------+---------------------+-------+-------+--------+--------+-------+-------------------------------------+
++-------------------------------------------+----------+--------+-------+---------------------+-------+-------+--------+--------+-------+-----------------------------------------------------+
+| Name                                      | Status   |   Time |   Sum | Start               | tag   | msg   | Node   | User   | OS    | Version                                             |
+|-------------------------------------------+----------+--------+-------+---------------------+-------+-------+--------+--------+-------+-----------------------------------------------------|
+| ip-172-31-9-213_mp-mergesort_4_10000000_0 | ok       |  0.223 | 0.223 | 2022-10-03 01:13:56 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_4_10000000_1 | ok       |  0.108 | 0.108 | 2022-10-03 01:14:07 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_4_10000000_2 | ok       |  0.109 | 0.109 | 2022-10-03 01:14:18 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_4_10000000_3 | ok       |  0.11  | 0.11  | 2022-10-03 01:14:29 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_4_10000000_4 | ok       |  0.109 | 0.109 | 2022-10-03 01:14:40 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_4_10000000_5 | ok       |  0.11  | 0.11  | 2022-10-03 01:14:51 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_4_10000000_6 | ok       |  0.111 | 0.111 | 2022-10-03 01:15:02 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_4_10000000_7 | ok       |  0.11  | 0.11  | 2022-10-03 01:15:13 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_4_10000000_8 | ok       |  0.11  | 0.11  | 2022-10-03 01:15:24 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_4_10000000_9 | ok       |  0.109 | 0.109 | 2022-10-03 01:15:35 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_3_10000000_0 | ok       |  0.109 | 0.109 | 2022-10-03 01:15:47 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_3_10000000_1 | ok       |  0.11  | 0.11  | 2022-10-03 01:15:58 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_3_10000000_2 | ok       |  0.109 | 0.109 | 2022-10-03 01:16:09 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_3_10000000_3 | ok       |  0.11  | 0.11  | 2022-10-03 01:16:20 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_3_10000000_4 | ok       |  0.11  | 0.11  | 2022-10-03 01:16:31 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_3_10000000_5 | ok       |  0.11  | 0.11  | 2022-10-03 01:16:42 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_3_10000000_6 | ok       |  0.11  | 0.11  | 2022-10-03 01:16:53 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_3_10000000_7 | ok       |  0.11  | 0.11  | 2022-10-03 01:17:04 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_3_10000000_8 | ok       |  0.11  | 0.11  | 2022-10-03 01:17:15 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_3_10000000_9 | ok       |  0.11  | 0.11  | 2022-10-03 01:17:26 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_2_10000000_0 | ok       |  0.11  | 0.11  | 2022-10-03 01:17:37 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_2_10000000_1 | ok       |  0.11  | 0.11  | 2022-10-03 01:17:48 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_2_10000000_2 | ok       |  0.11  | 0.11  | 2022-10-03 01:17:59 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_2_10000000_3 | ok       |  0.11  | 0.11  | 2022-10-03 01:18:11 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_2_10000000_4 | ok       |  0.11  | 0.11  | 2022-10-03 01:18:22 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_2_10000000_5 | ok       |  0.11  | 0.11  | 2022-10-03 01:18:33 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_2_10000000_6 | ok       |  0.111 | 0.111 | 2022-10-03 01:18:44 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_2_10000000_7 | ok       |  0.11  | 0.11  | 2022-10-03 01:18:55 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_2_10000000_8 | ok       |  0.111 | 0.111 | 2022-10-03 01:19:06 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_2_10000000_9 | ok       |  0.11  | 0.11  | 2022-10-03 01:19:17 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_1_10000000_0 | ok       |  0.11  | 0.11  | 2022-10-03 01:19:28 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_1_10000000_1 | ok       |  0.11  | 0.11  | 2022-10-03 01:19:39 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_1_10000000_2 | ok       |  0.11  | 0.11  | 2022-10-03 01:19:50 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_1_10000000_3 | ok       |  0.111 | 0.111 | 2022-10-03 01:20:01 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_1_10000000_4 | ok       |  0.11  | 0.11  | 2022-10-03 01:20:12 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_1_10000000_5 | ok       |  0.11  | 0.11  | 2022-10-03 01:20:23 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_1_10000000_6 | ok       |  0.11  | 0.11  | 2022-10-03 01:20:35 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_1_10000000_7 | ok       |  0.11  | 0.11  | 2022-10-03 01:20:46 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_1_10000000_8 | ok       |  0.11  | 0.11  | 2022-10-03 01:20:57 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_1_10000000_9 | ok       |  0.111 | 0.111 | 2022-10-03 01:21:08 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
++-------------------------------------------+----------+--------+-------+---------------------+-------+-------+--------+--------+-------+-----------------------------------------------------+
 # csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
-# csv,g7_mp-mergesort_40_10000000_0,ok,89.903,89.903,2022-09-25 02:08:53,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_40_10000000_1,ok,82.149,82.149,2022-09-25 02:10:31,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_40_10000000_2,ok,83.121,83.121,2022-09-25 02:12:01,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_40_10000000_3,ok,82.387,82.387,2022-09-25 02:13:32,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_40_10000000_4,ok,82.347,82.347,2022-09-25 02:15:02,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_40_10000000_5,ok,81.544,81.544,2022-09-25 02:16:33,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_40_10000000_6,ok,82.385,82.385,2022-09-25 02:18:02,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_40_10000000_7,ok,82.167,82.167,2022-09-25 02:19:32,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_40_10000000_8,ok,82.151,82.151,2022-09-25 02:21:02,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_40_10000000_9,ok,82.027,82.027,2022-09-25 02:22:32,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_39_10000000_0,ok,82.158,82.158,2022-09-25 02:24:02,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_39_10000000_1,ok,81.698,81.698,2022-09-25 02:25:32,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_39_10000000_2,ok,82.588,82.588,2022-09-25 02:27:02,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_39_10000000_3,ok,81.845,81.845,2022-09-25 02:28:32,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_39_10000000_4,ok,82.119,82.119,2022-09-25 02:30:02,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_39_10000000_5,ok,81.911,81.911,2022-09-25 02:31:32,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_39_10000000_6,ok,82.245,82.245,2022-09-25 02:33:02,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_39_10000000_7,ok,82.381,82.381,2022-09-25 02:34:32,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_39_10000000_8,ok,83.004,83.004,2022-09-25 02:36:02,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_39_10000000_9,ok,82.759,82.759,2022-09-25 02:37:33,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_38_10000000_0,ok,83.608,83.608,2022-09-25 02:39:04,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_38_10000000_1,ok,80.468,80.468,2022-09-25 02:40:35,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_38_10000000_2,ok,84.013,84.013,2022-09-25 02:42:04,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_38_10000000_3,ok,80.094,80.094,2022-09-25 02:43:36,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_38_10000000_4,ok,83.367,83.367,2022-09-25 02:45:04,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_38_10000000_5,ok,80.481,80.481,2022-09-25 02:46:35,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_38_10000000_6,ok,83.759,83.759,2022-09-25 02:48:03,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_38_10000000_7,ok,80.694,80.694,2022-09-25 02:49:35,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_38_10000000_8,ok,83.41,83.41,2022-09-25 02:51:03,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_38_10000000_9,ok,84.453,84.453,2022-09-25 02:52:35,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_37_10000000_0,ok,81.029,81.029,2022-09-25 02:54:07,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_37_10000000_1,ok,81.051,81.051,2022-09-25 02:55:36,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_37_10000000_2,ok,81.115,81.115,2022-09-25 02:57:05,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_37_10000000_3,ok,80.955,80.955,2022-09-25 02:58:34,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_37_10000000_4,ok,84.632,84.632,2022-09-25 03:00:03,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_37_10000000_5,ok,80.92,80.92,2022-09-25 03:01:35,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_37_10000000_6,ok,81.151,81.151,2022-09-25 03:03:04,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_37_10000000_7,ok,84.092,84.092,2022-09-25 03:04:33,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_37_10000000_8,ok,81.659,81.659,2022-09-25 03:06:05,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_37_10000000_9,ok,81.979,81.979,2022-09-25 03:07:35,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_36_10000000_0,ok,81.153,81.153,2022-09-25 03:09:05,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_36_10000000_1,ok,81.259,81.259,2022-09-25 03:10:34,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_36_10000000_2,ok,81.724,81.724,2022-09-25 03:12:03,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_36_10000000_3,ok,84.505,84.505,2022-09-25 03:13:32,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_36_10000000_4,ok,81.631,81.631,2022-09-25 03:15:05,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_36_10000000_5,ok,82.009,82.009,2022-09-25 03:16:34,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_36_10000000_6,ok,81.792,81.792,2022-09-25 03:18:04,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_36_10000000_7,ok,81.599,81.599,2022-09-25 03:19:34,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_36_10000000_8,ok,81.855,81.855,2022-09-25 03:21:03,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_36_10000000_9,ok,81.788,81.788,2022-09-25 03:22:33,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_35_10000000_0,ok,81.852,81.852,2022-09-25 03:24:03,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_35_10000000_1,ok,85.774,85.774,2022-09-25 03:25:32,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_35_10000000_2,ok,81.61,81.61,2022-09-25 03:27:06,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_35_10000000_3,ok,81.987,81.987,2022-09-25 03:28:36,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_35_10000000_4,ok,82.279,82.279,2022-09-25 03:30:05,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_35_10000000_5,ok,81.885,81.885,2022-09-25 03:31:36,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_35_10000000_6,ok,82.393,82.393,2022-09-25 03:33:05,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_35_10000000_7,ok,82.769,82.769,2022-09-25 03:34:36,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_35_10000000_8,ok,82.228,82.228,2022-09-25 03:36:06,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_35_10000000_9,ok,82.247,82.247,2022-09-25 03:37:36,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_34_10000000_0,ok,82.559,82.559,2022-09-25 03:39:06,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_34_10000000_1,ok,82.809,82.809,2022-09-25 03:40:37,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_34_10000000_2,ok,82.58,82.58,2022-09-25 03:42:08,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_34_10000000_3,ok,82.65,82.65,2022-09-25 03:43:38,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_34_10000000_4,ok,83.139,83.139,2022-09-25 03:45:08,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_34_10000000_5,ok,83.086,83.086,2022-09-25 03:46:39,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_34_10000000_6,ok,81.938,81.938,2022-09-25 03:48:11,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_34_10000000_7,ok,85.22,85.22,2022-09-25 03:49:42,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_34_10000000_8,ok,84.188,84.188,2022-09-25 03:51:19,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_34_10000000_9,ok,86.885,86.885,2022-09-25 03:52:53,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_33_10000000_0,ok,86.888,86.888,2022-09-25 03:54:28,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_33_10000000_1,ok,84.301,84.301,2022-09-25 03:56:03,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_33_10000000_2,ok,83.349,83.349,2022-09-25 03:57:35,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_33_10000000_3,ok,82.87,82.87,2022-09-25 03:59:06,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_33_10000000_4,ok,82.857,82.857,2022-09-25 04:00:37,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_33_10000000_5,ok,83.098,83.098,2022-09-25 04:02:07,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_33_10000000_6,ok,82.84,82.84,2022-09-25 04:03:38,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_33_10000000_7,ok,82.521,82.521,2022-09-25 04:05:09,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_33_10000000_8,ok,83.589,83.589,2022-09-25 04:06:39,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_33_10000000_9,ok,82.128,82.128,2022-09-25 04:08:11,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_32_10000000_0,ok,81.805,81.805,2022-09-25 04:09:43,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_32_10000000_1,ok,79.611,79.611,2022-09-25 04:11:16,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_32_10000000_2,ok,79.153,79.153,2022-09-25 04:12:48,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_32_10000000_3,ok,79.653,79.653,2022-09-25 04:14:18,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_32_10000000_4,ok,79.842,79.842,2022-09-25 04:15:50,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_32_10000000_5,ok,80.341,80.341,2022-09-25 04:17:21,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_32_10000000_6,ok,82.293,82.293,2022-09-25 04:18:53,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_32_10000000_7,ok,83.623,83.623,2022-09-25 04:20:24,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_32_10000000_8,ok,83.622,83.622,2022-09-25 04:21:56,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_32_10000000_9,ok,83.562,83.562,2022-09-25 04:23:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_31_10000000_0,ok,83.644,83.644,2022-09-25 04:24:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_31_10000000_1,ok,79.744,79.744,2022-09-25 04:26:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_31_10000000_2,ok,83.657,83.657,2022-09-25 04:27:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_31_10000000_3,ok,79.743,79.743,2022-09-25 04:29:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_31_10000000_4,ok,84.119,84.119,2022-09-25 04:30:57,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_31_10000000_5,ok,79.617,79.617,2022-09-25 04:32:29,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_31_10000000_6,ok,83.552,83.552,2022-09-25 04:33:57,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_31_10000000_7,ok,83.455,83.455,2022-09-25 04:35:28,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_31_10000000_8,ok,79.29,79.29,2022-09-25 04:37:00,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_31_10000000_9,ok,83.782,83.782,2022-09-25 04:38:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_30_10000000_0,ok,80.09,80.09,2022-09-25 04:39:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_30_10000000_1,ok,84.167,84.167,2022-09-25 04:41:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_30_10000000_2,ok,80.054,80.054,2022-09-25 04:42:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_30_10000000_3,ok,84.369,84.369,2022-09-25 04:44:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_30_10000000_4,ok,80.107,80.107,2022-09-25 04:45:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_30_10000000_5,ok,83.859,83.859,2022-09-25 04:47:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_30_10000000_6,ok,79.857,79.857,2022-09-25 04:48:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_30_10000000_7,ok,84.225,84.225,2022-09-25 04:50:26,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_30_10000000_8,ok,79.633,79.633,2022-09-25 04:51:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_30_10000000_9,ok,84.354,84.354,2022-09-25 04:53:26,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_29_10000000_0,ok,84.377,84.377,2022-09-25 04:54:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_29_10000000_1,ok,80.046,80.046,2022-09-25 04:56:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_29_10000000_2,ok,80.463,80.463,2022-09-25 04:57:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_29_10000000_3,ok,84.906,84.906,2022-09-25 04:59:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_29_10000000_4,ok,80.679,80.679,2022-09-25 05:00:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_29_10000000_5,ok,80.438,80.438,2022-09-25 05:02:28,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_29_10000000_6,ok,84.489,84.489,2022-09-25 05:03:56,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_29_10000000_7,ok,80.196,80.196,2022-09-25 05:05:29,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_29_10000000_8,ok,84.827,84.827,2022-09-25 05:06:57,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_29_10000000_9,ok,80.233,80.233,2022-09-25 05:08:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_28_10000000_0,ok,80.473,80.473,2022-09-25 05:09:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_28_10000000_1,ok,84.647,84.647,2022-09-25 05:11:26,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_28_10000000_2,ok,80.042,80.042,2022-09-25 05:12:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_28_10000000_3,ok,84.392,84.392,2022-09-25 05:14:26,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_28_10000000_4,ok,80.025,80.025,2022-09-25 05:15:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_28_10000000_5,ok,84.251,84.251,2022-09-25 05:17:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_28_10000000_6,ok,79.937,79.937,2022-09-25 05:18:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_28_10000000_7,ok,84.594,84.594,2022-09-25 05:20:26,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_28_10000000_8,ok,80.026,80.026,2022-09-25 05:21:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_28_10000000_9,ok,85.055,85.055,2022-09-25 05:23:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_27_10000000_0,ok,80.456,80.456,2022-09-25 05:25:00,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_27_10000000_1,ok,80.438,80.438,2022-09-25 05:26:28,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_27_10000000_2,ok,84.912,84.912,2022-09-25 05:27:56,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_27_10000000_3,ok,79.996,79.996,2022-09-25 05:29:29,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_27_10000000_4,ok,84.825,84.825,2022-09-25 05:30:57,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_27_10000000_5,ok,80.096,80.096,2022-09-25 05:32:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_27_10000000_6,ok,80.212,80.212,2022-09-25 05:33:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_27_10000000_7,ok,84.931,84.931,2022-09-25 05:35:26,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_27_10000000_8,ok,79.973,79.973,2022-09-25 05:36:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_27_10000000_9,ok,84.908,84.908,2022-09-25 05:38:26,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_26_10000000_0,ok,80.132,80.132,2022-09-25 05:39:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_26_10000000_1,ok,85.13,85.13,2022-09-25 05:41:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_26_10000000_2,ok,80.717,80.717,2022-09-25 05:43:00,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_26_10000000_3,ok,80.414,80.414,2022-09-25 05:44:29,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_26_10000000_4,ok,85.14,85.14,2022-09-25 05:45:57,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_26_10000000_5,ok,80.325,80.325,2022-09-25 05:47:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_26_10000000_6,ok,80.468,80.468,2022-09-25 05:48:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_26_10000000_7,ok,85.263,85.263,2022-09-25 05:50:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_26_10000000_8,ok,80.632,80.632,2022-09-25 05:52:00,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_26_10000000_9,ok,80.683,80.683,2022-09-25 05:53:28,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_25_10000000_0,ok,80.803,80.803,2022-09-25 05:54:57,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_25_10000000_1,ok,85.678,85.678,2022-09-25 05:56:26,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_25_10000000_2,ok,80.465,80.465,2022-09-25 05:57:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_25_10000000_3,ok,80.798,80.798,2022-09-25 05:59:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_25_10000000_4,ok,85.714,85.714,2022-09-25 06:00:56,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_25_10000000_5,ok,80.821,80.821,2022-09-25 06:02:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_25_10000000_6,ok,80.785,80.785,2022-09-25 06:03:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_25_10000000_7,ok,80.768,80.768,2022-09-25 06:05:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_25_10000000_8,ok,86.096,86.096,2022-09-25 06:06:56,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_25_10000000_9,ok,81.065,81.065,2022-09-25 06:08:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_24_10000000_0,ok,80.615,80.615,2022-09-25 06:09:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_24_10000000_1,ok,80.382,80.382,2022-09-25 06:11:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_24_10000000_2,ok,85.482,85.482,2022-09-25 06:12:55,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_24_10000000_3,ok,80.443,80.443,2022-09-25 06:14:29,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_24_10000000_4,ok,80.667,80.667,2022-09-25 06:15:57,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_24_10000000_5,ok,85.752,85.752,2022-09-25 06:17:25,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_24_10000000_6,ok,80.406,80.406,2022-09-25 06:18:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_24_10000000_7,ok,80.408,80.408,2022-09-25 06:20:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_24_10000000_8,ok,85.637,85.637,2022-09-25 06:21:56,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_24_10000000_9,ok,80.438,80.438,2022-09-25 06:23:29,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_23_10000000_0,ok,80.312,80.312,2022-09-25 06:24:57,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_23_10000000_1,ok,85.803,85.803,2022-09-25 06:26:26,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_23_10000000_2,ok,80.614,80.614,2022-09-25 06:27:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_23_10000000_3,ok,80.68,80.68,2022-09-25 06:29:28,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_23_10000000_4,ok,80.747,80.747,2022-09-25 06:30:56,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_23_10000000_5,ok,86.132,86.132,2022-09-25 06:32:25,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_23_10000000_6,ok,80.573,80.573,2022-09-25 06:33:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_23_10000000_7,ok,80.435,80.435,2022-09-25 06:35:28,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_23_10000000_8,ok,85.763,85.763,2022-09-25 06:36:56,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_23_10000000_9,ok,80.778,80.778,2022-09-25 06:38:29,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_22_10000000_0,ok,80.627,80.627,2022-09-25 06:39:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_22_10000000_1,ok,80.632,80.632,2022-09-25 06:41:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_22_10000000_2,ok,85.694,85.694,2022-09-25 06:42:55,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_22_10000000_3,ok,80.849,80.849,2022-09-25 06:44:29,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_22_10000000_4,ok,80.705,80.705,2022-09-25 06:45:57,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_22_10000000_5,ok,86.002,86.002,2022-09-25 06:47:26,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_22_10000000_6,ok,80.912,80.912,2022-09-25 06:49:00,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_22_10000000_7,ok,80.573,80.573,2022-09-25 06:50:28,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_22_10000000_8,ok,80.721,80.721,2022-09-25 06:51:57,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_22_10000000_9,ok,86.435,86.435,2022-09-25 06:53:25,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_21_10000000_0,ok,81.307,81.307,2022-09-25 06:55:00,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_21_10000000_1,ok,81.157,81.157,2022-09-25 06:56:29,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_21_10000000_2,ok,80.829,80.829,2022-09-25 06:57:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_21_10000000_3,ok,80.66,80.66,2022-09-25 06:59:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_21_10000000_4,ok,86.577,86.577,2022-09-25 07:00:55,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_21_10000000_5,ok,80.848,80.848,2022-09-25 07:02:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_21_10000000_6,ok,80.925,80.925,2022-09-25 07:03:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_21_10000000_7,ok,81.224,81.224,2022-09-25 07:05:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_21_10000000_8,ok,81.269,81.269,2022-09-25 07:06:56,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_21_10000000_9,ok,86.896,86.896,2022-09-25 07:08:25,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_20_10000000_0,ok,81.113,81.113,2022-09-25 07:10:00,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_20_10000000_1,ok,80.981,80.981,2022-09-25 07:11:29,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_20_10000000_2,ok,81.196,81.196,2022-09-25 07:12:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_20_10000000_3,ok,81.169,81.169,2022-09-25 07:14:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_20_10000000_4,ok,81.336,81.336,2022-09-25 07:15:56,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_20_10000000_5,ok,86.772,86.772,2022-09-25 07:17:25,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_20_10000000_6,ok,81.053,81.053,2022-09-25 07:19:00,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_20_10000000_7,ok,81.283,81.283,2022-09-25 07:20:29,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_20_10000000_8,ok,80.892,80.892,2022-09-25 07:21:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_20_10000000_9,ok,81.176,81.176,2022-09-25 07:23:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_19_10000000_0,ok,87.551,87.551,2022-09-25 07:24:56,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_19_10000000_1,ok,81.846,81.846,2022-09-25 07:26:31,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_19_10000000_2,ok,81.966,81.966,2022-09-25 07:28:01,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_19_10000000_3,ok,81.819,81.819,2022-09-25 07:29:31,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_19_10000000_4,ok,82.166,82.166,2022-09-25 07:31:01,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_19_10000000_5,ok,82.148,82.148,2022-09-25 07:32:31,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_19_10000000_6,ok,82.064,82.064,2022-09-25 07:34:01,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_19_10000000_7,ok,81.949,81.949,2022-09-25 07:35:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_19_10000000_8,ok,82.103,82.103,2022-09-25 07:37:00,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_19_10000000_9,ok,82.154,82.154,2022-09-25 07:38:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_18_10000000_0,ok,81.862,81.862,2022-09-25 07:40:00,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_18_10000000_1,ok,81.693,81.693,2022-09-25 07:41:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_18_10000000_2,ok,81.596,81.596,2022-09-25 07:43:00,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_18_10000000_3,ok,81.913,81.913,2022-09-25 07:44:29,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_18_10000000_4,ok,82.42,82.42,2022-09-25 07:45:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_18_10000000_5,ok,82.41,82.41,2022-09-25 07:47:29,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_18_10000000_6,ok,82.561,82.561,2022-09-25 07:48:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_18_10000000_7,ok,82.503,82.503,2022-09-25 07:50:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_18_10000000_8,ok,82.36,82.36,2022-09-25 07:52:00,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_18_10000000_9,ok,82.361,82.361,2022-09-25 07:53:31,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_17_10000000_0,ok,83.119,83.119,2022-09-25 07:55:01,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_17_10000000_1,ok,83.31,83.31,2022-09-25 07:56:32,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_17_10000000_2,ok,83.086,83.086,2022-09-25 07:58:03,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_17_10000000_3,ok,83.13,83.13,2022-09-25 07:59:34,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_17_10000000_4,ok,83.491,83.491,2022-09-25 08:01:05,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_17_10000000_5,ok,83.345,83.345,2022-09-25 08:02:36,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_17_10000000_6,ok,83.278,83.278,2022-09-25 08:04:08,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_17_10000000_7,ok,83.318,83.318,2022-09-25 08:05:39,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_17_10000000_8,ok,82.874,82.874,2022-09-25 08:07:11,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_17_10000000_9,ok,81.594,81.594,2022-09-25 08:08:43,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_16_10000000_0,ok,83.144,83.144,2022-09-25 08:10:16,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_16_10000000_1,ok,84.034,84.034,2022-09-25 08:11:53,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_16_10000000_2,ok,81.11,81.11,2022-09-25 08:13:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_16_10000000_3,ok,80.191,80.191,2022-09-25 08:14:56,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_16_10000000_4,ok,84.409,84.409,2022-09-25 08:16:24,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_16_10000000_5,ok,80.544,80.544,2022-09-25 08:17:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_16_10000000_6,ok,80.373,80.373,2022-09-25 08:19:26,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_16_10000000_7,ok,85.033,85.033,2022-09-25 08:20:54,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_16_10000000_8,ok,80.918,80.918,2022-09-25 08:22:29,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_16_10000000_9,ok,80.65,80.65,2022-09-25 08:23:57,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_15_10000000_0,ok,80.337,80.337,2022-09-25 08:25:26,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_15_10000000_1,ok,85.085,85.085,2022-09-25 08:26:54,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_15_10000000_2,ok,80.334,80.334,2022-09-25 08:28:29,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_15_10000000_3,ok,80.1,80.1,2022-09-25 08:29:57,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_15_10000000_4,ok,84.415,84.415,2022-09-25 08:31:25,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_15_10000000_5,ok,80.63,80.63,2022-09-25 08:32:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_15_10000000_6,ok,80.283,80.283,2022-09-25 08:34:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_15_10000000_7,ok,85.497,85.497,2022-09-25 08:35:55,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_15_10000000_8,ok,80.342,80.342,2022-09-25 08:37:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_15_10000000_9,ok,80.456,80.456,2022-09-25 08:38:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_14_10000000_0,ok,84.941,84.941,2022-09-25 08:40:26,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_14_10000000_1,ok,80.499,80.499,2022-09-25 08:42:00,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_14_10000000_2,ok,80.045,80.045,2022-09-25 08:43:28,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_14_10000000_3,ok,85.943,85.943,2022-09-25 08:44:56,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_14_10000000_4,ok,80.515,80.515,2022-09-25 08:46:31,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_14_10000000_5,ok,80.534,80.534,2022-09-25 08:47:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_14_10000000_6,ok,80.554,80.554,2022-09-25 08:49:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_14_10000000_7,ok,85.69,85.69,2022-09-25 08:50:56,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_14_10000000_8,ok,80.764,80.764,2022-09-25 08:52:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_14_10000000_9,ok,80.591,80.591,2022-09-25 08:53:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_13_10000000_0,ok,80.564,80.564,2022-09-25 08:55:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_13_10000000_1,ok,86.395,86.395,2022-09-25 08:56:56,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_13_10000000_2,ok,80.52,80.52,2022-09-25 08:58:31,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_13_10000000_3,ok,81.221,81.221,2022-09-25 08:59:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_13_10000000_4,ok,80.38,80.38,2022-09-25 09:01:28,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_13_10000000_5,ok,86.783,86.783,2022-09-25 09:02:56,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_13_10000000_6,ok,80.587,80.587,2022-09-25 09:04:31,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_13_10000000_7,ok,80.655,80.655,2022-09-25 09:06:00,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_13_10000000_8,ok,80.596,80.596,2022-09-25 09:07:28,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_13_10000000_9,ok,80.735,80.735,2022-09-25 09:08:57,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_12_10000000_0,ok,84.919,84.919,2022-09-25 09:10:25,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_12_10000000_1,ok,79.892,79.892,2022-09-25 09:11:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_12_10000000_2,ok,80.055,80.055,2022-09-25 09:13:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_12_10000000_3,ok,84.993,84.993,2022-09-25 09:14:55,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_12_10000000_4,ok,79.797,79.797,2022-09-25 09:16:29,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_12_10000000_5,ok,80.248,80.248,2022-09-25 09:17:57,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_12_10000000_6,ok,84.859,84.859,2022-09-25 09:19:25,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_12_10000000_7,ok,80.045,80.045,2022-09-25 09:20:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_12_10000000_8,ok,79.746,79.746,2022-09-25 09:22:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_12_10000000_9,ok,84.306,84.306,2022-09-25 09:23:54,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_11_10000000_0,ok,79.856,79.856,2022-09-25 09:25:28,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_11_10000000_1,ok,86.003,86.003,2022-09-25 09:26:56,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_11_10000000_2,ok,80.038,80.038,2022-09-25 09:28:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_11_10000000_3,ok,86.042,86.042,2022-09-25 09:29:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_11_10000000_4,ok,79.812,79.812,2022-09-25 09:31:32,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_11_10000000_5,ok,79.803,79.803,2022-09-25 09:33:00,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_11_10000000_6,ok,86.048,86.048,2022-09-25 09:34:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_11_10000000_7,ok,80.601,80.601,2022-09-25 09:36:01,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_11_10000000_8,ok,80.211,80.211,2022-09-25 09:37:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_11_10000000_9,ok,86.664,86.664,2022-09-25 09:38:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_10_10000000_0,ok,80.557,80.557,2022-09-25 09:40:32,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_10_10000000_1,ok,80.422,80.422,2022-09-25 09:42:00,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_10_10000000_2,ok,86.652,86.652,2022-09-25 09:43:29,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_10_10000000_3,ok,80.388,80.388,2022-09-25 09:45:03,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_10_10000000_4,ok,80.534,80.534,2022-09-25 09:46:31,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_10_10000000_5,ok,80.047,80.047,2022-09-25 09:48:00,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_10_10000000_6,ok,87.097,87.097,2022-09-25 09:49:28,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_10_10000000_7,ok,80.562,80.562,2022-09-25 09:51:03,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_10_10000000_8,ok,80.499,80.499,2022-09-25 09:52:31,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_10_10000000_9,ok,80.085,80.085,2022-09-25 09:53:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_9_10000000_0,ok,88.094,88.094,2022-09-25 09:55:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_9_10000000_1,ok,81.374,81.374,2022-09-25 09:57:03,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_9_10000000_2,ok,81.241,81.241,2022-09-25 09:58:32,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_9_10000000_3,ok,81.031,81.031,2022-09-25 10:00:01,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_9_10000000_4,ok,87.632,87.632,2022-09-25 10:01:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_9_10000000_5,ok,81.171,81.171,2022-09-25 10:03:06,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_9_10000000_6,ok,81.254,81.254,2022-09-25 10:04:35,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_9_10000000_7,ok,81.026,81.026,2022-09-25 10:06:04,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_9_10000000_8,ok,81.136,81.136,2022-09-25 10:07:33,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_9_10000000_9,ok,81.153,81.153,2022-09-25 10:09:02,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_8_10000000_0,ok,85.606,85.606,2022-09-25 10:10:31,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_8_10000000_1,ok,85.744,85.744,2022-09-25 10:12:04,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_8_10000000_2,ok,85.653,85.653,2022-09-25 10:13:38,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_8_10000000_3,ok,83.876,83.876,2022-09-25 10:15:13,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_8_10000000_4,ok,81.551,81.551,2022-09-25 10:16:50,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_8_10000000_5,ok,84.201,84.201,2022-09-25 10:18:25,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_8_10000000_6,ok,85.861,85.861,2022-09-25 10:19:59,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_8_10000000_7,ok,85.955,85.955,2022-09-25 10:21:33,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_8_10000000_8,ok,86.383,86.383,2022-09-25 10:23:07,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_8_10000000_9,ok,84.316,84.316,2022-09-25 10:24:43,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_7_10000000_0,ok,80.925,80.925,2022-09-25 10:26:20,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_7_10000000_1,ok,83.108,83.108,2022-09-25 10:27:55,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_7_10000000_2,ok,85.476,85.476,2022-09-25 10:29:28,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_7_10000000_3,ok,86.049,86.049,2022-09-25 10:31:02,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_7_10000000_4,ok,86.085,86.085,2022-09-25 10:32:36,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_7_10000000_5,ok,85.542,85.542,2022-09-25 10:34:11,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_7_10000000_6,ok,81.642,81.642,2022-09-25 10:35:49,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_7_10000000_7,ok,83.351,83.351,2022-09-25 10:37:24,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_7_10000000_8,ok,85.77,85.77,2022-09-25 10:38:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_7_10000000_9,ok,86.114,86.114,2022-09-25 10:40:32,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_6_10000000_0,ok,85.9,85.9,2022-09-25 10:42:06,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_6_10000000_1,ok,85.331,85.331,2022-09-25 10:43:40,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_6_10000000_2,ok,82.196,82.196,2022-09-25 10:45:17,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_6_10000000_3,ok,82.32,82.32,2022-09-25 10:46:54,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_6_10000000_4,ok,85.305,85.305,2022-09-25 10:48:27,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_6_10000000_5,ok,85.964,85.964,2022-09-25 10:50:01,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_6_10000000_6,ok,85.913,85.913,2022-09-25 10:51:35,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_6_10000000_7,ok,86.017,86.017,2022-09-25 10:53:08,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_6_10000000_8,ok,82.952,82.952,2022-09-25 10:54:45,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_6_10000000_9,ok,81.37,81.37,2022-09-25 10:56:22,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_5_10000000_0,ok,84.503,84.503,2022-09-25 10:57:56,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_5_10000000_1,ok,85.825,85.825,2022-09-25 10:59:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_5_10000000_2,ok,85.771,85.771,2022-09-25 11:01:04,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_5_10000000_3,ok,86.075,86.075,2022-09-25 11:02:37,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_5_10000000_4,ok,83.814,83.814,2022-09-25 11:04:13,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_5_10000000_5,ok,81.074,81.074,2022-09-25 11:05:50,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_5_10000000_6,ok,82.834,82.834,2022-09-25 11:07:25,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_5_10000000_7,ok,85.822,85.822,2022-09-25 11:08:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_5_10000000_8,ok,85.782,85.782,2022-09-25 11:10:32,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_5_10000000_9,ok,85.713,85.713,2022-09-25 11:12:06,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_4_10000000_0,ok,84.655,84.655,2022-09-25 11:13:39,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_4_10000000_1,ok,82.777,82.777,2022-09-25 11:15:14,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_4_10000000_2,ok,80.398,80.398,2022-09-25 11:16:49,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_4_10000000_3,ok,80.705,80.705,2022-09-25 11:18:24,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_4_10000000_4,ok,82.544,82.544,2022-09-25 11:19:57,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_4_10000000_5,ok,83.935,83.935,2022-09-25 11:21:29,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_4_10000000_6,ok,84.813,84.813,2022-09-25 11:23:02,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_4_10000000_7,ok,84.557,84.557,2022-09-25 11:24:35,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_4_10000000_8,ok,84.638,84.638,2022-09-25 11:26:07,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_4_10000000_9,ok,84.682,84.682,2022-09-25 11:27:40,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_3_10000000_0,ok,91.354,91.354,2022-09-25 11:29:15,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_3_10000000_1,ok,91.028,91.028,2022-09-25 11:30:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_3_10000000_2,ok,91.125,91.125,2022-09-25 11:32:36,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_3_10000000_3,ok,91.267,91.267,2022-09-25 11:34:21,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_3_10000000_4,ok,90.777,90.777,2022-09-25 11:36:01,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_3_10000000_5,ok,91.854,91.854,2022-09-25 11:37:39,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_3_10000000_6,ok,91.145,91.145,2022-09-25 11:39:25,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_3_10000000_7,ok,91.341,91.341,2022-09-25 11:41:04,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_3_10000000_8,ok,93.036,93.036,2022-09-25 11:42:47,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_3_10000000_9,ok,91.166,91.166,2022-09-25 11:44:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_2_10000000_0,ok,90.205,90.205,2022-09-25 11:46:09,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_2_10000000_1,ok,89.38,89.38,2022-09-25 11:47:53,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_2_10000000_2,ok,90.181,90.181,2022-09-25 11:49:32,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_2_10000000_3,ok,90.251,90.251,2022-09-25 11:51:10,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_2_10000000_4,ok,90.176,90.176,2022-09-25 11:52:55,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_2_10000000_5,ok,90.345,90.345,2022-09-25 11:54:33,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_2_10000000_6,ok,90.488,90.488,2022-09-25 11:56:13,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_2_10000000_7,ok,90.379,90.379,2022-09-25 11:57:56,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_2_10000000_8,ok,90.482,90.482,2022-09-25 11:59:35,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_2_10000000_9,ok,90.231,90.231,2022-09-25 12:01:17,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_1_10000000_0,ok,88.528,88.528,2022-09-25 12:02:58,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_1_10000000_1,ok,88.658,88.658,2022-09-25 12:04:34,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_1_10000000_2,ok,87.214,87.214,2022-09-25 12:06:12,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_1_10000000_3,ok,87.375,87.375,2022-09-25 12:07:54,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_1_10000000_4,ok,88.48,88.48,2022-09-25 12:09:30,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_1_10000000_5,ok,88.554,88.554,2022-09-25 12:11:06,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_1_10000000_6,ok,86.471,86.471,2022-09-25 12:12:46,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_1_10000000_7,ok,88.362,88.362,2022-09-25 12:14:26,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_1_10000000_8,ok,88.557,88.557,2022-09-25 12:16:02,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
-# csv,g7_mp-mergesort_1_10000000_9,ok,88.567,88.567,2022-09-25 12:17:38,,None,v100,alex,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_4_10000000_0,ok,0.223,0.223,2022-10-03 01:13:56,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_4_10000000_1,ok,0.108,0.108,2022-10-03 01:14:07,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_4_10000000_2,ok,0.109,0.109,2022-10-03 01:14:18,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_4_10000000_3,ok,0.11,0.11,2022-10-03 01:14:29,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_4_10000000_4,ok,0.109,0.109,2022-10-03 01:14:40,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_4_10000000_5,ok,0.11,0.11,2022-10-03 01:14:51,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_4_10000000_6,ok,0.111,0.111,2022-10-03 01:15:02,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_4_10000000_7,ok,0.11,0.11,2022-10-03 01:15:13,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_4_10000000_8,ok,0.11,0.11,2022-10-03 01:15:24,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_4_10000000_9,ok,0.109,0.109,2022-10-03 01:15:35,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_3_10000000_0,ok,0.109,0.109,2022-10-03 01:15:47,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_3_10000000_1,ok,0.11,0.11,2022-10-03 01:15:58,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_3_10000000_2,ok,0.109,0.109,2022-10-03 01:16:09,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_3_10000000_3,ok,0.11,0.11,2022-10-03 01:16:20,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_3_10000000_4,ok,0.11,0.11,2022-10-03 01:16:31,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_3_10000000_5,ok,0.11,0.11,2022-10-03 01:16:42,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_3_10000000_6,ok,0.11,0.11,2022-10-03 01:16:53,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_3_10000000_7,ok,0.11,0.11,2022-10-03 01:17:04,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_3_10000000_8,ok,0.11,0.11,2022-10-03 01:17:15,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_3_10000000_9,ok,0.11,0.11,2022-10-03 01:17:26,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_2_10000000_0,ok,0.11,0.11,2022-10-03 01:17:37,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_2_10000000_1,ok,0.11,0.11,2022-10-03 01:17:48,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_2_10000000_2,ok,0.11,0.11,2022-10-03 01:17:59,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_2_10000000_3,ok,0.11,0.11,2022-10-03 01:18:11,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_2_10000000_4,ok,0.11,0.11,2022-10-03 01:18:22,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_2_10000000_5,ok,0.11,0.11,2022-10-03 01:18:33,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_2_10000000_6,ok,0.111,0.111,2022-10-03 01:18:44,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_2_10000000_7,ok,0.11,0.11,2022-10-03 01:18:55,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_2_10000000_8,ok,0.111,0.111,2022-10-03 01:19:06,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_2_10000000_9,ok,0.11,0.11,2022-10-03 01:19:17,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_1_10000000_0,ok,0.11,0.11,2022-10-03 01:19:28,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_1_10000000_1,ok,0.11,0.11,2022-10-03 01:19:39,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_1_10000000_2,ok,0.11,0.11,2022-10-03 01:19:50,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_1_10000000_3,ok,0.111,0.111,2022-10-03 01:20:01,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_1_10000000_4,ok,0.11,0.11,2022-10-03 01:20:12,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_1_10000000_5,ok,0.11,0.11,2022-10-03 01:20:23,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_1_10000000_6,ok,0.11,0.11,2022-10-03 01:20:35,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_1_10000000_7,ok,0.11,0.11,2022-10-03 01:20:46,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_1_10000000_8,ok,0.11,0.11,2022-10-03 01:20:57,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_1_10000000_9,ok,0.111,0.111,2022-10-03 01:21:08,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
 
