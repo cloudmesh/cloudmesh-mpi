@@ -11,13 +11,14 @@ from cloudmesh.common.parameter import Parameter
 from cloudmesh.common.util import yn_choice
 from cloudmesh.common.systeminfo import os_is_windows
 from generate import Generator
+import cupy as cp
 
 
 def get_sort_by_name(name="multiprocessing_mergesort"):
     if name in ["mp-mergesort", "multiprocessing_mergesort"]:
         from multiprocessing_mergesort import multiprocessing_mergesort
         return multiprocessing_mergesort
-    elif name in ["seq-merge", "sequential_merge", "sequential_mergesort"]:
+    elif name in ["seq-mergesort", "seq-merge", "sequential_merge", "sequential_mergesort"]:
         from sequential.mergesort import merge_sort
         return merge_sort
     else:
@@ -157,8 +158,14 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
                         end="\r")
                 label = get_label(sort, p, n, i, tag)
                 a = Generator().generate_random(n)
+                a_gpu = cp.asarray(a)
+                # two lines below are only needed for multiprocessing on GPU
+                #import multiprocessing
+                #multiprocessing.set_start_method('spawn', force=True)
+
                 StopWatch.start(label)
                 a = sort_algorithm(a, p)
+                # a = cp.sort(a_gpu)
                 StopWatch.stop(label)
                 last_time = StopWatch.get(label)
                 #assert verify("ascending", a)
