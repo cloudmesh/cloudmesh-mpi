@@ -22,6 +22,11 @@ sizes = [int(size) for size in sizes]
 for sort in sorts:
     for size in sizes:
         run_cmd = f"./run.py --user={user} --node={node} --size={size} --sort={sort}"
+
+        if "mpi" in sort:
+            run_cmd = f"./mpi_run.py --user={user} --node={node} --sort={sort}--size={size} --id={0}"
+        else:
+            run_cmd = f"./run.py --user={user} --node={node} --size={size} --sort={sort}"
         banner(run_cmd)
         os.system(run_cmd)
 

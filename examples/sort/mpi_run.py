@@ -23,7 +23,7 @@ from cloudmesh.common.util import banner
     help="sorting function to run and analyze")
 @click.option(
     '--size',
-    default="100",
+    default="[100]",
     help="size of array to be sorted as a comma separated string without spaces: 100,200")
 @click.option(
     '--repeat',
