@@ -164,8 +164,8 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
                 #multiprocessing.set_start_method('spawn', force=True)
 
                 StopWatch.start(label)
-                #a = sort_algorithm(a, p)
-                a = cp.sort(a_gpu)
+                a = sort_algorithm(a, p)
+                #a = cp.sort(a_gpu)
                 StopWatch.stop(label)
                 last_time = StopWatch.get(label)
                 #assert verify("ascending", a)

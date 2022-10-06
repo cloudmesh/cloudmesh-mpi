@@ -8,7 +8,7 @@ Algorithm: gpu-cupy-sort
 Tag:       None
 Total:     10
 Log:       log/gpu-cupy-sort-TeslaT4-alex-10000000.log
-Experiment 9         : size=10000000 processes=1 repeat=0 last_time=undefined                     Experiment 8         : size=10000000 processes=1 repeat=1 last_time=0.2233                     Experiment 7         : size=10000000 processes=1 repeat=2 last_time=0.1111                     Experiment 6         : size=10000000 processes=1 repeat=3 last_time=0.1105                     Experiment 5         : size=10000000 processes=1 repeat=4 last_time=0.1114                     Experiment 4         : size=10000000 processes=1 repeat=5 last_time=0.1111                     Experiment 3         : size=10000000 processes=1 repeat=6 last_time=0.112                     Experiment 2         : size=10000000 processes=1 repeat=7 last_time=0.1107                     Experiment 1         : size=10000000 processes=1 repeat=8 last_time=0.1103                     Experiment 0         : size=10000000 processes=1 repeat=9 last_time=0.1106                     
+Experiment 9         : size=10000000 processes=1 repeat=0 last_time=undefined                     Experiment 8         : size=10000000 processes=1 repeat=1 last_time=0.2222                     Experiment 7         : size=10000000 processes=1 repeat=2 last_time=0.109                     Experiment 6         : size=10000000 processes=1 repeat=3 last_time=0.1095                     Experiment 5         : size=10000000 processes=1 repeat=4 last_time=0.1099                     Experiment 4         : size=10000000 processes=1 repeat=5 last_time=0.1098                     Experiment 3         : size=10000000 processes=1 repeat=6 last_time=0.1102                     Experiment 2         : size=10000000 processes=1 repeat=7 last_time=0.1104                     Experiment 1         : size=10000000 processes=1 repeat=8 last_time=0.1102                     Experiment 0         : size=10000000 processes=1 repeat=9 last_time=0.1107                     
 +---------------------+----------------------------------------------------------------------+
 | Attribute           | Value                                                                |
 |---------------------+----------------------------------------------------------------------|
@@ -32,15 +32,15 @@ Experiment 9         : size=10000000 processes=1 repeat=0 last_time=undefined   
 | cpu_cores           | 2                                                                    |
 | cpu_count           | 4                                                                    |
 | cpu_threads         | 4                                                                    |
-| date                | 2022-10-04 13:23:11.694088                                           |
-| frequency           | scpufreq(current=3104.2455, min=0.0, max=0.0)                        |
-| mem.active          | 886.8 MiB                                                            |
+| date                | 2022-10-05 03:14:20.149262                                           |
+| frequency           | scpufreq(current=3107.5817500000003, min=0.0, max=0.0)               |
+| mem.active          | 1.0 GiB                                                              |
 | mem.available       | 14.3 GiB                                                             |
-| mem.free            | 13.6 GiB                                                             |
-| mem.inactive        | 627.5 MiB                                                            |
+| mem.free            | 13.3 GiB                                                             |
+| mem.inactive        | 766.1 MiB                                                            |
 | mem.percent         | 6.9 %                                                                |
 | mem.total           | 15.3 GiB                                                             |
-| mem.used            | 676.3 MiB                                                            |
+| mem.used            | 666.9 MiB                                                            |
 | platform.version    | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022                  |
 | python              | 3.7.10 | packaged by conda-forge | (default, Feb 19 2021, 16:07:37)  |
 |                     | [GCC 9.3.0]                                                          |
@@ -59,26 +59,26 @@ Experiment 9         : size=10000000 processes=1 repeat=0 last_time=undefined   
 +--------------------------------------------+----------+--------+-------+---------------------+-------+-------+---------+--------+-------+-----------------------------------------------------+
 | Name                                       | Status   |   Time |   Sum | Start               | tag   | msg   | Node    | User   | OS    | Version                                             |
 |--------------------------------------------+----------+--------+-------+---------------------+-------+-------+---------+--------+-------+-----------------------------------------------------|
-| ip-172-31-9-213_gpu-cupy-sort_1_10000000_0 | ok       |  0.223 | 0.223 | 2022-10-04 13:21:32 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
-| ip-172-31-9-213_gpu-cupy-sort_1_10000000_1 | ok       |  0.111 | 0.111 | 2022-10-04 13:21:43 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
-| ip-172-31-9-213_gpu-cupy-sort_1_10000000_2 | ok       |  0.111 | 0.111 | 2022-10-04 13:21:54 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
-| ip-172-31-9-213_gpu-cupy-sort_1_10000000_3 | ok       |  0.111 | 0.111 | 2022-10-04 13:22:05 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
-| ip-172-31-9-213_gpu-cupy-sort_1_10000000_4 | ok       |  0.111 | 0.111 | 2022-10-04 13:22:16 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
-| ip-172-31-9-213_gpu-cupy-sort_1_10000000_5 | ok       |  0.112 | 0.112 | 2022-10-04 13:22:27 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
-| ip-172-31-9-213_gpu-cupy-sort_1_10000000_6 | ok       |  0.111 | 0.111 | 2022-10-04 13:22:38 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
-| ip-172-31-9-213_gpu-cupy-sort_1_10000000_7 | ok       |  0.11  | 0.11  | 2022-10-04 13:22:49 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
-| ip-172-31-9-213_gpu-cupy-sort_1_10000000_8 | ok       |  0.111 | 0.111 | 2022-10-04 13:23:00 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
-| ip-172-31-9-213_gpu-cupy-sort_1_10000000_9 | ok       |  0.111 | 0.111 | 2022-10-04 13:23:11 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_gpu-cupy-sort_1_10000000_0 | ok       |  0.222 | 0.222 | 2022-10-05 03:12:39 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_gpu-cupy-sort_1_10000000_1 | ok       |  0.109 | 0.109 | 2022-10-05 03:12:50 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_gpu-cupy-sort_1_10000000_2 | ok       |  0.109 | 0.109 | 2022-10-05 03:13:02 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_gpu-cupy-sort_1_10000000_3 | ok       |  0.11  | 0.11  | 2022-10-05 03:13:13 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_gpu-cupy-sort_1_10000000_4 | ok       |  0.11  | 0.11  | 2022-10-05 03:13:24 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_gpu-cupy-sort_1_10000000_5 | ok       |  0.11  | 0.11  | 2022-10-05 03:13:35 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_gpu-cupy-sort_1_10000000_6 | ok       |  0.11  | 0.11  | 2022-10-05 03:13:46 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_gpu-cupy-sort_1_10000000_7 | ok       |  0.11  | 0.11  | 2022-10-05 03:13:57 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_gpu-cupy-sort_1_10000000_8 | ok       |  0.111 | 0.111 | 2022-10-05 03:14:08 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_gpu-cupy-sort_1_10000000_9 | ok       |  0.11  | 0.11  | 2022-10-05 03:14:20 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
 +--------------------------------------------+----------+--------+-------+---------------------+-------+-------+---------+--------+-------+-----------------------------------------------------+
 # csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
-# csv,ip-172-31-9-213_gpu-cupy-sort_1_10000000_0,ok,0.223,0.223,2022-10-04 13:21:32,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
-# csv,ip-172-31-9-213_gpu-cupy-sort_1_10000000_1,ok,0.111,0.111,2022-10-04 13:21:43,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
-# csv,ip-172-31-9-213_gpu-cupy-sort_1_10000000_2,ok,0.111,0.111,2022-10-04 13:21:54,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
-# csv,ip-172-31-9-213_gpu-cupy-sort_1_10000000_3,ok,0.111,0.111,2022-10-04 13:22:05,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
-# csv,ip-172-31-9-213_gpu-cupy-sort_1_10000000_4,ok,0.111,0.111,2022-10-04 13:22:16,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
-# csv,ip-172-31-9-213_gpu-cupy-sort_1_10000000_5,ok,0.112,0.112,2022-10-04 13:22:27,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
-# csv,ip-172-31-9-213_gpu-cupy-sort_1_10000000_6,ok,0.111,0.111,2022-10-04 13:22:38,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
-# csv,ip-172-31-9-213_gpu-cupy-sort_1_10000000_7,ok,0.11,0.11,2022-10-04 13:22:49,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
-# csv,ip-172-31-9-213_gpu-cupy-sort_1_10000000_8,ok,0.111,0.111,2022-10-04 13:23:00,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
-# csv,ip-172-31-9-213_gpu-cupy-sort_1_10000000_9,ok,0.111,0.111,2022-10-04 13:23:11,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_gpu-cupy-sort_1_10000000_0,ok,0.222,0.222,2022-10-05 03:12:39,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_gpu-cupy-sort_1_10000000_1,ok,0.109,0.109,2022-10-05 03:12:50,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_gpu-cupy-sort_1_10000000_2,ok,0.109,0.109,2022-10-05 03:13:02,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_gpu-cupy-sort_1_10000000_3,ok,0.11,0.11,2022-10-05 03:13:13,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_gpu-cupy-sort_1_10000000_4,ok,0.11,0.11,2022-10-05 03:13:24,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_gpu-cupy-sort_1_10000000_5,ok,0.11,0.11,2022-10-05 03:13:35,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_gpu-cupy-sort_1_10000000_6,ok,0.11,0.11,2022-10-05 03:13:46,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_gpu-cupy-sort_1_10000000_7,ok,0.11,0.11,2022-10-05 03:13:57,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_gpu-cupy-sort_1_10000000_8,ok,0.111,0.111,2022-10-05 03:14:08,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_gpu-cupy-sort_1_10000000_9,ok,0.11,0.11,2022-10-05 03:14:20,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
 

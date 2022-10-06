@@ -9,12 +9,12 @@ from analysis import read_log, read_logs
 from analysis import generate_average
 
 user = "alex"
-node = "TeslaT4"
+node = "aim"
 #sorts = ["seq-mergesort", "mp-mergesort"]
-sorts = ["gpu-cupy-sort"]
+sorts = ["mp-mergesort"]
 
 #sizes = [1000, 10000]
-sizes = [1000, 10000,1e5, 1e6,1e7]
+sizes = [1e5, 1e6]
 sizes = [int(size) for size in sizes]
 
 # this will take a long time. 
