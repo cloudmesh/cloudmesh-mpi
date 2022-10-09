@@ -189,5 +189,5 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
     # print out collected information
     StopWatch.benchmark(user=user, node=node)
 
-if __name__ == '__main__':ß
+if __name__ == '__main__':
     experiment(args.processes, args.size, args.repeat, args.log, args.clear, args.debug, args.sort, args.tag, args.user, args.node, args.id)
