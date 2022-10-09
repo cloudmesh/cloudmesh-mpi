@@ -28,7 +28,8 @@ for arg in sys.argv[1:]:
     elif arg.startswith("node="):
         config.node = arg.split("=")[1]
     elif arg.startswith("debug="):
-        config.user = arg.split("=")[1]
+        config.debug = arg.split("=")[1]
+        print(config.debug)
     elif arg.startswith("n="):
         config.size = int(arg.split("=")[1])
     elif arg.startswith("id="):
