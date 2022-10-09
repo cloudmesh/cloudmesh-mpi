@@ -23,15 +23,15 @@ n = config.size = 10000
 
 # take in input from user
 for arg in sys.argv[1:]:
+    if arg.startswith("n="):
+        config.size = int(arg.split("=")[1])
+    elif arg.startswith("debug="):
+        config.debug = arg.split("=")[1]
+        print(config.debug)
     if arg.startswith("user="):
         config.user = arg.split("=")[1]
     elif arg.startswith("node="):
         config.node = arg.split("=")[1]
-    elif arg.startswith("debug="):
-        config.debug = arg.split("=")[1]
-        print(config.debug)
-    elif arg.startswith("n="):
-        config.size = int(arg.split("=")[1])
     elif arg.startswith("id="):
         config.id = int(arg.split("=")[1])
     elif arg.startswith("alg="):

@@ -157,7 +157,7 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
     for i in range(repeat):
         c = c + 1
         progress = total - c
-        print(f"Experiment {progress:<10}: size={n} processes={p} debug={debug} clear={clear} id={id} repeat={i} last_time={last_time}"
+        print(f"Experiment {progress:<10}: size={n} processes={p} id={id} repeat={i} last_time={last_time}"
                 "                     ",
                 end="\n")
         label = get_label(sort, p, n, i, id, tag)
@@ -176,7 +176,7 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
 
         # terminal command to run sort program
         command = \
-            f'mpiexec -n {p} python night.py n={n} node={node} user={user} alg={algorithm} REPEAT={i}'
+            f'mpiexec -n {p} python night.py n={n} log={log} clear={clear} debug={debug} sort={sort} user={user} node={node} id={id} REPEAT={i}'
 
         # start timer
         StopWatch.start(label)
