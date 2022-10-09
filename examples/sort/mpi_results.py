@@ -89,6 +89,7 @@ parser.add_argument(
     required=False, 
     default=0,
     help="specify which merge sort to use")
+    
 
 def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node, id):
     """
@@ -156,7 +157,7 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
             for i in range(repeat):
                 c = c + 1
                 progress = total - c
-                print(f"Experiment {progress:<10}: size={n} processes={p} id={id} repeat={i} last_time={last_time}"
+                print(f"Experiment {progress:<10}: size={n} processes={p} debug={debug} clear={clear} id={id} repeat={i} last_time={last_time}"
                       "                     ",
                       end="\n")
                 label = get_label(sort, p, n, i, id, tag)

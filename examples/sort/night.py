@@ -1,16 +1,12 @@
-###########################################################
-# run this program using mpiexec -n 4 python night.py user=gregor node=5950X n=100
-###########################################################
 import os
 import sys
 from threading import local
-
+import argparse
 import numpy as np
 from mpi4py import MPI
 
 from cloudmesh.common.StopWatch import StopWatch
 from cloudmesh.common.dotdict import dotdict
-# from sequential.mergesort import mergesort
 from generate import Generator
 from adaptive_merge import adaptive_merge
 
@@ -27,9 +23,11 @@ n = config.size = 10000
 
 # take in input from user
 for arg in sys.argv[1:]:
-    if arg.startswith("node="):
+    if arg.startswith("user="):
+        config.user = arg.split("=")[1]
+    elif arg.startswith("node="):
         config.node = arg.split("=")[1]
-    elif arg.startswith("user="):
+    elif arg.startswith("debug="):
         config.user = arg.split("=")[1]
     elif arg.startswith("n="):
         config.size = int(arg.split("=")[1])
