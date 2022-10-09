@@ -129,10 +129,10 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
     # processes = Parameter.expand(processes)
     # sizes = Parameter.expand(size)
 
-    processes = [int(number) for number in processes]
+    # processes = [int(number) for number in processes]
     sizes = [int(number) for number in sizes]
 
-    total = len(processes) * len(sizes) * repeat
+    total = len(sizes) * repeat
 
     # begin running experiment
     print("Starting experiment")
@@ -152,39 +152,39 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
 
     last_time = "undefined"
     c = 0
-    for p in processes:
-        for n in sizes:
-            for i in range(repeat):
-                c = c + 1
-                progress = total - c
-                print(f"Experiment {progress:<10}: size={n} processes={p} debug={debug} clear={clear} id={id} repeat={i} last_time={last_time}"
-                      "                     ",
-                      end="\n")
-                label = get_label(sort, p, n, i, id, tag)
+    p = processes
+    for n in sizes:
+        for i in range(repeat):
+            c = c + 1
+            progress = total - c
+            print(f"Experiment {progress:<10}: size={n} processes={p} debug={debug} clear={clear} id={id} repeat={i} last_time={last_time}"
+                    "                     ",
+                    end="\n")
+            label = get_label(sort, p, n, i, id, tag)
 
-                # generate unsorted array
-                a = Generator().generate_random(n)
+            # generate unsorted array
+            a = Generator().generate_random(n)
 
-                # map from id number to sub sort type
+            # map from id number to sub sort type
+            algorithm = "sequential_merge_fast"
+            if id == 0:
                 algorithm = "sequential_merge_fast"
-                if id == 0:
-                    algorithm = "sequential_merge_fast"
-                elif id == 1:
-                    algorithm = "sequential_merge_python"
-                elif id == 2:
-                    algorithm = "adaptive_merge"
+            elif id == 1:
+                algorithm = "sequential_merge_python"
+            elif id == 2:
+                algorithm = "adaptive_merge"
 
-                # terminal command to run sort program
-                command = \
-                    f'mpiexec -n {p} python night.py n={n} node={node} user={user} alg={algorithm} REPEAT={i}'
+            # terminal command to run sort program
+            command = \
+                f'mpiexec -n {p} python night.py n={n} node={node} user={user} alg={algorithm} REPEAT={i}'
 
-                # start timer
-                StopWatch.start(label)
-                # run command
-                os.system(command)
-                # stop timer
-                StopWatch.stop(label)
-                last_time = StopWatch.get(label)
+            # start timer
+            StopWatch.start(label)
+            # run command
+            os.system(command)
+            # stop timer
+            StopWatch.stop(label)
+            last_time = StopWatch.get(label)
 
     # print out collected information
     StopWatch.benchmark(user=user, node=node)
