@@ -138,7 +138,7 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
     print("Starting experiment")
 
     #processes = processes.reverse()
-    processes.sort(reverse=True)
+    # processes.sort(reverse=True)
     print(f"Log:       {log}")
     print(f"Processes: {processes}")
     print(f"Size:      {size}")
