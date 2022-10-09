@@ -29,57 +29,64 @@ parser.add_argument(
     '--processors', 
     default=4,
     type=int, 
-    required=True, 
+    required=False,
     help="number of processors as an integer")
 parser.add_argument(
     '--size', 
     type=int, 
-    required=True, 
+    required=False, 
     help='total size of the array to be sorted as an integer')
 parser.add_argument(
     '--repeat',
     default=10,
     type=int, 
-    required=True, 
+    required=False, 
     help='number of times an experiment with processes and size is repeated')
 parser.add_argument(
     '--log',
     type=str, 
+    required=False, 
     default="output.log", 
     help='the logfile to which the experiments are appended')
 parser.add_argument(
     '--clear',
     type=bool,
+    required=False, 
     default=False,
     help='clears the logfile. handle with care')
 parser.add_argument(
     '--debug',
     type=bool,
+    required=False,
     default=False,
     help='switch on some debugging')
 parser.add_argument(
     '--sort',
     type=str,
-    required=True,
+    required=False, 
     default="multiprocessing_mergesort",
     help="sorting function to be run")
 parser.add_argument(
     '--tag',
+    required=False, 
     default=None,
     help="a prefix for the stopwatch timer name")
 parser.add_argument(
     '--user',
     type=str,
+    required=False, 
     default=username,
     help="username, used in logfile naming")
 parser.add_argument(
     '--node',
     type=str,
+    required=False, 
     default=hostname,
     help="a node name, used in logile naming")
 parser.add_argument(
     '--id',
     type=str,
+    required=False, 
     default=0,
     help="specify which merge sort to use")
 
