@@ -10,7 +10,7 @@ from mpi4py import MPI
 
 from cloudmesh.common.StopWatch import StopWatch
 from cloudmesh.common.dotdict import dotdict
-from sequential.mergesort import mergesort
+# from sequential.mergesort import mergesort
 from generate import Generator
 from adaptive_merge import adaptive_merge
 
