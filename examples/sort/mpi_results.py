@@ -126,8 +126,8 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
     if log is None:
         log = f"log/{sort}-{node}-{user}-{id}-{size}.log"
 
-    processes = Parameter.expand(processes)
-    sizes = Parameter.expand(size)
+    # processes = Parameter.expand(processes)
+    # sizes = Parameter.expand(size)
 
     processes = [int(number) for number in processes]
     sizes = [int(number) for number in sizes]
