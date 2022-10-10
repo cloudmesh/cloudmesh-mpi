@@ -1,0 +1,43 @@
+
++------------------+--------------------------------------------------------------------------------------------------+
+| Attribute        | Value                                                                                            |
+|------------------+--------------------------------------------------------------------------------------------------|
+| cpu              | Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz                                                         |
+| cpu_cores        | 6                                                                                                |
+| cpu_count        | 12                                                                                               |
+| cpu_threads      | 12                                                                                               |
+| date             | 2022-10-09 23:12:57.711446                                                                       |
+| frequency        | scpufreq(current=2600, min=2600, max=2600)                                                       |
+| mem.active       | 5.5 GiB                                                                                          |
+| mem.available    | 5.7 GiB                                                                                          |
+| mem.free         | 125.3 MiB                                                                                        |
+| mem.inactive     | 5.5 GiB                                                                                          |
+| mem.percent      | 64.6 %                                                                                           |
+| mem.total        | 16.0 GiB                                                                                         |
+| mem.used         | 8.7 GiB                                                                                          |
+| mem.wired        | 3.1 GiB                                                                                          |
+| platform.version | 10.15.7                                                                                          |
+| python           | 3.9.10 (main, Jan 15 2022, 11:48:15)                                                             |
+|                  | [Clang 12.0.0 (clang-1200.0.32.29)]                                                              |
+| python.pip       | 21.2.4                                                                                           |
+| python.version   | 3.9.10                                                                                           |
+| sys.platform     | darwin                                                                                           |
+| uname.machine    | x86_64                                                                                           |
+| uname.node       | rsdatas-MBP.attlocal.net                                                                         |
+| uname.processor  | i386                                                                                             |
+| uname.release    | 19.6.0                                                                                           |
+| uname.system     | Darwin                                                                                           |
+| uname.version    | Darwin Kernel Version 19.6.0: Mon Aug 31 22:12:52 PDT 2020; root:xnu-6153.141.2~1/RELEASE_X86_64 |
+| user             | rsdata                                                                                           |
++------------------+--------------------------------------------------------------------------------------------------+
+
++----------+----------+--------+-------+---------------------+----------------------------+-------+--------------------------+--------+--------+-----------+
+| Name     | Status   |   Time |   Sum | Start               | tag                        | msg   | Node                     | User   | OS     | Version   |
+|----------+----------+--------+-------+---------------------+----------------------------+-------+--------------------------+--------+--------+-----------|
+| sandra-0 | ok       |  1.003 | 1.003 | 2022-10-09 23:12:55 | {'n': 1, 'label': 'silly'} |       | rsdatas-MBP.attlocal.net | rsdata | Darwin | 10.15.7   |
+| sandra-1 | ok       |  1.005 | 1.005 | 2022-10-09 23:12:56 | {'n': 1, 'label': 'silly'} |       | rsdatas-MBP.attlocal.net | rsdata | Darwin | 10.15.7   |
++----------+----------+--------+-------+---------------------+----------------------------+-------+--------------------------+--------+--------+-----------+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,sandra-0,ok,1.003,1.003,2022-10-09 23:12:55,{'n': 1, 'label': 'silly'},None,rsdatas-MBP.attlocal.net,rsdata,Darwin,10.15.7
+# csv,sandra-1,ok,1.005,1.005,2022-10-09 23:12:56,{'n': 1, 'label': 'silly'},None,rsdatas-MBP.attlocal.net,rsdata,Darwin,10.15.7
+
