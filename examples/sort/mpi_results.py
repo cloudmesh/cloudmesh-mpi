@@ -10,23 +10,19 @@ from cloudmesh.common.parameter import Parameter
 from cloudmesh.common.util import yn_choice
 from cloudmesh.common.util import banner
 from cloudmesh.common.systeminfo import os_is_windows
+from cloudmesh.common.dotdict import dotdict
 from generate import Generator
 
-# generates label for this experiment
-def get_label(name, p, n, i, id, tag=None):
-    if tag is None:
-        if not os_is_windows:
-            tag = os.uname().nodename
-        else:
-            tag = platform.uname().node
-    return f"{tag}_{name}_{p}_{n}_{id}_{i}"
+# generates label and logfile for this experiment
+def get_label(data, i):
+    return f"{data.sort}-{data.node}-{data.user}-{data.size}-{data.p}-{data.t}-{data.c}-{i}"
 
 username = Shell.run('whoami').strip()
 hostname = Shell.run('hostname').strip()
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    '--processors', 
+    '--p', 
     default=4,
     type=int, 
     required=False,
@@ -64,7 +60,7 @@ parser.add_argument(
     '--sort',
     type=str,
     required=False, 
-    default="multiprocessing_mergesort",
+    default="mp",
     help="sorting function to be run")
 parser.add_argument(
     '--tag',
@@ -84,14 +80,28 @@ parser.add_argument(
     default=hostname,
     help="a node name, used in logile naming")
 parser.add_argument(
+    '--t',
+    type=int,
+    required=False, 
+    default=None,
+    help="number of threads per core")
+parser.add_argument(
+    '--c',
+    type=int,
+    required=False, 
+    default=None,
+    help="number of cores")
+parser.add_argument(
     '--id',
     type=str,
     required=False, 
     default=0,
     help="specify which merge sort to use")
 args = parser.parse_args()
+
+data = dotdict(vars(args))
     
-def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node, id):
+def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, id):
     """
     performance experiment.
 
@@ -119,28 +129,16 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
     :rtype:
     """
 
-    if clear:
-        c = yn_choice("Would you like to clear the file {log} before running the experiements")
-        if not c:
-            return ""
     if log is None:
-        log = f"log/{sort}-{node}-{user}-{id}-{size}.log"
-
-    # processes = Parameter.expand(processes)
-    # sizes = Parameter.expand(size)
-
-    # processes = [int(number) for number in processes]
-    # sizes = [int(number) for number in sizes]
+        log = f"log/{sort}-{node}-{user}-{id}-{size}-{p}-{t}-{c}.log"
 
     total = repeat
 
     # begin running experiment
     print("Starting experiment")
 
-    #processes = processes.reverse()
-    # processes.sort(reverse=True)
     print(f"Log:       {log}")
-    print(f"Processes: {processes}")
+    print(f"Processes: {p}")
     print(f"Size:      {size}")
     print(f"Repeat:    {repeat}")
     print(f"Clear:     {clear}")
@@ -152,7 +150,6 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
 
     last_time = "undefined"
     c = 0
-    p = processes
     n = size
     for i in range(repeat):
         c = c + 1
@@ -160,7 +157,7 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
         print(f"Experiment {progress:<10}: size={n} processes={p} id={id} repeat={i} last_time={last_time}"
                 "                     ",
                 end="\n")
-        label = get_label(sort, p, n, i, id, tag)
+        label = get_label(data, i)
 
         # generate unsorted array
         a = Generator().generate_random(n)
@@ -176,7 +173,7 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
 
         # terminal command to run sort program
         command = \
-            f'mpiexec -n {p} python night.py n={n} log={log} clear={clear} debug={debug} sort={sort} user={user} node={node} id={id} REPEAT={i}'
+            f'mpirun -n {p} python night.py n={n} log={log} clear={clear} debug={debug} sort={sort} user={user} node={node} id={id} t={t} c={c} REPEAT={i}'
 
         # start timer
         StopWatch.start(label)
@@ -187,7 +184,7 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
         last_time = StopWatch.get(label)
 
     # print out collected information
-    StopWatch.benchmark(user=user, node=node)
+    StopWatch.benchmark(tag=str(data))
 
 if __name__ == '__main__':
-    experiment(args.processors, args.size, args.repeat, args.log, args.clear, args.debug, args.sort, args.tag, args.user, args.node, args.id)
+    experiment(args.p, args.size, args.repeat, args.log, args.clear, args.debug, args.sort, args.tag, args.user, args.node, args.t, args.c, args.id)
