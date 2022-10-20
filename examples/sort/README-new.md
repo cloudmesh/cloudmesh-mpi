@@ -42,9 +42,11 @@
 
 ### Sequential Merge Sort
 
+The sequential merge sort algorithm is located [here](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/sequential/mergesort.py).
+
 #### l.sort()
 
-- URL to code
+
 - how to run
 - what is output
 
