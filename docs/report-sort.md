@@ -278,7 +278,35 @@ that memory constraints allowed us to experiment with arrays of up to BOGO integ
 
 # Performance Comparison
 
-# Visualization
+All performance comparison done here will be on data from the Carbonate partition. 
+
+## Time
+
+Using our results from the Carbonate partition, we analyze and graph the resulting times from selected runs. 
+
+We can compare time in two ways. First, we analyze algorithm performance based on increasing size of arrays. Since some algorithms differ within themselves (for example, two multiprocessing merge sorts might use different numbers of processes), we will simply choose which number of processes runs the fastest for that specific size since we're only measuring time. 
+
+- insert graph with x-axis increasing sizes and y-axis times with three lines for seq, mp, and mpi
+- insert description
+
+Second, we analyze algorithm performance based on processes used. We will keep the size of the array at a constant value and, for each number of processes, compare the times for each sorting algorithm. Note that the sequential merge sort time will remain constant, since it uses a constant number (1) of processes. 
+
+- insert graph with x-axis increasing processes and y-axis times 
+- insert description
+
+## Memory
+
+By recording the average memory consumed by each experiment, we can analyze the maximum size of an array that can be sorted by each sorting algorithm given a certain memory cutoff. Since all real-world applications of sorting come with memory restrictions, this is an important thing to measure. 
+
+- table with memory upper bound as column headers
+- three rows for each sort type
+- cell contains biggest possible array that can be sorted 
+
+## Speedup
+
+Speedup is defined as T_S / T_p, where T_s is the compute time of the sequential algorithm and T_p is the compute time of the parallel algorithm. 
+
+## Effiency
 
 # Conclusion
 
