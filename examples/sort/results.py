@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 import argparse
+import psutil
 
 from analysis import get_data
 from analysis import read_log, read_logs
@@ -106,14 +107,18 @@ args = parser.parse_args()
 data = dotdict(vars(args))
 '''
 Usage:
-docopt.py square [options] [operation] [square-option]
-docopt.py rectangle [options] [operation] [triangle-option]
+docopt.py seq [options] [operation] [seq-option]
+docopt.py mp [options] [operation] [mp-option]
+docopt.py mpi [options] [operation] [mpi-option]
 operation:
    --area=<bool>       Calculate the area if the argument==True
    --perimeter=<bool>  Calculate the perimeter if the argument==True
-square-option:
+seq-option:
    --edge=<float>      Edge of the square. [default: 2]
-rectangle-option:
+mp-option:
+   --height=<float>    Height of the rectangle 
+   --width=<float>     Width of the rectangle 
+mpi-option:
    --height=<float>    Height of the rectangle 
    --width=<float>     Width of the rectangle 
 '''
