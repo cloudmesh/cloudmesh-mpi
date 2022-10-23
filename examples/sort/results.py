@@ -30,13 +30,13 @@ parser.add_argument(
     '--processes', 
     default="[4]",
     type=str, 
-    required=False,
+    required=True,
     help="array of number of processes as a string")
 parser.add_argument(
     '--sizes', 
     default="[100]",
     type=str, 
-    required=False, 
+    required=True, 
     help='sizes of the arrays to be sorted as a string')
 parser.add_argument(
     '--repeat',
@@ -65,7 +65,7 @@ parser.add_argument(
 parser.add_argument(
     '--sort',
     type=str,
-    required=False, 
+    required=True, 
     default="mp",
     help="sorting function to be run. can be seq (sequential), mp (multiprocessing), or mpi.")
 parser.add_argument(
@@ -76,13 +76,13 @@ parser.add_argument(
 parser.add_argument(
     '--user',
     type=str,
-    required=False, 
+    required=True, 
     default=username,
     help="username, used in logfile naming")
 parser.add_argument(
     '--node',
     type=str,
-    required=False, 
+    required=True, 
     default=hostname,
     help="a node name, used in logile naming")
 parser.add_argument(
@@ -122,9 +122,15 @@ for p in processes:
         run_cmd = f"./run.py --user={data.user} --node={data.node} --size={size} --sort={data.sort}"
 
         if "mpi" in data.sort:
-            run_cmd = f"python mpi_run.py  --p={p} --size={size} --user={data.user} --node={data.node} --sort=mpi-mergesort --debug={data.debug} --t={data.t} --c={data.c} --id=0"
+            run_cmd = f"python mpi_run.py  --p={p} --size={size} --user={data.user} --node={data.node} --sort=mpi-mergesort --debug={data.debug} --id=0"
         else:
-            run_cmd = f"python run.py --p={p} --size={size} --user={data.user} --node={data.node} --sort=mpi-mergesort --debug={data.debug} --t={data.t} --c={data.c}"
+            run_cmd = f"python run.py --p={p} --size={size} --user={data.user} --node={data.node} --sort=mpi-mergesort --debug={data.debug}"
+
+        if data.t != None:
+            run_cmd = run_cmd + "--t={data.t}"
+        if data.c != None:
+            run_cmd = run_cmd + "--c={data.c}"
+        
         banner(run_cmd)
         os.system(run_cmd)
 
