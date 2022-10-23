@@ -13,6 +13,7 @@ from cloudmesh.common.systeminfo import os_is_windows
 from cloudmesh.common.dotdict import dotdict
 from sequential.mergesort import merge_sort
 from generate import Generator
+from multiprocessing_mergesort import multiprocessing_mergesort
 
 # generates label and logfile for this experiment
 def get_label(data, i):
@@ -31,12 +32,10 @@ def data_to_benchmark(data):
 # maps between common nicknames of sorts and the sort type accepted by program
 def get_sort_by_name(name="multiprocessing_mergesort"):
     if name in ["mp", "mp-merge", "mp-mergesort", "multiprocessing_mergesort"]:
-        print("MP SORT")
-        from multiprocessing_mergesort import multiprocessing_mergesort
+        # print("MP SORT")
         return multiprocessing_mergesort
     elif name in ["seq", "seq-mergesort", "seq-merge", "sequential_merge", "sequential_mergesort"]:
-        print("MERGE SORT")
-        from sequential.mergesort import merge_sort
+        # print("MERGE SORT")
         return merge_sort
     else:
         return None
@@ -158,6 +157,12 @@ def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, 
 
     total = repeat
 
+    # map from alias to sort
+    sort_algorithm = get_sort_by_name(sort)
+    
+    if sort_algorithm == merge_sort:
+        data.p = 1
+
     # begin running experiment
     print("Starting experiment")
 
@@ -172,10 +177,6 @@ def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, 
     print(f"Tag:       {tag}")
     print(f"Total:     {total}")
 
-    # map from alias to sort
-    sort_algorithm = get_sort_by_name(sort)
-    #if sort_algorithm == merge_sort:
-        #data.p = 1
     last_time = "undefined"
     c = 0
     n = size
