@@ -56,7 +56,44 @@ The sequential merge sort algorithm is located [here](https://github.com/cloudme
 
 ### Multiprocessing Merge Sort
 
+Run using the command
+
+  ```bash
+  python run.py  --p=8 --size=80 --user=alex --node=v100 --sort=mp --debug=true
+  ```
+
 ### MPI Merge Sort
+
+Run using the command
+
+  ```bash 
+  python mpi_results.py --p={p} --size={n} --user={user} --node={node} --sort=mpi-mergesort 
+  ```
+
+  ```bash
+  All of the options below are REQUIRED to run the command. 
+
+  p = number of processors to sort on
+  n = size of array to sort
+  user = convenient unique name (not username on host) that identifies user
+  node = name of host machine on which benchmark is executed
+  sort = name by which to identify and print sort (should always just use mpi-mergesort)
+
+  Below are some additional options that are not required. 
+
+  --repeat={repeat}
+  repeat = number of times this experiment will be repeated, with all required options kept constant
+  --debug={debug}
+  debug = a boolean that defaults to False. when True, this will turn on extra text output to help with debugging
+  --tag={tag}
+  tag = a string for extra information you might want to include
+  --t={t}
+  t = number of threads per core
+  --c={c}
+  c = number of cores
+  ```
+
+This generates timer output for the specific conditions input by the user. Note that this does not print any output to the log file. This program is run by results.py. 
 
 ##  Analysis
 

@@ -20,7 +20,7 @@ from generate import Generator
 
 # generates label and logfile for this experiment
 def get_label(n, p, data):
-    return f"log/{data.sort}-{data.node}-{data.user}-{n}-{p}-{data.t}-{data.c}"
+    return f"log/{data.sort}-{data.node}-{data.user}-{n}-{p}-{data.t}-{data.c}.log"
 
 username = Shell.run('whoami').strip()
 hostname = Shell.run('hostname').strip()
@@ -133,7 +133,7 @@ for p in processes:
         
         # generate log file that data will be stored in
         log = get_label(size, p, data)
-        run_cmd = run_cmd + f"| tee {log}"
+        run_cmd = run_cmd + f" | tee {log}"
 
         banner(run_cmd)
         os.system(run_cmd)

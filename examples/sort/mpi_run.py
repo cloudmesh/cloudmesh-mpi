@@ -34,12 +34,12 @@ parser.add_argument(
     '--p', 
     default=4,
     type=int, 
-    required=False,
+    required=True,
     help="number of processors as an integer")
 parser.add_argument(
     '--size', 
     type=int, 
-    required=False, 
+    required=True, 
     help='total size of the array to be sorted as an integer')
 parser.add_argument(
     '--repeat',
@@ -68,7 +68,7 @@ parser.add_argument(
 parser.add_argument(
     '--sort',
     type=str,
-    required=False, 
+    required=True, 
     default="mpi",
     help="sorting function to be run")
 parser.add_argument(
@@ -79,13 +79,13 @@ parser.add_argument(
 parser.add_argument(
     '--user',
     type=str,
-    required=False, 
+    required=True, 
     default=username,
     help="username, used in logfile naming")
 parser.add_argument(
     '--node',
     type=str,
-    required=False, 
+    required=True, 
     default=hostname,
     help="a node name, used in logile naming")
 parser.add_argument(
