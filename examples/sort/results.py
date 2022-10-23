@@ -132,7 +132,7 @@ for p in processes:
             run_cmd = run_cmd + "--c={data.c}"
         
         # generate log file that data will be stored in
-        log = get_data(size, p, data)
+        log = get_label(size, p, data)
         run_cmd = run_cmd + f"| tee {log}"
 
         banner(run_cmd)
