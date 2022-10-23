@@ -86,7 +86,7 @@ To run the sequential merge sort, use
 
 *node* is the host machine upon which this benchmark is run. 
 
-  Below are some additional options that are not required. 
+Below are some additional options that are not required. All of these options are available when running any of the three sorts. 
   ```bash
   --repeat={repeat}
   repeat = number of times this experiment will be repeated, with all required options kept constant
@@ -105,82 +105,96 @@ To run the sequential merge sort, use
 
 The sequential merge sort algorithm is located [here](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/sequential/mergesort.py).
 
-
 Run this using
 
-```bash
+  ```bash
   python results.py --processes="[processes]" --sizes="[sizes]" --sort=seq --user={user}--node={node}
   ```
 
-Since the sequential merge sort uses only one process to run, processes should be input as just
+This will print the output to logfiles of the format
+  ```bash
+  seq-{node}-{user}-{size}-{p}-{t}-{c}.log
+  ```
+for each *size* in *sizes* and each *p* in *processes*. 
+
+Since the sequential merge sort uses only one process to run, *processes* should be input as just
 
   ```bash
   --processes="[1]"
   ```
 
+However, even if *processes* is incorrectly input, the program will automatically change it to the correct input. 
+
+If you would like to run this using **run.py**, which is the program that runs within results.py, it can be run using
+
+  ```bash
+  python run.py --p={p} --size={n} --sort=seq --user={user}--node={node}
+  ```
+where p is 1 (only one process used) and n is the size of the array to be sorted. This will not print to a log file, rather, it will print directly to the terminal. All optional parameters available in results.py are also available here. 
 
 ### Multiprocessing Merge Sort
 
-Run using the command
+The multiprocessing merge sort algorithm is located [here](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/multiprocessing_mergesort.py).
+
+Run this using 
 
   ```bash
-  python run.py  --p={p} --size={n} --user={user} --node={node} --sort=mp-mergesort
+  python results.py --processes="[1-p]" --sizes="[sizes]" --sort=mp --user={user} --node={node}
   ```
+
+This will print the output to logfiles of the format
   ```bash
-  All of the options below are REQUIRED to run the command. 
-
-  p = number of processes to sort on
-  n = size of array to sort
-  user = convenient unique name (not username on host) that identifies user
-  node = name of host machine on which benchmark is executed
-  sort = name by which to identify and print sort (should always just use mp-mergesort or an alias)
-
-  Below are some additional options that are not required. 
-
-  --repeat={repeat}
-  repeat = number of times this experiment will be repeated, with all required options kept constant
-  --debug={debug}
-  debug = a boolean that defaults to False. when True, this will turn on extra text output to help with debugging
-  --tag={tag}
-  tag = a string for extra information you might want to include
-  --t={t}
-  t = number of threads per core
-  --c={c}
-  c = number of cores
+  mp-{node}-{user}-{size}-{p}-{t}-{c}.log
   ```
+for each *size* in *sizes* and each *p* in *processes*. 
+
+*processes* can be input in two different ways here. If you would like to run each experiment using every possible number of processes, you can use the range format:
+  ```bash
+  --processes=[1-p]
+  ```
+However, if you'd like to run using a specific combination of processes, you can specify using the array format, with an array of numbers separated only by commas, with no spaces in between. 
+  ```bash
+  --processes=[1,2,5]
+  ```
+If running inside zsh, the entire array must be enclosed within quotation marks. 
+
+If you would like to run this using **run.py**, which is the program that runs within results.py, it can be run using
+
+  ```bash
+  python run.py --p={p} --size={n} --sort=mp --user={user}--node={node}
+  ```
+where p is the number of processes to use, and n is the size of the array to sort. This will not print to a log file, rather, it will print directly to the terminal. All optional parameters available in results.py are also available here. 
 
 ### MPI Merge Sort
 
-Run using the command
+The MPI merge sort algorithm is located [here](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/night.py). 
 
-  ```bash 
-  python mpi_results.py --p={p} --size={n} --user={user} --node={node} --sort=mpi-mergesort 
-  ```
+Run this using 
 
   ```bash
-  All of the options below are REQUIRED to run the command. 
-
-  p = number of processors to sort on
-  n = size of array to sort
-  user = convenient unique name (not username on host) that identifies user
-  node = name of host machine on which benchmark is executed
-  sort = name by which to identify and print sort (should always just use mpi-mergesort)
-
-  Below are some additional options that are not required. 
-
-  --repeat={repeat}
-  repeat = number of times this experiment will be repeated, with all required options kept constant
-  --debug={debug}
-  debug = a boolean that defaults to False. when True, this will turn on extra text output to help with debugging
-  --tag={tag}
-  tag = a string for extra information you might want to include
-  --t={t}
-  t = number of threads per core
-  --c={c}
-  c = number of cores
+  python results.py --processes="[processes]" --sizes="[sizes]" --sort=mpi --user={user} --node={node}
   ```
 
-This generates timer output for the specific conditions input by the user. Note that this does not print any output to the log file. This program is run by results.py. 
+This will print the output to logfiles of the format
+  ```bash
+  mpi-{node}-{user}-{size}-{p}-{t}-{c}.log
+  ```
+for each *size* in *sizes* and each *p* in *processes*.
+
+*processes* must be input as an array of numbers separated only by commas, with no spaces in between. 
+  ```bash
+  --processes=[4,8]
+  ```
+IMPORTANT: every single one of the numbers in *sizes* must be divisible by every single one of the the numbers in *processes*. This is because the MPI merge sort must divide each of the arrays into equal subarrays to send them to each processor to be sorted. This is also why the range format is not available for MPI merge sort. 
+
+If running using zsh, the array must be enclosed within quotation marks. 
+
+If you would like to run this using **mpi_run.py**, which is the program that runs within results.py, it can be run using
+
+  ```bash
+  python mpi_run.py  --p={p} --size={n} --sort=mpi-mergesort --user={user} --node={node}
+  ```
+where p is the number of processors to use, and n is the size of the array to sort. This will not print to a log file, rather, it will print directly to the terminal. All optional parameters available in results.py are also available here. 
 
 ##  Analysis
 
