@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from distutils.log import debug
 import os
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -26,11 +27,11 @@ hostname = Shell.run('hostname').strip()
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    '--processors', 
+    '--processes', 
     default="[4]",
     type=str, 
     required=False,
-    help="array of number of processors as a string")
+    help="array of number of processes as a string")
 parser.add_argument(
     '--sizes', 
     default="[100]",
@@ -105,43 +106,25 @@ parser.add_argument(
 args = parser.parse_args()
 
 data = dotdict(vars(args))
-'''
-Usage:
-docopt.py seq [options] [operation] [seq-option]
-docopt.py mp [options] [operation] [mp-option]
-docopt.py mpi [options] [operation] [mpi-option]
-operation:
-   --area=<bool>       Calculate the area if the argument==True
-   --perimeter=<bool>  Calculate the perimeter if the argument==True
-seq-option:
-   --edge=<float>      Edge of the square. [default: 2]
-mp-option:
-   --height=<float>    Height of the rectangle 
-   --width=<float>     Width of the rectangle 
-mpi-option:
-   --height=<float>    Height of the rectangle 
-   --width=<float>     Width of the rectangle 
-'''
 
-if data.sort in ["mp-mergesort", "multiprocessing_mergesort"]:
+if data.sort in ["mp", "mp-mergesort", "multiprocessing_mergesort"]:
     p = psutil.cpu_count(logical=False)
     t = psutil.cpu_count()
-else:
-    p = 1
-    t = 1
-processors = Parameter.expand(data.processors)
+    data.processes = data.processes.replace("p", str(p)).replace("t", str(t))
+
+processes = Parameter.expand(data.processes)
 sizes = Parameter.expand(data.sizes)
 
 # this will take a long time. 
 # also if you don't want to use all your processors then use different commands. 
-for sort in data.sorts:
+for p in processes:
     for size in sizes:
-        run_cmd = f"./run.py --user={user} --node={node} --size={size} --sort={sort}"
+        run_cmd = f"./run.py --user={data.user} --node={data.node} --size={size} --sort={data.sort}"
 
-        if "mpi" in sort:
-            run_cmd = f"./mpi_run.py --user={user} --node={node} --sort={sort}--size={size} --id={0}"
+        if "mpi" in data.sort:
+            run_cmd = f"python mpi_results.py  --p={p} --size={size} --user={data.user} --node={data.node} --sort=mpi-mergesort --debug={data.debug} --t={data.t} --c={data.c} --id=0"
         else:
-            run_cmd = f"./run.py --user={user} --node={node} --size={size} --sort={sort}"
+            run_cmd = f"./run.py --user={data.user} --node={data.node} --size={size} --sort={data.sort}"
         banner(run_cmd)
         os.system(run_cmd)
 

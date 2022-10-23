@@ -69,7 +69,7 @@ parser.add_argument(
     '--sort',
     type=str,
     required=False, 
-    default="mp",
+    default="mpi",
     help="sorting function to be run")
 parser.add_argument(
     '--tag',
