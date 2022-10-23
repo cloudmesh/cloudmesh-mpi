@@ -199,4 +199,4 @@ def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, 
     StopWatch.benchmark(tag=str(benchmark_data))
     
 if __name__ == '__main__':
-    log, processes, sizes, repeat, clear, debug = experiment()
+    experiment(args.p, args.size, args.repeat, args.log, args.clear, args.debug, args.sort, args.tag, args.user, args.node, args.t, args.c, args.id)
