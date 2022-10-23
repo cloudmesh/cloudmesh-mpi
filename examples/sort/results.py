@@ -19,8 +19,8 @@ from cloudmesh.common.dotdict import dotdict
 from generate import Generator
 
 # generates label and logfile for this experiment
-def get_label(data):
-    return f"{data.sort}-{data.node}-{data.user}-{data.size}-{data.p}-{data.t}-{data.c}"
+def get_label(n, p, data):
+    return f"{data.sort}-{data.node}-{data.user}-{n}-{p}-{data.t}-{data.c}"
 
 username = Shell.run('whoami').strip()
 hostname = Shell.run('hostname').strip()
@@ -131,6 +131,10 @@ for p in processes:
         if data.c != None:
             run_cmd = run_cmd + "--c={data.c}"
         
+        # generate log file that data will be stored in
+        log = get_data(size, p, data)
+        run_cmd = run_cmd + f"| tee {log}"
+
         banner(run_cmd)
         os.system(run_cmd)
 
