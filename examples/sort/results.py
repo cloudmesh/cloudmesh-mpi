@@ -111,6 +111,8 @@ if data.sort in ["mp", "mp-mergesort", "multiprocessing_mergesort"]:
     p = psutil.cpu_count(logical=False)
     t = psutil.cpu_count()
     data.processes = data.processes.replace("p", str(p)).replace("t", str(t))
+elif data.sort in ["seq", "seq-mergesort", "seq-merge", "sequential_merge", "sequential_mergesort"]:
+    data.processes=["1"]
 
 processes = Parameter.expand(data.processes)
 sizes = Parameter.expand(data.sizes, sep=',')

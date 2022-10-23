@@ -48,12 +48,12 @@ parser.add_argument(
     '--p', 
     default=4,
     type=int, 
-    required=False,
+    required=True,
     help="number of processes as an integer")
 parser.add_argument(
     '--size', 
     type=int, 
-    required=False, 
+    required=True, 
     help='total size of the array to be sorted as an integer')
 parser.add_argument(
     '--repeat',
@@ -93,13 +93,13 @@ parser.add_argument(
 parser.add_argument(
     '--user',
     type=str,
-    required=False, 
+    required=True, 
     default=username,
     help="username, used in logfile naming")
 parser.add_argument(
     '--node',
     type=str,
-    required=False, 
+    required=True, 
     default=hostname,
     help="a node name, used in logfile naming")
 parser.add_argument(
@@ -162,6 +162,8 @@ def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, 
     sort_algorithm = get_sort_by_name(sort)
     if debug:
         print(sort_algorithm)
+    
+    # sequential merge sort only runs on one process
     if sort_algorithm == merge_sort:
         data.p = 1
 

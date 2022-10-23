@@ -40,26 +40,113 @@
 
 ## Algorithms
 
+All of the merge sorts should be called and run using **results.py**. 
+
+Note that run.py is used to run both the sequential and the multiprocessing merge sort. This is because both of the sorts can be called in the same way. However, MPI merge sort must be called differently, which is why it has a different run program named mpi_run.py. The run programs generate stopwatch output. However, they do not print to log files, and if run individually, will output to the terminal.  
+ 
+Run results.py using the following command:
+```bash
+python results.py --processes="[processes]" --sizes="[sizes]"  --sort={sort} --user={user} --node={node}
+```
+
+There are five required parameters, which are *processes*, *sizes*, *sort*, *user*, and *node*. 
+
+The *processes* parameter will be described separately for each of the three merge sorts. Below are descriptions of the remaining four required parameters. 
+
+*sizes* is an array of the sizes of the arrays to be sorted. There must be no spaces between the entries of the array, only commas. 
+  ```bash
+  --sizes=[500,1000]
+  ```
+This will run the experiment specified by the other parameters on two arrays: one of size 500, and the other of size 1000. Note that if run using the default zsh shell, the entire array must be in string format, since zsh uses square brackets for a predetermined purpose. 
+  ```bash
+  --sizes="[500,1000]"
+  ```
+When using other shells, either option (string or not string) will be acceptable. 
+
+*sort* is the specific sort that is to be run. There are three options: sequential merge sort, multiprocessing merge sort, and MPI merge sort. 
+
+Note that to keep the names of the log files uniform, one should only use the following three inputs for the name of the sort function to run:
+
+To run the sequential merge sort, use
+  ```bash
+  --sort=seq 
+  ```
+
+  To run the multiprocessing merge sort, use
+  ```bash
+  --sort=mp
+  ```
+
+  To run the MPI merge sort, use
+  ```bash
+  --sort=mpi
+  ```
+
+*user* is a username used to differentiate different users of this program.
+
+*node* is the host machine upon which this benchmark is run. 
+
+  Below are some additional options that are not required. 
+  ```bash
+  --repeat={repeat}
+  repeat = number of times this experiment will be repeated, with all required options kept constant
+  --debug={debug}
+  debug = a boolean that defaults to False. when True, this will turn on extra text output to help with debugging
+  --tag={tag}
+  tag = a string for extra information you might want to include
+  --t={t}
+  t = number of threads per core
+  --c={c}
+  c = number of cores
+  ```
+
+
 ### Sequential Merge Sort
 
 The sequential merge sort algorithm is located [here](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/sequential/mergesort.py).
 
-#### l.sort()
 
+Run this using
 
-- how to run
-- what is output
+```bash
+  python results.py --processes="[processes]" --sizes="[sizes]" --sort=seq --user={user}--node={node}
+  ```
 
-#### sorted(l)
+Since the sequential merge sort uses only one process to run, processes should be input as just
 
-#### Adaptive Merge Sort
+  ```bash
+  --processes="[1]"
+  ```
+
 
 ### Multiprocessing Merge Sort
 
 Run using the command
 
   ```bash
-  python run.py  --p=8 --size=80 --user=alex --node=v100 --sort=mp --debug=true
+  python run.py  --p={p} --size={n} --user={user} --node={node} --sort=mp-mergesort
+  ```
+  ```bash
+  All of the options below are REQUIRED to run the command. 
+
+  p = number of processes to sort on
+  n = size of array to sort
+  user = convenient unique name (not username on host) that identifies user
+  node = name of host machine on which benchmark is executed
+  sort = name by which to identify and print sort (should always just use mp-mergesort or an alias)
+
+  Below are some additional options that are not required. 
+
+  --repeat={repeat}
+  repeat = number of times this experiment will be repeated, with all required options kept constant
+  --debug={debug}
+  debug = a boolean that defaults to False. when True, this will turn on extra text output to help with debugging
+  --tag={tag}
+  tag = a string for extra information you might want to include
+  --t={t}
+  t = number of threads per core
+  --c={c}
+  c = number of cores
   ```
 
 ### MPI Merge Sort
