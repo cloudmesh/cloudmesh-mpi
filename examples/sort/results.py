@@ -20,7 +20,7 @@ from generate import Generator
 
 # generates label and logfile for this experiment
 def get_label(n, p, data):
-    return f"{data.sort}-{data.node}-{data.user}-{n}-{p}-{data.t}-{data.c}"
+    return f"log/{data.sort}-{data.node}-{data.user}-{n}-{p}-{data.t}-{data.c}"
 
 username = Shell.run('whoami').strip()
 hostname = Shell.run('hostname').strip()
