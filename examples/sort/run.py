@@ -160,7 +160,7 @@ def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, 
     # map from alias to sort
     sort_algorithm = get_sort_by_name(sort)
     if debug:
-        print("THE SORT ALGORITHM IS " + sort_algorithm)
+        print(sort_algorithm)
     if sort_algorithm == merge_sort:
         data.p = 1
 
