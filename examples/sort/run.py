@@ -185,6 +185,8 @@ def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, 
 
         # generate unsorted array
         a = Generator().generate_random(n)
+        if data.debug:
+            print(a)
 
         # start timer
         StopWatch.start(label)
@@ -193,6 +195,8 @@ def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, 
         # stop timer
         StopWatch.stop(label)
         last_time = StopWatch.get(label)
+        if data.debug:
+            print(a)
 
     # print out collected information
     benchmark_data = data_to_benchmark(data)
