@@ -124,7 +124,7 @@ for p in processes:
         if "mpi" in data.sort:
             run_cmd = f"python mpi_run.py  --p={p} --size={size} --user={data.user} --node={data.node} --sort=mpi-mergesort --debug={data.debug} --t={data.t} --c={data.c} --id=0"
         else:
-            run_cmd = f"./run.py --user={data.user} --node={data.node} --size={size} --sort={data.sort}"
+            run_cmd = f"python run.py --p={p} --size={size} --user={data.user} --node={data.node} --sort=mpi-mergesort --debug={data.debug} --t={data.t} --c={data.c}"
         banner(run_cmd)
         os.system(run_cmd)
 

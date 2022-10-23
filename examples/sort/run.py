@@ -11,6 +11,7 @@ from cloudmesh.common.util import yn_choice
 from cloudmesh.common.util import banner
 from cloudmesh.common.systeminfo import os_is_windows
 from cloudmesh.common.dotdict import dotdict
+from examples.sort.sequential.mergesort import merge_sort
 from generate import Generator
 
 # generates label and logfile for this experiment
@@ -171,7 +172,8 @@ def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, 
 
     # map from alias to sort
     sort_algorithm = get_sort_by_name(sort)
-
+    if sort_algorithm == merge_sort:
+        data.p = 1
     last_time = "undefined"
     c = 0
     n = size
