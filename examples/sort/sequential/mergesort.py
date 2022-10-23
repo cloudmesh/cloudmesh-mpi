@@ -63,3 +63,4 @@ def merge_sort(array, p):
             array[k] = right[j]
             j += 1
             k += 1
+    return array
