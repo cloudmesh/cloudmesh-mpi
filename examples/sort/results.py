@@ -123,7 +123,7 @@ mpi-option:
    --width=<float>     Width of the rectangle 
 '''
 
-if sort in ["mp-mergesort", "multiprocessing_mergesort"]:
+if data.sort in ["mp-mergesort", "multiprocessing_mergesort"]:
     p = psutil.cpu_count(logical=False)
     t = psutil.cpu_count()
 else:
@@ -134,7 +134,7 @@ sizes = Parameter.expand(data.sizes)
 
 # this will take a long time. 
 # also if you don't want to use all your processors then use different commands. 
-for sort in sorts:
+for sort in data.sorts:
     for size in sizes:
         run_cmd = f"./run.py --user={user} --node={node} --size={size} --sort={sort}"
 

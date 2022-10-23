@@ -16,6 +16,15 @@ from generate import Generator
 # generates label and logfile for this experiment
 def get_label(data, i):
     return f"{data.sort}-{data.node}-{data.user}-{data.size}-{data.p}-{data.t}-{data.c}-{i}"
+# filters unneccessary data out of the arguments parsed from command line
+# to be printed out from the stopwatch
+def data_to_benchmark(data):
+    ans = data
+    rm = ['log', 'clear', 'debug', 'tag', 'id']
+    for key in rm:
+        if key in ans:
+            ans.pop(key)
+    return ans
 
 username = Shell.run('whoami').strip()
 hostname = Shell.run('hostname').strip()
@@ -184,7 +193,8 @@ def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, 
         last_time = StopWatch.get(label)
 
     # print out collected information
-    StopWatch.benchmark(tag=str(data))
+    benchmark_data = data_to_benchmark(data)
+    StopWatch.benchmark(tag=str(benchmark_data))
 
 if __name__ == '__main__':
     experiment(args.p, args.size, args.repeat, args.log, args.clear, args.debug, args.sort, args.tag, args.user, args.node, args.t, args.c, args.id)
