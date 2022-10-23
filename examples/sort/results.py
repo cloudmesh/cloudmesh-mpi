@@ -124,7 +124,7 @@ for p in processes:
         if "mpi" in data.sort:
             run_cmd = f"python mpi_run.py  --p={p} --size={size} --user={data.user} --node={data.node} --sort=mpi-mergesort --debug={data.debug} --id=0"
         else:
-            run_cmd = f"python run.py --p={p} --size={size} --user={data.user} --node={data.node} --sort=mpi-mergesort --debug={data.debug}"
+            run_cmd = f"python run.py --p={p} --size={size} --user={data.user} --node={data.node} --sort={data.sort} --debug={data.debug}"
 
         if data.t != None:
             run_cmd = run_cmd + "--t={data.t}"

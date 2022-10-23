@@ -82,7 +82,7 @@ parser.add_argument(
 parser.add_argument(
     '--sort',
     type=str,
-    required=False, 
+    required=True, 
     default="mpi",
     help="sorting function to be run")
 parser.add_argument(
@@ -158,6 +158,7 @@ def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, 
     total = repeat
 
     # map from alias to sort
+    print(f"SORT: {sort}")
     sort_algorithm = get_sort_by_name(sort)
     if debug:
         print(sort_algorithm)
