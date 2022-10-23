@@ -113,7 +113,7 @@ if data.sort in ["mp", "mp-mergesort", "multiprocessing_mergesort"]:
     data.processes = data.processes.replace("p", str(p)).replace("t", str(t))
 
 processes = Parameter.expand(data.processes)
-sizes = Parameter.expand(data.sizes)
+sizes = Parameter.expand(data.sizes, sep=',')
 
 # this will take a long time. 
 # also if you don't want to use all your processors then use different commands. 
