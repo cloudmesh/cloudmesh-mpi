@@ -74,9 +74,10 @@ To analyse all benchmarks stored in that directory an analysis script has been d
 
 First they will be combined into a single log with teh command
 
-bin/combine.py log/* > all.log
-
+```
+bin/combine.py examples/sort/log/* > all.log
 cat log/*.log | fgrep "# csv" > all.log
+```
 
 Then you can analyze the combined log with
 
