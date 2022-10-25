@@ -33,10 +33,12 @@ cma set user=gregor
 cms set host=amd5950X
 ```
 
-Running the benchmark
+Running the benchmark with various sorting algorithms is easy by specyfing seq, mp, or mpi. Note that only one algorithom is permitted for the sort option.
 
 ```bash
-TBD
+python results.py --processes="[1]" --sizes="[100000,1000000,10000000]"  --sort=seq --user=gregor --node=amd5950X
+python results.py --processes="[1-p]" --sizes="[100000,1000000,10000000]"  --sort=mp --user=gregor --node=amd5950X
+python results.py --processes="[1,4,8]" --sizes="[100000,1000000,10000000]"  --sort=mpi --user=gregor --node=amd5950X
 ```
 
 The benchmarks will all be in the directory TBD. Multiple benchmarks from multiple machines can be stored there
