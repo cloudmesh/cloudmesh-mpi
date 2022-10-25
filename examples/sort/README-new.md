@@ -6,27 +6,21 @@ The source code is located in GitHub at the following location:
 
 * <https://github.com/cloudmesh/cloudmesh-mpi/tree/main/examples/sort>
 
-### ENV3 (for macOS)
-
 We use a virtual environment to keep the dependencies of this project separate from other projects. 
 
-To install the virtual environment, do BOGO
-
-To activate the virtual environment: 
 ```bash
 $ python -m venv ~/ENV3
 $ source ~/ENV3/bin/activate
-```
-
-### Clone
-
-To download our code, please create a *cm* directory. This is typically created in the Desktop. 
-
-```bash
 $ mkdir cm
 $ cd cm
-$ git clone git@github.com:cloudmesh/cloudmesh-mpi.git
+$ pip install pip -U
+$ pip install cloudmesh-installer
+$ cloudmesh-installer get mpi
+$ cd cloudmesh-mpi
 ```
+
+This will install all necessary packages from github and install them
+
 
 ## Log File Formatting
 
