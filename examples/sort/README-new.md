@@ -41,14 +41,50 @@ python results.py --processes="[1-p]" --sizes="[100000,1000000,10000000]"  --sor
 python results.py --processes="[1,4,8]" --sizes="[100000,1000000,10000000]"  --sort=mpi --user=gregor --node=amd5950X
 ```
 
-The benchmarks will all be in the directory TBD. Multiple benchmarks from multiple machines can be stored there
+These runs will produce the following log files
+
+```
+log/seq-amd5950X-gregor-100000-1-None-None-None.log
+log/seq-amd5950X-gregor-1000000-1-None-None-None.log
+log/seq-amd5950X-gregor-10000000-1-None-None-None.log
+
+log/mp-amd5950X-gregor-100000-1-None-None-None.log
+...
+log/mp-amd5950X-gregor-100000-9-None-None-None.log
+log/mp-amd5950X-gregor-1000000-1-None-None-None.log
+...
+log/mp-amd5950X-gregor-1000000-9-None-None-None.log
+log/mp-amd5950X-gregor-10000000-1-None-None-None.log
+...
+log/mp-amd5950X-gregor-10000000-9-None-None-None.log
+log/mpi-amd5950X-gregor-100000-1-None-None-None.log
+...
+log/mpi-amd5950X-gregor-100000-9-None-None-None.log
+log/mpi-amd5950X-gregor-1000000-1-None-None-None.log
+...
+log/mpi-amd5950X-gregor-1000000-9-None-None-None.log
+log/mpi-amd5950X-gregor-10000000-1-None-None-None.log
+...
+log/mpi-amd5950X-gregor-10000000-9-None-None-None.log
+```
+
+The benchmarks will all be in the directory `log`. Multiple benchmarks from multiple machines can be stored there.
 
 To analyse all benchmarks stored in that directory an analysis script has been developed.
+
+First they will be combined into a single log with teh command
+
+bin/combine.py log/* > all.jlog
+
+Then you can analyze the combined log with
+
+TBD
+
 This script will produce the following images:
 
 TBD
 
-YOu can customize which benchamrk are includes into the analysis by setting ranges for users and hosts, as well as n. Other parameters include the number of processes.
+You can customize which benchamrk are includes into the analysis by setting ranges for users and hosts, as well as n. Other parameters include the number of processes.
 
 
 A detailed explanation follows next, however the documentation till now will be sufficient to create the benchmark.
