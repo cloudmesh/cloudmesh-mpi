@@ -2,6 +2,32 @@
 
 ## Installation
 
+The source code is located in GitHub at the following location:
+
+* <https://github.com/cloudmesh/cloudmesh-mpi/tree/main/examples/sort>
+
+### ENV3 (for macOS)
+
+We use a virtual environment to keep the dependencies of this project separate from other projects. 
+
+To install the virtual environment, do BOGO
+
+To activate the virtual environment: 
+```bash
+$ python -m venv ~/ENV3
+$ source ~/ENV3/bin/activate
+```
+
+### Clone
+
+To download our code, please create a *cm* directory. This is typically created in the Desktop. 
+
+```bash
+$ mkdir cm
+$ cd cm
+$ git clone git@github.com:cloudmesh/cloudmesh-mpi.git
+```
+
 ## Log File Formatting
 
 - how we augment source code?
@@ -108,7 +134,7 @@ The sequential merge sort algorithm is located [here](https://github.com/cloudme
 Run this using
 
   ```bash
-  python results.py --processes="[processes]" --sizes="[sizes]" --sort=seq --user={user}--node={node}
+  python results.py --processes="[processes]" --sizes="[sizes]" --sort=seq --user={user} --node={node}
   ```
 
 This will print the output to logfiles of the format
@@ -116,6 +142,14 @@ This will print the output to logfiles of the format
   seq-{node}-{user}-{size}-{p}-{t}-{c}.log
   ```
 for each *size* in *sizes* and each *p* in *processes*. 
+
+For example, 
+
+```bash
+  python results.py --processes="[1]" --sizes="[100,200]" --sort=seq --user=john --node=pi4
+  ```
+
+would represent a user John running the sequential merge sort on his Raspberry Pi 4, sorting arrays of 100 numbers and arrays of 200 numbers on just 1 processor. 
 
 Since the sequential merge sort uses only one process to run, *processes* should be input as just
 
@@ -147,6 +181,14 @@ This will print the output to logfiles of the format
   mp-{node}-{user}-{size}-{p}-{t}-{c}.log
   ```
 for each *size* in *sizes* and each *p* in *processes*. 
+
+For example, 
+
+```bash
+  python results.py --processes="[1-p]" --sizes="[100,200]" --sort=mp --user=john --node=pi4
+  ```
+
+would represent a user John running the multiprocessing merge sort on his Raspberry Pi 4, sorting arrays of 100 numbers and arrays of 200 numbers. However, each array would be sorted using one process, and then two processes, and then three processes, all the way up to *p* processes, where *p* is the number of available processes on John's Raspberry Pi. 
 
 *processes* can be input in two different ways here. If you would like to run each experiment using every possible number of processes, you can use the range format:
   ```bash
@@ -180,6 +222,14 @@ This will print the output to logfiles of the format
   mpi-{node}-{user}-{size}-{p}-{t}-{c}.log
   ```
 for each *size* in *sizes* and each *p* in *processes*.
+
+For example, 
+
+```bash
+  python results.py --processes="[1,2,3,4]" --sizes="[100,200]" --sort=mpi --user=john --node=pi4
+  ```
+
+would represent a user John running the MPI merge sort on his Raspberry Pi 4, sorting arrays of 100 numbers and arrays of 200 numbers. Each array would be sorted on one processor, then two processors, then three, and then four. 
 
 *processes* must be input as an array of numbers separated only by commas, with no spaces in between. 
   ```bash
