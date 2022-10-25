@@ -21,6 +21,36 @@ $ cd cloudmesh-mpi
 
 This will install all necessary packages from github and install them
 
+## Quickstart
+
+The following commands generate a benchamrk of the sorting algorithm(s) and analyze it.
+We assume that the number of n for the sample size is ???
+To distingush the benchmarks from each other we set the following variables. Note that user and host must be unique for you
+
+```bash
+cms set n=10000000 # what is number we use?
+cma set user=gregor
+cms set host=amd5950X
+```
+
+Running the benchmark
+
+```bash
+TBD
+```
+
+The benchmarks will all be in the directory TBD. Multiple benchmarks from multiple machines can be stored there
+
+To analyse all benchmarks stored in that directory an analysis script has been developed.
+This script will produce the following images:
+
+TBD
+
+YOu can customize which benchamrk are includes into the analysis by setting ranges for users and hosts, as well as n. Other parameters include the number of processes.
+
+
+A detailed explanation follows next, however the documentation till now will be sufficient to create the benchmark.
+
 
 ## Log File Formatting
 
