@@ -134,7 +134,7 @@ In Figure 1 we show the graph with efficiency as y-axis and number of processors
 
 ## Other sort algorithms
 
-* [Countung Sort](https://en.wikipedia.org/wiki/Counting_sort)
+* [Counting Sort](https://en.wikipedia.org/wiki/Counting_sort)
 * [Adaptive merge sort](https://www.tutorialspoint.com/adaptive-merging-and-sorting-in-data-structure)
 * [Adaptive sort](https://en.wikipedia.org/wiki/Adaptive_sort)
 
