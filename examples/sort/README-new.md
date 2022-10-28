@@ -24,11 +24,11 @@ This will install all necessary packages from github and install them
 ## Quickstart
 
 The following commands generate a benchamrk of the sorting algorithm(s) and analyze it.
-We assume that the number of n for the sample size is ???
+We assume that the number of n for the sample size is ranging from 100000 to 10000000.
 To distingush the benchmarks from each other we set the following variables. Note that user and host must be unique for you
 
 ```bash
-cms set n=10000000 # what is number we use?
+cms set n=10000000 # we use numbers range from 100000 to 10000000
 cma set user=gregor
 cms set host=amd5950X
 ```
