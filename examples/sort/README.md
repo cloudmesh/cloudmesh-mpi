@@ -130,9 +130,7 @@ In Figure 1 we show the graph with efficiency as y-axis and number of processors
 ## List of sort algorithms in python
 
 * [array.sort](https://docs.python.org/3/howto/sorting.html)
-*
-
-[numpy.sort](https://numpy.org/doc/stable/reference/generated/numpy.sort.html)
+* [numpy.sort](https://numpy.org/doc/stable/reference/generated/numpy.sort.html)
 
 ## Other sort algorithms
 
