@@ -27,6 +27,10 @@ def data_to_benchmark(data):
     for key in rm:
         if key in ans:
             ans.pop(key)
+    
+    for key in data:
+        if data[key] == None:
+            data[key] = "None"
     return ans
 
 # maps between common nicknames of sorts and the sort type accepted by program
