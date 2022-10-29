@@ -1,38 +1,62 @@
 #!/usr/bin/env python
+
+"""
+Example:
+	./analysis.py --size="[100]"; gopen images/*.pdf
+		create all images for the experiment with size 100
+
+	./analysis.py --info=True
+		shows the experiment ranges for count, sizes, processes
+
+"""
+
 from pprint import pprint
 
 import click
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-import json
 
 from cloudmesh.common.Shell import Shell
 from cloudmesh.common.parameter import Parameter
 
-# takes in content from logfile
-# outputs dictionaries of data
-def get_data(content):
-    result = []
-    lines = Shell.find_lines_with(content, "# csv")[1:]
 
-    for line in lines:
-        line = line.replace("'", '"')
-        data = "{" + line.split("{")[1].split("},")[0] + "}"
-        data = dict(json.loads(data))
+def get_data(content, tag="multiprocessing_mergesort", size=None):
+    """
+    TBD
 
-        line = line.split(",",6)
-        t = line[3]
-        data["t"] = t
-        result.append(data)
+    :param content: data output from running mergesort
+    :type content: string
+    :return: none
+    :rtype: none
+    """
+    found = []
+    lines = [line for line in content if "# csv" in line]
 
-    return result
-def read_log(log):
+    for line in lines[1:]:
+        entries = line.split(",")
+        entry = [entries[a] for a in [1, 3, 9]]
+        time = entry[1]
+        name = entry[2]
+        processes, size, count = entry[0].split(tag)[1].split("_")[1:]
+
+        entry = [
+            int(processes),
+            # int(count),
+            float(time),
+            int(size),
+            name,
+            tag
+        ]
+        found.append(entry)
+    return found
+
+def read_log(log, size=None, tag="multiprocessing_mergesort"):
     if ".log" not in log:
-        log = f"{log}.log"
+        log = f"log/{log}-{size}.log"
     f = open(log, "r")
     content = f.read().splitlines()
-    data = get_data(content)
+    data = get_data(content, tag=tag, size=size)
     return data
 
 def read_logs(files=["alex", "gregor"], size =[100], tags=["multiprocessing_mergesort"]):
