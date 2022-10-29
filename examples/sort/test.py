@@ -8,5 +8,5 @@ from cloudmesh.common.Shell import Shell
 from cloudmesh.common.parameter import Parameter
 from analysis import read_log
 
-log = "mp-v100-alex-100-10-None-None.log"
+log = "log/mp-v100-alex-100-10-None-None.log"
 print(read_log(log))

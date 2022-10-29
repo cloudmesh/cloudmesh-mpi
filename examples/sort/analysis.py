@@ -30,6 +30,8 @@ def get_data(content):
 def read_log(log):
     if ".log" not in log:
         log = f"{log}.log"
+    if "log/" not in log:
+        log = f"log/{log}"
     f = open(log, "r")
     content = f.read().splitlines()
     data = get_data(content)
