@@ -1,0 +1,144 @@
+Starting experiment
+Processes: [4, 3, 2, 1]
+Size:      [1000000]
+Repeat:    10
+Clear:     False
+Debug:     False
+Algorithm: mp-mergesort
+Tag:       None
+Total:     40
+Log:       log/mp-mergesort-v100-alex-1000000.log
+Experiment 39        : size=1000000 processes=4 repeat=0 last_time=undefined                     Experiment 38        : size=1000000 processes=4 repeat=1 last_time=0.125                     Experiment 37        : size=1000000 processes=4 repeat=2 last_time=0.0113                     Experiment 36        : size=1000000 processes=4 repeat=3 last_time=0.0115                     Experiment 35        : size=1000000 processes=4 repeat=4 last_time=0.0115                     Experiment 34        : size=1000000 processes=4 repeat=5 last_time=0.0115                     Experiment 33        : size=1000000 processes=4 repeat=6 last_time=0.0115                     Experiment 32        : size=1000000 processes=4 repeat=7 last_time=0.0127                     Experiment 31        : size=1000000 processes=4 repeat=8 last_time=0.0116                     Experiment 30        : size=1000000 processes=4 repeat=9 last_time=0.0116                     Experiment 29        : size=1000000 processes=3 repeat=0 last_time=0.0114                     Experiment 28        : size=1000000 processes=3 repeat=1 last_time=0.0115                     Experiment 27        : size=1000000 processes=3 repeat=2 last_time=0.0115                     Experiment 26        : size=1000000 processes=3 repeat=3 last_time=0.0116                     Experiment 25        : size=1000000 processes=3 repeat=4 last_time=0.0116                     Experiment 24        : size=1000000 processes=3 repeat=5 last_time=0.0115                     Experiment 23        : size=1000000 processes=3 repeat=6 last_time=0.0115                     Experiment 22        : size=1000000 processes=3 repeat=7 last_time=0.0116                     Experiment 21        : size=1000000 processes=3 repeat=8 last_time=0.0116                     Experiment 20        : size=1000000 processes=3 repeat=9 last_time=0.0116                     Experiment 19        : size=1000000 processes=2 repeat=0 last_time=0.0116                     Experiment 18        : size=1000000 processes=2 repeat=1 last_time=0.0116                     Experiment 17        : size=1000000 processes=2 repeat=2 last_time=0.0116                     Experiment 16        : size=1000000 processes=2 repeat=3 last_time=0.0116                     Experiment 15        : size=1000000 processes=2 repeat=4 last_time=0.0116                     Experiment 14        : size=1000000 processes=2 repeat=5 last_time=0.0115                     Experiment 13        : size=1000000 processes=2 repeat=6 last_time=0.0115                     Experiment 12        : size=1000000 processes=2 repeat=7 last_time=0.0115                     Experiment 11        : size=1000000 processes=2 repeat=8 last_time=0.0117                     Experiment 10        : size=1000000 processes=2 repeat=9 last_time=0.0115                     Experiment 9         : size=1000000 processes=1 repeat=0 last_time=0.0116                     Experiment 8         : size=1000000 processes=1 repeat=1 last_time=0.0116                     Experiment 7         : size=1000000 processes=1 repeat=2 last_time=0.0116                     Experiment 6         : size=1000000 processes=1 repeat=3 last_time=0.0117                     Experiment 5         : size=1000000 processes=1 repeat=4 last_time=0.0116                     Experiment 4         : size=1000000 processes=1 repeat=5 last_time=0.0117                     Experiment 3         : size=1000000 processes=1 repeat=6 last_time=0.0115                     Experiment 2         : size=1000000 processes=1 repeat=7 last_time=0.0116                     Experiment 1         : size=1000000 processes=1 repeat=8 last_time=0.0115                     Experiment 0         : size=1000000 processes=1 repeat=9 last_time=0.0117                     
++---------------------+----------------------------------------------------------------------+
+| Attribute           | Value                                                                |
+|---------------------+----------------------------------------------------------------------|
+| BUG_REPORT_URL      | "https://bugs.launchpad.net/ubuntu/"                                 |
+| DISTRIB_CODENAME    | bionic                                                               |
+| DISTRIB_DESCRIPTION | "Ubuntu 18.04.6 LTS"                                                 |
+| DISTRIB_ID          | Ubuntu                                                               |
+| DISTRIB_RELEASE     | 18.04                                                                |
+| HOME_URL            | "https://www.ubuntu.com/"                                            |
+| ID                  | ubuntu                                                               |
+| ID_LIKE             | debian                                                               |
+| NAME                | "Ubuntu"                                                             |
+| PRETTY_NAME         | "Ubuntu 18.04.6 LTS"                                                 |
+| PRIVACY_POLICY_URL  | "https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"     |
+| SUPPORT_URL         | "https://help.ubuntu.com/"                                           |
+| UBUNTU_CODENAME     | bionic                                                               |
+| VERSION             | "18.04.6 LTS (Bionic Beaver)"                                        |
+| VERSION_CODENAME    | bionic                                                               |
+| VERSION_ID          | "18.04"                                                              |
+| cpu                 | Intel(R) Xeon(R) Platinum 8259CL CPU @ 2.50GHz                       |
+| cpu_cores           | 2                                                                    |
+| cpu_count           | 4                                                                    |
+| cpu_threads         | 4                                                                    |
+| date                | 2022-10-03 00:42:28.526711                                           |
+| frequency           | scpufreq(current=3101.1155, min=0.0, max=0.0)                        |
+| mem.active          | 932.2 MiB                                                            |
+| mem.available       | 14.4 GiB                                                             |
+| mem.free            | 13.6 GiB                                                             |
+| mem.inactive        | 501.9 MiB                                                            |
+| mem.percent         | 6.2 %                                                                |
+| mem.total           | 15.3 GiB                                                             |
+| mem.used            | 669.4 MiB                                                            |
+| platform.version    | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022                  |
+| python              | 3.7.10 | packaged by conda-forge | (default, Feb 19 2021, 16:07:37)  |
+|                     | [GCC 9.3.0]                                                          |
+| python.pip          | 22.2.2                                                               |
+| python.version      | 3.7.10                                                               |
+| sys.platform        | linux                                                                |
+| uname.machine       | x86_64                                                               |
+| uname.node          | v100                                                                 |
+| uname.processor     | x86_64                                                               |
+| uname.release       | 5.4.0-1085-aws                                                       |
+| uname.system        | Linux                                                                |
+| uname.version       | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022                  |
+| user                | alex                                                                 |
++---------------------+----------------------------------------------------------------------+
+
++------------------------------------------+----------+--------+-------+---------------------+-------+-------+--------+--------+-------+-----------------------------------------------------+
+| Name                                     | Status   |   Time |   Sum | Start               | tag   | msg   | Node   | User   | OS    | Version                                             |
+|------------------------------------------+----------+--------+-------+---------------------+-------+-------+--------+--------+-------+-----------------------------------------------------|
+| ip-172-31-9-213_mp-mergesort_4_1000000_0 | ok       |  0.125 | 0.125 | 2022-10-03 00:41:48 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_4_1000000_1 | ok       |  0.011 | 0.011 | 2022-10-03 00:41:49 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_4_1000000_2 | ok       |  0.011 | 0.011 | 2022-10-03 00:41:50 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_4_1000000_3 | ok       |  0.012 | 0.012 | 2022-10-03 00:41:51 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_4_1000000_4 | ok       |  0.011 | 0.011 | 2022-10-03 00:41:52 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_4_1000000_5 | ok       |  0.011 | 0.011 | 2022-10-03 00:41:53 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_4_1000000_6 | ok       |  0.013 | 0.013 | 2022-10-03 00:41:54 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_4_1000000_7 | ok       |  0.012 | 0.012 | 2022-10-03 00:41:55 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_4_1000000_8 | ok       |  0.012 | 0.012 | 2022-10-03 00:41:56 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_4_1000000_9 | ok       |  0.011 | 0.011 | 2022-10-03 00:41:57 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_3_1000000_0 | ok       |  0.012 | 0.012 | 2022-10-03 00:41:58 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_3_1000000_1 | ok       |  0.012 | 0.012 | 2022-10-03 00:41:59 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_3_1000000_2 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:00 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_3_1000000_3 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:01 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_3_1000000_4 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:02 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_3_1000000_5 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:03 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_3_1000000_6 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:04 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_3_1000000_7 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:05 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_3_1000000_8 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:06 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_3_1000000_9 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:07 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_2_1000000_0 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:08 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_2_1000000_1 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:09 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_2_1000000_2 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:10 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_2_1000000_3 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:11 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_2_1000000_4 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:12 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_2_1000000_5 | ok       |  0.011 | 0.011 | 2022-10-03 00:42:14 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_2_1000000_6 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:15 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_2_1000000_7 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:16 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_2_1000000_8 | ok       |  0.011 | 0.011 | 2022-10-03 00:42:17 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_2_1000000_9 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:18 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_1_1000000_0 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:19 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_1_1000000_1 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:20 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_1_1000000_2 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:21 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_1_1000000_3 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:22 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_1_1000000_4 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:23 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_1_1000000_5 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:24 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_1_1000000_6 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:25 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_1_1000000_7 | ok       |  0.011 | 0.011 | 2022-10-03 00:42:26 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_1_1000000_8 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:27 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_mp-mergesort_1_1000000_9 | ok       |  0.012 | 0.012 | 2022-10-03 00:42:28 |       |       | v100   | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
++------------------------------------------+----------+--------+-------+---------------------+-------+-------+--------+--------+-------+-----------------------------------------------------+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,ip-172-31-9-213_mp-mergesort_4_1000000_0,ok,0.125,0.125,2022-10-03 00:41:48,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_4_1000000_1,ok,0.011,0.011,2022-10-03 00:41:49,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_4_1000000_2,ok,0.011,0.011,2022-10-03 00:41:50,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_4_1000000_3,ok,0.012,0.012,2022-10-03 00:41:51,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_4_1000000_4,ok,0.011,0.011,2022-10-03 00:41:52,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_4_1000000_5,ok,0.011,0.011,2022-10-03 00:41:53,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_4_1000000_6,ok,0.013,0.013,2022-10-03 00:41:54,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_4_1000000_7,ok,0.012,0.012,2022-10-03 00:41:55,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_4_1000000_8,ok,0.012,0.012,2022-10-03 00:41:56,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_4_1000000_9,ok,0.011,0.011,2022-10-03 00:41:57,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_3_1000000_0,ok,0.012,0.012,2022-10-03 00:41:58,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_3_1000000_1,ok,0.012,0.012,2022-10-03 00:41:59,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_3_1000000_2,ok,0.012,0.012,2022-10-03 00:42:00,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_3_1000000_3,ok,0.012,0.012,2022-10-03 00:42:01,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_3_1000000_4,ok,0.012,0.012,2022-10-03 00:42:02,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_3_1000000_5,ok,0.012,0.012,2022-10-03 00:42:03,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_3_1000000_6,ok,0.012,0.012,2022-10-03 00:42:04,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_3_1000000_7,ok,0.012,0.012,2022-10-03 00:42:05,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_3_1000000_8,ok,0.012,0.012,2022-10-03 00:42:06,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_3_1000000_9,ok,0.012,0.012,2022-10-03 00:42:07,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_2_1000000_0,ok,0.012,0.012,2022-10-03 00:42:08,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_2_1000000_1,ok,0.012,0.012,2022-10-03 00:42:09,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_2_1000000_2,ok,0.012,0.012,2022-10-03 00:42:10,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_2_1000000_3,ok,0.012,0.012,2022-10-03 00:42:11,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_2_1000000_4,ok,0.012,0.012,2022-10-03 00:42:12,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_2_1000000_5,ok,0.011,0.011,2022-10-03 00:42:14,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_2_1000000_6,ok,0.012,0.012,2022-10-03 00:42:15,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_2_1000000_7,ok,0.012,0.012,2022-10-03 00:42:16,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_2_1000000_8,ok,0.011,0.011,2022-10-03 00:42:17,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_2_1000000_9,ok,0.012,0.012,2022-10-03 00:42:18,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_1_1000000_0,ok,0.012,0.012,2022-10-03 00:42:19,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_1_1000000_1,ok,0.012,0.012,2022-10-03 00:42:20,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_1_1000000_2,ok,0.012,0.012,2022-10-03 00:42:21,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_1_1000000_3,ok,0.012,0.012,2022-10-03 00:42:22,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_1_1000000_4,ok,0.012,0.012,2022-10-03 00:42:23,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_1_1000000_5,ok,0.012,0.012,2022-10-03 00:42:24,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_1_1000000_6,ok,0.012,0.012,2022-10-03 00:42:25,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_1_1000000_7,ok,0.011,0.011,2022-10-03 00:42:26,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_1_1000000_8,ok,0.012,0.012,2022-10-03 00:42:27,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_mp-mergesort_1_1000000_9,ok,0.012,0.012,2022-10-03 00:42:28,,None,v100,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+
