@@ -458,7 +458,7 @@ sorting algorithms can also be used to merge. 2.
 of appending the smaller of two array elements to a third array 3.
 **adaptive_merge**, a custom sort algorithm that takes advantage of
 pre-existing order in the sequence. It is described in more detail
-`<a name="adaptive">`{=html}[here](#adaptive)`</a>`{=html}
+[here](#adaptive).
 
 Then, each individual send/recieve operates as following:
 
