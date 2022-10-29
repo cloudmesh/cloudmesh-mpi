@@ -21,6 +21,7 @@ def get_data(content):
     for line in lines:
         line = line.replace("'", '"')
         data = "{" + line.split("{")[1].split("},")[0] + "}"
+        print(data)
         data = dotdict(json.loads(data))
 
         line = line.split(",",6)
