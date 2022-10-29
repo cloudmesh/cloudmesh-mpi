@@ -17,6 +17,7 @@ def get_data(content):
     result = []
     lines = Shell.find_lines_with(content, "# csv")[1:]
 
+    print(lines)
     for line in lines:
         line = line.replace("'", '"')
         data = "{" + line.split("{")[1].split("},")[0] + "}"
@@ -27,7 +28,7 @@ def get_data(content):
         data["t"] = t
         result.append(dict(data))
     return result
-    
+
 def read_log(log):
     if ".log" not in log:
         log = f"{log}.log"
