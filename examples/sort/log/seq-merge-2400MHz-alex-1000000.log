@@ -1,67 +1,0 @@
-Starting experiment
-Processes: [1]
-Size:      [1000000]
-Repeat:    10
-Clear:     False
-Debug:     False
-Algorithm: seq-merge
-Tag:       None
-Total:     10
-Log:       log/seq-merge-2400MHz-alex-1000000.log
-Experiment 9         : size=1000000 processes=1 repeat=0 last_time=undefined                     Experiment 8         : size=1000000 processes=1 repeat=1 last_time=6.3036                     Experiment 7         : size=1000000 processes=1 repeat=2 last_time=6.8085                     Experiment 6         : size=1000000 processes=1 repeat=3 last_time=5.7626                     Experiment 5         : size=1000000 processes=1 repeat=4 last_time=6.2618                     Experiment 4         : size=1000000 processes=1 repeat=5 last_time=7.0304                     Experiment 3         : size=1000000 processes=1 repeat=6 last_time=6.5053                     Experiment 2         : size=1000000 processes=1 repeat=7 last_time=5.5993                     Experiment 1         : size=1000000 processes=1 repeat=8 last_time=6.0492                     Experiment 0         : size=1000000 processes=1 repeat=9 last_time=5.935                     
-+------------------+--------------------------------------------------------------------------------------------------+
-| Attribute        | Value                                                                                            |
-|------------------+--------------------------------------------------------------------------------------------------|
-| cpu              | Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz                                                         |
-| cpu_cores        | 6                                                                                                |
-| cpu_count        | 12                                                                                               |
-| cpu_threads      | 12                                                                                               |
-| frequency        | scpufreq(current=2600, min=2600, max=2600)                                                       |
-| mem.active       | 12.6 GiB                                                                                         |
-| mem.available    | 13.3 GiB                                                                                         |
-| mem.free         | 695.0 MiB                                                                                        |
-| mem.inactive     | 12.6 GiB                                                                                         |
-| mem.percent      | 58.5 %                                                                                           |
-| mem.total        | 32.0 GiB                                                                                         |
-| mem.used         | 17.2 GiB                                                                                         |
-| mem.wired        | 4.6 GiB                                                                                          |
-| platform.version | 12.4                                                                                             |
-| python           | 3.10.5 (v3.10.5:f377153967, Jun  6 2022, 12:36:10) [Clang 13.0.0 (clang-1300.0.29.30)]           |
-| python.pip       | 22.1.2                                                                                           |
-| python.version   | 3.10.5                                                                                           |
-| sys.platform     | darwin                                                                                           |
-| uname.machine    | x86_64                                                                                           |
-| uname.node       | 2400MHz                                                                                          |
-| uname.processor  | i386                                                                                             |
-| uname.release    | 21.5.0                                                                                           |
-| uname.system     | Darwin                                                                                           |
-| uname.version    | Darwin Kernel Version 21.5.0: Tue Apr 26 21:08:22 PDT 2022; root:xnu-8020.121.3~4/RELEASE_X86_64 |
-| user             | alex                                                                                             |
-+------------------+--------------------------------------------------------------------------------------------------+
-
-+---------------------------------------+----------+--------+-------+---------------------+-------+-------+---------+--------+--------+-----------+
-| Name                                  | Status   |   Time |   Sum | Start               | tag   | msg   | Node    | User   | OS     |   Version |
-|---------------------------------------+----------+--------+-------+---------------------+-------+-------+---------+--------+--------+-----------|
-| BL-UITS-NWLT005_seq-merge_1_1000000_0 | ok       |  6.304 | 6.304 | 2022-09-15 18:00:19 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_seq-merge_1_1000000_1 | ok       |  6.808 | 6.808 | 2022-09-15 18:00:26 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_seq-merge_1_1000000_2 | ok       |  5.763 | 5.763 | 2022-09-15 18:00:34 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_seq-merge_1_1000000_3 | ok       |  6.262 | 6.262 | 2022-09-15 18:00:40 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_seq-merge_1_1000000_4 | ok       |  7.03  | 7.03  | 2022-09-15 18:00:47 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_seq-merge_1_1000000_5 | ok       |  6.505 | 6.505 | 2022-09-15 18:00:55 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_seq-merge_1_1000000_6 | ok       |  5.599 | 5.599 | 2022-09-15 18:01:02 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_seq-merge_1_1000000_7 | ok       |  6.049 | 6.049 | 2022-09-15 18:01:09 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_seq-merge_1_1000000_8 | ok       |  5.935 | 5.935 | 2022-09-15 18:01:15 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_seq-merge_1_1000000_9 | ok       |  6.171 | 6.171 | 2022-09-15 18:01:22 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-+---------------------------------------+----------+--------+-------+---------------------+-------+-------+---------+--------+--------+-----------+
-# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
-# csv,BL-UITS-NWLT005_seq-merge_1_1000000_0,ok,6.304,6.304,2022-09-15 18:00:19,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_seq-merge_1_1000000_1,ok,6.808,6.808,2022-09-15 18:00:26,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_seq-merge_1_1000000_2,ok,5.763,5.763,2022-09-15 18:00:34,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_seq-merge_1_1000000_3,ok,6.262,6.262,2022-09-15 18:00:40,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_seq-merge_1_1000000_4,ok,7.03,7.03,2022-09-15 18:00:47,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_seq-merge_1_1000000_5,ok,6.505,6.505,2022-09-15 18:00:55,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_seq-merge_1_1000000_6,ok,5.599,5.599,2022-09-15 18:01:02,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_seq-merge_1_1000000_7,ok,6.049,6.049,2022-09-15 18:01:09,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_seq-merge_1_1000000_8,ok,5.935,5.935,2022-09-15 18:01:15,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_seq-merge_1_1000000_9,ok,6.171,6.171,2022-09-15 18:01:22,,None,2400MHz,alex,Darwin,12.4
-

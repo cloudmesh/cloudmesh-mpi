@@ -1,127 +1,0 @@
-Starting experiment
-Log:       log/gregor-1000.log
-Processes: [32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
-Size:      [1000]
-Repeat:    1
-Clear:     False
-Debug:     False
-Algorithm: multiprocessing_mergesort
-Tag:       None
-Total:     32
-Experiment 31        : size=1000 processes=32 repeat=0 last_time=undefined                     Experiment 30        : size=1000 processes=31 repeat=0 last_time=0.0263                     Experiment 29        : size=1000 processes=30 repeat=0 last_time=0.0229                     Experiment 28        : size=1000 processes=29 repeat=0 last_time=0.0234                     Experiment 27        : size=1000 processes=28 repeat=0 last_time=0.0224                     Experiment 26        : size=1000 processes=27 repeat=0 last_time=0.0247                     Experiment 25        : size=1000 processes=26 repeat=0 last_time=0.022                     Experiment 24        : size=1000 processes=25 repeat=0 last_time=0.0203                     Experiment 23        : size=1000 processes=24 repeat=0 last_time=0.0201                     Experiment 22        : size=1000 processes=23 repeat=0 last_time=0.0206                     Experiment 21        : size=1000 processes=22 repeat=0 last_time=0.0197                     Experiment 20        : size=1000 processes=21 repeat=0 last_time=0.0198                     Experiment 19        : size=1000 processes=20 repeat=0 last_time=0.02                     Experiment 18        : size=1000 processes=19 repeat=0 last_time=0.0176                     Experiment 17        : size=1000 processes=18 repeat=0 last_time=0.0161                     Experiment 16        : size=1000 processes=17 repeat=0 last_time=0.0205                     Experiment 15        : size=1000 processes=16 repeat=0 last_time=0.0147                     Experiment 14        : size=1000 processes=15 repeat=0 last_time=0.0164                     Experiment 13        : size=1000 processes=14 repeat=0 last_time=0.0132                     Experiment 12        : size=1000 processes=13 repeat=0 last_time=0.0161                     Experiment 11        : size=1000 processes=12 repeat=0 last_time=0.0115                     Experiment 10        : size=1000 processes=11 repeat=0 last_time=0.0126                     Experiment 9         : size=1000 processes=10 repeat=0 last_time=0.0135                     Experiment 8         : size=1000 processes=9 repeat=0 last_time=0.0107                     Experiment 7         : size=1000 processes=8 repeat=0 last_time=0.0094                     Experiment 6         : size=1000 processes=7 repeat=0 last_time=0.0104                     Experiment 5         : size=1000 processes=6 repeat=0 last_time=0.0085                     Experiment 4         : size=1000 processes=5 repeat=0 last_time=0.0078                     Experiment 3         : size=1000 processes=4 repeat=0 last_time=0.0065                     Experiment 2         : size=1000 processes=3 repeat=0 last_time=0.007                     Experiment 1         : size=1000 processes=2 repeat=0 last_time=0.0054                     Experiment 0         : size=1000 processes=1 repeat=0 last_time=0.0067                     
-+---------------------+------------------------------------------------------------------+
-| Attribute           | Value                                                            |
-|---------------------+------------------------------------------------------------------|
-| BUG_REPORT_URL      | "https://bugs.launchpad.net/ubuntu/"                             |
-| DISTRIB_CODENAME    | focal                                                            |
-| DISTRIB_DESCRIPTION | "Ubuntu 20.04.4 LTS"                                             |
-| DISTRIB_ID          | Ubuntu                                                           |
-| DISTRIB_RELEASE     | 20.04                                                            |
-| HOME_URL            | "https://www.ubuntu.com/"                                        |
-| ID                  | ubuntu                                                           |
-| ID_LIKE             | debian                                                           |
-| NAME                | "Ubuntu"                                                         |
-| PRETTY_NAME         | "Ubuntu 20.04.4 LTS"                                             |
-| PRIVACY_POLICY_URL  | "https://www.ubuntu.com/legal/terms-and-policies/privacy-policy" |
-| SUPPORT_URL         | "https://help.ubuntu.com/"                                       |
-| UBUNTU_CODENAME     | focal                                                            |
-| VERSION             | "20.04.4 LTS (Focal Fossa)"                                      |
-| VERSION_CODENAME    | focal                                                            |
-| VERSION_ID          | "20.04"                                                          |
-| cpu                 | AMD Ryzen 9 5950X 16-Core Processor                              |
-| cpu_cores           | 16                                                               |
-| cpu_count           | 32                                                               |
-| cpu_threads         | 32                                                               |
-| frequency           | scpufreq(current=2.230812500000001, min=2200.0, max=3400.0)      |
-| mem.active          | 10.4 GiB                                                         |
-| mem.available       | 118.7 GiB                                                        |
-| mem.free            | 100.2 GiB                                                        |
-| mem.inactive        | 10.5 GiB                                                         |
-| mem.percent         | 5.6 %                                                            |
-| mem.total           | 125.7 GiB                                                        |
-| mem.used            | 5.8 GiB                                                          |
-| platform.version    | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022               |
-| python              | 3.10.2 (main, Jan 18 2022, 10:10:24) [GCC 9.3.0]                 |
-| python.pip          | 22.0.3                                                           |
-| python.version      | 3.10.2                                                           |
-| sys.platform        | linux                                                            |
-| uname.machine       | x86_64                                                           |
-| uname.node          | 5950x                                                            |
-| uname.processor     | x86_64                                                           |
-| uname.release       | 5.13.0-30-generic                                                |
-| uname.system        | Linux                                                            |
-| uname.version       | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022               |
-| user                | gregor                                                           |
-+---------------------+------------------------------------------------------------------+
-
-+-------------------------------------------+----------+--------+-------+---------------------+-------+-------+--------+--------+-------+----------------------------------------------------+
-| Name                                      | Status   |   Time |   Sum | Start               | tag   | msg   | Node   | User   | OS    | Version                                            |
-|-------------------------------------------+----------+--------+-------+---------------------+-------+-------+--------+--------+-------+----------------------------------------------------|
-| white_multiprocessing_mergesort_32_1000_0 | ok       |  0.026 | 0.026 | 2022-02-28 14:28:46 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_31_1000_0 | ok       |  0.023 | 0.023 | 2022-02-28 14:28:46 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_30_1000_0 | ok       |  0.023 | 0.023 | 2022-02-28 14:28:46 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_29_1000_0 | ok       |  0.022 | 0.022 | 2022-02-28 14:28:46 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_28_1000_0 | ok       |  0.025 | 0.025 | 2022-02-28 14:28:46 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_27_1000_0 | ok       |  0.022 | 0.022 | 2022-02-28 14:28:46 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_26_1000_0 | ok       |  0.02  | 0.02  | 2022-02-28 14:28:46 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_25_1000_0 | ok       |  0.02  | 0.02  | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_24_1000_0 | ok       |  0.021 | 0.021 | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_23_1000_0 | ok       |  0.02  | 0.02  | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_22_1000_0 | ok       |  0.02  | 0.02  | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_21_1000_0 | ok       |  0.02  | 0.02  | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_20_1000_0 | ok       |  0.018 | 0.018 | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_19_1000_0 | ok       |  0.016 | 0.016 | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_18_1000_0 | ok       |  0.02  | 0.02  | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_17_1000_0 | ok       |  0.015 | 0.015 | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_16_1000_0 | ok       |  0.016 | 0.016 | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_15_1000_0 | ok       |  0.013 | 0.013 | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_14_1000_0 | ok       |  0.016 | 0.016 | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_13_1000_0 | ok       |  0.011 | 0.011 | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_12_1000_0 | ok       |  0.013 | 0.013 | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_11_1000_0 | ok       |  0.014 | 0.014 | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_10_1000_0 | ok       |  0.011 | 0.011 | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_9_1000_0  | ok       |  0.009 | 0.009 | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_8_1000_0  | ok       |  0.01  | 0.01  | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_7_1000_0  | ok       |  0.008 | 0.008 | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_6_1000_0  | ok       |  0.008 | 0.008 | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_5_1000_0  | ok       |  0.006 | 0.006 | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_4_1000_0  | ok       |  0.007 | 0.007 | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_3_1000_0  | ok       |  0.005 | 0.005 | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_2_1000_0  | ok       |  0.007 | 0.007 | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-| white_multiprocessing_mergesort_1_1000_0  | ok       |  0.005 | 0.005 | 2022-02-28 14:28:47 |       |       | 5950x  | gregor | Linux | #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 |
-+-------------------------------------------+----------+--------+-------+---------------------+-------+-------+--------+--------+-------+----------------------------------------------------+
-
-# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
-# csv,white_multiprocessing_mergesort_32_1000_0,ok,0.026,0.026,2022-02-28 14:28:46,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_31_1000_0,ok,0.023,0.023,2022-02-28 14:28:46,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_30_1000_0,ok,0.023,0.023,2022-02-28 14:28:46,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_29_1000_0,ok,0.022,0.022,2022-02-28 14:28:46,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_28_1000_0,ok,0.025,0.025,2022-02-28 14:28:46,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_27_1000_0,ok,0.022,0.022,2022-02-28 14:28:46,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_26_1000_0,ok,0.02,0.02,2022-02-28 14:28:46,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_25_1000_0,ok,0.02,0.02,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_24_1000_0,ok,0.021,0.021,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_23_1000_0,ok,0.02,0.02,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_22_1000_0,ok,0.02,0.02,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_21_1000_0,ok,0.02,0.02,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_20_1000_0,ok,0.018,0.018,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_19_1000_0,ok,0.016,0.016,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_18_1000_0,ok,0.02,0.02,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_17_1000_0,ok,0.015,0.015,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_16_1000_0,ok,0.016,0.016,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_15_1000_0,ok,0.013,0.013,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_14_1000_0,ok,0.016,0.016,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_13_1000_0,ok,0.011,0.011,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_12_1000_0,ok,0.013,0.013,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_11_1000_0,ok,0.014,0.014,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_10_1000_0,ok,0.011,0.011,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_9_1000_0,ok,0.009,0.009,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_8_1000_0,ok,0.01,0.01,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_7_1000_0,ok,0.008,0.008,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_6_1000_0,ok,0.008,0.008,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_5_1000_0,ok,0.006,0.006,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_4_1000_0,ok,0.007,0.007,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_3_1000_0,ok,0.005,0.005,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_2_1000_0,ok,0.007,0.007,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-# csv,white_multiprocessing_mergesort_1_1000_0,ok,0.005,0.005,2022-02-28 14:28:47,,None,5950x,gregor,Linux,#33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
-

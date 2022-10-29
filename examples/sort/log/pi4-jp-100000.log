@@ -1,136 +1,0 @@
-Starting experiment
-Log:       log/pi4-jp-100000.log
-Processes: [4, 3, 2, 1]
-Size:      [100000]
-Repeat:    10
-Clear:     False
-Debug:     False
-Algorithm: multiprocessing_mergesort
-Tag:       None
-Total:     40
-Experiment 39        : size=100000 processes=4 repeat=0 last_time=undefined                     Experiment 38        : size=100000 processes=4 repeat=1 last_time=0.5854                     Experiment 37        : size=100000 processes=4 repeat=2 last_time=0.5483                     Experiment 36        : size=100000 processes=4 repeat=3 last_time=0.5729                     Experiment 35        : size=100000 processes=4 repeat=4 last_time=0.5718                     Experiment 34        : size=100000 processes=4 repeat=5 last_time=0.5669                     Experiment 33        : size=100000 processes=4 repeat=6 last_time=0.5619                     Experiment 32        : size=100000 processes=4 repeat=7 last_time=0.571                     Experiment 31        : size=100000 processes=4 repeat=8 last_time=0.5681                     Experiment 30        : size=100000 processes=4 repeat=9 last_time=0.5656                     Experiment 29        : size=100000 processes=3 repeat=0 last_time=0.5607                     Experiment 28        : size=100000 processes=3 repeat=1 last_time=0.6592                     Experiment 27        : size=100000 processes=3 repeat=2 last_time=0.6558                     Experiment 26        : size=100000 processes=3 repeat=3 last_time=0.6654                     Experiment 25        : size=100000 processes=3 repeat=4 last_time=0.6659                     Experiment 24        : size=100000 processes=3 repeat=5 last_time=0.6686                     Experiment 23        : size=100000 processes=3 repeat=6 last_time=0.6664                     Experiment 22        : size=100000 processes=3 repeat=7 last_time=0.6618                     Experiment 21        : size=100000 processes=3 repeat=8 last_time=0.6616                     Experiment 20        : size=100000 processes=3 repeat=9 last_time=0.6664                     Experiment 19        : size=100000 processes=2 repeat=0 last_time=0.6739                     Experiment 18        : size=100000 processes=2 repeat=1 last_time=0.8048                     Experiment 17        : size=100000 processes=2 repeat=2 last_time=0.7999                     Experiment 16        : size=100000 processes=2 repeat=3 last_time=0.8025                     Experiment 15        : size=100000 processes=2 repeat=4 last_time=0.7997                     Experiment 14        : size=100000 processes=2 repeat=5 last_time=0.7986                     Experiment 13        : size=100000 processes=2 repeat=6 last_time=0.8069                     Experiment 12        : size=100000 processes=2 repeat=7 last_time=0.8043                     Experiment 11        : size=100000 processes=2 repeat=8 last_time=0.7777                     Experiment 10        : size=100000 processes=2 repeat=9 last_time=0.8117                     Experiment 9         : size=100000 processes=1 repeat=0 last_time=0.7821                     Experiment 8         : size=100000 processes=1 repeat=1 last_time=1.4125                     Experiment 7         : size=100000 processes=1 repeat=2 last_time=1.4036                     Experiment 6         : size=100000 processes=1 repeat=3 last_time=1.4818                     Experiment 5         : size=100000 processes=1 repeat=4 last_time=1.4402                     Experiment 4         : size=100000 processes=1 repeat=5 last_time=1.5221                     Experiment 3         : size=100000 processes=1 repeat=6 last_time=1.4878                     Experiment 2         : size=100000 processes=1 repeat=7 last_time=1.4825                     Experiment 1         : size=100000 processes=1 repeat=8 last_time=1.479                     Experiment 0         : size=100000 processes=1 repeat=9 last_time=1.3318                     
-+------------------+-------------------------------------------------+
-| Attribute        | Value                                           |
-|------------------+-------------------------------------------------|
-| BUG_REPORT_URL   | "https://bugs.debian.org/"                      |
-| HOME_URL         | "https://www.debian.org/"                       |
-| ID               | debian                                          |
-| NAME             | "Debian GNU/Linux"                              |
-| PRETTY_NAME      | "Debian GNU/Linux 11 (bullseye)"                |
-| SUPPORT_URL      | "https://www.debian.org/support"                |
-| VERSION          | "11 (bullseye)"                                 |
-| VERSION_CODENAME | bullseye                                        |
-| VERSION_ID       | "11"                                            |
-| cpu              |                                                 |
-| cpu_cores        | 4                                               |
-| cpu_count        | 4                                               |
-| cpu_threads      | 4                                               |
-| frequency        | scpufreq(current=1800.0, min=600.0, max=1800.0) |
-| mem.active       | 107.4 MiB                                       |
-| mem.available    | 7.4 GiB                                         |
-| mem.free         | 7.1 GiB                                         |
-| mem.inactive     | 301.4 MiB                                       |
-| mem.percent      | 3.7 %                                           |
-| mem.total        | 7.6 GiB                                         |
-| mem.used         | 166.6 MiB                                       |
-| platform.version | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022  |
-| python           | 3.9.2 (default, Feb 28 2021, 17:03:44)          |
-|                  | [GCC 10.2.1 20210110]                           |
-| python.pip       | 22.1                                            |
-| python.version   | 3.9.2                                           |
-| sys.platform     | linux                                           |
-| uname.machine    | aarch64                                         |
-| uname.node       | pi4                                             |
-| uname.processor  |                                                 |
-| uname.release    | 5.15.32-v8+                                     |
-| uname.system     | Linux                                           |
-| uname.version    | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022  |
-| user             | jp                                              |
-+------------------+-------------------------------------------------+
-
-+------------------------------------------+----------+--------+-------+---------------------+-------+-------+--------+--------+-------+------------------------------------------------+
-| Name                                     | Status   |   Time |   Sum | Start               | tag   | msg   | Node   | User   | OS    | Version                                        |
-|------------------------------------------+----------+--------+-------+---------------------+-------+-------+--------+--------+-------+------------------------------------------------|
-| red_multiprocessing_mergesort_4_100000_0 | ok       |  0.585 | 0.585 | 2022-05-19 00:41:40 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_4_100000_1 | ok       |  0.548 | 0.548 | 2022-05-19 00:41:40 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_4_100000_2 | ok       |  0.573 | 0.573 | 2022-05-19 00:41:41 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_4_100000_3 | ok       |  0.572 | 0.572 | 2022-05-19 00:41:42 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_4_100000_4 | ok       |  0.567 | 0.567 | 2022-05-19 00:41:43 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_4_100000_5 | ok       |  0.562 | 0.562 | 2022-05-19 00:41:44 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_4_100000_6 | ok       |  0.571 | 0.571 | 2022-05-19 00:41:45 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_4_100000_7 | ok       |  0.568 | 0.568 | 2022-05-19 00:41:45 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_4_100000_8 | ok       |  0.566 | 0.566 | 2022-05-19 00:41:46 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_4_100000_9 | ok       |  0.561 | 0.561 | 2022-05-19 00:41:47 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_3_100000_0 | ok       |  0.659 | 0.659 | 2022-05-19 00:41:48 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_3_100000_1 | ok       |  0.656 | 0.656 | 2022-05-19 00:41:49 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_3_100000_2 | ok       |  0.665 | 0.665 | 2022-05-19 00:41:50 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_3_100000_3 | ok       |  0.666 | 0.666 | 2022-05-19 00:41:51 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_3_100000_4 | ok       |  0.669 | 0.669 | 2022-05-19 00:41:52 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_3_100000_5 | ok       |  0.666 | 0.666 | 2022-05-19 00:41:53 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_3_100000_6 | ok       |  0.662 | 0.662 | 2022-05-19 00:41:53 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_3_100000_7 | ok       |  0.662 | 0.662 | 2022-05-19 00:41:54 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_3_100000_8 | ok       |  0.666 | 0.666 | 2022-05-19 00:41:55 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_3_100000_9 | ok       |  0.674 | 0.674 | 2022-05-19 00:41:56 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_2_100000_0 | ok       |  0.805 | 0.805 | 2022-05-19 00:41:57 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_2_100000_1 | ok       |  0.8   | 0.8   | 2022-05-19 00:41:58 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_2_100000_2 | ok       |  0.802 | 0.802 | 2022-05-19 00:41:59 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_2_100000_3 | ok       |  0.8   | 0.8   | 2022-05-19 00:42:00 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_2_100000_4 | ok       |  0.799 | 0.799 | 2022-05-19 00:42:01 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_2_100000_5 | ok       |  0.807 | 0.807 | 2022-05-19 00:42:03 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_2_100000_6 | ok       |  0.804 | 0.804 | 2022-05-19 00:42:04 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_2_100000_7 | ok       |  0.778 | 0.778 | 2022-05-19 00:42:05 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_2_100000_8 | ok       |  0.812 | 0.812 | 2022-05-19 00:42:06 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_2_100000_9 | ok       |  0.782 | 0.782 | 2022-05-19 00:42:07 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_1_100000_0 | ok       |  1.413 | 1.413 | 2022-05-19 00:42:08 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_1_100000_1 | ok       |  1.404 | 1.404 | 2022-05-19 00:42:09 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_1_100000_2 | ok       |  1.482 | 1.482 | 2022-05-19 00:42:11 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_1_100000_3 | ok       |  1.44  | 1.44  | 2022-05-19 00:42:13 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_1_100000_4 | ok       |  1.522 | 1.522 | 2022-05-19 00:42:15 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_1_100000_5 | ok       |  1.488 | 1.488 | 2022-05-19 00:42:16 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_1_100000_6 | ok       |  1.482 | 1.482 | 2022-05-19 00:42:18 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_1_100000_7 | ok       |  1.479 | 1.479 | 2022-05-19 00:42:20 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_1_100000_8 | ok       |  1.332 | 1.332 | 2022-05-19 00:42:22 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-| red_multiprocessing_mergesort_1_100000_9 | ok       |  1.469 | 1.469 | 2022-05-19 00:42:23 |       |       | pi4    | jp     | Linux | #1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022 |
-+------------------------------------------+----------+--------+-------+---------------------+-------+-------+--------+--------+-------+------------------------------------------------+
-# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
-# csv,red_multiprocessing_mergesort_4_100000_0,ok,0.585,0.585,2022-05-19 00:41:40,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_4_100000_1,ok,0.548,0.548,2022-05-19 00:41:40,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_4_100000_2,ok,0.573,0.573,2022-05-19 00:41:41,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_4_100000_3,ok,0.572,0.572,2022-05-19 00:41:42,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_4_100000_4,ok,0.567,0.567,2022-05-19 00:41:43,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_4_100000_5,ok,0.562,0.562,2022-05-19 00:41:44,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_4_100000_6,ok,0.571,0.571,2022-05-19 00:41:45,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_4_100000_7,ok,0.568,0.568,2022-05-19 00:41:45,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_4_100000_8,ok,0.566,0.566,2022-05-19 00:41:46,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_4_100000_9,ok,0.561,0.561,2022-05-19 00:41:47,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_3_100000_0,ok,0.659,0.659,2022-05-19 00:41:48,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_3_100000_1,ok,0.656,0.656,2022-05-19 00:41:49,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_3_100000_2,ok,0.665,0.665,2022-05-19 00:41:50,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_3_100000_3,ok,0.666,0.666,2022-05-19 00:41:51,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_3_100000_4,ok,0.669,0.669,2022-05-19 00:41:52,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_3_100000_5,ok,0.666,0.666,2022-05-19 00:41:53,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_3_100000_6,ok,0.662,0.662,2022-05-19 00:41:53,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_3_100000_7,ok,0.662,0.662,2022-05-19 00:41:54,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_3_100000_8,ok,0.666,0.666,2022-05-19 00:41:55,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_3_100000_9,ok,0.674,0.674,2022-05-19 00:41:56,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_2_100000_0,ok,0.805,0.805,2022-05-19 00:41:57,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_2_100000_1,ok,0.8,0.8,2022-05-19 00:41:58,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_2_100000_2,ok,0.802,0.802,2022-05-19 00:41:59,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_2_100000_3,ok,0.8,0.8,2022-05-19 00:42:00,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_2_100000_4,ok,0.799,0.799,2022-05-19 00:42:01,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_2_100000_5,ok,0.807,0.807,2022-05-19 00:42:03,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_2_100000_6,ok,0.804,0.804,2022-05-19 00:42:04,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_2_100000_7,ok,0.778,0.778,2022-05-19 00:42:05,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_2_100000_8,ok,0.812,0.812,2022-05-19 00:42:06,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_2_100000_9,ok,0.782,0.782,2022-05-19 00:42:07,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_1_100000_0,ok,1.413,1.413,2022-05-19 00:42:08,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_1_100000_1,ok,1.404,1.404,2022-05-19 00:42:09,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_1_100000_2,ok,1.482,1.482,2022-05-19 00:42:11,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_1_100000_3,ok,1.44,1.44,2022-05-19 00:42:13,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_1_100000_4,ok,1.522,1.522,2022-05-19 00:42:15,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_1_100000_5,ok,1.488,1.488,2022-05-19 00:42:16,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_1_100000_6,ok,1.482,1.482,2022-05-19 00:42:18,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_1_100000_7,ok,1.479,1.479,2022-05-19 00:42:20,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_1_100000_8,ok,1.332,1.332,2022-05-19 00:42:22,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-# csv,red_multiprocessing_mergesort_1_100000_9,ok,1.469,1.469,2022-05-19 00:42:23,,None,pi4,jp,Linux,#1538 SMP PREEMPT Thu Mar 31 19:40:39 BST 2022
-

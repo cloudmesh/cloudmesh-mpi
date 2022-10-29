@@ -1,287 +1,0 @@
-Starting experiment
-Processes: [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
-Size:      [100]
-Repeat:    10
-Clear:     False
-Debug:     False
-Algorithm: mp-mergesort
-Tag:       None
-Total:     120
-Log:       log/mp-mergesort-2400MHz-alex-100.log
-Experiment 119       : size=100 processes=12 repeat=0 last_time=undefined                     Experiment 118       : size=100 processes=12 repeat=1 last_time=1.0089                     Experiment 117       : size=100 processes=12 repeat=2 last_time=0.8652                     Experiment 116       : size=100 processes=12 repeat=3 last_time=0.8358                     Experiment 115       : size=100 processes=12 repeat=4 last_time=0.807                     Experiment 114       : size=100 processes=12 repeat=5 last_time=0.8083                     Experiment 113       : size=100 processes=12 repeat=6 last_time=0.828                     Experiment 112       : size=100 processes=12 repeat=7 last_time=0.8463                     Experiment 111       : size=100 processes=12 repeat=8 last_time=0.8365                     Experiment 110       : size=100 processes=12 repeat=9 last_time=0.8525                     Experiment 109       : size=100 processes=11 repeat=0 last_time=0.8257                     Experiment 108       : size=100 processes=11 repeat=1 last_time=0.7452                     Experiment 107       : size=100 processes=11 repeat=2 last_time=0.7658                     Experiment 106       : size=100 processes=11 repeat=3 last_time=0.7995                     Experiment 105       : size=100 processes=11 repeat=4 last_time=0.819                     Experiment 104       : size=100 processes=11 repeat=5 last_time=0.8279                     Experiment 103       : size=100 processes=11 repeat=6 last_time=0.8359                     Experiment 102       : size=100 processes=11 repeat=7 last_time=0.7854                     Experiment 101       : size=100 processes=11 repeat=8 last_time=0.8014                     Experiment 100       : size=100 processes=11 repeat=9 last_time=0.7977                     Experiment 99        : size=100 processes=10 repeat=0 last_time=0.7871                     Experiment 98        : size=100 processes=10 repeat=1 last_time=0.7646                     Experiment 97        : size=100 processes=10 repeat=2 last_time=0.7709                     Experiment 96        : size=100 processes=10 repeat=3 last_time=0.7619                     Experiment 95        : size=100 processes=10 repeat=4 last_time=0.7267                     Experiment 94        : size=100 processes=10 repeat=5 last_time=1.1846                     Experiment 93        : size=100 processes=10 repeat=6 last_time=1.3359                     Experiment 92        : size=100 processes=10 repeat=7 last_time=0.7173                     Experiment 91        : size=100 processes=10 repeat=8 last_time=0.7319                     Experiment 90        : size=100 processes=10 repeat=9 last_time=0.7275                     Experiment 89        : size=100 processes=9 repeat=0 last_time=0.7178                     Experiment 88        : size=100 processes=9 repeat=1 last_time=0.6892                     Experiment 87        : size=100 processes=9 repeat=2 last_time=0.6654                     Experiment 86        : size=100 processes=9 repeat=3 last_time=0.6731                     Experiment 85        : size=100 processes=9 repeat=4 last_time=0.6728                     Experiment 84        : size=100 processes=9 repeat=5 last_time=0.6843                     Experiment 83        : size=100 processes=9 repeat=6 last_time=0.6877                     Experiment 82        : size=100 processes=9 repeat=7 last_time=0.6902                     Experiment 81        : size=100 processes=9 repeat=8 last_time=0.7096                     Experiment 80        : size=100 processes=9 repeat=9 last_time=0.7015                     Experiment 79        : size=100 processes=8 repeat=0 last_time=0.7031                     Experiment 78        : size=100 processes=8 repeat=1 last_time=0.6621                     Experiment 77        : size=100 processes=8 repeat=2 last_time=0.675                     Experiment 76        : size=100 processes=8 repeat=3 last_time=0.6712                     Experiment 75        : size=100 processes=8 repeat=4 last_time=0.6534                     Experiment 74        : size=100 processes=8 repeat=5 last_time=0.8181                     Experiment 73        : size=100 processes=8 repeat=6 last_time=0.8177                     Experiment 72        : size=100 processes=8 repeat=7 last_time=0.952                     Experiment 71        : size=100 processes=8 repeat=8 last_time=1.0227                     Experiment 70        : size=100 processes=8 repeat=9 last_time=0.7175                     Experiment 69        : size=100 processes=7 repeat=0 last_time=0.6362                     Experiment 68        : size=100 processes=7 repeat=1 last_time=0.5802                     Experiment 67        : size=100 processes=7 repeat=2 last_time=0.5833                     Experiment 66        : size=100 processes=7 repeat=3 last_time=0.5886                     Experiment 65        : size=100 processes=7 repeat=4 last_time=0.5982                     Experiment 64        : size=100 processes=7 repeat=5 last_time=0.6103                     Experiment 63        : size=100 processes=7 repeat=6 last_time=0.6103                     Experiment 62        : size=100 processes=7 repeat=7 last_time=0.6091                     Experiment 61        : size=100 processes=7 repeat=8 last_time=0.6157                     Experiment 60        : size=100 processes=7 repeat=9 last_time=0.6055                     Experiment 59        : size=100 processes=6 repeat=0 last_time=0.7326                     Experiment 58        : size=100 processes=6 repeat=1 last_time=0.6774                     Experiment 57        : size=100 processes=6 repeat=2 last_time=0.6406                     Experiment 56        : size=100 processes=6 repeat=3 last_time=0.6206                     Experiment 55        : size=100 processes=6 repeat=4 last_time=0.7373                     Experiment 54        : size=100 processes=6 repeat=5 last_time=0.6388                     Experiment 53        : size=100 processes=6 repeat=6 last_time=0.557                     Experiment 52        : size=100 processes=6 repeat=7 last_time=0.6495                     Experiment 51        : size=100 processes=6 repeat=8 last_time=0.6723                     Experiment 50        : size=100 processes=6 repeat=9 last_time=0.6378                     Experiment 49        : size=100 processes=5 repeat=0 last_time=0.6512                     Experiment 48        : size=100 processes=5 repeat=1 last_time=0.6251                     Experiment 47        : size=100 processes=5 repeat=2 last_time=0.5664                     Experiment 46        : size=100 processes=5 repeat=3 last_time=0.6748                     Experiment 45        : size=100 processes=5 repeat=4 last_time=0.5778                     Experiment 44        : size=100 processes=5 repeat=5 last_time=0.5982                     Experiment 43        : size=100 processes=5 repeat=6 last_time=0.5582                     Experiment 42        : size=100 processes=5 repeat=7 last_time=0.5794                     Experiment 41        : size=100 processes=5 repeat=8 last_time=0.5489                     Experiment 40        : size=100 processes=5 repeat=9 last_time=0.5403                     Experiment 39        : size=100 processes=4 repeat=0 last_time=0.5307                     Experiment 38        : size=100 processes=4 repeat=1 last_time=0.505                     Experiment 37        : size=100 processes=4 repeat=2 last_time=0.6553                     Experiment 36        : size=100 processes=4 repeat=3 last_time=0.5517                     Experiment 35        : size=100 processes=4 repeat=4 last_time=0.507                     Experiment 34        : size=100 processes=4 repeat=5 last_time=0.5827                     Experiment 33        : size=100 processes=4 repeat=6 last_time=0.4812                     Experiment 32        : size=100 processes=4 repeat=7 last_time=0.4807                     Experiment 31        : size=100 processes=4 repeat=8 last_time=0.4799                     Experiment 30        : size=100 processes=4 repeat=9 last_time=0.4807                     Experiment 29        : size=100 processes=3 repeat=0 last_time=0.4803                     Experiment 28        : size=100 processes=3 repeat=1 last_time=0.4643                     Experiment 27        : size=100 processes=3 repeat=2 last_time=0.4713                     Experiment 26        : size=100 processes=3 repeat=3 last_time=0.4681                     Experiment 25        : size=100 processes=3 repeat=4 last_time=0.4633                     Experiment 24        : size=100 processes=3 repeat=5 last_time=0.4671                     Experiment 23        : size=100 processes=3 repeat=6 last_time=0.4944                     Experiment 22        : size=100 processes=3 repeat=7 last_time=0.4745                     Experiment 21        : size=100 processes=3 repeat=8 last_time=0.4858                     Experiment 20        : size=100 processes=3 repeat=9 last_time=0.5011                     Experiment 19        : size=100 processes=2 repeat=0 last_time=0.4799                     Experiment 18        : size=100 processes=2 repeat=1 last_time=0.5374                     Experiment 17        : size=100 processes=2 repeat=2 last_time=0.4559                     Experiment 16        : size=100 processes=2 repeat=3 last_time=0.4688                     Experiment 15        : size=100 processes=2 repeat=4 last_time=0.5364                     Experiment 14        : size=100 processes=2 repeat=5 last_time=0.5075                     Experiment 13        : size=100 processes=2 repeat=6 last_time=0.5207                     Experiment 12        : size=100 processes=2 repeat=7 last_time=0.6522                     Experiment 11        : size=100 processes=2 repeat=8 last_time=0.5796                     Experiment 10        : size=100 processes=2 repeat=9 last_time=0.4542                     Experiment 9         : size=100 processes=1 repeat=0 last_time=0.4747                     Experiment 8         : size=100 processes=1 repeat=1 last_time=0.4725                     Experiment 7         : size=100 processes=1 repeat=2 last_time=0.4589                     Experiment 6         : size=100 processes=1 repeat=3 last_time=0.4785                     Experiment 5         : size=100 processes=1 repeat=4 last_time=0.4462                     Experiment 4         : size=100 processes=1 repeat=5 last_time=0.4443                     Experiment 3         : size=100 processes=1 repeat=6 last_time=0.4486                     Experiment 2         : size=100 processes=1 repeat=7 last_time=0.4544                     Experiment 1         : size=100 processes=1 repeat=8 last_time=0.4665                     Experiment 0         : size=100 processes=1 repeat=9 last_time=0.4497                     
-+------------------+--------------------------------------------------------------------------------------------------+
-| Attribute        | Value                                                                                            |
-|------------------+--------------------------------------------------------------------------------------------------|
-| cpu              | Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz                                                         |
-| cpu_cores        | 6                                                                                                |
-| cpu_count        | 12                                                                                               |
-| cpu_threads      | 12                                                                                               |
-| frequency        | scpufreq(current=2600, min=2600, max=2600)                                                       |
-| mem.active       | 13.4 GiB                                                                                         |
-| mem.available    | 14.1 GiB                                                                                         |
-| mem.free         | 730.7 MiB                                                                                        |
-| mem.inactive     | 13.3 GiB                                                                                         |
-| mem.percent      | 55.9 %                                                                                           |
-| mem.total        | 32.0 GiB                                                                                         |
-| mem.used         | 17.9 GiB                                                                                         |
-| mem.wired        | 4.5 GiB                                                                                          |
-| platform.version | 12.4                                                                                             |
-| python           | 3.10.5 (v3.10.5:f377153967, Jun  6 2022, 12:36:10) [Clang 13.0.0 (clang-1300.0.29.30)]           |
-| python.pip       | 22.1.2                                                                                           |
-| python.version   | 3.10.5                                                                                           |
-| sys.platform     | darwin                                                                                           |
-| uname.machine    | x86_64                                                                                           |
-| uname.node       | 2400MHz                                                                                          |
-| uname.processor  | i386                                                                                             |
-| uname.release    | 21.5.0                                                                                           |
-| uname.system     | Darwin                                                                                           |
-| uname.version    | Darwin Kernel Version 21.5.0: Tue Apr 26 21:08:22 PDT 2022; root:xnu-8020.121.3~4/RELEASE_X86_64 |
-| user             | alex                                                                                             |
-+------------------+--------------------------------------------------------------------------------------------------+
-
-+---------------------------------------+----------+--------+-------+---------------------+-------+-------+---------+--------+--------+-----------+
-| Name                                  | Status   |   Time |   Sum | Start               | tag   | msg   | Node    | User   | OS     |   Version |
-|---------------------------------------+----------+--------+-------+---------------------+-------+-------+---------+--------+--------+-----------|
-| BL-UITS-NWLT005_mp-mergesort_12_100_0 | ok       |  1.009 | 1.009 | 2022-09-15 23:51:42 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_12_100_1 | ok       |  0.865 | 0.865 | 2022-09-15 23:51:43 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_12_100_2 | ok       |  0.836 | 0.836 | 2022-09-15 23:51:44 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_12_100_3 | ok       |  0.807 | 0.807 | 2022-09-15 23:51:44 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_12_100_4 | ok       |  0.808 | 0.808 | 2022-09-15 23:51:45 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_12_100_5 | ok       |  0.828 | 0.828 | 2022-09-15 23:51:46 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_12_100_6 | ok       |  0.846 | 0.846 | 2022-09-15 23:51:47 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_12_100_7 | ok       |  0.837 | 0.837 | 2022-09-15 23:51:48 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_12_100_8 | ok       |  0.852 | 0.852 | 2022-09-15 23:51:49 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_12_100_9 | ok       |  0.826 | 0.826 | 2022-09-15 23:51:49 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_11_100_0 | ok       |  0.745 | 0.745 | 2022-09-15 23:51:50 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_11_100_1 | ok       |  0.766 | 0.766 | 2022-09-15 23:51:51 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_11_100_2 | ok       |  0.8   | 0.8   | 2022-09-15 23:51:52 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_11_100_3 | ok       |  0.819 | 0.819 | 2022-09-15 23:51:53 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_11_100_4 | ok       |  0.828 | 0.828 | 2022-09-15 23:51:53 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_11_100_5 | ok       |  0.836 | 0.836 | 2022-09-15 23:51:54 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_11_100_6 | ok       |  0.785 | 0.785 | 2022-09-15 23:51:55 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_11_100_7 | ok       |  0.801 | 0.801 | 2022-09-15 23:51:56 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_11_100_8 | ok       |  0.798 | 0.798 | 2022-09-15 23:51:57 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_11_100_9 | ok       |  0.787 | 0.787 | 2022-09-15 23:51:57 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_10_100_0 | ok       |  0.765 | 0.765 | 2022-09-15 23:51:58 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_10_100_1 | ok       |  0.771 | 0.771 | 2022-09-15 23:51:59 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_10_100_2 | ok       |  0.762 | 0.762 | 2022-09-15 23:52:00 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_10_100_3 | ok       |  0.727 | 0.727 | 2022-09-15 23:52:01 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_10_100_4 | ok       |  1.185 | 1.185 | 2022-09-15 23:52:01 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_10_100_5 | ok       |  1.336 | 1.336 | 2022-09-15 23:52:02 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_10_100_6 | ok       |  0.717 | 0.717 | 2022-09-15 23:52:04 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_10_100_7 | ok       |  0.732 | 0.732 | 2022-09-15 23:52:05 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_10_100_8 | ok       |  0.728 | 0.728 | 2022-09-15 23:52:05 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_10_100_9 | ok       |  0.718 | 0.718 | 2022-09-15 23:52:06 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_9_100_0  | ok       |  0.689 | 0.689 | 2022-09-15 23:52:07 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_9_100_1  | ok       |  0.665 | 0.665 | 2022-09-15 23:52:07 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_9_100_2  | ok       |  0.673 | 0.673 | 2022-09-15 23:52:08 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_9_100_3  | ok       |  0.673 | 0.673 | 2022-09-15 23:52:09 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_9_100_4  | ok       |  0.684 | 0.684 | 2022-09-15 23:52:09 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_9_100_5  | ok       |  0.688 | 0.688 | 2022-09-15 23:52:10 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_9_100_6  | ok       |  0.69  | 0.69  | 2022-09-15 23:52:11 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_9_100_7  | ok       |  0.71  | 0.71  | 2022-09-15 23:52:11 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_9_100_8  | ok       |  0.701 | 0.701 | 2022-09-15 23:52:12 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_9_100_9  | ok       |  0.703 | 0.703 | 2022-09-15 23:52:13 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_8_100_0  | ok       |  0.662 | 0.662 | 2022-09-15 23:52:14 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_8_100_1  | ok       |  0.675 | 0.675 | 2022-09-15 23:52:14 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_8_100_2  | ok       |  0.671 | 0.671 | 2022-09-15 23:52:15 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_8_100_3  | ok       |  0.653 | 0.653 | 2022-09-15 23:52:16 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_8_100_4  | ok       |  0.818 | 0.818 | 2022-09-15 23:52:16 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_8_100_5  | ok       |  0.818 | 0.818 | 2022-09-15 23:52:17 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_8_100_6  | ok       |  0.952 | 0.952 | 2022-09-15 23:52:18 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_8_100_7  | ok       |  1.023 | 1.023 | 2022-09-15 23:52:19 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_8_100_8  | ok       |  0.718 | 0.718 | 2022-09-15 23:52:20 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_8_100_9  | ok       |  0.636 | 0.636 | 2022-09-15 23:52:21 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_7_100_0  | ok       |  0.58  | 0.58  | 2022-09-15 23:52:21 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_7_100_1  | ok       |  0.583 | 0.583 | 2022-09-15 23:52:22 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_7_100_2  | ok       |  0.589 | 0.589 | 2022-09-15 23:52:22 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_7_100_3  | ok       |  0.598 | 0.598 | 2022-09-15 23:52:23 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_7_100_4  | ok       |  0.61  | 0.61  | 2022-09-15 23:52:24 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_7_100_5  | ok       |  0.61  | 0.61  | 2022-09-15 23:52:24 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_7_100_6  | ok       |  0.609 | 0.609 | 2022-09-15 23:52:25 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_7_100_7  | ok       |  0.616 | 0.616 | 2022-09-15 23:52:25 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_7_100_8  | ok       |  0.606 | 0.606 | 2022-09-15 23:52:26 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_7_100_9  | ok       |  0.733 | 0.733 | 2022-09-15 23:52:27 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_6_100_0  | ok       |  0.677 | 0.677 | 2022-09-15 23:52:27 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_6_100_1  | ok       |  0.641 | 0.641 | 2022-09-15 23:52:28 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_6_100_2  | ok       |  0.621 | 0.621 | 2022-09-15 23:52:29 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_6_100_3  | ok       |  0.737 | 0.737 | 2022-09-15 23:52:29 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_6_100_4  | ok       |  0.639 | 0.639 | 2022-09-15 23:52:30 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_6_100_5  | ok       |  0.557 | 0.557 | 2022-09-15 23:52:31 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_6_100_6  | ok       |  0.65  | 0.65  | 2022-09-15 23:52:31 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_6_100_7  | ok       |  0.672 | 0.672 | 2022-09-15 23:52:32 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_6_100_8  | ok       |  0.638 | 0.638 | 2022-09-15 23:52:33 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_6_100_9  | ok       |  0.651 | 0.651 | 2022-09-15 23:52:33 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_5_100_0  | ok       |  0.625 | 0.625 | 2022-09-15 23:52:34 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_5_100_1  | ok       |  0.566 | 0.566 | 2022-09-15 23:52:34 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_5_100_2  | ok       |  0.675 | 0.675 | 2022-09-15 23:52:35 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_5_100_3  | ok       |  0.578 | 0.578 | 2022-09-15 23:52:36 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_5_100_4  | ok       |  0.598 | 0.598 | 2022-09-15 23:52:36 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_5_100_5  | ok       |  0.558 | 0.558 | 2022-09-15 23:52:37 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_5_100_6  | ok       |  0.579 | 0.579 | 2022-09-15 23:52:37 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_5_100_7  | ok       |  0.549 | 0.549 | 2022-09-15 23:52:38 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_5_100_8  | ok       |  0.54  | 0.54  | 2022-09-15 23:52:39 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_5_100_9  | ok       |  0.531 | 0.531 | 2022-09-15 23:52:39 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_4_100_0  | ok       |  0.505 | 0.505 | 2022-09-15 23:52:40 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_4_100_1  | ok       |  0.655 | 0.655 | 2022-09-15 23:52:40 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_4_100_2  | ok       |  0.552 | 0.552 | 2022-09-15 23:52:41 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_4_100_3  | ok       |  0.507 | 0.507 | 2022-09-15 23:52:41 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_4_100_4  | ok       |  0.583 | 0.583 | 2022-09-15 23:52:42 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_4_100_5  | ok       |  0.481 | 0.481 | 2022-09-15 23:52:42 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_4_100_6  | ok       |  0.481 | 0.481 | 2022-09-15 23:52:43 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_4_100_7  | ok       |  0.48  | 0.48  | 2022-09-15 23:52:43 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_4_100_8  | ok       |  0.481 | 0.481 | 2022-09-15 23:52:44 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_4_100_9  | ok       |  0.48  | 0.48  | 2022-09-15 23:52:44 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_3_100_0  | ok       |  0.464 | 0.464 | 2022-09-15 23:52:45 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_3_100_1  | ok       |  0.471 | 0.471 | 2022-09-15 23:52:45 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_3_100_2  | ok       |  0.468 | 0.468 | 2022-09-15 23:52:46 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_3_100_3  | ok       |  0.463 | 0.463 | 2022-09-15 23:52:46 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_3_100_4  | ok       |  0.467 | 0.467 | 2022-09-15 23:52:47 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_3_100_5  | ok       |  0.494 | 0.494 | 2022-09-15 23:52:47 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_3_100_6  | ok       |  0.474 | 0.474 | 2022-09-15 23:52:48 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_3_100_7  | ok       |  0.486 | 0.486 | 2022-09-15 23:52:48 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_3_100_8  | ok       |  0.501 | 0.501 | 2022-09-15 23:52:49 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_3_100_9  | ok       |  0.48  | 0.48  | 2022-09-15 23:52:49 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_2_100_0  | ok       |  0.537 | 0.537 | 2022-09-15 23:52:50 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_2_100_1  | ok       |  0.456 | 0.456 | 2022-09-15 23:52:50 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_2_100_2  | ok       |  0.469 | 0.469 | 2022-09-15 23:52:51 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_2_100_3  | ok       |  0.536 | 0.536 | 2022-09-15 23:52:51 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_2_100_4  | ok       |  0.507 | 0.507 | 2022-09-15 23:52:52 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_2_100_5  | ok       |  0.521 | 0.521 | 2022-09-15 23:52:52 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_2_100_6  | ok       |  0.652 | 0.652 | 2022-09-15 23:52:53 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_2_100_7  | ok       |  0.58  | 0.58  | 2022-09-15 23:52:53 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_2_100_8  | ok       |  0.454 | 0.454 | 2022-09-15 23:52:54 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_2_100_9  | ok       |  0.475 | 0.475 | 2022-09-15 23:52:54 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_1_100_0  | ok       |  0.473 | 0.473 | 2022-09-15 23:52:55 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_1_100_1  | ok       |  0.459 | 0.459 | 2022-09-15 23:52:55 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_1_100_2  | ok       |  0.478 | 0.478 | 2022-09-15 23:52:56 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_1_100_3  | ok       |  0.446 | 0.446 | 2022-09-15 23:52:56 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_1_100_4  | ok       |  0.444 | 0.444 | 2022-09-15 23:52:57 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_1_100_5  | ok       |  0.449 | 0.449 | 2022-09-15 23:52:57 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_1_100_6  | ok       |  0.454 | 0.454 | 2022-09-15 23:52:58 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_1_100_7  | ok       |  0.466 | 0.466 | 2022-09-15 23:52:58 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_1_100_8  | ok       |  0.45  | 0.45  | 2022-09-15 23:52:58 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-| BL-UITS-NWLT005_mp-mergesort_1_100_9  | ok       |  0.437 | 0.437 | 2022-09-15 23:52:59 |       |       | 2400MHz | alex   | Darwin |      12.4 |
-+---------------------------------------+----------+--------+-------+---------------------+-------+-------+---------+--------+--------+-----------+
-# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
-# csv,BL-UITS-NWLT005_mp-mergesort_12_100_0,ok,1.009,1.009,2022-09-15 23:51:42,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_12_100_1,ok,0.865,0.865,2022-09-15 23:51:43,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_12_100_2,ok,0.836,0.836,2022-09-15 23:51:44,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_12_100_3,ok,0.807,0.807,2022-09-15 23:51:44,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_12_100_4,ok,0.808,0.808,2022-09-15 23:51:45,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_12_100_5,ok,0.828,0.828,2022-09-15 23:51:46,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_12_100_6,ok,0.846,0.846,2022-09-15 23:51:47,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_12_100_7,ok,0.837,0.837,2022-09-15 23:51:48,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_12_100_8,ok,0.852,0.852,2022-09-15 23:51:49,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_12_100_9,ok,0.826,0.826,2022-09-15 23:51:49,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_11_100_0,ok,0.745,0.745,2022-09-15 23:51:50,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_11_100_1,ok,0.766,0.766,2022-09-15 23:51:51,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_11_100_2,ok,0.8,0.8,2022-09-15 23:51:52,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_11_100_3,ok,0.819,0.819,2022-09-15 23:51:53,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_11_100_4,ok,0.828,0.828,2022-09-15 23:51:53,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_11_100_5,ok,0.836,0.836,2022-09-15 23:51:54,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_11_100_6,ok,0.785,0.785,2022-09-15 23:51:55,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_11_100_7,ok,0.801,0.801,2022-09-15 23:51:56,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_11_100_8,ok,0.798,0.798,2022-09-15 23:51:57,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_11_100_9,ok,0.787,0.787,2022-09-15 23:51:57,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_10_100_0,ok,0.765,0.765,2022-09-15 23:51:58,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_10_100_1,ok,0.771,0.771,2022-09-15 23:51:59,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_10_100_2,ok,0.762,0.762,2022-09-15 23:52:00,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_10_100_3,ok,0.727,0.727,2022-09-15 23:52:01,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_10_100_4,ok,1.185,1.185,2022-09-15 23:52:01,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_10_100_5,ok,1.336,1.336,2022-09-15 23:52:02,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_10_100_6,ok,0.717,0.717,2022-09-15 23:52:04,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_10_100_7,ok,0.732,0.732,2022-09-15 23:52:05,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_10_100_8,ok,0.728,0.728,2022-09-15 23:52:05,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_10_100_9,ok,0.718,0.718,2022-09-15 23:52:06,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_9_100_0,ok,0.689,0.689,2022-09-15 23:52:07,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_9_100_1,ok,0.665,0.665,2022-09-15 23:52:07,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_9_100_2,ok,0.673,0.673,2022-09-15 23:52:08,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_9_100_3,ok,0.673,0.673,2022-09-15 23:52:09,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_9_100_4,ok,0.684,0.684,2022-09-15 23:52:09,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_9_100_5,ok,0.688,0.688,2022-09-15 23:52:10,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_9_100_6,ok,0.69,0.69,2022-09-15 23:52:11,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_9_100_7,ok,0.71,0.71,2022-09-15 23:52:11,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_9_100_8,ok,0.701,0.701,2022-09-15 23:52:12,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_9_100_9,ok,0.703,0.703,2022-09-15 23:52:13,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_8_100_0,ok,0.662,0.662,2022-09-15 23:52:14,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_8_100_1,ok,0.675,0.675,2022-09-15 23:52:14,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_8_100_2,ok,0.671,0.671,2022-09-15 23:52:15,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_8_100_3,ok,0.653,0.653,2022-09-15 23:52:16,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_8_100_4,ok,0.818,0.818,2022-09-15 23:52:16,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_8_100_5,ok,0.818,0.818,2022-09-15 23:52:17,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_8_100_6,ok,0.952,0.952,2022-09-15 23:52:18,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_8_100_7,ok,1.023,1.023,2022-09-15 23:52:19,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_8_100_8,ok,0.718,0.718,2022-09-15 23:52:20,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_8_100_9,ok,0.636,0.636,2022-09-15 23:52:21,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_7_100_0,ok,0.58,0.58,2022-09-15 23:52:21,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_7_100_1,ok,0.583,0.583,2022-09-15 23:52:22,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_7_100_2,ok,0.589,0.589,2022-09-15 23:52:22,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_7_100_3,ok,0.598,0.598,2022-09-15 23:52:23,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_7_100_4,ok,0.61,0.61,2022-09-15 23:52:24,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_7_100_5,ok,0.61,0.61,2022-09-15 23:52:24,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_7_100_6,ok,0.609,0.609,2022-09-15 23:52:25,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_7_100_7,ok,0.616,0.616,2022-09-15 23:52:25,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_7_100_8,ok,0.606,0.606,2022-09-15 23:52:26,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_7_100_9,ok,0.733,0.733,2022-09-15 23:52:27,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_6_100_0,ok,0.677,0.677,2022-09-15 23:52:27,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_6_100_1,ok,0.641,0.641,2022-09-15 23:52:28,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_6_100_2,ok,0.621,0.621,2022-09-15 23:52:29,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_6_100_3,ok,0.737,0.737,2022-09-15 23:52:29,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_6_100_4,ok,0.639,0.639,2022-09-15 23:52:30,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_6_100_5,ok,0.557,0.557,2022-09-15 23:52:31,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_6_100_6,ok,0.65,0.65,2022-09-15 23:52:31,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_6_100_7,ok,0.672,0.672,2022-09-15 23:52:32,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_6_100_8,ok,0.638,0.638,2022-09-15 23:52:33,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_6_100_9,ok,0.651,0.651,2022-09-15 23:52:33,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_5_100_0,ok,0.625,0.625,2022-09-15 23:52:34,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_5_100_1,ok,0.566,0.566,2022-09-15 23:52:34,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_5_100_2,ok,0.675,0.675,2022-09-15 23:52:35,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_5_100_3,ok,0.578,0.578,2022-09-15 23:52:36,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_5_100_4,ok,0.598,0.598,2022-09-15 23:52:36,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_5_100_5,ok,0.558,0.558,2022-09-15 23:52:37,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_5_100_6,ok,0.579,0.579,2022-09-15 23:52:37,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_5_100_7,ok,0.549,0.549,2022-09-15 23:52:38,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_5_100_8,ok,0.54,0.54,2022-09-15 23:52:39,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_5_100_9,ok,0.531,0.531,2022-09-15 23:52:39,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_4_100_0,ok,0.505,0.505,2022-09-15 23:52:40,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_4_100_1,ok,0.655,0.655,2022-09-15 23:52:40,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_4_100_2,ok,0.552,0.552,2022-09-15 23:52:41,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_4_100_3,ok,0.507,0.507,2022-09-15 23:52:41,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_4_100_4,ok,0.583,0.583,2022-09-15 23:52:42,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_4_100_5,ok,0.481,0.481,2022-09-15 23:52:42,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_4_100_6,ok,0.481,0.481,2022-09-15 23:52:43,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_4_100_7,ok,0.48,0.48,2022-09-15 23:52:43,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_4_100_8,ok,0.481,0.481,2022-09-15 23:52:44,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_4_100_9,ok,0.48,0.48,2022-09-15 23:52:44,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_3_100_0,ok,0.464,0.464,2022-09-15 23:52:45,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_3_100_1,ok,0.471,0.471,2022-09-15 23:52:45,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_3_100_2,ok,0.468,0.468,2022-09-15 23:52:46,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_3_100_3,ok,0.463,0.463,2022-09-15 23:52:46,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_3_100_4,ok,0.467,0.467,2022-09-15 23:52:47,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_3_100_5,ok,0.494,0.494,2022-09-15 23:52:47,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_3_100_6,ok,0.474,0.474,2022-09-15 23:52:48,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_3_100_7,ok,0.486,0.486,2022-09-15 23:52:48,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_3_100_8,ok,0.501,0.501,2022-09-15 23:52:49,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_3_100_9,ok,0.48,0.48,2022-09-15 23:52:49,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_2_100_0,ok,0.537,0.537,2022-09-15 23:52:50,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_2_100_1,ok,0.456,0.456,2022-09-15 23:52:50,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_2_100_2,ok,0.469,0.469,2022-09-15 23:52:51,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_2_100_3,ok,0.536,0.536,2022-09-15 23:52:51,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_2_100_4,ok,0.507,0.507,2022-09-15 23:52:52,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_2_100_5,ok,0.521,0.521,2022-09-15 23:52:52,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_2_100_6,ok,0.652,0.652,2022-09-15 23:52:53,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_2_100_7,ok,0.58,0.58,2022-09-15 23:52:53,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_2_100_8,ok,0.454,0.454,2022-09-15 23:52:54,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_2_100_9,ok,0.475,0.475,2022-09-15 23:52:54,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_1_100_0,ok,0.473,0.473,2022-09-15 23:52:55,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_1_100_1,ok,0.459,0.459,2022-09-15 23:52:55,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_1_100_2,ok,0.478,0.478,2022-09-15 23:52:56,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_1_100_3,ok,0.446,0.446,2022-09-15 23:52:56,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_1_100_4,ok,0.444,0.444,2022-09-15 23:52:57,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_1_100_5,ok,0.449,0.449,2022-09-15 23:52:57,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_1_100_6,ok,0.454,0.454,2022-09-15 23:52:58,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_1_100_7,ok,0.466,0.466,2022-09-15 23:52:58,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_1_100_8,ok,0.45,0.45,2022-09-15 23:52:58,,None,2400MHz,alex,Darwin,12.4
-# csv,BL-UITS-NWLT005_mp-mergesort_1_100_9,ok,0.437,0.437,2022-09-15 23:52:59,,None,2400MHz,alex,Darwin,12.4
-
