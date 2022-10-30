@@ -25,8 +25,8 @@ def get_data(content):
         data = dotdict(json.loads(data))
 
         line = line.split(",",6)
-        t = line[3]
-        data["t"] = t
+        time = line[3]
+        data["time"] = time
         result.append(dict(data))
     return result
 
@@ -40,19 +40,29 @@ def read_log(log):
     data = get_data(content)
     return data
 
-def generate_average(df, tag=None, size=None, name=None):
-    _df = df.loc[(df['name'] == name) & (df['tag'] == tag) &  (df['size'] == size) ]
-    avg = _df.groupby(['processors', 'name', 'size', 'tag']).mean()
-    avg['tag'] = tag
+def generate_average(df, sort=None, size=None, name=None):
+    _df = df.loc[(df['name'] == name) & (df['sort'] == sort) &  (df['size'] == size) ]
+    avg = _df.groupby(['processors', 'name', 'size', 'sort']).mean()
+    avg['sort'] = sort
     avg['name'] = name
     return avg
 
-directory = "log"
-all_data = []
-for file in os.listdir(directory):
-    f = os.path.join(directory, file)
-    all_data.extend(read_log(f))
+def generate_df():
+    directory = "log"
+    all_data = []
+    for file in os.listdir(directory):
+        f = os.path.join(directory, file)
+        all_data.extend(read_log(f))
 
-df = pd.DataFrame(all_data)
-print(df)
+    df = pd.DataFrame(all_data)
+    df['time'] = df['time'].astype(float)
+    return df
 
+def average_df(df):
+    _df = df.groupby(['p', 'size', 'repeat', 'sort', 'user', 'node', 't', 'c'])['time'].mean()
+    _df.reset_index()
+    return _df
+
+
+log = "mp-v100-alex-50-9-None-None.log"
+print(read_log(log))

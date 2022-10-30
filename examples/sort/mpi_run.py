@@ -113,6 +113,7 @@ parser.add_argument(
 args = parser.parse_args()
 
 data = dotdict(vars(args))
+print(f"DEBUG={data.debug}")
     
 def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, id):
     """
