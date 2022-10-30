@@ -7,9 +7,6 @@ import pandas as pd
 import argparse
 import psutil
 
-from analysis import get_data
-from analysis import read_log, read_logs
-from analysis import generate_average
 from cloudmesh.common.Shell import Shell
 from cloudmesh.common.StopWatch import StopWatch
 from cloudmesh.common.parameter import Parameter

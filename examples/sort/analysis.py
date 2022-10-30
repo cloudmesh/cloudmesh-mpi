@@ -55,3 +55,4 @@ for file in os.listdir(directory):
 
 df = pd.DataFrame(all_data)
 print(df)
+
