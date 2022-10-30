@@ -30,6 +30,12 @@ def data_to_benchmark(data):
             data[key] = "None"
     return ans
 
+def string_to_bool(data):
+    for key in data:
+        if data[key] == "False":
+            data[key] = False
+    return data
+
 username = Shell.run('whoami').strip()
 hostname = Shell.run('hostname').strip()
 
@@ -113,7 +119,7 @@ parser.add_argument(
 args = parser.parse_args()
 
 data = dotdict(vars(args))
-print(f"DEBUG={data.debug}")
+data = string_to_bool(data)
     
 def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, id):
     """
