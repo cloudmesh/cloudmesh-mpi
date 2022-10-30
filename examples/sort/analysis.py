@@ -40,16 +40,6 @@ def read_log(log):
     data = get_data(content)
     return data
 
-def read_logs(files=["alex", "gregor"], size =[100], tags=["multiprocessing_mergesort"]):
-    data = []
-    for tag in tags:
-        for file in files:
-            for s in size:
-                content = read_log(file, size=s, tag="multiprocessing_mergesort")
-                data = data + content
-
-    return data
-
 def generate_average(df, tag=None, size=None, name=None):
     _df = df.loc[(df['name'] == name) & (df['tag'] == tag) &  (df['size'] == size) ]
     avg = _df.groupby(['processors', 'name', 'size', 'tag']).mean()
@@ -58,6 +48,10 @@ def generate_average(df, tag=None, size=None, name=None):
     return avg
 
 directory = "log"
+all_data = []
 for file in os.listdir(directory):
     f = os.path.join(directory, file)
-    print(f)
+    all_data.extend(read_log(f))
+
+df = pd.DataFrame(all_data)
+print(df)
