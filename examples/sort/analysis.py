@@ -59,5 +59,5 @@ def generate_average(df, tag=None, size=None, name=None):
 
 directory = "log"
 for file in os.listdir(directory):
-    f = os.path.join(directory, filename)
+    f = os.path.join(directory, file)
     print(f)
