@@ -20,7 +20,10 @@ $ cd cloudmesh-mpi
 ```
 
 This will install all necessary packages from github and install them
+## NOTES
 
+- using argparse, debug always is true
+- for mpi run, one must only ever use an even numebr of processors
 ## Quickstart
 
 The following commands generate a benchamrk of the sorting algorithm(s) and analyze it.

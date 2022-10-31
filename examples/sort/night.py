@@ -125,7 +125,7 @@ if config.debug:
 # local_arr.sort()
 local_arr = np.array(sorted(local_arr))
 
-# print(f'Buffer in process {rank} before gathering: {sub_arr}')
+print(f'Buffer in process {rank} before gathering: {local_arr}')
 # Gather sorted subarrays into one
 
 split = size / 2

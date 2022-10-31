@@ -40,13 +40,6 @@ def read_log(log):
     data = get_data(content)
     return data
 
-def generate_average(df, sort=None, size=None, name=None):
-    _df = df.loc[(df['name'] == name) & (df['sort'] == sort) &  (df['size'] == size) ]
-    avg = _df.groupby(['processors', 'name', 'size', 'sort']).mean()
-    avg['sort'] = sort
-    avg['name'] = name
-    return avg
-
 def generate_df():
     directory = "log"
     all_data = []

@@ -1,0 +1,46 @@
+DATA.DEBUG #########: True <class 'bool'>
+Starting experiment
+Log:       output.log
+Processes: 5
+Size:      50
+Repeat:    10
+Clear:     False
+Debug:     True
+Algorithm: mpi-mergesort
+ID:        0
+Tag:       None
+Total:     10
+Experiment 9         : size=50 processes=5 id=0 repeat=0 last_time=undefined                     
+True
+True
+True
+True
+True
+UNSORTED ARRAY: [14 50  8 11 46 16 30  4 39 21 27 14 21 16 37  1 42  6 20 49 38 33 13 39
+ 29 10 30  9 50 14 36 26  3 25  5 21  5 47 18  0 36 42  1 32  0 20 11 36
+ 22 50]
+Buffer in process 0 contains: [14 50  8 11 46 16 30  4 39 21], size = 10
+Buffer in process 4 contains: [36 42  1 32  0 20 11 36 22 50], size = 10
+Buffer in process 1 contains: [27 14 21 16 37  1 42  6 20 49], size = 10
+Buffer in process 2 contains: [38 33 13 39 29 10 30  9 50 14], size = 10
+Buffer in process 3 contains: [36 26  3 25  5 21  5 47 18  0], size = 10
+Buffer in process 0 before gathering: [ 4  8 11 14 16 21 30 39 46 50]
+Rank: 0
+0
+Buffer in process 4 before gathering: [ 0  1 11 20 22 32 36 36 42 50]
+Rank: 4
+0
+0
+Buffer in process 1 before gathering: [ 1  6 14 16 20 21 27 37 42 49]
+Rank: 1
+0
+Buffer in process 2 before gathering: [ 9 10 13 14 29 30 33 38 39 50]
+Rank: 2
+0
+Buffer in process 3 before gathering: [ 0  3  5  5 18 21 25 26 36 47]
+Rank: 3
+0
+0
+153
+153
+[0m[0m
