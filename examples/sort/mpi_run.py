@@ -193,8 +193,11 @@ def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, 
             algorithm = "adaptive_merge"
 
         # terminal command to run sort program
+        # command = \
+            # f'mpirun -n {p} python night.py n={n} log={log} clear={clear} debug={debug} sort={sort} user={user} node={node} id={id} t={t} c={c} REPEAT={i}'
         command = \
-            f'mpirun -n {p} python night.py n={n} log={log} clear={clear} debug={debug} sort={sort} user={user} node={node} id={id} t={t} c={c} REPEAT={i}'
+            f'srun -N {p} python night.py n={n} log={log} clear={clear} debug={debug} sort={sort} user={user} node={node} id={id} t={t} c={c} REPEAT={i}'
+
 
         # start timer
         StopWatch.start(label)
