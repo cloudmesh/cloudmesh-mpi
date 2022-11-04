@@ -119,7 +119,7 @@ parser.add_argument(
 args = parser.parse_args()
 
 data = dotdict(vars(args))
-data.debug = False
+# data.debug = False
 data = string_to_bool(data)
     
 def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, id):
