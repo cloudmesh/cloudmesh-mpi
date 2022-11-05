@@ -273,7 +273,7 @@ The algorithm is then run and evaluated in
 
 We measure the performance of our multiprocessing and MPI mergesort algorithms on the Carbonate GPU partition. Each node
 is equipped with two Intel 6248 2.5 GHz 20-core CPUs, four NVIDIA Tesla V100 PCle 32 GB GPUs, one 1.92 TB solid-state
-drive, and 768 GB of RAM. We execute our merge sorts with randomly generated arrays of up to 10^8 integer elements. Note
+drive, and 768 GB of RAM. We execute our merge sorts with randomly generated arrays of up to 10^7 integer elements. Note
 that memory constraints allowed us to experiment with arrays of up to BOGO integer elements.
 
 # Performance Comparison
@@ -284,7 +284,7 @@ All performance comparison done here will be on data from the Carbonate partitio
 
 Using our results from the Carbonate partition, we analyze and graph the resulting times from selected runs. 
 
-We can compare time in two ways. First, we analyze algorithm performance based on increasing size of arrays. Since some algorithms differ within themselves (for example, two multiprocessing merge sorts might use different numbers of processes), we will simply choose which number of processes runs the fastest for that specific size since we're only measuring time. 
+We can compare time in two ways. First, we analyze algorithm performance based on increasing size of arrays. Some algorithms differ within themselves (for example, two multiprocessing merge sorts might use different numbers of processes). However, we can account for this variation by aggregating all the values and showing error bands around the lines that are plotted. 
 
 - insert graph with x-axis increasing sizes and y-axis times with three lines for seq, mp, and mpi
 - insert description
