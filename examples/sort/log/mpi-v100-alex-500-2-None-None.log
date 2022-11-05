@@ -1,0 +1,96 @@
+Args.Debug:     False
+Starting experiment
+Log:       output.log
+Processes: 2
+Size:      500
+Repeat:    10
+Clear:     False
+Debug:     False
+Algorithm: mpi
+ID:        0
+Tag:       None
+Total:     10
+Experiment 9         : size=500 processes=2 id=0 repeat=0 last_time=undefined                     
+[0m[0mExperiment 8         : size=500 processes=2 id=0 repeat=1 last_time=3.4084                     
+[0m[0mExperiment 7         : size=500 processes=2 id=0 repeat=2 last_time=2.7915                     
+[0m[0mExperiment 6         : size=500 processes=2 id=0 repeat=3 last_time=2.8507                     
+[0m[0mExperiment 5         : size=500 processes=2 id=0 repeat=4 last_time=2.9138                     
+[0m[0mExperiment 4         : size=500 processes=2 id=0 repeat=5 last_time=2.907                     
+[0m[0mExperiment 3         : size=500 processes=2 id=0 repeat=6 last_time=2.8377                     
+[0m[0mExperiment 2         : size=500 processes=2 id=0 repeat=7 last_time=2.8449                     
+[0m[0mExperiment 1         : size=500 processes=2 id=0 repeat=8 last_time=2.8906                     
+[0m[0mExperiment 0         : size=500 processes=2 id=0 repeat=9 last_time=2.7725                     
+[0m[0m
++---------------------------------+--------------------------------------------------------------+
+| Attribute                       | Value                                                        |
+|---------------------------------+--------------------------------------------------------------|
+| ANSI_COLOR                      | "0;31"                                                       |
+| BUG_REPORT_URL                  | "https://bugzilla.redhat.com/"                               |
+| CPE_NAME                        | "cpe:/o:redhat:enterprise_linux:7.9:GA:server"               |
+| HOME_URL                        | "https://www.redhat.com/"                                    |
+| ID                              | "rhel"                                                       |
+| ID_LIKE                         | "fedora"                                                     |
+| NAME                            | "Red Hat Enterprise Linux Server"                            |
+| PRETTY_NAME                     | "Red Hat Enterprise Linux Server 7.9 (Maipo)"                |
+| REDHAT_BUGZILLA_PRODUCT         | "Red Hat Enterprise Linux 7"                                 |
+| REDHAT_BUGZILLA_PRODUCT_VERSION | 7.9                                                          |
+| REDHAT_SUPPORT_PRODUCT          | "Red Hat Enterprise Linux"                                   |
+| REDHAT_SUPPORT_PRODUCT_VERSION  | "7.9"                                                        |
+| VARIANT                         | "Server"                                                     |
+| VARIANT_ID                      | "server"                                                     |
+| VERSION                         | "7.9 (Maipo)"                                                |
+| VERSION_ID                      | "7.9"                                                        |
+| cpu                             | Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz                    |
+| cpu_cores                       | 24                                                           |
+| cpu_count                       | 24                                                           |
+| cpu_threads                     | 24                                                           |
+| date                            | 2022-11-05 00:22:31.036707                                   |
+| frequency                       | scpufreq(current=1.3641666666666667, min=1200.0, max=3300.0) |
+| mem.active                      | 21.2 GiB                                                     |
+| mem.available                   | 153.6 GiB                                                    |
+| mem.free                        | 54.6 GiB                                                     |
+| mem.inactive                    | 99.4 GiB                                                     |
+| mem.percent                     | 38.8 %                                                       |
+| mem.total                       | 251.2 GiB                                                    |
+| mem.used                        | 78.3 GiB                                                     |
+| platform.version                | #1 SMP Tue Jul 26 14:15:37 UTC 2022                          |
+| python                          | 3.9.8 (main, Feb  8 2022, 08:35:13)                          |
+|                                 | [GCC 6.3.0]                                                  |
+| python.pip                      | 22.2.2                                                       |
+| python.version                  | 3.9.8                                                        |
+| sys.platform                    | linux                                                        |
+| uname.machine                   | x86_64                                                       |
+| uname.node                      | h1.carbonate.uits.iu.edu                                     |
+| uname.processor                 | x86_64                                                       |
+| uname.release                   | 3.10.0-1160.76.1.el7.x86_64                                  |
+| uname.system                    | Linux                                                        |
+| uname.version                   | #1 SMP Tue Jul 26 14:15:37 UTC 2022                          |
+| user                            | haiyang                                                      |
++---------------------------------+--------------------------------------------------------------+
+
++---------------------------------+----------+--------+-------+---------------------+--------------------------------------------------------------------------------------------------------------+-------+--------------------------+---------+-------+-------------------------------------+
+| Name                            | Status   |   Time |   Sum | Start               | tag                                                                                                          | msg   | Node                     | User    | OS    | Version                             |
+|---------------------------------+----------+--------+-------+---------------------+--------------------------------------------------------------------------------------------------------------+-------+--------------------------+---------+-------+-------------------------------------|
+| mpi-v100-alex-500-2-None-None-0 | ok       |  3.408 | 3.408 | 2022-11-05 00:22:02 | {'p': 2, 'size': 500, 'repeat': 10, 'sort': 'mpi', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'} |       | h1.carbonate.uits.iu.edu | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mpi-v100-alex-500-2-None-None-1 | ok       |  2.791 | 2.791 | 2022-11-05 00:22:05 | {'p': 2, 'size': 500, 'repeat': 10, 'sort': 'mpi', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'} |       | h1.carbonate.uits.iu.edu | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mpi-v100-alex-500-2-None-None-2 | ok       |  2.851 | 2.851 | 2022-11-05 00:22:08 | {'p': 2, 'size': 500, 'repeat': 10, 'sort': 'mpi', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'} |       | h1.carbonate.uits.iu.edu | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mpi-v100-alex-500-2-None-None-3 | ok       |  2.914 | 2.914 | 2022-11-05 00:22:11 | {'p': 2, 'size': 500, 'repeat': 10, 'sort': 'mpi', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'} |       | h1.carbonate.uits.iu.edu | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mpi-v100-alex-500-2-None-None-4 | ok       |  2.907 | 2.907 | 2022-11-05 00:22:13 | {'p': 2, 'size': 500, 'repeat': 10, 'sort': 'mpi', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'} |       | h1.carbonate.uits.iu.edu | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mpi-v100-alex-500-2-None-None-5 | ok       |  2.838 | 2.838 | 2022-11-05 00:22:16 | {'p': 2, 'size': 500, 'repeat': 10, 'sort': 'mpi', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'} |       | h1.carbonate.uits.iu.edu | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mpi-v100-alex-500-2-None-None-6 | ok       |  2.845 | 2.845 | 2022-11-05 00:22:19 | {'p': 2, 'size': 500, 'repeat': 10, 'sort': 'mpi', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'} |       | h1.carbonate.uits.iu.edu | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mpi-v100-alex-500-2-None-None-7 | ok       |  2.891 | 2.891 | 2022-11-05 00:22:22 | {'p': 2, 'size': 500, 'repeat': 10, 'sort': 'mpi', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'} |       | h1.carbonate.uits.iu.edu | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mpi-v100-alex-500-2-None-None-8 | ok       |  2.772 | 2.772 | 2022-11-05 00:22:25 | {'p': 2, 'size': 500, 'repeat': 10, 'sort': 'mpi', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'} |       | h1.carbonate.uits.iu.edu | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mpi-v100-alex-500-2-None-None-9 | ok       |  2.766 | 2.766 | 2022-11-05 00:22:28 | {'p': 2, 'size': 500, 'repeat': 10, 'sort': 'mpi', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'} |       | h1.carbonate.uits.iu.edu | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
++---------------------------------+----------+--------+-------+---------------------+--------------------------------------------------------------------------------------------------------------+-------+--------------------------+---------+-------+-------------------------------------+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,mpi-v100-alex-500-2-None-None-0,ok,3.408,3.408,2022-11-05 00:22:02,{'p': 2, 'size': 500, 'repeat': 10, 'sort': 'mpi', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'},None,h1.carbonate.uits.iu.edu,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mpi-v100-alex-500-2-None-None-1,ok,2.791,2.791,2022-11-05 00:22:05,{'p': 2, 'size': 500, 'repeat': 10, 'sort': 'mpi', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'},None,h1.carbonate.uits.iu.edu,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mpi-v100-alex-500-2-None-None-2,ok,2.851,2.851,2022-11-05 00:22:08,{'p': 2, 'size': 500, 'repeat': 10, 'sort': 'mpi', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'},None,h1.carbonate.uits.iu.edu,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mpi-v100-alex-500-2-None-None-3,ok,2.914,2.914,2022-11-05 00:22:11,{'p': 2, 'size': 500, 'repeat': 10, 'sort': 'mpi', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'},None,h1.carbonate.uits.iu.edu,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mpi-v100-alex-500-2-None-None-4,ok,2.907,2.907,2022-11-05 00:22:13,{'p': 2, 'size': 500, 'repeat': 10, 'sort': 'mpi', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'},None,h1.carbonate.uits.iu.edu,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mpi-v100-alex-500-2-None-None-5,ok,2.838,2.838,2022-11-05 00:22:16,{'p': 2, 'size': 500, 'repeat': 10, 'sort': 'mpi', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'},None,h1.carbonate.uits.iu.edu,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mpi-v100-alex-500-2-None-None-6,ok,2.845,2.845,2022-11-05 00:22:19,{'p': 2, 'size': 500, 'repeat': 10, 'sort': 'mpi', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'},None,h1.carbonate.uits.iu.edu,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mpi-v100-alex-500-2-None-None-7,ok,2.891,2.891,2022-11-05 00:22:22,{'p': 2, 'size': 500, 'repeat': 10, 'sort': 'mpi', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'},None,h1.carbonate.uits.iu.edu,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mpi-v100-alex-500-2-None-None-8,ok,2.772,2.772,2022-11-05 00:22:25,{'p': 2, 'size': 500, 'repeat': 10, 'sort': 'mpi', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'},None,h1.carbonate.uits.iu.edu,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mpi-v100-alex-500-2-None-None-9,ok,2.766,2.766,2022-11-05 00:22:28,{'p': 2, 'size': 500, 'repeat': 10, 'sort': 'mpi', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'},None,h1.carbonate.uits.iu.edu,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+

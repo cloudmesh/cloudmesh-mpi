@@ -55,7 +55,3 @@ def average_df(df):
     _df = df.groupby(['p', 'size', 'repeat', 'sort', 'user', 'node', 't', 'c'])['time'].mean()
     _df.reset_index()
     return _df
-
-
-log = "mp-v100-alex-50-9-None-None.log"
-print(read_log(log))
