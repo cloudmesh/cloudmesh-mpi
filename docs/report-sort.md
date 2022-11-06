@@ -287,6 +287,8 @@ Using our results from the Carbonate partition, we analyze and graph the resulti
 We can compare time in two ways. First, we analyze algorithm performance based on increasing size of arrays. Some algorithms differ within themselves (for example, two multiprocessing merge sorts might use different numbers of processes). However, we can account for this variation by aggregating all the values and showing error bands around the lines that are plotted. 
 
 - insert graph with x-axis increasing sizes and y-axis times with three lines for seq, mp, and mpi
+![Sending and receiving data between two
+processes](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/images/time-by-size-sort.png){width="50%"}
 - insert description
 
 Second, we analyze algorithm performance based on processes used. We will keep the size of the array at a constant value and, for each number of processes, compare the times for each sorting algorithm. Note that the sequential merge sort time will remain constant, since it uses a constant number (1) of processes. 
