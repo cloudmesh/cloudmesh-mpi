@@ -296,12 +296,14 @@ The figure illustrates the average run time for arrays of up to size 10^7 for ea
 
 The general behavior displayed in the figure can be summarized in the following points:
 
-1. For array sizes of up to around 2 million, the multiprocessing mergesort, on average, is quicker than the MPI mergesort. The overhead of MPI contributes significantly more to the overall sort time for smaller arrays, since the creation of processes takes longer than the creation of threads. However, for much larger array sizes, the MPI mergesort is consistently the fastest sort type. 
+1. For array sizes of up to around 2 million, the multiprocessing mergesort, on average, is quicker than the MPI mergesort. The overhead of MPI contributes significantly more to the overall sort time for smaller arrays, since the creation of processes takes longer than the creation of threads. However, the MPI mergesort is consistently the fastest sort type when arrays are sufficiently large enough that the time reduction from parallelism on individual nodes is enough to offset the additional costs of communication and thread creation. 
 2. The MPI sort displays the lowest average increase in time relative for array size, with a mean value of 1.708 seconds/million numbers. In other words, when the array size increases by an additional one million elements, the MPI sort time increases by an average of 1.708 seconds. The multiprocessing sort underperforms this significantly, with a mean increase of 2.706 seconds per additional million numbers. The sequential sort has a mean increase of 8.754 seconds per additional million numbers. 
 
 Second, we analyze algorithm performance based on processes used. We will keep the size of the array at a constant value and, for each number of processes, compare the times for each sorting algorithm. 
 
-![Fig 2: Time by process for size=1000000](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/images/time-by-size-sort.png){width="50%"}
+![Fig 2: Time by process for size=10000](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/images/time-by-p-sort-10000.png){width="50%"}
+
+For arrays of size 10000, increasing MPI parallelism is actually a positive factor for time. This aligns with what we see above, where MPI mergesort initally performs worse than multiprocessing mergesort on small arrays. 
 
 https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/images/time-by-p-sort.pdf
 
