@@ -276,6 +276,8 @@ is equipped with two Intel 6248 2.5 GHz 20-core CPUs, four NVIDIA Tesla V100 PCl
 drive, and 768 GB of RAM. We execute our merge sorts with randomly generated arrays of up to 10^7 integer elements. Note
 that memory constraints allowed us to experiment with arrays of up to BOGO integer elements.
 
+Multiprocessing merge sort was executed on 1 to 24 processes by using all available processes on the Carbonate partition. Message-passing merge sort was executed on 1, 2, 4, and 8 nodes by using one core on each node for MPI processes. 
+
 # Performance Comparison
 
 All performance comparison done here will be on data from the Carbonate partition. 
@@ -289,14 +291,13 @@ We can compare time in two ways. First, we analyze algorithm performance based o
 - insert graph with x-axis increasing sizes and y-axis times with three lines for seq, mp, and mpi
 - 
 ![Times for different sorts](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/images/time-by-size-sort.png){width="50%"}
-[![Alt text](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/images/time-by-size-sort.png)](https://github.com)
 
 The figure illustrates the average run time for arrays of up to size 10^7 for each different sort type (sequential merge sort, multiprocessing merge sort, and MPI merge sort.) 
 
 The general behavior displayed in the figure can be summarized in the following points:
 
-1. 
-The x-axis is the size of the array being sorted, while the y-axis is the amount of time it takes to sort the array. 
+1. For array sizes of up to around 2 million, the multiprocessing mergesort, on average, is quicker than the MPI mergesort. The overhead of MPI contributes significantly more to the overall sort time for smaller arrays, since the creation of processes takes longer than the creation of threads. However, for much larger array sizes, the MPI mergesort is consistently the fastest sort type. 
+2. The MPI sort displays the lowest average increase in time relative for array size, with a mean value of 1.708 seconds/million numbers. In other words, when the array size increases by an additional one million elements, the MPI sort time increases by an average of 1.708 seconds. The multiprocessing sort underperforms this significantly, with a mean increase of 2.706 seconds per additional million numbers. The sequential sort has a mean increase of 8.754 seconds per additional million numbers. 
 
 Second, we analyze algorithm performance based on processes used. We will keep the size of the array at a constant value and, for each number of processes, compare the times for each sorting algorithm. Note that the sequential merge sort time will remain constant, since it uses a constant number (1) of processes. 
 
@@ -318,6 +319,9 @@ Speedup is defined as T_S / T_p, where T_s is the compute time of the sequential
 ## Effiency
 
 # Conclusion
+
+- MPI is advantageous to use when data is large enough
+- further speedup can be obtained by using MPI I/O operations. 
 
 ## Source Code
 
