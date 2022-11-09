@@ -290,7 +290,7 @@ We can compare time in two ways. First, we analyze algorithm performance based o
 
 - insert graph with x-axis increasing sizes and y-axis times with three lines for seq, mp, and mpi
 - 
-![Times for different sorts](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/images/time-by-size-sort.png){width="50%"}
+![Fig 1: Times for different sorts](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/images/time-by-size-sort.png){width="50%"}
 
 The figure illustrates the average run time for arrays of up to size 10^7 for each different sort type (sequential merge sort, multiprocessing merge sort, and MPI merge sort.) 
 
@@ -299,22 +299,21 @@ The general behavior displayed in the figure can be summarized in the following 
 1. For array sizes of up to around 2 million, the multiprocessing mergesort, on average, is quicker than the MPI mergesort. The overhead of MPI contributes significantly more to the overall sort time for smaller arrays, since the creation of processes takes longer than the creation of threads. However, for much larger array sizes, the MPI mergesort is consistently the fastest sort type. 
 2. The MPI sort displays the lowest average increase in time relative for array size, with a mean value of 1.708 seconds/million numbers. In other words, when the array size increases by an additional one million elements, the MPI sort time increases by an average of 1.708 seconds. The multiprocessing sort underperforms this significantly, with a mean increase of 2.706 seconds per additional million numbers. The sequential sort has a mean increase of 8.754 seconds per additional million numbers. 
 
-Second, we analyze algorithm performance based on processes used. We will keep the size of the array at a constant value and, for each number of processes, compare the times for each sorting algorithm. Note that the sequential merge sort time will remain constant, since it uses a constant number (1) of processes. 
+Second, we analyze algorithm performance based on processes used. We will keep the size of the array at a constant value and, for each number of processes, compare the times for each sorting algorithm. 
+
+![Fig 2: Time by process for size=1000000](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/images/time-by-size-sort.png){width="50%"}
+
+https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/images/time-by-p-sort.pdf
+
+Note that for large arrays, it generally holds true that the more parallelized the algorithm is, the faster it becomes. 
 
 - insert graph with x-axis increasing processes and y-axis times 
 - insert description
 
-## Memory
-
-By recording the average memory consumed by each experiment, we can analyze the maximum size of an array that can be sorted by each sorting algorithm given a certain memory cutoff. Since all real-world applications of sorting come with memory restrictions, this is an important thing to measure. 
-
-- table with memory upper bound as column headers
-- three rows for each sort type
-- cell contains biggest possible array that can be sorted 
 
 ## Speedup
 
-Speedup is defined as T_S / T_p, where T_s is the compute time of the sequential algorithm and T_p is the compute time of the parallel algorithm. 
+Speedup is defined as $\frac{T_s}{T_p}$, where $T_s$ is the compute time of the sequential algorithm and $T_p$ is the compute time of the parallel algorithm. 
 
 ## Effiency
 
