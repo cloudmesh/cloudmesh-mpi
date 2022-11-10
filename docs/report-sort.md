@@ -288,8 +288,6 @@ Using our results from the Carbonate partition, we analyze and graph the resulti
 
 We can compare time in two ways. First, we analyze algorithm performance based on increasing size of arrays. Some algorithms differ within themselves (for example, two multiprocessing merge sorts might use different numbers of processes). However, we can account for this variation by aggregating all the values and showing error bands around the lines that are plotted. 
 
-- insert graph with x-axis increasing sizes and y-axis times with three lines for seq, mp, and mpi
-- 
 ![Fig 1: Times for different sorts](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/images/time-by-size-sort.png){width="50%"}
 
 The figure illustrates the average run time for arrays of up to size 10^7 for each different sort type (sequential merge sort, multiprocessing merge sort, and MPI merge sort.) 
@@ -305,13 +303,9 @@ Second, we analyze algorithm performance based on processes used. We will keep t
 
 For arrays of size 10000, increasing MPI parallelism is actually a positive factor for time. This aligns with what we see above, where MPI mergesort initally performs worse than multiprocessing mergesort on small arrays. 
 
-https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/images/time-by-p-sort.pdf
+![Fig 3: Time by process for size=10000000](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/images/time-by-p-sort-10000000.png)
 
-Note that for large arrays, it generally holds true that the more parallelized the algorithm is, the faster it becomes. 
-
-- insert graph with x-axis increasing processes and y-axis times 
-- insert description
-
+For arrays of size $10^7$, we can see in figure 3 that increasing paralellism reduces runtimes for both algorithms. 
 
 ## Speedup
 
