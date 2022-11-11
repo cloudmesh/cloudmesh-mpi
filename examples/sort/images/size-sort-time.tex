@@ -1,0 +1,32 @@
+\documentclass[varwidth=true, border=10pt, convert={size=640x}]{standalone}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+\usepackage{geometry}%
+\geometry{tmargin=1cm,lmargin=10cm}%
+\usepackage{booktabs}%
+%
+%
+%
+\begin{document}%
+\begin{center}
+\normalsize%
+\section{Time by sort type}%
+\label{sec:Timebysorttype}%
+\begin{tabular}{lrrr}
+\toprule
+sort & mp & mpi & seq \\
+size &  &  &  \\
+\midrule
+1000 & 0.057400 & 3.034900 & 0.005500 \\
+10000 & 0.088983 & 3.039633 & 0.056300 \\
+100000 & 0.380683 & 3.113067 & 0.545500 \\
+1000000 & 2.871408 & 4.491867 & 6.824200 \\
+10000000 & 27.223592 & 19.861967 & 85.610600 \\
+\bottomrule
+\end{tabular}
+\end{center}
+%
+\end{document}
