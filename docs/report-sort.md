@@ -286,7 +286,9 @@ All performance comparison done here will be on data from the Carbonate partitio
 
 Using our results from the Carbonate partition, we analyze and graph the resulting times from selected runs. 
 
-We can compare time in two ways. First, we analyze algorithm performance based on increasing size of arrays. Some algorithms differ within themselves (for example, two multiprocessing merge sorts might use different numbers of processes). However, we can account for this variation by aggregating all the values and showing error bands around the lines that are plotted. 
+![Table 1: Times for different sorts](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/images/time-by-sort-type.png)
+
+We can analyze time in two ways. First, we analyze algorithm performance based on increasing size of arrays. Some algorithms differ within themselves (for example, two multiprocessing merge sorts might use different numbers of processes). However, we can account for this variation by aggregating all the values and showing error bands around the lines that are plotted. 
 
 ![Fig 1: Times for different sorts](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/images/time-by-size-sort.png){width="50%"}
 
@@ -298,6 +300,8 @@ The general behavior displayed in the figure can be summarized in the following 
 2. The MPI sort displays the lowest average increase in time relative for array size, with a mean value of 1.708 seconds/million numbers. In other words, when the array size increases by an additional one million elements, the MPI sort time increases by an average of 1.708 seconds. The multiprocessing sort underperforms this significantly, with a mean increase of 2.706 seconds per additional million numbers. The sequential sort has a mean increase of 8.754 seconds per additional million numbers. 
 
 Second, we analyze algorithm performance based on processes used. We will keep the size of the array at a constant value and, for each number of processes, compare the times for each sorting algorithm. 
+
+
 
 ![Fig 2: Time by process for size=10000](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/images/time-by-p-sort-10000.png){width="50%"}
 
