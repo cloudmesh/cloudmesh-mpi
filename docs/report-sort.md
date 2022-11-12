@@ -301,11 +301,11 @@ The general behavior displayed in the figure can be summarized in the following 
 
 Second, we analyze algorithm performance based on processes used. We will keep the size of the array at a constant value and, for each number of processes, compare the times for each sorting algorithm. 
 
-
-
 ![Fig 2: Time by process for size=10000](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/images/time-by-p-sort-10000.png){width="50%"}
 
 For arrays of size 10000, increasing MPI parallelism is actually a positive factor for time. This aligns with what we see above, where MPI mergesort initally performs worse than multiprocessing mergesort on small arrays. 
+
+![Fig 2: Time by process for size=1million](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/images/p-time-mp-1million.png)
 
 ![Fig 3: Time by process for size=10000000](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/images/time-by-p-sort-10000000.png)
 
