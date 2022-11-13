@@ -67,11 +67,11 @@ parser.add_argument(
     default=False,
     help='switch on some debugging')
 parser.add_argument(
-    '--sort',
+    '--sorts',
     type=str,
     required=True, 
-    default="mp",
-    help="sorting function to be run. can be seq (sequential), mp (multiprocessing), or mpi.")
+    default="[mp]",
+    help="sorting functions to be run. can be seq (sequential), mp (multiprocessing), sort (l.sort), or sorted (l = sorted(l))")
 parser.add_argument(
     '--tag',
     required=False, 
@@ -106,17 +106,19 @@ elif data.sort in ['sort', 'sorted', 'l.sort', 'sorted(l)']:
 # expand into arrays
 cores = Parameter.expand(data.cores)
 sizes = Parameter.expand(data.sizes, sep=',')
+sorts = Parameter.expand(data.sorts, sep=',')
 
 # processors is always one 
 p = 1
 
-for c in cores:
-    for size in sizes:
-        run_cmd = f"python run.py --p={p} --c={c} --size={size} --user={data.user} --node={data.node} --sort={data.sort}"
-        # generate log file that data will be stored in
-        # p = 1 since only one processor will be used
-        log = get_label(size, 1, c, data)
-        run_cmd = run_cmd + f" | tee {log}"
+for sort in sorts:
+    for c in cores:
+        for size in sizes:
+            run_cmd = f"python run.py --p={p} --c={c} --size={size} --user={data.user} --node={data.node} --sort={data.sort}"
+            # generate log file that data will be stored in
+            # p = 1 since only one processor will be used
+            log = get_label(size, 1, c, data)
+            run_cmd = run_cmd + f" | tee {log}"
 
-        banner(run_cmd)
-        os.system(run_cmd)
+            banner(run_cmd)
+            os.system(run_cmd)
