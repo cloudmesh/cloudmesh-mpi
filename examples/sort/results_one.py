@@ -114,7 +114,7 @@ p = 1
 for sort in sorts:
     for c in cores:
         for size in sizes:
-            run_cmd = f"python run.py --p={p} --c={c} --size={size} --user={data.user} --node={data.node} --sort={data.sort}"
+            run_cmd = f"python run.py --p={p} --c={c} --size={size} --user={data.user} --node={data.node} --sort={sort}"
             # generate log file that data will be stored in
             # p = 1 since only one processor will be used
             log = get_label(size, 1, c, data)
