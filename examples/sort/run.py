@@ -2,7 +2,6 @@
 import os
 import platform
 import argparse
-import psutil
 
 from cloudmesh.common.Shell import Shell
 from cloudmesh.common.StopWatch import StopWatch
@@ -17,7 +16,7 @@ from multiprocessing_mergesort import multiprocessing_mergesort
 
 # generates label and logfile for this experiment
 def get_label(data, i):
-    return f"{data.sort}-{data.node}-{data.user}-{data.size}-{data.p}-{data.t}-{data.c}-{i}"
+    return f"{data.sort}-{data.node}-{data.user}-{data.size}-{data.p}-{data.c}-{i}"
 
 # filters unneccessary data out of the arguments parsed from command line
 # to be printed out from the stopwatch
@@ -47,8 +46,6 @@ def get_sort_by_name(name="multiprocessing_mergesort"):
     elif name in ["seq", "seq-mergesort", "seq-merge", "sequential_merge", "sequential_mergesort"]:
         # print("MERGE SORT")
         return merge_sort
-    else:
-        return None
 
 username = Shell.run('whoami').strip()
 hostname = Shell.run('hostname').strip()
@@ -60,6 +57,12 @@ parser.add_argument(
     type=int, 
     required=True,
     help="number of processes as an integer")
+parser.add_argument(
+    '--c',
+    type=int,
+    required=True, 
+    default=None,
+    help="number of cores")
 parser.add_argument(
     '--size', 
     type=int, 
@@ -112,31 +115,13 @@ parser.add_argument(
     required=True, 
     default=hostname,
     help="a node name, used in logfile naming")
-parser.add_argument(
-    '--t',
-    type=int,
-    required=False, 
-    default=None,
-    help="number of threads per core")
-parser.add_argument(
-    '--c',
-    type=int,
-    required=False, 
-    default=None,
-    help="number of cores")
-parser.add_argument(
-    '--id',
-    type=str,
-    required=False, 
-    default=0,
-    help="specify which merge sort to use")
 args = parser.parse_args()
 
 data = dotdict(vars(args))
 data.debug = False
 data = string_to_bool(data)
 
-def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, id):
+def experiment(p, c, size, repeat, log, clear, debug, sort, tag, user, node):
     """
     performance experiment.
 
@@ -164,9 +149,6 @@ def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, 
     :rtype:
     """
 
-    if log is None:
-        log = f"log/{sort}-{node}-{user}-{id}-{size}-{p}-{t}-{c}.log"
-
     total = repeat
 
     # map from alias to sort
@@ -182,46 +164,50 @@ def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, 
     # begin running experiment
     print("Starting experiment")
 
-    print(f"Log:       {log}")
     print(f"Processes: {p}")
+    print(f"Cores:     {c}")
     print(f"Size:      {size}")
     print(f"Repeat:    {repeat}")
-    print(f"Clear:     {clear}")
     print(f"Debug:     {debug}")
     print(f"Algorithm: {sort}")
-    print(f"ID:        {id}")
     print(f"Tag:       {tag}")
     print(f"Total:     {total}")
 
     last_time = "undefined"
-    c = 0
+    count = 0
     n = size
     for i in range(repeat):
-        c = c + 1
-        progress = total - c
-        print(f"Experiment {progress:<10}: size={n} processes={p} id={id} repeat={i} last_time={last_time}"
+        count = count + 1
+        progress = total - count
+        print(f"Experiment {progress:<10}: size={n} processes={p} cores={c} repeat={i} last_time={last_time}"
                 "                     ",
                 end="\n")
         label = get_label(data, i)
 
         # generate unsorted array
         a = Generator().generate_random(n)
-        if data.debug:
-            print(a)
+        # if data.debug:
+        print(a)
 
         # start timer
         StopWatch.start(label)
         # run command
-        a = sort_algorithm(a, p)
+        if sort == 'sort':
+            print("HERE")
+            a.sort()
+        elif sort == 'sorted':
+            a = sorted(a)
+        else:
+            a = sort_algorithm(a, p)
         # stop timer
         StopWatch.stop(label)
         last_time = StopWatch.get(label)
-        if data.debug:
-            print(a)
+        #if data.debug:
+        print(a)
 
     # print out collected information
     benchmark_data = data_to_benchmark(data)
     StopWatch.benchmark(tag=str(benchmark_data))
     
 if __name__ == '__main__':
-    experiment(args.p, args.size, args.repeat, args.log, args.clear, args.debug, args.sort, args.tag, args.user, args.node, args.t, args.c, args.id)
+    experiment(args.p, args.c, args.size, args.repeat, args.log, args.clear, args.debug, args.sort, args.tag, args.user, args.node)

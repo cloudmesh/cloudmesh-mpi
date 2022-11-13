@@ -1,19 +1,23 @@
-\documentclass{article}%
-\usepackage[T1]{fontenc}%
-\usepackage[utf8]{inputenc}%
-\usepackage{lmodern}%
-\usepackage{textcomp}%
-\usepackage{lastpage}%
-\usepackage{geometry}%
-\geometry{tmargin=1cm,lmargin=10cm}%
-\usepackage{booktabs}%
-%
-%
-%
-\begin{document}%
-\normalsize%
-\section{None}%
-\label{sec:None}%
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{textcomp}
+\usepackage{lastpage}
+\usepackage{booktabs}
+\usepackage{comment}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\begin{document}
+\tableofcontents
+\input{report-sort.tex}
+\section{speedup}
+\input{a.tex}
+
+\section{None}
+\label{sec:None}
 \begin{tabular}{lr}
 \toprule
 {} &      size \\
@@ -49,5 +53,4 @@
 \bottomrule
 \end{tabular}
 
-%
 \end{document}
