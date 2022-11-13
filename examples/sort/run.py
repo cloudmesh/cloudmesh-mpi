@@ -193,7 +193,6 @@ def experiment(p, c, size, repeat, log, clear, debug, sort, tag, user, node):
         StopWatch.start(label)
         # run command
         if sort == 'sort':
-            print("HERE")
             a.sort()
         elif sort == 'sorted':
             a = sorted(a)

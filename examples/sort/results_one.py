@@ -35,7 +35,6 @@ parser.add_argument(
     default="[1]",
     type=str,
     required=True, 
-    default=None,
     help="number of cores used during sorting")
 parser.add_argument(
     '--sizes', 
