@@ -43,13 +43,32 @@
 
 \section{Introduction}
 
+\section{Related Research}
+The theory of merge sort parallelization has been studied in the past. Cole (1998) presents a parallel implementation of
+the merge sort algorithm with O(log n) time complexity on a CREW PRAM, a shared memory abstract machine which neglects
+synchronization and communication, but provides any number of processors. Furthermore, Jeon and Kim (2002) explore a
+load-balanced merge sort that evenly distributes data to all processors in each stage. They achieve a speedup of 9.6
+compared to a sequential merge sort on a Cray T3E with their algorithm.
+
+On MPI, Randenski (2011) describes three parallel merge sorts: shared memory merge sort with OpenMP, message passing
+merge sort with MPI, and a hybrid merge sort that uses both OpenMP and MPI. They conclude that the shared memory merge
+sort runs faster than the message-passsing merge sort. The hybrid merge sort, while slower than the shared memory merge
+sort, is faster than message-passing merge sort. However, they also mention that these relations may not hold for very
+large arrays that significantly exceed RAM capacity.
+
+\url{https://www.researchgate.net/publication/220091378_Parallel_Merge_Sort_with_Load_Balancing}
+
+\url{http://www.inf.fu-berlin.de/lehre/SS10/SP-Par/download/parmerge1.pdf}
+
+\url{https://charm.cs.illinois.edu/newPapers/09-10/paper.pdf}
+
 \section{Installation}
 
-\section{Sequential Sorting}
+\section{Single Processor Sorting}
 
 \subsection{Recursive Merge Sort}
 
-Recursive merge sort is a standard example of a divide-and-conquer algorithm. The algorithm can be split into two parts:
+Recursive merge sort is a standard example of a sequential divide-and-conquer algorithm. The algorithm can be split into two parts:
 splitting and merging.
 
 Merging describes the merging of two sorted lists into one sorted list. Two ways of doing so are described below.
@@ -144,56 +163,43 @@ sort and heap sort. As a result, classical merge sort is generally unaffected by
 
 However, classical merge sort uses O(n) space, since additional memory is required when merging. Quicksort also has this
 space complexity, while heap sort takes O(1) space, since it is an in-place method with no other memory requirements.
-\begin{comment}
-\begin{table}[!ht]
-    \centering
-    \begin{tabular}{|l|l|l|l|}
-    \hline
-        Sort & Average Time Complexity & Best Time Complexity & Worst Time Complexity \\ \hline
-        Bubble sort & $O(n^2)$ & O(n) & O(n\^2) \\ \hline
-        Insertion sort & O(n\^2) & O(n) & O(n\^2) \\ \hline
-        Selection sort & O(n\^2) & O(n\^2) & O(n\^2) \\ \hline
-        Heap sort & O(nlogn) & O(nlogn) & O(nlogn) \\ \hline
-        Quick sort & O(nlogn) & O(nlogn) & O(nlogn) \\ \hline
-        Merge sort & O(nlogn) & O(nlogn) & O(nlogn) \\ \hline
-    \end{tabular}
-\end{table}
-\end{comment}
-\section{Parallel Sorting}
+\begin{longtable}[]{@{}llll@{}}
+    \toprule
+    Sort & Average Time Complexity & Best Time Complexity & Worst Time
+    Complexity\tabularnewline
+    \midrule
+    \endhead
+    Bubble sort & O(n\^{}2) & O(n) & O(n\^{}2)\tabularnewline
+    Insertion sort & O(n\^{}2) & O(n) & O(n\^{}2)\tabularnewline
+    Selection sort & O(n\^{}2) & O(n\^{}2) & O(n\^{}2)\tabularnewline
+    Heap sort & O(nlogn) & O(nlogn) & O(nlogn)\tabularnewline
+    Quick sort & O(nlogn) & O(nlogn) & O(nlogn)\tabularnewline
+    Merge sort & O(nlogn) & O(nlogn) & O(nlogn)\tabularnewline
+    \bottomrule
+    \end{longtable}
 
-Parallel programming describes breaking down a task into smaller subtasks that can be run simultaneously. Since merge
-sort is a classic and well-known example of the divide-and-conquer approach, we use merge sort as a test method to
-explore parallelization methods that may be generalizable to other divide-and-conquer methods.
+\subsection{Built-in Sort}
 
-\subsection{Related Research}
+For the sake of benchmarking our merge sorts, we also run and compare the times of the Python builtin sort.  
+It uses an algorithm called Timsort, a hybrid sorting algorithm of merge sort and insertion sort. The algorithm 
+finds "runs", or subsequences of the data that are already order. When these runs fulfill a merge criterion, 
+they are merged. 
 
-The theory of merge sort parallelization has been studied in the past. Cole (1998) presents a parallel implementation of
-the merge sort algorithm with O(log n) time complexity on a CREW PRAM, a shared memory abstract machine which neglects
-synchronization and communication, but provides any number of processors. Furthermore, Jeon and Kim (2002) explore a
-load-balanced merge sort that evenly distributes data to all processors in each stage. They achieve a speedup of 9.6
-compared to a sequential merge sort on a Cray T3E with their algorithm.
-
-On MPI, Randenski (2011) describes three parallel merge sorts: shared memory merge sort with OpenMP, message passing
-merge sort with MPI, and a hybrid merge sort that uses both OpenMP and MPI. They conclude that the shared memory merge
-sort runs faster than the message-passsing merge sort. The hybrid merge sort, while slower than the shared memory merge
-sort, is faster than message-passing merge sort. However, they also mention that these relations may not hold for very
-large arrays that significantly exceed RAM capacity.
-
-\url{https://www.researchgate.net/publication/220091378_Parallel_Merge_Sort_with_Load_Balancing}
-
-\url{http://www.inf.fu-berlin.de/lehre/SS10/SP-Par/download/parmerge1.pdf}
-
-\url{https://charm.cs.illinois.edu/newPapers/09-10/paper.pdf}
+The Python builtin sort is run by calling a.sort(), where a is the list to be sorted. 
 
 \subsection{Multiprocessing Merge Sort}
 
-*multiprocessing* is a package that supports, on Windows and Unix, programming using multiple processors on a given
+*multiprocessing* is a package that supports, on Windows and Unix, programming using multiple cores on a given
 machine. Python's Global Interpreter Lock (GIL) only allows one thread to be run at a time under the interpreter, which
 means multithreading cannot be used when the Python interpreter is required. However, the *multiprocessing* package
-side-steps this issue by using subprocesses instead of threads. Because each process has its own interpreter with a
-separate GIL that carries out its given instructions, multiple processes can be run in parallel.
+side-steps this issue by spawning multiple processes instead of different threads. Because each process has its own interpreter with a
+separate GIL that carries out its given instructions, multiple processes can be run in parallel on one processor.  
 
-The docs for the *multiprocessing* package can be read [here](https://docs.python.org/3/library/multiprocessing.html).
+Note that even though this is a parallelized merge sort, it runs on multiple cores, not on multiple processors. 
+This is a crucial distinction from MPI (Message Passing Interface) merge sort. 
+
+The docs for the *multiprocessing* package can be read 
+[here](https://docs.python.org/3/library/multiprocessing.html).
 
 \subsubsection{Overview}
 
@@ -258,6 +264,15 @@ def merge_sort_parallel(data):
 
     return data[0]
 \end{verbatim}
+\section{Parallel Sorting}
+
+Parallel programming describes breaking down a task into smaller subtasks that can be run simultaneously. Since merge
+sort is a classic and well-known example of the divide-and-conquer approach, we use merge sort as a test method to
+explore parallelization methods that may be generalizable to other divide-and-conquer methods.
+
+
+
+
 
 \subsection{MPI Merge Sort}
 
