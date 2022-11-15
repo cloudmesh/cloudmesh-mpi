@@ -41,13 +41,17 @@ def sequential_mergesort(arr):
         return sequential_merge(l, r)
     return arr
 
+def fast_sort(arr):
+    ans = sorted(arr)
+    return ans
+
 def multiprocessing_mergesort(arr, processes):
     pool = multiprocessing.Pool(processes=processes)
     size = int(math.ceil(float(len(arr)) / processes))
     arr1 = []
     for i in range(processes):
         arr1.append(arr[(size * i):(size * (i + 1))])
-    arr1 = pool.map(sequential_mergesort, arr1)
+    arr1 = pool.map(fast_sort, arr1)
     while len(arr1) > 1:
         extra = None
         if len(arr1) % 2 == 1:

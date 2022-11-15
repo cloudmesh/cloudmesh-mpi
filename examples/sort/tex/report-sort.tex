@@ -185,7 +185,7 @@ It uses an algorithm called Timsort, a hybrid sorting algorithm of merge sort an
 finds "runs", or subsequences of the data that are already order. When these runs fulfill a merge criterion, 
 they are merged. 
 
-The Python builtin sort is run by calling a.sort(), where a is the list to be sorted. 
+The Python builtin sort is run by calling sorted(a), where a is the list to be sorted. 
 
 \subsection{Multiprocessing Merge Sort}
 
@@ -264,15 +264,8 @@ def merge_sort_parallel(data):
 
     return data[0]
 \end{verbatim}
-\section{Parallel Sorting}
 
-Parallel programming describes breaking down a task into smaller subtasks that can be run simultaneously. Since merge
-sort is a classic and well-known example of the divide-and-conquer approach, we use merge sort as a test method to
-explore parallelization methods that may be generalizable to other divide-and-conquer methods.
-
-
-
-
+\section{Multi Processor Sorting}
 
 \subsection{MPI Merge Sort}
 
@@ -284,10 +277,66 @@ the MPI-2 C++ bindings.
 
 \subsubsection{Overview}
 
-This project uses Python to implement an MPI mergesort algorithm (linked
+This project uses Python to implement an MPI mergesort algorithm inked
 %[here](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/night.py)).
 The algorithm is then run and evaluated in
 %[mpi_run.py](https://github.com/cloudmesh/cloudmesh-mpi/blob/main/examples/sort/mpi_run.py).
+
+The unsorted array is generated on rank 0. Since the unsorted array must
+be split into smaller subarrays, subsize is calculated. subsize is
+the size of each subarray. It is equal to the size of the unsorted array
+divided by the number of processors, since each processor must be sent a
+subarry. Note that *n*, the size of the unsorted array, must be evenly
+divisible by the total number of processors.
+
+Once the subarrays have been distributed using the Scatter command, they
+are sorted on each processor using the built-in Python. This sort
+defaults to Timsort.
+
+In order to merge the sorted subarrays, we can visualize the processors
+as being set up in a binary tree, where each parent has two children.
+One important note: in this situation, the left child also functions as
+the parent node. We can then split the tree into two sections: left
+children and right children. Because we are using a binary tree, we know
+that the number of left and right children will always be equal.
+Therefore, we can create a variable *split* that splits the set of
+processors in half.
+
+If the rank of the processor is in the second half (between *split* and
+*split* \* 2), then it will send its sorted subarray to its "left"
+partner to be merged. Otherwise, if the rank of the processor is in the
+first half (between 0 and *split*), it will recieve a sorted subarray
+from its "right" partner and then merge it with the subarray that it
+currently contains. When a subarray is sent, it is sent to the processor
+with rank *rank - split*, ensuring that the processor that it is sent to
+has a rank between 0 and *split*. This guarantees that each subarray
+that is sent gets sent to a merging processor. Similarly, when a
+subarray is received, it is received from a processor with rank *rank +
+split*, ensuring that the subarray is a sorted array to be merged. This
+mapping guarantees a unique pairing between left and right child.
+
+Once received, the subarrays are merged together. The merging algorithm
+can be defined by the user, and will be referred to as the merge
+algorithm. There are currently three merging algorithms that can be
+used. 
+1. sequential_merge_fast, a "fast" merge that simply combines
+the two arrays using the built-in Python *sorted* function. Note that
+sorting algorithms can also be used to merge. 
+
+Then, each individual send/recieve operates as following:
+
+1. Left child sends sorted subarray
+2. Right child allocates memory for recieving subarray from left child
+   (*local_tmp*)
+3. Right child allocates memory for array to store merged result
+   (*local_result*)
+4. Right child receives subarray
+5. Right child merges received subarray with its own subarray
+6. Right child assigns *local_arr* to point to *local_result*
+
+This loop continues until the tree reaches the height that guarantees us
+a single sorted list. Each time, the number of nodes is halved (since
+two have been merged into one).
 
 \section{Sorting on GPU}
 
