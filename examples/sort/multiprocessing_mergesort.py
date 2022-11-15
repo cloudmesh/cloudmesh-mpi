@@ -45,6 +45,15 @@ def fast_sort(arr):
     ans = sorted(arr)
     return ans
 
+def fast_merge(*args):
+    l = []
+    r = []
+    if len(args) == 1:
+        l, r = args[0]
+    else:
+        l, r = args
+    return sorted(l + r)
+
 def multiprocessing_mergesort(arr, processes):
     pool = multiprocessing.Pool(processes=processes)
     size = int(math.ceil(float(len(arr)) / processes))
@@ -57,7 +66,7 @@ def multiprocessing_mergesort(arr, processes):
         if len(arr1) % 2 == 1:
             extra = arr1.pop()
         arr1 = [(arr1[i], arr1[i + 1]) for i in range(0, len(arr1), 2)]
-        arr1 = pool.map(sequential_merge, arr1)
+        arr1 = pool.map(fast_merge, arr1)
         if extra: arr1.append(extra)
 
     return arr1[0]
