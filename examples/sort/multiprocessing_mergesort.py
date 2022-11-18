@@ -55,7 +55,8 @@ def fast_merge(*args):
     return sorted(l + r)
 
 def multiprocessing_mergesort(arr, processes):
-    pool = multiprocessing.Pool(processes=processes)
+    print(f"PROCESSES: {processes}")
+    pool = multiprocessing.Pool(processes)
     size = int(math.ceil(float(len(arr)) / processes))
     arr1 = []
     for i in range(processes):

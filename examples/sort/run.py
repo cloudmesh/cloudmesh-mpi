@@ -197,7 +197,7 @@ def experiment(p, c, size, repeat, log, clear, debug, sort, tag, user, node):
         elif sort == 'sorted':
             a = sorted(a)
         else:
-            a = sort_algorithm(a, p)
+            a = sort_algorithm(a, c)
         # stop timer
         StopWatch.stop(label)
         last_time = StopWatch.get(label)
