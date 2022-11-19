@@ -159,11 +159,11 @@ def experiment(p, c, size, repeat, log, clear, debug, subsort, tag, user, node):
     print(f"Total:     {total}")
 
     last_time = "undefined"
-    c = 0
+    count = 0
     n = size
     for i in range(repeat):
-        c = c + 1
-        progress = total - c
+        count = count + 1
+        progress = total - count
         print(f"Experiment {progress:<10}: size={n} processes={p} cores={c} repeat={i} last_time={last_time}"
                 "                     ",
                 end="\n")
