@@ -68,7 +68,7 @@ def is_sorted(l):
     return all(l[i] <= l[i + 1] for i in range(len(l) - 1))
 
 sort_algorithm = get_sort_by_name(config.subsort)
-unsorted_arr = np.array(Generator().generate_random(n))
+tmp_unsorted_arr = np.array(Generator().generate_random(n))
 
 StopWatch.start("mpi-mergesort")
 # initialize MPI
@@ -80,6 +80,7 @@ status = MPI.Status()
 n = config.size
 
 # create necessary arrays
+unsorted_arr = tmp_unsorted_arr
 sorted_arr = np.zeros(n, dtype="int")
 
 sub_size = int(n / size) # size of each subarray
