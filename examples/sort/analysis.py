@@ -17,17 +17,18 @@ from cloudmesh.common.dotdict import dotdict
 # outputs dictionaries of data
 def get_data(content):
     result = []
-    lines = Shell.find_lines_with(content, "# csv")[1:]
+    lines = Shell.find_lines_with(content, "# csv")
 
     for line in lines:
-        line = line.replace("'", '"')
-        data = "{" + line.split("{")[1].split("},")[0] + "}"
-        data = dotdict(json.loads(data))
+        if "# csv,timer,status" not in line:
+            line = line.replace("'", '"')
+            data = "{" + line.split("{")[1].split("},")[0] + "}"
+            data = dotdict(json.loads(data))
 
-        line = line.split(",",6)
-        time = line[3]
-        data["time"] = time
-        result.append(dict(data))
+            line = line.split(",",6)
+            time = line[3]
+            data["time"] = time
+            result.append(dict(data))
     return result
 
 def read_log(log):

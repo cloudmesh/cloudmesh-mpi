@@ -120,6 +120,8 @@ for sort in sorts:
             for size in sizes:
                 log = get_label(sort, size, p, c, data)
                 run_cmd = f"python mpi_run.py  --p={p} --c={c} --size={size} --user={data.user} --node={data.node} --subsort={sort} --log={log}"
+
+                
                 run_cmd = run_cmd + f" | tee {log}"
 
                 banner(run_cmd)
