@@ -138,7 +138,7 @@ comm.Barrier()
 comm.Gather(local_arr, sorted_arr, root=0)
 
 if rank == 0:
-    ans = sorted(list(chain.from_iterable(recv)))
+    ans = sorted(sorted_arr)
     StopWatch.stop("final")
     StopWatch.benchmark()
     if config.debug:
