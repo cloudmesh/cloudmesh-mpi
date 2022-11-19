@@ -170,13 +170,12 @@ def experiment(p, c, size, repeat, log, clear, debug, subsort, tag, user, node):
         label = get_label(data, i)
 
         # generate unsorted array
-        a = Generator().generate_random(n)
 
         # terminal command to run sort program
         # command = \
             # f'mpirun -n {p} python night.py n={n} log={log} clear={clear} debug={debug} sort={sort} user={user} node={node} id={id} t={t} c={c} REPEAT={i}'
         command = \
-            f'srun -N {p} python night.py subsort={subsort} c={c} n={n} user={user} node={node}'
+            f'srun -N {p} python night.py subsort={subsort} c={c} n={n} user={user} node={node} p={p}'
 
         # start timer
         StopWatch.start(label)

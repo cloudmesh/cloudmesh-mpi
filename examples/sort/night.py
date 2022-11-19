@@ -23,6 +23,7 @@ n = config.size = 10000
 config.subsort = "sorted"
 config.sort = "mpi"
 config.c = 1
+config.p = 1
 
 # take in input from user
 for arg in sys.argv[1:]:
@@ -36,6 +37,8 @@ for arg in sys.argv[1:]:
         config.subsort = arg.split("=")[1]
     if arg.startswith("c="):
         config.c = int(arg.split("=")[1])
+    if arg.startswith("p="):
+        config.p = int(arg.split("=")[1])
 
 # define fast merge
 def fast_merge(left, right):
@@ -60,12 +63,11 @@ def get_sort_by_name(name):
         # print("MERGE SORT")
         return merge_sort
 
-sort_algorithm = get_sort_by_name(config.sort)
-
 # check if array is sorted
 def is_sorted(l):
     return all(l[i] <= l[i + 1] for i in range(len(l) - 1))
 
+sort_algorithm = get_sort_by_name(config.subsort)
 unsorted_arr = np.array(Generator().generate_random(n))
 
 StopWatch.start("mpi-mergesort")
