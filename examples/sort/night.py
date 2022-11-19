@@ -15,13 +15,13 @@ from sequential.mergesort import merge_sort
 from multiprocessing_mergesort import multiprocessing_mergesort
 
 config = dotdict()
-config.algorithm = "sequential_merge_fast"
 
 config.user = "alex"
 config.node = "v100"
 config.debug = False
 n = config.size = 10000
-config.sort = "sorted"
+config.subsort = "sorted"
+config.sort = "mpi"
 config.c = 1
 
 # take in input from user
@@ -32,8 +32,8 @@ for arg in sys.argv[1:]:
         config.user = arg.split("=")[1]
     if arg.startswith("node="):
         config.node = arg.split("=")[1]
-    if arg.startswith("sort="):
-        config.sort = arg.split("=")[1]
+    if arg.startswith("subsort="):
+        config.subsort = arg.split("=")[1]
     if arg.startswith("c="):
         config.c = int(arg.split("=")[1])
 
@@ -66,7 +66,9 @@ sort_algorithm = get_sort_by_name(config.sort)
 def is_sorted(l):
     return all(l[i] <= l[i + 1] for i in range(len(l) - 1))
 
-StopWatch.start("init")
+unsorted_arr = np.array(Generator().generate_random(n))
+
+StopWatch.start("mpi-mergesort")
 # initialize MPI
 comm = MPI.COMM_WORLD
 size = comm.Get_size()
@@ -76,7 +78,6 @@ status = MPI.Status()
 n = config.size
 
 # create necessary arrays
-unsorted_arr = np.zeros(n, dtype="int")
 sorted_arr = np.zeros(n, dtype="int")
 
 sub_size = int(n / size) # size of each subarray
@@ -86,10 +87,6 @@ local_result = np.zeros(2 * sub_size, dtype="int")
 
 # generate unsorted array on rank 0
 if rank == 0:
-    StopWatch.stop("init")
-    StopWatch.start("generate")
-    unsorted_arr = np.array(Generator().generate_random(n))
-    StopWatch.stop("generate")
     if config.debug:
         print(f"UNSORTED ARRAY: {unsorted_arr}")
 
@@ -139,8 +136,8 @@ while split >= 1:
 
 if rank == 0:
     # ans = sorted(sorted_arr)
-    StopWatch.stop("final")
-    StopWatch.benchmark()
+    StopWatch.stop("mpi-mergesort")
+    StopWatch.benchmark(tag=str(config))
     if config.debug:
         print("SIZE OF ARRAY:", config.size)
         print("IS SORTED:", is_sorted(local_arr))
