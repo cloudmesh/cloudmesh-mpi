@@ -18,7 +18,7 @@ config.algorithm = "sequential_merge_fast"
 
 config.user = "alex"
 config.node = "v100"
-config.debug = False
+config.debug = True
 n = config.size = 10000
 config.sort = "sorted"
 config.c = 1
