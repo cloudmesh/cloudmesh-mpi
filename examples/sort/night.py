@@ -112,7 +112,10 @@ if config.debug:
 
 # data = comm.gather(local_arr,root=0)
 
-'''
+comm.Barrier()
+
+if rank == 0:
+    StopWatch.start("final")
 split = size / 2
 if config.debug:
     print(f"Rank: {rank}")
@@ -127,22 +130,17 @@ while split >= 1:
         local_result = fast_merge(local_arr, local_tmp)
 
         local_arr = np.array(local_result)
-    split = split / 2'''
+    split = split / 2
 
-
-if rank == 0:
-    StopWatch.start("final")
-    recv = np.zeros(n, dtype="int")
-    
-comm.Barrier()
-comm.Gather(local_arr, sorted_arr, root=0)
+# comm.Barrier()
+# comm.Gather(local_arr, sorted_arr, root=0)
 
 if rank == 0:
-    ans = sorted(sorted_arr)
+    # ans = sorted(sorted_arr)
     StopWatch.stop("final")
     StopWatch.benchmark()
     if config.debug:
         print("SIZE OF ARRAY:", config.size)
-        print("IS SORTED:", is_sorted(ans))
-        print(f"SORTED ARRAY: {ans}")
+        print("IS SORTED:", is_sorted(local_arr))
+        print(f"SORTED ARRAY: {local_arr}")
 
