@@ -92,7 +92,6 @@ if rank == 0:
     if config.debug:
         print(f"UNSORTED ARRAY: {unsorted_arr}")
 
-StopWatch.start(f"scattersort-{rank}")
 # send subarray to each process
 comm.Scatter(unsorted_arr, local_arr, root=0)
 
@@ -105,8 +104,6 @@ print(f"THIS IS THE SORT ALGORITHM BEING USED: {sort_algorithm}")
 print(f"THIS IS THE NUMNER OF CORES BEING USED: {config.c}")
 local_arr = np.array(sort_algorithm(list(local_arr), config.c))
 
-StopWatch.stop(f"scattersort-{rank}")
-
 if config.debug:
     print(f'Buffer in process {rank} before gathering: {local_arr}')
 # Gather sorted subarrays into one
@@ -115,8 +112,6 @@ if config.debug:
 
 comm.Barrier()
 
-if rank == 0:
-    StopWatch.start("final")
 split = size / 2
 if config.debug:
     print(f"Rank: {rank}")
