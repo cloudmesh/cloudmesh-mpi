@@ -32,12 +32,6 @@ def data_to_benchmark(data):
             data[key] = "None"
     return ans
 
-def string_to_bool(data):
-    for key in data:
-        if data[key] == "False":
-            data[key] = False
-    return data
-
 # maps between common nicknames of sorts and the sort type accepted by program
 def get_sort_by_name(name="multiprocessing_mergesort"):
     if name in ["mp", "mp-merge", "mp-mergesort", "multiprocessing_mergesort"]:
@@ -119,7 +113,6 @@ args = parser.parse_args()
 
 data = dotdict(vars(args))
 data.debug = False
-data = string_to_bool(data)
 
 def experiment(p, c, size, repeat, log, clear, debug, sort, tag, user, node):
     """

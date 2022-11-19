@@ -2,7 +2,6 @@
 import os
 import platform
 import argparse
-import psutil
 
 from cloudmesh.common.Shell import Shell
 from cloudmesh.common.StopWatch import StopWatch
@@ -11,11 +10,14 @@ from cloudmesh.common.util import yn_choice
 from cloudmesh.common.util import banner
 from cloudmesh.common.systeminfo import os_is_windows
 from cloudmesh.common.dotdict import dotdict
+from sequential.mergesort import merge_sort
 from generate import Generator
+from multiprocessing_mergesort import multiprocessing_mergesort
 
 # generates label and logfile for this experiment
 def get_label(data, i):
-    return f"{data.sort}-{data.node}-{data.user}-{data.size}-{data.p}-{data.t}-{data.c}-{i}"
+    return f"mpi-{data.subsort}-{data.node}-{data.user}-{data.size}-{data.p}-{data.c}-{i}"
+
 # filters unneccessary data out of the arguments parsed from command line
 # to be printed out from the stopwatch
 def data_to_benchmark(data):
@@ -30,11 +32,14 @@ def data_to_benchmark(data):
             data[key] = "None"
     return ans
 
-def string_to_bool(data):
-    for key in data:
-        if data[key] == "False":
-            data[key] = False
-    return data
+# maps between common nicknames of sorts and the sort type accepted by program
+def get_sort_by_name(name="multiprocessing_mergesort"):
+    if name in ["mp", "mp-merge", "mp-mergesort", "multiprocessing_mergesort"]:
+        # print("MP SORT")
+        return multiprocessing_mergesort
+    elif name in ["seq", "seq-mergesort", "seq-merge", "sequential_merge", "sequential_mergesort"]:
+        # print("MERGE SORT")
+        return merge_sort
 
 username = Shell.run('whoami').strip()
 hostname = Shell.run('hostname').strip()
@@ -45,7 +50,13 @@ parser.add_argument(
     default=4,
     type=int, 
     required=True,
-    help="number of processors as an integer")
+    help="number of processes as an integer")
+parser.add_argument(
+    '--c',
+    type=int,
+    required=True, 
+    default=None,
+    help="number of cores")
 parser.add_argument(
     '--size', 
     type=int, 
@@ -76,7 +87,7 @@ parser.add_argument(
     default=False,
     help='switch on some debugging')
 parser.add_argument(
-    '--sort',
+    '--subsort',
     type=str,
     required=True, 
     default="mpi",
@@ -97,32 +108,14 @@ parser.add_argument(
     type=str,
     required=True, 
     default=hostname,
-    help="a node name, used in logile naming")
-parser.add_argument(
-    '--t',
-    type=int,
-    required=False, 
-    default=None,
-    help="number of threads per core")
-parser.add_argument(
-    '--c',
-    type=int,
-    required=False, 
-    default=None,
-    help="number of cores")
-parser.add_argument(
-    '--id',
-    type=str,
-    required=False, 
-    default=0,
-    help="specify which merge sort to use")
+    help="a node name, used in logfile naming")
 args = parser.parse_args()
 
 data = dotdict(vars(args))
-args.debug = False
-data = string_to_bool(data)
+data.sort = 'mpi'
+data.debug = False
     
-def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, id):
+def experiment(p, c, size, repeat, log, clear, debug, subsort, tag, user, node):
     """
     performance experiment.
 
@@ -150,22 +143,18 @@ def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, 
     :rtype:
     """
 
-    if log is None:
-        log = f"log/{sort}-{node}-{user}-{id}-{size}-{p}-{t}-{c}.log"
-
     total = repeat
 
     # begin running experiment
     print("Starting experiment")
 
-    print(f"Log:       {log}")
     print(f"Processes: {p}")
+    print(f"Cores:     {c}")
     print(f"Size:      {size}")
     print(f"Repeat:    {repeat}")
-    print(f"Clear:     {clear}")
     print(f"Debug:     {debug}")
-    print(f"Algorithm: {sort}")
-    print(f"ID:        {id}")
+    print(f"Sort:      MPI")
+    print(f"Algorithm: {subsort}")
     print(f"Tag:       {tag}")
     print(f"Total:     {total}")
 
@@ -175,7 +164,7 @@ def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, 
     for i in range(repeat):
         c = c + 1
         progress = total - c
-        print(f"Experiment {progress:<10}: size={n} processes={p} id={id} repeat={i} last_time={last_time}"
+        print(f"Experiment {progress:<10}: size={n} processes={p} cores={c} repeat={i} last_time={last_time}"
                 "                     ",
                 end="\n")
         label = get_label(data, i)
@@ -183,21 +172,11 @@ def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, 
         # generate unsorted array
         a = Generator().generate_random(n)
 
-        # map from id number to sub sort type
-        algorithm = "sequential_merge_fast"
-        if id == 0:
-            algorithm = "sequential_merge_fast"
-        elif id == 1:
-            algorithm = "sequential_merge_python"
-        elif id == 2:
-            algorithm = "adaptive_merge"
-
         # terminal command to run sort program
         # command = \
             # f'mpirun -n {p} python night.py n={n} log={log} clear={clear} debug={debug} sort={sort} user={user} node={node} id={id} t={t} c={c} REPEAT={i}'
         command = \
-            f'srun -N {p} python night.py n={n} log={log} clear={clear} debug={debug} sort={sort} user={user} node={node} id={id} t={t} c={c} REPEAT={i}'
-
+            f'srun -N {p} python night.py sort={subsort} c={c} n={n} user={user} node={node}'
 
         # start timer
         StopWatch.start(label)
@@ -212,4 +191,4 @@ def experiment(p, size, repeat, log, clear, debug, sort, tag, user, node, t, c, 
     StopWatch.benchmark(tag=str(benchmark_data))
 
 if __name__ == '__main__':
-    experiment(args.p, args.size, args.repeat, args.log, args.clear, args.debug, args.sort, args.tag, args.user, args.node, args.t, args.c, args.id)
+    experiment(args.p, args.c, args.size, args.repeat, args.log, args.clear, args.debug, args.subsort, args.tag, args.user, args.node)
