@@ -66,15 +66,18 @@ sort_algorithm = get_sort_by_name(config.sort)
 def is_sorted(l):
     return all(l[i] <= l[i + 1] for i in range(len(l) - 1))
 
+unsorted_arr = np.array(Generator().generate_random(n))
+
 StopWatch.start("init")
 # initialize MPI
 comm = MPI.COMM_WORLD
 node_comm = comm.Split_type(MPI.COMM_TYPE_SHARED)
 size = node_comm.Get_size()
-rank = node_comm.Get_rank()
-status = MPI.Status()
+print(size)
 
-print(rank)
+sub_size = int(n / size) # size of each subarray
+
+
 '''
 n = config.size
 
