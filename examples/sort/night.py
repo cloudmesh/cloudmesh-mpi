@@ -87,8 +87,9 @@ local_result = np.zeros(2 * sub_size, dtype="int")
 # generate unsorted array on rank 0
 if rank == 0:
     StopWatch.stop("init")
-    StopWatch.start("scattersort")
+    StopWatch.start("generate")
     unsorted_arr = np.array(Generator().generate_random(n))
+    StopWatch.stop("generate")
     if config.debug:
         print(f"UNSORTED ARRAY: {unsorted_arr}")
 
