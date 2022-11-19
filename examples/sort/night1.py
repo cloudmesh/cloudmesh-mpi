@@ -73,8 +73,9 @@ StopWatch.start("init")
 comm = MPI.COMM_WORLD
 node_comm = comm.Split_type(MPI.COMM_TYPE_SHARED)
 size = comm.Get_size()
-print(size)
 
+itemsize = MPI.INT.Get_size()
+print(itemsize)
 sub_size = int(n / size) # size of each subarray
 
 
