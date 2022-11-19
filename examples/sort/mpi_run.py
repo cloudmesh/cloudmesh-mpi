@@ -175,7 +175,7 @@ def experiment(p, c, size, repeat, log, clear, debug, subsort, tag, user, node):
         # command = \
             # f'mpirun -n {p} python night.py n={n} log={log} clear={clear} debug={debug} sort={sort} user={user} node={node} id={id} t={t} c={c} REPEAT={i}'
         command = \
-            f'srun -N {p} python night.py subsort={subsort} c={c} n={n} user={user} node={node} p={p} | tee -a {log}'
+            f'srun -N {p} python night.py subsort={subsort} c={c} n={n} user={user} node={node} p={p} | tee -a {log} &>/dev/null'
 
         # start timer
         # StopWatch.start(label)
