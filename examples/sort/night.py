@@ -135,7 +135,7 @@ if rank == 0:
     recv = np.zeros(n, dtype="int")
     
 comm.Barrier()
-comm.Gather(local_arr, recv, root=0)
+comm.Gather(local_arr, sorted_arr, root=0)
 
 if rank == 0:
     ans = sorted(list(chain.from_iterable(recv)))
