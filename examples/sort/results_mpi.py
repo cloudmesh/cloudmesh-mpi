@@ -118,8 +118,8 @@ for sort in sorts:
     for p in processors:
         for c in cores:
             for size in sizes:
-                run_cmd = f"python mpi_run.py  --p={p} --c={c} --size={size} --user={data.user} --node={data.node} --subsort={sort}"
                 log = get_label(sort, size, p, c, data)
+                run_cmd = f"python mpi_run.py  --p={p} --c={c} --size={size} --user={data.user} --node={data.node} --subsort={sort} --log={log}"
                 run_cmd = run_cmd + f" | tee {log}"
 
                 banner(run_cmd)

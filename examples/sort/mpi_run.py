@@ -175,19 +175,19 @@ def experiment(p, c, size, repeat, log, clear, debug, subsort, tag, user, node):
         # command = \
             # f'mpirun -n {p} python night.py n={n} log={log} clear={clear} debug={debug} sort={sort} user={user} node={node} id={id} t={t} c={c} REPEAT={i}'
         command = \
-            f'srun -N {p} python night.py subsort={subsort} c={c} n={n} user={user} node={node} p={p}'
+            f'srun -N {p} python night.py subsort={subsort} c={c} n={n} user={user} node={node} p={p} | tee {log}'
 
         # start timer
-        StopWatch.start(label)
+        # StopWatch.start(label)
         # run command
         os.system(command)
         # stop timer
         StopWatch.stop(label)
-        last_time = StopWatch.get(label)
+        # last_time = StopWatch.get(label)
 
     # print out collected information
-    benchmark_data = data_to_benchmark(data)
-    StopWatch.benchmark(tag=str(benchmark_data))
+    # benchmark_data = data_to_benchmark(data)
+    # StopWatch.benchmark(tag=str(benchmark_data))
 
 if __name__ == '__main__':
     experiment(args.p, args.c, args.size, args.repeat, args.log, args.clear, args.debug, args.subsort, args.tag, args.user, args.node)
