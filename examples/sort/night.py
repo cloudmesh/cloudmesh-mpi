@@ -4,6 +4,8 @@ from threading import local
 import argparse
 import numpy as np
 from mpi4py import MPI
+from itertools import chain
+
 
 from cloudmesh.common.StopWatch import StopWatch
 from cloudmesh.common.dotdict import dotdict
@@ -102,6 +104,9 @@ if config.debug:
     print(f'Buffer in process {rank} before gathering: {local_arr}')
 # Gather sorted subarrays into one
 
+data = comm.gather(local_arr,root=0)
+
+'''
 split = size / 2
 if config.debug:
     print(f"Rank: {rank}")
@@ -116,11 +121,13 @@ while split >= 1:
         local_result = fast_merge(local_arr, local_tmp)
 
         local_arr = np.array(local_result)
-    split = split / 2
+    split = split / 2'''
 
 if rank == 0:
+    data = comm.gather(local_arr,root=0)
+    ans = sorted(list(chain.from_iterable(data)))
     if config.debug:
         print("SIZE OF ARRAY:", config.size)
-        print("IS SORTED:", is_sorted(local_arr))
-        print(f"SORTED ARRAY: {local_arr}")
+        print("IS SORTED:", is_sorted(ans))
+        print(f"SORTED ARRAY: {ans}")
 
