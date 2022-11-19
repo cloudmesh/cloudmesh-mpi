@@ -182,7 +182,7 @@ def experiment(p, c, size, repeat, log, clear, debug, subsort, tag, user, node):
         # run command
         os.system(command)
         # stop timer
-        StopWatch.stop(label)
+        # StopWatch.stop(label)
         # last_time = StopWatch.get(label)
 
     # print out collected information
