@@ -95,6 +95,7 @@ if config.debug:
 # sort each subarray
 # local_arr.sort()
 print(f"THIS IS THE SORT ALGORITHM BEING USED: {sort_algorithm}")
+print(f"THIS IS THE NUMNER OF CORES BEING USED: {config.c}")
 local_arr = np.array(sort_algorithm(list(local_arr), config.c))
 
 if config.debug:
