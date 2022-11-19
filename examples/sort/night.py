@@ -131,8 +131,11 @@ while split >= 1:
 
 if rank == 0:
     StopWatch.start("final")
-    data = comm.gather(local_arr,root=0)
-    ans = sorted(list(chain.from_iterable(data)))
+    recv = np.zeros(n, dtype="int")
+comm.Gather(local_arr, recv, root=0)
+
+if rank == 0:
+    ans = sorted(list(chain.from_iterable(recv)))
     StopWatch.stop("final")
     StopWatch.benchmark()
     if config.debug:
