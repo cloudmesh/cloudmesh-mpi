@@ -82,7 +82,6 @@ n = config.size
 # create necessary arrays
 unsorted_arr = tmp_unsorted_arr
 sorted_arr = np.zeros(n, dtype="int")
-
 sub_size = int(n / size) # size of each subarray
 local_arr = np.zeros(sub_size, dtype="int") # array for each process
 local_tmp = np.zeros(sub_size, dtype="int")
@@ -90,6 +89,7 @@ local_result = np.zeros(2 * sub_size, dtype="int")
 
 # generate unsorted array on rank 0
 if rank == 0:
+    print(f"UNSORTED ARRAY: {unsorted_arr}")
     if config.debug:
         print(f"UNSORTED ARRAY: {unsorted_arr}")
 
