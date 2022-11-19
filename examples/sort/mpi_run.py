@@ -113,7 +113,7 @@ args = parser.parse_args()
 
 data = dotdict(vars(args))
 data.sort = 'mpi'
-data.debug = False
+data.debug = True
     
 def experiment(p, c, size, repeat, log, clear, debug, subsort, tag, user, node):
     """
