@@ -16,7 +16,7 @@ config.algorithm = "sequential_merge_fast"
 
 config.user = "alex"
 config.node = "v100"
-config.debug = False
+config.debug = True
 n = config.size = 10000
 config.sort = "sorted"
 config.c = 1
@@ -94,6 +94,7 @@ if config.debug:
 
 # sort each subarray
 # local_arr.sort()
+print(f"THIS IS THE SORT ALGORITHM BEING USED: {sort_algorithm}")
 local_arr = np.array(sort_algorithm(list(local_arr), config.c))
 
 if config.debug:
