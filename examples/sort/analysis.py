@@ -31,6 +31,34 @@ def get_data(content):
             result.append(dict(data))
     return result
 
+def mpi_get_data(content):
+    result = []
+    lines = Shell.find_lines_with(content, "# csv")
+    _lines = []
+    for line in lines:
+        if "# csv,timer,status" not in line:
+            _lines.append(line)
+    
+    lines = _lines
+    n = len(lines)
+    for i in range(0, n, 2):
+        line_total = lines[i]
+        line_gen = lines[i + 1]
+
+        line_total = line_total.replace("'", '"')
+        data = "{" + line_total.split("{")[1].split("},")[0] + "}"
+        data = dotdict(json.loads(data))
+
+        line_total = line_total.split(",",6)
+        time_total = line_total[3]
+
+        line_gen = line_gen.split(",",6)
+        time_gen = line_gen[3]
+
+        data["time"] = time_total - time_gen
+        result.append(dict(data))
+    return result
+
 def read_log(log):
     if ".log" not in log:
         log = f"{log}.log"
