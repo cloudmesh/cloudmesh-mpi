@@ -129,9 +129,12 @@ while split >= 1:
         local_arr = np.array(local_result)
     split = split / 2'''
 
+
 if rank == 0:
     StopWatch.start("final")
     recv = np.zeros(n, dtype="int")
+    
+comm.Barrier()
 comm.Gather(local_arr, recv, root=0)
 
 if rank == 0:
