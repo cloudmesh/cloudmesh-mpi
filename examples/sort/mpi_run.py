@@ -142,7 +142,7 @@ def experiment(p, c, size, repeat, log, clear, debug, subsort, tag, user, node):
     :return:
     :rtype:
     """
-
+    repeat = 5
     total = repeat
 
     # begin running experiment
