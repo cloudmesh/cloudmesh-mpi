@@ -37,6 +37,18 @@ def get_sort_by_name(name="multiprocessing_mergesort"):
     elif name in ["seq", "seq-mergesort", "seq-merge", "sequential_merge", "sequential_mergesort"]:
         # print("MERGE SORT")
         return merge_sort
+
+def get_np_sort_kind(name):
+    if "quick" in name:
+        return "quicksort"
+    elif "merge" in name:
+        return "mergesort"
+    elif "heap" in name:
+        return "heapsort"
+    elif "stable" in name:
+        return "stable"
+    else:
+        return "INVALID SORT TYPE"
     
 username = Shell.run('whoami').strip()
 hostname = Shell.run('hostname').strip()
@@ -115,8 +127,8 @@ def experiment(p, c, size, repeat, log, clear, debug, sort, tag, user, node):
     """
     performance experiment.
 
-    :param processes: number of processes to use
-    :type processes: hardcoded
+    :param p: number of processes to use. this is single processor run file, so will always be 1.
+    :type p: int
     :param size: 
     :type size:
     :param repeat:
@@ -138,24 +150,27 @@ def experiment(p, c, size, repeat, log, clear, debug, sort, tag, user, node):
     :return:
     :rtype:
     """
-    repeat=5
+    repeat = 5 # hardcoding to make runs faster
     total = repeat
 
     # map from alias to sort
-    print(f"SORT: {sort}")
+    if "np" in sort:
+        sort_kind = get_np_sort_kind(sort)
     sort_algorithm = get_sort_by_name(sort)
     if debug:
         print(sort_algorithm)
     
     # sequential merge sort only runs on one process
-    if sort_algorithm == merge_sort:
+    if sort_algorithm != multiprocessing_mergesort:
         data.p = 1
+        p = 1
 
     # begin running experiment
     print("Starting experiment")
 
     print(f"Processes: {p}")
     print(f"Cores:     {c}")
+    print(f"SORT:      {sort}")
     print(f"Size:      {size}")
     print(f"Repeat:    {repeat}")
     print(f"Debug:     {debug}")
@@ -169,7 +184,7 @@ def experiment(p, c, size, repeat, log, clear, debug, sort, tag, user, node):
     for i in range(repeat):
         count = count + 1
         progress = total - count
-        print(f"Experiment {progress:<5}: size={n} processes={p} cores={c} repeat={i} last_time={last_time}"
+        print(f"Experiment {progress:<5}: sort={sort} size={n} processes={p} cores={c} repeat={i} last_time={last_time}"
                 "                     ",
                 end="\n")
         label = get_label(data, i)
@@ -178,17 +193,37 @@ def experiment(p, c, size, repeat, log, clear, debug, sort, tag, user, node):
         a = np.random.randint(n, size=n)
         if data.debug:
             print(a)
+        list_a = a.tolist()
 
         # start timer
         StopWatch.start(label)
         # run command
-        if sort == 'sort':
-            a = list(a).sort()
-            a = np.array(a)
+        if "np" in sort:
+            if data.debug:
+                print(f"SORT KIND={sort_kind}")
+                print(f"ARRAY TYPE={type(a)}")
+                print(a)
+            a = np.sort(a, kind=sort_kind)
+            if data.debug:
+                print(a)
+        elif sort == 'sort':
+            if data.debug:
+                print(f"SORT KIND={sort}")
+                print(f"ARRAY TYPE={type(list_a)}")
+                print(list_a)
+            list_a.sort()
+            if data.debug:
+                print(list_a)
         elif sort == 'sorted':
-            a = sorted(a)
+            if data.debug:
+                print(f"SORT KIND={sort}")
+                print(f"ARRAY TYPE={type(list_a)}")
+                print(list_a)
+            list_a = sorted(list_a)
+            if data.debug:
+                print(list_a)
         else:
-            a = sort_algorithm(a, c)
+            list_a = sort_algorithm(list_a, c)
         # stop timer
         StopWatch.stop(label)
         last_time = StopWatch.get(label)

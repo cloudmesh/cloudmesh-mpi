@@ -105,11 +105,9 @@ for sort in sorts:
         p = psutil.cpu_count(logical=False)
         t = psutil.cpu_count()
         data.cores = data.cores.replace("p", str(p)).replace("t", str(t))
-    elif sort in ["seq", "seq-mergesort", "seq-merge", "sequential_merge", "sequential_mergesort"]:
+    else:
         data.cores="[1]"
-    elif sort in ['sort', 'sorted', 'l.sort', 'sorted(l)']:
-        data.cores="[1]"
-    print(data.cores)
+    # print(data.cores)
     # expand into arrays
     cores = Parameter.expand(data.cores)
     sizes = Parameter.expand(data.sizes, sep=',')
