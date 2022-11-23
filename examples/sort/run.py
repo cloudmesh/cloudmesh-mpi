@@ -2,16 +2,13 @@
 import os
 import platform
 import argparse
+import numpy as np
 
 from cloudmesh.common.Shell import Shell
 from cloudmesh.common.StopWatch import StopWatch
 from cloudmesh.common.parameter import Parameter
-from cloudmesh.common.util import yn_choice
-from cloudmesh.common.util import banner
-from cloudmesh.common.systeminfo import os_is_windows
 from cloudmesh.common.dotdict import dotdict
 from sequential.mergesort import merge_sort
-from generate import Generator
 from multiprocessing_mergesort import multiprocessing_mergesort
 
 # generates label and logfile for this experiment
@@ -40,7 +37,7 @@ def get_sort_by_name(name="multiprocessing_mergesort"):
     elif name in ["seq", "seq-mergesort", "seq-merge", "sequential_merge", "sequential_mergesort"]:
         # print("MERGE SORT")
         return merge_sort
-
+    
 username = Shell.run('whoami').strip()
 hostname = Shell.run('hostname').strip()
 
@@ -141,7 +138,7 @@ def experiment(p, c, size, repeat, log, clear, debug, sort, tag, user, node):
     :return:
     :rtype:
     """
-
+    repeat=5
     total = repeat
 
     # map from alias to sort
@@ -172,13 +169,13 @@ def experiment(p, c, size, repeat, log, clear, debug, sort, tag, user, node):
     for i in range(repeat):
         count = count + 1
         progress = total - count
-        print(f"Experiment {progress:<10}: size={n} processes={p} cores={c} repeat={i} last_time={last_time}"
+        print(f"Experiment {progress:<5}: size={n} processes={p} cores={c} repeat={i} last_time={last_time}"
                 "                     ",
                 end="\n")
         label = get_label(data, i)
 
         # generate unsorted array
-        a = Generator().generate_random(n)
+        a = np.random.randint(n, size=n)
         if data.debug:
             print(a)
 
@@ -186,7 +183,8 @@ def experiment(p, c, size, repeat, log, clear, debug, sort, tag, user, node):
         StopWatch.start(label)
         # run command
         if sort == 'sort':
-            a.sort()
+            a = list(a).sort()
+            a = np.array(a)
         elif sort == 'sorted':
             a = sorted(a)
         else:
