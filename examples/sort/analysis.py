@@ -13,8 +13,6 @@ from cloudmesh.common.Shell import Shell
 from cloudmesh.common.parameter import Parameter
 from cloudmesh.common.dotdict import dotdict
 
-# takes in content from logfile
-# outputs dictionaries of data
 def get_data(content):
     result = []
     lines = Shell.find_lines_with(content, "# csv")
@@ -23,7 +21,7 @@ def get_data(content):
         if "# csv,timer,status" not in line:
             line = line.replace("'", '"')
             data = "{" + line.split("{")[1].split("},")[0] + "}"
-            print(data)
+            # print(data)
             data = data.replace(', "debug": False', '')
             data = dotdict(json.loads(data))
 

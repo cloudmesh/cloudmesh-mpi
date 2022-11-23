@@ -1,0 +1,63 @@
+Starting experiment
+Processes: 1
+Cores:     1
+SORT:      sorted
+Size:      30000000
+Repeat:    5
+Debug:     False
+Algorithm: sorted
+Tag:       None
+Total:     5
+Experiment 4    : sort=sorted size=30000000 processes=1 cores=1 repeat=0 last_time=undefined                     
+Experiment 3    : sort=sorted size=30000000 processes=1 cores=1 repeat=1 last_time=17.1754                     
+Experiment 2    : sort=sorted size=30000000 processes=1 cores=1 repeat=2 last_time=14.5612                     
+Experiment 1    : sort=sorted size=30000000 processes=1 cores=1 repeat=3 last_time=14.5272                     
+Experiment 0    : sort=sorted size=30000000 processes=1 cores=1 repeat=4 last_time=14.1947                     
+
++------------------+---------------------------------------------------------------------------------------------------+
+| Attribute        | Value                                                                                             |
+|------------------+---------------------------------------------------------------------------------------------------|
+| cpu              | Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz                                                          |
+| cpu_cores        | 6                                                                                                 |
+| cpu_count        | 12                                                                                                |
+| cpu_threads      | 12                                                                                                |
+| date             | 2022-11-23 05:08:08.717212                                                                        |
+| frequency        | scpufreq(current=2600, min=2600, max=2600)                                                        |
+| mem.active       | 12.5 GiB                                                                                          |
+| mem.available    | 13.7 GiB                                                                                          |
+| mem.free         | 1.1 GiB                                                                                           |
+| mem.inactive     | 11.4 GiB                                                                                          |
+| mem.percent      | 57.3 %                                                                                            |
+| mem.total        | 32.0 GiB                                                                                          |
+| mem.used         | 16.7 GiB                                                                                          |
+| mem.wired        | 4.3 GiB                                                                                           |
+| platform.version | 12.6                                                                                              |
+| python           | 3.11.0 (v3.11.0:deaf509e8f, Oct 24 2022, 14:43:23) [Clang 13.0.0 (clang-1300.0.29.30)]            |
+| python.pip       | 22.3.1                                                                                            |
+| python.version   | 3.11.0                                                                                            |
+| sys.platform     | darwin                                                                                            |
+| uname.machine    | x86_64                                                                                            |
+| uname.node       | BL-UITS-NWLT005                                                                                   |
+| uname.processor  | i386                                                                                              |
+| uname.release    | 21.6.0                                                                                            |
+| uname.system     | Darwin                                                                                            |
+| uname.version    | Darwin Kernel Version 21.6.0: Mon Aug 22 20:17:10 PDT 2022; root:xnu-8020.140.49~2/RELEASE_X86_64 |
+| user             | alexandra                                                                                         |
++------------------+---------------------------------------------------------------------------------------------------+
+
++------------------------------------+----------+--------+--------+---------------------+-------------------------------------------------------------------------------------------------------+-------+-----------------+-----------+--------+-----------+
+| Name                               | Status   |   Time |    Sum | Start               | tag                                                                                                   | msg   | Node            | User      | OS     |   Version |
+|------------------------------------+----------+--------+--------+---------------------+-------------------------------------------------------------------------------------------------------+-------+-----------------+-----------+--------+-----------|
+| sorted-2400MHz-alex-30000000-1-1-0 | ok       | 17.175 | 17.175 | 2022-11-23 05:06:42 | {'p': 1, 'c': 1, 'size': 30000000, 'repeat': 10, 'sort': 'sorted', 'user': 'alex', 'node': '2400MHz'} |       | BL-UITS-NWLT005 | alexandra | Darwin |      12.6 |
+| sorted-2400MHz-alex-30000000-1-1-1 | ok       | 14.561 | 14.561 | 2022-11-23 05:07:02 | {'p': 1, 'c': 1, 'size': 30000000, 'repeat': 10, 'sort': 'sorted', 'user': 'alex', 'node': '2400MHz'} |       | BL-UITS-NWLT005 | alexandra | Darwin |      12.6 |
+| sorted-2400MHz-alex-30000000-1-1-2 | ok       | 14.527 | 14.527 | 2022-11-23 05:07:19 | {'p': 1, 'c': 1, 'size': 30000000, 'repeat': 10, 'sort': 'sorted', 'user': 'alex', 'node': '2400MHz'} |       | BL-UITS-NWLT005 | alexandra | Darwin |      12.6 |
+| sorted-2400MHz-alex-30000000-1-1-3 | ok       | 14.195 | 14.195 | 2022-11-23 05:07:36 | {'p': 1, 'c': 1, 'size': 30000000, 'repeat': 10, 'sort': 'sorted', 'user': 'alex', 'node': '2400MHz'} |       | BL-UITS-NWLT005 | alexandra | Darwin |      12.6 |
+| sorted-2400MHz-alex-30000000-1-1-4 | ok       | 14.667 | 14.667 | 2022-11-23 05:07:54 | {'p': 1, 'c': 1, 'size': 30000000, 'repeat': 10, 'sort': 'sorted', 'user': 'alex', 'node': '2400MHz'} |       | BL-UITS-NWLT005 | alexandra | Darwin |      12.6 |
++------------------------------------+----------+--------+--------+---------------------+-------------------------------------------------------------------------------------------------------+-------+-----------------+-----------+--------+-----------+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,sorted-2400MHz-alex-30000000-1-1-0,ok,17.175,17.175,2022-11-23 05:06:42,{'p': 1, 'c': 1, 'size': 30000000, 'repeat': 10, 'sort': 'sorted', 'user': 'alex', 'node': '2400MHz'},None,BL-UITS-NWLT005,alexandra,Darwin,12.6
+# csv,sorted-2400MHz-alex-30000000-1-1-1,ok,14.561,14.561,2022-11-23 05:07:02,{'p': 1, 'c': 1, 'size': 30000000, 'repeat': 10, 'sort': 'sorted', 'user': 'alex', 'node': '2400MHz'},None,BL-UITS-NWLT005,alexandra,Darwin,12.6
+# csv,sorted-2400MHz-alex-30000000-1-1-2,ok,14.527,14.527,2022-11-23 05:07:19,{'p': 1, 'c': 1, 'size': 30000000, 'repeat': 10, 'sort': 'sorted', 'user': 'alex', 'node': '2400MHz'},None,BL-UITS-NWLT005,alexandra,Darwin,12.6
+# csv,sorted-2400MHz-alex-30000000-1-1-3,ok,14.195,14.195,2022-11-23 05:07:36,{'p': 1, 'c': 1, 'size': 30000000, 'repeat': 10, 'sort': 'sorted', 'user': 'alex', 'node': '2400MHz'},None,BL-UITS-NWLT005,alexandra,Darwin,12.6
+# csv,sorted-2400MHz-alex-30000000-1-1-4,ok,14.667,14.667,2022-11-23 05:07:54,{'p': 1, 'c': 1, 'size': 30000000, 'repeat': 10, 'sort': 'sorted', 'user': 'alex', 'node': '2400MHz'},None,BL-UITS-NWLT005,alexandra,Darwin,12.6
+
