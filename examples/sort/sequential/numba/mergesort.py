@@ -4,38 +4,80 @@
 from numba import jit
 
 
+# merge sort
+# https://www.educative.io/edpresso/merge-sort-in-python
+
 @jit
-def mergesort(arr):
-    n = len(arr)
-    if n > 1:
-        # split array into left and right half
-        mid = n / 2
-        l = arr[:mid]
-        r = arr[mid:]
+def merge_sort(order, arr):
+    if order in ["ascending", "<"]:
+        return merge_sort_smaller(arr)
+    elif order in ["descending", ">"]:
+        return merge_sort_bigger(arr)
 
-        # sort left and right halves individually
-        mergesort(l)
-        mergesort(r)
 
-        # i for left half, j for right half, k for arr
+@jit
+def merge_sort_smaller(array):
+    if len(array) > 1:
+
+        r = len(array) // 2
+        left = array[:r]
+        right = array[r:]
+
+        merge_sort_smaller(left)
+        merge_sort_smaller(right)
+
         i = j = k = 0
-        while i < len(l) and j < len(r):
-            # each time choose between element at front of l or r
-            if l[i] <= r[j]:
-                arr[k] = l[i]
+
+        while i < len(left) and j < len(right):
+            if left[i] < right[j]:
+                array[k] = left[i]
                 i += 1
             else:
-                arr[k] = r[j]
+                array[k] = right[j]
                 j += 1
-            # add to arr
             k += 1
 
-        # add any unused elements
-        while i < len(l):
-            arr[k] = l[i]
+        while i < len(left):
+            array[k] = left[i]
             i += 1
             k += 1
-        while j < len(r):
-            arr[k] = r[j]
+
+        while j < len(right):
+            array[k] = right[j]
             j += 1
             k += 1
+    return array
+
+
+@jit
+def merge_sort_bigger(array):
+    if len(array) > 1:
+
+        r = len(array) // 2
+        left = array[:r]
+        right = array[r:]
+
+        merge_sort_bigger(left)
+        merge_sort_bigger(right)
+
+        i = j = k = 0
+
+        while i < len(left) and j < len(right):
+            if left[i] > right[j]:
+                array[k] = left[i]
+                i += 1
+            else:
+                array[k] = right[j]
+                j += 1
+            k += 1
+
+        while i < len(left):
+            array[k] = left[i]
+            i += 1
+            k += 1
+
+        while j < len(right):
+            array[k] = right[j]
+            j += 1
+            k += 1
+    return array

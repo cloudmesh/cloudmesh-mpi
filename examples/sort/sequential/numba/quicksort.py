@@ -1,6 +1,7 @@
 # quicksort
 # https://www.geeksforgeeks.org/python-program-for-quicksort/
 
+# THis version is not properly implemented
 
 # partition array into two sections
 from numba import jit
@@ -45,6 +46,7 @@ def quicksort(order, a, l=None, r=None):
     :return:
     :rtype:
     """
+    raise NotImplementedError
     if l is None:
         l = 0
     if r is None:

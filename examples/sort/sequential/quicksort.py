@@ -1,6 +1,8 @@
 # quicksort
 # https://www.geeksforgeeks.org/python-program-for-quicksort/
 
+# TODO: implement the order
+# THis program is incomplete and does not work
 
 # partition array into two sections
 def split(arr, l, r):
@@ -40,6 +42,7 @@ def quicksort(order, a, l=None, r=None):
     :return:
     :rtype:
     """
+    raise NotImplementedError
     if l is None:
         l = 0
     if r is None:
