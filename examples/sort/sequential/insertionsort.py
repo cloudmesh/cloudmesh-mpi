@@ -23,4 +23,3 @@ def insertionsort(order, arr):
             # insert x
             arr[j + 1] = x
     return arr
-

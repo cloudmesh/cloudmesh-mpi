@@ -5,6 +5,7 @@ import multiprocessing
 import numpy as np
 from itertools import chain
 
+
 def sequential_merge(*args):
     l = []
     r = []
@@ -42,9 +43,11 @@ def sequential_mergesort(arr):
         return sequential_merge(l, r)
     return arr
 
+
 def fast_sort(arr):
     ans = sorted(arr)
     return ans
+
 
 def fast_merge(*args):
     l = []
@@ -54,6 +57,7 @@ def fast_merge(*args):
     else:
         l, r = args
     return sorted(l + r)
+
 
 def multiprocessing_mergesort(arr, processes):
     # print(f"PROCESSES: {processes}")
@@ -66,6 +70,7 @@ def multiprocessing_mergesort(arr, processes):
     pool.close()
     ans = sorted(list(chain.from_iterable(arr1)))
     return ans
+
 
 '''
 while len(arr1) > 1:

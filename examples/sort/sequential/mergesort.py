@@ -31,12 +31,13 @@ for arg in sys.argv[1:]:
     elif arg.startswith("id="):
         config.id = int(arg.split("=")[1])
     elif arg.startswith("alg="):
-         config.algorithm = arg.split("=")[1]
+        config.algorithm = arg.split("=")[1]
+
 
 def merge_sort(array, p):
     if len(array) > 1:
 
-        r = len(array)//2
+        r = len(array) // 2
         left = array[:r]
         right = array[r:]
 

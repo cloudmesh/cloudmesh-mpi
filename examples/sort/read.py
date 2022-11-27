@@ -18,11 +18,11 @@ for line in lines:
     line = line.replace("'", '"')
     data = "{" + line.split("{")[1].split("},")[0] + "}"
     data = dotdict(json.loads(data))
-    line = line.split(",",6)
+    line = line.split(",", 6)
     i = line[1].split("-")[1]
     t = line[3]
-    
+
     data.t = t
     data.i = i
     result.append(dict(data))
-print(json.dumps(result,indent=2))
+print(json.dumps(result, indent=2))

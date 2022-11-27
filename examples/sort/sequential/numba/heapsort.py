@@ -9,6 +9,7 @@ import math
 
 from numba import jit
 
+
 @jit
 def max_heapify(arr, n, i):
     big = i
@@ -70,4 +71,3 @@ def heapsort(order, arr):
             # swap max of current heap to position i and remove from heap
             (arr[i], arr[0]) = (arr[0], arr[i])
             min_heapify(arr, i, 0)
-

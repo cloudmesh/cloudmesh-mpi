@@ -50,7 +50,6 @@ from cloudmesh.common.util import banner
     '--repeat',
     default="10",
     help="repeat")
-
 def run(p, t, log, user, node, sort, size, repeat):
     """
     :param p: number of physical cores on computer

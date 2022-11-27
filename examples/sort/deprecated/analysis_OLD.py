@@ -51,6 +51,7 @@ def get_data(content, tag="multiprocessing_mergesort", size=None):
         found.append(entry)
     return found
 
+
 def read_log(log, size=None, tag="multiprocessing_mergesort"):
     if ".log" not in log:
         log = f"log/{log}-{size}.log"
@@ -59,7 +60,8 @@ def read_log(log, size=None, tag="multiprocessing_mergesort"):
     data = get_data(content, tag=tag, size=size)
     return data
 
-def read_logs(files=["alex", "gregor"], size =[100], tags=["multiprocessing_mergesort"]):
+
+def read_logs(files=["alex", "gregor"], size=[100], tags=["multiprocessing_mergesort"]):
     data = []
     for tag in tags:
         for file in files:
@@ -69,12 +71,14 @@ def read_logs(files=["alex", "gregor"], size =[100], tags=["multiprocessing_merg
 
     return data
 
+
 def generate_average(df, tag=None, size=None, name=None):
-    _df = df.loc[(df['name'] == name) & (df['tag'] == tag) &  (df['size'] == size) ]
+    _df = df.loc[(df['name'] == name) & (df['tag'] == tag) & (df['size'] == size)]
     avg = _df.groupby(['processors', 'name', 'size', 'tag']).mean()
     avg['tag'] = tag
     avg['name'] = name
     return avg
+
 
 @click.command()
 @click.option('--processes', default="[1]", help='Number of processes as array. [1-2,8,16]')

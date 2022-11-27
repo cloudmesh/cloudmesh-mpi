@@ -27,6 +27,7 @@ def get_label(name, p, n, i, id, tag=None):
 username = Shell.run('whoami').strip()
 hostname = Shell.run('hostname').strip()
 
+
 # provides terminal line options
 @click.command()
 @click.option(
@@ -73,7 +74,6 @@ hostname = Shell.run('hostname').strip()
     '--id',
     default=0,
     help="specify which merge sort to use")
-
 def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node, id):
     """
     performance experiment.
@@ -122,7 +122,7 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
     # begin running experiment
     print("Starting experiment")
 
-    #processes = processes.reverse()
+    # processes = processes.reverse()
     processes.sort(reverse=True)
     print(f"Log:       {log}")
     print(f"Processes: {processes}")

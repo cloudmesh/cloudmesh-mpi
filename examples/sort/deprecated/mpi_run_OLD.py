@@ -4,6 +4,7 @@ import os
 import click
 from cloudmesh.common.util import banner
 
+
 # take in user input
 @click.command()
 @click.option(
@@ -61,6 +62,7 @@ def run(log, user, node, sort, size, repeat, id):
     banner(run_experiment)
     # run command
     os.system(run_experiment)
+
 
 if __name__ == '__main__':
     run()

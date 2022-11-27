@@ -39,5 +39,3 @@ def mergesort(arr):
             arr[k] = r[j]
             j += 1
             k += 1
-
-

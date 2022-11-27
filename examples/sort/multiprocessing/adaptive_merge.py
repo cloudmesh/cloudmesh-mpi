@@ -4,6 +4,7 @@ import numpy as np
 from operator import truediv
 from generate import Generator
 
+
 # binary search
 def b_search(arr, val, ineq):
     # "<": find largest value in arr that is less than val
@@ -13,15 +14,15 @@ def b_search(arr, val, ineq):
         # otherwise, for "<" and ">" of the same value, 
         # we would need to keep and discard opposite halves of arrays
         arr = np.flip(arr)
-    l = 0 # left pointer
-    r = len(arr) - 1 # right pointer
+    l = 0  # left pointer
+    r = len(arr) - 1  # right pointer
 
     while (l < r):
-        mid = (l + r) // 2 # find midpoint between l and r
+        mid = (l + r) // 2  # find midpoint between l and r
         # check if middle element fulfills given inequality
         to_check = str(arr[mid]) + ineq + str(val)
         # print(f"to check: {to_check}")
-        if eval(to_check): 
+        if eval(to_check):
             # lower half
             r = mid
         else:
@@ -35,6 +36,7 @@ def b_search(arr, val, ineq):
     else:
         return l
 
+
 # given two sorted arrays, merge them
 def adaptive_merge(left, right):
     left = np.array(left)
@@ -47,7 +49,7 @@ def adaptive_merge(left, right):
 
     # order arrays based on minimum
     # we always want left to have a smaller minimum than right
-    l_min = left[0] # smallest element of left
+    l_min = left[0]  # smallest element of left
     r_min = right[0]
     if (r_min < l_min):
         tmp = left
@@ -57,7 +59,7 @@ def adaptive_merge(left, right):
         l_min = left[0]
         r_min = right[0]
 
-    l_max = left[len(left) - 1] # largest element of left
+    l_max = left[len(left) - 1]  # largest element of left
     r_max = right[len(right) - 1]
 
     # left and right separate, have no overlap
@@ -67,7 +69,7 @@ def adaptive_merge(left, right):
         #         ----
         # simply concatenate and return
         return np.concatenate((left, right))
-    
+
     # left and right overlap, but not completely
     elif l_max > r_min and l_max < r_max:
         # visual representation
@@ -81,14 +83,14 @@ def adaptive_merge(left, right):
         l_idx = b_search(left, r_min, ">")
         # search for the largest element in right that is smaller than l_max
         r_idx = b_search(right, l_max, "<")
-        
+
         # this part of left is already sorted and can be separated
         left_sorted = left[:l_idx]
         # similarly, also sorted
         right_sorted = right[r_idx + 1:]
 
         # isolate and merge middle part from left and right
-        unsorted = np.concatenate((left[l_idx:], right[:r_idx+1]))
+        unsorted = np.concatenate((left[l_idx:], right[:r_idx + 1]))
         unsorted = np.array(sorted(unsorted))
 
         return np.concatenate((left_sorted, unsorted, right_sorted))
@@ -99,7 +101,7 @@ def adaptive_merge(left, right):
         # ----------
         #   ----
         # break left into three parts, like so
-        #--|----|----
+        # --|----|----
         #   ----
 
         # find smallest element in left that is larger than r_min
@@ -114,6 +116,5 @@ def adaptive_merge(left, right):
         # merge middle part of left with all of right, and sort
         unsorted = np.concatenate((right, left[l_idx_min:l_idx_max + 1]))
         unsorted = np.array(sorted(unsorted))
-        
-        return np.concatenate((left_sorted_min, unsorted, left_sorted_max))
 
+        return np.concatenate((left_sorted_min, unsorted, left_sorted_max))

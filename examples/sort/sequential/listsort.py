@@ -3,4 +3,3 @@ def listsort(order, arr):
         return arr.sort()
     elif order in ["descending", ">"]:
         return arr.sort(reverse=True)
-

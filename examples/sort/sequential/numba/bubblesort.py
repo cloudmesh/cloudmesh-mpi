@@ -2,6 +2,7 @@
 # https://www.geeksforgeeks.org/python-program-for-bubble-sort/
 from numba import jit
 
+
 @jit
 def bubblesort(order, arr):
     n = len(arr)
@@ -17,5 +18,3 @@ def bubblesort(order, arr):
                 # swap unordered pairs
                 if arr[j] < arr[j + 1]:
                     (arr[j], arr[j + 1]) = (arr[j + 1], arr[j])
-
-

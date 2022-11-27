@@ -10,9 +10,11 @@ from cloudmesh.common.parameter import Parameter
 from cloudmesh.common.util import banner
 from cloudmesh.common.dotdict import dotdict
 
+
 # generates label and logfile for this experiment
 def get_label(sort, n, p, c, data):
     return f"log/mpi-{sort}-{data.node}-{data.user}-{n}-{p}-{c}.log"
+
 
 # removes square brackets from string ex: "[mp,seq]" -> "mp,seq"
 # Paramter.expand will not work with square brackets for strings
@@ -23,45 +25,46 @@ def format_sorts(s):
         s = s[:-1]
     return s
 
+
 username = Shell.run('whoami').strip()
 hostname = Shell.run('hostname').strip()
 
 # command line arguments
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    '--processors', 
+    '--processors',
     default="[4]",
-    type=str, 
+    type=str,
     required=True,
     help="array of number of processors as a string")
 parser.add_argument(
     '--cores',
     default="[1]",
     type=str,
-    required=True, 
+    required=True,
     help="number of cores used during sorting")
 parser.add_argument(
-    '--sizes', 
+    '--sizes',
     default="[100]",
-    type=str, 
-    required=True, 
+    type=str,
+    required=True,
     help='sizes of the arrays to be sorted as a string')
 parser.add_argument(
     '--repeat',
     default=10,
-    type=int, 
-    required=False, 
+    type=int,
+    required=False,
     help='number of times an experiment with processes and size is repeated')
 parser.add_argument(
     '--log',
-    type=str, 
-    required=False, 
-    default="output.log", 
+    type=str,
+    required=False,
+    default="output.log",
     help='the logfile to which the experiments are appended')
 parser.add_argument(
     '--clear',
     type=bool,
-    required=False, 
+    required=False,
     default=False,
     help='clears the logfile. handle with care')
 parser.add_argument(
@@ -73,24 +76,24 @@ parser.add_argument(
 parser.add_argument(
     '--sorts',
     type=str,
-    required=True, 
+    required=True,
     default="[mp]",
     help="sorting functions to be run. can be seq (sequential), mp (multiprocessing), sort (l.sort), or sorted (l = sorted(l))")
 parser.add_argument(
     '--tag',
-    required=False, 
+    required=False,
     default=None,
     help="a prefix for the stopwatch timer name")
 parser.add_argument(
     '--user',
     type=str,
-    required=True, 
+    required=True,
     default=username,
     help="username, used in logfile naming")
 parser.add_argument(
     '--node',
     type=str,
-    required=True, 
+    required=True,
     default=hostname,
     help="a node name, used in logile naming")
 args = parser.parse_args()
@@ -106,22 +109,21 @@ for sort in sorts:
         t = psutil.cpu_count()
         data.cores = data.cores.replace("p", str(p)).replace("t", str(t))
     elif sort in ["seq", "seq-mergesort", "seq-merge", "sequential_merge", "sequential_mergesort"]:
-        data.cores="[1]"
+        data.cores = "[1]"
     elif sort in ['sort', 'sorted', 'l.sort', 'sorted(l)']:
-        data.cores="[1]"
+        data.cores = "[1]"
     print(data.cores)
     # expand into arrays
     cores = Parameter.expand(data.cores)
     sizes = Parameter.expand(data.sizes, sep=',')
     processors = Parameter.expand(data.processors, sep=',')
-    
+
     for p in processors:
         for c in cores:
             for size in sizes:
                 log = get_label(sort, size, p, c, data)
                 run_cmd = f"python mpi_run.py  --p={p} --c={c} --size={size} --user={data.user} --node={data.node} --subsort={sort} --log={log}"
 
-                
                 run_cmd = run_cmd + f" | tee {log}"
 
                 banner(run_cmd)

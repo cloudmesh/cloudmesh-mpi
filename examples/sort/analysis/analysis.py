@@ -13,6 +13,7 @@ from cloudmesh.common.Shell import Shell
 from cloudmesh.common.parameter import Parameter
 from cloudmesh.common.dotdict import dotdict
 
+
 def get_data(content):
     result = []
     lines = Shell.find_lines_with(content, "# csv")
@@ -25,11 +26,12 @@ def get_data(content):
             data = data.replace(', "debug": False', '')
             data = dotdict(json.loads(data))
 
-            line = line.split(",",6)
+            line = line.split(",", 6)
             time = line[3]
             data["time"] = time
             result.append(dict(data))
     return result
+
 
 def read_log(log):
     if ".log" not in log:
@@ -40,6 +42,7 @@ def read_log(log):
     content = f.read().splitlines()
     data = get_data(content)
     return data
+
 
 def generate_df():
     directory = "log"
@@ -53,6 +56,7 @@ def generate_df():
     df['time'] = df['time'].astype(float)
     return df
 
+
 def mpi_get_data(content):
     result = []
     lines = Shell.find_lines_with(content, "# csv")
@@ -60,7 +64,7 @@ def mpi_get_data(content):
     for line in lines:
         if "# csv,timer,status" not in line:
             _lines.append(line)
-    
+
     lines = _lines
     # print(lines)
     n = len(lines)
@@ -74,15 +78,16 @@ def mpi_get_data(content):
         # print(data)
         data = dotdict(json.loads(data))
 
-        line_total = line_total.split(",",6)
+        line_total = line_total.split(",", 6)
         time_total = line_total[3]
 
-        line_gen = line_gen.split(",",6)
+        line_gen = line_gen.split(",", 6)
         time_gen = line_gen[3]
 
         data["time"] = float(time_total) - float(time_gen)
         result.append(dict(data))
     return result
+
 
 def mpi_read_log(log):
     if ".log" not in log:
@@ -93,6 +98,7 @@ def mpi_read_log(log):
     content = f.read().splitlines()
     data = mpi_get_data(content)
     return data
+
 
 def mpi_generate_df():
     directory = "log"

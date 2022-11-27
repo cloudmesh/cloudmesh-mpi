@@ -28,6 +28,7 @@ def split(arr, l, r):
     (arr[l], arr[j]) = (arr[j], arr[l])
     return j
 
+
 @jit
 def quicksort(order, a, l=None, r=None):
     """
@@ -54,5 +55,3 @@ def quicksort(order, a, l=None, r=None):
     # don't include k, since it's already sorted
     quicksort("<", a, l, k - 1)
     quicksort("<", a, k + 1, r)
-
-

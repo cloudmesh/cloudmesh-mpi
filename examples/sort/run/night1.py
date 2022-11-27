@@ -7,7 +7,6 @@ import multiprocessing
 from mpi4py import MPI
 from itertools import chain
 
-
 from cloudmesh.common.StopWatch import StopWatch
 from cloudmesh.common.dotdict import dotdict
 from generate import Generator
@@ -37,6 +36,7 @@ for arg in sys.argv[1:]:
     if arg.startswith("c="):
         config.c = int(arg.split("=")[1])
 
+
 # define fast merge
 def fast_merge(left, right):
     if config.debug:
@@ -46,8 +46,10 @@ def fast_merge(left, right):
     return sorted(left + right)
     # use to replace call to sequential merge
 
+
 def _sorted(arr, c):
     return sorted(arr)
+
 
 def get_sort_by_name(name):
     if name in ["mp", "mp-merge", "mp-mergesort", "multiprocessing_mergesort"]:
@@ -60,11 +62,14 @@ def get_sort_by_name(name):
         # print("MERGE SORT")
         return merge_sort
 
+
 sort_algorithm = get_sort_by_name(config.sort)
+
 
 # check if array is sorted
 def is_sorted(l):
     return all(l[i] <= l[i + 1] for i in range(len(l) - 1))
+
 
 unsorted_arr = np.array(Generator().generate_random(n))
 
@@ -76,8 +81,7 @@ size = comm.Get_size()
 
 itemsize = MPI.INT.Get_size()
 print(itemsize)
-sub_size = int(n / size) # size of each subarray
-
+sub_size = int(n / size)  # size of each subarray
 
 '''
 n = config.size

@@ -130,7 +130,7 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
 
     print("Starting experiment")
 
-    #processes = processes.reverse()
+    # processes = processes.reverse()
     processes.sort(reverse=True)
     # print(f"Log:       {log}")
     print(f"Processes: {processes}")
@@ -154,21 +154,21 @@ def experiment(processes, size, repeat, log, clear, debug, sort, tag, user, node
                 c = c + 1
                 progress = total - c
                 print(f"Experiment {progress:<10}: size={n} processes={p} repeat={i} last_time={last_time}"
-                        "                     ",
-                        end="\r")
+                      "                     ",
+                      end="\r")
                 label = get_label(sort, p, n, i, tag)
                 a = Generator().generate_random(n)
                 a_gpu = cp.asarray(a)
                 # two lines below are only needed for multiprocessing on GPU
-                #import multiprocessing
-                #multiprocessing.set_start_method('spawn', force=True)
+                # import multiprocessing
+                # multiprocessing.set_start_method('spawn', force=True)
 
                 StopWatch.start(label)
                 a = sort_algorithm(a, p)
-                #a = cp.sort(a_gpu)
+                # a = cp.sort(a_gpu)
                 StopWatch.stop(label)
                 last_time = StopWatch.get(label)
-                #assert verify("ascending", a)
+                # assert verify("ascending", a)
     StopWatch.benchmark(user=user, node=node)
 
 

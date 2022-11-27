@@ -12,21 +12,21 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    '--processors', 
+    '--processors',
     default=4,
-    type=int, 
+    type=int,
     required=False,
     help="number of processors as an integer")
 parser.add_argument(
-    '--size', 
-    type=int, 
-    required=False, 
+    '--size',
+    type=int,
+    required=False,
     help='total size of the array to be sorted as an integer')
 parser.add_argument(
     '--repeat',
     default=10,
-    type=int, 
-    required=False, 
+    type=int,
+    required=False,
     help='number of times an experiment with processes and size is repeated')
 args = parser.parse_args()
 

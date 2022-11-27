@@ -14,6 +14,7 @@ from cloudmesh.common.util import yn_choice
 from cloudmesh.common.util import banner
 from cloudmesh.common.systeminfo import os_is_windows
 
+
 @click.command()
 @click.option(
     '--size',
@@ -56,8 +57,10 @@ from cloudmesh.common.systeminfo import os_is_windows
     default=0,
     help="specify which merge sort to use")
 def experiment(size, repeat, log, clear, debug, sort, tag, user, node, id):
-	if log is None:
-		log = f"log/{sort}-{node}-{user}-{id}-{size}.log"
+    if log is None:
+        log = f"log/{sort}-{node}-{user}-{id}-{size}.log"
+
+
 n = 100
 a = np.array(Generator().generate_random(n))
 print(a)
