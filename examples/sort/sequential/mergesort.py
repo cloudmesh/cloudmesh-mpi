@@ -1,53 +1,58 @@
 # merge sort
 # https://www.educative.io/edpresso/merge-sort-in-python
 
-import os
-import click
-import sys
-import numpy as np
-from cloudmesh.common.dotdict import dotdict
+def merge_sort(order, arr):
+    if order in ["ascending", "<"]:
+        return merge_sort_smaller(arr)
+    elif order in ["descending", ">"]:
+        return merge_sort_bigger(arr)
 
-config = dotdict()
-config.algorithm = sorted
-
-config.user = "gregor"
-config.node = "5090X"
-config.debug = False
-config.benchmark = True
-config.filename = sys.argv[0].replace(".py", "")
-config.id = 0
-# config.merge = "sequential"
-n = config.size = 10000
-# config.min_array_size = 1
-
-# take in input from user
-for arg in sys.argv[1:]:
-    if arg.startswith("node="):
-        config.node = arg.split("=")[1]
-    elif arg.startswith("user="):
-        config.user = arg.split("=")[1]
-    elif arg.startswith("n="):
-        config.size = int(arg.split("=")[1])
-    elif arg.startswith("id="):
-        config.id = int(arg.split("=")[1])
-    elif arg.startswith("alg="):
-        config.algorithm = arg.split("=")[1]
-
-
-def merge_sort(array, p):
+def merge_sort_smaller(array):
     if len(array) > 1:
 
         r = len(array) // 2
         left = array[:r]
         right = array[r:]
 
-        merge_sort(left, p)
-        merge_sort(right, p)
+        merge_sort_smaller(left)
+        merge_sort_smaller(right)
 
         i = j = k = 0
 
         while i < len(left) and j < len(right):
             if left[i] < right[j]:
+                array[k] = left[i]
+                i += 1
+            else:
+                array[k] = right[j]
+                j += 1
+            k += 1
+
+        while i < len(left):
+            array[k] = left[i]
+            i += 1
+            k += 1
+
+        while j < len(right):
+            array[k] = right[j]
+            j += 1
+            k += 1
+    return array
+
+def merge_sort_bigger(array):
+    if len(array) > 1:
+
+        r = len(array) // 2
+        left = array[:r]
+        right = array[r:]
+
+        merge_sort_bigger(left)
+        merge_sort_bigger(right)
+
+        i = j = k = 0
+
+        while i < len(left) and j < len(right):
+            if left[i] > right[j]:
                 array[k] = left[i]
                 i += 1
             else:
