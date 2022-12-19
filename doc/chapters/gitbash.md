@@ -1,15 +1,15 @@
 ## Git Bash on Windows
 
 
-Git bash is a implementation of the bash shell fro windows that also
+Git bash is an implementation of the bash shell for windows that also
 includes Git.
 
 Git is an open-source software which helps to manage repository
 version control, particularly with GitHub repos. 
 
 
-To verify whether you have Git in the first place, you can press `Win
-+ R` on your desktop, type `cmd`, and press `Enter`. Then type `git
+To verify whether you have Git in the first place, you can press `Win + R` 
+on your desktop, type `cmd`, and press `Enter`. Then type `git
 clone` and press `Enter`. If you do not have Git installed, it will
 say `'git' is not recognized as an internal or external command...`
 

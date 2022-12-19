@@ -7,7 +7,7 @@ TensorFlow.
 Assignment
 
 1. Create a tutorial to install use tensorflow from an MPI program
-1. Create a tutorial to install and use horovod. Explain relationship and differences to MPI
+2. Create a tutorial to install and use horovod. Explain relationship and differences to MPI
 
 
 ## Tensorflow

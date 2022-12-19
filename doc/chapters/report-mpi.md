@@ -44,15 +44,15 @@ or
 $ git clone https://github.com/cloudmesh/cloudmesh-mpi.git
 ```
 
-In cas eyou have `make` and docker instaled on your machine, you can create this document locally with
+In case you have `make` and docker installed on your machine, you can create this document locally with
 
 ```bash
 $ make image
 $ make
 ```
 
-Please not that `make` can also be installed on Windows as documented
-in our appenix, so you can also create this document easily on
+Please note that `make` can also be installed on Windows as documented
+in our appendix, so you can also create this document easily on
 Windows.
 
 ## Document Notation
@@ -317,6 +317,34 @@ These instructions apply to 20.04 and 21.04. Please use 20.04 in case you like t
    ```
 
    If you have other Raspberry Pi's you may need to update the core count according to the hardware specification. 
+
+## Docker Virtualization
+
+Using the cloudmask docker images may be ideal for the user if one
+does not want to complicate their system environment. To use the cloudmesh
+docker installation, install Docker Desktop with choco (Windows) or brew
+(macOS):
+
+```bash
+choco install docker-desktop -y
+```
+
+```bash
+brew install --cask docker
+```
+
+Then execute the following commands:
+
+```bash
+cd ~/cm
+git clone https://github.com/cloudmesh/slurm-in-docker.git
+cd slurm-in-docker/ports/cloudmesh-slurm
+make image
+make run
+make register
+make start
+make shell
+```
 
 ## Testing the Installation
 
