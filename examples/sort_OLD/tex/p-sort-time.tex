@@ -1,0 +1,56 @@
+\documentclass{article}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+\usepackage{geometry}%
+\geometry{tmargin=1cm,lmargin=10cm}%
+\usepackage{booktabs}%
+\usepackage{numprint}
+\usepackage{siunitx}
+
+%
+%
+%
+\begin{document}%
+\normalsize%
+\npdecimalsign{.}
+\nprounddigits{2}
+\section{Size=1 million}%
+\label{sec:Size=1million}%
+\begin{tabular}{cc
+    *{4}{S[round-mode=places,round-precision=4]}}
+\toprule
+p & sort & time \\
+\midrule
+1 & mp & 89.203600 \\
+2 & mp & 52.964400 \\
+3 & mp & 38.587900 \\
+4 & mp & 30.231600 \\
+5 & mp & 28.852100 \\
+6 & mp & 26.048100 \\
+7 & mp & 23.333300 \\
+8 & mp & 22.130700 \\
+9 & mp & 25.516700 \\
+10 & mp & 23.451000 \\
+11 & mp & 22.790600 \\
+12 & mp & 21.594400 \\
+13 & mp & 20.874300 \\
+14 & mp & 19.694200 \\
+15 & mp & 19.346700 \\
+16 & mp & 19.065700 \\
+17 & mp & 23.262000 \\
+18 & mp & 22.378000 \\
+19 & mp & 21.834700 \\
+20 & mp & 21.138000 \\
+21 & mp & 20.758800 \\
+22 & mp & 20.404500 \\
+23 & mp & 19.984200 \\
+24 & mp & 19.920700 \\
+\bottomrule
+\end{tabular}
+\npnoround
+
+%
+\end{document}

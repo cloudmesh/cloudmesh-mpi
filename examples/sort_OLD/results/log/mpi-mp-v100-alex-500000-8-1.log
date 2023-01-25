@@ -1,0 +1,590 @@
+Starting experiment
+Processes: 8
+Cores:     1
+Size:      500000
+Repeat:    10
+Debug:     False
+Sort:      MPI
+Algorithm: mp
+Tag:       None
+Total:     10
+Experiment 9         : size=500000 processes=8 cores=1 repeat=0 last_time=undefined                     
+Experiment 8         : size=500000 processes=8 cores=1 repeat=1 last_time=undefined                     
+Experiment 7         : size=500000 processes=8 cores=1 repeat=2 last_time=undefined                     
+Experiment 6         : size=500000 processes=8 cores=1 repeat=3 last_time=undefined                     
+Experiment 5         : size=500000 processes=8 cores=1 repeat=4 last_time=undefined                     
+Experiment 4         : size=500000 processes=8 cores=1 repeat=5 last_time=undefined                     
+Experiment 3         : size=500000 processes=8 cores=1 repeat=6 last_time=undefined                     
+Experiment 2         : size=500000 processes=8 cores=1 repeat=7 last_time=undefined                     
+Experiment 1         : size=500000 processes=8 cores=1 repeat=8 last_time=undefined                     
+Experiment 0         : size=500000 processes=8 cores=1 repeat=9 last_time=undefined                     
+se Linux Server"                            |
+| PRETTY_NAME                     | "Red Hat Enterprise Linux Server 7.9 (Maipo)"                |
+| REDHAT_BUGZILLA_PRODUCT         | "Red Hat Enterprise Linux 7"                                 |
+| REDHAT_BUGZILLA_PRODUCT_VERSION | 7.9                                                          |
+| REDHAT_SUPPORT_PRODUCT          | "Red Hat Enterprise Linux"                                   |
+| REDHAT_SUPPORT_PRODUCT_VERSION  | "7.9"                                                        |
+| VARIANT                         | "Server"                                                     |
+| VARIANT_ID                      | "server"                                                     |
+| VERSION                         | "7.9 (Maipo)"                                                |
+| VERSION_ID                      | "7.9"                                                        |
+| cpu                             | Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz                    |
+| cpu_cores                       | 24                                                           |
+| cpu_count                       | 24                                                           |
+| cpu_threads                     | 24                                                           |
+| date                            | 2022-11-19 23:06:57.697385                                   |
+| frequency                       | scpufreq(current=1.5409583333333334, min=1200.0, max=3300.0) |
+| mem.active                      | 17.3 GiB                                                     |
+| mem.available                   | 222.9 GiB                                                    |
+| mem.free                        | 211.2 GiB                                                    |
+| mem.inactive                    | 10.5 GiB                                                     |
+| mem.percent                     | 11.2 %                                                       |
+| mem.total                       | 251.1 GiB                                                    |
+| mem.used                        | 20.6 GiB                                                     |
+| platform.version                | #1 SMP Tue Jul 26 14:15:37 UTC 2022                          |
+| python                          | 3.9.8 (main, Feb  8 2022, 08:35:13)                          |
+|                                 | [GCC 6.3.0]                                                  |
+| python.pip                      | 22.2.2                                                       |
+| python.version                  | 3.9.8                                                        |
+| sys.platform                    | linux                                                        |
+| uname.machine                   | x86_64                                                       |
+| uname.node                      | c8                                                           |
+| uname.processor                 | x86_64                                                       |
+| uname.release                   | 3.10.0-1160.76.1.el7.x86_64                                  |
+| uname.system                    | Linux                                                        |
+| uname.version                   | #1 SMP Tue Jul 26 14:15:37 UTC 2022                          |
+| user                            | haiyang                                                      |
++---------------------------------+--------------------------------------------------------------+
+
++---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------+
+| Name          | Status   |   Time |   Sum | Start               | tag                                                                                                              | msg   | Node   | User    | OS    | Version                             |
+|---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------|
+| mpi-mergesort | ok       |  0.576 | 0.576 | 2022-11-19 23:06:57 | {'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8} |       | c8     | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mpi-generate  | ok       |  0.004 | 0.004 | 2022-11-19 23:06:57 | {'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8} |       | c8     | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
++---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,mpi-mergesort,ok,0.576,0.576,2022-11-19 23:06:57,{'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8},None,c8,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mpi-generate,ok,0.004,0.004,2022-11-19 23:06:57,{'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8},None,c8,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+
+
++---------------------------------+--------------------------------------------------------------+
+| Attribute                       | Value                                                        |
+|---------------------------------+--------------------------------------------------------------|
+| ANSI_COLOR                      | "0;31"                                                       |
+| BUG_REPORT_URL                  | "https://bugzilla.redhat.com/"                               |
+| CPE_NAME                        | "cpe:/o:redhat:enterprise_linux:7.9:GA:server"               |
+| HOME_URL                        | "https://www.redhat.com/"                                    |
+| ID                              | "rhel"                                                       |
+| ID_LIKE                         | "fedora"                                                     |
+| NAME                            | "Red Hat Enterprise Linux Server"                            |
+| PRETTY_NAME                     | "Red Hat Enterprise Linux Server 7.9 (Maipo)"                |
+| REDHAT_BUGZILLA_PRODUCT         | "Red Hat Enterprise Linux 7"                                 |
+| REDHAT_BUGZILLA_PRODUCT_VERSION | 7.9                                                          |
+| REDHAT_SUPPORT_PRODUCT          | "Red Hat Enterprise Linux"                                   |
+| REDHAT_SUPPORT_PRODUCT_VERSION  | "7.9"                                                        |
+| VARIANT                         | "Server"                                                     |
+| VARIANT_ID                      | "server"                                                     |
+| VERSION                         | "7.9 (Maipo)"                                                |
+| VERSION_ID                      | "7.9"                                                        |
+| cpu                             | Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz                    |
+| cpu_cores                       | 24                                                           |
+| cpu_count                       | 24                                                           |
+| cpu_threads                     | 24                                                           |
+| date                            | 2022-11-19 23:07:01.132313                                   |
+| frequency                       | scpufreq(current=1.5390416666666669, min=1200.0, max=3300.0) |
+| mem.active                      | 17.3 GiB                                                     |
+| mem.available                   | 222.8 GiB                                                    |
+| mem.free                        | 211.1 GiB                                                    |
+| mem.inactive                    | 10.5 GiB                                                     |
+| mem.percent                     | 11.3 %                                                       |
+| mem.total                       | 251.1 GiB                                                    |
+| mem.used                        | 20.6 GiB                                                     |
+| platform.version                | #1 SMP Tue Jul 26 14:15:37 UTC 2022                          |
+| python                          | 3.9.8 (main, Feb  8 2022, 08:35:13)                          |
+|                                 | [GCC 6.3.0]                                                  |
+| python.pip                      | 22.2.2                                                       |
+| python.version                  | 3.9.8                                                        |
+| sys.platform                    | linux                                                        |
+| uname.machine                   | x86_64                                                       |
+| uname.node                      | c8                                                           |
+| uname.processor                 | x86_64                                                       |
+| uname.release                   | 3.10.0-1160.76.1.el7.x86_64                                  |
+| uname.system                    | Linux                                                        |
+| uname.version                   | #1 SMP Tue Jul 26 14:15:37 UTC 2022                          |
+| user                            | haiyang                                                      |
++---------------------------------+--------------------------------------------------------------+
+
++---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------+
+| Name          | Status   |   Time |   Sum | Start               | tag                                                                                                              | msg   | Node   | User    | OS    | Version                             |
+|---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------|
+| mpi-mergesort | ok       |  0.576 | 0.576 | 2022-11-19 23:07:00 | {'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8} |       | c8     | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mpi-generate  | ok       |  0.004 | 0.004 | 2022-11-19 23:07:00 | {'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8} |       | c8     | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
++---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,mpi-mergesort,ok,0.576,0.576,2022-11-19 23:07:00,{'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8},None,c8,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mpi-generate,ok,0.004,0.004,2022-11-19 23:07:00,{'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8},None,c8,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+
+
++---------------------------------+--------------------------------------------------------------+
+| Attribute                       | Value                                                        |
+|---------------------------------+--------------------------------------------------------------|
+| ANSI_COLOR                      | "0;31"                                                       |
+| BUG_REPORT_URL                  | "https://bugzilla.redhat.com/"                               |
+| CPE_NAME                        | "cpe:/o:redhat:enterprise_linux:7.9:GA:server"               |
+| HOME_URL                        | "https://www.redhat.com/"                                    |
+| ID                              | "rhel"                                                       |
+| ID_LIKE                         | "fedora"                                                     |
+| NAME                            | "Red Hat Enterprise Linux Server"                            |
+| PRETTY_NAME                     | "Red Hat Enterprise Linux Server 7.9 (Maipo)"                |
+| REDHAT_BUGZILLA_PRODUCT         | "Red Hat Enterprise Linux 7"                                 |
+| REDHAT_BUGZILLA_PRODUCT_VERSION | 7.9                                                          |
+| REDHAT_SUPPORT_PRODUCT          | "Red Hat Enterprise Linux"                                   |
+| REDHAT_SUPPORT_PRODUCT_VERSION  | "7.9"                                                        |
+| VARIANT                         | "Server"                                                     |
+| VARIANT_ID                      | "server"                                                     |
+| VERSION                         | "7.9 (Maipo)"                                                |
+| VERSION_ID                      | "7.9"                                                        |
+| cpu                             | Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz                    |
+| cpu_cores                       | 24                                                           |
+| cpu_count                       | 24                                                           |
+| cpu_threads                     | 24                                                           |
+| date                            | 2022-11-19 23:07:14.620668                                   |
+| frequency                       | scpufreq(current=1.5403750000000007, min=1200.0, max=3300.0) |
+| mem.active                      | 17.3 GiB                                                     |
+| mem.available                   | 222.8 GiB                                                    |
+| mem.free                        | 211.1 GiB                                                    |
+| mem.inactive                    | 10.5 GiB                                                     |
+| mem.percent                     | 11.3 %                                                       |
+| mem.total                       | 251.1 GiB                                                    |
+| mem.used                        | 20.7 GiB                                                     |
+| platform.version                | #1 SMP Tue Jul 26 14:15:37 UTC 2022                          |
+| python                          | 3.9.8 (main, Feb  8 2022, 08:35:13)                          |
+|                                 | [GCC 6.3.0]                                                  |
+| python.pip                      | 22.2.2                                                       |
+| python.version                  | 3.9.8                                                        |
+| sys.platform                    | linux                                                        |
+| uname.machine                   | x86_64                                                       |
+| uname.node                      | c8                                                           |
+| uname.processor                 | x86_64                                                       |
+| uname.release                   | 3.10.0-1160.76.1.el7.x86_64                                  |
+| uname.system                    | Linux                                                        |
+| uname.version                   | #1 SMP Tue Jul 26 14:15:37 UTC 2022                          |
+| user                            | haiyang                                                      |
++---------------------------------+--------------------------------------------------------------+
+
++---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------+
+| Name          | Status   |   Time |   Sum | Start               | tag                                                                                                              | msg   | Node   | User    | OS    | Version                             |
+|---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------|
+| mpi-mergesort | ok       |  0.598 | 0.598 | 2022-11-19 23:07:14 | {'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8} |       | c8     | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mpi-generate  | ok       |  0.004 | 0.004 | 2022-11-19 23:07:14 | {'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8} |       | c8     | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
++---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,mpi-mergesort,ok,0.598,0.598,2022-11-19 23:07:14,{'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8},None,c8,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mpi-generate,ok,0.004,0.004,2022-11-19 23:07:14,{'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8},None,c8,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+
+
++---------------------------------+--------------------------------------------------------------+
+| Attribute                       | Value                                                        |
+|---------------------------------+--------------------------------------------------------------|
+| ANSI_COLOR                      | "0;31"                                                       |
+| BUG_REPORT_URL                  | "https://bugzilla.redhat.com/"                               |
+| CPE_NAME                        | "cpe:/o:redhat:enterprise_linux:7.9:GA:server"               |
+| HOME_URL                        | "https://www.redhat.com/"                                    |
+| ID                              | "rhel"                                                       |
+| ID_LIKE                         | "fedora"                                                     |
+| NAME                            | "Red Hat Enterprise Linux Server"                            |
+| PRETTY_NAME                     | "Red Hat Enterprise Linux Server 7.9 (Maipo)"                |
+| REDHAT_BUGZILLA_PRODUCT         | "Red Hat Enterprise Linux 7"                                 |
+| REDHAT_BUGZILLA_PRODUCT_VERSION | 7.9                                                          |
+| REDHAT_SUPPORT_PRODUCT          | "Red Hat Enterprise Linux"                                   |
+| REDHAT_SUPPORT_PRODUCT_VERSION  | "7.9"                                                        |
+| VARIANT                         | "Server"                                                     |
+| VARIANT_ID                      | "server"                                                     |
+| VERSION                         | "7.9 (Maipo)"                                                |
+| VERSION_ID                      | "7.9"                                                        |
+| cpu                             | Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz                    |
+| cpu_cores                       | 24                                                           |
+| cpu_count                       | 24                                                           |
+| cpu_threads                     | 24                                                           |
+| date                            | 2022-11-19 23:07:18.297916                                   |
+| frequency                       | scpufreq(current=1.5092500000000006, min=1200.0, max=3300.0) |
+| mem.active                      | 17.3 GiB                                                     |
+| mem.available                   | 222.8 GiB                                                    |
+| mem.free                        | 211.1 GiB                                                    |
+| mem.inactive                    | 10.5 GiB                                                     |
+| mem.percent                     | 11.2 %                                                       |
+| mem.total                       | 251.1 GiB                                                    |
+| mem.used                        | 20.6 GiB                                                     |
+| platform.version                | #1 SMP Tue Jul 26 14:15:37 UTC 2022                          |
+| python                          | 3.9.8 (main, Feb  8 2022, 08:35:13)                          |
+|                                 | [GCC 6.3.0]                                                  |
+| python.pip                      | 22.2.2                                                       |
+| python.version                  | 3.9.8                                                        |
+| sys.platform                    | linux                                                        |
+| uname.machine                   | x86_64                                                       |
+| uname.node                      | c8                                                           |
+| uname.processor                 | x86_64                                                       |
+| uname.release                   | 3.10.0-1160.76.1.el7.x86_64                                  |
+| uname.system                    | Linux                                                        |
+| uname.version                   | #1 SMP Tue Jul 26 14:15:37 UTC 2022                          |
+| user                            | haiyang                                                      |
++---------------------------------+--------------------------------------------------------------+
+
++---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------+
+| Name          | Status   |   Time |   Sum | Start               | tag                                                                                                              | msg   | Node   | User    | OS    | Version                             |
+|---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------|
+| mpi-mergesort | ok       |  0.6   | 0.6   | 2022-11-19 23:07:17 | {'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8} |       | c8     | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mpi-generate  | ok       |  0.004 | 0.004 | 2022-11-19 23:07:17 | {'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8} |       | c8     | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
++---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,mpi-mergesort,ok,0.6,0.6,2022-11-19 23:07:17,{'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8},None,c8,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mpi-generate,ok,0.004,0.004,2022-11-19 23:07:17,{'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8},None,c8,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+
+
++---------------------------------+--------------------------------------------------------------+
+| Attribute                       | Value                                                        |
+|---------------------------------+--------------------------------------------------------------|
+| ANSI_COLOR                      | "0;31"                                                       |
+| BUG_REPORT_URL                  | "https://bugzilla.redhat.com/"                               |
+| CPE_NAME                        | "cpe:/o:redhat:enterprise_linux:7.9:GA:server"               |
+| HOME_URL                        | "https://www.redhat.com/"                                    |
+| ID                              | "rhel"                                                       |
+| ID_LIKE                         | "fedora"                                                     |
+| NAME                            | "Red Hat Enterprise Linux Server"                            |
+| PRETTY_NAME                     | "Red Hat Enterprise Linux Server 7.9 (Maipo)"                |
+| REDHAT_BUGZILLA_PRODUCT         | "Red Hat Enterprise Linux 7"                                 |
+| REDHAT_BUGZILLA_PRODUCT_VERSION | 7.9                                                          |
+| REDHAT_SUPPORT_PRODUCT          | "Red Hat Enterprise Linux"                                   |
+| REDHAT_SUPPORT_PRODUCT_VERSION  | "7.9"                                                        |
+| VARIANT                         | "Server"                                                     |
+| VARIANT_ID                      | "server"                                                     |
+| VERSION                         | "7.9 (Maipo)"                                                |
+| VERSION_ID                      | "7.9"                                                        |
+| cpu                             | Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz                    |
+| cpu_cores                       | 24                                                           |
+| cpu_count                       | 24                                                           |
+| cpu_threads                     | 24                                                           |
+| date                            | 2022-11-19 23:07:21.537458                                   |
+| frequency                       | scpufreq(current=1.5478750000000006, min=1200.0, max=3300.0) |
+| mem.active                      | 17.3 GiB                                                     |
+| mem.available                   | 222.8 GiB                                                    |
+| mem.free                        | 211.1 GiB                                                    |
+| mem.inactive                    | 10.5 GiB                                                     |
+| mem.percent                     | 11.2 %                                                       |
+| mem.total                       | 251.1 GiB                                                    |
+| mem.used                        | 20.6 GiB                                                     |
+| platform.version                | #1 SMP Tue Jul 26 14:15:37 UTC 2022                          |
+| python                          | 3.9.8 (main, Feb  8 2022, 08:35:13)                          |
+|                                 | [GCC 6.3.0]                                                  |
+| python.pip                      | 22.2.2                                                       |
+| python.version                  | 3.9.8                                                        |
+| sys.platform                    | linux                                                        |
+| uname.machine                   | x86_64                                                       |
+| uname.node                      | c8                                                           |
+| uname.processor                 | x86_64                                                       |
+| uname.release                   | 3.10.0-1160.76.1.el7.x86_64                                  |
+| uname.system                    | Linux                                                        |
+| uname.version                   | #1 SMP Tue Jul 26 14:15:37 UTC 2022                          |
+| user                            | haiyang                                                      |
++---------------------------------+--------------------------------------------------------------+
+
++---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------+
+| Name          | Status   |   Time |   Sum | Start               | tag                                                                                                              | msg   | Node   | User    | OS    | Version                             |
+|---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------|
+| mpi-mergesort | ok       |  0.575 | 0.575 | 2022-11-19 23:07:20 | {'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8} |       | c8     | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mpi-generate  | ok       |  0.004 | 0.004 | 2022-11-19 23:07:20 | {'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8} |       | c8     | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
++---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,mpi-mergesort,ok,0.575,0.575,2022-11-19 23:07:20,{'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8},None,c8,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mpi-generate,ok,0.004,0.004,2022-11-19 23:07:20,{'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8},None,c8,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+
+
++---------------------------------+--------------------------------------------------------------+
+| Attribute                       | Value                                                        |
+|---------------------------------+--------------------------------------------------------------|
+| ANSI_COLOR                      | "0;31"                                                       |
+| BUG_REPORT_URL                  | "https://bugzilla.redhat.com/"                               |
+| CPE_NAME                        | "cpe:/o:redhat:enterprise_linux:7.9:GA:server"               |
+| HOME_URL                        | "https://www.redhat.com/"                                    |
+| ID                              | "rhel"                                                       |
+| ID_LIKE                         | "fedora"                                                     |
+| NAME                            | "Red Hat Enterprise Linux Server"                            |
+| PRETTY_NAME                     | "Red Hat Enterprise Linux Server 7.9 (Maipo)"                |
+| REDHAT_BUGZILLA_PRODUCT         | "Red Hat Enterprise Linux 7"                                 |
+| REDHAT_BUGZILLA_PRODUCT_VERSION | 7.9                                                          |
+| REDHAT_SUPPORT_PRODUCT          | "Red Hat Enterprise Linux"                                   |
+| REDHAT_SUPPORT_PRODUCT_VERSION  | "7.9"                                                        |
+| VARIANT                         | "Server"                                                     |
+| VARIANT_ID                      | "server"                                                     |
+| VERSION                         | "7.9 (Maipo)"                                                |
+| VERSION_ID                      | "7.9"                                                        |
+| cpu                             | Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz                    |
+| cpu_cores                       | 24                                                           |
+| cpu_count                       | 24                                                           |
+| cpu_threads                     | 24                                                           |
+| date                            | 2022-11-19 23:07:24.788994                                   |
+| frequency                       | scpufreq(current=1.5282083333333338, min=1200.0, max=3300.0) |
+| mem.active                      | 17.3 GiB                                                     |
+| mem.available                   | 222.8 GiB                                                    |
+| mem.free                        | 211.1 GiB                                                    |
+| mem.inactive                    | 10.5 GiB                                                     |
+| mem.percent                     | 11.2 %                                                       |
+| mem.total                       | 251.1 GiB                                                    |
+| mem.used                        | 20.6 GiB                                                     |
+| platform.version                | #1 SMP Tue Jul 26 14:15:37 UTC 2022                          |
+| python                          | 3.9.8 (main, Feb  8 2022, 08:35:13)                          |
+|                                 | [GCC 6.3.0]                                                  |
+| python.pip                      | 22.2.2                                                       |
+| python.version                  | 3.9.8                                                        |
+| sys.platform                    | linux                                                        |
+| uname.machine                   | x86_64                                                       |
+| uname.node                      | c8                                                           |
+| uname.processor                 | x86_64                                                       |
+| uname.release                   | 3.10.0-1160.76.1.el7.x86_64                                  |
+| uname.system                    | Linux                                                        |
+| uname.version                   | #1 SMP Tue Jul 26 14:15:37 UTC 2022                          |
+| user                            | haiyang                                                      |
++---------------------------------+--------------------------------------------------------------+
+
++---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------+
+| Name          | Status   |   Time |   Sum | Start               | tag                                                                                                              | msg   | Node   | User    | OS    | Version                             |
+|---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------|
+| mpi-mergesort | ok       |  0.566 | 0.566 | 2022-11-19 23:07:24 | {'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8} |       | c8     | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mpi-generate  | ok       |  0.004 | 0.004 | 2022-11-19 23:07:24 | {'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8} |       | c8     | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
++---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,mpi-mergesort,ok,0.566,0.566,2022-11-19 23:07:24,{'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8},None,c8,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mpi-generate,ok,0.004,0.004,2022-11-19 23:07:24,{'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8},None,c8,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+
+
++---------------------------------+-------------------------------------------------------------+
+| Attribute                       | Value                                                       |
+|---------------------------------+-------------------------------------------------------------|
+| ANSI_COLOR                      | "0;31"                                                      |
+| BUG_REPORT_URL                  | "https://bugzilla.redhat.com/"                              |
+| CPE_NAME                        | "cpe:/o:redhat:enterprise_linux:7.9:GA:server"              |
+| HOME_URL                        | "https://www.redhat.com/"                                   |
+| ID                              | "rhel"                                                      |
+| ID_LIKE                         | "fedora"                                                    |
+| NAME                            | "Red Hat Enterprise Linux Server"                           |
+| PRETTY_NAME                     | "Red Hat Enterprise Linux Server 7.9 (Maipo)"               |
+| REDHAT_BUGZILLA_PRODUCT         | "Red Hat Enterprise Linux 7"                                |
+| REDHAT_BUGZILLA_PRODUCT_VERSION | 7.9                                                         |
+| REDHAT_SUPPORT_PRODUCT          | "Red Hat Enterprise Linux"                                  |
+| REDHAT_SUPPORT_PRODUCT_VERSION  | "7.9"                                                       |
+| VARIANT                         | "Server"                                                    |
+| VARIANT_ID                      | "server"                                                    |
+| VERSION                         | "7.9 (Maipo)"                                               |
+| VERSION_ID                      | "7.9"                                                       |
+| cpu                             | Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz                   |
+| cpu_cores                       | 24                                                          |
+| cpu_count                       | 24                                                          |
+| cpu_threads                     | 24                                                          |
+| date                            | 2022-11-19 23:07:28.152030                                  |
+| frequency                       | scpufreq(current=1.542666666666667, min=1200.0, max=3300.0) |
+| mem.active                      | 17.3 GiB                                                    |
+| mem.available                   | 222.8 GiB                                                   |
+| mem.free                        | 211.1 GiB                                                   |
+| mem.inactive                    | 10.5 GiB                                                    |
+| mem.percent                     | 11.2 %                                                      |
+| mem.total                       | 251.1 GiB                                                   |
+| mem.used                        | 20.6 GiB                                                    |
+| platform.version                | #1 SMP Tue Jul 26 14:15:37 UTC 2022                         |
+| python                          | 3.9.8 (main, Feb  8 2022, 08:35:13)                         |
+|                                 | [GCC 6.3.0]                                                 |
+| python.pip                      | 22.2.2                                                      |
+| python.version                  | 3.9.8                                                       |
+| sys.platform                    | linux                                                       |
+| uname.machine                   | x86_64                                                      |
+| uname.node                      | c8                                                          |
+| uname.processor                 | x86_64                                                      |
+| uname.release                   | 3.10.0-1160.76.1.el7.x86_64                                 |
+| uname.system                    | Linux                                                       |
+| uname.version                   | #1 SMP Tue Jul 26 14:15:37 UTC 2022                         |
+| user                            | haiyang                                                     |
++---------------------------------+-------------------------------------------------------------+
+
++---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------+
+| Name          | Status   |   Time |   Sum | Start               | tag                                                                                                              | msg   | Node   | User    | OS    | Version                             |
+|---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------|
+| mpi-mergesort | ok       |  0.638 | 0.638 | 2022-11-19 23:07:27 | {'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8} |       | c8     | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mpi-generate  | ok       |  0.004 | 0.004 | 2022-11-19 23:07:27 | {'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8} |       | c8     | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
++---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,mpi-mergesort,ok,0.638,0.638,2022-11-19 23:07:27,{'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8},None,c8,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mpi-generate,ok,0.004,0.004,2022-11-19 23:07:27,{'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8},None,c8,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+
+
++---------------------------------+--------------------------------------------------------------+
+| Attribute                       | Value                                                        |
+|---------------------------------+--------------------------------------------------------------|
+| ANSI_COLOR                      | "0;31"                                                       |
+| BUG_REPORT_URL                  | "https://bugzilla.redhat.com/"                               |
+| CPE_NAME                        | "cpe:/o:redhat:enterprise_linux:7.9:GA:server"               |
+| HOME_URL                        | "https://www.redhat.com/"                                    |
+| ID                              | "rhel"                                                       |
+| ID_LIKE                         | "fedora"                                                     |
+| NAME                            | "Red Hat Enterprise Linux Server"                            |
+| PRETTY_NAME                     | "Red Hat Enterprise Linux Server 7.9 (Maipo)"                |
+| REDHAT_BUGZILLA_PRODUCT         | "Red Hat Enterprise Linux 7"                                 |
+| REDHAT_BUGZILLA_PRODUCT_VERSION | 7.9                                                          |
+| REDHAT_SUPPORT_PRODUCT          | "Red Hat Enterprise Linux"                                   |
+| REDHAT_SUPPORT_PRODUCT_VERSION  | "7.9"                                                        |
+| VARIANT                         | "Server"                                                     |
+| VARIANT_ID                      | "server"                                                     |
+| VERSION                         | "7.9 (Maipo)"                                                |
+| VERSION_ID                      | "7.9"                                                        |
+| cpu                             | Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz                    |
+| cpu_cores                       | 24                                                           |
+| cpu_count                       | 24                                                           |
+| cpu_threads                     | 24                                                           |
+| date                            | 2022-11-19 23:07:31.436318                                   |
+| frequency                       | scpufreq(current=1.5154583333333338, min=1200.0, max=3300.0) |
+| mem.active                      | 17.3 GiB                                                     |
+| mem.available                   | 222.8 GiB                                                    |
+| mem.free                        | 211.1 GiB                                                    |
+| mem.inactive                    | 10.5 GiB                                                     |
+| mem.percent                     | 11.3 %                                                       |
+| mem.total                       | 251.1 GiB                                                    |
+| mem.used                        | 20.7 GiB                                                     |
+| platform.version                | #1 SMP Tue Jul 26 14:15:37 UTC 2022                          |
+| python                          | 3.9.8 (main, Feb  8 2022, 08:35:13)                          |
+|                                 | [GCC 6.3.0]                                                  |
+| python.pip                      | 22.2.2                                                       |
+| python.version                  | 3.9.8                                                        |
+| sys.platform                    | linux                                                        |
+| uname.machine                   | x86_64                                                       |
+| uname.node                      | c8                                                           |
+| uname.processor                 | x86_64                                                       |
+| uname.release                   | 3.10.0-1160.76.1.el7.x86_64                                  |
+| uname.system                    | Linux                                                        |
+| uname.version                   | #1 SMP Tue Jul 26 14:15:37 UTC 2022                          |
+| user                            | haiyang                                                      |
++---------------------------------+--------------------------------------------------------------+
+
++---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------+
+| Name          | Status   |   Time |   Sum | Start               | tag                                                                                                              | msg   | Node   | User    | OS    | Version                             |
+|---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------|
+| mpi-mergesort | ok       |  0.579 | 0.579 | 2022-11-19 23:07:30 | {'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8} |       | c8     | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mpi-generate  | ok       |  0.004 | 0.004 | 2022-11-19 23:07:30 | {'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8} |       | c8     | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
++---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,mpi-mergesort,ok,0.579,0.579,2022-11-19 23:07:30,{'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8},None,c8,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mpi-generate,ok,0.004,0.004,2022-11-19 23:07:30,{'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8},None,c8,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+
+
++---------------------------------+-------------------------------------------------------------+
+| Attribute                       | Value                                                       |
+|---------------------------------+-------------------------------------------------------------|
+| ANSI_COLOR                      | "0;31"                                                      |
+| BUG_REPORT_URL                  | "https://bugzilla.redhat.com/"                              |
+| CPE_NAME                        | "cpe:/o:redhat:enterprise_linux:7.9:GA:server"              |
+| HOME_URL                        | "https://www.redhat.com/"                                   |
+| ID                              | "rhel"                                                      |
+| ID_LIKE                         | "fedora"                                                    |
+| NAME                            | "Red Hat Enterprise Linux Server"                           |
+| PRETTY_NAME                     | "Red Hat Enterprise Linux Server 7.9 (Maipo)"               |
+| REDHAT_BUGZILLA_PRODUCT         | "Red Hat Enterprise Linux 7"                                |
+| REDHAT_BUGZILLA_PRODUCT_VERSION | 7.9                                                         |
+| REDHAT_SUPPORT_PRODUCT          | "Red Hat Enterprise Linux"                                  |
+| REDHAT_SUPPORT_PRODUCT_VERSION  | "7.9"                                                       |
+| VARIANT                         | "Server"                                                    |
+| VARIANT_ID                      | "server"                                                    |
+| VERSION                         | "7.9 (Maipo)"                                               |
+| VERSION_ID                      | "7.9"                                                       |
+| cpu                             | Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz                   |
+| cpu_cores                       | 24                                                          |
+| cpu_count                       | 24                                                          |
+| cpu_threads                     | 24                                                          |
+| date                            | 2022-11-19 23:07:34.767587                                  |
+| frequency                       | scpufreq(current=1.541791666666667, min=1200.0, max=3300.0) |
+| mem.active                      | 17.3 GiB                                                    |
+| mem.available                   | 222.8 GiB                                                   |
+| mem.free                        | 211.1 GiB                                                   |
+| mem.inactive                    | 10.5 GiB                                                    |
+| mem.percent                     | 11.3 %                                                      |
+| mem.total                       | 251.1 GiB                                                   |
+| mem.used                        | 20.7 GiB                                                    |
+| platform.version                | #1 SMP Tue Jul 26 14:15:37 UTC 2022                         |
+| python                          | 3.9.8 (main, Feb  8 2022, 08:35:13)                         |
+|                                 | [GCC 6.3.0]                                                 |
+| python.pip                      | 22.2.2                                                      |
+| python.version                  | 3.9.8                                                       |
+| sys.platform                    | linux                                                       |
+| uname.machine                   | x86_64                                                      |
+| uname.node                      | c8                                                          |
+| uname.processor                 | x86_64                                                      |
+| uname.release                   | 3.10.0-1160.76.1.el7.x86_64                                 |
+| uname.system                    | Linux                                                       |
+| uname.version                   | #1 SMP Tue Jul 26 14:15:37 UTC 2022                         |
+| user                            | haiyang                                                     |
++---------------------------------+-------------------------------------------------------------+
+
++---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------+
+| Name          | Status   |   Time |   Sum | Start               | tag                                                                                                              | msg   | Node   | User    | OS    | Version                             |
+|---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------|
+| mpi-mergesort | ok       |  0.606 | 0.606 | 2022-11-19 23:07:34 | {'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8} |       | c8     | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mpi-generate  | ok       |  0.004 | 0.004 | 2022-11-19 23:07:34 | {'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8} |       | c8     | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
++---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,mpi-mergesort,ok,0.606,0.606,2022-11-19 23:07:34,{'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8},None,c8,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mpi-generate,ok,0.004,0.004,2022-11-19 23:07:34,{'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8},None,c8,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+
+
++---------------------------------+-------------------------------------------------------------+
+| Attribute                       | Value                                                       |
+|---------------------------------+-------------------------------------------------------------|
+| ANSI_COLOR                      | "0;31"                                                      |
+| BUG_REPORT_URL                  | "https://bugzilla.redhat.com/"                              |
+| CPE_NAME                        | "cpe:/o:redhat:enterprise_linux:7.9:GA:server"              |
+| HOME_URL                        | "https://www.redhat.com/"                                   |
+| ID                              | "rhel"                                                      |
+| ID_LIKE                         | "fedora"                                                    |
+| NAME                            | "Red Hat Enterprise Linux Server"                           |
+| PRETTY_NAME                     | "Red Hat Enterprise Linux Server 7.9 (Maipo)"               |
+| REDHAT_BUGZILLA_PRODUCT         | "Red Hat Enterprise Linux 7"                                |
+| REDHAT_BUGZILLA_PRODUCT_VERSION | 7.9                                                         |
+| REDHAT_SUPPORT_PRODUCT          | "Red Hat Enterprise Linux"                                  |
+| REDHAT_SUPPORT_PRODUCT_VERSION  | "7.9"                                                       |
+| VARIANT                         | "Server"                                                    |
+| VARIANT_ID                      | "server"                                                    |
+| VERSION                         | "7.9 (Maipo)"                                               |
+| VERSION_ID                      | "7.9"                                                       |
+| cpu                             | Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz                   |
+| cpu_cores                       | 24                                                          |
+| cpu_count                       | 24                                                          |
+| cpu_threads                     | 24                                                          |
+| date                            | 2022-11-19 23:07:38.284800                                  |
+| frequency                       | scpufreq(current=1.515333333333334, min=1200.0, max=3300.0) |
+| mem.active                      | 17.3 GiB                                                    |
+| mem.available                   | 222.8 GiB                                                   |
+| mem.free                        | 211.1 GiB                                                   |
+| mem.inactive                    | 10.5 GiB                                                    |
+| mem.percent                     | 11.2 %                                                      |
+| mem.total                       | 251.1 GiB                                                   |
+| mem.used                        | 20.6 GiB                                                    |
+| platform.version                | #1 SMP Tue Jul 26 14:15:37 UTC 2022                         |
+| python                          | 3.9.8 (main, Feb  8 2022, 08:35:13)                         |
+|                                 | [GCC 6.3.0]                                                 |
+| python.pip                      | 22.2.2                                                      |
+| python.version                  | 3.9.8                                                       |
+| sys.platform                    | linux                                                       |
+| uname.machine                   | x86_64                                                      |
+| uname.node                      | c8                                                          |
+| uname.processor                 | x86_64                                                      |
+| uname.release                   | 3.10.0-1160.76.1.el7.x86_64                                 |
+| uname.system                    | Linux                                                       |
+| uname.version                   | #1 SMP Tue Jul 26 14:15:37 UTC 2022                         |
+| user                            | haiyang                                                     |
++---------------------------------+-------------------------------------------------------------+
+
++---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------+
+| Name          | Status   |   Time |   Sum | Start               | tag                                                                                                              | msg   | Node   | User    | OS    | Version                             |
+|---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------|
+| mpi-mergesort | ok       |  0.85  | 0.85  | 2022-11-19 23:07:37 | {'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8} |       | c8     | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mpi-generate  | ok       |  0.004 | 0.004 | 2022-11-19 23:07:37 | {'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8} |       | c8     | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
++---------------+----------+--------+-------+---------------------+------------------------------------------------------------------------------------------------------------------+-------+--------+---------+-------+-------------------------------------+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,mpi-mergesort,ok,0.85,0.85,2022-11-19 23:07:37,{'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8},None,c8,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mpi-generate,ok,0.004,0.004,2022-11-19 23:07:37,{'user': 'alex', 'node': 'v100', 'debug': False, 'size': 500000, 'subsort': 'mp', 'sort': 'mpi', 'c': 1, 'p': 8},None,c8,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+

@@ -1,0 +1,84 @@
+Starting experiment
+Processes: [1]
+Size:      [1000]
+Repeat:    10
+Clear:     False
+Debug:     False
+Algorithm: gpu-cupy-sort
+Tag:       None
+Total:     10
+Log:       log/gpu-cupy-sort-TeslaT4-alex-1000.log
+Experiment 9         : size=1000 processes=1 repeat=0 last_time=undefined                     Experiment 8         : size=1000 processes=1 repeat=1 last_time=0.1116                     Experiment 7         : size=1000 processes=1 repeat=2 last_time=0.0002                     Experiment 6         : size=1000 processes=1 repeat=3 last_time=0.0001                     Experiment 5         : size=1000 processes=1 repeat=4 last_time=0.0001                     Experiment 4         : size=1000 processes=1 repeat=5 last_time=0.0001                     Experiment 3         : size=1000 processes=1 repeat=6 last_time=0.0001                     Experiment 2         : size=1000 processes=1 repeat=7 last_time=0.0001                     Experiment 1         : size=1000 processes=1 repeat=8 last_time=0.0001                     Experiment 0         : size=1000 processes=1 repeat=9 last_time=0.0001                     
++---------------------+----------------------------------------------------------------------+
+| Attribute           | Value                                                                |
+|---------------------+----------------------------------------------------------------------|
+| BUG_REPORT_URL      | "https://bugs.launchpad.net/ubuntu/"                                 |
+| DISTRIB_CODENAME    | bionic                                                               |
+| DISTRIB_DESCRIPTION | "Ubuntu 18.04.6 LTS"                                                 |
+| DISTRIB_ID          | Ubuntu                                                               |
+| DISTRIB_RELEASE     | 18.04                                                                |
+| HOME_URL            | "https://www.ubuntu.com/"                                            |
+| ID                  | ubuntu                                                               |
+| ID_LIKE             | debian                                                               |
+| NAME                | "Ubuntu"                                                             |
+| PRETTY_NAME         | "Ubuntu 18.04.6 LTS"                                                 |
+| PRIVACY_POLICY_URL  | "https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"     |
+| SUPPORT_URL         | "https://help.ubuntu.com/"                                           |
+| UBUNTU_CODENAME     | bionic                                                               |
+| VERSION             | "18.04.6 LTS (Bionic Beaver)"                                        |
+| VERSION_CODENAME    | bionic                                                               |
+| VERSION_ID          | "18.04"                                                              |
+| cpu                 | Intel(R) Xeon(R) Platinum 8259CL CPU @ 2.50GHz                       |
+| cpu_cores           | 2                                                                    |
+| cpu_count           | 4                                                                    |
+| cpu_threads         | 4                                                                    |
+| date                | 2022-10-05 03:12:10.864341                                           |
+| frequency           | scpufreq(current=3100.0532500000004, min=0.0, max=0.0)               |
+| mem.active          | 1.0 GiB                                                              |
+| mem.available       | 14.4 GiB                                                             |
+| mem.free            | 13.4 GiB                                                             |
+| mem.inactive        | 640.4 MiB                                                            |
+| mem.percent         | 6.0 %                                                                |
+| mem.total           | 15.3 GiB                                                             |
+| mem.used            | 644.1 MiB                                                            |
+| platform.version    | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022                  |
+| python              | 3.7.10 | packaged by conda-forge | (default, Feb 19 2021, 16:07:37)  |
+|                     | [GCC 9.3.0]                                                          |
+| python.pip          | 22.2.2                                                               |
+| python.version      | 3.7.10                                                               |
+| sys.platform        | linux                                                                |
+| uname.machine       | x86_64                                                               |
+| uname.node          | TeslaT4                                                              |
+| uname.processor     | x86_64                                                               |
+| uname.release       | 5.4.0-1085-aws                                                       |
+| uname.system        | Linux                                                                |
+| uname.version       | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022                  |
+| user                | alex                                                                 |
++---------------------+----------------------------------------------------------------------+
+
++----------------------------------------+----------+--------+-------+---------------------+-------+-------+---------+--------+-------+-----------------------------------------------------+
+| Name                                   | Status   |   Time |   Sum | Start               | tag   | msg   | Node    | User   | OS    | Version                                             |
+|----------------------------------------+----------+--------+-------+---------------------+-------+-------+---------+--------+-------+-----------------------------------------------------|
+| ip-172-31-9-213_gpu-cupy-sort_1_1000_0 | ok       |  0.112 | 0.112 | 2022-10-05 03:12:10 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_gpu-cupy-sort_1_1000_1 | ok       |  0     | 0     | 2022-10-05 03:12:10 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_gpu-cupy-sort_1_1000_2 | ok       |  0     | 0     | 2022-10-05 03:12:10 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_gpu-cupy-sort_1_1000_3 | ok       |  0     | 0     | 2022-10-05 03:12:10 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_gpu-cupy-sort_1_1000_4 | ok       |  0     | 0     | 2022-10-05 03:12:10 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_gpu-cupy-sort_1_1000_5 | ok       |  0     | 0     | 2022-10-05 03:12:10 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_gpu-cupy-sort_1_1000_6 | ok       |  0     | 0     | 2022-10-05 03:12:10 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_gpu-cupy-sort_1_1000_7 | ok       |  0     | 0     | 2022-10-05 03:12:10 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_gpu-cupy-sort_1_1000_8 | ok       |  0     | 0     | 2022-10-05 03:12:10 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
+| ip-172-31-9-213_gpu-cupy-sort_1_1000_9 | ok       |  0     | 0     | 2022-10-05 03:12:10 |       |       | TeslaT4 | alex   | Linux | #92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022 |
++----------------------------------------+----------+--------+-------+---------------------+-------+-------+---------+--------+-------+-----------------------------------------------------+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,ip-172-31-9-213_gpu-cupy-sort_1_1000_0,ok,0.112,0.112,2022-10-05 03:12:10,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_gpu-cupy-sort_1_1000_1,ok,0.0,0.0,2022-10-05 03:12:10,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_gpu-cupy-sort_1_1000_2,ok,0.0,0.0,2022-10-05 03:12:10,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_gpu-cupy-sort_1_1000_3,ok,0.0,0.0,2022-10-05 03:12:10,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_gpu-cupy-sort_1_1000_4,ok,0.0,0.0,2022-10-05 03:12:10,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_gpu-cupy-sort_1_1000_5,ok,0.0,0.0,2022-10-05 03:12:10,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_gpu-cupy-sort_1_1000_6,ok,0.0,0.0,2022-10-05 03:12:10,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_gpu-cupy-sort_1_1000_7,ok,0.0,0.0,2022-10-05 03:12:10,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_gpu-cupy-sort_1_1000_8,ok,0.0,0.0,2022-10-05 03:12:10,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+# csv,ip-172-31-9-213_gpu-cupy-sort_1_1000_9,ok,0.0,0.0,2022-10-05 03:12:10,,None,TeslaT4,alex,Linux,#92~18.04.1-Ubuntu SMP Wed Aug 31 17:21:08 UTC 2022
+

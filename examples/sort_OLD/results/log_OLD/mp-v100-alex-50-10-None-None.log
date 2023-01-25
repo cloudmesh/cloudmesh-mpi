@@ -1,0 +1,117 @@
+SORT: mp
+<function multiprocessing_mergesort at 0x2ab8e93c2af0>
+Starting experiment
+Log:       output.log
+Processes: 10
+Size:      50
+Repeat:    10
+Clear:     False
+Debug:     True
+Algorithm: mp
+ID:        0
+Tag:       None
+Total:     10
+Experiment 9         : size=50 processes=10 id=0 repeat=0 last_time=undefined                     
+[8, 50, 10, 13, 30, 35, 23, 33, 41, 27, 15, 4, 3, 3, 33, 0, 17, 40, 44, 5, 28, 35, 27, 9, 15, 48, 15, 1, 7, 47, 19, 26, 29, 18, 20, 5, 1, 25, 26, 21, 38, 22, 6, 12, 16, 35, 50, 21, 10, 38]
+[0, 1, 1, 3, 3, 4, 5, 5, 6, 7, 8, 9, 10, 10, 12, 13, 15, 15, 15, 16, 17, 18, 19, 20, 21, 21, 22, 23, 25, 26, 26, 27, 27, 28, 29, 30, 33, 33, 35, 35, 35, 38, 38, 40, 41, 44, 47, 48, 50, 50]
+Experiment 8         : size=50 processes=10 id=0 repeat=1 last_time=0.0588                     
+[37, 3, 5, 42, 40, 20, 24, 24, 2, 37, 38, 29, 3, 41, 17, 22, 31, 26, 11, 10, 7, 45, 36, 14, 41, 25, 13, 34, 28, 20, 7, 21, 41, 0, 49, 34, 9, 41, 37, 38, 33, 3, 0, 20, 29, 16, 15, 26, 28, 19]
+[0, 0, 2, 3, 3, 3, 5, 7, 7, 9, 10, 11, 13, 14, 15, 16, 17, 19, 20, 20, 20, 21, 22, 24, 24, 25, 26, 26, 28, 28, 29, 29, 31, 33, 34, 34, 36, 37, 37, 37, 38, 38, 40, 41, 41, 41, 41, 42, 45, 49]
+Experiment 7         : size=50 processes=10 id=0 repeat=2 last_time=0.0504                     
+[22, 19, 50, 12, 45, 37, 47, 27, 11, 9, 43, 33, 24, 2, 8, 4, 50, 28, 21, 35, 16, 26, 16, 9, 16, 26, 13, 40, 22, 20, 31, 23, 37, 8, 0, 49, 0, 5, 20, 20, 29, 26, 26, 8, 9, 39, 49, 35, 25, 15]
+[0, 0, 2, 4, 5, 8, 8, 8, 9, 9, 9, 11, 12, 13, 15, 16, 16, 16, 19, 20, 20, 20, 21, 22, 22, 23, 24, 25, 26, 26, 26, 26, 27, 28, 29, 31, 33, 35, 35, 37, 37, 39, 40, 43, 45, 47, 49, 49, 50, 50]
+Experiment 6         : size=50 processes=10 id=0 repeat=3 last_time=0.0504                     
+[3, 12, 3, 2, 30, 39, 49, 16, 0, 25, 47, 9, 48, 35, 3, 37, 36, 23, 41, 2, 30, 12, 18, 6, 6, 3, 13, 1, 20, 21, 36, 16, 3, 1, 20, 46, 40, 40, 0, 40, 23, 43, 14, 47, 42, 31, 41, 23, 26, 21]
+[0, 0, 1, 1, 2, 2, 3, 3, 3, 3, 3, 6, 6, 9, 12, 12, 13, 14, 16, 16, 18, 20, 20, 21, 21, 23, 23, 23, 25, 26, 30, 30, 31, 35, 36, 36, 37, 39, 40, 40, 40, 41, 41, 42, 43, 46, 47, 47, 48, 49]
+Experiment 5         : size=50 processes=10 id=0 repeat=4 last_time=0.0502                     
+[14, 45, 16, 9, 20, 7, 9, 2, 23, 21, 12, 23, 35, 8, 37, 37, 22, 38, 34, 47, 14, 1, 24, 26, 5, 49, 18, 44, 28, 43, 47, 40, 8, 49, 13, 7, 7, 21, 28, 46, 47, 21, 43, 13, 13, 44, 21, 27, 23, 7]
+[1, 2, 5, 7, 7, 7, 7, 8, 8, 9, 9, 12, 13, 13, 13, 14, 14, 16, 18, 20, 21, 21, 21, 21, 22, 23, 23, 23, 24, 26, 27, 28, 28, 34, 35, 37, 37, 38, 40, 43, 43, 44, 44, 45, 46, 47, 47, 47, 49, 49]
+Experiment 4         : size=50 processes=10 id=0 repeat=5 last_time=0.0479                     
+[28, 26, 37, 17, 22, 22, 42, 5, 13, 45, 10, 6, 25, 35, 48, 9, 35, 30, 49, 19, 42, 1, 6, 9, 36, 45, 42, 29, 6, 46, 26, 30, 46, 27, 6, 22, 15, 29, 29, 31, 48, 31, 0, 16, 44, 20, 14, 37, 44, 41]
+[0, 1, 5, 6, 6, 6, 6, 9, 9, 10, 13, 14, 15, 16, 17, 19, 20, 22, 22, 22, 25, 26, 26, 27, 28, 29, 29, 29, 30, 30, 31, 31, 35, 35, 36, 37, 37, 41, 42, 42, 42, 44, 44, 45, 45, 46, 46, 48, 48, 49]
+Experiment 3         : size=50 processes=10 id=0 repeat=6 last_time=0.0489                     
+[37, 10, 46, 14, 27, 7, 6, 16, 35, 11, 7, 2, 47, 44, 3, 5, 46, 25, 23, 47, 32, 10, 3, 24, 36, 50, 13, 6, 33, 33, 43, 31, 21, 49, 36, 6, 11, 15, 34, 0, 17, 1, 1, 15, 18, 21, 2, 6, 18, 5]
+[0, 1, 1, 2, 2, 3, 3, 5, 5, 6, 6, 6, 6, 7, 7, 10, 10, 11, 11, 13, 14, 15, 15, 16, 17, 18, 18, 21, 21, 23, 24, 25, 27, 31, 32, 33, 33, 34, 35, 36, 36, 37, 43, 44, 46, 46, 47, 47, 49, 50]
+Experiment 2         : size=50 processes=10 id=0 repeat=7 last_time=0.0498                     
+[17, 47, 18, 30, 18, 3, 35, 9, 9, 25, 30, 3, 50, 14, 39, 6, 11, 47, 12, 41, 9, 15, 23, 50, 34, 2, 38, 7, 11, 3, 1, 26, 34, 42, 25, 25, 3, 7, 10, 13, 12, 23, 29, 18, 46, 44, 47, 9, 38, 23]
+[1, 2, 3, 3, 3, 3, 6, 7, 7, 9, 9, 9, 9, 10, 11, 11, 12, 12, 13, 14, 15, 17, 18, 18, 18, 23, 23, 23, 25, 25, 25, 26, 29, 30, 30, 34, 34, 35, 38, 38, 39, 41, 42, 44, 46, 47, 47, 47, 50, 50]
+Experiment 1         : size=50 processes=10 id=0 repeat=8 last_time=0.0481                     
+[14, 2, 9, 44, 5, 1, 38, 15, 20, 0, 15, 28, 43, 5, 5, 6, 24, 43, 8, 39, 1, 48, 30, 15, 41, 17, 5, 7, 45, 31, 24, 22, 34, 21, 33, 30, 49, 6, 22, 44, 23, 4, 18, 20, 37, 20, 11, 39, 29, 19]
+[0, 1, 1, 2, 4, 5, 5, 5, 5, 6, 6, 7, 8, 9, 11, 14, 15, 15, 15, 17, 18, 19, 20, 20, 20, 21, 22, 22, 23, 24, 24, 28, 29, 30, 30, 31, 33, 34, 37, 38, 39, 39, 41, 43, 43, 44, 44, 45, 48, 49]
+Experiment 0         : size=50 processes=10 id=0 repeat=9 last_time=0.0494                     
+[18, 24, 20, 3, 33, 46, 16, 15, 29, 14, 25, 32, 39, 42, 49, 11, 27, 5, 31, 35, 20, 20, 38, 25, 23, 27, 1, 42, 13, 22, 16, 0, 4, 19, 29, 4, 11, 20, 19, 4, 32, 29, 41, 18, 19, 48, 50, 18, 3, 5]
+[0, 1, 3, 3, 4, 4, 4, 5, 5, 11, 11, 13, 14, 15, 16, 16, 18, 18, 18, 19, 19, 19, 20, 20, 20, 20, 22, 23, 24, 25, 25, 27, 27, 29, 29, 29, 31, 32, 32, 33, 35, 38, 39, 41, 42, 42, 46, 48, 49, 50]
+
++---------------------------------+--------------------------------------------------------------+
+| Attribute                       | Value                                                        |
+|---------------------------------+--------------------------------------------------------------|
+| ANSI_COLOR                      | "0;31"                                                       |
+| BUG_REPORT_URL                  | "https://bugzilla.redhat.com/"                               |
+| CPE_NAME                        | "cpe:/o:redhat:enterprise_linux:7.9:GA:server"               |
+| HOME_URL                        | "https://www.redhat.com/"                                    |
+| ID                              | "rhel"                                                       |
+| ID_LIKE                         | "fedora"                                                     |
+| NAME                            | "Red Hat Enterprise Linux Server"                            |
+| PRETTY_NAME                     | "Red Hat Enterprise Linux Server 7.9 (Maipo)"                |
+| REDHAT_BUGZILLA_PRODUCT         | "Red Hat Enterprise Linux 7"                                 |
+| REDHAT_BUGZILLA_PRODUCT_VERSION | 7.9                                                          |
+| REDHAT_SUPPORT_PRODUCT          | "Red Hat Enterprise Linux"                                   |
+| REDHAT_SUPPORT_PRODUCT_VERSION  | "7.9"                                                        |
+| VARIANT                         | "Server"                                                     |
+| VARIANT_ID                      | "server"                                                     |
+| VERSION                         | "7.9 (Maipo)"                                                |
+| VERSION_ID                      | "7.9"                                                        |
+| cpu                             | Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz                    |
+| cpu_cores                       | 24                                                           |
+| cpu_count                       | 24                                                           |
+| cpu_threads                     | 24                                                           |
+| date                            | 2022-10-30 15:07:48.470370                                   |
+| frequency                       | scpufreq(current=1.4425416666666668, min=1200.0, max=3300.0) |
+| mem.active                      | 17.0 GiB                                                     |
+| mem.available                   | 176.1 GiB                                                    |
+| mem.free                        | 171.6 GiB                                                    |
+| mem.inactive                    | 7.1 GiB                                                      |
+| mem.percent                     | 29.9 %                                                       |
+| mem.total                       | 251.2 GiB                                                    |
+| mem.used                        | 56.6 GiB                                                     |
+| platform.version                | #1 SMP Tue Jul 26 14:15:37 UTC 2022                          |
+| python                          | 3.9.8 (main, Feb  8 2022, 08:35:13)                          |
+|                                 | [GCC 6.3.0]                                                  |
+| python.pip                      | 22.2.2                                                       |
+| python.version                  | 3.9.8                                                        |
+| sys.platform                    | linux                                                        |
+| uname.machine                   | x86_64                                                       |
+| uname.node                      | h1.carbonate.uits.iu.edu                                     |
+| uname.processor                 | x86_64                                                       |
+| uname.release                   | 3.10.0-1160.76.1.el7.x86_64                                  |
+| uname.system                    | Linux                                                        |
+| uname.version                   | #1 SMP Tue Jul 26 14:15:37 UTC 2022                          |
+| user                            | haiyang                                                      |
++---------------------------------+--------------------------------------------------------------+
+
++--------------------------------+----------+--------+-------+---------------------+-------------------------------------------------------------------------------------------------------------+-------+--------------------------+---------+-------+-------------------------------------+
+| Name                           | Status   |   Time |   Sum | Start               | tag                                                                                                         | msg   | Node                     | User    | OS    | Version                             |
+|--------------------------------+----------+--------+-------+---------------------+-------------------------------------------------------------------------------------------------------------+-------+--------------------------+---------+-------+-------------------------------------|
+| mp-v100-alex-50-10-None-None-0 | ok       |  0.059 | 0.059 | 2022-10-30 15:07:47 | {'p': 10, 'size': 50, 'repeat': 10, 'sort': 'mp', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'} |       | h1.carbonate.uits.iu.edu | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mp-v100-alex-50-10-None-None-1 | ok       |  0.05  | 0.05  | 2022-10-30 15:07:48 | {'p': 10, 'size': 50, 'repeat': 10, 'sort': 'mp', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'} |       | h1.carbonate.uits.iu.edu | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mp-v100-alex-50-10-None-None-2 | ok       |  0.05  | 0.05  | 2022-10-30 15:07:48 | {'p': 10, 'size': 50, 'repeat': 10, 'sort': 'mp', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'} |       | h1.carbonate.uits.iu.edu | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mp-v100-alex-50-10-None-None-3 | ok       |  0.05  | 0.05  | 2022-10-30 15:07:48 | {'p': 10, 'size': 50, 'repeat': 10, 'sort': 'mp', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'} |       | h1.carbonate.uits.iu.edu | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mp-v100-alex-50-10-None-None-4 | ok       |  0.048 | 0.048 | 2022-10-30 15:07:48 | {'p': 10, 'size': 50, 'repeat': 10, 'sort': 'mp', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'} |       | h1.carbonate.uits.iu.edu | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mp-v100-alex-50-10-None-None-5 | ok       |  0.049 | 0.049 | 2022-10-30 15:07:48 | {'p': 10, 'size': 50, 'repeat': 10, 'sort': 'mp', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'} |       | h1.carbonate.uits.iu.edu | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mp-v100-alex-50-10-None-None-6 | ok       |  0.05  | 0.05  | 2022-10-30 15:07:48 | {'p': 10, 'size': 50, 'repeat': 10, 'sort': 'mp', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'} |       | h1.carbonate.uits.iu.edu | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mp-v100-alex-50-10-None-None-7 | ok       |  0.048 | 0.048 | 2022-10-30 15:07:48 | {'p': 10, 'size': 50, 'repeat': 10, 'sort': 'mp', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'} |       | h1.carbonate.uits.iu.edu | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mp-v100-alex-50-10-None-None-8 | ok       |  0.049 | 0.049 | 2022-10-30 15:07:48 | {'p': 10, 'size': 50, 'repeat': 10, 'sort': 'mp', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'} |       | h1.carbonate.uits.iu.edu | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
+| mp-v100-alex-50-10-None-None-9 | ok       |  0.046 | 0.046 | 2022-10-30 15:07:48 | {'p': 10, 'size': 50, 'repeat': 10, 'sort': 'mp', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'} |       | h1.carbonate.uits.iu.edu | haiyang | Linux | #1 SMP Tue Jul 26 14:15:37 UTC 2022 |
++--------------------------------+----------+--------+-------+---------------------+-------------------------------------------------------------------------------------------------------------+-------+--------------------------+---------+-------+-------------------------------------+
+# csv,timer,status,time,sum,start,tag,msg,uname.node,user,uname.system,platform.version
+# csv,mp-v100-alex-50-10-None-None-0,ok,0.059,0.059,2022-10-30 15:07:47,{'p': 10, 'size': 50, 'repeat': 10, 'sort': 'mp', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'},None,h1.carbonate.uits.iu.edu,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mp-v100-alex-50-10-None-None-1,ok,0.05,0.05,2022-10-30 15:07:48,{'p': 10, 'size': 50, 'repeat': 10, 'sort': 'mp', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'},None,h1.carbonate.uits.iu.edu,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mp-v100-alex-50-10-None-None-2,ok,0.05,0.05,2022-10-30 15:07:48,{'p': 10, 'size': 50, 'repeat': 10, 'sort': 'mp', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'},None,h1.carbonate.uits.iu.edu,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mp-v100-alex-50-10-None-None-3,ok,0.05,0.05,2022-10-30 15:07:48,{'p': 10, 'size': 50, 'repeat': 10, 'sort': 'mp', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'},None,h1.carbonate.uits.iu.edu,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mp-v100-alex-50-10-None-None-4,ok,0.048,0.048,2022-10-30 15:07:48,{'p': 10, 'size': 50, 'repeat': 10, 'sort': 'mp', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'},None,h1.carbonate.uits.iu.edu,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mp-v100-alex-50-10-None-None-5,ok,0.049,0.049,2022-10-30 15:07:48,{'p': 10, 'size': 50, 'repeat': 10, 'sort': 'mp', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'},None,h1.carbonate.uits.iu.edu,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mp-v100-alex-50-10-None-None-6,ok,0.05,0.05,2022-10-30 15:07:48,{'p': 10, 'size': 50, 'repeat': 10, 'sort': 'mp', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'},None,h1.carbonate.uits.iu.edu,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mp-v100-alex-50-10-None-None-7,ok,0.048,0.048,2022-10-30 15:07:48,{'p': 10, 'size': 50, 'repeat': 10, 'sort': 'mp', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'},None,h1.carbonate.uits.iu.edu,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mp-v100-alex-50-10-None-None-8,ok,0.049,0.049,2022-10-30 15:07:48,{'p': 10, 'size': 50, 'repeat': 10, 'sort': 'mp', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'},None,h1.carbonate.uits.iu.edu,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+# csv,mp-v100-alex-50-10-None-None-9,ok,0.046,0.046,2022-10-30 15:07:48,{'p': 10, 'size': 50, 'repeat': 10, 'sort': 'mp', 'user': 'alex', 'node': 'v100', 't': 'None', 'c': 'None'},None,h1.carbonate.uits.iu.edu,haiyang,Linux,#1 SMP Tue Jul 26 14:15:37 UTC 2022
+
