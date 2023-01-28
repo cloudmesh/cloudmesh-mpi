@@ -9,9 +9,9 @@ from itertools import chain
 
 from cloudmesh.common.StopWatch import StopWatch
 from cloudmesh.common.dotdict import dotdict
-from generate import Generator
+#from util.generate import Generator
 from sequential.mergesort import merge_sort
-from multiprocessing_mergesort import multiprocessing_mergesort
+from multiprocessing.multiprocessing_mergesort import multiprocessing_mergesort
 
 config = dotdict()
 
