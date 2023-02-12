@@ -15,7 +15,19 @@ from multiprocessing.multiprocessing_mergesort import multiprocessing_mergesort
 
 config = dotdict()
 
-def mpi_sort(order, arr, p=1, c=1, subsort='sorted', sort=merge_sort):
+# maps common sort aliases to functions
+def get_sort_by_name(name):
+    if name in ["mp", "mp-merge", "mp-mergesort", "multiprocessing_mergesort"]:
+        # multiprocessing mergesort
+        return multiprocessing_mergesort
+    elif name in ["sort", "sorted"]:
+        # built-in python sort
+        return sorted
+    elif name in ["seq", "seq-mergesort", "seq-merge", "sequential_merge", "sequential_mergesort"]:
+        # sequential mergesort
+        return merge_sort
+
+def mpi_sort(order, arr, p=1, c=1, subsort='sorted', merge='merge'):
 
     sort_algorithm = get_sort_by_name(config.subsort)
     # tmp_unsorted_arr = np.array(Generator().generate_random(n))
@@ -24,25 +36,19 @@ def mpi_sort(order, arr, p=1, c=1, subsort='sorted', sort=merge_sort):
     comm = MPI.COMM_WORLD
     size = comm.Get_size()
     rank = comm.Get_rank()
-    status = MPI.Status()
 
     n = config.size
 
     # create necessary arrays
-    unsorted_arr = np.zeros(n, dtype="int")
+    unsorted_arr = np.asarray(arr)
     sorted_arr = np.zeros(n, dtype="int")
     sub_size = int(n / size)  # size of each subarray
     local_arr = np.zeros(sub_size, dtype="int")  # array for each process
     local_tmp = np.zeros(sub_size, dtype="int")
     local_result = np.zeros(2 * sub_size, dtype="int")
 
-    # generate unsorted array on rank 0
-    if rank == 0:
-        StopWatch.start("mpi-generate")
-        unsorted_arr = np.random.randint(n, size=n)
-        StopWatch.stop("mpi-generate")
-        if config.debug:
-            print(f"UNSORTED ARRAY: {unsorted_arr}")
+    if config.debug:
+        print(f"UNSORTED ARRAY: {arr}")
 
     # send subarray to each process
     comm.Scatter(unsorted_arr, local_arr, root=0)
@@ -50,17 +56,13 @@ def mpi_sort(order, arr, p=1, c=1, subsort='sorted', sort=merge_sort):
     if config.debug:
         print(f'Buffer in process {rank} contains: {local_arr}, size = {len(local_arr)}')
 
-    # sort each subarray
-    # local_arr.sort()
-    # print(f"THIS IS THE SORT ALGORITHM BEING USED: {sort_algorithm}")
-    # print(f"THIS IS THE NUMNER OF CORES BEING USED: {config.c}")
+    # print(f"SORT ALGORITHM BEING USED: {sort_algorithm}")
+    # print(f"NUMBER OF CORES BEING USED: {config.c}")
     local_arr = np.array(sort_algorithm(list(local_arr), config.c))
 
     if config.debug:
         print(f'Buffer in process {rank} before gathering: {local_arr}')
     # Gather sorted subarrays into one
-
-    # data = comm.gather(local_arr,root=0)
 
     comm.Barrier()
 

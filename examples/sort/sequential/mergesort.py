@@ -1,21 +1,23 @@
 # merge sort
 # https://www.educative.io/edpresso/merge-sort-in-python
 
-def merge_sort(order, arr):
-    if order in ["ascending", "<"]:
-        return merge_sort_smaller(arr)
-    elif order in ["descending", ">"]:
-        return merge_sort_bigger(arr)
+from util.generate import Generator
 
-def merge_sort_smaller(array):
-    if len(array) > 1:
+def mergesort(order, arr):
+    if order in ["ascending", "<"]:
+        return mergesort_smaller(arr)
+    elif order in ["descending", ">"]:
+        return mergesort_bigger(arr)
+
+def mergesort_smaller(array):
+    if len(array) > 1 and not Generator.verify('<', array):
 
         r = len(array) // 2
         left = array[:r]
         right = array[r:]
 
-        merge_sort_smaller(left)
-        merge_sort_smaller(right)
+        mergesort_smaller(left)
+        mergesort_smaller(right)
 
         i = j = k = 0
 
@@ -37,17 +39,18 @@ def merge_sort_smaller(array):
             array[k] = right[j]
             j += 1
             k += 1
+    print(array)
     return array
 
-def merge_sort_bigger(array):
-    if len(array) > 1:
+def mergesort_bigger(array):
+    if len(array) > 1 and not Generator.verify('>', array):
 
         r = len(array) // 2
         left = array[:r]
         right = array[r:]
 
-        merge_sort_bigger(left)
-        merge_sort_bigger(right)
+        mergesort_bigger(left)
+        mergesort_bigger(right)
 
         i = j = k = 0
 
@@ -69,4 +72,5 @@ def merge_sort_bigger(array):
             array[k] = right[j]
             j += 1
             k += 1
+    print(array)
     return array
