@@ -13,11 +13,11 @@ MPI
 
 Communication for a team
 
-* <hhttps://cloudmesh.github.io/cloudmesh-mpi/report-group.pdf>
+* <https://cloudmesh.github.io/cloudmesh-mpi/report-group.pdf>
 
 Epub for the group is not avaliable yet:
 
-* <hhttps://cloudmesh.github.io/cloudmesh-mpi/report-group.epub>
+* <https://cloudmesh.github.io/cloudmesh-mpi/report-group.epub>
 
 The material is copyrighted by Gregor von Laszewski but can be distributed freely as PDF document.
 
