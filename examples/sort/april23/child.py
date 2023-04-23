@@ -1,3 +1,7 @@
+# TODO: this is not working and only used for scattering test of data over teh processors
+#       however even that is not yet complete as no print or other way to confirm that
+#       the arrya is scattered is done.
+
 from mpi4py import MPI
 import numpy as np
 
@@ -28,3 +32,5 @@ local_result = np.zeros(2 * sub_size, dtype="int")
 
 # send subarray to each process
 comm.Scatter(unsorted_arr, local_arr, root=0)
+
+

@@ -1,3 +1,5 @@
+# TODO: only scatters data but does not sort
+
 import os
 import sys
 from threading import local

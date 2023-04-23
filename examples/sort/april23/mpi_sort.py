@@ -1,3 +1,6 @@
+# TODO: this does not work, as only data is scattered, but the mpi
+#       method does not actutlly call sort.
+
 import os
 import sys
 from threading import local
@@ -48,7 +51,12 @@ def get_sort_by_name(name):
     elif name in ["seq", "seq-mergesort", "seq-merge", "sequential_merge", "sequential_mergesort"]:
         return mergesort
 
-def mpi_sort(order, arr, p=1, c=1, subsort='sorted', merge='merge'):
+def mpi_sort(order,
+             arr,
+             p=1,
+             c=1,
+             subsort='sorted',
+             merge='merge'):
     sort_algorithm = get_sort_by_name(subsort)
     merge_algorithm = mergesort
 
