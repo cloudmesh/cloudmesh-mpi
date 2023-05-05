@@ -13,6 +13,7 @@ from cloudmesh.common.StopWatch import StopWatch
 from cloudmesh.common.dotdict import dotdict
 from sequential.mergesort import mergesort
 from multiprocessing_mergesort import multiprocessing_mergesort
+from mpi.mergesort2 import mergesort
 
 def split_array(array, chunk_size):
     chunks = []
@@ -52,12 +53,23 @@ size = comm.Get_size()
 
 # Get the rank of the current process in the communicator group
 rank = comm.Get_rank()
+N = 5
+total_arr = Generator.generate_random(2 ** N)
+
 if rank == 0:
+    print(total_arr)
+result = mergesort(total_arr)
+print(result)
+
+'''if rank == 0:
     N = size * 3
     total_arr = Generator.generate_random(N)
     data = split_array(total_arr, int(N / size))
+    result = mergesort(total_arr)
+    print(result)
+
 else:
-    data = None
+    data = None'''
 
 '''if rank == 0: # Process with rank 0 gets the data to be broadcast 
     N = 10
@@ -71,12 +83,12 @@ else: # Other processes' data is empty
     data = None'''
 
 # Print data in each process
-print(f'before broadcast, data on rank {rank} is: {data}')
+# print(f'before broadcast, data on rank {rank} is: {data}')
 
-data = comm.scatter(data, root=0)
+# data = comm.scatter(data, root=0)
 # Print data in each process after broadcast
-print(f'after broadcast, data on rank {rank} is: {data}')
+# print(f'after broadcast, data on rank {rank} is: {data}')
 
-data = sorted(data)
+# data = sorted(data)
 
-print(f'after sorted, data on rank {rank} is: {data}')
+# print(f'after sorted, data on rank {rank} is: {data}')

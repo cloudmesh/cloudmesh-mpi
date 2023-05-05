@@ -1,16 +1,6 @@
 import mpi4py
 
-def merge_sort(array, comm):
-  """Sorts the given array in parallel using MPI.
-
-  Args:
-    array: The array to sort.
-    comm: The MPI communicator.
-
-  Returns:
-    The sorted array.
-  """
-
+def merge_sort(array, comm, sort_function=None, order="<"):
   # Get the number of processes.
   num_processes = comm.Get_size()
 
@@ -38,16 +28,6 @@ def merge_sort(array, comm):
   return sorted_array
 
 def merge(array1, array2):
-  """Merges two sorted arrays.
-
-  Args:
-    array1: The first sorted array.
-    array2: The second sorted array.
-
-  Returns:
-    The merged sorted array.
-  """
-
   # Initialize the output array.
   output_array = []
 
