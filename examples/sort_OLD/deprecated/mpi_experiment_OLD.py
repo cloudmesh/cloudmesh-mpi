@@ -17,7 +17,7 @@ from generate import Generator
 # generates label for this experiment
 def get_label(name, p, n, i, id, tag=None):
     if tag is None:
-        if not os_is_windows:
+        if not os_is_windows():
             tag = os.uname().nodename
         else:
             tag = platform.uname().node

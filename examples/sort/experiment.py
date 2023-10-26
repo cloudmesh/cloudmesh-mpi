@@ -27,7 +27,7 @@ def get_sort_by_name(name="multiprocessing_mergesort"):
 
 def get_label(name, p, n, i, tag=None):
     if tag is None:
-        if not os_is_windows:
+        if not os_is_windows():
             tag = os.uname().nodename
         else:
             tag = platform.uname().node
