@@ -1,0 +1,39 @@
+# TODO: only scatters data but does not sort
+
+import os
+import sys
+from threading import local
+import argparse
+import numpy as np
+from mpi4py import MPI
+from itertools import chain
+
+from cloudmesh.common.StopWatch import StopWatch
+from cloudmesh.common.dotdict import dotdict
+from sequential.mergesort import mergesort
+from multiprocessing_mergesort import multiprocessing_mergesort
+
+# maps common sort aliases to functions
+def get_sort_by_name(name):
+    if name in ["mp", "mp-merge", "mp-mergesort", "multiprocessing_mergesort"]:
+        return multiprocessing_mergesort
+    elif name in ["sort", "sorted"]:
+        return sorted
+    elif name in ["seq", "seq-mergesort", "seq-merge", "sequential_merge", "sequential_mergesort"]:
+        return mergesort
+
+def mpi_sort(order, arr, p=1, c=1, subsort='sorted', merge='merge'):
+    comm = MPI.COMM_SELF.Spawn(
+        sys.executable,
+        args=['child.py'],
+        maxprocs=p
+    )
+
+    print(f"This is the parent {comm.Get_rank()}")
+
+    n = len(arr)
+    unsorted_arr = np.asarray(arr)
+    sub_size = int(n / p)  # size of each subarray
+    local_arr = np.zeros(sub_size, dtype="int")  # subarray for each process
+    comm.Scatter(unsorted_arr, local_arr, root=0)
+

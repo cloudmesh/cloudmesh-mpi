@@ -1,5 +1,6 @@
 import math
 
+# TODO: docstrings are missing
 
 # heap sort
 
@@ -10,6 +11,17 @@ import math
 
 
 def max_heapify(arr, n, i):
+    """
+
+    :param arr:
+    :type arr:
+    :param n:
+    :type n:
+    :param i:
+    :type i:
+    :return:
+    :rtype:
+    """
     big = i
     # node i's two children
     l = 2 * i + 1
@@ -29,6 +41,17 @@ def max_heapify(arr, n, i):
 
 # build min heap
 def min_heapify(arr, n, i):
+    """
+
+    :param arr:
+    :type arr:
+    :param n:
+    :type n:
+    :param i:
+    :type i:
+    :return:
+    :rtype:
+    """
     m = i
     # node i's two children
     l = 2 * i + 1
@@ -47,6 +70,19 @@ def min_heapify(arr, n, i):
 
 
 def heapsort(order, arr):
+    """
+    Sorts the given array with type defined at creation time with
+    a heap sort algorithm.
+
+    :param order: the order in which to sort. It has the value "<" for
+                  ascending and ">" for descending.
+    :type order: str
+    :param arr: The array to be sorted. This can be a numerical array
+                including int or float
+    :type arr: defined when the array is created.
+    :return: sorted array
+    :rtype: the type of the original array
+    """
     n = len(arr)
     if order in ["ascending", "<"]:
         # build max heap from bottom up

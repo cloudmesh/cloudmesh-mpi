@@ -1,9 +1,24 @@
-# quicksort
+""" quicksort."""
 # https://www.geeksforgeeks.org/python-program-for-quicksort/
 
+# TODO: docstrings are missing
+# TODO: quicksort with orer is missing? see raise not implemented
 
 # partition array into two sections
 def partition(order, arr, l, r):
+    """
+
+    :param order:
+    :type order:
+    :param arr:
+    :type arr:
+    :param l:
+    :type l:
+    :param r:
+    :type r:
+    :return:
+    :rtype:
+    """
     i = l + 1
     j = r
     k = arr[l]  # partition variable

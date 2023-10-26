@@ -346,6 +346,12 @@ make start
 make shell
 ```
 
+To stop the container say
+
+```
+make stop
+```
+
 ## Testing the Installation
 
 On all systems, the installation is very easy. Just change in our example the number 4 to the number of cores in your system.
