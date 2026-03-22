@@ -21,7 +21,7 @@ endef
 
 .PHONY: clean
 
-all: install pdf-mpi epub-mpi pdf-group pdf-sort clean
+all: install cover pdf-mpi epub-mpi pdf-group pdf-sort clean
 
 install:
 	pip install cyberaide-bookmanager

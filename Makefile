@@ -14,6 +14,9 @@ endef
 doc:
 	cd doc; make
 
+cover:
+	cd doc; make cover
+
 image:
 	cd doc; make image
 
