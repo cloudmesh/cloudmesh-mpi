@@ -1,9 +1,23 @@
 # Preface
 
-Gregor von Laszewski has initiated this project as a voluntary summer
-research project available for university students.
+Today Python has become the predominant programming language to
+coordinate scien- tific applications, especially machine and deep
+learning applications. However, previously existing parallel programming
+paradigms such as Message Passing Interface (MPI) have proven to be a
+useful asset when it comes to enhancing complex data flows while
+executing them on multiple computers including supercomputers. The
+framework is well known in the C-language community. However, many
+practitioners do not have the time to learn C to utilize such advanced
+cyberinfrastructure. Hence, it is advantageous to access MPI from
+Python. We showcase how you can easily deploy and use MPI from Python
+via a tool called mpi4py.
+
+For more information, please contact: <laszewski@gmail.com>
 
 ## Acknowledgement
+
+Gregor von Laszewski has initiated this project as a voluntary summer
+research project available for university students.
 
 Besides the coauthors, students who contributed to this document's very
 early version are Cooper Young, Erin Seliger, and Agness Lungua.
@@ -42,7 +56,7 @@ or
 
     $ git clone https://github.com/cloudmesh/cloudmesh-mpi.git
 
-In cas eyou have `make` and docker instaled on your machine, you can
+In case you have `make` and docker installed on your machine, you can
 create this document locally with
 
 ``` bash
@@ -50,8 +64,8 @@ $ make image
 $ make
 ```
 
-Please not that `make` can also be installed on Windows as documented in
-our appenix, so you can also create this document easily on Windows.
+Please note that `make` can also be installed on Windows as documented
+in our appendix, so you can also create this document easily on Windows.
 
 ## Document Notation
 
@@ -332,6 +346,38 @@ you like to use GPUs.
 
     If you have other Raspberry Pi's you may need to update the core
     count according to the hardware specification.
+
+## Docker Virtualization
+
+Using the cloudmask docker images may be ideal for the user if one does
+not want to complicate their system environment. To use the cloudmesh
+docker installation, install Docker Desktop with choco (Windows) or brew
+(macOS):
+
+``` bash
+choco install docker-desktop -y
+```
+
+``` bash
+brew install --cask docker
+```
+
+Then execute the following commands:
+
+``` bash
+cd ~/cm
+git clone https://github.com/cloudmesh/slurm-in-docker.git
+cd slurm-in-docker/ports/cloudmesh-slurm
+make image
+make run
+make register
+make start
+make shell
+```
+
+To stop the container say
+
+    make stop
 
 ## Testing the Installation
 
@@ -2766,7 +2812,7 @@ over them but include them.
 
 ## Git Bash on Windows
 
-Git bash is a implementation of the bash shell fro windows that also
+Git bash is an implementation of the bash shell for windows that also
 includes Git.
 
 Git is an open-source software which helps to manage repository version

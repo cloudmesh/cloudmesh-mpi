@@ -1,24 +1,41 @@
 ---
-title: MPI with Python
-author: Gregor von Laszewski <laszewski@gmail.com>, Fidel Leal, Jacques Fleischer
+title: "MPI with Python"
+author: |
+  | Gregor von Laszewski \href{mailto:laszewski@gmail.com}{\textcolor{cyan}{<laszewski@gmail.com>}}
+  | Fidel Leal
+  | Jacques Fleischer
+subtitle: |
+  | **DOI:** [10.5281/zenodo.19170331](https://doi.org/10.5281/zenodo.19170331)
+  | **URL:** [https://cloudmesh.github.io/cloudmesh-mpi/report-mpi.pdf](https://cloudmesh.github.io/cloudmesh-mpi/report-mpi.pdf)
+
+date: "22 March 2026, Copyright (c) 2026 Gregor von Laszewski"
+
+# Eisvogel Specifics
+titlepage: true
+titlepage-color: "002B55"
+titlepage-text-color: "FFFFFF"
+titlepage-rule-color: "FFFFFF"
+titlepage-rule-height: 2
+
+# Professional Link Styling
+colorlinks: true
+linkcolor: "cyan"
+urlcolor: "cyan"
+
+# Formatting
+toc: true
+toc-own-page: true
+number-sections: true
+
 header-includes: |
     \usepackage{fancyhdr}
     \pagestyle{fancy}
+    \fancyfoot[L]{}
+    \fancypagestyle{plain}{\fancyhf{}\fancyfoot[L]{}\fancyfoot[C]{\thepage}} 
+    \AtBeginDocument{\fancyfoot[L]{}}
     \usepackage{tcolorbox}
-    \hypersetup{colorlinks,linkcolor=blue,urlcolor=blue}
+    \usepackage{xcolor}
+    \hypersetup{colorlinks,linkcolor=cyan,urlcolor=cyan}
     \newtcolorbox{myquote}{colback=gray!5!white, colframe=gray!75!black}
     \renewenvironment{quote}{\begin{myquote}}{\end{myquote}}
-abstract: |
-	  Today python has become the predominantly programming language to
-	  coordinate scientific applications especially machine and deep
-	  learning applications. However, previously existing parallel
-	  programming paradigms such as **Message Passing Interface (MPI)** have
-	  proven to be a useful asset when it comes to enhancing complex data
-	  flows while executing them on multiple computers including
-	  supercomputers. The framework is well known in the C-language
-	  community.  However many practitioners do not have the time to learn C
-	  to utilize such advanced cyberinfrastructure. Hence, it is
-	  advantageous to access MPI from Python. We showcase how you can easily
-	  deploy and use MPI from Python via a tool called `mpi4pi`.  
-	  For more information, please contact: <laszewski@gmail.com>
 ---

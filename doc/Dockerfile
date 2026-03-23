@@ -87,8 +87,20 @@ WORKDIR /usr/local/code
 # https://github.com/jgm/pandoc/releases/download/2.17.1.1/pandoc-2.17.1.1-1-amd64.deb
 
 ENV PANDOC_VERSION=2.17.1.1
-RUN wget -q https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb
-RUN dpkg -i pandoc-${PANDOC_VERSION}-1-amd64.deb
+
+# THIS IS THE MISSING LINK:
+ARG TARGETARCH
+
+RUN if [ "$TARGETARCH" = "arm64" ]; then \
+        PANDOC_ARCH="arm64"; \
+    else \
+        PANDOC_ARCH="amd64"; \
+    fi && \
+    wget -q https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-${PANDOC_ARCH}.deb && \
+    dpkg -i pandoc-${PANDOC_VERSION}-1-${PANDOC_ARCH}.deb && \
+    rm pandoc-${PANDOC_VERSION}-1-${PANDOC_ARCH}.deb
+
+    
 RUN pandoc --version
 
 # https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.12.2a/pandoc-crossref-Linux.tar.xz

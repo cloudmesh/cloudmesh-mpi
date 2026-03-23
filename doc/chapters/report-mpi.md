@@ -1,9 +1,21 @@
 # Preface
 
-Gregor von Laszewski has initiated this project as a voluntary
-summer research project available for university students.
+Today Python has become the predominant programming language to coordinate scien-
+tific applications, especially machine and deep learning applications. However, previously
+existing parallel programming paradigms such as Message Passing Interface (MPI) have
+proven to be a useful asset when it comes to enhancing complex data flows while executing
+them on multiple computers including supercomputers. The framework is well known in
+the C-language community. However, many practitioners do not have the time to learn
+C to utilize such advanced cyberinfrastructure. Hence, it is advantageous to access MPI
+from Python. We showcase how you can easily deploy and use MPI from Python via a tool
+called mpi4py.
+
+For more information, please contact: <laszewski@gmail.com>
 
 ## Acknowledgement
+
+Gregor von Laszewski has initiated this project as a voluntary
+summer research project available for university students.
 
 Besides the
 coauthors, students who contributed to this document's very early version are

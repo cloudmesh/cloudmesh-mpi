@@ -21,7 +21,10 @@ endef
 
 .PHONY: clean
 
-all: install cover pdf-mpi epub-mpi pdf-group pdf-sort clean
+all: install cover pdf-mpi clean
+
+everything: install cover pdf-mpi epub-mpi pdf-group pdf-sort clean
+
 
 install:
 	pip install cyberaide-bookmanager
@@ -47,7 +50,7 @@ pdf-mpi-simple: ${MPI} md-mpi
 pdf-mpi: ${MPI} md-mpi
 	$(call banner, "CREATE MPI PDF DOCUMENT")
 	${PANDOC} cloudmesh/pandoc -s --toc \
-		title-latex.md tmp-3.md -o ../docs/report-mpi.pdf --template ./format/eisvogel/eisvogel --listings --number-sections --csl=format/ieee-with-url.csl --citeproc --bibliography references.bib  
+		chapters/metadata-mpi.yaml tmp-3.md -o ../docs/report-mpi.pdf --template ./format/eisvogel/eisvogel --listings --number-sections --csl=format/ieee-with-url.csl --citeproc --bibliography references.bib  
 
 
 cover:
